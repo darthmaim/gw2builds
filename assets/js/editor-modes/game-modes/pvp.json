@@ -1,0 +1,10 @@
+{
+    "racesEnabled": false,
+    "races": {
+        "asura": false,
+        "charr": false,
+        "human": false,
+        "norn": false,
+        "sylvari": false
+    }
+}
