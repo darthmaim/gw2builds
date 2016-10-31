@@ -1,3 +1,6 @@
+# Include our starting point
+!bin/
+
 # Generated files
 /build
 /public
