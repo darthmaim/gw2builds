@@ -1,0 +1,74 @@
+.stats-overview-panel {
+  background: lightsalmon; // TODO: Remove later
+  position: absolute;
+  top: 40px;
+  bottom: 0;
+  right: 0;
+  width: 220px;
+
+  .stats-attributes {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    columns: 2;
+
+    li {
+      background-size: 24px;
+      background-repeat: no-repeat;
+      padding-left: 28px;
+      margin: 2px 0;
+      height: 24px;
+      line-height: 24px;
+    }
+  }
+}
+
+
+// ************************************
+// Icons
+// ************************************
+.attribute-power {
+  background-image: url(../img/stats-power.png);
+}
+.attribute-toughness {
+  background-image: url(../img/stats-toughness.png);
+}
+.attribute-vitality {
+  background-image: url(../img/stats-vitality.png);
+}
+.attribute-precision {
+  background-image: url(../img/stats-precision.png);
+}
+.attribute-ferocity {
+  background-image: url(../img/stats-ferocity.png);
+}
+.attribute-condition-damage {
+  background-image: url(../img/stats-condition-damage.png);
+}
+.attribute-expertise {
+  background-image: url(../img/stats-condition-duration.png);
+}
+.attribute-concentration {
+  background-image: url(../img/stats-boon-duration.png);
+}
+.attribute-armor {
+  background-image: url(../img/stats-armor.png);
+}
+.attribute-health {
+  background-image: url(../img/stats-health.png);
+}
+.attribute-critical-chance {
+  background-image: url(../img/stats-critical-chance.png);
+}
+.attribute-critical-damage {
+  background-image: url(../img/stats-critical-damage.png);
+}
+.attribute-healing-power {
+  background-image: url(../img/stats-healing-power.png);
+}
+.attribute-condition-duration {
+  background-image: url(../img/stats-condition-duration.png);
+}
+.attribute-boon-duration {
+  background-image: url(../img/stats-boon-duration.png);
+}

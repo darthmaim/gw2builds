@@ -1,0 +1,38 @@
+.overlay-container-content-container {
+  overflow: hidden;
+  position: relative;
+  > * {
+    display: block;
+    width: 100%;
+    position: absolute;
+  }
+
+  &.animate-enter {
+    opacity: 0;
+    > * {
+      transform: translateY(-100%);
+    }
+    &.animate-enter-active {
+      opacity: 1;
+      > * {
+        transform: translateY(0);
+        transition: transform 500ms;
+      }
+      transition: opacity 500ms;
+    }
+  }
+  &.animate-leave {
+    opacity: 1;
+    > * {
+      transform: translateY(0);
+    }
+    &.animate-leave-active {
+      opacity: 0;
+      > * {
+        transform: translateY(-100%);
+        transition: transform 500ms;
+      }
+      transition: opacity 500ms;
+    }
+  }
+}

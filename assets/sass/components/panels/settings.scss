@@ -1,0 +1,158 @@
+.settings-panel {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+
+  .overlay-container-header {
+    position: absolute;
+    width: 240px;
+    height: 40px;
+    z-index: 100;
+    background: white;
+    background: lightyellow; // TODO: Remove later
+
+    .settings-header {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+
+      li {
+        display: inline-block;
+        margin: 4px 0 0 8px;
+        width: 32px;
+        height: 32px;
+        background-size: 32px;
+        background-repeat: no-repeat;
+
+        &.race-none {
+          background: none;
+        }
+      }
+    }
+  }
+
+  .overlay-container-content-container {
+    height: 520px;
+    background: rgba(0, 0, 0, 0.75);
+  }
+
+  .overlay-container-content {
+    background: lightblue; // TODO: Remove later
+    position: absolute;
+    top: 40px;
+    left: 0;
+    right: 0;
+    padding: 4px 12px;
+
+    .columns {
+      display: table;
+      width: 100%;
+      > * {
+        display: table-cell;
+        width: 25%;
+      }
+      ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        li {
+          background-position: left center;
+          background-size: 32px;
+          background-repeat: no-repeat;
+          line-height: 32px;
+
+          &.option {
+            padding-left: 32px + 4px; // 32px for icon + 4px padding
+            margin: 2px 20px 2px 0;
+            filter: grayscale(100%);
+            opacity: 0.5;
+            transition: filter 300ms, opacity 300ms;
+            &.selected, &:hover {
+              filter: none;
+              opacity: 1;
+            }
+          }
+        }
+      }
+      .column-header {
+        font-weight: bold;
+      }
+    }
+  }
+}
+
+
+// ************************************
+// Icons
+// ************************************
+.language-en {
+  background-image: url(../img/en.png);
+}
+.language-de {
+  background-image: url(../img/de.png);
+}
+.language-fr {
+  background-image: url(../img/fr.png);
+}
+.language-es {
+  background-image: url(../img/es.png);
+}
+
+.gamemode-pve {
+  background-image: url(../img/pve.png);
+}
+.gamemode-pvp {
+  background-image: url(../img/pvp.png);
+}
+.gamemode-wvw {
+  background-image: url(../img/wvw.png);
+}
+
+.profession-guardian {
+  background-image: url(../img/guardian.png);
+}
+.profession-revenant {
+  background-image: url(../img/revenant.png);
+}
+.profession-warrior {
+  background-image: url(../img/warrior.png);
+}
+.profession-engineer {
+  background-image: url(../img/engineer.png);
+}
+.profession-ranger {
+  background-image: url(../img/ranger.png);
+}
+.profession-thief {
+  background-image: url(../img/thief.png);
+}
+.profession-elementalist {
+  background-image: url(../img/elementalist.png);
+}
+.profession-mesmer {
+  background-image: url(../img/mesmer.png);
+}
+.profession-necromancer {
+  background-image: url(../img/necromancer.png);
+}
+
+.race-none {
+  background-image: url(../img/no-race.png);
+}
+.race-asura {
+  background-image: url(../img/asura.png);
+}
+.race-charr {
+  background-image: url(../img/charr.png);
+}
+.race-human {
+  background-image: url(../img/human.png);
+}
+.race-norn {
+  background-image: url(../img/norn.png);
+}
+.race-sylvari {
+  background-image: url(../img/sylvari.png);
+}
