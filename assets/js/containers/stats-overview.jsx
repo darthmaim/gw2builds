@@ -7,7 +7,7 @@ import {
     getAttributeProfession, getAttributeArmor, getAttributeHealth, getAttributeCriticalChance, getAttributeCriticalDamage,
     getAttributeHealingPower, getAttributeConditionDuration, getAttributeBoonDuration
 } from "../selectors/attributes";
-import StatsOverviewPanel from "../components/panels/stats-overview";
+import { Panel } from "../components/StatsOverview";
 
 const mapStateToProps = state => ({
     power: getAttributePower(state),
@@ -28,5 +28,5 @@ const mapStateToProps = state => ({
     boonDuration: getAttributeBoonDuration(state)
 });
 
-const StatsOverview = connect(mapStateToProps)(StatsOverviewPanel);
+const StatsOverview = connect(mapStateToProps)(Panel);
 export default StatsOverview;
