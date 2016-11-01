@@ -9,7 +9,7 @@ import thunk from "redux-thunk";
 import { IntlProvider } from "react-intl";
 import editor from "./reducers";
 import Settings from "./containers/settings";
-import CharacterPanel from "./components/panels/character";
+import { Panel as CharacterPanel } from "./components/Character";
 import StatsOverview from "./containers/stats-overview";
 import apiClient from "gw2api-client";
 import cacheMemory from "gw2api-client/build/cache/memory";
@@ -28,8 +28,8 @@ class Editor extends React.Component {
             <IntlProvider locale={this.props.locale}>
                 <div className="editor">
                     <Settings/>
-                    <CharacterPanel/>
                     <StatsOverview/>
+                    <CharacterPanel/>
                 </div>
             </IntlProvider>
         );

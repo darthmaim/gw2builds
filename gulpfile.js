@@ -6,7 +6,8 @@ const
     browserify = require("browserify"),
     del = require("del"),
     gulp = require("gulp"),
-    autoprefixer = require("gulp-autoprefixer"),
+    autoprefixer = require("autoprefixer"),
+    cssnano = require("cssnano"),
     babel = require("gulp-babel"),
     imagemin = require("gulp-imagemin"),
     nodemon = require("gulp-nodemon"),
@@ -35,29 +36,23 @@ gulp.task("clean", () => {
     return del(["./public", "./build"]);
 });
 
-gulp.task("build:css", () => {
-    return gulp.src("./assets/sass/app.scss")
-        .pipe(sourcemaps.init())
-        .pipe(sass({
-            includePaths: [
-                "./node_modules"
-            ],
-            outputStyle: !isDev() ? "compressed" : "expanded"
-        }).on("error", logError))
-        .pipe(autoprefixer({
-            browsers: ["> 1%"]
-        }))
-        .pipe(sourcemaps.write("./"))
-        .pipe(gulp.dest("./build/css/"));
-});
-
-gulp.task("build:js", () => {
+gulp.task("build:assets", () => {
     return browserify({
         entries: "./assets/js/app",
         extensions: [".js", ".jsx"],
         debug: true,
         paths: ["./node_modules"]
     })
+        .plugin("modular-css/browserify", {
+            css : "./build/css/app.css",
+            sourcemaps: true,
+            after: [
+                autoprefixer({browsers: ["> 1%"]})
+            ],
+            done: [
+                cssnano()
+            ]
+        })
         .transform("babelify")
         .bundle().on("error", logError)
         .pipe(source("app.js"))
@@ -103,12 +98,8 @@ gulp.task("browsersync-reload:all", callback => {
     runSequence("default", "browsersync-reload", callback);
 });
 
-gulp.task("browsersync-reload:css", callback => {
-    runSequence("build:css", "revision", "browsersync-reload", callback);
-});
-
-gulp.task("browsersync-reload:js", callback => {
-    runSequence("build:js", "revision", "browsersync-reload", callback);
+gulp.task("browsersync-reload:assets", callback => {
+    runSequence("build:assets", "revision", "browsersync-reload", callback);
 });
 
 gulp.task("browsersync-reload:img", callback => {
@@ -129,8 +120,7 @@ gulp.task("dev", callback => {
             port: "5000"
         });
 
-        gulp.watch("./assets/sass/**/*.scss", ["browsersync-reload:css"]);
-        gulp.watch(["./assets/js/**/*.js", "./assets/js/**/*.jsx"], ["browsersync-reload:js"]);
+        gulp.watch(["./assets/js/**/*.js", "./assets/js/**/*.jsx", "./assets/js/**/*.css"], ["browsersync-reload:assets"]);
         gulp.watch("./assets/img/**", ["browsersync-reload:img"]);
         gulp.watch("./views/**", ["browsersync-reload"]);
         callback();
@@ -138,5 +128,5 @@ gulp.task("dev", callback => {
 });
 
 gulp.task("default", callback => {
-    runSequence("clean", ["build:css", "build:js", "build:img"], "revision", callback);
+    runSequence("clean", ["build:assets", "build:img"], "revision", callback);
 });

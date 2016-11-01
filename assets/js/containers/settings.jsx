@@ -2,7 +2,7 @@
 
 import { connect } from "react-redux";
 import { setLanguage, setGameMode, setProfession, setRace, fetchProfession } from "../actions";
-import SettingsPanel from "../components/panels/settings";
+import { Container as SettingsContainer } from "../components/Settings";
 import { applyEditorMode } from "../editor-modes";
 
 const mapStateToProps = state => ({
@@ -31,5 +31,5 @@ const mapDispathToProps = dispatch => ({
     }
 });
 
-const Settings = connect(mapStateToProps, mapDispathToProps)(SettingsPanel);
+const Settings = connect(mapStateToProps, mapDispathToProps)(SettingsContainer);
 export default Settings;
