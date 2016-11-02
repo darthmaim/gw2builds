@@ -67,8 +67,13 @@
     "extends": "xo-react",
     "rules": {
       "linebreak-style": "off",
+      "react/jsx-closing-bracket-location": ["error", "after-props"],
+      "no-negated-condition": "off",
       "object-curly-spacing": ["error", "always"],
       "unicorn/filename-case": 0
+    },
+    "settings": {
+      "import/resolver": {"node": {"extensions": [".js", ".jsx"]}}
     }
   }
 }

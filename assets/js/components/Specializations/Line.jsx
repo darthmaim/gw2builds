@@ -1,8 +1,8 @@
 'use strict';
 
 import React from 'react';
-import { TraitGroup } from './index';
 import style from './line.css';
+import { TraitGroup } from './index';
 
 class Line extends React.Component {
     constructor() {
@@ -12,10 +12,10 @@ class Line extends React.Component {
             master: null,
             grandmaster: null
         };
-        this.onChange = this.onChange.bind(this);
+        this.handleOnTraitChange = this.handleOnTraitChange.bind(this);
     }
 
-    onChange(type, trait) {
+    handleOnTraitChange(type, trait) {
         this.setState({
             [type]: trait
         });
@@ -49,12 +49,16 @@ class Line extends React.Component {
                         <polygon points="0,0 7,6 0,12"/>
                     </svg>
                 </div>
-                <TraitGroup type="adept" selected={this.state.adept} onChange={this.onChange}/>
-                <TraitGroup type="master" selected={this.state.master} onChange={this.onChange}/>
-                <TraitGroup type="grandmaster" selected={this.state.grandmaster} onChange={this.onChange}/>
+                <TraitGroup type="adept" selected={this.state.adept} onChange={this.handleOnTraitChange}/>
+                <TraitGroup type="master" selected={this.state.master} onChange={this.handleOnTraitChange}/>
+                <TraitGroup type="grandmaster" selected={this.state.grandmaster} onChange={this.handleOnTraitChange}/>
             </div>
         );
     }
 }
+
+Line.propTypes = {
+    isElite: React.PropTypes.bool
+};
 
 export default Line;
