@@ -1,18 +1,14 @@
 "use strict";
 
 const
-    path = require("path"),
-
     browserify = require("browserify"),
     del = require("del"),
     gulp = require("gulp"),
     autoprefixer = require("autoprefixer"),
     cssnano = require("cssnano"),
-    babel = require("gulp-babel"),
     imagemin = require("gulp-imagemin"),
     nodemon = require("gulp-nodemon"),
     rev = require("gulp-rev-all"),
-    sass = require("gulp-sass"),
     sourcemaps = require("gulp-sourcemaps"),
     uglify = require("gulp-uglify"),
     gutil = require("gulp-util"),
