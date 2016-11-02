@@ -19,59 +19,30 @@
     composes: line;
     background: none;
 }
-
-.line-mid-mid {
+.lineStartToMid {
+    composes: line;
+    width: 34px;
+}
+.lineMidToMid {
     composes: line;
 }
-.line-mid-up {
+.lineMidToUp {
     composes: line;
     transform: translateY(-20px) rotateZ(-30deg) scaleX(1.5);
 }
-.line-mid-down {
+.lineMidToDown {
      composes: line;
      transform: translateY(20px) rotateZ(30deg) scaleX(1.5);
 }
-.line-up-mid {
+.lineUpToMid {
      composes: line;
      transform: translateY(-20px) rotateZ(30deg) scaleX(1.5);
 }
-.line-down-mid {
+.lineDownToMid {
      composes: line;
      transform: translateY(20px) rotateZ(-30deg) scaleX(1.5);
 }
 
-
-.minorIcon {
-    width: 42px;
-    height: 42px;
-    margin: 0 -4px;
+.majorIcons {
     z-index: 10;
-}
-
-.major {
-    z-index: 10;
-}
-
-
-.majorIcon {
-    background-size: 42px;
-    background-repeat: no-repeat;
-    background-image: url(https://render.guildwars2.com/file/C26CBECA553C29091F1D2C9B05732847E4C3457D/1012475.png);
-    width: 42px;
-    height: 42px;
-    margin: 0 -3px;
-    filter: brightness(0.5);
-    transition: filter 300ms;
-}
-
-.majorIcon:hover {
-    filter: brightness(0.9) sepia(10%) contrast(80%);
-    transition: filter 150ms;
-}
-
-.majorIconSelected,
-.majorIconSelected:hover {
-    composes: majorIcon;
-    filter: unset;
-    transition: filter 150ms;
 }

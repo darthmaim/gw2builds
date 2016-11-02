@@ -1,0 +1,30 @@
+.icon {
+    width: 42px;
+    height: 42px;
+    z-index: 10;
+}
+
+.minorIcon {
+    composes: icon;
+    margin: 0 -4px;
+}
+
+.majorIcon {
+    composes: icon;
+    display: block;
+    margin: 0 -5px;
+    filter: brightness(0.5);
+    transition: filter 300ms;
+}
+
+.majorIcon:hover {
+    filter: brightness(0.9) sepia(10%) contrast(80%);
+    transition: filter 150ms;
+}
+
+.majorIconSelected,
+.majorIconSelected:hover {
+    composes: majorIcon;
+    filter: unset;
+    transition: unset;
+}

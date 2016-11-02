@@ -1,3 +1,5 @@
+"use strict";
+
 import React from 'react';
 import { TraitGroup } from './index';
 import style from './line.css';
@@ -22,20 +24,26 @@ class Line extends React.Component {
     render() {
         return (
             <div className={style.line}>
-                <svg className={style.background}>
-                    <defs>
-                        <polygon id="icon" points="161,165 119,141 77,165 77,213 119,237 161,213"/>
-                        <clipPath id="clip">
-                            <use xlinkHref="#icon"/>
-                        </clipPath>
-                        <image id="image" xlinkHref="https://render.guildwars2.com/file/9D9F0DA395FDB21423981FAC2CABC850CF7E0A62/1012053.png" width="1024" height="256"/>
-                    </defs>
-                    <rect width="645" height="134" fill="black"/>
-                    <use className={style.backgroundImage} xlinkHref="#image" opacity="0.5" transform="translate(0,-120)"/>
-                    <use xlinkHref="#icon" stroke="black" strokeWidth="4" transform="translate(0,-120)"/>
-                    <use xlinkHref="#icon" stroke="white" strokeWidth="2" transform="translate(0,-120)"/>
-                    <use xlinkHref="#image" clipPath="url(#clip)" transform="translate(0,-120)"/>
-                </svg>
+                <div className={style.background}>
+                    <div className={style.backgroundEmpty}/>
+                    <div className={style.backgroundImage} style={{ backgroundImage: "url(https://render.guildwars2.com/file/9D9F0DA395FDB21423981FAC2CABC850CF7E0A62/1012053.png)" }}></div>
+                    <div className={style.backgroundHover}/>
+                    <div className={style.backgroundOverlay}/>
+                    { this.props.isElite ? <div className={style.backgroundEliteOverlay}/> : null}
+                    <svg className={style.backgroundIcon}>
+                        <defs>
+                            <polygon id="specializationIconPath" points="165,161 119,134 73,160 73,214 119,240 165,214"/>
+                            <clipPath id="specializationIconClip">
+                                <use xlinkHref="#specializationIconPath"/>
+                            </clipPath>
+                        </defs>
+                        <g transform="translate(0,-120)">
+                            <use xlinkHref="#specializationIconPath" stroke="black" strokeWidth="4"/>
+                            <use xlinkHref="#specializationIconPath" stroke="white" strokeWidth="2"/>
+                            <image xlinkHref="https://render.guildwars2.com/file/9D9F0DA395FDB21423981FAC2CABC850CF7E0A62/1012053.png" width="1024" height="256" clipPath="url(#specializationIconClip)"/>
+                        </g>
+                    </svg>
+                </div>
                 <div className={style.arrow}>
                     <svg width="7" height="12">
                         <polygon points="0,0 7,6 0,12"/>
