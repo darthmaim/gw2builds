@@ -1,6 +1,10 @@
+"use strict";
+
 import React from 'react';
-import { TraitLine } from './index';
+import { TraitConnection, TraitMajorIcon, TraitMinorIcon } from './index';
 import style from './trait.css';
+
+const lineTranslate = ["up", "mid", "down"];
 
 class TraitGroup extends React.Component {
     constructor() {
@@ -13,37 +17,18 @@ class TraitGroup extends React.Component {
     }
 
     render() {
-        let line;
-        switch(this.props.selected) {
-            case 1:
-                line = "up";
-                break;
-            case 2:
-                line = "mid";
-                break;
-            case 3:
-                line = "down";
-                break;
-        }
-
+        const line = lineTranslate[this.props.selected - 1];
         return (
             <div className={style[this.props.type]}>
-                {this.props.type == "adept" ? <TraitLine from="mid" to="mid"/> : ""}
-                <svg className={style.minorIcon}>
-                    <defs>
-                        <clipPath id="clip">
-                            <polygon points="56,18 32,4 8,18 8,46 32,60 56,46"/>
-                        </clipPath>
-                    </defs>
-                    <image xlinkHref="https://render.guildwars2.com/file/5A9347250FEF7B3431ECE3F6689EDCE20FB96CB6/1012483.png" clipPath="url(#clip)" width="64" height="64" transform="scale(0.65)"/>
-                </svg>
-                <TraitLine from="mid" to={line}/>
-                <div className={style.major}>
-                    <div className={this.props.selected == 1 ? style.majorIconSelected : style.majorIcon} onClick={() => this.onChange(1)}/>
-                    <div className={this.props.selected == 2 ? style.majorIconSelected : style.majorIcon} onClick={() => this.onChange(2)}/>
-                    <div className={this.props.selected == 3 ? style.majorIconSelected : style.majorIcon} onClick={() => this.onChange(3)}/>
+                {this.props.type == "adept" ? <TraitConnection from="start" to="mid"/> : null}
+                <TraitMinorIcon imageUrl="https://render.guildwars2.com/file/ADBABE00177C2A79CA7725F2217D2165CB086239/1012507.png"/>
+                <TraitConnection from="mid" to={line}/>
+                <div className={style.majorIcons}>
+                    <TraitMajorIcon imageUrl="https://render.guildwars2.com/file/705378A42A30BE9912BE7D0910057C00CD1CDDF2/1012498.png" isSelected={this.props.selected == 1} onClick={() => this.onChange(1)}/>
+                    <TraitMajorIcon imageUrl="https://render.guildwars2.com/file/705378A42A30BE9912BE7D0910057C00CD1CDDF2/1012498.png" isSelected={this.props.selected == 2} onClick={() => this.onChange(2)}/>
+                    <TraitMajorIcon imageUrl="https://render.guildwars2.com/file/705378A42A30BE9912BE7D0910057C00CD1CDDF2/1012498.png" isSelected={this.props.selected == 3} onClick={() => this.onChange(3)}/>
                 </div>
-                {this.props.type != "grandmaster" ? <TraitLine from={line} to="mid"/> : ""}
+                {this.props.type != "grandmaster" ? <TraitConnection from={line} to="mid"/> : null}
             </div>
         );
     }
