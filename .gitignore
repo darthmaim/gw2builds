@@ -1,5 +1,5 @@
 # Include our starting point
-!bin/
+#!bin/
 
 # Generated files
 /build
