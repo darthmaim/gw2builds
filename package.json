@@ -4,8 +4,8 @@
   "private": true,
   "scripts": {
     "test": "xo",
-    "gulp": "./node_modules/.bin/gulp",
-    "dev": "./node_modules/.bin/gulp dev",
+    "gulp": "gulp",
+    "dev": "gulp dev",
     "start": "node bin/www"
   },
   "description": "Guild Wars 2 build editor",
