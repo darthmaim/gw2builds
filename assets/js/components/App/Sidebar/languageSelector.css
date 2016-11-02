@@ -1,0 +1,49 @@
+.container {
+    width: 64px;
+    height: 64px;
+}
+
+.containerOpen {
+    composes: container;
+}
+
+.containerOpen .active {
+    background: #f9f9f9;
+}
+
+.dropdown {
+    transition: transform .3s ease;
+}
+
+.containerOpen .dropdown {
+    transform: translateY(calc(-100% + 64px));
+}
+
+.button {
+    width: 64px;
+    height: 64px;
+
+    border: none;
+    border-radius: 0;
+
+    font: inherit;
+    font-size: 26px;
+    line-height: 64px;
+    text-align: center;
+
+    background: #fff;
+    color: #CCCCCC;
+
+    cursor: pointer;
+}
+
+.active {
+    composes: button;
+}
+
+.selector {
+}
+
+.selectorItem {
+    composes: button;
+}
