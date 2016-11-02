@@ -66,6 +66,7 @@
     "space": 4,
     "extends": "xo-react",
     "rules": {
+      "linebreak-style": "off",
       "object-curly-spacing": ["error", "always"],
       "unicorn/filename-case": 0
     }
