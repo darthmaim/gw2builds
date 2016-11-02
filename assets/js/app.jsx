@@ -8,9 +8,7 @@ import promiseMiddleware from "redux-promise";
 import thunk from "redux-thunk";
 import { IntlProvider } from "react-intl";
 import editor from "./reducers";
-import Settings from "./containers/settings";
-import { Panel as CharacterPanel } from "./components/Character";
-import StatsOverview from "./containers/stats-overview";
+import { Layout } from "./components/App";
 import apiClient from "gw2api-client";
 import cacheMemory from "gw2api-client/build/cache/memory";
 
@@ -26,11 +24,7 @@ class Editor extends React.Component {
     render() {
         return (
             <IntlProvider locale={this.props.locale}>
-                <div className="editor">
-                    <Settings/>
-                    <StatsOverview/>
-                    <CharacterPanel/>
-                </div>
+                <Layout />
             </IntlProvider>
         );
     }
