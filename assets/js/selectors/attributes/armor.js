@@ -1,8 +1,8 @@
-"use strict";
+'use strict';
 
-import { createSelector } from "reselect";
-import { getAttributeToughness } from "./toughness"
-import { getAttributeDefense } from "./defense"
+import { createSelector } from 'reselect';
+import { getAttributeToughness } from './toughness';
+import { getAttributeDefense } from './defense';
 
 export const getAttributeArmor = createSelector(
     [getAttributeToughness, getAttributeDefense],

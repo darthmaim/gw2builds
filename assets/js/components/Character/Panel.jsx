@@ -1,5 +1,5 @@
-import React from "react";
-import TabsPanel from "../base/tabs-panel";
+import React from 'react';
+import TabsPanel from '../base/tabs-panel';
 import { Gear, Skills, Traits } from './index';
 
 class Panel extends React.Component {
@@ -17,7 +17,7 @@ class Panel extends React.Component {
                         <Traits.Tab/>,
                         <Gear.Tab/>
                     ]}
-                />
+                    />
             </div>
         );
     }

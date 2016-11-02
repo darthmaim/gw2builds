@@ -6,4 +6,4 @@ import Panel from './Panel';
 
 export {
     Container, Header, Messages, Option, Panel
-}
+};

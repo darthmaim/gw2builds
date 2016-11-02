@@ -1,3 +1,3 @@
 import React from 'react';
 
-export default (props) => <div>Skills</div>
+export default props => <div>Skills</div>;

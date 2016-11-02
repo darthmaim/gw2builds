@@ -1,13 +1,13 @@
-"use strict";
+'use strict';
 
-import { connect } from "react-redux";
+import { connect } from 'react-redux';
 import {
     getAttributePower, getAttributeToughness, getAttributeVitality, getAttributePrecision,
     getAttributeFerocity, getAttributeConditionDamage, getAttributeExpertise, getAttributeConcentration,
     getAttributeProfession, getAttributeArmor, getAttributeHealth, getAttributeCriticalChance, getAttributeCriticalDamage,
     getAttributeHealingPower, getAttributeConditionDuration, getAttributeBoonDuration
-} from "../selectors/attributes";
-import { Panel } from "../components/StatsOverview";
+} from '../selectors/attributes';
+import { Panel } from '../components/StatsOverview';
 
 const mapStateToProps = state => ({
     power: getAttributePower(state),

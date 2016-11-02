@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 
 import React from 'react';
 import { TraitGroup } from './index';
@@ -26,7 +26,7 @@ class Line extends React.Component {
             <div className={style.line}>
                 <div className={style.background}>
                     <div className={style.backgroundEmpty}/>
-                    <div className={style.backgroundImage} style={{ backgroundImage: "url(https://render.guildwars2.com/file/9D9F0DA395FDB21423981FAC2CABC850CF7E0A62/1012053.png)" }}></div>
+                    <div className={style.backgroundImage} style={{ backgroundImage: 'url(https://render.guildwars2.com/file/9D9F0DA395FDB21423981FAC2CABC850CF7E0A62/1012053.png)' }}/>
                     <div className={style.backgroundHover}/>
                     <div className={style.backgroundOverlay}/>
                     { this.props.isElite ? <div className={style.backgroundEliteOverlay}/> : null}

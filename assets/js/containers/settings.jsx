@@ -1,9 +1,9 @@
-"use strict";
+'use strict';
 
-import { connect } from "react-redux";
-import { setLanguage, setGameMode, setProfession, setRace, fetchProfession } from "../actions";
-import { Container as SettingsContainer } from "../components/Settings";
-import { applyEditorMode } from "../editor-modes";
+import { connect } from 'react-redux';
+import { setLanguage, setGameMode, setProfession, setRace, fetchProfession } from '../actions';
+import { Container as SettingsContainer } from '../components/Settings';
+import { applyEditorMode } from '../editor-modes';
 
 const mapStateToProps = state => ({
     language: state.language,
@@ -15,19 +15,19 @@ const mapStateToProps = state => ({
 const mapDispathToProps = dispatch => ({
     onLanguageChange: language => {
         dispatch(setLanguage(language));
-        applyEditorMode("language", language);
+        applyEditorMode('language', language);
     },
     onGameModeChange: gameMode => {
         dispatch(setGameMode(gameMode));
-        applyEditorMode("gameMode", gameMode);
+        applyEditorMode('gameMode', gameMode);
     },
     onProfessionChange: profession => {
         dispatch(setProfession(profession));
-        applyEditorMode("profession", profession);
+        applyEditorMode('profession', profession);
     },
     onRaceChange: race => {
         dispatch(setRace(race));
-        applyEditorMode("race", race);
+        applyEditorMode('race', race);
     }
 });
 

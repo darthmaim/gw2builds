@@ -1,6 +1,6 @@
-"use strict";
+'use strict';
 
-import React from "react";
+import React from 'react';
 
 class RegularPanel extends React.Component {
     render() {

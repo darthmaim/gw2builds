@@ -1,7 +1,7 @@
-"use strict";
+'use strict';
 
-import React from "react";
-import ReactCSSTransitionGroup from "react-addons-css-transition-group";
+import React from 'react';
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 class OverlayPanel extends React.Component {
     constructor() {
@@ -41,21 +41,26 @@ class OverlayPanel extends React.Component {
     }
 
     renderHeader() {
-        if (!this.props.header) return null;
+        if (!this.props.header) {
+            return null;
+        }
         return this.props.header;
     }
 
     renderPanel() {
-        if (!this.props.panel) return null;
+        if (!this.props.panel) {
+            return null;
+        }
         return (
             <ReactCSSTransitionGroup transitionName="animate"
-                                     transitionEnterTimeout={500}
-                                     transitionLeaveTimeout={500}
-                                     className="overlay-container-panel"
-                                     component="div">
+                transitionEnterTimeout={500}
+                transitionLeaveTimeout={500}
+                className="overlay-container-panel"
+                component="div"
+                >
                 {this.state.open ? <div className="overlay-container-content-container" onClick={this.onClick}>
                     <div className="overlay-container-content">{this.props.panel}</div>
-                </div> : ""}
+                </div> : ''}
             </ReactCSSTransitionGroup>
         );
     }

@@ -1,17 +1,16 @@
-"use strict";
+'use strict';
 
-import { createAction } from "redux-actions";
-import { ucFirst } from "change-case";
+import { createAction } from 'redux-actions';
+import { ucFirst } from 'change-case';
 
-export const SET_LANGUAGE = "SET_LANGUAGE";
-export const SET_GAMEMODE = "SET_GAMEMODE";
-export const SET_PROFESSION = "SET_PROFESSION";
-export const SET_RACE = "SET_RACE";
+export const SET_LANGUAGE = 'SET_LANGUAGE';
+export const SET_GAMEMODE = 'SET_GAMEMODE';
+export const SET_PROFESSION = 'SET_PROFESSION';
+export const SET_RACE = 'SET_RACE';
 
-export const FETCH_PROFESSION = "FETCH_PROFESSION";
-export const FETCH_SPECIALIZATIONS = "FETCH_SPECIALIZATIONS";
-export const FETCH_TRAITS = "FETCH_TRAITS";
-
+export const FETCH_PROFESSION = 'FETCH_PROFESSION';
+export const FETCH_SPECIALIZATIONS = 'FETCH_SPECIALIZATIONS';
+export const FETCH_TRAITS = 'FETCH_TRAITS';
 
 function createApiAction(actionType, apiCall) {
     return (...args) => {

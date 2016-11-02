@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 
 import Line from './Line';
 import TraitConnection from './TraitConnection';
@@ -11,5 +11,5 @@ export {
     TraitConnection,
     TraitGroup,
     TraitMajorIcon,
-    TraitMinorIcon,
-}
+    TraitMinorIcon
+};

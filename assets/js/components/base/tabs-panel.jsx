@@ -1,7 +1,7 @@
-"use strict";
+'use strict';
 
-import React from "react";
-import ReactCSSTransitionGroup from "react-addons-css-transition-group";
+import React from 'react';
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 class TabsPanel extends React.Component {
     constructor() {
@@ -32,12 +32,15 @@ class TabsPanel extends React.Component {
     }
 
     renderHeaders() {
-        if (!this.props.headers) return null;
+        if (!this.props.headers) {
+            return null;
+        }
         return this.props.headers.map((h, i) => {
             return (
                 <TabHeader key={i}
-                           tabId={i}
-                           onTabHeaderClick={this.onTabHeaderClick}>
+                    tabId={i}
+                    onTabHeaderClick={this.onTabHeaderClick}
+                    >
                     {h}
                 </TabHeader>
             );
@@ -45,18 +48,24 @@ class TabsPanel extends React.Component {
     }
 
     renderSelectedPanel() {
-        if (!this.props.tabs || this.props.tabs.length < this.state.selectedTab) return null;
+        if (!this.props.tabs || this.props.tabs.length < this.state.selectedTab) {
+            return null;
+        }
 
         const panel = this.props.tabs[this.state.selectedTab];
-        let directionClass = "";
-        if (this.state.prevTab < this.state.selectedTab) directionClass = "animate-from-right";
-        else if (this.state.prevTab > this.state.selectedTab) directionClass = "animate-from-left";
+        let directionClass = '';
+        if (this.state.prevTab < this.state.selectedTab) {
+            directionClass = 'animate-from-right';
+        } else if (this.state.prevTab > this.state.selectedTab) {
+            directionClass = 'animate-from-left';
+        }
         return (
             <ReactCSSTransitionGroup transitionName={directionClass}
-                                     transitionEnterTimeout={500}
-                                     transitionLeaveTimeout={500}
-                                     className="tab-container-active-tab"
-                                     component="div">
+                transitionEnterTimeout={500}
+                transitionLeaveTimeout={500}
+                className="tab-container-active-tab"
+                component="div"
+                >
                 <TabPanel key={this.state.selectedTab} tabId={this.state.selectedTab}>
                     {panel}
                 </TabPanel>

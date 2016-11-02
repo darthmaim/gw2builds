@@ -1,6 +1,6 @@
-"use strict";
+'use strict';
 
-import { createSelector } from "reselect";
+import { createSelector } from 'reselect';
 
 export const getAttributePrecision = createSelector(
     [],

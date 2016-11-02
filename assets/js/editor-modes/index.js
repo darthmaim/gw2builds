@@ -1,13 +1,13 @@
-"use strict";
+'use strict';
 
-import _ from "lodash";
-import fp from "lodash/fp";
-import defaultMode from "./default";
+import _ from 'lodash';
+import fp from 'lodash/fp';
+import defaultMode from './default';
 
-import * as language from "./languages";
-import * as gameMode from "./game-modes";
-import * as profession from "./professions";
-import * as race from "./races";
+import * as language from './languages';
+import * as gameMode from './game-modes';
+import * as profession from './professions';
+import * as race from './races';
 
 let selectedModes = {};
 let selectedConfiguration = defaultMode;
@@ -23,7 +23,9 @@ function setEditorMode(modes) {
     let configuration = defaultMode;
     _.forOwn(modes, (v, k) => {
         configuration = fp.mergeWith((a, c) => {
-            if (a === c) return null;
+            if (a === c) {
+                return null;
+            }
             return undefined;
         })(configuration)(availableConfigurations[k][v]);
     });

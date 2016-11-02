@@ -1,11 +1,11 @@
-import React from "react";
-import { Header, Content } from "./index";
+import React from 'react';
+import { Header, Content } from './index';
 
-import style from "./layout.css";
+import style from './layout.css';
 
 export default props => (
     <div className={style.frame}>
-        <Header className={style.header} />
-        <Content className={style.content} />
+        <Header className={style.header}/>
+        <Content className={style.content}/>
     </div>
 );

@@ -1,7 +1,7 @@
-"use strict";
+'use strict';
 
-import { createSelector } from "reselect";
-import { getAttributeConcentration } from "./concentration"
+import { createSelector } from 'reselect';
+import { getAttributeConcentration } from './concentration';
 
 export const getAttributeBoonDuration = createSelector(
     [getAttributeConcentration],

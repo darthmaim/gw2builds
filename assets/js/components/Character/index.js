@@ -8,4 +8,4 @@ export {
     Panel,
 
     Gear, Skills, Traits
-}
+};

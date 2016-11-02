@@ -3,4 +3,4 @@ import Tab from './Tab';
 
 export {
     Header, Tab
-}
+};

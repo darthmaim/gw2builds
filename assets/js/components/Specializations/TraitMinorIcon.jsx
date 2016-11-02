@@ -1,9 +1,9 @@
-"use strict";
+'use strict';
 
 import React from 'react';
 import style from './traitIcon.css';
 
-export default (props) => (
+export default props => (
     <svg className={style.minorIcon}>
         <defs>
             <mask id="minorTraitMask">

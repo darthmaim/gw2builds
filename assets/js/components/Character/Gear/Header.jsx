@@ -1,3 +1,3 @@
 import React from 'react';
 
-export default (props) => <div>Gear</div>
+export default props => <div>Gear</div>;

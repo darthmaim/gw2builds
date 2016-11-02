@@ -1,7 +1,7 @@
-"use strict";
+'use strict';
 
-import { createSelector } from "reselect";
-import { getAttributeExpertise } from "./expertise"
+import { createSelector } from 'reselect';
+import { getAttributeExpertise } from './expertise';
 
 export const getAttributeConditionDuration = createSelector(
     [getAttributeExpertise],
