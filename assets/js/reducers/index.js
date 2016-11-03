@@ -13,6 +13,11 @@ export const gameMode = handleSimpleAction(actions.SET_GAMEMODE, null);
 export const profession = handleSimpleAction(actions.SET_PROFESSION, null);
 export const race = handleSimpleAction(actions.SET_RACE, 'none');
 
+export const specializationIds = handleAction(
+    actions.FETCH_PROFESSION,
+    (state, action) => action.payload.specializations,
+    []
+);
 export const specializations = handleSimpleAction(actions.FETCH_SPECIALIZATIONS, []);
 
 const editor = combineReducers({
@@ -20,6 +25,7 @@ const editor = combineReducers({
     gameMode,
     profession,
     race,
+    specializationIds,
     specializations
 });
 

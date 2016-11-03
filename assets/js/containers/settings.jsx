@@ -1,7 +1,7 @@
 'use strict';
 
 import { connect } from 'react-redux';
-import { setLanguage, setGameMode, setProfession, setRace, fetchProfession } from '../actions';
+import { setLanguage, setGameMode, setProfession, setRace } from '../actions';
 import { Container as SettingsContainer } from '../components/Settings';
 import { applyEditorMode } from '../editor-modes';
 
