@@ -51,6 +51,7 @@
     "react-addons-transition-group": "^15.3.2",
     "react-dom": "^15.3.2",
     "react-intl": "^2.1.5",
+    "react-onclickoutside": "^5.7.1",
     "react-redux": "^4.4.5",
     "redux": "^3.6.0",
     "redux-actions": "^0.13.0",
@@ -67,13 +68,26 @@
     "extends": "xo-react",
     "rules": {
       "linebreak-style": "off",
-      "react/jsx-closing-bracket-location": ["error", "after-props"],
+      "react/jsx-closing-bracket-location": [
+        "error",
+        "after-props"
+      ],
       "no-negated-condition": "off",
-      "object-curly-spacing": ["error", "always"],
+      "object-curly-spacing": [
+        "error",
+        "always"
+      ],
       "unicorn/filename-case": 0
     },
     "settings": {
-      "import/resolver": {"node": {"extensions": [".js", ".jsx"]}}
+      "import/resolver": {
+        "node": {
+          "extensions": [
+            ".js",
+            ".jsx"
+          ]
+        }
+      }
     }
   }
 }

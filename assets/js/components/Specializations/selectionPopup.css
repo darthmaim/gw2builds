@@ -1,0 +1,45 @@
+.selectionPopup {
+    display: flex;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    z-index: 6;
+    color: white;
+}
+
+.selectionPopupLeft,
+.selectionPopupInner {
+    background: rgba(0, 0, 0, 0.6);
+}
+
+.selectionPopupLeft {
+    height: 100%;
+    width: 12px;
+}
+
+.selectionPopupInner {
+    margin: -45px 0;
+    padding: 20px 12px;
+    height: calc(100% + 50px);
+}
+
+.selectionPopupBorderTop,
+.selectionPopupBorderBottom {
+    position: absolute;
+    left: 1px;
+    width: 15px;
+    height: 36px;
+}
+
+.selectionPopupBorderTop polygon,
+.selectionPopupBorderBottom polygon {
+    fill: white;
+}
+
+.selectionPopupBorderTop {
+    top: -32px;
+}
+
+.selectionPopupBorderBottom {
+    bottom: -32px;
+}
