@@ -1,11 +1,12 @@
 import React from 'react';
+import { TooltipElement } from '../Tooltips';
+import style from './layout.css';
 import { Header, Content } from './index';
 
-import style from './layout.css';
-
-export default props => (
+export default () => (
     <div className={style.frame}>
-        <Header className={style.header}/>
-        <Content className={style.content}/>
+        <TooltipElement/>
+        <Header/>
+        <Content/>
     </div>
 );
