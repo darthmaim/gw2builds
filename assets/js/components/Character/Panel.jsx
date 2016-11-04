@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 
 import Settings from '../../containers/settings';
 
@@ -56,7 +55,6 @@ class Panel extends React.Component {
     scrollTo(section) {
         this.ignoreNextScroll = true;
 
-        console.log('scrolling to', section);
         if (this.sectionNodes[section]) {
             this.sectionNodes[section].scrollIntoView();
         }
@@ -67,29 +65,29 @@ class Panel extends React.Component {
             this.panelNode.removeEventListener('scroll', this.handleScroll);
         }
 
-        this.panelNode = ReactDOM.findDOMNode(ref);
+        this.panelNode = ref;
         this.panelNode.addEventListener('scroll', this.handleScroll);
     }
 
     setSectionRef(section) {
         return ref => {
-            this.sectionNodes[section] = ReactDOM.findDOMNode(ref);
+            this.sectionNodes[section] = ref;
         };
     }
 
     render() {
         return (
             <div ref={this.setPanelRef} className={style.panel}>
-                <Section ref={this.setSectionRef(0)} name="Character">
+                <Section domRef={this.setSectionRef(0)} name="Character">
                     <Settings/>
                 </Section>
-                <Section ref={this.setSectionRef(1)} name="Skills">
+                <Section domRef={this.setSectionRef(1)} name="Skills">
                     <Skills/>
                 </Section>
-                <Section ref={this.setSectionRef(2)} name="Traits">
+                <Section domRef={this.setSectionRef(2)} name="Traits">
                     <Traits/>
                 </Section>
-                <Section ref={this.setSectionRef(3)} name="Gear">
+                <Section domRef={this.setSectionRef(3)} name="Gear">
                     <Gear/>
                 </Section>
             </div>
