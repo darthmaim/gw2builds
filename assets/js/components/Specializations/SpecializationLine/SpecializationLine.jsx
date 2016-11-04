@@ -2,8 +2,9 @@
 
 import React from 'react';
 import onClickOutside from 'react-onclickoutside';
-import style from './line.css';
-import { SelectionPopup, TraitGroup } from './index';
+import { SelectionPopup } from '../SelectionPopup';
+import style from './specializationLine.css';
+import { TraitGroup } from './index';
 
 class Line extends React.Component {
     constructor() {
@@ -14,9 +15,37 @@ class Line extends React.Component {
             grandmaster: null,
             isSelectionPopupOpen: false
         };
-        this.handleTraitChange = this.handleTraitChange.bind(this);
-        this.handleToggleSelectionPopup = this.handleToggleSelectionPopup.bind(this);
         this.handleCloseSelectionPopup = this.handleCloseSelectionPopup.bind(this);
+        this.handleSpecializationChange = this.handleSpecializationChange.bind(this);
+        this.handleToggleSelectionPopup = this.handleToggleSelectionPopup.bind(this);
+        this.handleTraitChange = this.handleTraitChange.bind(this);
+    }
+
+    getSpecializationBackgroundImage() {
+        if (this.props.activeSpecializations.length > this.props.id) {
+            const specId = this.props.activeSpecializations[this.props.id];
+            const spec = this.props.availableCoreSpecializations.concat(this.props.availableEliteSpecializations).find(s => s.id === specId);
+            if (spec) {
+                return spec.background;
+            }
+        }
+        return '';
+    }
+
+    handleClickOutside() {
+        this.handleCloseSelectionPopup();
+    }
+
+    handleCloseSelectionPopup() {
+        this.setState({
+            isSelectionPopupOpen: false
+        });
+    }
+
+    handleSpecializationChange(id) {
+        if (this.props.onSpecializationChange) {
+            this.props.onSpecializationChange(this.props.id, id);
+        }
     }
 
     handleTraitChange(type, trait) {
@@ -31,16 +60,6 @@ class Line extends React.Component {
         });
     }
 
-    handleCloseSelectionPopup() {
-        this.setState({
-            isSelectionPopupOpen: false
-        });
-    }
-
-    handleClickOutside() {
-        this.handleCloseSelectionPopup();
-    }
-
     render() {
         return (
             <div className={style.line}>
@@ -48,7 +67,7 @@ class Line extends React.Component {
                     <div className={style.backgroundEmpty}/>
                     <div
                         className={style.backgroundImage}
-                        style={{ backgroundImage: 'url(https://render.guildwars2.com/file/9D9F0DA395FDB21423981FAC2CABC850CF7E0A62/1012053.png)' }}/>
+                        style={{ backgroundImage: `url(${this.getSpecializationBackgroundImage()})` }}/>
                     <div className={style.backgroundHover}/>
                     <div className={style.backgroundOverlay} onClick={this.handleToggleSelectionPopup}/>
                     { this.props.isElite ?
@@ -68,7 +87,7 @@ class Line extends React.Component {
                             <use xlinkHref="#specializationIconPath" stroke="black" strokeWidth="4"/>
                             <use xlinkHref="#specializationIconPath" stroke="white" strokeWidth="2"/>
                             <image
-                                xlinkHref="https://render.guildwars2.com/file/9D9F0DA395FDB21423981FAC2CABC850CF7E0A62/1012053.png"
+                                xlinkHref={this.getSpecializationBackgroundImage()}
                                 width="1024" height="256" clipPath="url(#specializationIconClip)"/>
                         </g>
                     </svg>
@@ -79,7 +98,10 @@ class Line extends React.Component {
                     </svg>
                 </div>
                 { this.state.isSelectionPopupOpen ?
-                    <SelectionPopup isElite={this.props.isElite} onWantsClose={this.handleCloseSelectionPopup}/> :
+                    <SelectionPopup
+                        {...this.props}
+                        onSpecializationChange={this.handleSpecializationChange}
+                        onWantsClose={this.handleCloseSelectionPopup}/> :
                     null
                 }
                 <TraitGroup
@@ -103,7 +125,12 @@ class Line extends React.Component {
 }
 
 Line.propTypes = {
-    isElite: React.PropTypes.bool
+    activeSpecializations: React.PropTypes.arrayOf(React.PropTypes.number),
+    availableCoreSpecializations: React.PropTypes.arrayOf(React.PropTypes.object),
+    availableEliteSpecializations: React.PropTypes.arrayOf(React.PropTypes.object),
+    id: React.PropTypes.number,
+    isElite: React.PropTypes.bool,
+    onSpecializationChange: React.PropTypes.func
 };
 
 export default onClickOutside(Line);

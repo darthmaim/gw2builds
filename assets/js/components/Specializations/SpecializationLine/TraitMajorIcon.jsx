@@ -1,7 +1,7 @@
 'use strict';
 
 import React from 'react';
-import style from './traitIcon.css';
+import style from './traitMajorIcon.css';
 
 class TraitMajorIcon extends React.Component {
     constructor() {

@@ -1,16 +1,5 @@
-.icon {
-    width: 42px;
-    height: 42px;
-    z-index: 5;
-}
-
-.minorIcon {
-    composes: icon;
-    margin: 0 -4px;
-}
-
 .majorIcon {
-    composes: icon;
+    composes: icon from './traitIcon.css';
     display: block;
     margin: 0 -5px;
     filter: brightness(0.5);

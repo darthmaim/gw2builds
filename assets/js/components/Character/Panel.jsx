@@ -5,7 +5,8 @@ import Settings from '../../containers/settings';
 
 import style from './panel.css';
 
-import { Gear, Skills, Traits, Section } from './index';
+import { Gear, Skills, Section } from './index';
+import Specializations from '../../containers/Specializations';
 
 class Panel extends React.Component {
     constructor(props, context) {
@@ -94,7 +95,7 @@ class Panel extends React.Component {
                     <Skills/>
                 </Section>
                 <Section domRef={this.setSectionRef(2)} name="Traits">
-                    <Traits/>
+                    <Specializations/>
                 </Section>
                 <Section domRef={this.setSectionRef(3)} name="Gear">
                     <Gear/>
