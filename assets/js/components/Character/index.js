@@ -1,11 +1,12 @@
 import Panel from './Panel';
+import Section from './Section';
 
-import * as Gear from './Gear';
-import * as Skills from './Skills';
-import * as Traits from './Traits';
+import Gear from './Gear';
+import Skills from './Skills';
+import Traits from './Traits';
 
 export {
-    Panel,
+    Panel, Section,
 
     Gear, Skills, Traits
 };

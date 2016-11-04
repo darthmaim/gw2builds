@@ -1,0 +1,40 @@
+.sidebar {
+    width: 64px;
+    border-right: 1px solid #eee;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    position: relative;
+}
+
+.sections {
+    flex: 1;
+}
+
+.marker {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 64px;
+    width: 4px;
+    background-color: #C56CD6;
+
+    transition: transform .3s ease;
+}
+
+.button {
+    font: inherit;
+    width: 64px;
+    height: 64px;
+    background: #ffffff;
+    border: none;
+    border-radius: 0;
+    outline: none;
+    padding: 0;
+    text-align: center;
+    line-height: 64px;
+}
+
+.button img {
+    vertical-align: middle;
+}

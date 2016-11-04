@@ -1,7 +1,7 @@
 import React from 'react';
-import { Line } from '../../Specializations';
+import { Line } from '../Specializations';
 
-export default props => (<div>
+export default () => (<div>
     <Line/>
     <Line/>
     <Line isElite/>

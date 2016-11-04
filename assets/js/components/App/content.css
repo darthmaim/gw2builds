@@ -5,19 +5,6 @@
     flex-direction: row;
 }
 
-.sidebar {
-    width: 64px;
-    border-right: 1px solid #eee;
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
-}
-
-.content {
-    flex: 1;
-    overflow: auto;
-}
-
 .stats {
     width: 400px;
     border-left: 1px solid #eee;
