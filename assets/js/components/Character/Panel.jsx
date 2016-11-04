@@ -1,4 +1,5 @@
 import React from 'react';
+import throttle from 'lodash/throttle';
 
 import Settings from '../../containers/settings';
 
@@ -16,11 +17,18 @@ class Panel extends React.Component {
 
         this.setSectionRef = this.setSectionRef.bind(this);
         this.setPanelRef = this.setPanelRef.bind(this);
-        this.handleScroll = this.handleScroll.bind(this);
+        this.handleScroll = throttle(this.handleScroll.bind(this), 200);
     }
 
     componentWillUnmount() {
+        this.handleScroll.cancel();
         this.panelNode.removeEventListener('scroll', this.handleScroll);
+    }
+
+    shouldComponentUpdate() {
+        // this component has no states
+        // and no props that change the output
+        return false;
     }
 
     handleScroll() {
@@ -62,6 +70,7 @@ class Panel extends React.Component {
 
     setPanelRef(ref) {
         if (this.panelNode) {
+            this.handleScroll.cancel();
             this.panelNode.removeEventListener('scroll', this.handleScroll);
         }
 

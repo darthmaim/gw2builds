@@ -27,6 +27,10 @@ class Sidebar extends Component {
         }
     }
 
+    shouldComponentUpdate(props, state) {
+        return this.props.currentIndex !== props.currentIndex || this.state.currentIndex !== state.currentIndex;
+    }
+
     render() {
         const markerStyle = {
             transform: `translateY(${this.state.currentIndex * 64}px)`
