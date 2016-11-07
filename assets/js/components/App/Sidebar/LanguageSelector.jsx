@@ -17,6 +17,8 @@ class LanguageSelector extends Component {
 
         this.handleToggle = this.handleToggle.bind(this);
         this.handleClick = this.handleClick.bind(this);
+        this.handleFocus = this.handleFocus.bind(this);
+        this.handleBlur = this.handleBlur.bind(this);
         this.filterLanguageOptions = this.filterLanguageOptions.bind(this);
     }
 
@@ -41,6 +43,16 @@ class LanguageSelector extends Component {
         return () => this.setLanguage(lang);
     }
 
+    handleFocus(e) {
+        this.setState({ open: true });
+        e.stopPropagation();
+        e.preventDefault();
+    }
+
+    handleBlur() {
+        this.setState({ open: false });
+    }
+
     render() {
         return (
             <div className={this.state.open ? style.containerOpen : style.container}>
@@ -57,7 +69,9 @@ class LanguageSelector extends Component {
     renderSelect() {
         return (<div className={style.selector}>
             {LANGUAGES.filter(this.filterLanguageOptions).map(lang => (
-                <button type="button" key={lang} className={style.selectorItem} onClick={this.handleClick(lang)}>
+                <button
+                    type="button" key={lang} className={style.selectorItem}
+                    onClick={this.handleClick(lang)} onFocus={this.handleFocus} onBlur={this.handleBlur}>
                     {lang.toUpperCase()}
                 </button>)
             )}

@@ -8,7 +8,9 @@
 }
 
 .stats {
-    width: 400px;
+    width: 33%;
+    min-width: 300px;
+    max-width: 400px;
     border-left: 1px solid #eee;
     overflow: auto;
 }

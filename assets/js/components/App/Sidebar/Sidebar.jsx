@@ -51,7 +51,7 @@ class Sidebar extends Component {
 
     renderSection(section, icon) {
         return (
-            <button key={section} type="button" className={style.button} onClick={this.onClick(section)}>
+            <button key={section} type="button" className={style.button} onFocus={this.onClick(section)} onClick={this.onClick(section)}>
                 <img src={icon}/>
             </button>
         );

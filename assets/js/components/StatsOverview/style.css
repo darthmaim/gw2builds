@@ -1,6 +1,5 @@
 .panel {
-    background: lightsalmon;
-    width: 220px;
+    padding: 16px;
 }
 
 .list {

@@ -18,8 +18,9 @@
     height: 64px;
     width: 4px;
     background-color: #C56CD6;
+    z-index: 1;
 
-    transition: transform .3s ease;
+    transition: transform .3s cubic-bezier(0.5, 0.01, 0.2, 1);
 }
 
 .button {
@@ -33,6 +34,13 @@
     padding: 0;
     text-align: center;
     line-height: 64px;
+    cursor: pointer;
+    transition: background .3s ease;
+    outline: none;
+}
+
+.button:hover {
+    background: #f9f9f9;
 }
 
 .button img {
