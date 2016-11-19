@@ -16,7 +16,7 @@ You can create a new issue to report a bug or request a new feature.
 Thank you for considering to contribute to the development of the build editor.
 
 1. Fork this repository.
-2. Install your fork locally (see [Installation](#Installation)).
+2. Install your fork locally (see [Installation](#installation)).
 3. Make your changes and commit them into a new branch. 
    Try to follow the style of the existing code as closely as possible.
 4. Make sure linting and all existing tests pass with `npm test`.
