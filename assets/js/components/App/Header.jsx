@@ -8,7 +8,7 @@ export default props => (
             <img src="/img/logo.svg"/>
         </div>
         <div className={style.title}>
-            GW2 Builds
+            <span>gw2efficiency</span> Build Editor
         </div>
     </div>
 );
