@@ -1,5 +1,6 @@
+import Attribute from './Attribute';
 import Panel from './Panel';
 
 export {
-    Panel
+    Attribute, Panel
 };
