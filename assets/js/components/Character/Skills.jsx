@@ -1,5 +1,5 @@
 import React from 'react';
-import { Tooltip } from '../../Tooltips';
+import { Tooltip } from '../Tooltips';
 
 const TestTooltip = props => (<div>Tooltip!</div>);
 

@@ -9,7 +9,7 @@
 
 .selectionPopupLeft,
 .selectionPopupInner {
-    background: rgba(0, 0, 0, 0.6);
+    background: rgba(0, 0, 0, 0.8);
 }
 
 .selectionPopupLeft {
@@ -18,9 +18,21 @@
 }
 
 .selectionPopupInner {
-    margin: -45px 0;
-    padding: 20px 12px;
-    height: calc(100% + 50px);
+    position: absolute;
+    margin-left: 12px;
+    padding: 7px 7px 7px 11px;
+    min-height: calc(100% + 76px);
+    top: 50%;
+    transform: translateY(-50%);
+    white-space: nowrap;
+}
+
+.specializationIcons {
+    display: flex;
+}
+
+.specializationIcons > div + div {
+    margin-left: 10px;
 }
 
 .selectionPopupBorderTop,

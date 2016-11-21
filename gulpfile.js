@@ -2,6 +2,7 @@
 
 const
     browserify = require('browserify'),
+    watchify = require('watchify'),
     del = require('del'),
     gulp = require('gulp'),
     autoprefixer = require('autoprefixer'),
@@ -27,15 +28,13 @@ function isDev() {
     return process.env.NODE_ENV == 'development';
 }
 
-gulp.task('clean', () => {
-    return del(['./public', './build']);
-});
-
-gulp.task('build:assets', () => {
+function bundle() {
     return browserify({
         entries: './assets/js/app',
         extensions: ['.js', '.jsx'],
         debug: true,
+        cache: {},
+        packageCache: {},
         paths: ['./node_modules']
     })
         .plugin('modular-css/browserify', {
@@ -49,13 +48,26 @@ gulp.task('build:assets', () => {
             ]
         })
         .transform('babelify')
-        .bundle().on('error', logError)
+}
+
+gulp.task('clean', () => {
+    return del(['./public', './build']);
+});
+
+
+
+function buildAssets(bundle) {
+    return bundle.on('error', logError)
         .pipe(source('app.js'))
         .pipe(buffer())
         .pipe(sourcemaps.init({ loadMaps: true }))
         .pipe(!isDev() ? uglify() : gutil.noop()).on('error', logError)
         .pipe(sourcemaps.write('./'))
         .pipe(gulp.dest('./build/js/'));
+}
+
+gulp.task('build:assets', () => {
+    return buildAssets(bundle().bundle());
 });
 
 gulp.task('build:img', () => {
@@ -115,7 +127,10 @@ gulp.task('dev', callback => {
             port: '5000'
         });
 
-        gulp.watch(['./assets/js/**/*.js', './assets/js/**/*.jsx', './assets/js/**/*.css'], ['browsersync-reload:assets']);
+        const b = bundle().plugin(watchify);
+        b.on('update', _ => buildAssets(b.bundle()).on('finish', () => runSequence('revision', 'browsersync-reload')));
+        buildAssets(b.bundle());
+
         gulp.watch('./assets/img/**', ['browsersync-reload:img']);
         gulp.watch('./views/**', ['browsersync-reload']);
         callback();

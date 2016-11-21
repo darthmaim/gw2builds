@@ -1,25 +1,48 @@
-import React from 'react';
+import React, { Component } from 'react';
 
-import Settings from '../../containers/settings';
 import StatsOverview from '../../containers/stats-overview';
 import { Panel as CharacterPanel } from '../Character';
-
-import LanguageSelector from '../../containers/languageSelector';
+import { Sidebar } from './Sidebar';
 
 import style from './content.css';
 
-export default props => (
-    <div className={style.container}>
-        <div className={style.sidebar}>
-            <div style={{flex: 1}} />
-            <LanguageSelector />
-        </div>
-        <div className={style.content}>
-            <Settings/>
-            <CharacterPanel/>
-        </div>
-        <div className={style.stats}>
-            <StatsOverview/>
-        </div>
-    </div>
-);
+class Content extends Component {
+    constructor(props, context) {
+        super(props, context);
+
+        this.state = {
+            currentIndex: 0
+        };
+
+        this.handleIndexChange = this.handleIndexChange.bind(this);
+        this.handleSectionScroll = this.handleSectionScroll.bind(this);
+        this.setContentRef = this.setContentRef.bind(this);
+    }
+
+    handleIndexChange(currentIndex) {
+        this.content.scrollTo(currentIndex);
+        this.setState({ currentIndex });
+    }
+
+    handleSectionScroll(currentIndex) {
+        this.setState({ currentIndex });
+    }
+
+    setContentRef(ref) {
+        this.content = ref;
+    }
+
+    render() {
+        return (
+            <div className={style.container}>
+                <Sidebar currentIndex={this.state.currentIndex} onSectionChange={this.handleIndexChange}/>
+                <CharacterPanel ref={this.setContentRef} onSectionChange={this.handleSectionScroll}/>
+                <div className={style.stats}>
+                    <StatsOverview/>
+                </div>
+            </div>
+        );
+    }
+}
+
+export default Content;

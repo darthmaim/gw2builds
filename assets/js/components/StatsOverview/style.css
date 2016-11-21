@@ -1,13 +1,11 @@
 .panel {
-    background: lightsalmon;
-    width: 220px;
+    padding: 16px;
 }
 
 .list {
     margin: 0;
     padding: 0;
     list-style: none;
-    columns: 2;
 }
 
 .listitem {
@@ -17,6 +15,47 @@
     margin: 2px 0;
     height: 24px;
     line-height: 24px;
+}
+
+.attribute {
+
+}
+
+.attributeOpen {
+    composes: attribute;
+}
+
+.attributeOpen .expander {
+    transform: rotate(90deg);
+}
+
+.attribute + .attribute {
+    margin-top: 8px;
+}
+
+.header {
+    display: flex;
+    cursor: pointer;
+}
+
+.label {
+    flex: 1;
+}
+
+.value { }
+
+.details {
+    margin-top: 4px;
+    margin-left: 16px;
+    color: #999;
+}
+
+.expander {
+    width: 8px;
+    height: 8px;
+    margin-right: 8px;
+    vertical-align: -1px;
+    transition: transform .3s ease;
 }
 
 /*

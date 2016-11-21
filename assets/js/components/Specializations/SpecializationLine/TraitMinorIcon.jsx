@@ -1,7 +1,7 @@
 'use strict';
 
 import React from 'react';
-import style from './traitIcon.css';
+import style from './traitMinorIcon.css';
 
 const TraitMinorIcon = props => (
     <svg className={style.minorIcon}>

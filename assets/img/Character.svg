@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="44px" height="44px" viewBox="0 0 44 44" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Icon/Character" stroke="#CCCCCC" fill="#FFFFFF">
+            <circle id="Oval" cx="22" cy="15" r="6.5"></circle>
+            <path d="M35.5,35.5 C35.5,28.3202983 29.4558441,22.5 22,22.5 C14.5441559,22.5 8.5,28.3202983 8.5,35.5 L35.5,35.5 L35.5,35.5 Z" id="Combined-Shape"></path>
+        </g>
+    </g>
+</svg>

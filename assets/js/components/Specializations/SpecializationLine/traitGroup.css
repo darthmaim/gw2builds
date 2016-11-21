@@ -1,0 +1,10 @@
+.traitGroup {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    z-index: 5;
+}
+
+.majorIcons {
+    z-index: 5;
+}

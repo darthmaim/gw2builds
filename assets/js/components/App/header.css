@@ -24,6 +24,14 @@
     display: inline-block;
 
     font-size: 26px;
-    padding-left: 20px;
+    padding-left: 16px;
     font-weight: 300;
+}
+
+.title span {
+    font-family: 'PT Serif', serif;
+    font-weight: 400;
+    letter-spacing: 0.8px;
+    padding-right: 8px;
+    border-right: 1px solid rgba(255, 255, 255, .5);
 }

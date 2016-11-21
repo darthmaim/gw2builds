@@ -1,7 +1,7 @@
 'use strict';
 
 import React from 'react';
-import style from './trait.css';
+import style from './traitGroup.css';
 import { TraitConnection, TraitMajorIcon, TraitMinorIcon } from './index';
 
 const lineTranslate = ['up', 'mid', 'down'];
@@ -28,7 +28,7 @@ class TraitGroup extends React.Component {
     render() {
         const line = lineTranslate[this.props.selected - 1];
         return (
-            <div className={style[this.props.type]} onClick={this.handleClick}>
+            <div className={style.traitGroup} onClick={this.handleClick}>
                 {this.props.type === 'adept' ? <TraitConnection from="start" to="mid"/> : null}
                 <TraitMinorIcon
                     imageUrl="https://render.guildwars2.com/file/ADBABE00177C2A79CA7725F2217D2165CB086239/1012507.png"/>
