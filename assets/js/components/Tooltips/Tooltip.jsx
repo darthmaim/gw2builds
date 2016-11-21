@@ -38,7 +38,7 @@ class Tooltip extends Component {
 
 Tooltip.propTypes = {
     children: React.PropTypes.node.isRequired,
-    tooltip: React.PropTypes.node.isRequired
+    tooltip: React.PropTypes.oneOfType([React.PropTypes.node, React.PropTypes.func]).isRequired
 };
 
 Tooltip.contextTypes = {
