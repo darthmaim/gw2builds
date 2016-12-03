@@ -8,6 +8,7 @@ import promiseMiddleware from 'redux-promise';
 import thunk from 'redux-thunk';
 import { IntlProvider } from 'react-intl';
 import editor from './reducers';
+import { TooltipContext } from './components/Tooltips';
 import { Layout } from './components/App';
 import apiClient from 'gw2api-client';
 import cacheMemory from 'gw2api-client/build/cache/memory';
@@ -24,7 +25,9 @@ class Editor extends React.Component {
     render() {
         return (
             <IntlProvider locale={this.props.locale}>
-                <Layout/>
+                <TooltipContext>
+                    <Layout/>
+                </TooltipContext>
             </IntlProvider>
         );
     }
