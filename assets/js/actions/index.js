@@ -2,15 +2,19 @@
 
 import { createAction } from 'redux-actions';
 import { ucFirst } from 'change-case';
+import fp from 'lodash/fp';
 
 export const SET_LANGUAGE = 'SET_LANGUAGE';
 export const SET_GAMEMODE = 'SET_GAMEMODE';
 export const SET_PROFESSION = 'SET_PROFESSION';
 export const SET_RACE = 'SET_RACE';
 export const SET_SPECIALIZATION = 'SET_SPECIALIZATION';
+export const SET_MINOR_TRAIT = 'SET_MINOR_TRAIT';
+export const SET_MAJOR_TRAIT = 'SET_MAJOR_TRAIT';
 
 export const FETCH_PROFESSION = 'FETCH_PROFESSION';
 export const FETCH_SPECIALIZATIONS = 'FETCH_SPECIALIZATIONS';
+export const FETCH_TRAITS = 'FETCH_TRAITS';
 
 function createChainedAction(action, dispatchChain) {
     // Make sure it's an array
@@ -43,9 +47,20 @@ function createApiAction(actionType, apiCall) {
     };
 }
 
-export const fetchSpecializations = createApiAction(
-    FETCH_SPECIALIZATIONS,
-    (state, api) => api.specializations().many(state.specializationIds)
+function convertToIndexed(item) {
+    return fp.keyBy(i => i.id)(item);
+}
+
+export const fetchTraits = createApiAction(
+    FETCH_TRAITS,
+    (state, api) => api.traits().many(state.traitIds).then(convertToIndexed)
+);
+export const fetchSpecializations = createChainedAction(
+    createApiAction(
+        FETCH_SPECIALIZATIONS,
+        (state, api) => api.specializations().many(state.specializationIds)
+    ),
+    fetchTraits
 );
 export const fetchProfession = createChainedAction(
     createApiAction(
@@ -60,3 +75,5 @@ export const setGameMode = createAction(SET_GAMEMODE);
 export const setProfession = createChainedAction(createAction(SET_PROFESSION), fetchProfession);
 export const setRace = createAction(SET_RACE);
 export const setSpecialization = createAction(SET_SPECIALIZATION, (lineId, specId) => ({ lineId, specId }));
+export const setMinorTrait = createAction(SET_MINOR_TRAIT, (lineId, traitTier, traitId) => ({ lineId, traitTier, traitId }));
+export const setMajorTrait = createAction(SET_MAJOR_TRAIT, (lineId, traitTier, traitId) => ({ lineId, traitTier, traitId }));

@@ -13,9 +13,25 @@ class TraitGroup extends React.Component {
         this.handleTraitChange = this.handleTraitChange.bind(this);
     }
 
+    getIcon(id) {
+        if (id && this.props.availableTraits && this.props.availableTraits[id]) {
+            return this.props.availableTraits[id].icon;
+        }
+    }
+
+    getMinorIcon() {
+        return this.getIcon(this.props.minorTrait);
+    }
+
+    getMajorIcon(index) {
+        if (this.props.majorTraits) {
+            return this.getIcon(this.props.majorTraits[index]);
+        }
+    }
+
     handleTraitChange(traitId) {
         if (this.props.onChange) {
-            this.props.onChange(this.props.type, traitId);
+            this.props.onChange(this.props.tier, traitId);
         }
     }
 
@@ -26,35 +42,46 @@ class TraitGroup extends React.Component {
     }
 
     render() {
-        const line = lineTranslate[this.props.selected - 1];
+        let line;
+        if (this.props.majorTraits && this.props.selectedMajorTrait) {
+            line = lineTranslate[this.props.majorTraits.indexOf(this.props.selectedMajorTrait)];
+        }
         return (
             <div className={style.traitGroup} onClick={this.handleClick}>
-                {this.props.type === 'adept' ? <TraitConnection from="start" to="mid"/> : null}
-                <TraitMinorIcon
-                    imageUrl="https://render.guildwars2.com/file/ADBABE00177C2A79CA7725F2217D2165CB086239/1012507.png"/>
+                {this.props.tier === 1 ? <TraitConnection from="start" to="mid"/> : null}
+                <TraitMinorIcon imageUrl={this.getMinorIcon()}/>
                 <TraitConnection from="mid" to={line}/>
                 <div className={style.majorIcons}>
                     <TraitMajorIcon
-                        imageUrl="https://render.guildwars2.com/file/705378A42A30BE9912BE7D0910057C00CD1CDDF2/1012498.png"
-                        traitId={1} isSelected={this.props.selected === 1} onSelected={this.handleTraitChange}/>
+                        imageUrl={this.getMajorIcon(0)}
+                        traitId={this.props.majorTraits ? this.props.majorTraits[0] : null}
+                        isSelected={this.props.majorTraits && this.props.majorTraits[0] === this.props.selectedMajorTrait}
+                        onSelected={this.handleTraitChange}/>
                     <TraitMajorIcon
-                        imageUrl="https://render.guildwars2.com/file/705378A42A30BE9912BE7D0910057C00CD1CDDF2/1012498.png"
-                        traitId={2} isSelected={this.props.selected === 2} onSelected={this.handleTraitChange}/>
+                        imageUrl={this.getMajorIcon(1)}
+                        traitId={this.props.majorTraits ? this.props.majorTraits[1] : null}
+                        isSelected={this.props.majorTraits && this.props.majorTraits[1] === this.props.selectedMajorTrait}
+                        onSelected={this.handleTraitChange}/>
                     <TraitMajorIcon
-                        imageUrl="https://render.guildwars2.com/file/705378A42A30BE9912BE7D0910057C00CD1CDDF2/1012498.png"
-                        traitId={3} isSelected={this.props.selected === 3} onSelected={this.handleTraitChange}/>
+                        imageUrl={this.getMajorIcon(2)}
+                        traitId={this.props.majorTraits ? this.props.majorTraits[2] : null}
+                        isSelected={this.props.majorTraits && this.props.majorTraits[2] === this.props.selectedMajorTrait}
+                        onSelected={this.handleTraitChange}/>
                 </div>
-                {this.props.type !== 'grandmaster' ? <TraitConnection from={line} to="mid"/> : null}
+                {this.props.tier !== 3 ? <TraitConnection from={line} to="mid"/> : null}
             </div>
         );
     }
 }
 
 TraitGroup.propTypes = {
+    availableTraits: React.PropTypes.object,
+    minorTrait: React.PropTypes.number,
+    majorTraits: React.PropTypes.arrayOf(React.PropTypes.number),
     onBackgroundClick: React.PropTypes.func,
     onChange: React.PropTypes.func,
-    selected: React.PropTypes.number,
-    type: React.PropTypes.string
+    selectedMajorTrait: React.PropTypes.number,
+    tier: React.PropTypes.number
 };
 
 export default TraitGroup;

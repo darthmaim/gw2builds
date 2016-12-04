@@ -15,7 +15,7 @@ const TraitMinorIcon = props => (
 );
 
 TraitMinorIcon.propTypes = {
-    imageUrl: React.PropTypes.string.isRequired
+    imageUrl: React.PropTypes.string
 };
 
 export default TraitMinorIcon;

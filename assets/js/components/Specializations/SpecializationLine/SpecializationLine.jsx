@@ -2,6 +2,7 @@
 
 import React from 'react';
 import onClickOutside from 'react-onclickoutside';
+import fp from 'lodash/fp';
 import { SelectionPopup } from '../SelectionPopup';
 import style from './specializationLine.css';
 import { TraitGroup } from './index';
@@ -10,9 +11,9 @@ class Line extends React.Component {
     constructor() {
         super();
         this.state = {
-            adept: null,
-            master: null,
-            grandmaster: null,
+            tier_1: null,
+            tier_2: null,
+            tier_3: null,
             isSelectionPopupOpen: false
         };
         this.handleCloseSelectionPopup = this.handleCloseSelectionPopup.bind(this);
@@ -21,15 +22,48 @@ class Line extends React.Component {
         this.handleTraitChange = this.handleTraitChange.bind(this);
     }
 
+    getSpecialization(id) {
+        if (id) {
+            return this.props.availableCoreSpecializations.concat(this.props.availableEliteSpecializations).find(s => s.id === id);
+        }
+    }
+
     getSpecializationBackgroundImage() {
-        if (this.props.activeSpecializations.length > this.props.id) {
-            const specId = this.props.activeSpecializations[this.props.id];
-            const spec = this.props.availableCoreSpecializations.concat(this.props.availableEliteSpecializations).find(s => s.id === specId);
+        if (this.props.activeSpecializations && this.props.availableTraits) {
+            const spec = this.getSpecialization(this.props.activeSpecializations[this.props.id]);
             if (spec) {
                 return spec.background;
             }
+            return '';
         }
-        return '';
+    }
+
+    getSpecializationTraits(tier) {
+        if (this.props.activeSpecializations && this.props.availableTraits) {
+            const spec = this.getSpecialization(this.props.activeSpecializations[this.props.id]);
+            if (spec) {
+                const traitIds = spec.minor_traits.filter(t => this.props.availableTraits[t].tier === tier)
+                    .concat(spec.major_traits.filter(t => this.props.availableTraits[t].tier === tier));
+                return fp.pickBy(t => traitIds.includes(t.id))(this.props.availableTraits);
+            }
+        }
+    }
+
+    getSpecializationMinorTrait(tier) {
+        const traits = this.getSpecializationTraits(tier);
+        if (traits) {
+            return Object.values(traits).find(t => t.slot.toLowerCase() === 'minor').id;
+        }
+    }
+
+    getSpecializationMajorTraits(tier) {
+        const traits = this.getSpecializationTraits(tier);
+        if (traits) {
+            return Object.values(traits)
+                .filter(t => t.slot.toLowerCase() === 'major')
+                .sort((a, b) => a.order - b.order)
+                .map(t => t.id);
+        }
     }
 
     handleClickOutside() {
@@ -43,15 +77,23 @@ class Line extends React.Component {
     }
 
     handleSpecializationChange(id) {
+        this.setState({
+            tier_1: null,
+            tier_2: null,
+            tier_3: null
+        });
         if (this.props.onSpecializationChange) {
             this.props.onSpecializationChange(this.props.id, id);
         }
     }
 
-    handleTraitChange(type, trait) {
+    handleTraitChange(tier, trait) {
         this.setState({
-            [type]: trait
+            [`tier_${tier}`]: trait
         });
+        if (this.props.onTraitChange) {
+            this.props.onTraitChange(this.props.id, tier, trait);
+        }
     }
 
     handleToggleSelectionPopup() {
@@ -105,18 +147,27 @@ class Line extends React.Component {
                     null
                 }
                 <TraitGroup
-                    type="adept"
-                    selected={this.state.adept}
+                    tier={1}
+                    minorTrait={this.getSpecializationMinorTrait(1)}
+                    majorTraits={this.getSpecializationMajorTraits(1)}
+                    availableTraits={this.getSpecializationTraits(1)}
+                    selectedMajorTrait={this.state.tier_1}
                     onBackgroundClick={this.handleToggleSelectionPopup}
                     onChange={this.handleTraitChange}/>
                 <TraitGroup
-                    type="master"
-                    selected={this.state.master}
+                    tier={2}
+                    minorTrait={this.getSpecializationMinorTrait(2)}
+                    majorTraits={this.getSpecializationMajorTraits(2)}
+                    availableTraits={this.getSpecializationTraits(2)}
+                    selectedMajorTrait={this.state.tier_2}
                     onBackgroundClick={this.handleToggleSelectionPopup}
                     onChange={this.handleTraitChange}/>
                 <TraitGroup
-                    type="grandmaster"
-                    selected={this.state.grandmaster}
+                    tier={3}
+                    minorTrait={this.getSpecializationMinorTrait(3)}
+                    majorTraits={this.getSpecializationMajorTraits(3)}
+                    availableTraits={this.getSpecializationTraits(3)}
+                    selectedMajorTrait={this.state.tier_3}
                     onBackgroundClick={this.handleToggleSelectionPopup}
                     onChange={this.handleTraitChange}/>
             </div>
@@ -130,7 +181,8 @@ Line.propTypes = {
     availableEliteSpecializations: React.PropTypes.arrayOf(React.PropTypes.object),
     id: React.PropTypes.number,
     isElite: React.PropTypes.bool,
-    onSpecializationChange: React.PropTypes.func
+    onSpecializationChange: React.PropTypes.func,
+    onTraitChange: React.PropTypes.func
 };
 
 export default onClickOutside(Line);
