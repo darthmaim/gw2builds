@@ -1,6 +1,5 @@
 import React from 'react';
-import OverlayPanel from '../base/overlay-panel';
-import { Header, Panel } from '.';
+import { Header, Panel } from './index';
 
 class SettingsPanel extends React.Component {
     render() {
