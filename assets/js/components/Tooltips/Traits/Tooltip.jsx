@@ -27,10 +27,12 @@ class TraitTooltip extends Component {
         }
 
         const { name, description, facts, traited_facts } = this.props.trait;
-
         let activeFacts = [];
-        facts.forEach(fact => activeFacts.push(fact));
 
+        // add all facts to the active ones
+        (facts || []).forEach(fact => activeFacts.push(fact));
+
+        // override active traits with traited facts if the required trait is active
         (traited_facts || []).forEach(fact => {
             if(this.isTraitActive(fact.requires_trait)) {
                 if(fact.overrides !== undefined) {
@@ -42,7 +44,7 @@ class TraitTooltip extends Component {
         });
 
         return (
-            <div style={{ background: '#fff', padding: 8, margin: 8, border: '1px solid #eee' }}>
+            <div style={{ background: '#fff', padding: 8, margin: 8, border: '1px solid #eee', maxWidth: 500 }}>
                 <div style={{ fontWeight: 'bold' }}>
                     {name}
                 </div>
