@@ -36,7 +36,7 @@ class TooltipElement extends Component {
     }
 
     handleMouseMove(e) {
-        if (this.element !== null && this.state.tooltip) {
+        if (this.element && this.state.tooltip) {
             let { clientX: x, clientY: y } = e;
             const { width, height } = this.element.getBoundingClientRect();
 
@@ -57,6 +57,10 @@ class TooltipElement extends Component {
         }
 
         const tooltip = isFunction(this.state.tooltip) ? this.state.tooltip() : this.state.tooltip;
+
+        if(!tooltip) {
+            return null;
+        }
 
         return (
             <div className={style.tooltip} ref={this.setElementRef}>

@@ -17,6 +17,11 @@ class TraitTooltip extends Component {
     }
 
     renderTooltip() {
+        if(!this.props.trait) {
+            return null;
+        }
+
+
         const { name, description, facts } = this.props.trait;
 
         return (

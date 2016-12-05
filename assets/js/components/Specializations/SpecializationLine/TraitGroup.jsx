@@ -3,6 +3,7 @@
 import React from 'react';
 import style from './traitGroup.css';
 import { TraitConnection, TraitMajorIcon, TraitMinorIcon } from './index';
+import TraitTooltip from '../../Tooltips/Traits/Tooltip';
 
 const lineTranslate = ['up', 'mid', 'down'];
 
@@ -46,27 +47,39 @@ class TraitGroup extends React.Component {
         if (this.props.majorTraits && this.props.selectedMajorTrait) {
             line = lineTranslate[this.props.majorTraits.indexOf(this.props.selectedMajorTrait)];
         }
+
+        const minorTrait = this.props.availableTraits && this.props.availableTraits[this.props.minorTrait];
+        const majorTraits = this.props.availableTraits ? this.props.majorTraits.map(t => this.props.availableTraits[t]) : [null, null, null];
+
         return (
             <div className={style.traitGroup} onClick={this.handleClick}>
                 {this.props.tier === 1 ? <TraitConnection from="start" to="mid"/> : null}
-                <TraitMinorIcon imageUrl={this.getMinorIcon()}/>
+                <TraitTooltip trait={minorTrait}>
+                    <TraitMinorIcon imageUrl={this.getMinorIcon()}/>
+                </TraitTooltip>
                 <TraitConnection from="mid" to={line}/>
                 <div className={style.majorIcons}>
-                    <TraitMajorIcon
-                        imageUrl={this.getMajorIcon(0)}
-                        traitId={this.props.majorTraits ? this.props.majorTraits[0] : null}
-                        isSelected={this.props.majorTraits && this.props.majorTraits[0] === this.props.selectedMajorTrait}
-                        onSelected={this.handleTraitChange}/>
-                    <TraitMajorIcon
-                        imageUrl={this.getMajorIcon(1)}
-                        traitId={this.props.majorTraits ? this.props.majorTraits[1] : null}
-                        isSelected={this.props.majorTraits && this.props.majorTraits[1] === this.props.selectedMajorTrait}
-                        onSelected={this.handleTraitChange}/>
-                    <TraitMajorIcon
-                        imageUrl={this.getMajorIcon(2)}
-                        traitId={this.props.majorTraits ? this.props.majorTraits[2] : null}
-                        isSelected={this.props.majorTraits && this.props.majorTraits[2] === this.props.selectedMajorTrait}
-                        onSelected={this.handleTraitChange}/>
+                    <TraitTooltip trait={majorTraits[0]}>
+                        <TraitMajorIcon
+                            imageUrl={this.getMajorIcon(0)}
+                            traitId={this.props.majorTraits ? this.props.majorTraits[0] : null}
+                            isSelected={this.props.majorTraits && this.props.majorTraits[0] === this.props.selectedMajorTrait}
+                            onSelected={this.handleTraitChange}/>
+                    </TraitTooltip>
+                    <TraitTooltip trait={majorTraits[1]}>
+                        <TraitMajorIcon
+                            imageUrl={this.getMajorIcon(1)}
+                            traitId={this.props.majorTraits ? this.props.majorTraits[1] : null}
+                            isSelected={this.props.majorTraits && this.props.majorTraits[1] === this.props.selectedMajorTrait}
+                            onSelected={this.handleTraitChange}/>
+                    </TraitTooltip>
+                    <TraitTooltip trait={majorTraits[2]}>
+                        <TraitMajorIcon
+                            imageUrl={this.getMajorIcon(2)}
+                            traitId={this.props.majorTraits ? this.props.majorTraits[2] : null}
+                            isSelected={this.props.majorTraits && this.props.majorTraits[2] === this.props.selectedMajorTrait}
+                            onSelected={this.handleTraitChange}/>
+                    </TraitTooltip>
                 </div>
                 {this.props.tier !== 3 ? <TraitConnection from={line} to="mid"/> : null}
             </div>
