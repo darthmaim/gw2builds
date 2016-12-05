@@ -56,7 +56,7 @@ export const specializationIds = handleAction(
     []
 );
 // Grabs the specialization objects from the current profession
-export const specializations = handleSimpleAction(actions.FETCH_SPECIALIZATIONS, []);
+export const specializations = handleSimpleAction(actions.FETCH_SPECIALIZATIONS, {});
 
 // Grabs the trait ids from the current profession
 export const traitIds = handleAction(

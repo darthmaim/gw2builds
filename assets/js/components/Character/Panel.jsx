@@ -6,7 +6,7 @@ import Settings from '../../containers/settings';
 import style from './panel.css';
 
 import { Gear, Skills, Section } from './index';
-import Specializations from '../../containers/Specializations';
+import Specializations from '../Specializations/Specializations';
 
 class Panel extends React.Component {
     constructor(props, context) {

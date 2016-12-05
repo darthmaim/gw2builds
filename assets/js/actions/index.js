@@ -58,7 +58,7 @@ export const fetchTraits = createApiAction(
 export const fetchSpecializations = createChainedAction(
     createApiAction(
         FETCH_SPECIALIZATIONS,
-        (state, api) => api.specializations().many(state.specializationIds)
+        (state, api) => api.specializations().many(state.specializationIds).then(convertToIndexed)
     ),
     fetchTraits
 );

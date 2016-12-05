@@ -15,9 +15,7 @@ The store from `redux` contains the app state that is used globally in various p
 ### Specializations
 - `specializationIds` (array)  
   Contains all valid specialization ids for the current `profession`.
-- `specializations` (array)  
-  **Warning: This will be changed to an object indexed by specialization id in the future
-  so looking up a specialization will be in constant time instead of linear.**  
+- `specializations` (object, indexed by specialization id)  
   Contains all valid specialization objects for the current `profession`.
   See GW2 API `/v2/specializations` for the object format.
 - `activeSpecializations` (array)  
@@ -28,16 +26,16 @@ The store from `redux` contains the app state that is used globally in various p
 - `traitIds` (array)  
   Contains all valid trait ids for the current `profession` (both minor and major traits).
 - `traits` (object, indexed by trait id)  
-  Contains all valid trait objects for the current `profession`. See GW2 API `/v2/traits`
-  for the object format (both minor and major traits).
+  Contains all valid trait objects for the current `profession` (both minor and major traits). See GW2 API `/v2/traits`
+  for the object format.
 - `activeMinorTraits` (array)  
   **Note: This is planned and therefore not available yet!**  
   Contains all selected *minor* trait ids for the current build.
-  Indexed from 0 to 8, where 0 is the selected tier 1 trait from the first selected specialization,
-  and 8 is the selected tier 3 trait from the last selected specialization.
-  An element can be null or undefined if there is no selection for that slot.  
+  Indexed from 0 to 8, where 0 is the tier 1 trait from the first selected specialization,
+  and 8 is the tier 3 trait from the last selected specialization.
+  An element can be `null` or `undefined` if there is no selection for that slot.  
 - `activeMajorTraits` (array)  
   Contains all selected *major* trait ids for the current build.
   Indexed from 0 to 8, where 0 is the selected tier 1 trait from the first selected specialization,
   and 8 is the selected tier 3 trait from the last selected specialization.
-  An element can be null or undefined if there is no selection for that slot.
+  An element can be `null` or `undefined` if there is no selection for that slot.

@@ -7,7 +7,6 @@ import { SpecializationIcon } from './index';
 class SelectionPopup extends React.Component {
     constructor() {
         super();
-        this.state = {};
         this.handleOnIconClick = this.handleOnIconClick.bind(this);
     }
 
@@ -23,16 +22,21 @@ class SelectionPopup extends React.Component {
         }
     }
 
-    renderSpecializations(specializations) {
-        return specializations.map(spec =>
-            <SpecializationIcon
-                key={spec.id}
-                icon={spec.icon}
-                id={spec.id}
-                isSelected={this.props.activeSpecializations.includes(spec.id)}
-                name={spec.name}
-                onClick={this.handleOnIconClick}/>
-        );
+    renderSpecializations(ids) {
+        if (ids) {
+            return ids.map(id => {
+                const specialization = this.props.specializations[id];
+                return (
+                    <SpecializationIcon
+                        key={id}
+                        icon={specialization.icon}
+                        id={id}
+                        isSelected={this.props.activeSpecializationIds.indexOf(id) > -1}
+                        name={specialization.name}
+                        onClick={this.handleOnIconClick}/>
+                );
+            });
+        }
     }
 
     render() {
@@ -41,14 +45,15 @@ class SelectionPopup extends React.Component {
                 <div className={style.selectionPopupLeft} onClick={this.props.onWantsClose}/>
                 <div className={style.selectionPopupInner}>
                     <div className={style.selectionPopupTitle}>
-                        {/* TODO: i18n */!this.props.isElite ? 'Core Specializations' : 'Core and Elite Specializations'}
+                        {/* TODO: i18n */!this.props.supportsElite ? 'Core Specializations' : 'Core and Elite Specializations'}
                     </div>
                     <div className={style.specializationIcons}>
-                        <div>{this.renderSpecializations(this.props.availableCoreSpecializations)}</div>
-                        {this.props.isElite ?
-                            <div>{this.renderSpecializations(this.props.availableEliteSpecializations)}</div> :
+                        <div>{this.renderSpecializations(this.props.availableCoreSpecializationIds)}</div>
+                        {this.props.supportsElite ?
+                            <div>{this.renderSpecializations(this.props.availableEliteSpecializationIds)}</div> :
                             null
                         }
+                        <div>{this.renderSpecializations()}</div>
                     </div>
                 </div>
                 <svg className={style.selectionPopupBorderTop} onClick={this.props.onWantsClose}>
@@ -63,12 +68,15 @@ class SelectionPopup extends React.Component {
 }
 
 SelectionPopup.propTypes = {
-    activeSpecializations: React.PropTypes.arrayOf(React.PropTypes.number),
-    availableCoreSpecializations: React.PropTypes.arrayOf(React.PropTypes.object),
-    availableEliteSpecializations: React.PropTypes.arrayOf(React.PropTypes.object),
-    isElite: React.PropTypes.bool,
+    activeSpecializationIds: React.PropTypes.arrayOf(React.PropTypes.number),
+    availableCoreSpecializationIds: React.PropTypes.arrayOf(React.PropTypes.number),
+    availableEliteSpecializationIds: React.PropTypes.arrayOf(React.PropTypes.number),
     onSpecializationChange: React.PropTypes.func,
-    onWantsClose: React.PropTypes.func
+    onWantsClose: React.PropTypes.func,
+    selectedSpecializationId: React.PropTypes.number,
+    specializationLine: React.PropTypes.number,
+    specializations: React.PropTypes.object,
+    supportsElite: React.PropTypes.bool
 };
 
 export default SelectionPopup;
