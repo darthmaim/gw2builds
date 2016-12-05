@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
+import Fact from '../Facts/Fact';
 import { Tooltip } from '../index';
+import style from './tooltip.css';
 
 class TraitTooltip extends Component {
     constructor(props, context) {
@@ -43,25 +45,25 @@ class TraitTooltip extends Component {
             }
         });
 
+        // TODO: parse description (includes <br>, <c=@reminder>, ...)
         return (
-            <div style={{ background: '#fff', padding: 8, margin: 8, border: '1px solid #eee', maxWidth: 500 }}>
-                <div style={{ fontWeight: 'bold' }}>
+            <div className={style.tooltip}>
+                <div className={style.title}>
                     {name}
                 </div>
-                <div>
+                <div className={style.description}>
                     {description}
                 </div>
-                {activeFacts.map(this.renderFact)}
+                <div className={style.facts}>
+                    {activeFacts.map(this.renderFact)}
+                </div>
             </div>
         );
     }
 
     renderFact(fact, i) {
         return (
-            <div key={i}>
-                <img src={fact.icon} width={16} height={16} />
-                {fact.text}
-            </div>
+            <Fact key={i} fact={fact} />
         );
     }
 }

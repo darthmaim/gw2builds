@@ -1,0 +1,15 @@
+.tooltip {
+    background: #fff;
+    padding: 8px;
+    margin: 8px;
+    border: 1px solid #eee;
+    max-width: 500px;
+}
+
+.title {
+    font-weight: bold;
+}
+
+.facts {
+    margin-top: 4px;
+}

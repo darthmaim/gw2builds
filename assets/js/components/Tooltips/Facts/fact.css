@@ -1,0 +1,13 @@
+.fact + .fact {
+    margin-top: 4px;
+}
+
+.fact img {
+    vertical-align: -1px;
+    margin-right: 4px;
+}
+
+.description {
+    margin-left: 20px;
+    color: #555;
+}
