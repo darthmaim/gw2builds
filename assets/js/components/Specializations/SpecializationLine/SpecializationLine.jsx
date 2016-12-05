@@ -1,5 +1,6 @@
 'use strict';
 
+import _ from 'lodash';
 import React from 'react';
 import onClickOutside from 'react-onclickoutside';
 import fp from 'lodash/fp';
@@ -7,13 +8,13 @@ import { SelectionPopup } from '../SelectionPopup';
 import style from './specializationLine.css';
 import { TraitGroup } from './index';
 
-class Line extends React.Component {
+class SpecializationLine extends React.Component {
     constructor() {
         super();
         this.state = {
-            tier_1: null,
-            tier_2: null,
-            tier_3: null,
+            tier1: null,
+            tier2: null,
+            tier3: null,
             isSelectionPopupOpen: false
         };
         this.handleCloseSelectionPopup = this.handleCloseSelectionPopup.bind(this);
@@ -34,8 +35,8 @@ class Line extends React.Component {
             if (spec) {
                 return spec.background;
             }
-            return '';
         }
+        return '';
     }
 
     getSpecializationTraits(tier) {
@@ -52,14 +53,14 @@ class Line extends React.Component {
     getSpecializationMinorTrait(tier) {
         const traits = this.getSpecializationTraits(tier);
         if (traits) {
-            return Object.values(traits).find(t => t.slot.toLowerCase() === 'minor').id;
+            return _.values(traits).find(t => t.slot.toLowerCase() === 'minor').id;
         }
     }
 
     getSpecializationMajorTraits(tier) {
         const traits = this.getSpecializationTraits(tier);
         if (traits) {
-            return Object.values(traits)
+            return _.values(traits)
                 .filter(t => t.slot.toLowerCase() === 'major')
                 .sort((a, b) => a.order - b.order)
                 .map(t => t.id);
@@ -78,9 +79,9 @@ class Line extends React.Component {
 
     handleSpecializationChange(id) {
         this.setState({
-            tier_1: null,
-            tier_2: null,
-            tier_3: null
+            tier1: null,
+            tier2: null,
+            tier3: null
         });
         if (this.props.onSpecializationChange) {
             this.props.onSpecializationChange(this.props.id, id);
@@ -89,7 +90,7 @@ class Line extends React.Component {
 
     handleTraitChange(tier, trait) {
         this.setState({
-            [`tier_${tier}`]: trait
+            [`tier${tier}`]: trait
         });
         if (this.props.onTraitChange) {
             this.props.onTraitChange(this.props.id, tier, trait);
@@ -151,7 +152,7 @@ class Line extends React.Component {
                     minorTrait={this.getSpecializationMinorTrait(1)}
                     majorTraits={this.getSpecializationMajorTraits(1)}
                     availableTraits={this.getSpecializationTraits(1)}
-                    selectedMajorTrait={this.state.tier_1}
+                    selectedMajorTrait={this.state.tier1}
                     onBackgroundClick={this.handleToggleSelectionPopup}
                     onChange={this.handleTraitChange}/>
                 <TraitGroup
@@ -159,7 +160,7 @@ class Line extends React.Component {
                     minorTrait={this.getSpecializationMinorTrait(2)}
                     majorTraits={this.getSpecializationMajorTraits(2)}
                     availableTraits={this.getSpecializationTraits(2)}
-                    selectedMajorTrait={this.state.tier_2}
+                    selectedMajorTrait={this.state.tier2}
                     onBackgroundClick={this.handleToggleSelectionPopup}
                     onChange={this.handleTraitChange}/>
                 <TraitGroup
@@ -167,7 +168,7 @@ class Line extends React.Component {
                     minorTrait={this.getSpecializationMinorTrait(3)}
                     majorTraits={this.getSpecializationMajorTraits(3)}
                     availableTraits={this.getSpecializationTraits(3)}
-                    selectedMajorTrait={this.state.tier_3}
+                    selectedMajorTrait={this.state.tier3}
                     onBackgroundClick={this.handleToggleSelectionPopup}
                     onChange={this.handleTraitChange}/>
             </div>
@@ -175,14 +176,15 @@ class Line extends React.Component {
     }
 }
 
-Line.propTypes = {
+SpecializationLine.propTypes = {
     activeSpecializations: React.PropTypes.arrayOf(React.PropTypes.number),
     availableCoreSpecializations: React.PropTypes.arrayOf(React.PropTypes.object),
     availableEliteSpecializations: React.PropTypes.arrayOf(React.PropTypes.object),
+    availableTraits: React.PropTypes.object,
     id: React.PropTypes.number,
     isElite: React.PropTypes.bool,
     onSpecializationChange: React.PropTypes.func,
     onTraitChange: React.PropTypes.func
 };
 
-export default onClickOutside(Line);
+export default onClickOutside(SpecializationLine);

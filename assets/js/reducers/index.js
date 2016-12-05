@@ -56,7 +56,7 @@ export const traitIds = handleAction(
     []
 );
 // Grabs the trait objects from the current profession
-export const traits = handleSimpleAction(actions.FETCH_TRAITS, []);
+export const traits = handleSimpleAction(actions.FETCH_TRAITS, {});
 
 const editor = combineReducers({
     // General
