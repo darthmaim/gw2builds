@@ -16,26 +16,35 @@ export const race = handleSimpleAction(actions.SET_RACE, 'none');
 export const activeSpecializations = handleAction(
     actions.SET_SPECIALIZATION,
     (state, action) => {
-        state[action.payload.lineId] = action.payload.specId;
-        return state;
+        const newState = state.slice();
+        newState[action.payload.lineId] = action.payload.specId;
+        return newState;
     },
     []
 );
 export const activeMinorTraits = handleAction(
     actions.SET_MINOR_TRAIT,
     (state, action) => {
+        const newState = state.slice();
         const pos = action.payload.lineId * 3 + action.payload.traitTier - 1;
-        state[pos] = action.payload.traitId;
-        return state;
+        newState[pos] = action.payload.traitId;
+        return newState;
     },
     []
 );
 export const activeMajorTraits = handleAction(
     actions.SET_MAJOR_TRAIT,
     (state, action) => {
-        const pos = action.payload.lineId * 3 + action.payload.traitTier - 1;
-        state[pos] = action.payload.traitId;
-        return state;
+        const newState = state.slice();
+        if (action.payload.traitTier) {
+            const pos = action.payload.lineId * 3 + action.payload.traitTier - 1;
+            newState[pos] = action.payload.traitId;
+        } else {
+            newState[action.payload.lineId * 3] = null;
+            newState[action.payload.lineId * 3 + 1] = null;
+            newState[action.payload.lineId * 3 + 2] = null;
+        }
+        return newState;
     },
     []
 );

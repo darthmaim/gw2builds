@@ -12,9 +12,6 @@ class SpecializationLine extends React.Component {
     constructor() {
         super();
         this.state = {
-            tier1: null,
-            tier2: null,
-            tier3: null,
             isSelectionPopupOpen: false
         };
         this.handleCloseSelectionPopup = this.handleCloseSelectionPopup.bind(this);
@@ -78,20 +75,12 @@ class SpecializationLine extends React.Component {
     }
 
     handleSpecializationChange(id) {
-        this.setState({
-            tier1: null,
-            tier2: null,
-            tier3: null
-        });
         if (this.props.onSpecializationChange) {
             this.props.onSpecializationChange(this.props.id, id);
         }
     }
 
     handleTraitChange(tier, trait) {
-        this.setState({
-            [`tier${tier}`]: trait
-        });
         if (this.props.onTraitChange) {
             this.props.onTraitChange(this.props.id, tier, trait);
         }
@@ -152,7 +141,7 @@ class SpecializationLine extends React.Component {
                     minorTrait={this.getSpecializationMinorTrait(1)}
                     majorTraits={this.getSpecializationMajorTraits(1)}
                     availableTraits={this.getSpecializationTraits(1)}
-                    selectedMajorTrait={this.state.tier1}
+                    selectedMajorTrait={this.props.activeMajorTraits[this.props.id * 3]}
                     onBackgroundClick={this.handleToggleSelectionPopup}
                     onChange={this.handleTraitChange}/>
                 <TraitGroup
@@ -160,7 +149,7 @@ class SpecializationLine extends React.Component {
                     minorTrait={this.getSpecializationMinorTrait(2)}
                     majorTraits={this.getSpecializationMajorTraits(2)}
                     availableTraits={this.getSpecializationTraits(2)}
-                    selectedMajorTrait={this.state.tier2}
+                    selectedMajorTrait={this.props.activeMajorTraits[this.props.id * 3 + 1]}
                     onBackgroundClick={this.handleToggleSelectionPopup}
                     onChange={this.handleTraitChange}/>
                 <TraitGroup
@@ -168,7 +157,7 @@ class SpecializationLine extends React.Component {
                     minorTrait={this.getSpecializationMinorTrait(3)}
                     majorTraits={this.getSpecializationMajorTraits(3)}
                     availableTraits={this.getSpecializationTraits(3)}
-                    selectedMajorTrait={this.state.tier3}
+                    selectedMajorTrait={this.props.activeMajorTraits[this.props.id * 3 + 2]}
                     onBackgroundClick={this.handleToggleSelectionPopup}
                     onChange={this.handleTraitChange}/>
             </div>
@@ -178,6 +167,7 @@ class SpecializationLine extends React.Component {
 
 SpecializationLine.propTypes = {
     activeSpecializations: React.PropTypes.arrayOf(React.PropTypes.number),
+    activeMajorTraits: React.PropTypes.arrayOf(React.PropTypes.number),
     availableCoreSpecializations: React.PropTypes.arrayOf(React.PropTypes.object),
     availableEliteSpecializations: React.PropTypes.arrayOf(React.PropTypes.object),
     availableTraits: React.PropTypes.object,

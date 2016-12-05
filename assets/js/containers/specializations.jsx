@@ -7,6 +7,7 @@ import Specializations from '../components/Specializations';
 
 const mapStateToProps = state => ({
     activeSpecializations: state.activeSpecializations,
+    activeMajorTraits: state.activeMajorTraits,
     availableCoreSpecializations: getCoreSpecializations(state),
     availableEliteSpecializations: getEliteSpecializations(state),
     availableTraits: state.traits
@@ -15,10 +16,7 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
     onSpecializationChange: (lineId, specId) => {
         dispatch(setSpecialization(lineId, specId));
-        for (let i = 1; i <= 3; i++) {
-            // Wipe the active major traits
-            dispatch(setMajorTrait(lineId, i, null));
-        }
+        dispatch(setMajorTrait(lineId, null, null));
     },
     onTraitChange: (lineId, traitTier, traitId) => {
         dispatch(setMajorTrait(lineId, traitTier, traitId));
