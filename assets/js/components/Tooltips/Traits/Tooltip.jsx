@@ -8,6 +8,11 @@ class TraitTooltip extends Component {
         this.renderTooltip = this.renderTooltip.bind(this);
     }
 
+    isTraitActive(traitId) {
+        return this.props.activeMajorTraits.indexOf(traitId) !== -1
+            || this.props.activeMinorTraits.indexOf(traitId) !== -1
+    }
+
     render() {
         return (
             <Tooltip tooltip={this.renderTooltip}>
@@ -21,8 +26,20 @@ class TraitTooltip extends Component {
             return null;
         }
 
+        const { name, description, facts, traited_facts } = this.props.trait;
 
-        const { name, description, facts } = this.props.trait;
+        let activeFacts = [];
+        facts.forEach(fact => activeFacts.push(fact));
+
+        (traited_facts || []).forEach(fact => {
+            if(this.isTraitActive(fact.requires_trait)) {
+                if(fact.overrides !== undefined) {
+                    activeFacts[fact.overrides] = fact;
+                } else {
+                    activeFacts.push(fact);
+                }
+            }
+        });
 
         return (
             <div style={{ background: '#fff', padding: 8, margin: 8, border: '1px solid #eee' }}>
@@ -32,12 +49,12 @@ class TraitTooltip extends Component {
                 <div>
                     {description}
                 </div>
-                {facts.map(this.renderTrait)}
+                {activeFacts.map(this.renderFact)}
             </div>
         );
     }
 
-    renderTrait(fact, i) {
+    renderFact(fact, i) {
         return (
             <div key={i}>
                 <img src={fact.icon} width={16} height={16} />
@@ -56,7 +73,10 @@ TraitTooltip.propTypes = {
             icon: React.PropTypes.string.isRequired,
             text: React.PropTypes.string
         }))
-    })
+    }),
+    // bound from redux state
+    activeMajorTraits: React.PropTypes.arrayOf(React.PropTypes.number).isRequired,
+    activeMinorTraits: React.PropTypes.arrayOf(React.PropTypes.number).isRequired
 };
 
 export default TraitTooltip;

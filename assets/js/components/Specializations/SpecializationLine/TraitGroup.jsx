@@ -3,7 +3,7 @@
 import React from 'react';
 import style from './traitGroup.css';
 import { TraitConnection, TraitMajorIcon, TraitMinorIcon } from './index';
-import TraitTooltip from '../../Tooltips/Traits/Tooltip';
+import TraitTooltip from '../../../containers/traitTooltip';
 
 const lineTranslate = ['up', 'mid', 'down'];
 
