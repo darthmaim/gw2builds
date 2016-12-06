@@ -78,6 +78,7 @@
         "error",
         "after-props"
       ],
+      "react/no-unused-prop-types": "warn",
       "unicorn/filename-case": "off"
     },
     "settings": {

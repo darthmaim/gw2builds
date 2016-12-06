@@ -2,8 +2,8 @@
 
 import React from 'react';
 import onClickOutside from 'react-onclickoutside';
-import style from './specializationLine.css';
 import { SelectionPopupContainer as SelectionPopup } from '../SelectionPopup';
+import style from './specializationLine.css';
 import { TraitTierContainer as TraitTier } from './index';
 
 class SpecializationLine extends React.Component {
@@ -105,8 +105,10 @@ class SpecializationLine extends React.Component {
 
 SpecializationLine.propTypes = {
     supportsElite: React.PropTypes.bool,
-    selectedSpecialization: React.PropTypes.number,
     specializationLine: React.PropTypes.number,
+
+    // Redux states
+    selectedSpecialization: React.PropTypes.number,
     specializations: React.PropTypes.object
 };
 

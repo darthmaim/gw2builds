@@ -39,8 +39,10 @@ class TraitMajorIcon extends React.Component {
 TraitMajorIcon.propTypes = {
     imageUrl: React.PropTypes.string,
     isSelected: React.PropTypes.bool,
-    onSelected: React.PropTypes.func,
-    traitId: React.PropTypes.number
+    traitId: React.PropTypes.number,
+
+    // Events
+    onSelected: React.PropTypes.func
 };
 
 export default TraitMajorIcon;

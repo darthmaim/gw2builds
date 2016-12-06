@@ -68,15 +68,19 @@ class SelectionPopup extends React.Component {
 }
 
 SelectionPopup.propTypes = {
+    specializationLine: React.PropTypes.number,
+    supportsElite: React.PropTypes.bool,
+
+    // Events
+    onSpecializationChange: React.PropTypes.func,
+    onWantsClose: React.PropTypes.func,
+
+    // Redux states
     activeSpecializationIds: React.PropTypes.arrayOf(React.PropTypes.number),
     availableCoreSpecializationIds: React.PropTypes.arrayOf(React.PropTypes.number),
     availableEliteSpecializationIds: React.PropTypes.arrayOf(React.PropTypes.number),
-    onSpecializationChange: React.PropTypes.func,
-    onWantsClose: React.PropTypes.func,
     selectedSpecializationId: React.PropTypes.number,
-    specializationLine: React.PropTypes.number,
-    specializations: React.PropTypes.object,
-    supportsElite: React.PropTypes.bool
+    specializations: React.PropTypes.object
 };
 
 export default SelectionPopup;

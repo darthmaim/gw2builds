@@ -32,6 +32,8 @@ SpecializationIcon.propTypes = {
     id: React.PropTypes.number,
     isSelected: React.PropTypes.bool,
     name: React.PropTypes.string,
+
+    // Events
     onClick: React.PropTypes.func
 };
 

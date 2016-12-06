@@ -1,9 +1,9 @@
 'use strict';
 
 import React from 'react';
+import TraitTooltip from '../../../containers/traitTooltip';
 import style from './traitTier.css';
 import { TraitConnection, TraitMajorIcon, TraitMinorIcon } from './index';
-import TraitTooltip from '../../../containers/traitTooltip';
 
 const lineTranslate = ['up', 'mid', 'down'];
 
@@ -81,14 +81,18 @@ class TraitTier extends React.Component {
 }
 
 TraitTier.propTypes = {
-    majorTraitId: React.PropTypes.number,
-    minorTraitIds: React.PropTypes.arrayOf(React.PropTypes.number),
+    specializationLine: React.PropTypes.number,
+    traitTier: React.PropTypes.number,
+
+    // Events
     onBackgroundClick: React.PropTypes.func,
     onTraitChange: React.PropTypes.func,
+
+    // Redux states
+    majorTraitIds: React.PropTypes.arrayOf(React.PropTypes.number),
+    minorTraitId: React.PropTypes.number,
     selectedMajorTraitId: React.PropTypes.number,
-    specializationLine: React.PropTypes.number,
-    traits: React.PropTypes.object,
-    traitTier: React.PropTypes.number
+    traits: React.PropTypes.object
 };
 
 export default TraitTier;

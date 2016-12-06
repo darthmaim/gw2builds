@@ -12,7 +12,7 @@ const getTraits = state => state.traits;
 
 export const getActiveMajorTrait = createSelector(
     [getActiveMajorTraitIds, getCurrentSpecializationLine, getCurrentTraitTier],
-    (activeMajorTraitIds, specializationLine, traitTier) => activeMajorTraitIds[specializationLine * 3 + traitTier - 1]
+    (activeMajorTraitIds, specializationLine, traitTier) => activeMajorTraitIds[(specializationLine * 3) + traitTier - 1]
 );
 
 export const getSpecializationTraitsFromTier = createSelector(
@@ -24,7 +24,7 @@ export const getSpecializationTraitsFromTier = createSelector(
 
 export const getMinorTraitId = createSelector(
     [getSpecializationTraitsFromTier],
-    (traits) => {
+    traits => {
         const trait = _.values(traits).find(t => t.slot.toLowerCase() === 'minor');
         if (trait) {
             return trait.id;
@@ -34,7 +34,7 @@ export const getMinorTraitId = createSelector(
 
 export const getMajorTraitIds = createSelector(
     [getSpecializationTraitsFromTier],
-    (traits) => _.values(traits)
+    traits => _.values(traits)
         .filter(t => t.slot.toLowerCase() === 'major')
         .sort((a, b) => a.order - b.order)
         .map(t => t.id)

@@ -26,7 +26,7 @@ export const activeMinorTraits = handleAction(
     actions.SET_MINOR_TRAIT,
     (state, action) => {
         const newState = state.slice();
-        const pos = action.payload.lineId * 3 + action.payload.traitTier - 1;
+        const pos = (action.payload.lineId * 3) + action.payload.traitTier - 1;
         newState[pos] = action.payload.traitId;
         return newState;
     },
@@ -37,12 +37,12 @@ export const activeMajorTraits = handleAction(
     (state, action) => {
         const newState = state.slice();
         if (action.payload.traitTier) {
-            const pos = action.payload.lineId * 3 + action.payload.traitTier - 1;
+            const pos = (action.payload.lineId * 3) + action.payload.traitTier - 1;
             newState[pos] = action.payload.traitId;
         } else {
             newState[action.payload.lineId * 3] = null;
-            newState[action.payload.lineId * 3 + 1] = null;
-            newState[action.payload.lineId * 3 + 2] = null;
+            newState[(action.payload.lineId * 3) + 1] = null;
+            newState[(action.payload.lineId * 3) + 2] = null;
         }
         return newState;
     },
