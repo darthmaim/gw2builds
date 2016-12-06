@@ -7,9 +7,11 @@ export default () => (<div>
     Welcome to Skills!
 
     <Tooltip tooltip={<TestTooltip/>}>
-        Testing Tooltips
-        <Tooltip tooltip={<div>Inner</div>}>
-            {' '}here
-        </Tooltip>
+        <span>
+            Testing Tooltips
+            <Tooltip tooltip={<div>Inner</div>}>
+                <span>{' '}here</span>
+            </Tooltip>
+        </span>
     </Tooltip>
 </div>);
