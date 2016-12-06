@@ -41,7 +41,7 @@ class TooltipElement extends Component {
             const { width, height } = this.element.getBoundingClientRect();
 
             x = Math.min(x, window.innerWidth - width);
-            y = y + height > window.innerHeight ? y - height : y;
+            y = y + height > window.innerHeight ? Math.max(y - height, 0) : y;
 
             this.element.style.transform = `translate(${x}px, ${y}px)`;
         }
@@ -52,14 +52,10 @@ class TooltipElement extends Component {
     }
 
     render() {
-        if (!this.state.tooltip) {
-            return null;
-        }
-
         const tooltip = isFunction(this.state.tooltip) ? this.state.tooltip() : this.state.tooltip;
 
         if (!tooltip) {
-            return null;
+            return <div className={style.tooltip}/>;
         }
 
         return (
