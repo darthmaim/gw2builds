@@ -1,6 +1,7 @@
 .line {
     width: 39px;
     height: 2px;
+    z-index: 4;
     background: white;
 }
 .lineInvisible {
