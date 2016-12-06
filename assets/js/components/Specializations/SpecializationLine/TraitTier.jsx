@@ -46,12 +46,14 @@ class TraitTier extends React.Component {
 
         return (
             <div className={style.traitTier} onClick={this.handleClick}>
-                {this.props.traitTier === 1 ? <TraitConnection from="start" to="mid"/> : null}
-                <TraitTooltip trait={minorTrait}>
-                    <TraitMinorIcon imageUrl={this.getMinorIcon()}/>
-                </TraitTooltip>
+                {this.props.traitTier === 1 ? (this.props.minorTraitId ? <TraitConnection from="start" to="mid"/> : <TraitConnection/>) : null}
+                <div className={style.iconsWrapper}>
+                    <TraitTooltip trait={minorTrait}>
+                        <TraitMinorIcon imageUrl={this.getMinorIcon()}/>
+                    </TraitTooltip>
+                </div>
                 <TraitConnection from="mid" to={line}/>
-                <div className={style.majorIcons}>
+                <div className={style.iconsWrapper}>
                     <TraitTooltip trait={majorTraits[0]}>
                         <TraitMajorIcon
                             imageUrl={this.getMajorIcon(0)}

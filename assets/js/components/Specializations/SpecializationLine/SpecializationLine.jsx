@@ -42,6 +42,15 @@ class SpecializationLine extends React.Component {
         });
     }
 
+    renderTier(tier) {
+        if (this.props.selectedSpecialization) {
+            return <TraitTier
+                specializationLine={this.props.specializationLine}
+                traitTier={tier}
+                onBackgroundClick={this.handleToggleSelectionPopup}/>;
+        }
+    }
+
     render() {
         return (
             <div className={style.line}>
@@ -86,18 +95,9 @@ class SpecializationLine extends React.Component {
                         supportsElite={this.props.supportsElite}/> :
                     null
                 }
-                <TraitTier
-                    specializationLine={this.props.specializationLine}
-                    traitTier={1}
-                    onBackgroundClick={this.handleToggleSelectionPopup}/>
-                <TraitTier
-                    specializationLine={this.props.specializationLine}
-                    traitTier={2}
-                    onBackgroundClick={this.handleToggleSelectionPopup}/>
-                <TraitTier
-                    specializationLine={this.props.specializationLine}
-                    traitTier={3}
-                    onBackgroundClick={this.handleToggleSelectionPopup}/>
+                { this.renderTier(1) }
+                { this.renderTier(2) }
+                { this.renderTier(3) }
             </div>
         );
     }

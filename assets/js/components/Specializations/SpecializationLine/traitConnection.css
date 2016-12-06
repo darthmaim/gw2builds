@@ -1,12 +1,12 @@
 .line {
     width: 39px;
     height: 2px;
-    z-index: 4;
     background: white;
 }
 .lineInvisible {
     composes: line;
     background: none;
+    visibility: hidden;
 }
 .lineStartToMid {
     composes: line;
@@ -17,17 +17,17 @@
 }
 .lineMidToUp {
     composes: line;
-    transform: translateY(-20px) rotateZ(-30deg) scaleX(1.5);
+    transform: translateY(-20px) rotateZ(-30deg) scaleX(1.25);
 }
 .lineMidToDown {
      composes: line;
-     transform: translateY(20px) rotateZ(30deg) scaleX(1.5);
+     transform: translateY(20px) rotateZ(30deg) scaleX(1.25);
 }
 .lineUpToMid {
      composes: line;
-     transform: translateY(-20px) rotateZ(30deg) scaleX(1.5);
+     transform: translateY(-20px) rotateZ(30deg) scaleX(1.25);
 }
 .lineDownToMid {
      composes: line;
-     transform: translateY(20px) rotateZ(-30deg) scaleX(1.5);
+     transform: translateY(20px) rotateZ(-30deg) scaleX(1.25);
 }
