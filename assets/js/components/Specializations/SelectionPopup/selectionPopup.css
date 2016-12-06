@@ -3,6 +3,7 @@
     position: absolute;
     top: 0;
     bottom: 0;
+    left: 0;
     z-index: 6;
     color: white;
 }
@@ -19,6 +20,7 @@
 
 .selectionPopupInner {
     position: absolute;
+    left: 0;
     margin-left: 12px;
     padding: 7px 7px 7px 11px;
     min-height: calc(100% + 76px);
