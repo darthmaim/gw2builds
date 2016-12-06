@@ -14,7 +14,11 @@ const mapStateToProps = (state, ownProps) => ({
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
     onTraitChange: traitId => {
-        dispatch(setMajorTrait(ownProps.specializationLine, ownProps.traitTier, traitId));
+        dispatch(setMajorTrait({
+            specializationLine: ownProps.specializationLine,
+            traitTier: ownProps.traitTier,
+            traitId
+        }));
     }
 });
 

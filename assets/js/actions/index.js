@@ -12,6 +12,10 @@ export const SET_SPECIALIZATION = 'SET_SPECIALIZATION';
 export const SET_MINOR_TRAIT = 'SET_MINOR_TRAIT';
 export const SET_MAJOR_TRAIT = 'SET_MAJOR_TRAIT';
 
+export const WIPE_ACTIVE_SPECIALIZATIONS = 'WIPE_ACTIVE_SPECIALIZATIONS';
+export const WIPE_ACTIVE_TRAITS = 'WIPE_ACTIVE_TRAITS';
+export const WIPE_ALL_ACTIVE_TRAITS = 'WIPE_ALL_ACTIVE_TRAITS';
+
 export const FETCH_PROFESSION = 'FETCH_PROFESSION';
 export const FETCH_SPECIALIZATIONS = 'FETCH_SPECIALIZATIONS';
 export const FETCH_TRAITS = 'FETCH_TRAITS';
@@ -70,10 +74,26 @@ export const fetchProfession = createChainedAction(
     fetchSpecializations
 );
 
-export const setLanguage = createChainedAction(createAction(SET_LANGUAGE), fetchProfession);
-export const setGameMode = createAction(SET_GAMEMODE);
-export const setProfession = createChainedAction(createAction(SET_PROFESSION), fetchProfession);
-export const setRace = createAction(SET_RACE);
-export const setSpecialization = createAction(SET_SPECIALIZATION, (lineId, specId) => ({ lineId, specId }));
-export const setMinorTrait = createAction(SET_MINOR_TRAIT, (lineId, traitTier, traitId) => ({ lineId, traitTier, traitId }));
-export const setMajorTrait = createAction(SET_MAJOR_TRAIT, (lineId, traitTier, traitId) => ({ lineId, traitTier, traitId }));
+export const wipeActiveTraits = createAction(WIPE_ACTIVE_TRAITS); // Params: { specializationId }
+export const wipeAllActiveTraits = createAction(WIPE_ALL_ACTIVE_TRAITS); // Params: {}
+export const wipeActiveSpecializations = createChainedAction(
+    createAction(WIPE_ACTIVE_SPECIALIZATIONS), // Params: {}
+    wipeAllActiveTraits
+);
+
+export const setLanguage = createChainedAction(
+    createAction(SET_LANGUAGE), // Params: { language }
+    fetchProfession
+);
+export const setGameMode = createAction(SET_GAMEMODE); // Params: { gameMode }
+export const setProfession = createChainedAction(
+    createAction(SET_PROFESSION), // Params: { profession }
+    [wipeActiveSpecializations, fetchProfession]
+);
+export const setRace = createAction(SET_RACE); // Params: { race }
+export const setSpecialization = createChainedAction(
+    createAction(SET_SPECIALIZATION), // Params: { specializationLine, specializationId }
+    wipeActiveTraits
+);
+export const setMinorTrait = createAction(SET_MINOR_TRAIT); // Params: { specializationLine, traitTier, traitId }
+export const setMajorTrait = createAction(SET_MAJOR_TRAIT); // Params: { specializationLine, traitTier, traitId }

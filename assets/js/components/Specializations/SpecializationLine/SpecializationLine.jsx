@@ -44,10 +44,12 @@ class SpecializationLine extends React.Component {
 
     renderTier(tier) {
         if (this.props.selectedSpecialization) {
-            return <TraitTier
-                specializationLine={this.props.specializationLine}
-                traitTier={tier}
-                onBackgroundClick={this.handleToggleSelectionPopup}/>;
+            return (
+                <TraitTier
+                    specializationLine={this.props.specializationLine}
+                    traitTier={tier}
+                    onBackgroundClick={this.handleToggleSelectionPopup}/>
+            );
         }
     }
 

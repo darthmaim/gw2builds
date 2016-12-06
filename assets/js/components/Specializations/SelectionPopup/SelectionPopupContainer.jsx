@@ -1,7 +1,7 @@
 'use strict';
 
 import { connect } from 'react-redux';
-import { setSpecialization, setMajorTrait } from '../../../actions';
+import { setSpecialization } from '../../../actions';
 import { getCoreSpecializationIds, getEliteSpecializationIds, getSelectedSpecializationId } from '../../../selectors/specializations';
 import SelectionPopup from './SelectionPopup';
 
@@ -14,9 +14,11 @@ const mapStateToProps = (state, ownProps) => ({
 });
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
-    onSpecializationChange: specId => {
-        dispatch(setSpecialization(ownProps.specializationLine, specId));
-        dispatch(setMajorTrait(ownProps.specializationLine, null, null));
+    onSpecializationChange: specializationId => {
+        dispatch(setSpecialization({
+            specializationLine: ownProps.specializationLine,
+            specializationId
+        }));
     }
 });
 

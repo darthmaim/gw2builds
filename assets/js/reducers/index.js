@@ -1,60 +1,57 @@
 'use strict';
 
 import fp from 'lodash/fp';
-import { handleAction } from 'redux-actions';
+import { handleAction, handleActions } from 'redux-actions';
 import { combineReducers } from 'redux';
 import * as actions from '../actions';
 
-function handleSimpleAction(type, defaultValue) {
-    return handleAction(type, (state, action) => action.payload, defaultValue);
+function handleSimpleAction(type, defaultValue, prop) {
+    return handleAction(type, (state, action) => prop ? action.payload[prop] : action.payload, defaultValue);
 }
 
-export const language = handleSimpleAction(actions.SET_LANGUAGE, 'en');
-export const gameMode = handleSimpleAction(actions.SET_GAMEMODE, null);
-export const profession = handleSimpleAction(actions.SET_PROFESSION, null);
-export const race = handleSimpleAction(actions.SET_RACE, 'none');
-export const activeSpecializations = handleAction(
-    actions.SET_SPECIALIZATION,
-    (state, action) => {
+export const language = handleSimpleAction(actions.SET_LANGUAGE, 'en', 'language');
+export const gameMode = handleSimpleAction(actions.SET_GAMEMODE, null, 'gameMode');
+export const profession = handleSimpleAction(actions.SET_PROFESSION, null, 'profession');
+export const race = handleSimpleAction(actions.SET_RACE, 'none', 'race');
+export const activeSpecializations = handleActions({
+    [actions.SET_SPECIALIZATION]: (state, action) => {
         const newState = state.slice();
-        newState[action.payload.lineId] = action.payload.specId;
+        newState[action.payload.specializationLine] = action.payload.specializationId;
         return newState;
     },
-    []
-);
+    [actions.WIPE_ACTIVE_SPECIALIZATIONS]: () => []
+}, []);
 export const activeMinorTraits = handleAction(
     actions.SET_MINOR_TRAIT,
     (state, action) => {
         const newState = state.slice();
-        const pos = (action.payload.lineId * 3) + action.payload.traitTier - 1;
+        const pos = (action.payload.specializationLine * 3) + action.payload.traitTier - 1;
         newState[pos] = action.payload.traitId;
         return newState;
     },
     []
 );
-export const activeMajorTraits = handleAction(
-    actions.SET_MAJOR_TRAIT,
-    (state, action) => {
+export const activeMajorTraits = handleActions({
+    [actions.SET_MAJOR_TRAIT]: (state, action) => {
         const newState = state.slice();
-        if (action.payload.traitTier) {
-            const pos = (action.payload.lineId * 3) + action.payload.traitTier - 1;
-            newState[pos] = action.payload.traitId;
-        } else {
-            newState[action.payload.lineId * 3] = null;
-            newState[(action.payload.lineId * 3) + 1] = null;
-            newState[(action.payload.lineId * 3) + 2] = null;
+        newState[(action.payload.specializationLine * 3) + action.payload.traitTier - 1] = action.payload.traitId;
+        return newState;
+    },
+    [actions.WIPE_ACTIVE_TRAITS]: (state, action) => {
+        const newState = state.slice();
+        const specializationLines = action.payload.specializationLine !== undefined && action.payload.specializationLine !== null ? [action.payload.specializationLine] : [0, 1, 2];
+        for (let line of specializationLines) {
+            for (let i = 0; i < 3; i++) {
+                delete newState[(line * 3) + i];
+            }
         }
         return newState;
     },
-    []
-);
+    [actions.WIPE_ALL_ACTIVE_TRAITS]: () => []
+}, []);
 
 // Grabs the specializations ids from the current profession
-export const specializationIds = handleAction(
-    actions.FETCH_PROFESSION,
-    (state, action) => action.payload.specializations,
-    []
-);
+export const specializationIds = handleSimpleAction(actions.FETCH_PROFESSION, [], 'specializations');
 // Grabs the specialization objects from the current profession
 export const specializations = handleSimpleAction(actions.FETCH_SPECIALIZATIONS, {});
 

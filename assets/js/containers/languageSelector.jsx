@@ -11,7 +11,7 @@ const mapStateToProps = state => ({
 
 const mapDispathToProps = dispatch => ({
     onLanguageChange: language => {
-        dispatch(setLanguage(language));
+        dispatch(setLanguage({ language }));
         applyEditorMode('language', language);
     }
 });

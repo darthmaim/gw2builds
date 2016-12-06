@@ -14,19 +14,19 @@ const mapStateToProps = state => ({
 
 const mapDispathToProps = dispatch => ({
     onLanguageChange: language => {
-        dispatch(setLanguage(language));
+        dispatch(setLanguage({ language }));
         applyEditorMode('language', language);
     },
     onGameModeChange: gameMode => {
-        dispatch(setGameMode(gameMode));
+        dispatch(setGameMode({ gameMode }));
         applyEditorMode('gameMode', gameMode);
     },
     onProfessionChange: profession => {
-        dispatch(setProfession(profession));
+        dispatch(setProfession({ profession }));
         applyEditorMode('profession', profession);
     },
     onRaceChange: race => {
-        dispatch(setRace(race));
+        dispatch(setRace({ race }));
         applyEditorMode('race', race);
     }
 });
