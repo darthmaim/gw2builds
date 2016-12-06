@@ -30,7 +30,7 @@ class Tooltip extends Component {
     }
 
     render() {
-        return (<div style={{display: 'initial'}} onMouseEnter={this.handleMouseEnter} onMouseOut={this.handleMouseOut}>
+        return (<div style={{ display: 'initial' }} onMouseEnter={this.handleMouseEnter} onMouseOut={this.handleMouseOut}>
             {this.props.children}
         </div>);
     }

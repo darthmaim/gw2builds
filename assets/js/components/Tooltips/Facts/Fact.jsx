@@ -1,24 +1,24 @@
 import React from 'react';
 import style from './fact.css';
 
-const getIcon = function(fact) {
-    switch(fact.type) {
+const getIcon = function (fact) {
+    switch (fact.type) {
         case 'PrefixedBuff':
             return (
                 <span>
-                    <img src={fact.prefix.icon} width={16} height={16} />
-                    <img src={fact.icon} width={16} height={16} />
+                    <img src={fact.prefix.icon} width={16} height={16}/>
+                    <img src={fact.icon} width={16} height={16}/>
                 </span>
             );
         default:
-            return (<img src={fact.icon} width={16} height={16} />);
+            return (<img src={fact.icon} width={16} height={16}/>);
     }
 };
 
-const getText = function(fact) {
-    switch(fact.type) {
+const getText = function (fact) {
+    switch (fact.type) {
         case 'AttributeAdjust':
-            if(fact.text) {
+            if (fact.text) {
                 return (<span>{fact.text}: +{fact.value} {fact.target !== 'None' && fact.target}</span>);
             }
             return (<span>{fact.target}: +{fact.value}</span>);
@@ -54,7 +54,7 @@ const getText = function(fact) {
     }
 };
 
-const Fact = ({fact}) => {
+const Fact = ({ fact }) => {
     return (
         <div className={style.fact}>
             {getIcon(fact)} {getText(fact)}
@@ -62,11 +62,30 @@ const Fact = ({fact}) => {
     );
 };
 
-Fact.propTypes = {
-    fact: React.PropTypes.shape({
+export const FactShape = React.PropTypes.shape({
+    icon: React.PropTypes.string.isRequired,
+    type: React.PropTypes.string.isRequired,
+    description: React.PropTypes.string,
+    distance: React.PropTypes.number,
+    duration: React.PropTypes.number,
+    field_type: React.PropTypes.string,
+    finisher_type: React.PropTypes.string,
+    percent: React.PropTypes.number,
+    source: React.PropTypes.string,
+    status: React.PropTypes.string,
+    target: React.PropTypes.string,
+    text: React.PropTypes.string,
+    value: React.PropTypes.number,
+    prefix: React.PropTypes.shape({
         icon: React.PropTypes.string.isRequired,
-        text: React.PropTypes.string,
+        description: React.PropTypes.string,
+        status: React.PropTypes.string,
+        text: React.PropTypes.string
     })
+});
+
+Fact.propTypes = {
+    fact: FactShape
 };
 
 export default Fact;

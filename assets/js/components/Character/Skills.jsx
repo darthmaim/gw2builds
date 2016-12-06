@@ -1,8 +1,7 @@
 import React from 'react';
 import { Tooltip } from '../Tooltips';
-import TraitTooltip from '../Tooltips/Traits/Tooltip';
 
-const TestTooltip = props => (<div>Tooltip!</div>);
+const TestTooltip = () => (<div>Tooltip!</div>);
 
 export default () => (<div>
     Welcome to Skills!

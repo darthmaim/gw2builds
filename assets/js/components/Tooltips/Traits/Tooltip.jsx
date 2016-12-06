@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Fact from '../Facts/Fact';
+import Fact, { FactShape } from '../Facts/Fact';
 import { Tooltip } from '../index';
 import style from './tooltip.css';
 
@@ -11,8 +11,10 @@ class TraitTooltip extends Component {
     }
 
     isTraitActive(traitId) {
-        return this.props.activeMajorTraits.indexOf(traitId) !== -1
-            || this.props.activeMinorTraits.indexOf(traitId) !== -1
+        const isActiveMajorTrait = this.props.activeMajorTraits.indexOf(traitId) !== -1;
+        const isActiveMinorTrait = this.props.activeMinorTraits.indexOf(traitId) !== -1;
+
+        return isActiveMajorTrait || isActiveMinorTrait;
     }
 
     render() {
@@ -24,20 +26,20 @@ class TraitTooltip extends Component {
     }
 
     renderTooltip() {
-        if(!this.props.trait) {
+        if (!this.props.trait) {
             return null;
         }
 
-        const { name, description, facts, traited_facts } = this.props.trait;
+        const { name, description, facts, traited_facts: traitedFacts } = this.props.trait;
         let activeFacts = [];
 
         // add all facts to the active ones
         (facts || []).forEach(fact => activeFacts.push(fact));
 
         // override active traits with traited facts if the required trait is active
-        (traited_facts || []).forEach(fact => {
-            if(this.isTraitActive(fact.requires_trait)) {
-                if(fact.overrides !== undefined) {
+        (traitedFacts || []).forEach(fact => {
+            if (this.isTraitActive(fact.requires_trait)) {
+                if (fact.overrides !== undefined) {
                     activeFacts[fact.overrides] = fact;
                 } else {
                     activeFacts.push(fact);
@@ -45,7 +47,6 @@ class TraitTooltip extends Component {
             }
         });
 
-        // TODO: parse description (includes <br>, <c=@reminder>, ...)
         return (
             <div className={style.tooltip}>
                 <div className={style.title}>
@@ -60,12 +61,13 @@ class TraitTooltip extends Component {
     }
 
     renderDescription(description) {
+        // TODO: parse <c=@reminder>, ... tags
         return { __html: description };
     }
 
     renderFact(fact, i) {
         return (
-            <Fact key={i} fact={fact} />
+            <Fact key={i} fact={fact}/>
         );
     }
 }
@@ -75,10 +77,8 @@ TraitTooltip.propTypes = {
     trait: React.PropTypes.shape({
         name: React.PropTypes.string.isRequired,
         description: React.PropTypes.string.isRequired,
-        facts: React.PropTypes.arrayOf(React.PropTypes.shape({
-            icon: React.PropTypes.string.isRequired,
-            text: React.PropTypes.string
-        }))
+        facts: React.PropTypes.arrayOf(FactShape),
+        traited_facts: React.PropTypes.arrayOf(FactShape)
     }),
     // bound from redux state
     activeMajorTraits: React.PropTypes.arrayOf(React.PropTypes.number).isRequired,

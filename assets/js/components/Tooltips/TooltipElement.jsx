@@ -1,7 +1,7 @@
 /* global window */
 
 import React, { Component } from 'react';
-import isFunction from 'lodash/isFunction'
+import isFunction from 'lodash/isFunction';
 
 import style from './tooltip.css';
 
@@ -58,7 +58,7 @@ class TooltipElement extends Component {
 
         const tooltip = isFunction(this.state.tooltip) ? this.state.tooltip() : this.state.tooltip;
 
-        if(!tooltip) {
+        if (!tooltip) {
             return null;
         }
 
