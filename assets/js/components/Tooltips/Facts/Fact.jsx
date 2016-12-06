@@ -4,7 +4,6 @@ import style from './fact.css';
 const getIcon = function(fact) {
     switch(fact.type) {
         case 'PrefixedBuff':
-            debugger;
             return (
                 <span>
                     <img src={fact.prefix.icon} width={16} height={16} />
@@ -19,7 +18,10 @@ const getIcon = function(fact) {
 const getText = function(fact) {
     switch(fact.type) {
         case 'AttributeAdjust':
-            return (<span>+{fact.value} {fact.target}</span>);
+            if(fact.text) {
+                return (<span>{fact.text}: +{fact.value} {fact.target !== 'None' && fact.target}</span>);
+            }
+            return (<span>{fact.target}: +{fact.value}</span>);
         case 'Buff':
         case 'PrefixedBuff':
             return (

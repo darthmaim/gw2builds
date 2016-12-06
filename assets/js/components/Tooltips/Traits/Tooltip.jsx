@@ -51,14 +51,16 @@ class TraitTooltip extends Component {
                 <div className={style.title}>
                     {name}
                 </div>
-                <div className={style.description}>
-                    {description}
-                </div>
+                <div className={style.description} dangerouslySetInnerHTML={this.renderDescription(description)}/>
                 <div className={style.facts}>
                     {activeFacts.map(this.renderFact)}
                 </div>
             </div>
         );
+    }
+
+    renderDescription(description) {
+        return { __html: description };
     }
 
     renderFact(fact, i) {
