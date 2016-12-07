@@ -8,6 +8,7 @@
     background-repeat: no-repeat;
     filter: brightness(0.5);
     transition: filter 200ms;
+    cursor: pointer;
 }
 
 .specializationIconSelected {
