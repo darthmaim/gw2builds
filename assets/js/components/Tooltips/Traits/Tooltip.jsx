@@ -39,10 +39,11 @@ class TraitTooltip extends Component {
         // override active traits with traited facts if the required trait is active
         (traitedFacts || []).forEach(fact => {
             if (this.isTraitActive(fact.requires_trait)) {
+                const traitedFact = Object.assign({}, fact, { isTraitedFact: true });
                 if (fact.overrides !== undefined) {
-                    activeFacts[fact.overrides] = fact;
+                    activeFacts[fact.overrides] = traitedFact;
                 } else {
-                    activeFacts.push(fact);
+                    activeFacts.push(traitedFact);
                 }
             }
         });

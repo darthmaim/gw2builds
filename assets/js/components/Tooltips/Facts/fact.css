@@ -2,6 +2,12 @@
     margin-top: 4px;
 }
 
+.traitedFact {
+    composes: fact;
+
+    color: #3023AE;
+}
+
 .fact img {
     vertical-align: -1px;
     margin-right: 4px;

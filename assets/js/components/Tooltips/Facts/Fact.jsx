@@ -56,7 +56,7 @@ const getText = function (fact) {
 
 const Fact = ({ fact }) => {
     return (
-        <div className={style.fact}>
+        <div className={fact.isTraitedFact ? style.traitedFact : style.fact}>
             {getIcon(fact)}{getText(fact)}
         </div>
     );
@@ -70,6 +70,7 @@ export const FactShape = React.PropTypes.shape({
     duration: React.PropTypes.number,
     field_type: React.PropTypes.string,
     finisher_type: React.PropTypes.string,
+    isTraitedFact: React.PropTypes.bool,
     percent: React.PropTypes.number,
     source: React.PropTypes.string,
     status: React.PropTypes.string,
