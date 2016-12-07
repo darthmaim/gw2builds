@@ -49,7 +49,7 @@ class SpecializationLine extends React.Component {
     renderEliteWeaponTrait() {
         if (this.props.selectedSpecialization && this.props.traits) {
             const specialization = this.props.specializations[this.props.selectedSpecialization];
-            if (specialization.weapon_trait) {
+            if (specialization && specialization.weapon_trait) {
                 const trait = this.props.traits[specialization.weapon_trait];
                 if (trait) {
                     return (
