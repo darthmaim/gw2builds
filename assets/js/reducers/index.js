@@ -13,6 +13,8 @@ export const language = handleSimpleAction(actions.SET_LANGUAGE, 'en', 'language
 export const gameMode = handleSimpleAction(actions.SET_GAMEMODE, null, 'gameMode');
 export const profession = handleSimpleAction(actions.SET_PROFESSION, null, 'profession');
 export const race = handleSimpleAction(actions.SET_RACE, 'none', 'race');
+
+// Holds the active/selected specializations as ids
 export const activeSpecializations = handleActions({
     [actions.SET_SPECIALIZATION]: (state, action) => {
         const newState = state.slice();
@@ -21,16 +23,22 @@ export const activeSpecializations = handleActions({
     },
     [actions.WIPE_ACTIVE_SPECIALIZATIONS]: () => []
 }, []);
-export const activeMinorTraits = handleAction(
-    actions.SET_MINOR_TRAIT,
-    (state, action) => {
+
+// Holds the active/selected minor traits as ids
+export const activeMinorTraits = handleActions({
+    [actions.SET_SPECIALIZATION]: (state, action) => {
         const newState = state.slice();
-        const pos = (action.payload.specializationLine * 3) + action.payload.traitTier - 1;
-        newState[pos] = action.payload.traitId;
+        const specializations = action.payload.getState().specializations;
+        const pos = action.payload.specializationLine * 3;
+        for (let i = 0; i < 3; i++) {
+            newState[pos + i] = specializations[action.payload.specializationId].minor_traits[i];
+        }
         return newState;
     },
-    []
-);
+    [actions.WIPE_ACTIVE_SPECIALIZATIONS]: () => []
+}, []);
+
+// Holds the active/selected major traits as ids
 export const activeMajorTraits = handleActions({
     [actions.SET_MAJOR_TRAIT]: (state, action) => {
         const newState = state.slice();

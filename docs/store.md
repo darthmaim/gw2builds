@@ -29,7 +29,6 @@ The store from `redux` contains the app state that is used globally in various p
   Contains all valid trait objects for the current `profession` (both minor and major traits). See GW2 API `/v2/traits`
   for the object format.
 - `activeMinorTraits` (array)  
-  **Note: This is planned and therefore not available yet!**  
   Contains all selected *minor* trait ids for the current build.
   Indexed from 0 to 8, where 0 is the tier 1 trait from the first selected specialization,
   and 8 is the tier 3 trait from the last selected specialization.
