@@ -53,9 +53,7 @@ class TraitTooltip extends Component {
                     {name}
                 </div>
                 <div className={style.description} dangerouslySetInnerHTML={this.renderDescription(description)}/>
-                <div className={style.facts}>
-                    {activeFacts.map(this.renderFact)}
-                </div>
+                {this.renderFacts(activeFacts)}
             </div>
         );
     }
@@ -63,6 +61,18 @@ class TraitTooltip extends Component {
     renderDescription(description) {
         // TODO: parse <c=@reminder>, ... tags
         return { __html: description };
+    }
+
+    renderFacts(facts) {
+        if(!facts || !facts.length) {
+            return;
+        }
+
+        return (
+            <div className={style.facts}>
+                {facts.map(this.renderFact)}
+            </div>
+        );
     }
 
     renderFact(fact, i) {
