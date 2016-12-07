@@ -13,6 +13,19 @@ export function handleSimpleAction(actionType, defaultState, prop) {
     return handleAction(actionType, (state, action) => prop ? action.payload[prop] : action.payload, defaultState);
 }
 
+/**
+ * Swaps two elements in an array in place.
+ * @param {*[]} array - The array.
+ * @param {number} posA - First position.
+ * @param {number} posB - Second position.
+ */
+export function swapElements(array, posA, posB) {
+    const temp = array[posA];
+    array[posA] = array[posB];
+    array[posB] = temp;
+}
+
 export default {
-    handleSimpleAction
+    handleSimpleAction,
+    swapElements
 };

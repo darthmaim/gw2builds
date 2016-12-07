@@ -12,7 +12,7 @@ class SelectionPopup extends React.Component {
 
     handleOnIconClick(id) {
         if (this.props.onSpecializationChange) {
-            this.props.onSpecializationChange(id);
+            this.props.onSpecializationChange(id, this.props.activeSpecializationIds, this.props.specializations);
             if (this.props.onWantsClose) {
                 // There is a small bug that causes the specialization to not update when the popup isn't closed.
                 // Now we want to close it after selecting a specialization anyway, so it doesn't matter much.
