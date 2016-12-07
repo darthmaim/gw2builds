@@ -57,7 +57,7 @@ const getText = function (fact) {
 const Fact = ({ fact }) => {
     return (
         <div className={style.fact}>
-            {getIcon(fact)} {getText(fact)}
+            {getIcon(fact)}{getText(fact)}
         </div>
     );
 };
