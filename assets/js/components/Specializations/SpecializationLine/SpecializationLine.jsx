@@ -1,10 +1,12 @@
 'use strict';
 
+import _ from 'lodash';
 import React from 'react';
 import onClickOutside from 'react-onclickoutside';
 import { SelectionPopupContainer as SelectionPopup } from '../SelectionPopup';
+import TraitTooltip from '../../../containers/traitTooltip';
 import style from './specializationLine.css';
-import { TraitTierContainer as TraitTier } from './index';
+import { TraitTierContainer as TraitTier, TraitMinorIcon } from './index';
 
 class SpecializationLine extends React.Component {
     constructor() {
@@ -37,9 +39,27 @@ class SpecializationLine extends React.Component {
     }
 
     handleToggleSelectionPopup() {
-        this.setState({
-            isSelectionPopupOpen: !this.state.isSelectionPopupOpen
-        });
+        if (this.props.specializations && _.values(this.props.specializations).length > 0) {
+            this.setState({
+                isSelectionPopupOpen: !this.state.isSelectionPopupOpen
+            });
+        }
+    }
+
+    renderEliteWeaponTrait() {
+        if (this.props.selectedSpecialization && this.props.traits) {
+            const specialization = this.props.specializations[this.props.selectedSpecialization];
+            if (specialization.weapon_trait) {
+                const trait = this.props.traits[specialization.weapon_trait];
+                if (trait) {
+                    return (
+                        <TraitTooltip trait={trait}>
+                            <TraitMinorIcon className={style.weaponIcon} imageUrl={trait.icon}/>
+                        </TraitTooltip>
+                    );
+                }
+            }
+        }
     }
 
     renderTier(tier) {
@@ -97,6 +117,7 @@ class SpecializationLine extends React.Component {
                         supportsElite={this.props.supportsElite}/> :
                     null
                 }
+                { this.renderEliteWeaponTrait() }
                 { this.renderTier(1) }
                 { this.renderTier(2) }
                 { this.renderTier(3) }

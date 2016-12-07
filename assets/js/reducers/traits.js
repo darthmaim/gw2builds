@@ -8,7 +8,14 @@ import { handleSimpleAction } from './utils';
 /** Reducer for the available trait ids for the current profession. */
 export const traitIds = handleAction(
     actions.FETCH_SPECIALIZATIONS,
-    (state, action) => fp.flatMapDeep(s => [s.minor_traits, s.major_traits])(action.payload),
+    (state, action) => fp.flatMapDeep(s => {
+        const traits = [s.minor_traits, s.major_traits];
+        if (s.weapon_trait) {
+            // Add the elite weapon trait
+            traits.push(s.weapon_trait);
+        }
+        return traits;
+    })(action.payload),
     []
 );
 

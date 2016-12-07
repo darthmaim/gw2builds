@@ -6,7 +6,8 @@ import SpecializationLine from './SpecializationLine';
 
 const mapStateToProps = (state, ownProps) => ({
     selectedSpecialization: getSelectedSpecializationId(state, ownProps),
-    specializations: state.specializations
+    specializations: state.specializations,
+    traits: state.traits
 });
 
 export default connect(mapStateToProps)(SpecializationLine);
