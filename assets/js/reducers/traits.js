@@ -51,7 +51,7 @@ export const activeMinorTraits = handleActions({
         }
         return newState;
     },
-    [actions.WIPE_ACTIVE_SPECIALIZATIONS]: () =>
+    [actions.WIPE_ALL_ACTIVE_SPECIALIZATIONS]: () =>
         // Wipe all the minor traits
         []
 }, []);

@@ -8,7 +8,7 @@ export const FETCH_SPECIALIZATIONS = 'FETCH_SPECIALIZATIONS';
 export const SET_SPECIALIZATION = 'SET_SPECIALIZATION';
 export const SWAP_ACTIVE_SPECIALIZATIONS = 'SWAP_ACTIVE_SPECIALIZATIONS';
 export const WIPE_ACTIVE_SPECIALIZATION = 'WIPE_ACTIVE_SPECIALIZATION';
-export const WIPE_ACTIVE_SPECIALIZATIONS = 'WIPE_ACTIVE_SPECIALIZATIONS';
+export const WIPE_ALL_ACTIVE_SPECIALIZATIONS = 'WIPE_ALL_ACTIVE_SPECIALIZATIONS';
 
 /** Action to fetch the current specializations from the GW2 API. */
 export const fetchSpecializations = createChainedAction(
@@ -35,8 +35,8 @@ export const wipeActiveSpecialization = createChainedAction(
 );
 
 /** Action to wipe the active specializations. Params: { } */
-export const wipeActiveSpecializations = createChainedAction(
-    createAction(WIPE_ACTIVE_SPECIALIZATIONS),
+export const wipeAllActiveSpecializations = createChainedAction(
+    createAction(WIPE_ALL_ACTIVE_SPECIALIZATIONS),
     wipeAllActiveTraits
 );
 
@@ -45,11 +45,11 @@ export default {
     SET_SPECIALIZATION,
     SWAP_ACTIVE_SPECIALIZATIONS,
     WIPE_ACTIVE_SPECIALIZATION,
-    WIPE_ACTIVE_SPECIALIZATIONS,
+    WIPE_ALL_ACTIVE_SPECIALIZATIONS,
 
     fetchSpecializations,
     setSpecialization,
     swapSpecializations,
     wipeActiveSpecialization,
-    wipeActiveSpecializations
+    wipeAllActiveSpecializations
 };
