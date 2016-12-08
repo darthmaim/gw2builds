@@ -48,6 +48,21 @@
 
 .backgroundIcon {
     composes: background;
+    height: 100%;
+}
+
+.specializationName {
+    position: absolute;
+    transform: translateX(-50%) rotate(-90deg);
+    left: 32px;
+    padding: 2px 5px;
+    max-width: 126px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.6);
+    color: white;
 }
 
 .weaponIcon {

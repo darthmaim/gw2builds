@@ -46,6 +46,38 @@ class SpecializationLine extends React.Component {
         }
     }
 
+    renderSpecializationLargeIcon() {
+        return (
+            <svg className={style.backgroundIcon} onClick={this.handleToggleSelectionPopup}>
+                <defs>
+                    <polygon
+                        id="specializationIconPath"
+                        points="165,161 119,134 73,160 73,214 119,240 165,214"/>
+                    <clipPath id="specializationIconClip">
+                        <use xlinkHref="#specializationIconPath"/>
+                    </clipPath>
+                </defs>
+                <g transform="translate(0,-120)">
+                    <use xlinkHref="#specializationIconPath" stroke="black" strokeWidth="4"/>
+                    <use xlinkHref="#specializationIconPath" stroke="white" strokeWidth="2"/>
+                    <image
+                        xlinkHref={this.getSpecializationBackgroundImage()}
+                        width="1024" height="256" clipPath="url(#specializationIconClip)"/>
+                </g>
+            </svg>
+        );
+    }
+
+    renderSpecializationName() {
+        if (this.props.selectedSpecialization && this.props.specializations) {
+            return (
+                <div className={style.specializationName}>
+                    {this.props.specializations[this.props.selectedSpecialization].name}
+                </div>
+            );
+        }
+    }
+
     renderEliteWeaponTrait() {
         if (this.props.selectedSpecialization && this.props.traits) {
             const specialization = this.props.specializations[this.props.selectedSpecialization];
@@ -87,24 +119,9 @@ class SpecializationLine extends React.Component {
                         <div className={style.backgroundEliteOverlay} onClick={this.handleToggleSelectionPopup}/> :
                         null
                     }
-                    <svg className={style.backgroundIcon} onClick={this.handleToggleSelectionPopup}>
-                        <defs>
-                            <polygon
-                                id="specializationIconPath"
-                                points="165,161 119,134 73,160 73,214 119,240 165,214"/>
-                            <clipPath id="specializationIconClip">
-                                <use xlinkHref="#specializationIconPath"/>
-                            </clipPath>
-                        </defs>
-                        <g transform="translate(0,-120)">
-                            <use xlinkHref="#specializationIconPath" stroke="black" strokeWidth="4"/>
-                            <use xlinkHref="#specializationIconPath" stroke="white" strokeWidth="2"/>
-                            <image
-                                xlinkHref={this.getSpecializationBackgroundImage()}
-                                width="1024" height="256" clipPath="url(#specializationIconClip)"/>
-                        </g>
-                    </svg>
+                    {this.renderSpecializationLargeIcon()}
                 </div>
+                {this.renderSpecializationName()}
                 <div className={style.arrow} onClick={this.handleToggleSelectionPopup}>
                     <svg width="7" height="12">
                         <polygon points="0,0 7,6 0,12"/>
@@ -117,10 +134,10 @@ class SpecializationLine extends React.Component {
                         supportsElite={this.props.supportsElite}/> :
                     null
                 }
-                { this.renderEliteWeaponTrait() }
-                { this.renderTier(1) }
-                { this.renderTier(2) }
-                { this.renderTier(3) }
+                {this.renderEliteWeaponTrait()}
+                {this.renderTier(1)}
+                {this.renderTier(2)}
+                {this.renderTier(3)}
             </div>
         );
     }
