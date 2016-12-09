@@ -4,7 +4,7 @@ import React from 'react';
 import style from './traitMinorIcon.css';
 
 const TraitMinorIcon = props => (
-    <svg className={props.className ? props.className : style.minorIcon}>
+    <svg className={props.classes ? props.classes : style.minorIcon}>
         <defs>
             <mask id="minorTraitMask">
                 <image xlinkHref="../img/trait-minor-mask.png" width="64" height="64"/>
@@ -15,6 +15,7 @@ const TraitMinorIcon = props => (
 );
 
 TraitMinorIcon.propTypes = {
+    classes: React.PropTypes.string,
     imageUrl: React.PropTypes.string
 };
 

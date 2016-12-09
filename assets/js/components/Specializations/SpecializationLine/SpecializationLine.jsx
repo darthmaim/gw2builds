@@ -86,7 +86,7 @@ class SpecializationLine extends React.Component {
                 if (trait) {
                     return (
                         <TraitTooltip trait={trait}>
-                            <TraitMinorIcon className={style.weaponIcon} imageUrl={trait.icon}/>
+                            <TraitMinorIcon classes={style.weaponIcon} imageUrl={trait.icon}/>
                         </TraitTooltip>
                     );
                 }
@@ -149,7 +149,8 @@ SpecializationLine.propTypes = {
 
     // Redux states
     selectedSpecialization: React.PropTypes.number,
-    specializations: React.PropTypes.object
+    specializations: React.PropTypes.object,
+    traits: React.PropTypes.object
 };
 
 export default onClickOutside(SpecializationLine);

@@ -46,7 +46,7 @@ export const activeMinorTraits = handleActions({
         // Wipe the minor traits from an individual specialization
         const newState = state.slice();
         const pos = action.payload.specializationLine * 3;
-        for (let i = 0; i < 3; i++ ) {
+        for (let i = 0; i < 3; i++) {
             delete newState[pos + i];
         }
         return newState;
