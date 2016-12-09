@@ -18,12 +18,12 @@ The data is encoded as follows:
 ### v0 (dev)
 The current in-development version and will be replaced with version 1 once the first format is finalized.
 
-#### Deserialized data structure
 Possible types:
+- uint8 - Unsigned 8-bit integer (also known as a byte)
 - uint32 - Unsigned 32-bit integer
 - enum - Enumerator (0 = null or none)
 
-Available values:
+#### Deserialized data structure
 - `build` (uint32)  
   The GW2 build id the build is made for.
 - `gameMode` (enum)  
@@ -69,12 +69,12 @@ Available values:
   - Bit 20-24 - reserved
   - Bit 25-29 - reserved
   - Bit 30-31 - empty
-- Byte 4+ (blob) - Multiple blocks
+- Byte 4+ - Multiple blocks
 
 ##### Blocks
 Every block is encoded as follows:
-- Byte 0 (uint32) - Block id
-- Byte 4+ (blob) - Block data
+- Byte 0 (uint8) - Block id
+- Byte 1+ (blob) - Block data
 
 The block data contains condensed sequential values.
 Every value inside a block is marked with a special data type that uses the maximum amount of bits needed in order to encode all values that use this data type.
