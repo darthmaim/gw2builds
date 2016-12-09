@@ -76,6 +76,8 @@ Every block is encoded as follows:
 - Byte 0 (uint8) - Block id
 - Byte 1+ - Block data
 
+If a block contains only zeroes, it is skipped for save space.
+
 The block data contains condensed sequential values.
 Every value inside a block is marked with a special data type that uses the maximum amount of bits needed in order to encode all values that use this data type.
 The amount of bits for these data types are stored at the start that can be seen above.
