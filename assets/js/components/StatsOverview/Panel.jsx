@@ -26,6 +26,7 @@ class Panel extends Component {
                     <Attribute className={style['attribute-condition-duration']} label={'Condition Duration'} value={this.props.conditionDuration} percent={true}/>
                     <Attribute className={style['attribute-boon-duration']} label={'Boon Duration'} value={this.props.boonDuration} percent={true}/>
                 </ul>
+                {this.props.url}
             </div>
         );
     }

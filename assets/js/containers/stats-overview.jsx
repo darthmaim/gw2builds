@@ -7,6 +7,7 @@ import {
     getAttributeProfession, getAttributeArmor, getAttributeHealth, getAttributeCriticalChance, getAttributeCriticalDamage,
     getAttributeHealingPower, getAttributeConditionDuration, getAttributeBoonDuration
 } from '../selectors/attributes';
+import { getUrl } from '../selectors/url';
 import { Panel } from '../components/StatsOverview';
 
 const mapStateToProps = state => ({
@@ -25,7 +26,8 @@ const mapStateToProps = state => ({
     criticalDamage: getAttributeCriticalDamage(state),
     healingPower: getAttributeHealingPower(state),
     conditionDuration: getAttributeConditionDuration(state),
-    boonDuration: getAttributeBoonDuration(state)
+    boonDuration: getAttributeBoonDuration(state),
+    url: getUrl(state)
 });
 
 const StatsOverview = connect(mapStateToProps)(Panel);
