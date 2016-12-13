@@ -193,7 +193,7 @@ Every block is encoded as follows:
 
 <table>
     <tr>
-        <th>Block</th>
+        <th>Block (id)</th>
         <th>Index</th>
         <th>Value</th>
         <th>Storage Type</th>
