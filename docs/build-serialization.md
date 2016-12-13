@@ -38,109 +38,109 @@ Possible types:
         <th>Description</th>
     </tr>
     <tr>
-        <td rowspan="4">`general`</td>
-        <td>`build`</td>
+        <td rowspan="4"><code>general</code></td>
+        <td><code>build</code></td>
         <td>uint32</td>
         <td>The GW2 build id the build is made for</td>
     </tr>
     <tr>
-        <td>`gameMode`</td>
+        <td><code>gameMode</code></td>
         <td>enum</td>
         <td>
             The game mode:<br>
-            *1 = pve*<br>
-            *2 = pvp*<br>
-            *3 = wvw*
+            <em>1 = pve</em><br>
+            <em>2 = pvp</em><br>
+            <em>3 = wvw</em>
         </td>
     </tr>
     <tr>
-        <td>`profession`</td>
+        <td><code>profession</code></td>
         <td>enum</td>
         <td>
             The profession:<br>
-            *1 = guardian*<br>
-            *2 = revenant*<br>
-            *3 = warrior*<br>
-            *4 = engineer*<br>
-            *5 = ranger*<br>
-            *6 = thief*<br>
-            *7 = elementalist*<br>
-            *8 = mesmer*<br>
-            *9 = necromancer*
+            <em>1 = guardian</em><br>
+            <em>2 = revenant</em><br>
+            <em>3 = warrior</em><br>
+            <em>4 = engineer</em><br>
+            <em>5 = ranger</em><br>
+            <em>6 = thief</em><br>
+            <em>7 = elementalist</em><br>
+            <em>8 = mesmer</em><br>
+            <em>9 = necromancer</em>
         </td>
     </tr>
     <tr>
-        <td>`race`</td>
+        <td><code>race</code></td>
         <td>enum</td>
         <td>
             The race:<br>
-            *1 = asura*<br>
-            *2 = charr*<br>
-            *3 = human*<br>
-            *4 = norn*<br>
-            *5 = sylvari*
+            <em>1 = asura</em><br>
+            <em>2 = charr</em><br>
+            <em>3 = human</em><br>
+            <em>4 = norn</em><br>
+            <em>5 = sylvari</em>
         </td>
     </tr>
     <tr>
-        <td rowspan="4">`specialization1`</td>
-        <td>`specialization`</td>
+        <td rowspan="4"><code>specialization1</code></td>
+        <td><code>specialization</code></td>
         <td>uint32</td>
         <td>The id for specialization 1</td>
     </tr>
     <tr>
-        <td>`majorTrait1`</td>
+        <td><code>majorTrait1</code></td>
         <td>uint32</td>
         <td>The id for major trait 1 of specialization 1</td>
     </tr>
     <tr>
-        <td>`majorTrait2`</td>
+        <td><code>majorTrait2</code></td>
         <td>uint32</td>
         <td>The id for major trait 2 of specialization 1</td>
     </tr>
     <tr>
-        <td>`majorTrait3`</td>
+        <td><code>majorTrait3</code></td>
         <td>uint32</td>
         <td>The id for major trait 3 of specialization 1</td>
     </tr>
     <tr>
-        <td rowspan="4">`specialization2`</td>
-        <td>`specialization`</td>
+        <td rowspan="4"><code>specialization2</code></td>
+        <td><code>specialization</code></td>
         <td>uint32</td>
         <td>The id for specialization 2</td>
     </tr>
     <tr>
-        <td>`majorTrait1`</td>
+        <td><code>majorTrait1</code></td>
         <td>uint32</td>
         <td>The id for major trait 1 of specialization 2</td>
     </tr>
     <tr>
-        <td>`majorTrait2`</td>
+        <td><code>majorTrait2</code></td>
         <td>uint32</td>
         <td>The id for major trait 2 of specialization 2</td>
     </tr>
     <tr>
-        <td>`majorTrait3`</td>
+        <td><code>majorTrait3</code></td>
         <td>uint32</td>
         <td>The id for major trait 3 of specialization 2</td>
     </tr>
     <tr>
-        <td rowspan="4">`specialization3`</td>
-        <td>`specialization`</td>
+        <td rowspan="4"><code>specialization3</code></td>
+        <td><code>specialization</code></td>
         <td>uint32</td>
         <td>The id for specialization 3</td>
     </tr>
     <tr>
-        <td>`majorTrait1`</td>
+        <td><code>majorTrait1</code></td>
         <td>uint32</td>
         <td>The id for major trait 1 of specialization 3</td>
     </tr>
     <tr>
-        <td>`majorTrait2`</td>
+        <td><code>majorTrait2</code></td>
         <td>uint32</td>
         <td>The id for major trait 2 of specialization 3</td>
     </tr>
     <tr>
-        <td>`majorTrait3`</td>
+        <td><code>majorTrait3</code></td>
         <td>uint32</td>
         <td>The id for major trait 3 of specialization 3</td>
     </tr>
@@ -199,87 +199,87 @@ Every block is encoded as follows:
         <th>Storage Type</th>
     </tr>
     <tr>
-        <td rowspan="4">`general` (1)</td>
+        <td rowspan="4"><code>general</code> (1)</td>
         <td>0</td>
-        <td>`build`</td>
+        <td><code>build</code></td>
         <td>build</td>
     </tr>
     <tr>
         <td>1</td>
-        <td>`gameMode`</td>
+        <td><code>gameMode</code></td>
         <td>enum</td>
     </tr>
     <tr>
         <td>2</td>
-        <td>`profession`</td>
+        <td><code>profession</code></td>
         <td>enum</td>
     </tr>
     <tr>
         <td>3</td>
-        <td>`race`</td>
+        <td><code>race</code></td>
         <td>enum</td>
     </tr>
     <tr>
-        <td rowspan="4">`specialization1` (11)</td>
+        <td rowspan="4"><code>specialization1</code> (11)</td>
         <td>0</td>
-        <td>`specialization`</td>
+        <td><code>specialization</code></td>
         <td>specialization</td>
     </tr>
     <tr>
         <td>1</td>
-        <td>`majorTrait1`</td>
+        <td><code>majorTrait1</code></td>
         <td>trait</td>
     </tr>
     <tr>
         <td>2</td>
-        <td>`majorTrait2`</td>
+        <td><code>majorTrait2</code></td>
         <td>trait</td>
     </tr>
     <tr>
         <td>3</td>
-        <td>`majorTrait3`</td>
+        <td><code>majorTrait3</code></td>
         <td>trait</td>
     </tr>
     <tr>
-        <td rowspan="4">`specialization2` (12)</td>
+        <td rowspan="4"><code>specialization2</code> (12)</td>
         <td>0</td>
-        <td>`specialization`</td>
+        <td><code>specialization</code></td>
         <td>specialization</td>
     </tr>
     <tr>
         <td>1</td>
-        <td>`majorTrait1`</td>
+        <td><code>majorTrait1</code></td>
         <td>trait</td>
     </tr>
     <tr>
         <td>2</td>
-        <td>`majorTrait2`</td>
+        <td><code>majorTrait2</code></td>
         <td>trait</td>
     </tr>
     <tr>
         <td>3</td>
-        <td>`majorTrait3`</td>
+        <td><code>majorTrait3</code></td>
         <td>trait</td>
     </tr>
     <tr>
-        <td rowspan="4">`specialization3` (13)</td>
+        <td rowspan="4"><code>specialization3</code> (13)</td>
         <td>0</td>
-        <td>`specialization`</td>
+        <td><code>specialization</code></td>
         <td>specialization</td>
     </tr>
     <tr>
         <td>1</td>
-        <td>`majorTrait1`</td>
+        <td><code>majorTrait1</code></td>
         <td>trait</td>
     </tr>
     <tr>
         <td>2</td>
-        <td>`majorTrait2`</td>
+        <td><code>majorTrait2</code></td>
         <td>trait</td>
     </tr>
     <tr>
         <td>3</td>
-        <td>`majorTrait3`</td>
+        <td><code>majorTrait3</code></td>
         <td>trait</td>
     </tr>
 </table>
