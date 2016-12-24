@@ -4,6 +4,8 @@
     color: white;
     display: flex;
 
+    user-select: none;
+
     background: #3023AE;
     background-image: linear-gradient(134deg, #3023AE, #C86DD7);
 }
@@ -17,21 +19,10 @@
 }
 
 .logo img {
-    vertical-align: middle;
+    margin: 10px;
 }
 
 .title {
     display: inline-block;
-
-    font-size: 26px;
-    padding-left: 16px;
-    font-weight: 300;
-}
-
-.title span {
-    font-family: 'PT Serif', serif;
-    font-weight: 400;
-    letter-spacing: 0.8px;
-    padding-right: 8px;
-    border-right: 1px solid rgba(255, 255, 255, .5);
+    margin: 10px 16px;
 }
