@@ -45,6 +45,7 @@
     "gulp-nodemon": "^2.2.1",
     "gulp-rev-all": "^0.9.7",
     "gulp-sourcemaps": "^2.1.1",
+    "gulp-to-ico": "^1.0.0",
     "gulp-uglify": "^2.0.0",
     "gulp-util": "^3.0.7",
     "gw2api-client": "^4.0.1",

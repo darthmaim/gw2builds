@@ -16,6 +16,7 @@ const
     runSequence = require('run-sequence'),
     source = require('vinyl-source-stream'),
     buffer = require('vinyl-buffer'),
+    ico = require('gulp-to-ico'),
 
     browserSync = require('browser-sync').create();
 
@@ -76,6 +77,12 @@ gulp.task('build:img', () => {
         .pipe(gulp.dest('./build/img/'));
 });
 
+gulp.task('build:favicon', () => {
+    return gulp.src('./assets/img/favicon/*.png')
+        .pipe(ico('favicon.ico'))
+        .pipe(gulp.dest('./public'));
+});
+
 gulp.task('revision', () => {
     return gulp.src('./build/**')
         .pipe(rev.revision({
@@ -110,7 +117,7 @@ gulp.task('browsersync-reload:assets', callback => {
 });
 
 gulp.task('browsersync-reload:img', callback => {
-    runSequence('build:img', 'revision', 'browsersync-reload', callback);
+    runSequence(['build:img', 'build:favicon'], 'revision', 'browsersync-reload', callback);
 });
 
 gulp.task('browsersync-reload', callback => {
@@ -138,5 +145,5 @@ gulp.task('dev', callback => {
 });
 
 gulp.task('default', callback => {
-    runSequence('clean', ['build:assets', 'build:img'], 'revision', callback);
+    runSequence('clean', ['build:assets', 'build:img', 'build:favicon'], 'revision', callback);
 });
