@@ -39,10 +39,10 @@ class Sidebar extends Component {
             <div className={style.sidebar}>
                 <div className={style.sections}>
                     <div className={style.marker} style={markerStyle}/>
-                    {this.renderSection(0, '/img/Character.svg')}
-                    {this.renderSection(1, '/img/Skills.svg')}
-                    {this.renderSection(2, '/img/Traits.svg')}
-                    {this.renderSection(3, '/img/Gear.svg')}
+                    {this.renderSection(0, '/img/sidebar/Character.svg')}
+                    {this.renderSection(1, '/img/sidebar/Skills.svg')}
+                    {this.renderSection(2, '/img/sidebar/Traits.svg')}
+                    {this.renderSection(3, '/img/sidebar/Gear.svg')}
                 </div>
                 <LanguageSelector/>
             </div>
