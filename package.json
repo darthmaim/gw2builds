@@ -5,7 +5,8 @@
   "scripts": {
     "test": "xo",
     "test-lib": "mocha lib/**/*.spec.js --compilers js:babel-core/register",
-    "gulp": "gulp",
+    "build": "gulp build",
+    "production": "NODE_ENV=production gulp build",
     "dev": "gulp dev",
     "start": "node bin/www"
   },

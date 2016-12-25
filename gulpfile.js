@@ -51,12 +51,6 @@ function bundle() {
         .transform('babelify')
 }
 
-gulp.task('clean', () => {
-    return del(['./public', './build']);
-});
-
-
-
 function buildAssets(bundle) {
     return bundle.on('error', logError)
         .pipe(source('app.js'))
@@ -66,6 +60,10 @@ function buildAssets(bundle) {
         .pipe(sourcemaps.write('./'))
         .pipe(gulp.dest('./build/js/'));
 }
+
+gulp.task('clean', () => {
+    return del(['./public', './build']);
+});
 
 gulp.task('build:assets', () => {
     return buildAssets(bundle().bundle());
@@ -93,7 +91,7 @@ gulp.task('revision', () => {
         .pipe(gulp.dest('./public/'));
 });
 
-gulp.task('nodemon', ['default'], callback => {
+gulp.task('nodemon', ['build'], callback => {
     let called = false;
     return nodemon({
         script: './bin/www',
@@ -109,7 +107,7 @@ gulp.task('nodemon', ['default'], callback => {
 });
 
 gulp.task('browsersync-reload:all', callback => {
-    runSequence('default', 'browsersync-reload', callback);
+    runSequence('build', 'browsersync-reload', callback);
 });
 
 gulp.task('browsersync-reload:assets', callback => {
@@ -144,6 +142,24 @@ gulp.task('dev', callback => {
     });
 });
 
-gulp.task('default', callback => {
+gulp.task('build', callback => {
     runSequence('clean', ['build:assets', 'build:img', 'build:favicon'], 'revision', callback);
 });
+
+gulp.task('help', () => {
+    gutil.log();
+    gutil.log(gutil.colors.underline('Usage'));
+    gutil.log('  gulp [TASK] [OPTIONS...]');
+    gutil.log();
+    gutil.log(gutil.colors.underline('Available tasks'));
+    gutil.log('  ' + gutil.colors.cyan('build') + '     Build all files.');
+    gutil.log('  ' + gutil.colors.cyan('dev') + '       Start development server and build files on changes.');
+    gutil.log();
+    gutil.log('  ' + gutil.colors.cyan('clean') + '     Clean all build files.');
+    gutil.log('  ' + gutil.colors.cyan('help') + '      Show this help.');
+    gutil.log('  ' + gutil.colors.cyan('nodemon') + '   Build all files then start the internal server.');
+    gutil.log('  ' + gutil.colors.cyan('revision') + '  Revision all assets.');
+    gutil.log();
+});
+
+gulp.task('default', ['help']);
