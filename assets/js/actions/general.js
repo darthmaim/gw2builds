@@ -4,6 +4,7 @@ import { createAction } from 'redux-actions';
 import { ucFirst } from 'change-case';
 import { createChainedAction, createApiAction } from './utils';
 import { fetchSpecializations, wipeAllActiveSpecializations } from './specializations';
+import { wipeAllWeapons } from './skills';
 
 export const FETCH_PROFESSION = 'FETCH_PROFESSION';
 export const SET_LANGUAGE = 'SET_LANGUAGE';
@@ -32,7 +33,7 @@ export const setGameMode = createAction(SET_GAMEMODE);
 /** Action to set the profession. Params: { profession } */
 export const setProfession = createChainedAction(
     createAction(SET_PROFESSION),
-    [wipeAllActiveSpecializations, fetchProfession]
+    [wipeAllActiveSpecializations, wipeAllWeapons, fetchProfession]
 );
 
 /** Action to set the race. Params: { race } */

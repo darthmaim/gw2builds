@@ -1,13 +1,28 @@
 'use strict';
 
 import { connect } from 'react-redux';
-import { getMainhandWeapons, getOffhandWeapons } from '../../../selectors/skills';
+import { getMainhandWeapons, getOffhandWeapons, getActiveMainhand, getActiveOffhand } from '../../../selectors/skills';
+import { setMainhandWeapon, setOffhandWeapon } from '../../../actions';
 import WeaponSelection from './WeaponSelection';
 
 const mapStateToProps = (state, ownProps) => ({
-    // selectedWeapon: getSelectedWeapon(state, ownProps),
-    mainHand: getMainhandWeapons(state, ownProps),
-    offHand: getOffhandWeapons(state, ownProps)
+    mainhandWeapons: getMainhandWeapons(state, ownProps),
+    offhandWeapons: getOffhandWeapons(state, ownProps),
+    activeMainhand: getActiveMainhand(state, ownProps),
+    activeOffhand: getActiveOffhand(state, ownProps)
 });
 
-export default connect(mapStateToProps)(WeaponSelection);
+const mapDispatchToProps = (dispatch, ownProps) => ({
+    onMainhandChange: weaponId => {
+        dispatch(setMainhandWeapon({
+            weaponId
+        }));
+    },
+    onOffhandChange: weaponId => {
+        dispatch(setOffhandWeapon({
+            weaponId
+        }));
+    }
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(WeaponSelection);
