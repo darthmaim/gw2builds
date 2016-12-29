@@ -24,11 +24,13 @@ const getText = function (fact) {
             return (<span>{fact.target}: +{fact.value}</span>);
         case 'Buff':
         case 'PrefixedBuff':
+            const status = fact.status || fact.prefix.status;
+            const description = fact.description || fact.prefix.description;
             return (
                 <span>
                     {fact.apply_count ? fact.apply_count + '× ' : ''}
-                    {fact.status}{fact.duration > 0 ? ' (' + fact.duration + 's)' : '' }
-                    {fact.description && <span>: <div className={style.description}>{fact.description}</div></span>}
+                    {status}{fact.duration > 0 ? ' (' + fact.duration + 's)' : '' }
+                    {description && <span>: <div className={style.description}>{description}</div></span>}
                 </span>
             );
         case 'BuffConversion':
