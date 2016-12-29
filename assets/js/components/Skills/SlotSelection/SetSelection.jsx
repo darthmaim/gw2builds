@@ -5,35 +5,31 @@ class SetSelection extends Component {
     constructor(props, context) {
         super(props, context);
 
-        this.state = {
-            index: 0
-        };
-
         this.handleClick = this.handleClick.bind(this);
     }
 
     handleClick(index) {
-        return () => this.setState({index});
+        return () => this.props.onWeaponSetChange(index);
     }
 
     render() {
-        const { index } = this.state;
+        const { activeWeaponSet } = this.props;
 
         return (
             <div>
-                <SetButton isActive={index === 0} onClick={this.handleClick(0)}>
+                <SetButton isActive={activeWeaponSet === 0} onClick={this.handleClick(0)}>
                     <img src="/img/weaponset/set1.svg"/>
                     Weaponset 1
                 </SetButton>
-                <SetButton isActive={index === 1} onClick={this.handleClick(1)}>
+                <SetButton isActive={activeWeaponSet === 1} onClick={this.handleClick(1)}>
                     <img src="/img/weaponset/set2.svg"/>
                     Weaponset 2
                 </SetButton>
-                <SetButton isActive={index === 2} onClick={this.handleClick(2)}>
+                <SetButton isActive={activeWeaponSet === 2} onClick={this.handleClick(2)}>
                     <img src="/img/weaponset/water1.svg"/>
                     Underwater 1
                 </SetButton>
-                <SetButton isActive={index === 3} onClick={this.handleClick(3)}>
+                <SetButton isActive={activeWeaponSet === 3} onClick={this.handleClick(3)}>
                     <img src="/img/weaponset/water2.svg"/>
                     Underwater 2
                 </SetButton>
@@ -41,5 +37,10 @@ class SetSelection extends Component {
         )
     }
 }
+
+SetSelection.propTypes = {
+    activeWeaponSet: React.PropTypes.number.isRequired,
+    onWeaponSetChange: React.PropTypes.func.isRequired
+};
 
 export default SetSelection;

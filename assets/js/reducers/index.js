@@ -4,6 +4,7 @@ import { combineReducers } from 'redux';
 import { language, gameMode, profession, race } from './general';
 import { specializations, specializationIds, activeSpecializations } from './specializations';
 import { traits, traitIds, activeMinorTraits, activeMajorTraits } from './traits';
+import { weapons, activeWeaponSet } from './skills';
 
 export default combineReducers({
     // General
@@ -21,5 +22,9 @@ export default combineReducers({
     traitIds,
     traits,
     activeMinorTraits,
-    activeMajorTraits
+    activeMajorTraits,
+
+    // Skills
+    weapons,
+    activeWeaponSet
 });
