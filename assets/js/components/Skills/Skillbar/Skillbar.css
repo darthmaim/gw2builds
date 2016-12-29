@@ -1,0 +1,18 @@
+.skill {
+    width: 64px;
+    height: 64px;
+
+    border: 1px solid #000;
+
+    display: inline-block;
+}
+
+.skill + .skill {
+    border-left: 0;
+}
+
+.empty {
+    composes: skill;
+
+    background: #666;
+}

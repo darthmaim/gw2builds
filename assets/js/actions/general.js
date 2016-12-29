@@ -4,7 +4,7 @@ import { createAction } from 'redux-actions';
 import { ucFirst } from 'change-case';
 import { createChainedAction, createApiAction } from './utils';
 import { fetchSpecializations, wipeAllActiveSpecializations } from './specializations';
-import { wipeAllWeapons } from './skills';
+import { wipeAllWeapons, fetchSkills } from './skills';
 
 export const FETCH_PROFESSION = 'FETCH_PROFESSION';
 export const SET_LANGUAGE = 'SET_LANGUAGE';
@@ -18,7 +18,7 @@ export const fetchProfession = createChainedAction(
         FETCH_PROFESSION,
         (state, api) => api.professions().get(ucFirst(state.profession))
     ),
-    fetchSpecializations
+    [fetchSpecializations, fetchSkills]
 );
 
 /** Action to set the language. Params: { language } */
