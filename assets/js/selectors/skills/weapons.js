@@ -40,6 +40,11 @@ export const getActiveOffhand = createSelector(
     (weapons, set) => weapons[set]
 );
 
+export const getIsTwoHandedActive = createSelector(
+    [getActiveMainhand],
+    weapon => is2Handed(null, weapon)
+);
+
 export default {
-    getMainhandWeapons, getOffhandWeapons, getActiveMainhand, getActiveOffhand
+    getMainhandWeapons, getOffhandWeapons, getActiveMainhand, getActiveOffhand, getIsTwoHandedActive
 };

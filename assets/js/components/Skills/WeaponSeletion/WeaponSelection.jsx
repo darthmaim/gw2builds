@@ -12,11 +12,12 @@ const renderSelect = (weapons, value, onChange) => (
 
 const WeaponSelection = ({
     mainhandWeapons, onMainhandChange, activeMainhand,
-    offhandWeapons, onOffhandChange, activeOffhand
+    offhandWeapons, onOffhandChange, activeOffhand,
+    twoHanded
 }) => (
     <div>
         {renderSelect(mainhandWeapons, activeMainhand, onMainhandChange)}
-        {renderSelect(offhandWeapons, activeOffhand, onOffhandChange)}
+        {!twoHanded && renderSelect(offhandWeapons, activeOffhand, onOffhandChange)}
     </div>
 );
 
@@ -27,6 +28,7 @@ WeaponSelection.propTypes = {
     onOffhandChange: React.PropTypes.func.isRequired,
     activeMainhand: React.PropTypes.string,
     activeOffhand: React.PropTypes.string,
+    twoHanded: React.PropTypes.bool.isRequired
 };
 
 export default WeaponSelection;
