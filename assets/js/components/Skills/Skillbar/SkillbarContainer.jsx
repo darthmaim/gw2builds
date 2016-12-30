@@ -7,7 +7,9 @@ const mapStateToProps = (state, ownProps) => ({
     offhand: getActiveOffhand(state, ownProps),
     isTwoHanded: getIsTwoHandedActive(state, ownProps),
     weapons: state.weapons,
-    skills: state.skills
+    skills: state.skills,
+    activeMajorTraits: state.activeMajorTraits,
+    activeMinorTraits: state.activeMinorTraits
 });
 
 const mapDispatchToProps = (dispatch, ownProps) => ({

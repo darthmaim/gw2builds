@@ -5,10 +5,18 @@
     border: 1px solid #000;
 
     display: inline-block;
+    overflow: hidden;
 }
 
 .skill + .skill {
     border-left: 0;
+}
+
+.skill > img {
+    width: 133.333333%;
+    height: 133.333333%;
+
+    transform: translate(-12.5%, -12.5%);
 }
 
 .empty {
