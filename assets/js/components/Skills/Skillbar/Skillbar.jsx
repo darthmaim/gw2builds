@@ -10,6 +10,9 @@ class Skillbar extends Component {
     }
 
     getSkillInSlot({ mainhand, offhand, isTwoHanded, weapons, skills }) {
+        // hardcode this temporary for testing...
+        const attunement = 'Water';
+
         return index => {
             const getFromMainhand = index < 3 || isTwoHanded;
 
@@ -22,13 +25,16 @@ class Skillbar extends Component {
             const slotName = `Weapon_${index + 1}`;
 
             // find all matching skills for the requested slot
-            const skillsForSlot = weapons[weapon].skills.filter(skill => skill.slot === slotName);
-
-            // for now take the first one, later we have to filter attunement, ...
-            const skillId = skillsForSlot[0].id;
+            const skillsForSlot = weapons[weapon].skills
+                // filter slot
+                .filter(skill => skill.slot === slotName)
+                // filter offhand (thief)
+                .filter(skill => !skill.offhand || skill.offhand === offhand || skill.offhand === 'Nothing' && !offhand)
+                // filter attunement (elementalist)
+                .filter(skill => !skill.attunement || skill.attunement === attunement);
 
             // return the skill object
-            return skills[skillId];
+            return skills[skillsForSlot[0].id];
         };
     }
 
