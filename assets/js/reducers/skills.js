@@ -8,7 +8,11 @@ import forEach  from 'lodash/forEach'
 /** Reducer for the available weapons for the selected profession */
 export const weapons = handleSimpleAction(actions.FETCH_PROFESSION, {}, 'weapons');
 
-export const activeWeaponSet = handleSimpleAction(actions.SET_WEAPON_SET, 0, 'activeWeaponSet');
+export const activeWeaponSet = handleActions({
+    [actions.SET_WEAPON_SET]: (state, action) => action.payload.activeWeaponSet,
+    [actions.WIPE_ALL_WEAPONS]: () => 0,
+    [actions.SET_PROFESSION]: () => 0,
+}, 0);
 
 export const activeMainhandWeapons = handleActions({
     [actions.SET_MAINHAND_WEAPON]: (state, action) => {

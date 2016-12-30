@@ -13,26 +13,24 @@ class SetSelection extends Component {
     }
 
     render() {
-        const { activeWeaponSet } = this.props;
+        const { activeWeaponSet, profession } = this.props;
+
+        const hasMultipleWeaponsets = profession !== 'elementalist' && profession !== 'engineer';
+        const sets = [
+            { name: 'Weaponset 1', icon: '/img/weaponset/set1.svg', enabled: true },
+            { name: 'Weaponset 2', icon: '/img/weaponset/set2.svg', enabled: hasMultipleWeaponsets },
+            { name: 'Underwater 1', icon: '/img/weaponset/water1.svg', enabled: true },
+            { name: 'Underwater 2', icon: '/img/weaponset/water2.svg', enabled: hasMultipleWeaponsets },
+        ];
 
         return (
             <div>
-                <SetButton isActive={activeWeaponSet === 0} onClick={this.handleClick(0)}>
-                    <img src="/img/weaponset/set1.svg"/>
-                    Weaponset 1
-                </SetButton>
-                <SetButton isActive={activeWeaponSet === 1} onClick={this.handleClick(1)}>
-                    <img src="/img/weaponset/set2.svg"/>
-                    Weaponset 2
-                </SetButton>
-                <SetButton isActive={activeWeaponSet === 2} onClick={this.handleClick(2)}>
-                    <img src="/img/weaponset/water1.svg"/>
-                    Underwater 1
-                </SetButton>
-                <SetButton isActive={activeWeaponSet === 3} onClick={this.handleClick(3)}>
-                    <img src="/img/weaponset/water2.svg"/>
-                    Underwater 2
-                </SetButton>
+                {sets.map((set, index) => set.enabled && (
+                    <SetButton key={index} isActive={activeWeaponSet === index} onClick={this.handleClick(index)}>
+                        <img src={set.icon}/>
+                        {set.name}
+                    </SetButton>
+                ))}
             </div>
         )
     }
@@ -40,7 +38,8 @@ class SetSelection extends Component {
 
 SetSelection.propTypes = {
     activeWeaponSet: React.PropTypes.number.isRequired,
-    onWeaponSetChange: React.PropTypes.func.isRequired
+    onWeaponSetChange: React.PropTypes.func.isRequired,
+    profession: React.PropTypes.string.isRequired
 };
 
 export default SetSelection;
