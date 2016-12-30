@@ -30,9 +30,8 @@ export const activeSpecializations = handleActions({
         delete newState[action.payload.specializationLine];
         return newState;
     },
-    [actions.WIPE_ALL_ACTIVE_SPECIALIZATIONS]: () =>
-        // Wipe all the specializations
-        []
+    [actions.WIPE_ALL_ACTIVE_SPECIALIZATIONS]: () => [],
+    [actions.SET_PROFESSION]: () => []
 }, []);
 
 export default {

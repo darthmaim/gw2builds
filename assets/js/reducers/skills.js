@@ -2,7 +2,7 @@
 
 import { handleActions, handleAction } from 'redux-actions';
 import * as actions from '../actions';
-import { handleSimpleAction, swapElements } from './utils';
+import { handleSimpleAction } from './utils';
 import forEach  from 'lodash/forEach'
 
 /** Reducer for the available weapons for the selected profession */
@@ -16,7 +16,8 @@ export const activeMainhandWeapons = handleActions({
         newState[action.payload.getState().activeWeaponSet] = action.payload.weaponId;
         return newState;
     },
-    [actions.WIPE_ALL_WEAPONS]: () => [null, null, null, null]
+    [actions.WIPE_ALL_WEAPONS]: () => [null, null, null, null],
+    [actions.SET_PROFESSION]: () => [null, null, null, null]
 }, [null, null, null, null]);
 
 
@@ -26,7 +27,8 @@ export const activeOffhandWeapons = handleActions({
         newState[action.payload.getState().activeWeaponSet] = action.payload.weaponId;
         return newState;
     },
-    [actions.WIPE_ALL_WEAPONS]: () => [null, null, null, null]
+    [actions.WIPE_ALL_WEAPONS]: () => [null, null, null, null],
+    [actions.SET_PROFESSION]: () => [null, null, null, null]
 }, [null, null, null, null]);
 
 /** Reducer for the available skill ids for the current profession. */

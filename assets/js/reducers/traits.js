@@ -51,9 +51,8 @@ export const activeMinorTraits = handleActions({
         }
         return newState;
     },
-    [actions.WIPE_ALL_ACTIVE_SPECIALIZATIONS]: () =>
-        // Wipe all the minor traits
-        []
+    [actions.WIPE_ALL_ACTIVE_SPECIALIZATIONS]: () => [],
+    [actions.FETCH_PROFESSION]: () => []
 }, []);
 
 /** Reducer for active/selected major traits as ids. */
