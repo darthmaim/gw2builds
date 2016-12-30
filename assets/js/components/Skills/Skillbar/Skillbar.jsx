@@ -73,8 +73,16 @@ Skillbar.propTypes = {
     mainhand: React.PropTypes.string,
     offhand: React.PropTypes.string,
     isTwoHanded: React.PropTypes.bool,
-    weapons: React.PropTypes.array.isRequired,
-    skills: React.PropTypes.array.isRequired,
+    weapons: React.PropTypes.objectOf(React.PropTypes.shape({
+        skills: React.PropTypes.arrayOf(React.PropTypes.shape({
+            id: React.PropTypes.number.isRequired,
+            slot: React.PropTypes.string.isRequired,
+            attunement: React.PropTypes.string,
+            offhand: React.PropTypes.string
+        })).isRequired,
+        specialization: React.PropTypes.number
+    })).isRequired,
+    skills: React.PropTypes.object.isRequired,
     activeMajorTraits: React.PropTypes.arrayOf(React.PropTypes.number).isRequired,
     activeMinorTraits: React.PropTypes.arrayOf(React.PropTypes.number).isRequired,
 };
