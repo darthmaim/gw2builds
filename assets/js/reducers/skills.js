@@ -17,7 +17,7 @@ export const activeWeaponSet = handleActions({
 export const activeMainhandWeapons = handleActions({
     [actions.SET_MAINHAND_WEAPON]: (state, action) => {
         const newState = state.slice();
-        newState[action.payload.getState().activeWeaponSet] = action.payload.weaponId;
+        newState[action.payload.activeWeaponSet] = action.payload.weaponId;
         return newState;
     },
     [actions.WIPE_ALL_WEAPONS]: () => [null, null, null, null],
@@ -28,7 +28,7 @@ export const activeMainhandWeapons = handleActions({
 export const activeOffhandWeapons = handleActions({
     [actions.SET_OFFHAND_WEAPON]: (state, action) => {
         const newState = state.slice();
-        newState[action.payload.getState().activeWeaponSet] = action.payload.weaponId;
+        newState[action.payload.activeWeaponSet] = action.payload.weaponId;
         return newState;
     },
     [actions.WIPE_ALL_WEAPONS]: () => [null, null, null, null],

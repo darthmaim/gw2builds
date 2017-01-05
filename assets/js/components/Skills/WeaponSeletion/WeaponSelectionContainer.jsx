@@ -10,20 +10,23 @@ const mapStateToProps = (state, ownProps) => ({
     offhandWeapons: getOffhandWeapons(state, ownProps),
     activeMainhand: getActiveMainhand(state, ownProps),
     activeOffhand: getActiveOffhand(state, ownProps),
-    twoHanded: getIsTwoHandedActive(state, ownProps)
+    twoHanded: getIsTwoHandedActive(state, ownProps),
+    activeWeaponSet: state.activeWeaponSet
 });
 
-const mapDispatchToProps = (dispatch, ownProps) => ({
+const mergeProps = (mappedProps, {dispatch}, ownProps) => Object.assign({}, mappedProps, ownProps, {
     onMainhandChange: weaponId => {
         dispatch(setMainhandWeapon({
-            weaponId
+            weaponId,
+            activeWeaponSet: mappedProps.activeWeaponSet
         }));
     },
     onOffhandChange: weaponId => {
         dispatch(setOffhandWeapon({
-            weaponId
+            weaponId,
+            activeWeaponSet: mappedProps.activeWeaponSet
         }));
     }
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(WeaponSelection);
+export default connect(mapStateToProps, null, mergeProps)(WeaponSelection);

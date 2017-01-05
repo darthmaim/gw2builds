@@ -27,7 +27,7 @@ export const activeMinorTraits = handleActions({
     [actions.SET_SPECIALIZATION]: (state, action) => {
         // Set the minor traits from an individual specialization
         const newState = state.slice();
-        const specializations = action.payload.getState().specializations;
+        const specializations = action.payload.specializations;
         const pos = action.payload.specializationLine * 3;
         for (let i = 0; i < 3; i++) {
             newState[pos + i] = specializations[action.payload.specializationId].minor_traits[i];

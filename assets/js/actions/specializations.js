@@ -1,7 +1,7 @@
 'use strict';
 
 import { createAction } from 'redux-actions';
-import { createStateAwareAction, createChainedAction, createApiAction, convertToIndexed } from './utils';
+import { createChainedAction, createApiAction, convertToIndexed } from './utils';
 import { fetchTraits, wipeActiveTraits, wipeAllActiveTraits } from './traits';
 
 export const FETCH_SPECIALIZATIONS = 'FETCH_SPECIALIZATIONS';
@@ -21,7 +21,7 @@ export const fetchSpecializations = createChainedAction(
 
 /** Action to set a specific specialization line. Params: { specializationLine, specializationId } */
 export const setSpecialization = createChainedAction(
-    createStateAwareAction(SET_SPECIALIZATION),
+    createAction(SET_SPECIALIZATION),
     wipeActiveTraits
 );
 
