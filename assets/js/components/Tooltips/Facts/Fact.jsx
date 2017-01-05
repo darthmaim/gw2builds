@@ -78,7 +78,7 @@ export const FactShape = React.PropTypes.shape({
     status: React.PropTypes.string,
     target: React.PropTypes.string,
     text: React.PropTypes.string,
-    value: React.PropTypes.number,
+    value: React.PropTypes.oneOfType([React.PropTypes.number, React.PropTypes.bool]),
     prefix: React.PropTypes.shape({
         icon: React.PropTypes.string.isRequired,
         description: React.PropTypes.string,

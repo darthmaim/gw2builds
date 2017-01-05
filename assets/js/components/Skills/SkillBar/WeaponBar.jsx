@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import SkillTooltip from '../../Tooltips/Skills/Tooltip';
-import style from './Skillbar.css';
+import style from './WeaponBar.css';
 
-class Skillbar extends Component {
+class WeaponBar extends Component {
     constructor(props, context) {
         super(props, context);
 
@@ -69,7 +69,7 @@ class Skillbar extends Component {
     }
 }
 
-Skillbar.propTypes = {
+WeaponBar.propTypes = {
     mainhand: React.PropTypes.string,
     offhand: React.PropTypes.string,
     isTwoHanded: React.PropTypes.bool,
@@ -87,4 +87,4 @@ Skillbar.propTypes = {
     activeMinorTraits: React.PropTypes.arrayOf(React.PropTypes.number).isRequired,
 };
 
-export default Skillbar;
+export default WeaponBar;

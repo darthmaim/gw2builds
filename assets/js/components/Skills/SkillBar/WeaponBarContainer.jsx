@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { getActiveMainhand, getActiveOffhand, getIsTwoHandedActive } from '../../../selectors/skills';
-import Skillbar from './Skillbar';
+import WeaponBar from './WeaponBar';
 
 const mapStateToProps = (state, ownProps) => ({
     mainhand: getActiveMainhand(state, ownProps),
@@ -15,4 +15,4 @@ const mapStateToProps = (state, ownProps) => ({
 const mapDispatchToProps = (dispatch, ownProps) => ({
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Skillbar);
+export default connect(mapStateToProps, mapDispatchToProps)(WeaponBar);
