@@ -35,6 +35,18 @@ export const activeOffhandWeapons = handleActions({
     [actions.SET_PROFESSION]: () => [null, null, null, null]
 }, [null, null, null, null]);
 
+
+export const activeMechanics = handleActions({
+    [actions.SET_MECHANIC]: (state, action) => {
+        const newState = state.slice();
+        newState[action.payload.activeWeaponSet] = action.payload.mechanic;
+        return newState;
+    },
+    [actions.WIPE_ALL_WEAPONS]: () => [0, 0, 0, 0],
+    [actions.SET_PROFESSION]: () => [0, 0, 0, 0]
+}, [0, 0, 0, 0]);
+
+
 /** Reducer for the available skill ids for the current profession. */
 export const skillIds = handleAction(actions.FETCH_PROFESSION, (state, action) => {
     const skills = [];
@@ -57,5 +69,6 @@ export default {
     activeWeaponSet,
     activeMainhandWeapons,
     activeOffhandWeapons,
+    activeMechanics,
     skillIds
 };

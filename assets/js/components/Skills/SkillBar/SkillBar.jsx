@@ -1,4 +1,12 @@
 import React from 'react';
-import { WeaponBarContainer as WeaponBar } from './index';
+import {
+    MechanicBarContainer as MechanicBar,
+    WeaponBarContainer as WeaponBar
+} from './index';
 
-export default (props) => (<WeaponBar/>);
+export default (props) => (
+    <div>
+        <MechanicBar/>
+        <WeaponBar/>
+    </div>
+);
