@@ -11,6 +11,28 @@ The store from `redux` contains the app state that is used globally in various p
 - `race` (string)  
   Options: *none*, *asura*, *charr*, *human*, *norn*, *sylvari*.
 
+## Skills
+### Skills
+- `skillIds` (array)  
+  Contains all valid skill ids for the current `profession`.
+- `skills` (object, indexed by `skill.id`)  
+  Contains all valid skill objects for the current `profession`.  
+  See GW2 API `/v2/skills` for the object format.
+
+### Weapons
+- `activeMainhandWeapons` (array)  
+  Contains the selected mainhand weapons (string), indexed by weapon set.
+- `activeOffhandWeapons` (array)  
+  Contains the selected offhand weapons (string), indexed by weapon set.
+- `activeWeaponSet` (integer)  
+  Contains the currently selected weapon set.
+- `weapons` (array)  
+  Contains the available weapons for the current `profession`.  
+  See GW2 API `/v2/profession.weapons` for the object format.
+### Mechanic
+- `activeMechanics` (array)  
+  Contains the selected mechanic (i.e. attunement) (number, 0-4), indexed by weapon set.
+
 ## Specializations
 ### Specializations
 - `specializationIds` (array)  
