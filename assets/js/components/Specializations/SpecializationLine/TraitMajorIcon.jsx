@@ -22,7 +22,7 @@ class TraitMajorIcon extends React.Component {
                 onClick={this.handleSelected}>
                 <defs>
                     <mask id="majorTraitMask">
-                        <image xlinkHref="../img/trait-major-mask.png" width="64" height="64"/>
+                        <image xlinkHref="../img/specializations/trait-major-mask.png" width="64" height="64"/>
                     </mask>
                 </defs>
                 <image
