@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import SkillTooltip from '../../Tooltips/Skills/Tooltip';
 import SkillIcon from '../Icon';
-import style from './WeaponBar.css';
 
 class WeaponBar extends Component {
     constructor(props, context) {
