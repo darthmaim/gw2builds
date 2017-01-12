@@ -74,6 +74,7 @@
     "extends": "xo-react",
     "rules": {
       "linebreak-style": "off",
+      "no-div-regex": "off",
       "no-negated-condition": "off",
       "object-curly-spacing": [
         "error",
