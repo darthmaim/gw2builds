@@ -1,0 +1,32 @@
+.skill {
+    width: 64px;
+    height: 64px;
+
+    border: 1px solid #000;
+
+    display: inline-block;
+    overflow: hidden;
+}
+
+.skill + .skill {
+    border-left: 0;
+}
+
+.skill > img {
+    width: 133.333333%;
+    height: 133.333333%;
+
+    transform: translate(-12.5%, -12.5%);
+}
+
+.empty {
+    composes: skill;
+
+    background: #666;
+}
+
+.loading {
+    composes: skill;
+
+    background: #555;
+}

@@ -6,7 +6,10 @@ import { getActiveMechanic } from '../../../selectors/skills/mechanic';
 const mapStateToProps = (state, ownProps) => ({
     profession: state.profession,
     activeWeaponSet: state.activeWeaponSet,
-    mechanic: getActiveMechanic(state, ownProps)
+    mechanic: getActiveMechanic(state, ownProps),
+    skills: state.skills,
+    activeMajorTraits: state.activeMajorTraits,
+    activeMinorTraits: state.activeMinorTraits
 });
 
 const mergeProps = (mappedProps, {dispatch}, ownProps) => Object.assign({}, mappedProps, ownProps, {

@@ -1,12 +1,27 @@
 import React from 'react';
+import SkillIcon from '../Icon';
+import SkillTooltip from '../../Tooltips/Skills/Tooltip';
+import style from './MechanicBar.css';
+
+const renderSkillIcon = (skill, index, active, onMechanicChange, activeMajorTraits, activeMinorTraits) => {
+    const isActive = index === active;
+    const className = isActive ? style.active : style.inactive;
+
+    return (
+        <button key={index} onClick={onMechanicChange.bind(this, index)} className={className}>
+            <SkillTooltip key={index} activeMajorTraits={activeMajorTraits} activeMinorTraits={activeMinorTraits} skill={skill}>
+                <SkillIcon skill={skill} size={32}/>
+            </SkillTooltip>
+        </button>
+    )
+};
 
 const Professions = {
-    elementalist: ({onMechanicChange, mechanic}) => (
+    elementalist: ({onMechanicChange, mechanic, skills, activeMajorTraits, activeMinorTraits}) => (
         <div>
-            <button style={{fontWeight: mechanic === 0 ? 'bold' : 'normal'}} onClick={onMechanicChange.bind(this, 0)}>[F1]</button>
-            <button style={{fontWeight: mechanic === 1 ? 'bold' : 'normal'}} onClick={onMechanicChange.bind(this, 1)}>[F2]</button>
-            <button style={{fontWeight: mechanic === 2 ? 'bold' : 'normal'}} onClick={onMechanicChange.bind(this, 2)}>[F3]</button>
-            <button style={{fontWeight: mechanic === 3 ? 'bold' : 'normal'}} onClick={onMechanicChange.bind(this, 3)}>[F4]</button>
+            {[5492, 5493, 5494, 5495].map((id, index) =>
+                renderSkillIcon(skills[id], index, mechanic, onMechanicChange, activeMajorTraits, activeMinorTraits)
+            )}
         </div>
     )
 };

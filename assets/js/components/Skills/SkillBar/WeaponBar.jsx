@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import SkillTooltip from '../../Tooltips/Skills/Tooltip';
+import SkillIcon from '../Icon';
 import style from './WeaponBar.css';
 
 class WeaponBar extends Component {
@@ -52,7 +53,7 @@ class WeaponBar extends Component {
     renderSkill(skill, index) {
         if(!skill) {
             return (
-                <div className={style.empty} key={index}/>
+                <SkillIcon.Empty key={index}/>
             );
         }
 
@@ -60,9 +61,7 @@ class WeaponBar extends Component {
 
         return (
             <SkillTooltip key={index} activeMajorTraits={activeMajorTraits} activeMinorTraits={activeMinorTraits} skill={skill}>
-                <div className={style.skill}>
-                    <img src={skill.icon}/>
-                </div>
+                <SkillIcon skill={skill}/>
             </SkillTooltip>
         );
     }

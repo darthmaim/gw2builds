@@ -1,0 +1,15 @@
+.button {
+    composes: input from '../../Inputs/Inputs.css';
+
+    padding: 0;
+}
+
+.active {
+    composes: button;
+}
+
+.inactive {
+    composes: button;
+
+    filter: grayscale(1);
+}
