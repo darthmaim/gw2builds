@@ -1,7 +1,7 @@
 'use strict';
 
 import { createSelector } from 'reselect';
-import { serialize, deserialize } from '../../../lib/build-serialization';
+import { serialize } from 'gw2be-build-string';
 
 const getGameMode = state => state.gameMode;
 const getProfession = state => state.profession;

@@ -4,7 +4,6 @@
   "private": true,
   "scripts": {
     "test": "xo",
-    "test-lib": "mocha lib/**/*.spec.js --compilers js:babel-core/register",
     "build": "gulp build",
     "production": "NODE_ENV=production gulp build",
     "dev": "gulp dev",
@@ -24,7 +23,6 @@
     "serve-favicon": "^2.3.0"
   },
   "devDependencies": {
-    "atob": "^2.0.3",
     "autoprefixer": "^6.5.1",
     "babel-plugin-lodash": "^3.2.9",
     "babel-plugin-react-intl": "^2.2.0",
@@ -33,7 +31,6 @@
     "babelify": "^7.3.0",
     "browser-sync": "^2.17.5",
     "browserify": "^13.1.0",
-    "btoa": "^1.1.2",
     "chai": "^3.5.0",
     "change-case": "^3.0.0",
     "cssnano": "^3.8.0",
@@ -50,7 +47,7 @@
     "gulp-uglify": "^2.0.0",
     "gulp-util": "^3.0.7",
     "gw2api-client": "^4.0.1",
-    "jbinary": "^2.1.3",
+    "gw2be-build-string": "file:lib/gw2be-build-string",
     "lodash": "^4.16.4",
     "mocha": "^3.2.0",
     "modular-css": "^0.28.2",

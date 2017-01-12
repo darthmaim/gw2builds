@@ -1,0 +1,61 @@
+{
+  "name": "gw2be-build-string",
+  "version": "0.1.0",
+  "description": "Build string serializer/deserializer used by GW2BE",
+  "main": "index.js",
+  "scripts": {
+    "lint": "xo",
+    "test": "mocha test/**/*.spec.js --compilers js:babel-core/register",
+    "cover": "babel-node node_modules/istanbul/lib/cli cover node_modules/mocha/bin/_mocha -- test/**/*.spec.js"
+  },
+  "author": "Archomeda",
+  "license": "MIT",
+  "devDependencies": {
+    "babel-cli": "^6.18.0",
+    "babel-plugin-lodash": "^3.2.10",
+    "babel-preset-es2015": "^6.18.0",
+    "chai": "^3.5.0",
+    "istanbul": "^1.1.0-alpha",
+    "mocha": "^3.2.0",
+    "xo": "^0.17.1"
+  },
+  "dependencies": {
+    "atob": "^2.0.3",
+    "btoa": "^1.1.2",
+    "change-case": "^3.0.0",
+    "jbinary": "^2.1.3",
+    "lodash": "^4.17.2"
+  },
+  "browserify": {
+    "transform": [
+      "babelify"
+    ]
+  },
+  "xo": {
+    "space": 4,
+    "rules": {
+      "linebreak-style": "off",
+      "no-div-regex": "off",
+      "no-negated-condition": "off",
+      "object-curly-spacing": [
+        "error",
+        "always"
+      ],
+      "react/jsx-closing-bracket-location": [
+        "error",
+        "after-props"
+      ],
+      "react/no-unused-prop-types": "warn",
+      "unicorn/filename-case": "off"
+    },
+    "settings": {
+      "import/resolver": {
+        "node": {
+          "extensions": [
+            ".js"
+          ]
+        }
+      }
+    }
+  }
+}
