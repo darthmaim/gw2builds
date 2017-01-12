@@ -25,7 +25,7 @@ const getText = function (fact) {
         case 'Buff':
         case 'PrefixedBuff':
             const status = fact.status || fact.prefix.status;
-            const description = fact.description || fact.prefix.description;
+            const description = fact.description || (fact.prefix && fact.prefix.description);
             return (
                 <span>
                     {fact.apply_count ? fact.apply_count + '× ' : ''}
