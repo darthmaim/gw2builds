@@ -1,5 +1,4 @@
 # ![gw2efficiency Build Editor](docs/github-banner.png)
-
 *This is a dependency module for the **gw2efficiency Build Editor**.
 Please report all issues regarding the editor in the [main repository](https://github.com/darthmaim/gw2builds).*
 
@@ -9,14 +8,12 @@ If there is a specific issue with this module, you can create an issue here.
 - [Build string serialization](docs/serialization.md)
 
 ## Installation
-
 **TODO:** This module is currently part of the main repository and not yet available on npmjs.com. 
 ```
 npm install gw2be-build-string
 ```
 
 ## Usage
-
 ### Serialize a build
 The build is defined as an object that is structured as one of the versioned deserialized
 data structures that can be found in the [serialization documentation](docs/serialization.md).
@@ -29,9 +26,9 @@ import { serialize, deserialize } from 'gw2be-build-string';
 const build = {
     general: {
         build: 70000, // GW2 client build 70000
-        gameMode: 1, // PvE
-        profession: 2, // Revenant
-        race: 2 // Charr
+        gameMode: 'pve',
+        profession: 'revenant',
+        race: 'charr'
     },
     specialization1: { // First specialization
         specialization: 14, // Corruption
@@ -50,7 +47,6 @@ const deserializedBuild = deserialize(serializedBuild); // Gives back the origin
 ```
 
 ## Tests
-
 ```
 npm test
 npm run lint
@@ -58,5 +54,4 @@ npm run cover
 ```
 
 ## License
-
 This module for **gw2efficiency Build Editor** is licensed under the [MIT License](LICENSE).
