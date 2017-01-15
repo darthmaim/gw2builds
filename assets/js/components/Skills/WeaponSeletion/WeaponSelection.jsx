@@ -23,7 +23,7 @@ const WeaponSelection = ({
 }) => (
     <div>
         {renderSelect(mainhandWeapons, activeMainhand, onMainhandChange, activeSpecializations)}
-        {!twoHanded && renderSelect(offhandWeapons, activeOffhand, onOffhandChange)}
+        {!twoHanded && renderSelect(offhandWeapons, activeOffhand, onOffhandChange, activeSpecializations)}
     </div>
 );
 
