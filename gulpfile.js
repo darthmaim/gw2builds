@@ -17,6 +17,7 @@ const
     source = require('vinyl-source-stream'),
     buffer = require('vinyl-buffer'),
     ico = require('gulp-to-ico'),
+    babel = require('gulp-babel'),
 
     browserSync = require('browser-sync').create();
 
@@ -81,6 +82,15 @@ gulp.task('build:favicon', () => {
         .pipe(gulp.dest('./public'));
 });
 
+gulp.task('build:service-worker', () => {
+    return gulp.src('./assets/js/sw.js')
+        .pipe(sourcemaps.init())
+        .pipe(babel())
+        .pipe(!isDev() ? uglify({mangle: {toplevel: true}}) : gutil.noop()).on('error', logError)
+        .pipe(sourcemaps.write('./'))
+        .pipe(gulp.dest('./public'));
+});
+
 gulp.task('revision', () => {
     return gulp.src('./build/**')
         .pipe(rev.revision({
@@ -138,12 +148,13 @@ gulp.task('dev', callback => {
 
         gulp.watch('./assets/img/**', ['browsersync-reload:img']);
         gulp.watch('./views/**', ['browsersync-reload']);
+        gulp.watch('./assets/js/sw.js', ['build:service-worker']);
         callback();
     });
 });
 
 gulp.task('build', callback => {
-    runSequence('clean', ['build:assets', 'build:img', 'build:favicon'], 'revision', callback);
+    runSequence('clean', ['build:assets', 'build:img', 'build:favicon', 'build:service-worker'], 'revision', callback);
 });
 
 gulp.task('help', () => {
