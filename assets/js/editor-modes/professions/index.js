@@ -1,23 +1,23 @@
 'use strict';
 
-const guardian = {};
-const revenant = {};
-const warrior = {};
-const engineer = {};
-const ranger = {};
-const thief = {};
-const elementalist = {};
-const mesmer = {};
-const necromancer = {};
+const Guardian = {};
+const Revenant = {};
+const Warrior = {};
+const Engineer = {};
+const Ranger = {};
+const Thief = {};
+const Elementalist = {};
+const Mesmer = {};
+const Necromancer = {};
 
 export {
-    guardian,
-    revenant,
-    warrior,
-    engineer,
-    ranger,
-    thief,
-    elementalist,
-    mesmer,
-    necromancer
+    Guardian,
+    Revenant,
+    Warrior,
+    Engineer,
+    Ranger,
+    Thief,
+    Elementalist,
+    Mesmer,
+    Necromancer
 };

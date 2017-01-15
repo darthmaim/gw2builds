@@ -1,17 +1,17 @@
 'use strict';
 
 const none = {};
-const asura = {};
-const charr = {};
-const human = {};
-const norn = {};
-const sylvari = {};
+const Asura = {};
+const Charr = {};
+const Human = {};
+const Norn = {};
+const Sylvari = {};
 
 export {
     none,
-    asura,
-    charr,
-    human,
-    norn,
-    sylvari
+    Asura,
+    Charr,
+    Human,
+    Norn,
+    Sylvari
 };

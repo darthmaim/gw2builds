@@ -24,26 +24,26 @@ class Panel extends React.Component {
 
     static get professions() {
         return [
-            { option: 'guardian', content: <FormattedMessage {...tl.guardian}/> },
-            { option: 'revenant', content: <FormattedMessage {...tl.revenant}/> },
-            { option: 'warrior', content: <FormattedMessage {...tl.warrior}/> },
-            { option: 'engineer', content: <FormattedMessage {...tl.engineer}/> },
-            { option: 'ranger', content: <FormattedMessage {...tl.ranger}/> },
-            { option: 'thief', content: <FormattedMessage {...tl.thief}/> },
-            { option: 'elementalist', content: <FormattedMessage {...tl.elementalist}/> },
-            { option: 'mesmer', content: <FormattedMessage {...tl.mesmer}/> },
-            { option: 'necromancer', content: <FormattedMessage {...tl.necromancer}/> }
+            { option: 'Guardian', content: <FormattedMessage {...tl.guardian}/> },
+            { option: 'Revenant', content: <FormattedMessage {...tl.revenant}/> },
+            { option: 'Warrior', content: <FormattedMessage {...tl.warrior}/> },
+            { option: 'Engineer', content: <FormattedMessage {...tl.engineer}/> },
+            { option: 'Ranger', content: <FormattedMessage {...tl.ranger}/> },
+            { option: 'Thief', content: <FormattedMessage {...tl.thief}/> },
+            { option: 'Elementalist', content: <FormattedMessage {...tl.elementalist}/> },
+            { option: 'Mesmer', content: <FormattedMessage {...tl.mesmer}/> },
+            { option: 'Necromancer', content: <FormattedMessage {...tl.necromancer}/> }
         ].filter(i => getEditorModeConfiguration('professions')[i.option]);
     }
 
     static get races() {
         return [
             { option: 'none', content: <FormattedMessage {...tl.noRace}/> },
-            { option: 'asura', content: <FormattedMessage {...tl.asura}/> },
-            { option: 'charr', content: <FormattedMessage {...tl.charr}/> },
-            { option: 'human', content: <FormattedMessage {...tl.human}/> },
-            { option: 'norn', content: <FormattedMessage {...tl.norn}/> },
-            { option: 'sylvari', content: <FormattedMessage {...tl.sylvari}/> }
+            { option: 'Asura', content: <FormattedMessage {...tl.asura}/> },
+            { option: 'Charr', content: <FormattedMessage {...tl.charr}/> },
+            { option: 'Human', content: <FormattedMessage {...tl.human}/> },
+            { option: 'Norn', content: <FormattedMessage {...tl.norn}/> },
+            { option: 'Sylvari', content: <FormattedMessage {...tl.sylvari}/> }
         ].filter(i => getEditorModeConfiguration('races')[i.option]);
     }
 

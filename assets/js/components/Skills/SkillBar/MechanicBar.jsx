@@ -17,7 +17,7 @@ const renderSkillIcon = (skill, index, active, onMechanicChange, activeMajorTrai
 };
 
 const Professions = {
-    elementalist: ({onMechanicChange, mechanic, skills, activeMajorTraits, activeMinorTraits}) => (
+    Elementalist: ({onMechanicChange, mechanic, skills, activeMajorTraits, activeMinorTraits}) => (
         <div>
             {[5492, 5493, 5494, 5495].map((id, index) =>
                 renderSkillIcon(skills[id], index, mechanic, onMechanicChange, activeMajorTraits, activeMinorTraits)

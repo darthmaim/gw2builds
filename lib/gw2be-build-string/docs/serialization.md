@@ -58,15 +58,15 @@ Possible types:
         <td>enum</td>
         <td>
             The profession:<br>
-            <em>1 = guardian</em><br>
-            <em>2 = revenant</em><br>
-            <em>3 = warrior</em><br>
-            <em>4 = engineer</em><br>
-            <em>5 = ranger</em><br>
-            <em>6 = thief</em><br>
-            <em>7 = elementalist</em><br>
-            <em>8 = mesmer</em><br>
-            <em>9 = necromancer</em>
+            <em>1 = Guardian</em><br>
+            <em>2 = Revenant</em><br>
+            <em>3 = Warrior</em><br>
+            <em>4 = Engineer</em><br>
+            <em>5 = Ranger</em><br>
+            <em>6 = Thief</em><br>
+            <em>7 = Elementalist</em><br>
+            <em>8 = Mesmer</em><br>
+            <em>9 = Necromancer</em>
         </td>
     </tr>
     <tr>
@@ -74,11 +74,11 @@ Possible types:
         <td>enum</td>
         <td>
             The race:<br>
-            <em>1 = asura</em><br>
-            <em>2 = charr</em><br>
-            <em>3 = human</em><br>
-            <em>4 = norn</em><br>
-            <em>5 = sylvari</em>
+            <em>1 = Asura</em><br>
+            <em>2 = Charr</em><br>
+            <em>3 = Human</em><br>
+            <em>4 = Norn</em><br>
+            <em>5 = Sylvari</em>
         </td>
     </tr>
     <tr>

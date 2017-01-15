@@ -1,7 +1,6 @@
 'use strict';
 
 import { createAction } from 'redux-actions';
-import { ucFirst } from 'change-case';
 import { createChainedAction, createApiAction } from './utils';
 import { fetchSpecializations } from './specializations';
 import { fetchSkills } from './skills';
@@ -16,7 +15,7 @@ export const SET_RACE = 'SET_RACE';
 export const fetchProfession = createChainedAction(
     createApiAction(
         FETCH_PROFESSION,
-        (state, api) => api.professions().get(ucFirst(state.profession))
+        (state, api) => api.professions().get(state.profession)
     ),
     [fetchSpecializations, fetchSkills]
 );

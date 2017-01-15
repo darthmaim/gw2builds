@@ -15,7 +15,7 @@ class SetSelection extends Component {
     render() {
         const { activeWeaponSet, profession } = this.props;
 
-        const hasMultipleWeaponsets = profession !== 'elementalist' && profession !== 'engineer';
+        const hasMultipleWeaponsets = profession !== 'Elementalist' && profession !== 'Engineer';
         const sets = [
             { name: 'Weaponset 1', icon: '/img/weaponset/set1.svg', enabled: true },
             { name: 'Weaponset 2', icon: '/img/weaponset/set2.svg', enabled: hasMultipleWeaponsets },

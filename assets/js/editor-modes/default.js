@@ -16,24 +16,24 @@ const defaultMode = {
     },
     professionsEnabled: true,
     professions: {
-        guardian: true,
-        revenant: true,
-        warrior: true,
-        engineer: true,
-        ranger: true,
-        thief: true,
-        elementalist: true,
-        mesmer: true,
-        necromancer: true
+        Guardian: true,
+        Revenant: true,
+        Warrior: true,
+        Engineer: true,
+        Ranger: true,
+        Thief: true,
+        Elementalist: true,
+        Mesmer: true,
+        Necromancer: true
     },
     racesEnabled: true,
     races: {
         none: true,
-        asura: true,
-        charr: true,
-        human: true,
-        norn: true,
-        sylvari: true
+        Asura: true,
+        Charr: true,
+        Human: true,
+        Norn: true,
+        Sylvari: true
     }
 };
 
