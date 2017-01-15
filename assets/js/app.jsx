@@ -24,6 +24,12 @@ const initialState = {
 let store = createStore(editor, initialState, applyMiddleware(thunk.withExtraArgument(Gw2Api), promiseMiddleware));
 
 class Editor extends React.Component {
+    componentDidUpdate() {
+        window.document.title = this.props.profession
+            ? `${this.props.profession} | Build Editor - gw2efficiency`
+            : 'Build Editor - gw2efficiency';
+    }
+
     render() {
         return (
             <IntlProvider locale={this.props.locale}>
@@ -36,7 +42,7 @@ class Editor extends React.Component {
 }
 
 Editor = connect(state => {
-    return { locale: state.language };
+    return { locale: state.language, profession: state.profession };
 })(Editor);
 
 render(
