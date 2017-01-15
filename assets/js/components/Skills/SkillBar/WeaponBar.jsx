@@ -50,7 +50,7 @@ class WeaponBar extends Component {
     }
 
     renderSkill(skill, index) {
-        if(!skill) {
+        if(skill === null) {
             return (
                 <SkillIcon.Empty key={index}/>
             );
