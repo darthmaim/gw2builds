@@ -41,7 +41,10 @@ Possible types:
         <td rowspan="4"><code>general</code></td>
         <td><code>build</code></td>
         <td>uint32</td>
-        <td>The GW2 build id the build is made for</td>
+        <td>
+            The GW2 build id the build is made for<br>
+            <em>Valid values<sup>1</sup>: 65536 – 131072</em>
+        </td>
     </tr>
     <tr>
         <td><code>gameMode</code></td>
@@ -145,6 +148,9 @@ Possible types:
         <td>The id for major trait 3 of specialization 3</td>
     </tr>
 </table>
+
+<sup>1</sup> The serializer converts the build id to a `uint16` to save space.
+Make sure that the build id is within the specified boundaries.
 
 #### Serialized data structure
  Byte | Type   | Description
