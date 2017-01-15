@@ -2,10 +2,16 @@ import React from 'react';
 import { Select } from './../../Inputs';
 import map from 'lodash/map';
 
-const renderSelect = (weapons, value, onChange) => (
+// a weapon is available if it doesn't require a specialization
+// or if the specialization is active.
+const isWeaponAvailable = (weapon, activeSpecializations) =>
+    !weapon.specialization || activeSpecializations.some(id => id === weapon.specialization);
+
+
+const renderSelect = (weapons, value, onChange, activeSpecializations) => (
     <Select value={value} onChange={onChange} placeholder="None">
         {map(weapons, (weapon, name) => (
-            <option key={name} value={name}>{name}</option>
+            <option key={name} value={name} disabled={!isWeaponAvailable(weapon, activeSpecializations)}>{name}</option>
         ))}
     </Select>
 );
@@ -13,10 +19,10 @@ const renderSelect = (weapons, value, onChange) => (
 const WeaponSelection = ({
     mainhandWeapons, onMainhandChange, activeMainhand,
     offhandWeapons, onOffhandChange, activeOffhand,
-    twoHanded
+    twoHanded, activeSpecializations
 }) => (
     <div>
-        {renderSelect(mainhandWeapons, activeMainhand, onMainhandChange)}
+        {renderSelect(mainhandWeapons, activeMainhand, onMainhandChange, activeSpecializations)}
         {!twoHanded && renderSelect(offhandWeapons, activeOffhand, onOffhandChange)}
     </div>
 );

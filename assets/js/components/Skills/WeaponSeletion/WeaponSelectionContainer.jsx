@@ -11,7 +11,8 @@ const mapStateToProps = (state, ownProps) => ({
     activeMainhand: getActiveMainhand(state, ownProps),
     activeOffhand: getActiveOffhand(state, ownProps),
     twoHanded: getIsTwoHandedActive(state, ownProps),
-    activeWeaponSet: state.activeWeaponSet
+    activeWeaponSet: state.activeWeaponSet,
+    activeSpecializations: state.activeSpecializations
 });
 
 const mergeProps = (mappedProps, {dispatch}, ownProps) => Object.assign({}, mappedProps, ownProps, {
