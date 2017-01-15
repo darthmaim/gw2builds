@@ -27,8 +27,8 @@ const build = {
     general: {
         build: 70000, // GW2 client build 70000
         gameMode: 'pve',
-        profession: 'revenant',
-        race: 'charr'
+        profession: 'Revenant',
+        race: 'Charr'
     },
     specialization1: { // First specialization
         specialization: 14, // Corruption
