@@ -59,11 +59,11 @@ export const skillIds = handleAction(actions.FETCH_PROFESSION, (state, action) =
         forEach(training.track, skill => skill.type === 'Skill' && skills.push(skill.skill_id));
     });
 
-    // /v2/professions isn't returning all skill ids yet (for example the first heal skill, attunements, ...)
-    // so we have to hardcode them for now until lye adds them to the api (arenanet/api-cdi#302)
-    if(action.payload.id === 'Elementalist') {
-        [5492, 5493, 5494, 5495].forEach(attunement => skills.push(attunement))
+    if (action.payload.id === 'Elementalist') {
+        forEach(action.payload.attunements, attunement => skills.push(attunement.swap));
     }
+
+    skills.push(action.payload.healing_skill_id);
 
     return skills;
 }, []);

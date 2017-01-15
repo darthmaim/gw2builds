@@ -7,13 +7,15 @@ import { createStore, applyMiddleware } from 'redux';
 import promiseMiddleware from 'redux-promise';
 import thunk from 'redux-thunk';
 import { IntlProvider } from 'react-intl';
+import apiClient from 'gw2api-client';
+import cacheMemory from 'gw2api-client/build/cache/memory';
+import extendApiClient from 'gw2api-extension';
+import extendApiData from 'gw2be-api-extension-data';
 import editor from './reducers';
 import { TooltipContext } from './components/Tooltips';
 import { Layout } from './components/App';
-import apiClient from 'gw2api-client';
-import cacheMemory from 'gw2api-client/build/cache/memory';
 
-const Gw2Api = apiClient().cacheStorage(cacheMemory());
+const Gw2Api = extendApiClient(apiClient(), extendApiData).cacheStorage(cacheMemory());
 const initialState = {
     language: 'en',
     race: 'none'

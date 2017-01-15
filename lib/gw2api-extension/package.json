@@ -1,0 +1,44 @@
+{
+  "name": "gw2api-extension",
+  "version": "0.1.0",
+  "description": "Extended gw2api-client functionality to support manual data",
+  "main": "index.js",
+  "scripts": {
+    "lint": "xo",
+    "test": "mocha test/**/*.spec.js --compilers js:babel-core/register",
+    "cover": "babel-node node_modules/istanbul/lib/cli cover node_modules/mocha/bin/_mocha -- test/**/*.spec.js"
+  },
+  "author": "Archomeda",
+  "license": "MIT",
+  "devDependencies": {
+    "babel-cli": "^6.18.0",
+    "babel-preset-es2015": "^6.18.0",
+    "chai": "^3.5.0",
+    "istanbul": "^1.1.0-alpha",
+    "lets-fetch": "^2.1.0",
+    "mocha": "^3.2.0",
+    "xo": "^0.17.1"
+  },
+  "dependencies": {
+    "gw2api-client": "^4.2.4",
+    "lodash": "^4.17.4"
+  },
+  "browserify": {
+    "transform": [
+      "babelify"
+    ]
+  },
+  "xo": {
+    "space": 4,
+    "rules": {
+      "linebreak-style": "off",
+      "no-div-regex": "off",
+      "no-negated-condition": "off",
+      "object-curly-spacing": [
+        "error",
+        "always"
+      ],
+      "unicorn/filename-case": "off"
+    }
+  }
+}
