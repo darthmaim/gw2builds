@@ -71,22 +71,6 @@
  * Icons
  * ************************************/
 
-.language-en {
-    background-image: url(../img/en.png);
-}
-
-.language-de {
-    background-image: url(../img/de.png);
-}
-
-.language-fr {
-    background-image: url(../img/fr.png);
-}
-
-.language-es {
-    background-image: url(../img/es.png);
-}
-
 .gamemode-pve {
     background-image: url(../img/pve.png);
 }

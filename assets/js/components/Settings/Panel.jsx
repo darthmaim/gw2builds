@@ -5,15 +5,6 @@ import { Option, Messages as tl } from '.';
 import style from './style.css';
 
 class Panel extends React.Component {
-    static get languages() {
-        return [
-            { option: 'en', content: 'English' },
-            { option: 'de', content: 'Deutsch' },
-            { option: 'fr', content: 'Français' },
-            { option: 'es', content: 'Español' }
-        ].filter(i => getEditorModeConfiguration('languages')[i.option]);
-    }
-
     static get gameModes() {
         return [
             { option: 'pve', content: <FormattedMessage {...tl.pve}/> },
@@ -54,7 +45,6 @@ class Panel extends React.Component {
     render() {
         return (
             <div className={style.columns}>
-                {getEditorModeConfiguration('languagesEnabled') ? this.renderColumn('language', this.props.onLanguageChange, 'Language', this.constructor.languages) : <ul className={style.column}/>}
                 {getEditorModeConfiguration('gameModesEnabled') ? this.renderColumn('gameMode', this.props.onGameModeChange, 'Game Mode', this.constructor.gameModes) : <ul className={style.column}/>}
                 {getEditorModeConfiguration('professionsEnabled') ? this.renderColumn('profession', this.props.onProfessionChange, 'Profession', this.constructor.professions) : <ul className={style.column}/>}
                 {getEditorModeConfiguration('racesEnabled') ? this.renderColumn('race', this.props.onRaceChange, 'Race', this.constructor.races) : <ul className={style.column}/>}
