@@ -9,9 +9,7 @@ class WeaponBar extends Component {
         this.renderSkill = this.renderSkill.bind(this);
     }
 
-    getSkillInSlot({ mainhand, offhand, isTwoHanded, weapons, skills, mechanic }) {
-        const attunement = ['Fire', 'Water', 'Air', 'Earth'][mechanic];
-
+    getSkillInSlot({ mainhand, offhand, isTwoHanded, weapons, skills, attunement }) {
         return index => {
             const getFromMainhand = index < 3 || isTwoHanded;
 
@@ -33,7 +31,7 @@ class WeaponBar extends Component {
                 .filter(skill => !skill.attunement || skill.attunement === attunement);
 
             // return the skill object
-            return skills[skillsForSlot[0].id];
+            return skillsForSlot[0] && skills[skillsForSlot[0].id];
         };
     }
 
@@ -70,7 +68,7 @@ WeaponBar.propTypes = {
     mainhand: React.PropTypes.string,
     offhand: React.PropTypes.string,
     isTwoHanded: React.PropTypes.bool,
-    mechanic: React.PropTypes.number,
+    attunement: React.PropTypes.string,
     weapons: React.PropTypes.objectOf(React.PropTypes.shape({
         skills: React.PropTypes.arrayOf(React.PropTypes.shape({
             id: React.PropTypes.number.isRequired,

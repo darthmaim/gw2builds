@@ -1,8 +1,8 @@
-.inactive {
+.inactive > img {
     filter: grayscale(1);
 }
 
-.mechanicBar {
+.attunements {
     display: inline-block;
     line-height: 0;
 }

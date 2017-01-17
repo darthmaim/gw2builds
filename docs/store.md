@@ -30,8 +30,10 @@ The store from `redux` contains the app state that is used globally in various p
   Contains the available weapons for the current `profession`.  
   See GW2 API `/v2/profession.weapons` for the object format.
 ### Mechanic
-- `activeMechanics` (array)  
-  Contains the selected mechanic (i.e. attunement) (number, 0-4), indexed by weapon set.
+- `activeAttunements` (array)  
+  Contains the active attunements, indexed by weapon set.
+- `attunements` (object)  
+  Contains the available attunements.
 
 ## Specializations
 ### Specializations

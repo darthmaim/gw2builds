@@ -2,14 +2,14 @@
 
 import { createSelector } from 'reselect';
 
-const getMechanics = state => state.activeMechanics;
+const getAttunements = state => state.activeAttunements;
 const getActiveWeaponSet = state => state.activeWeaponSet;
 
-export const getActiveMechanic = createSelector(
-    [getMechanics, getActiveWeaponSet],
-    (mechanics, set) => mechanics[set]
+export const getActiveAttunement = createSelector(
+    [getAttunements, getActiveWeaponSet],
+    (attunements, set) => attunements[set]
 );
 
 export default {
-    getActiveMechanic
+    getActiveAttunement
 };
