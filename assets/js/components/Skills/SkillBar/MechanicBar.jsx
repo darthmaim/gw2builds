@@ -5,20 +5,18 @@ import style from './MechanicBar.css';
 
 const renderSkillIcon = (skill, index, active, onMechanicChange, activeMajorTraits, activeMinorTraits) => {
     const isActive = index === active;
-    const className = isActive ? style.active : style.inactive;
+    const className = isActive ? '' : style.inactive;
 
     return (
-        <button key={index} onClick={onMechanicChange.bind(this, index)} className={className}>
-            <SkillTooltip key={index} activeMajorTraits={activeMajorTraits} activeMinorTraits={activeMinorTraits} skill={skill}>
-                <SkillIcon skill={skill} size={32}/>
-            </SkillTooltip>
-        </button>
+        <SkillTooltip key={index} activeMajorTraits={activeMajorTraits} activeMinorTraits={activeMinorTraits} skill={skill}>
+            <SkillIcon className={className} onClick={onMechanicChange.bind(this, index)} skill={skill} size={32}/>
+        </SkillTooltip>
     )
 };
 
 const Professions = {
     Elementalist: ({onMechanicChange, mechanic, skills, activeMajorTraits, activeMinorTraits}) => (
-        <div>
+        <div className={style.mechanicBar} tabIndex="0">
             {[5492, 5493, 5494, 5495].map((id, index) =>
                 renderSkillIcon(skills[id], index, mechanic, onMechanicChange, activeMajorTraits, activeMinorTraits)
             )}
