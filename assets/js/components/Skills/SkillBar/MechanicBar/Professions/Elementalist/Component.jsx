@@ -1,8 +1,8 @@
 import React from 'react';
 import map from 'lodash/map';
-import SkillIcon from '../../../Icon';
-import SkillTooltip from '../../../../Tooltips/Skills/Tooltip';
-import style from './Elementalist.css';
+import SkillIcon from '../../../../Icon';
+import SkillTooltip from '../../../../../Tooltips/Skills/Tooltip';
+import style from './style.css';
 
 const renderSkillIcon = (skill, index, active, onAttunementChange, activeMajorTraits, activeMinorTraits) => {
     const isActive = index === active;
