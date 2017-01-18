@@ -1,5 +1,5 @@
 import SetSelection from './SetSelection';
-import Container  from './SetSelectionContainer';
+import Container from './SetSelectionContainer';
 
 export {
     SetSelection,

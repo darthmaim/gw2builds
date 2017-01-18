@@ -3,11 +3,10 @@ import throttle from 'lodash/throttle';
 
 import Settings from '../../containers/settings';
 
-import style from './panel.css';
-
-import { Gear, Section } from './index';
 import { Skills } from '../Skills';
 import { Specializations } from '../Specializations';
+import style from './panel.css';
+import { Gear, Section } from './index';
 
 class Panel extends React.Component {
     constructor(props, context) {

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { Attribute } from './index';
 import style from './style.css';
+import { Attribute } from './index';
 
 class Panel extends Component {
     render() {

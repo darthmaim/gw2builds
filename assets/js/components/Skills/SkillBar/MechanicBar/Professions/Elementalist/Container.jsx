@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
-import Elementalist from './Component';
 import { setAttunement } from '../../../../../../actions/skills';
 import { getActiveAttunement } from '../../../../../../selectors/skills/mechanic';
+import Elementalist from './Component';
 
 const mapStateToProps = (state, ownProps) => ({
     activeWeaponSet: state.activeWeaponSet,
@@ -12,7 +12,7 @@ const mapStateToProps = (state, ownProps) => ({
     activeMinorTraits: state.activeMinorTraits
 });
 
-const mergeProps = (mappedProps, {dispatch}, ownProps) => Object.assign({}, mappedProps, ownProps, {
+const mergeProps = (mappedProps, { dispatch }, ownProps) => Object.assign({}, mappedProps, ownProps, {
     onAttunementChange: attunement => {
         dispatch(setAttunement({
             attunement,

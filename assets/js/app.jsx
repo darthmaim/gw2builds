@@ -26,9 +26,9 @@ const store = createStore(editor, initialState, applyMiddleware(thunk.withExtraA
 class Editor extends React.Component {
     componentDidUpdate() {
         window.history.replaceState(undefined, '', this.props.url);
-        window.document.title = this.props.profession
-            ? `${this.props.profession} | Build Editor - gw2efficiency`
-            : 'Build Editor - gw2efficiency';
+        window.document.title = this.props.profession ?
+            `${this.props.profession} | Build Editor - gw2efficiency` :
+            'Build Editor - gw2efficiency';
     }
 
     render() {

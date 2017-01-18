@@ -15,7 +15,7 @@ export const activeAttunements = handleActions({
         return newState;
     },
     [actions.WIPE_ALL_WEAPONS]: () => DEFAULT_ATTUNEMENTS,
-    [actions.SET_PROFESSION]: () => DEFAULT_ATTUNEMENTS,
+    [actions.SET_PROFESSION]: () => DEFAULT_ATTUNEMENTS
 }, DEFAULT_ATTUNEMENTS);
 
 export default {

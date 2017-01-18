@@ -14,7 +14,7 @@ class WeaponBar extends Component {
             const getFromMainhand = index < 3 || isTwoHanded;
 
             // handle empty weapon
-            if(getFromMainhand && !mainhand || !getFromMainhand && !offhand) {
+            if ((getFromMainhand && !mainhand) || (!getFromMainhand && !offhand)) {
                 return null;
             }
 
@@ -26,7 +26,7 @@ class WeaponBar extends Component {
                 // filter slot
                 .filter(skill => skill.slot === slotName)
                 // filter offhand (thief)
-                .filter(skill => !skill.offhand || skill.offhand === offhand || skill.offhand === 'Nothing' && !offhand)
+                .filter(skill => !skill.offhand || skill.offhand === offhand || (skill.offhand === 'Nothing' && !offhand))
                 // filter attunement (elementalist)
                 .filter(skill => !skill.attunement || skill.attunement === attunement);
 
@@ -38,7 +38,7 @@ class WeaponBar extends Component {
     render() {
         const getSkillInSlot = this.getSkillInSlot(this.props);
 
-        const slots = [0,1,2,3,4].map(getSkillInSlot);
+        const slots = [0, 1, 2, 3, 4].map(getSkillInSlot);
 
         return (
             <div>
@@ -48,7 +48,7 @@ class WeaponBar extends Component {
     }
 
     renderSkill(skill, index) {
-        if(skill === null) {
+        if (skill === null) {
             return (
                 <SkillIcon.Empty key={index}/>
             );
@@ -80,7 +80,7 @@ WeaponBar.propTypes = {
     })).isRequired,
     skills: React.PropTypes.object.isRequired,
     activeMajorTraits: React.PropTypes.arrayOf(React.PropTypes.number).isRequired,
-    activeMinorTraits: React.PropTypes.arrayOf(React.PropTypes.number).isRequired,
+    activeMinorTraits: React.PropTypes.arrayOf(React.PropTypes.number).isRequired
 };
 
 export default WeaponBar;

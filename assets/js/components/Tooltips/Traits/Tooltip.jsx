@@ -65,7 +65,7 @@ class TraitTooltip extends Component {
     }
 
     renderFacts(facts) {
-        if(!facts || !facts.length) {
+        if (!facts || facts.length === 0) {
             return;
         }
 

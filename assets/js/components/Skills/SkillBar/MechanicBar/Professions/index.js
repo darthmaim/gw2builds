@@ -26,4 +26,4 @@ export default {
     Elementalist,
     Mesmer,
     Necromancer
-}
+};

@@ -26,13 +26,13 @@ export default combineReducers({
     skillIds,
     skills,
 
-    /// weapons
+    // Weapons
     weapons,
     activeWeaponSet,
     activeMainhandWeapons,
     activeOffhandWeapons,
 
-    /// mechanics
+    // Mechanics
     attunements,
     activeAttunements
 });

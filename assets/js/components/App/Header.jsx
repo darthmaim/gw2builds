@@ -2,7 +2,7 @@ import React from 'react';
 
 import style from './header.css';
 
-export default props => (
+export default () => (
     <div className={style.header}>
         <div className={style.logo}>
             <img src="/img/header/logo.svg" role="presentation"/>

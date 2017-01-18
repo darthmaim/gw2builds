@@ -58,19 +58,19 @@ export function exportBuildToString(state) {
         general: {
             gameMode: state.gameMode,
             profession: state.profession,
-            race: state.race,
+            race: state.race
         },
         specialization1: {
             specialization: state.activeSpecializations[0],
             majorTrait1: state.activeMajorTraits[0],
             majorTrait2: state.activeMajorTraits[1],
-            majorTrait3: state.activeMajorTraits[2],
+            majorTrait3: state.activeMajorTraits[2]
         },
         specialization2: {
             specialization: state.activeSpecializations[1],
             majorTrait1: state.activeMajorTraits[3],
             majorTrait2: state.activeMajorTraits[4],
-            majorTrait3: state.activeMajorTraits[5],
+            majorTrait3: state.activeMajorTraits[5]
         },
         specialization3: {
             specialization: state.activeSpecializations[2],

@@ -66,7 +66,6 @@ class SelectionPopup extends React.Component {
 }
 
 SelectionPopup.propTypes = {
-    specializationLine: React.PropTypes.number,
     supportsElite: React.PropTypes.bool,
 
     // Events
@@ -77,7 +76,6 @@ SelectionPopup.propTypes = {
     activeSpecializationIds: React.PropTypes.arrayOf(React.PropTypes.number),
     availableCoreSpecializationIds: React.PropTypes.arrayOf(React.PropTypes.number),
     availableEliteSpecializationIds: React.PropTypes.arrayOf(React.PropTypes.number),
-    selectedSpecializationId: React.PropTypes.number,
     specializations: React.PropTypes.object
 };
 

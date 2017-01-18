@@ -3,4 +3,4 @@ import Container from './Container';
 
 export default {
     Component, Container
-}
+};

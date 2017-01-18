@@ -1,8 +1,10 @@
 import React from 'react';
-import Professions from './Professions'
+import Professions from './Professions';
 
-const MechanicBar = ({profession}) => {
-    if(!profession) return null;
+const MechanicBar = ({ profession }) => {
+    if (!profession) {
+        return null;
+    }
 
     const Container = Professions[profession].Container;
 

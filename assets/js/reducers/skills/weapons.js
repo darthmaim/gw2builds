@@ -8,7 +8,7 @@ export const weapons = handleSimpleAction(actions.FETCH_PROFESSION, {}, 'weapons
 export const activeWeaponSet = handleActions({
     [actions.SET_WEAPON_SET]: (state, action) => action.payload.activeWeaponSet,
     [actions.WIPE_ALL_WEAPONS]: () => 0,
-    [actions.SET_PROFESSION]: () => 0,
+    [actions.SET_PROFESSION]: () => 0
 }, 0);
 
 export const activeMainhandWeapons = handleActions({
@@ -20,7 +20,6 @@ export const activeMainhandWeapons = handleActions({
     [actions.WIPE_ALL_WEAPONS]: () => [null, null, null, null],
     [actions.SET_PROFESSION]: () => [null, null, null, null]
 }, [null, null, null, null]);
-
 
 export const activeOffhandWeapons = handleActions({
     [actions.SET_OFFHAND_WEAPON]: (state, action) => {
@@ -36,5 +35,5 @@ export default {
     weapons,
     activeWeaponSet,
     activeMainhandWeapons,
-    activeOffhandWeapons,
+    activeOffhandWeapons
 };

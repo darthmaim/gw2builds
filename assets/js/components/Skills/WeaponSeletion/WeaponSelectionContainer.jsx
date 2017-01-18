@@ -13,7 +13,7 @@ const mapStateToProps = (state, ownProps) => ({
     activeSpecializations: state.activeSpecializations
 });
 
-const mergeProps = (mappedProps, {dispatch}, ownProps) => Object.assign({}, mappedProps, ownProps, {
+const mergeProps = (mappedProps, { dispatch }, ownProps) => Object.assign({}, mappedProps, ownProps, {
     onMainhandChange: weaponId => {
         dispatch(setMainhandWeapon({
             weaponId,

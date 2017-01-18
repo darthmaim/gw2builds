@@ -2,12 +2,12 @@ import { connect } from 'react-redux';
 import { setWeaponSet } from '../../../actions';
 import SetSelection from './SetSelection';
 
-const mapStateToProps = (state, ownProps) => ({
+const mapStateToProps = state => ({
     activeWeaponSet: state.activeWeaponSet,
     profession: state.profession
 });
 
-const mapDispatchToProps = (dispatch, ownProps) => ({
+const mapDispatchToProps = dispatch => ({
     onWeaponSetChange: activeWeaponSet => {
         dispatch(setWeaponSet({
             activeWeaponSet

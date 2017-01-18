@@ -4,4 +4,4 @@ import Container from './WeaponSelectionContainer';
 export {
     WeaponSelection,
     Container
-}
+};

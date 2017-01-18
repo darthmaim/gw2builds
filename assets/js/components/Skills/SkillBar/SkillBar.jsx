@@ -4,7 +4,7 @@ import {
     WeaponBarContainer as WeaponBar
 } from './index';
 
-export default (props) => (
+export default () => (
     <div>
         <MechanicBar/>
         <WeaponBar/>

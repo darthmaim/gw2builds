@@ -28,6 +28,6 @@ export const getAttributeHealthBase = createSelector(
 export const getAttributeHealth = createSelector(
     [getAttributeHealthBase, getAttributeVitality],
     (base, vitality) => {
-        return base + vitality * 10;
+        return base + (vitality * 10);
     }
 );

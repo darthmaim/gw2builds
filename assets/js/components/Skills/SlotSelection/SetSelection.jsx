@@ -20,7 +20,7 @@ class SetSelection extends Component {
             { name: 'Weaponset 1', icon: '/img/weaponset/set1.svg', enabled: true },
             { name: 'Weaponset 2', icon: '/img/weaponset/set2.svg', enabled: hasMultipleWeaponsets },
             { name: 'Underwater 1', icon: '/img/weaponset/water1.svg', enabled: true },
-            { name: 'Underwater 2', icon: '/img/weaponset/water2.svg', enabled: hasMultipleWeaponsets },
+            { name: 'Underwater 2', icon: '/img/weaponset/water2.svg', enabled: hasMultipleWeaponsets }
         ];
 
         return (
@@ -32,7 +32,7 @@ class SetSelection extends Component {
                     </SetButton>
                 ))}
             </div>
-        )
+        );
     }
 }
 

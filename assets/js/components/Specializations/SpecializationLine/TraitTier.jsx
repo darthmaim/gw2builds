@@ -79,7 +79,6 @@ class TraitTier extends React.Component {
 }
 
 TraitTier.propTypes = {
-    specializationLine: React.PropTypes.number,
     traitTier: React.PropTypes.number,
 
     // Events

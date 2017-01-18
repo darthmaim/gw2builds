@@ -34,7 +34,7 @@ class Attribute extends Component {
                 <div className={style.header} onClick={this.handleClick}>
                     <span className={style.label}>
                         <svg className={style.expander}>
-                            <polygon fill="#CCCCCC"  points="0 0 0 8 7 4"/>
+                            <polygon fill="#CCCCCC" points="0 0 0 8 7 4"/>
                         </svg>
                         {this.props.label}
                     </span>
@@ -55,8 +55,7 @@ class Attribute extends Component {
 Attribute.propTypes = {
     label: React.PropTypes.string.isRequired,
     value: React.PropTypes.number.isRequired,
-    percent: React.PropTypes.bool,
-    className: React.PropTypes.string
+    percent: React.PropTypes.bool
 };
 
 export default Attribute;
