@@ -1,5 +1,3 @@
-'use strict';
-
 import React, { Component } from 'react';
 import { Attribute } from './index';
 import style from './style.css';

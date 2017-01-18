@@ -1,5 +1,3 @@
-'use strict';
-
 import { connect } from 'react-redux';
 import { getSelectedSpecializationId } from '../../../selectors/specializations';
 import SpecializationLine from './SpecializationLine';

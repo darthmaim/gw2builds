@@ -1,5 +1,3 @@
-'use strict';
-
 import { createAction } from 'redux-actions';
 import { createApiAction, convertToIndexed } from './utils';
 

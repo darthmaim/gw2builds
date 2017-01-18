@@ -1,5 +1,3 @@
-'use strict';
-
 import { connect } from 'react-redux';
 import { getMainhandWeapons, getOffhandWeapons, getActiveMainhand, getActiveOffhand, getIsTwoHandedActive } from '../../../selectors/skills';
 import { setMainhandWeapon, setOffhandWeapon } from '../../../actions';

@@ -1,5 +1,3 @@
-'use strict';
-
 import { connect } from 'react-redux';
 import { setWeaponSet } from '../../../actions';
 import SetSelection from './SetSelection';

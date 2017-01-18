@@ -1,5 +1,3 @@
-'use strict';
-
 const
     browserify = require('browserify'),
     watchify = require('watchify'),

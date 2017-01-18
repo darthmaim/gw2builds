@@ -1,5 +1,3 @@
-'use strict';
-
 export * from './power';
 export * from './toughness';
 export * from './vitality';

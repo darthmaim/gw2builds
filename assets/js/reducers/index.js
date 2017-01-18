@@ -1,5 +1,3 @@
-'use strict';
-
 import { combineReducers } from 'redux';
 import { language, gameMode, profession, race } from './general';
 import { specializations, specializationIds, activeSpecializations } from './specializations';

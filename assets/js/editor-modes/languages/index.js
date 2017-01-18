@@ -1,5 +1,3 @@
-'use strict';
-
 const en = {};
 const de = {};
 const fr = {};

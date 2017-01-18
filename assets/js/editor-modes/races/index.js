@@ -1,5 +1,3 @@
-'use strict';
-
 const none = {};
 const Asura = {};
 const Charr = {};

@@ -1,5 +1,3 @@
-'use strict';
-
 import { connect } from 'react-redux';
 import { setSpecialization, swapSpecializations, wipeActiveSpecialization } from '../../../actions';
 import { getCoreSpecializationIds, getEliteSpecializationIds, getSelectedSpecializationId } from '../../../selectors/specializations';

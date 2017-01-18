@@ -1,5 +1,3 @@
-'use strict';
-
 import { handleAction } from 'redux-actions';
 
 /**

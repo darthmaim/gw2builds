@@ -1,5 +1,3 @@
-'use strict';
-
 import _ from 'lodash';
 import fp from 'lodash/fp';
 import { createSelector } from 'reselect';

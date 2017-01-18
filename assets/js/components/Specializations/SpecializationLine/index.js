@@ -1,5 +1,3 @@
-'use strict';
-
 import SpecializationLine from './SpecializationLine';
 import SpecializationLineContainer from './SpecializationLineContainer';
 import TraitConnection from './TraitConnection';

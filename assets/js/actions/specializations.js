@@ -1,5 +1,3 @@
-'use strict';
-
 import { createAction } from 'redux-actions';
 import { createChainedAction, createApiAction, convertToIndexed } from './utils';
 import { fetchTraits, wipeActiveTraits, wipeAllActiveTraits } from './traits';

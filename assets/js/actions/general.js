@@ -1,5 +1,3 @@
-'use strict';
-
 import { createAction } from 'redux-actions';
 import { createChainedAction, createApiAction } from './utils';
 import { fetchSpecializations } from './specializations';

@@ -1,5 +1,3 @@
-'use strict';
-
 import React from 'react';
 import { SpecializationLineContainer as SpecializationLine } from './SpecializationLine';
 

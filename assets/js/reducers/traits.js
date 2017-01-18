@@ -1,5 +1,3 @@
-'use strict';
-
 import fp from 'lodash/fp';
 import { handleAction, handleActions } from 'redux-actions';
 import * as actions from '../actions';

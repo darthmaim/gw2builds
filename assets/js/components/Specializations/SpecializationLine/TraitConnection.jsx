@@ -1,5 +1,3 @@
-'use strict';
-
 import React from 'react';
 import { ucFirst } from 'change-case';
 import style from './traitConnection.css';

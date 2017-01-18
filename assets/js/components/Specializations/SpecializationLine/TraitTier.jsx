@@ -1,5 +1,3 @@
-'use strict';
-
 import React from 'react';
 import TraitTooltip from '../../../containers/traitTooltip';
 import style from './traitTier.css';

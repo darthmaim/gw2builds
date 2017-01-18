@@ -1,5 +1,3 @@
-'use strict';
-
 const Guardian = {};
 const Revenant = {};
 const Warrior = {};

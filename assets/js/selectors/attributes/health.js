@@ -1,5 +1,3 @@
-'use strict';
-
 import { createSelector } from 'reselect';
 import { getAttributeVitality } from './vitality';
 

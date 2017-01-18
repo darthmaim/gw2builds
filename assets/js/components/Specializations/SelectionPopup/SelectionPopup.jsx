@@ -1,5 +1,3 @@
-'use strict';
-
 import React from 'react';
 import style from './selectionPopup.css';
 import { SpecializationIcon } from './index';

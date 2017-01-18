@@ -1,5 +1,3 @@
-'use strict';
-
 import { createSelector } from 'reselect';
 
 const getAttunements = state => state.activeAttunements;

@@ -1,5 +1,3 @@
-'use strict';
-
 import { connect } from 'react-redux';
 import { setLanguage } from '../actions';
 import LanguageSelector from '../components/App/Sidebar/LanguageSelector';
