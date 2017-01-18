@@ -19,7 +19,7 @@ export const fetchSpecializations = createChainedAction(
     fetchTraits
 );
 
-/** Action to set a specific specialization line. Params: { specializationLine, specializationId } */
+/** Action to set a specific specialization line. Params: { specializationLine, specializationId, specializations } */
 export const setSpecialization = createChainedAction(
     createAction(SET_SPECIALIZATION),
     wipeActiveTraits
