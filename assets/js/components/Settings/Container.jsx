@@ -1,5 +1,5 @@
 import React from 'react';
-import { Header, Panel } from './index';
+import { Panel } from './index';
 
 class SettingsPanel extends React.Component {
     render() {

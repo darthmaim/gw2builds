@@ -1,5 +1,4 @@
-import _ from 'lodash';
-import fp from 'lodash/fp';
+import pickBy from 'lodash/fp/pickBy';
 import { createSelector } from 'reselect';
 
 const getWeapons = state => state.weapons;
@@ -15,17 +14,17 @@ const isNotAquatic = (weapon, name) => !isAquatic(weapon, name);
 
 export const getWeaponsBySet = createSelector(
     [getWeapons, getActiveWeaponSet],
-    (weapons, set) => _.pickBy(weapons, (set === 0 || set === 1) ? isNotAquatic : isAquatic)
+    (weapons, set) => pickBy((set === 0 || set === 1) ? isNotAquatic : isAquatic)(weapons)
 );
 
 export const getMainhandWeapons = createSelector(
     [getWeaponsBySet],
-    weapons => _.pickBy(weapons, hasMainhandSkill)
+    weapons => pickBy(hasMainhandSkill)(weapons)
 );
 
 export const getOffhandWeapons = createSelector(
     [getWeaponsBySet],
-    weapons => _.pickBy(weapons, (weapon, name) => hasOffhandSkill(weapon) && !is2Handed(weapon, name))
+    weapons => pickBy((weapon, name) => hasOffhandSkill(weapon) && !is2Handed(weapon, name))(weapons)
 );
 
 export const getActiveMainhand = createSelector(

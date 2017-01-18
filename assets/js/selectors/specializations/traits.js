@@ -1,5 +1,5 @@
-import _ from 'lodash';
-import fp from 'lodash/fp';
+import values from 'lodash/values';
+import keyBy from 'lodash/fp/keyBy';
 import { createSelector } from 'reselect';
 
 const getActiveSpecializationIds = state => state.activeSpecializations;
@@ -16,14 +16,14 @@ export const getActiveMajorTrait = createSelector(
 export const getSpecializationTraitsFromTier = createSelector(
     [getTraits, getActiveSpecializationIds, getCurrentSpecializationLine, getCurrentTraitTier],
     (traits, activeSpecializationIds, specializationLine, traitTier) =>
-        fp.keyBy(t => t.id)(_.values(traits)
+        keyBy(t => t.id)(values(traits)
             .filter(t => t.tier === traitTier && t.specialization === activeSpecializationIds[specializationLine]))
 );
 
 export const getMinorTraitId = createSelector(
     [getSpecializationTraitsFromTier],
     traits => {
-        const trait = _.values(traits).find(t => t.slot.toLowerCase() === 'minor');
+        const trait = values(traits).find(t => t.slot.toLowerCase() === 'minor');
         if (trait) {
             return trait.id;
         }
@@ -32,7 +32,7 @@ export const getMinorTraitId = createSelector(
 
 export const getMajorTraitIds = createSelector(
     [getSpecializationTraitsFromTier],
-    traits => _.values(traits)
+    traits => values(traits)
         .filter(t => t.slot.toLowerCase() === 'major')
         .sort((a, b) => a.order - b.order)
         .map(t => t.id)

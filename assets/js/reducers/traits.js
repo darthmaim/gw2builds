@@ -1,12 +1,12 @@
-import fp from 'lodash/fp';
+import flatMapDeep from 'lodash/fp/flatMapDeep';
 import { handleAction, handleActions } from 'redux-actions';
-import * as actions from '../actions';
 import { handleSimpleAction, swapElements } from './utils';
+import * as actions from '../actions';
 
 /** Reducer for the available trait ids for the current profession. */
 export const traitIds = handleAction(
     actions.FETCH_SPECIALIZATIONS,
-    (state, action) => fp.flatMapDeep(s => {
+    (state, action) => flatMapDeep(s => {
         const traits = [s.minor_traits, s.major_traits];
         if (s.weapon_trait) {
             // Add the elite weapon trait

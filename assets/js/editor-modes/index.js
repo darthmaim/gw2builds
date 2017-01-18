@@ -1,5 +1,6 @@
-import _ from 'lodash';
-import fp from 'lodash/fp';
+import forOwn from 'lodash/fp/forOwn';
+import get from 'lodash/fp/get';
+import mergeWith from 'lodash/fp/mergeWith';
 import defaultMode from './default';
 
 import * as language from './languages';
@@ -19,14 +20,14 @@ const availableConfigurations = {
 
 function setEditorMode(modes) {
     let configuration = defaultMode;
-    _.forOwn(modes, (v, k) => {
-        configuration = fp.mergeWith((a, c) => {
+    forOwn(v => {
+        configuration = mergeWith((a, c) => {
             if (a === c) {
                 return null;
             }
             return undefined;
-        })(configuration)(availableConfigurations[k][v]);
-    });
+        })(configuration)(availableConfigurations.gameMode[v]);
+    })(modes);
     selectedConfiguration = configuration;
 }
 
@@ -36,7 +37,7 @@ export function applyEditorMode(mode, value) {
 }
 
 export function getEditorModeConfiguration(configName) {
-    return _.get(selectedConfiguration, configName);
+    return get(configName)(selectedConfiguration);
 }
 
 export default {

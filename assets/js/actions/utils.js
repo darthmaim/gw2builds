@@ -1,5 +1,5 @@
+import keyBy from 'lodash/fp/keyBy';
 import { createAction } from 'redux-actions';
-import fp from 'lodash/fp';
 
 /**
  * Creates a chained action.
@@ -74,7 +74,7 @@ export function createApiAction(actionType, apiCall) {
  * @return {Object.<number, Object>} The indexed object.
  */
 export function convertToIndexed(array) {
-    return fp.keyBy(i => i.id)(array);
+    return keyBy(i => i.id)(array);
 }
 
 export default {

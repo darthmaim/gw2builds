@@ -1,4 +1,4 @@
-import _ from 'lodash';
+import values from 'lodash/values';
 import React from 'react';
 import onClickOutside from 'react-onclickoutside';
 import { SelectionPopupContainer as SelectionPopup } from '../SelectionPopup';
@@ -37,7 +37,7 @@ class SpecializationLine extends React.Component {
     }
 
     handleToggleSelectionPopup() {
-        if (this.props.specializations && _.values(this.props.specializations).length > 0) {
+        if (this.props.specializations && values(this.props.specializations).length > 0) {
             this.setState({
                 isSelectionPopupOpen: !this.state.isSelectionPopupOpen
             });
