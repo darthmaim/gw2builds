@@ -1,7 +1,8 @@
 import React from 'react';
-import { TooltipElement } from '../Tooltips';
+import { TooltipElement } from '~/components/Tooltips';
+import Header from './Header';
+import Content from './Content';
 import style from './layout.css';
-import { Header, Content } from './index';
 
 export default () => (
     <div className={style.frame}>

@@ -1,7 +1,9 @@
 import React from 'react';
-import TraitTooltip from '../../../containers/traitTooltip';
+import TraitTooltip from '~/components/Tooltips/Traits/TooltipContainer';
+import TraitConnection from '../TraitConnection';
+import TraitMajorIcon from '../TraitMajorIcon';
+import TraitMinorIcon from '../TraitMinorIcon';
 import style from './traitTier.css';
-import { TraitConnection, TraitMajorIcon, TraitMinorIcon } from './index';
 
 const lineTranslate = ['up', 'mid', 'down'];
 

@@ -1,7 +1,3 @@
-import SetSelection from './SetSelection';
-import Container from './SetSelectionContainer';
+import SetSelectionContainer from './SetSelectionContainer';
 
-export {
-    SetSelection,
-    Container
-};
+export default SetSelectionContainer;

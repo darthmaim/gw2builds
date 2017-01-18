@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
+import Attribute from './Attribute';
 import style from './style.css';
-import { Attribute } from './index';
 
-class Panel extends Component {
+class StatsOverview extends Component {
     render() {
         return (
             <div className={style.panel}>
@@ -29,4 +29,4 @@ class Panel extends Component {
     }
 }
 
-export default Panel;
+export default StatsOverview;

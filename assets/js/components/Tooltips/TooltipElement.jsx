@@ -2,7 +2,6 @@
 
 import React, { Component } from 'react';
 import isFunction from 'lodash/isFunction';
-
 import style from './tooltip.css';
 
 class TooltipElement extends Component {

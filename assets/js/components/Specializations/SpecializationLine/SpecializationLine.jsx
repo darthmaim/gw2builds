@@ -1,10 +1,11 @@
 import values from 'lodash/values';
 import React from 'react';
 import onClickOutside from 'react-onclickoutside';
-import { SelectionPopupContainer as SelectionPopup } from '../SelectionPopup';
-import TraitTooltip from '../../../containers/traitTooltip';
+import TraitTooltip from '~/components/Tooltips/Traits/TooltipContainer';
+import SelectionPopup from './SelectionPopup';
+import TraitTier from './TraitTier';
+import TraitMinorIcon from './TraitMinorIcon';
 import style from './specializationLine.css';
-import { TraitTierContainer as TraitTier, TraitMinorIcon } from './index';
 
 class SpecializationLine extends React.Component {
     constructor() {

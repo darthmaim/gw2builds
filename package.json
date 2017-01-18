@@ -76,6 +76,12 @@
     "space": 4,
     "extends": "xo-react",
     "rules": {
+      "import/no-unresolved": [
+        "error",
+        {
+          "ignore": ["^[~]"]
+        }
+      ],
       "linebreak-style": "off",
       "no-div-regex": "off",
       "no-negated-condition": "off",

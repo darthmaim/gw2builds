@@ -11,7 +11,7 @@ import extendApiClient from 'gw2api-extension';
 import extendApiData from 'gw2be-api-extension-data';
 import editor from './reducers';
 import { TooltipContext } from './components/Tooltips';
-import { Layout } from './components/App';
+import Layout from './components/App';
 import { getUrl } from './selectors/url';
 import { initializeBuildFromString } from './utils/build-string';
 

@@ -1,6 +1,8 @@
+// TODO: This container will be removed at a later stage in favor of a better settings container
+
 import { connect } from 'react-redux';
 import { setLanguage, setGameMode, setProfession, setRace } from '../actions';
-import { Container as SettingsContainer } from '../components/Settings';
+import SettingsPanel from '../components/Settings';
 import { applyEditorMode } from '../editor-modes';
 
 const mapStateToProps = state => ({
@@ -29,5 +31,5 @@ const mapDispathToProps = dispatch => ({
     }
 });
 
-const Settings = connect(mapStateToProps, mapDispathToProps)(SettingsContainer);
+const Settings = connect(mapStateToProps, mapDispathToProps)(SettingsPanel);
 export default Settings;

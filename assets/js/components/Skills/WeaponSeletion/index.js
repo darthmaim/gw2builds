@@ -1,7 +1,3 @@
-import WeaponSelection from './WeaponSelection';
-import Container from './WeaponSelectionContainer';
+import WeaponSelectionContainer from './WeaponSelectionContainer';
 
-export {
-    WeaponSelection,
-    Container
-};
+export default WeaponSelectionContainer;

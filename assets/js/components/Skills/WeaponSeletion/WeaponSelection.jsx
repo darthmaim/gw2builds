@@ -1,6 +1,6 @@
 import map from 'lodash/map';
 import React from 'react';
-import { Select } from './../../Inputs';
+import { Select } from '~/components/Inputs';
 
 // a weapon is available if it doesn't require a specialization
 // or if the specialization is active.

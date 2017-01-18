@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { getSelectedSpecializationId } from '../../../selectors/specializations';
+import { getSelectedSpecializationId } from '~/selectors/specializations';
 import SpecializationLine from './SpecializationLine';
 
 const mapStateToProps = (state, ownProps) => ({

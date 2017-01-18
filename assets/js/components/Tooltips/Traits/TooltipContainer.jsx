@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import TraitTooltip from '../components/Tooltips/Traits/Tooltip';
+import TraitTooltip from './Tooltip';
 
 const mapStateToProps = state => ({
     activeMajorTraits: state.activeMajorTraits,

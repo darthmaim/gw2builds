@@ -1,3 +1,5 @@
+// TODO: A better solution for the editor modes has to be found
+
 import forOwn from 'lodash/fp/forOwn';
 import get from 'lodash/fp/get';
 import mergeWith from 'lodash/fp/mergeWith';

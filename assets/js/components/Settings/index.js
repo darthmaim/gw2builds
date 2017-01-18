@@ -1,8 +1,3 @@
-import Container from './Container';
-import Messages from './Messages';
-import Option from './Option';
-import Panel from './Panel';
+import SettingsPanel from './SettingsPanel';
 
-export {
-    Container, Messages, Option, Panel
-};
+export default SettingsPanel;

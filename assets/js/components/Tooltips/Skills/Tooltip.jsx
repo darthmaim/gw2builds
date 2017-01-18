@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Fact, { FactShape } from '../Facts/Fact';
-import { Tooltip } from '../index';
+import Tooltip from '../Tooltip';
 import style from './tooltip.css';
 
 class SkillTooltip extends Component {

@@ -1,17 +1,3 @@
-import SpecializationLine from './SpecializationLine';
-import SpecializationLineContainer from './SpecializationLineContainer';
-import TraitConnection from './TraitConnection';
-import TraitTier from './TraitTier';
-import TraitTierContainer from './TraitTierContainer';
-import TraitMajorIcon from './TraitMajorIcon';
-import TraitMinorIcon from './TraitMinorIcon';
+import SpecializationsLineContainer from './SpecializationLineContainer';
 
-export {
-    SpecializationLine,
-    SpecializationLineContainer,
-    TraitConnection,
-    TraitTier,
-    TraitTierContainer,
-    TraitMajorIcon,
-    TraitMinorIcon
-};
+export default SpecializationsLineContainer;

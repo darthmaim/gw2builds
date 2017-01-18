@@ -1,6 +1,3 @@
-import Attribute from './Attribute';
-import Panel from './Panel';
+import StatsOverviewContainer from './StatsOverviewContainer';
 
-export {
-    Attribute, Panel
-};
+export default StatsOverviewContainer;

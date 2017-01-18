@@ -1,5 +1,5 @@
 import React from 'react';
-import { SpecializationLineContainer as SpecializationLine } from './SpecializationLine';
+import SpecializationLine from './SpecializationLine';
 
 class Specializations extends React.Component {
     render() {

@@ -1,6 +1,6 @@
 import React from 'react';
+import SpecializationIcon from './SpecializationIcon';
 import style from './selectionPopup.css';
-import { SpecializationIcon } from './index';
 
 class SelectionPopup extends React.Component {
     constructor() {

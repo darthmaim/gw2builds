@@ -1,8 +1,6 @@
 import React from 'react';
-import {
-    MechanicBarContainer as MechanicBar,
-    WeaponBarContainer as WeaponBar
-} from './index';
+import MechanicBar from './MechanicBar';
+import WeaponBar from './WeaponBar';
 
 export default () => (
     <div>

@@ -1,7 +1,11 @@
-import Tooltip from './Tooltip';
-import TooltipContext from './TooltipContext';
+import SkillTooltip from './Skills';
+import TraitTooltip from './Traits';
 import TooltipElement from './TooltipElement';
+import TooltipContext from './TooltipContext';
 
 export {
-    Tooltip, TooltipContext, TooltipElement
+    SkillTooltip,
+    TraitTooltip,
+    TooltipElement,
+    TooltipContext
 };

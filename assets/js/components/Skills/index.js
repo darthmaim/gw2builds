@@ -1,5 +1,3 @@
 import Skills from './Skills';
 
-export {
-    Skills
-};
+export default Skills;

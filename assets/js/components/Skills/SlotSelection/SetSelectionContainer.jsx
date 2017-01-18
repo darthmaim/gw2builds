@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { setWeaponSet } from '../../../actions';
+import { setWeaponSet } from '~/actions';
 import SetSelection from './SetSelection';
 
 const mapStateToProps = state => ({

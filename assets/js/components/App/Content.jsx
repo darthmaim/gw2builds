@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
-
-import StatsOverview from '../../containers/stats-overview';
-import { Panel as CharacterPanel } from '../Character';
-import { Sidebar } from './Sidebar';
-
+import StatsOverview from '~/components/StatsOverview';
+import CharacterPanel from '~/components/Character';
+import Sidebar from './Sidebar';
 import style from './content.css';
 
 class Content extends Component {

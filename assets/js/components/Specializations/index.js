@@ -1,5 +1,3 @@
 import Specializations from './Specializations';
 
-export {
-    Specializations
-};
+export default Specializations;

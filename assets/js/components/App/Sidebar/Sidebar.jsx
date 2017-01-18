@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
-
-import LanguageSelector from '../../../containers/languageSelector';
-
+import LanguageSelector from './LanguageSelector';
 import style from './sidebar.css';
 
 class Sidebar extends Component {

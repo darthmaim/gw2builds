@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { FormattedNumber } from 'react-intl';
-
 import style from './style.css';
 
 class Attribute extends Component {

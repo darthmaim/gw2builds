@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
-import { getMainhandWeapons, getOffhandWeapons, getActiveMainhand, getActiveOffhand, getIsTwoHandedActive } from '../../../selectors/skills';
-import { setMainhandWeapon, setOffhandWeapon } from '../../../actions';
+import { getMainhandWeapons, getOffhandWeapons, getActiveMainhand, getActiveOffhand, getIsTwoHandedActive } from '~/selectors/skills';
+import { setMainhandWeapon, setOffhandWeapon } from '~/actions';
 import WeaponSelection from './WeaponSelection';
 
 const mapStateToProps = (state, ownProps) => ({

@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-
 import style from './languageSelector.css';
 
 // TODO: can we configure the available languages somewhere else?

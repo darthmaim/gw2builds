@@ -1,3 +1,3 @@
-import MechanicBar from './MechanicBar';
+import MechanicBarContainer from './MechanicBarContainer';
 
-export default MechanicBar;
+export default MechanicBarContainer;

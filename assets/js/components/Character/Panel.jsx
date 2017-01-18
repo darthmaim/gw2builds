@@ -1,12 +1,11 @@
 import React from 'react';
 import throttle from 'lodash/throttle';
-
-import Settings from '../../containers/settings';
-
-import { Skills } from '../Skills';
-import { Specializations } from '../Specializations';
+import Skills from '~/components/Skills';
+import Specializations from '~/components/Specializations';
+import Settings from '~/containers/settings';
+import Gear from './Gear';
+import Section from './Section';
 import style from './panel.css';
-import { Gear, Section } from './index';
 
 class Panel extends React.Component {
     constructor(props, context) {

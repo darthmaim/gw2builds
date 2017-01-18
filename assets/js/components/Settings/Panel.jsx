@@ -1,7 +1,8 @@
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
-import { getEditorModeConfiguration } from '../../editor-modes';
-import { Option, Messages as tl } from '.';
+import { getEditorModeConfiguration } from '~/editor-modes';
+import Option from './Option';
+import tl from './Messages';
 import style from './style.css';
 
 class Panel extends React.Component {
@@ -39,7 +40,7 @@ class Panel extends React.Component {
     }
 
     isSelected(group, option) {
-        return this.props[group] == option;
+        return this.props[group] === option;
     }
 
     render() {
