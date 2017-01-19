@@ -54,10 +54,10 @@ class WeaponBar extends Component {
             );
         }
 
-        const { activeMajorTraits, activeMinorTraits } = this.props;
+        const { selectedMajorTraitIds, selectedMinorTraitIds } = this.props;
 
         return (
-            <SkillTooltip key={index} activeMajorTraits={activeMajorTraits} activeMinorTraits={activeMinorTraits} skill={skill}>
+            <SkillTooltip key={index} selectedMajorTraits={selectedMajorTraitIds} selectedMinorTraits={selectedMinorTraitIds} skill={skill}>
                 <SkillIcon skill={skill}/>
             </SkillTooltip>
         );
@@ -79,8 +79,8 @@ WeaponBar.propTypes = {
         specialization: React.PropTypes.number
     })).isRequired,
     skills: React.PropTypes.object.isRequired,
-    activeMajorTraits: React.PropTypes.arrayOf(React.PropTypes.number).isRequired,
-    activeMinorTraits: React.PropTypes.arrayOf(React.PropTypes.number).isRequired
+    selectedMajorTraitIds: React.PropTypes.arrayOf(React.PropTypes.number).isRequired,
+    selectedMinorTraitIds: React.PropTypes.arrayOf(React.PropTypes.number).isRequired
 };
 
 export default WeaponBar;

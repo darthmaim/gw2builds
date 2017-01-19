@@ -1,26 +1,26 @@
 import { combineReducers } from 'redux';
-import { language, gameMode, profession, race } from './general';
-import { specializations, specializationIds, activeSpecializations } from './specializations';
-import { traits, traitIds, activeMinorTraits, activeMajorTraits } from './traits';
+import { selectedLanguage, selectedGameMode, selectedProfession, selectedRace } from './general';
+import { availableSpecializationIds, availableSpecializationObjects, selectedSpecializationIds } from './specializations';
+import { availableTraitIds, availableTraitObjects, selectedMinorTraitIds, selectedMajorTraitIds } from './traits';
 import { weapons, activeWeaponSet, activeMainhandWeapons, activeOffhandWeapons, attunements, activeAttunements, skillIds, skills } from './skills';
 
 export default combineReducers({
     // General
-    language,
-    gameMode,
-    profession,
-    race,
+    selectedLanguage,
+    selectedGameMode,
+    selectedProfession,
+    selectedRace,
 
     // Specializations: specializations
-    specializationIds,
-    specializations,
-    activeSpecializations,
+    availableSpecializationIds,
+    availableSpecializationObjects,
+    selectedSpecializationIds,
 
     // Specializations: traits
-    traitIds,
-    traits,
-    activeMinorTraits,
-    activeMajorTraits,
+    availableTraitIds,
+    availableTraitObjects,
+    selectedMinorTraitIds,
+    selectedMajorTraitIds,
 
     // Skills
     skillIds,

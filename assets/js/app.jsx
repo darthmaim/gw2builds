@@ -17,8 +17,7 @@ import { initializeBuildFromString } from './utils/build-string';
 
 const Gw2Api = extendApiClient(apiClient(), extendApiData).cacheStorage(cacheMemory());
 const initialState = {
-    language: 'en',
-    race: 'none'
+    selectedLanguage: 'en'
 };
 
 const store = createStore(editor, initialState, applyMiddleware(thunk.withExtraArgument(Gw2Api), promiseMiddleware));
@@ -43,7 +42,7 @@ class Editor extends React.Component {
 }
 
 Editor = connect(state => {
-    return { locale: state.language, profession: state.profession, url: getUrl(state) };
+    return { locale: state.selectedLanguage, profession: state.selectedProfession, url: getUrl(state) };
 })(Editor);
 
 render(

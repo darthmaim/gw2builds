@@ -10,11 +10,11 @@ class SkillTooltip extends Component {
         this.renderTooltip = this.renderTooltip.bind(this);
     }
 
-    isTraitActive(traitId) {
-        const isActiveMajorTrait = this.props.activeMajorTraits.indexOf(traitId) !== -1;
-        const isActiveMinorTrait = this.props.activeMinorTraits.indexOf(traitId) !== -1;
+    isTraitSelected(traitId) {
+        const isSelectedMajorTrait = this.props.selectedMajorTraitIds.indexOf(traitId) !== -1;
+        const isSelectedMinorTrait = this.props.selectedMinorTraitIds.indexOf(traitId) !== -1;
 
-        return isActiveMajorTrait || isActiveMinorTrait;
+        return isSelectedMajorTrait || isSelectedMinorTrait;
     }
 
     render() {
@@ -38,7 +38,7 @@ class SkillTooltip extends Component {
 
         // override active traits with traited facts if the required trait is active
         (traitedFacts || []).forEach(fact => {
-            if (this.isTraitActive(fact.requires_trait)) {
+            if (this.isTraitSelected(fact.requires_trait)) {
                 const traitedFact = Object.assign({}, fact, { isTraitedFact: true });
                 if (fact.overrides !== undefined) {
                     activeFacts[fact.overrides] = traitedFact;
@@ -92,8 +92,8 @@ SkillTooltip.propTypes = {
         traited_facts: React.PropTypes.arrayOf(FactShape)
     }),
     // bound from redux state
-    activeMajorTraits: React.PropTypes.arrayOf(React.PropTypes.number).isRequired,
-    activeMinorTraits: React.PropTypes.arrayOf(React.PropTypes.number).isRequired
+    selectedMajorTraitIds: React.PropTypes.arrayOf(React.PropTypes.number).isRequired,
+    selectedMinorTraitIds: React.PropTypes.arrayOf(React.PropTypes.number).isRequired
 };
 
 export default SkillTooltip;

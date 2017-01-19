@@ -2,10 +2,7 @@ import Elementalist from './Elementalist';
 
 // placeholder components until all professions have their mechanics bar implemented
 const NullComponent = () => null;
-const emptyProfession = {
-    Component: NullComponent,
-    Container: NullComponent
-};
+const emptyProfession = NullComponent;
 
 const Guardian = emptyProfession;
 const Revenant = emptyProfession;

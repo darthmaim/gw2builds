@@ -1,11 +1,11 @@
 import flatMapDeep from 'lodash/fp/flatMapDeep';
 import { handleAction, handleActions } from 'redux-actions';
-import * as actions from '../actions';
+import * as actions from '~/actions';
 import { handleSimpleAction, swapElements } from './utils';
 
 /** Reducer for the available trait ids for the current profession. */
-export const traitIds = handleAction(
-    actions.FETCH_SPECIALIZATIONS,
+export const availableTraitIds = handleAction(
+    actions.FETCH_AVAILABLE_SPECIALIZATIONS,
     (state, action) => flatMapDeep(s => {
         const traits = [s.minor_traits, s.major_traits];
         if (s.weapon_trait) {
@@ -18,11 +18,11 @@ export const traitIds = handleAction(
 );
 
 /** Reducer for the available trait objects for the current profession. */
-export const traits = handleSimpleAction(actions.FETCH_TRAITS, {});
+export const availableTraitObjects = handleSimpleAction(actions.FETCH_AVAILABLE_TRAITS, {});
 
 /** Reducer for active/selected minor traits as ids. */
-export const activeMinorTraits = handleActions({
-    [actions.SET_SPECIALIZATION]: (state, action) => {
+export const selectedMinorTraitIds = handleActions({
+    [actions.SET_SELECTED_SPECIALIZATION_ID]: (state, action) => {
         // Set the minor traits from an individual specialization
         const newState = state.slice();
         const specializations = action.payload.specializations;
@@ -32,7 +32,7 @@ export const activeMinorTraits = handleActions({
         }
         return newState;
     },
-    [actions.SWAP_ACTIVE_SPECIALIZATIONS]: (state, action) => {
+    [actions.SWAP_SELECTED_SPECIALIZATION_IDS]: (state, action) => {
         // Set the minor traits from swapping two specializations
         const newState = state.slice();
         for (let i = 0; i < 3; i++) {
@@ -40,7 +40,7 @@ export const activeMinorTraits = handleActions({
         }
         return newState;
     },
-    [actions.WIPE_ACTIVE_SPECIALIZATION]: (state, action) => {
+    [actions.WIPE_SELECTED_SPECIALIZATION_ID]: (state, action) => {
         // Wipe the minor traits from an individual specialization
         const newState = state.slice();
         const pos = action.payload.specializationLine * 3;
@@ -49,19 +49,19 @@ export const activeMinorTraits = handleActions({
         }
         return newState;
     },
-    [actions.WIPE_ALL_ACTIVE_SPECIALIZATIONS]: () => [],
+    [actions.WIPE_ALL_SELECTED_SPECIALIZATION_IDS]: () => [],
     [actions.FETCH_PROFESSION]: () => []
 }, []);
 
 /** Reducer for active/selected major traits as ids. */
-export const activeMajorTraits = handleActions({
-    [actions.SET_MAJOR_TRAIT]: (state, action) => {
+export const selectedMajorTraitIds = handleActions({
+    [actions.SET_SELECTED_MAJOR_TRAIT_ID]: (state, action) => {
         // Set an individual major trait
         const newState = state.slice();
         newState[(action.payload.specializationLine * 3) + action.payload.traitTier - 1] = action.payload.traitId;
         return newState;
     },
-    [actions.SWAP_ACTIVE_SPECIALIZATIONS]: (state, action) => {
+    [actions.SWAP_SELECTED_SPECIALIZATION_IDS]: (state, action) => {
         // Set the major traits from swapping two specializations
         const newState = state.slice();
         for (let i = 0; i < 3; i++) {
@@ -69,7 +69,7 @@ export const activeMajorTraits = handleActions({
         }
         return newState;
     },
-    [actions.WIPE_ACTIVE_TRAITS]: (state, action) => {
+    [actions.WIPE_SELECTED_TRAIT_IDS]: (state, action) => {
         // Wipe the major traits of an individual specialization line
         const newState = state.slice();
         const specializationLines = action.payload.specializationLine !== undefined && action.payload.specializationLine !== null ? [action.payload.specializationLine] : [0, 1, 2];
@@ -80,14 +80,14 @@ export const activeMajorTraits = handleActions({
         }
         return newState;
     },
-    [actions.WIPE_ALL_ACTIVE_TRAITS]: () =>
+    [actions.WIPE_ALL_SELECTED_TRAIT_IDS]: () =>
         // Wipe all the major traits
         []
 }, []);
 
 export default {
-    traitIds,
-    traits,
-    activeMinorTraits,
-    activeMajorTraits
+    availableTraitIds,
+    availableTraitObjects,
+    selectedMinorTraitIds,
+    selectedMajorTraitIds
 };

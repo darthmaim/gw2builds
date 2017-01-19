@@ -4,7 +4,7 @@ import { applyEditorMode } from '~/editor-modes';
 import LanguageSelector from './LanguageSelector';
 
 const mapStateToProps = state => ({
-    language: state.language
+    language: state.selectedLanguage
 });
 
 const mapDispathToProps = dispatch => ({

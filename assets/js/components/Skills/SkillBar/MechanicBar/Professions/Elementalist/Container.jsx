@@ -8,8 +8,8 @@ const mapStateToProps = (state, ownProps) => ({
     attunements: state.attunements,
     activeAttunement: getActiveAttunement(state, ownProps),
     skills: state.skills,
-    activeMajorTraits: state.activeMajorTraits,
-    activeMinorTraits: state.activeMinorTraits
+    selectedMajorTraitIds: state.selectedMajorTraitIds,
+    selectedMinorTraitIds: state.selectedMinorTraitIds
 });
 
 const mergeProps = (mappedProps, { dispatch }, ownProps) => Object.assign({}, mappedProps, ownProps, {

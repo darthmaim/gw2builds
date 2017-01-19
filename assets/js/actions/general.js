@@ -1,51 +1,51 @@
 import { createAction } from 'redux-actions';
 import { createChainedAction, createApiAction } from './utils';
-import { fetchSpecializations } from './specializations';
+import { fetchAvailableSpecializations } from './specializations';
 import { fetchSkills } from './skills';
 
 export const FETCH_PROFESSION = 'FETCH_PROFESSION';
-export const SET_LANGUAGE = 'SET_LANGUAGE';
-export const SET_GAMEMODE = 'SET_GAMEMODE';
-export const SET_PROFESSION = 'SET_PROFESSION';
-export const SET_RACE = 'SET_RACE';
+export const SET_SELECTED_LANGUAGE = 'SET_SELECTED_LANGUAGE';
+export const SET_SELECTED_GAMEMODE = 'SET_SELECTED_GAMEMODE';
+export const SET_SELECTED_PROFESSION = 'SET_SELECTED_PROFESSION';
+export const SET_SELECTED_RACE = 'SET_SELECTED_RACE';
 
 /** Action to fetch the current profession from the GW2 API. */
 export const fetchProfession = createChainedAction(
     createApiAction(
         FETCH_PROFESSION,
-        (state, api) => api.professions().get(state.profession)
+        (state, api) => api.professions().get(state.selectedProfession)
     ),
-    [fetchSpecializations, fetchSkills]
+    [fetchAvailableSpecializations, fetchSkills]
 );
 
 /** Action to set the language. Params: { language } */
-export const setLanguage = createChainedAction(
-    createAction(SET_LANGUAGE),
+export const setSelectedLanguage = createChainedAction(
+    createAction(SET_SELECTED_LANGUAGE),
     fetchProfession
 );
 
 /** Action to set the game mode. Params: { gameMode } */
-export const setGameMode = createAction(SET_GAMEMODE);
+export const setSelectedGameMode = createAction(SET_SELECTED_GAMEMODE);
 
 /** Action to set the profession. Params: { profession } */
-export const setProfession = createChainedAction(
-    createAction(SET_PROFESSION),
+export const setSelectedProfession = createChainedAction(
+    createAction(SET_SELECTED_PROFESSION),
     [fetchProfession]
 );
 
 /** Action to set the race. Params: { race } */
-export const setRace = createAction(SET_RACE);
+export const setSelectedRace = createAction(SET_SELECTED_RACE);
 
 export default {
     FETCH_PROFESSION,
-    SET_LANGUAGE,
-    SET_GAMEMODE,
-    SET_PROFESSION,
-    SET_RACE,
+    SET_SELECTED_LANGUAGE,
+    SET_SELECTED_GAMEMODE,
+    SET_SELECTED_PROFESSION,
+    SET_SELECTED_RACE,
 
     fetchProfession,
-    setLanguage,
-    setGameMode,
-    setProfession,
-    setRace
+    setSelectedLanguage,
+    setSelectedGameMode,
+    setSelectedProfession,
+    setSelectedRace
 };

@@ -1,32 +1,32 @@
 // TODO: This container will be removed at a later stage in favor of a better settings container
 
 import { connect } from 'react-redux';
-import { setLanguage, setGameMode, setProfession, setRace } from '../actions';
+import { setSelectedLanguage, setSelectedGameMode, setSelectedProfession, setSelectedRace } from '../actions';
 import SettingsPanel from '../components/Settings';
 import { applyEditorMode } from '../editor-modes';
 
 const mapStateToProps = state => ({
-    language: state.language,
-    gameMode: state.gameMode,
-    profession: state.profession,
-    race: state.race
+    language: state.selectedLanguage,
+    gameMode: state.selectedGameMode,
+    profession: state.selectedProfession,
+    race: state.selectedRace
 });
 
 const mapDispathToProps = dispatch => ({
     onLanguageChange: language => {
-        dispatch(setLanguage({ language }));
+        dispatch(setSelectedLanguage({ language }));
         applyEditorMode('language', language);
     },
     onGameModeChange: gameMode => {
-        dispatch(setGameMode({ gameMode }));
+        dispatch(setSelectedGameMode({ gameMode }));
         applyEditorMode('gameMode', gameMode);
     },
     onProfessionChange: profession => {
-        dispatch(setProfession({ profession }));
+        dispatch(setSelectedProfession({ profession }));
         applyEditorMode('profession', profession);
     },
     onRaceChange: race => {
-        dispatch(setRace({ race }));
+        dispatch(setSelectedRace({ race }));
         applyEditorMode('race', race);
     }
 });

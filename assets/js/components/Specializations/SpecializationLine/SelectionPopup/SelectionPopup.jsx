@@ -10,7 +10,7 @@ class SelectionPopup extends React.Component {
 
     handleOnIconClick(id) {
         if (this.props.onSpecializationChange) {
-            this.props.onSpecializationChange(id, this.props.activeSpecializationIds, this.props.specializations);
+            this.props.onSpecializationChange(id, this.props.selectedSpecializationIds, this.props.availableSpecializationObjects);
             if (this.props.onWantsClose) {
                 // There is a small bug that causes the specialization to not update when the popup isn't closed.
                 // Now we want to close it after selecting a specialization anyway, so it doesn't matter much.
@@ -23,13 +23,13 @@ class SelectionPopup extends React.Component {
     renderSpecializations(ids) {
         if (ids) {
             return ids.map(id => {
-                const specialization = this.props.specializations[id];
+                const specialization = this.props.availableSpecializationObjects[id];
                 return (
                     <SpecializationIcon
                         key={id}
                         icon={specialization.icon}
                         id={id}
-                        isSelected={this.props.activeSpecializationIds.indexOf(id) > -1}
+                        isSelected={this.props.selectedSpecializationIds.indexOf(id) > -1}
                         name={specialization.name}
                         onClick={this.handleOnIconClick}/>
                 );
@@ -73,10 +73,10 @@ SelectionPopup.propTypes = {
     onWantsClose: React.PropTypes.func,
 
     // Redux states
-    activeSpecializationIds: React.PropTypes.arrayOf(React.PropTypes.number),
+    selectedSpecializationIds: React.PropTypes.arrayOf(React.PropTypes.number),
     availableCoreSpecializationIds: React.PropTypes.arrayOf(React.PropTypes.number),
     availableEliteSpecializationIds: React.PropTypes.arrayOf(React.PropTypes.number),
-    specializations: React.PropTypes.object
+    availableSpecializationObjects: React.PropTypes.object
 };
 
 export default SelectionPopup;

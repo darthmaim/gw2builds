@@ -10,8 +10,8 @@ const mapStateToProps = (state, ownProps) => ({
     attunement: getActiveAttunement(state, ownProps),
     weapons: state.weapons,
     skills: state.skills,
-    activeMajorTraits: state.activeMajorTraits,
-    activeMinorTraits: state.activeMinorTraits
+    selectedMajorTraitIds: state.selectedMajorTraitIds,
+    selectedMinorTraitIds: state.selectedMinorTraitIds
 });
 
 export default connect(mapStateToProps)(WeaponBar);

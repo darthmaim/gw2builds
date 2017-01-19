@@ -4,13 +4,13 @@ import { Select } from '~/components/Inputs';
 
 // a weapon is available if it doesn't require a specialization
 // or if the specialization is active.
-const isWeaponAvailable = (weapon, activeSpecializations) =>
-    !weapon.specialization || activeSpecializations.some(id => id === weapon.specialization);
+const isWeaponAvailable = (weapon, selectedSpecializationIds) =>
+    !weapon.specialization || selectedSpecializationIds.some(id => id === weapon.specialization);
 
-const renderSelect = (weapons, value, onChange, activeSpecializations) => (
+const renderSelect = (weapons, value, onChange, selectedSpecializationIds) => (
     <Select value={value} onChange={onChange} placeholder="None">
         {map(weapons, (weapon, name) => (
-            <option key={name} value={name} disabled={!isWeaponAvailable(weapon, activeSpecializations)}>{name}</option>
+            <option key={name} value={name} disabled={!isWeaponAvailable(weapon, selectedSpecializationIds)}>{name}</option>
         ))}
     </Select>
 );
@@ -18,16 +18,16 @@ const renderSelect = (weapons, value, onChange, activeSpecializations) => (
 const WeaponSelection = ({
     mainhandWeapons, onMainhandChange, activeMainhand,
     offhandWeapons, onOffhandChange, activeOffhand,
-    twoHanded, activeSpecializations
+    twoHanded, selectedSpecializationIds
 }) => (
     <div>
-        {renderSelect(mainhandWeapons, activeMainhand, onMainhandChange, activeSpecializations)}
-        {!twoHanded && renderSelect(offhandWeapons, activeOffhand, onOffhandChange, activeSpecializations)}
+        {renderSelect(mainhandWeapons, activeMainhand, onMainhandChange, selectedSpecializationIds)}
+        {!twoHanded && renderSelect(offhandWeapons, activeOffhand, onOffhandChange, selectedSpecializationIds)}
     </div>
 );
 
 WeaponSelection.propTypes = {
-    activeSpecializations: React.PropTypes.arrayOf(React.PropTypes.number),
+    selectedSpecializationIds: React.PropTypes.arrayOf(React.PropTypes.number),
     mainhandWeapons: React.PropTypes.object,
     offhandWeapons: React.PropTypes.object,
     onMainhandChange: React.PropTypes.func.isRequired,

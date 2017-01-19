@@ -18,8 +18,8 @@ class SpecializationLine extends React.Component {
     }
 
     getSpecializationBackgroundImage() {
-        if (this.props.selectedSpecialization) {
-            const spec = this.props.specializations[this.props.selectedSpecialization];
+        if (this.props.selectedSpecializationId) {
+            const spec = this.props.availableSpecializationObjects[this.props.selectedSpecializationId];
             if (spec) {
                 return spec.background;
             }
@@ -38,7 +38,7 @@ class SpecializationLine extends React.Component {
     }
 
     handleToggleSelectionPopup() {
-        if (this.props.specializations && values(this.props.specializations).length > 0) {
+        if (this.props.availableSpecializationObjects && values(this.props.availableSpecializationObjects).length > 0) {
             this.setState({
                 isSelectionPopupOpen: !this.state.isSelectionPopupOpen
             });
@@ -68,20 +68,20 @@ class SpecializationLine extends React.Component {
     }
 
     renderSpecializationName() {
-        if (this.props.selectedSpecialization && this.props.specializations) {
+        if (this.props.selectedSpecializationId && this.props.availableSpecializationObjects) {
             return (
                 <div className={style.specializationName}>
-                    {this.props.specializations[this.props.selectedSpecialization].name}
+                    {this.props.availableSpecializationObjects[this.props.selectedSpecializationId].name}
                 </div>
             );
         }
     }
 
     renderEliteWeaponTrait() {
-        if (this.props.selectedSpecialization && this.props.traits) {
-            const specialization = this.props.specializations[this.props.selectedSpecialization];
+        if (this.props.selectedSpecializationId && this.props.availableTraitObjects) {
+            const specialization = this.props.availableSpecializationObjects[this.props.selectedSpecializationId];
             if (specialization && specialization.weapon_trait) {
-                const trait = this.props.traits[specialization.weapon_trait];
+                const trait = this.props.availableTraitObjects[specialization.weapon_trait];
                 if (trait) {
                     return (
                         <TraitTooltip trait={trait}>
@@ -94,7 +94,7 @@ class SpecializationLine extends React.Component {
     }
 
     renderTier(tier) {
-        if (this.props.selectedSpecialization) {
+        if (this.props.selectedSpecializationId) {
             return (
                 <TraitTier
                     specializationLine={this.props.specializationLine}
@@ -147,9 +147,9 @@ SpecializationLine.propTypes = {
     specializationLine: React.PropTypes.number,
 
     // Redux states
-    selectedSpecialization: React.PropTypes.number,
-    specializations: React.PropTypes.object,
-    traits: React.PropTypes.object
+    availableSpecializationObjects: React.PropTypes.object,
+    availableTraitObjects: React.PropTypes.object,
+    selectedSpecializationId: React.PropTypes.number
 };
 
 export default onClickOutside(SpecializationLine);

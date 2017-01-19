@@ -4,7 +4,7 @@ import SetSelection from './SetSelection';
 
 const mapStateToProps = state => ({
     activeWeaponSet: state.activeWeaponSet,
-    profession: state.profession
+    profession: state.selectedProfession
 });
 
 const mapDispatchToProps = dispatch => ({
