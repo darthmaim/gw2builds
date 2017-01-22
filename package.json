@@ -48,7 +48,7 @@
     "gulp-to-ico": "^1.0.0",
     "gulp-uglify": "^2.0.0",
     "gulp-util": "^3.0.8",
-    "gw2api-client": "^4.2.3",
+    "gw2api-client": "^5.0.0",
     "gw2api-extension": "file:lib/gw2api-extension",
     "gw2be-api-extension-data": "file:lib/gw2be-api-extension-data",
     "gw2be-build-string": "file:lib/gw2be-build-string",
