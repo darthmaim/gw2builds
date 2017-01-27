@@ -1,3 +1,8 @@
+import Component from './Component';
 import Container from './Container';
 
-export default Container;
+const Elementalist = {
+    Component, Container
+};
+
+export default Elementalist;
