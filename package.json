@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "lint": "xo",
-    "test": "mocha --compilers js:babel-core/register --require test/tools/requireCSS.js test/**/*.spec.js{,x}",
+    "test": "mocha --compilers js:babel-core/register --require tests/tools/requireCSS.js tests/**/*.spec.js{,x}",
     "build": "gulp build",
     "production": "NODE_ENV=production gulp build",
     "dev": "gulp dev",
