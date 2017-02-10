@@ -30,7 +30,7 @@ function isDev() {
 
 function bundle() {
     return browserify({
-        entries: './assets/js/app',
+        entries: './src/app',
         extensions: ['.js', '.jsx'],
         debug: true,
         cache: {},
