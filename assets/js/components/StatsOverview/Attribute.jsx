@@ -22,7 +22,7 @@ class Attribute extends Component {
         const { open } = this.state;
 
         const numberFormat = {
-            style: formatAsPercent ? 'percent' : null,
+            style: formatAsPercent ? 'percent' : undefined,
             minimumFractionDigits: formatAsPercent ? 2 : 0,
             maximumFractionDigits: formatAsPercent ? 2 : 0,
             useGrouping: true
