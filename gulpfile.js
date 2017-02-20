@@ -47,7 +47,7 @@ function bundle() {
                 cssnano()
             ]
         })
-        .transform('babelify')
+        .transform('babelify');
 }
 
 function buildAssets(bundle) {
@@ -84,7 +84,7 @@ gulp.task('build:service-worker', () => {
     return gulp.src('./assets/js/sw.js')
         .pipe(sourcemaps.init())
         .pipe(babel())
-        .pipe(!isDev() ? uglify({mangle: {toplevel: true}}) : gutil.noop()).on('error', logError)
+        .pipe(!isDev() ? uglify({ mangle: { toplevel: true } }) : gutil.noop()).on('error', logError)
         .pipe(sourcemaps.write('./'))
         .pipe(gulp.dest('./public'));
 });

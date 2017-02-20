@@ -76,7 +76,6 @@ describe('WeaponBar', () => {
             .find(SkillIcon).at(2).prop('skill')).to.equal(SKILL_OFFHAND_SOMETHING);
     });
 
-
     it('renders attunement dependant skills', () => {
         const props = {
             skills, weapons, activeMajorTraits, activeMinorTraits,

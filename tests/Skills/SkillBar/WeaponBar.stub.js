@@ -16,7 +16,7 @@ export const skills = {
     [SKILL_OFFHAND_NOTHING.id]: SKILL_OFFHAND_NOTHING,
     [SKILL_OFFHAND_SOMETHING.id]: SKILL_OFFHAND_SOMETHING,
     [SKILL_ATTUNEMENT_1.id]: SKILL_ATTUNEMENT_1,
-    [SKILL_ATTUNEMENT_2.id]: SKILL_ATTUNEMENT_2,
+    [SKILL_ATTUNEMENT_2.id]: SKILL_ATTUNEMENT_2
 };
 
 export const weapons = {
@@ -26,7 +26,7 @@ export const weapons = {
             { id: SKILL_SIMPLE.id, slot: 'Weapon_2' },
             { id: SKILL_SIMPLE.id, slot: 'Weapon_3' },
             { id: SKILL_SIMPLE.id, slot: 'Weapon_4' },
-            { id: SKILL_SIMPLE.id, slot: 'Weapon_5' },
+            { id: SKILL_SIMPLE.id, slot: 'Weapon_5' }
         ]
     },
     [WEAPON_OFFHAND]: {
@@ -36,7 +36,7 @@ export const weapons = {
             { id: SKILL_OFFHAND_NOTHING.id, slot: 'Weapon_3', offhand: 'Nothing' },
             { id: SKILL_OFFHAND_SOMETHING.id, slot: 'Weapon_3', offhand: WEAPON_SIMPLE },
             { id: SKILL_SIMPLE.id, slot: 'Weapon_4' },
-            { id: SKILL_SIMPLE.id, slot: 'Weapon_5' },
+            { id: SKILL_SIMPLE.id, slot: 'Weapon_5' }
         ]
     },
     [WEAPON_ATTUNEMENT]: {
@@ -50,7 +50,7 @@ export const weapons = {
             { id: SKILL_ATTUNEMENT_1.id, slot: 'Weapon_4', attunement: ATTUNEMENT1 },
             { id: SKILL_ATTUNEMENT_2.id, slot: 'Weapon_4', attunement: ATTUNEMENT2 },
             { id: SKILL_ATTUNEMENT_1.id, slot: 'Weapon_5', attunement: ATTUNEMENT1 },
-            { id: SKILL_ATTUNEMENT_2.id, slot: 'Weapon_5', attunement: ATTUNEMENT2 },
+            { id: SKILL_ATTUNEMENT_2.id, slot: 'Weapon_5', attunement: ATTUNEMENT2 }
         ]
     }
 };

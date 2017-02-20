@@ -18,11 +18,11 @@ class StatsOverview extends Component {
                     <Attribute className={style['attribute-profession-bonus']} label={'Profession Bonus'} value={this.props.professionBonus}/>
                     <Attribute className={style['attribute-armor']} label={'Armor'} value={this.props.armor}/>
                     <Attribute className={style['attribute-health']} label={'Health'} value={this.props.health}/>
-                    <Attribute className={style['attribute-critical-chance']} label={'Critical Chance'} value={this.props.criticalChance} percent={true}/>
-                    <Attribute className={style['attribute-critical-damage']} label={'Critical Damage'} value={this.props.criticalDamage} percent={true}/>
+                    <Attribute className={style['attribute-critical-chance']} label={'Critical Chance'} value={this.props.criticalChance} percent/>
+                    <Attribute className={style['attribute-critical-damage']} label={'Critical Damage'} value={this.props.criticalDamage} percent/>
                     <Attribute className={style['attribute-healing-power']} label={'Healing Power'} value={this.props.healingPower}/>
-                    <Attribute className={style['attribute-condition-duration']} label={'Condition Duration'} value={this.props.conditionDuration} percent={true}/>
-                    <Attribute className={style['attribute-boon-duration']} label={'Boon Duration'} value={this.props.boonDuration} percent={true}/>
+                    <Attribute className={style['attribute-condition-duration']} label={'Condition Duration'} value={this.props.conditionDuration} percent/>
+                    <Attribute className={style['attribute-boon-duration']} label={'Boon Duration'} value={this.props.boonDuration} percent/>
                 </ul>
             </div>
         );

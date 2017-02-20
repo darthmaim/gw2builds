@@ -59,12 +59,12 @@ class Panel extends React.Component {
                 <li className={style.columnHeader}>{header}</li>
                 {items.map(i => {
                     return (
-                        <Option key={`${group.toLowerCase()}-${i.option}`}
+                        <Option
+                            key={`${group.toLowerCase()}-${i.option}`}
                             group={group.toLowerCase()}
                             option={i.option}
                             selected={this.isSelected(group, i.option)}
-                            onSelected={onSelected}
-                            >
+                            onSelected={onSelected}>
                             {i.content}
                         </Option>
                     );
