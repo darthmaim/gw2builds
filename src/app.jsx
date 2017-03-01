@@ -24,7 +24,35 @@ const initialState = {
 const store = createStore(editor, initialState, applyMiddleware(thunk.withExtraArgument(Gw2Api), promiseMiddleware));
 
 class Editor extends React.Component {
+    constructor(props, context) {
+        super(props, context);
+
+        this.state = {
+            loading: true
+        }
+    }
+
+    componentWillMount() {
+        // Get an existing build string for initialization
+        const path = window.location.pathname.substr(1);
+
+        if (path) {
+            initializeBuildFromString(store, path)
+                .then(() => {
+                    console.log('Loaded build from url.');
+                    this.setState({ loading: false });
+                });
+        } else {
+            this.setState({ loading: false });
+        }
+    }
+
     componentDidUpdate() {
+        // prevent updating the url/title while a build is loaded
+        if(this.state.loading) {
+            return;
+        }
+
         window.history.replaceState(undefined, '', this.props.url);
         window.document.title = this.props.profession ?
             `${this.props.profession} | Build Editor - gw2efficiency` :
@@ -35,7 +63,7 @@ class Editor extends React.Component {
         return (
             <IntlProvider locale={this.props.locale}>
                 <TooltipContext>
-                    <Layout/>
+                    <Layout loading={this.state.loading}/>
                 </TooltipContext>
             </IntlProvider>
         );
@@ -52,10 +80,3 @@ render(
     </Provider>,
     document.getElementById('container')
 );
-
-// Get an existing build string for initialization
-const path = window.location.pathname.substr(1);
-if (path) {
-    // TODO: Show loading bar (initializeBuildFromString is a Promise) and disable URL updating while the build is being initialized
-    initializeBuildFromString(store, path).then(() => console.log('Done!'));
-}
