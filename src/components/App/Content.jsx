@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import StatsOverview from '~/components/StatsOverview';
-import CharacterPanel from '~/components/Character';
+import MainContent from './MainContent';
 import Sidebar from './Sidebar';
 import style from './content.css';
 
@@ -34,7 +34,7 @@ class Content extends Component {
         return (
             <div className={style.container}>
                 <Sidebar currentIndex={this.state.currentIndex} onSectionChange={this.handleIndexChange}/>
-                <CharacterPanel ref={this.setContentRef} onSectionChange={this.handleSectionScroll}/>
+                <MainContent ref={this.setContentRef} onSectionChange={this.handleSectionScroll}/>
                 <div className={style.stats}>
                     <StatsOverview/>
                 </div>

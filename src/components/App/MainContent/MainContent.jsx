@@ -3,11 +3,11 @@ import throttle from 'lodash/throttle';
 import Skills from '~/components/Skills';
 import Specializations from '~/components/Specializations';
 import Settings from '~/containers/settings';
-import Gear from './Gear';
+import Gear from '~/components/Character/Gear';
 import Section from './Section';
-import style from './panel.css';
+import style from './mainContent.css';
 
-class Panel extends React.Component {
+class MainContent extends React.Component {
     constructor(props, context) {
         super(props, context);
 
@@ -104,8 +104,8 @@ class Panel extends React.Component {
     }
 }
 
-Panel.propTypes = {
+MainContent.propTypes = {
     onSectionChange: React.PropTypes.func.isRequired
 };
 
-export default Panel;
+export default MainContent;
