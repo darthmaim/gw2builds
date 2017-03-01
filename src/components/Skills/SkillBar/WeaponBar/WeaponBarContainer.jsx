@@ -9,9 +9,7 @@ const mapStateToProps = (state, ownProps) => ({
     isTwoHanded: getIsTwoHandedActive(state, ownProps),
     attunement: getActiveAttunement(state, ownProps),
     weapons: state.weapons,
-    skills: state.skills,
-    activeMajorTraits: state.activeMajorTraits,
-    activeMinorTraits: state.activeMinorTraits
+    skills: state.skills
 });
 
 export default connect(mapStateToProps)(WeaponBar);

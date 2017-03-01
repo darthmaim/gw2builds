@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import SkillTooltip from '~/components/Tooltips/Skills/Tooltip';
+import SkillTooltip from '~/components/Tooltips/Skills/TooltipContainer';
 import SkillIcon from '../../Icon';
 
 class WeaponBar extends Component {
@@ -54,10 +54,8 @@ class WeaponBar extends Component {
             );
         }
 
-        const { activeMajorTraits, activeMinorTraits } = this.props;
-
         return (
-            <SkillTooltip key={index} activeMajorTraits={activeMajorTraits} activeMinorTraits={activeMinorTraits} skill={skill}>
+            <SkillTooltip key={index} skill={skill}>
                 <SkillIcon skill={skill}/>
             </SkillTooltip>
         );
@@ -78,9 +76,7 @@ WeaponBar.propTypes = {
         })).isRequired,
         specialization: React.PropTypes.number
     })).isRequired,
-    skills: React.PropTypes.object.isRequired,
-    activeMajorTraits: React.PropTypes.arrayOf(React.PropTypes.number).isRequired,
-    activeMinorTraits: React.PropTypes.arrayOf(React.PropTypes.number).isRequired
+    skills: React.PropTypes.object.isRequired
 };
 
 export default WeaponBar;
