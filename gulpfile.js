@@ -50,7 +50,7 @@ function bundle() {
         .transform('babelify');
 }
 
-function buildAssets(bundle) {
+function buildSource(bundle) {
     return bundle.on('error', logError)
         .pipe(source('app.js'))
         .pipe(buffer())
@@ -64,8 +64,8 @@ gulp.task('clean', () => {
     return del(['./public', './build']);
 });
 
-gulp.task('build:assets', () => {
-    return buildAssets(bundle().bundle());
+gulp.task('build:source', () => {
+    return buildSource(bundle().bundle());
 });
 
 gulp.task('build:img', () => {
@@ -118,8 +118,8 @@ gulp.task('browsersync-reload:all', callback => {
     runSequence('build', 'browsersync-reload', callback);
 });
 
-gulp.task('browsersync-reload:assets', callback => {
-    runSequence('build:assets', 'revision', 'browsersync-reload', callback);
+gulp.task('browsersync-reload:source', callback => {
+    runSequence('build:source', 'revision', 'browsersync-reload', callback);
 });
 
 gulp.task('browsersync-reload:img', callback => {
@@ -141,8 +141,8 @@ gulp.task('dev', callback => {
         });
 
         const b = bundle().plugin(watchify);
-        b.on('update', _ => buildAssets(b.bundle()).on('finish', () => runSequence('revision', 'browsersync-reload')));
-        buildAssets(b.bundle());
+        b.on('update', _ => buildSource(b.bundle()).on('finish', () => runSequence('revision', 'browsersync-reload')));
+        buildSource(b.bundle());
 
         gulp.watch('./assets/img/**', ['browsersync-reload:img']);
         gulp.watch('./views/**', ['browsersync-reload']);
@@ -152,7 +152,7 @@ gulp.task('dev', callback => {
 });
 
 gulp.task('build', callback => {
-    runSequence('clean', ['build:assets', 'build:img', 'build:favicon', 'build:service-worker'], 'revision', callback);
+    runSequence('clean', ['build:source', 'build:img', 'build:favicon', 'build:service-worker'], 'revision', callback);
 });
 
 gulp.task('help', () => {
