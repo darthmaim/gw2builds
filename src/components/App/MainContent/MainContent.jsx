@@ -1,9 +1,9 @@
 import React from 'react';
 import throttle from 'lodash/throttle';
+import Settings from '~/containers/settings';
 import Skills from '~/components/Skills';
 import Specializations from '~/components/Specializations';
-import Settings from '~/containers/settings';
-import Gear from '~/components/Character/Gear';
+import Gear from '~/components/Gear';
 import Section from './Section';
 import style from './mainContent.css';
 
