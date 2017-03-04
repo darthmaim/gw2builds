@@ -37,6 +37,7 @@ app.locals.js = function (file) {
 app.locals.img = function (file) {
     return app.locals.asset(path.join('img', file));
 };
+app.locals.manifest = require('./assets/manifest.json');
 
 debug('Setting up middleware');
 app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));

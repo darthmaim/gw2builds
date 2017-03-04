@@ -1,8 +1,11 @@
 doctype html
 html
     head
-        title= title
-        meta(name=viewport, content="width=device-width, initial-scale=1.0")
+        title=manifest.name
+        link(rel="manifest", href="manifest.json")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        meta(name="theme-color", content=manifest.theme_color)
+        meta(name="description", content=manifest.description)
         link(rel="icon", href=img("favicon/16.png"), type="image/png", sizes="16x16")
         link(rel="icon", href=img("favicon/32.png"), type="image/png", sizes="32x32")
         link(rel="preload", as="style", href=css("app.css"), onload="this.rel='stylesheet'")
