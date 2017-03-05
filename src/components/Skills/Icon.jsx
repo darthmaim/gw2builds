@@ -1,10 +1,12 @@
 import React from 'react';
 import style from './Icon.css';
 
+const inlineSize = size => size && size !== 64
+    ? { width: size, height: size }
+    : {};
+
 const SkillIcon = ({ skill, size, className, ...props }) => {
-    const inline = size && size !== 64 ?
-        { width: size, height: size } :
-        {};
+    const inline = inlineSize(size);
 
     if (!skill) {
         return (<div className={style.loading} style={inline} {...props}/>);
@@ -22,8 +24,8 @@ SkillIcon.propTypes = {
     size: React.PropTypes.number
 };
 
-SkillIcon.Empty = props => (
-    <div className={style.empty} {...props}/>
+SkillIcon.Empty = ({ size, ...props }) => (
+    <div className={style.empty} style={inlineSize(size)} {...props}/>
 );
 
 export default SkillIcon;

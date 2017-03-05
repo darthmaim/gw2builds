@@ -15,9 +15,9 @@ export const skillIds = handleAction(actions.FETCH_PROFESSION, (state, action) =
         forEach(training.track, skill => skill.type === 'Skill' && skills.push(skill.skill_id));
     });
 
-    forEach(action.payload.attunements, attunement => skills.push(attunement.swap));
-
-    skills.push(action.payload.healing_skill_id);
+    forEach(action.payload.skills, skill => {
+        skills.push(skill.id);
+    });
 
     return skills;
 }, []);
