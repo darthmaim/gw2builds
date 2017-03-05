@@ -5,7 +5,7 @@ var router = express.Router();
 router.get('/manifest.json', function (req, res) {
     var manifest = req.app.locals.manifest;
 
-    manifest.icons = [144,192,512].map(function(size) {
+    manifest.icons = [512,192,144].map(function(size) {
         return {
             src: req.app.locals.img('logo/' + size + '.png'),
             sizes: size + 'x' + size,

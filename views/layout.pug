@@ -6,8 +6,17 @@ html
         meta(name="viewport", content="width=device-width, initial-scale=1.0")
         meta(name="theme-color", content=manifest.theme_color)
         meta(name="description", content=manifest.description)
+
+        //- Icons
         link(rel="icon", href=img("favicon/16.png"), type="image/png", sizes="16x16")
+        link(rel="icon", href=img("logo/192.png"), type="image/png", sizes="192x192")
+        //- put the 32 icon last, because FF doesn't understand sizes and always loads the last one
         link(rel="icon", href=img("favicon/32.png"), type="image/png", sizes="32x32")
+        //- iOS icons
+        link(rel="apple-touch-icon-precomposed", href=img("logo/512.png"), sizes="512x512")
+        link(rel="apple-touch-icon-precomposed", href=img("logo/192.png"), sizes="192x192")
+
+        //- styles
         link(rel="preload", as="style", href=css("app.css"), onload="this.rel='stylesheet'")
         link(rel="preload", as="style", href="https://fonts.googleapis.com/css?family=Open+Sans:400", onload="this.rel='stylesheet'")
     body
