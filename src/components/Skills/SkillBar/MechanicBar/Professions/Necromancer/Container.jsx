@@ -4,6 +4,7 @@ import Necromancer from './Component';
 
 const mapStateToProps = (state, ownProps) => ({
     skills: state.skills,
+    professionSkills: state.professionSkills,
     health: getAttributeHealth(state)
 });
 

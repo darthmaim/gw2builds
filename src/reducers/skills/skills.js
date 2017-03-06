@@ -22,9 +22,14 @@ export const skillIds = handleAction(actions.FETCH_PROFESSION, (state, action) =
     return skills;
 }, []);
 
+export const professionSkills = handleAction(actions.FETCH_PROFESSION, (state, action) => {
+    return action.payload.skills;
+}, []);
+
 export const skills = handleSimpleAction(actions.FETCH_SKILLS, {});
 
 export default {
     skillIds,
+    professionSkills,
     skills
 };

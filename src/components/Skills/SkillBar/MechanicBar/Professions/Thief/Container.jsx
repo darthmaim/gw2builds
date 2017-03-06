@@ -2,7 +2,8 @@ import { connect } from 'react-redux';
 import Thief from './Component';
 
 const mapStateToProps = (state, ownProps) => ({
-    skills: state.skills
+    skills: state.skills,
+    professionSkills: state.professionSkills,
 });
 
 export default connect(mapStateToProps)(Thief);

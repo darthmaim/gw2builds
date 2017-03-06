@@ -1,18 +1,17 @@
 import React from 'react';
 import filter from 'lodash/filter';
+import includes from 'lodash/includes';
 import SkillIcon from '../../../../Icon';
 import SkillTooltip from '../../../../../Tooltips/Skills/TooltipContainer';
 import style from './style.css';
 
-const skillIds = [14443, 14544, 14375, 14367, 14353, 14414, 14506, 14396, 14387];
+const renderSkill = (skills, professionSkills, weapon) => {
+    const possibleSkill = filter(professionSkills, s => s.slot = 'Profession_2' && skills[s.id] && includes(skills[s.id].categories, 'Burst') && skills[s.id].weapon_type === weapon)
 
-const renderSkill = (skills, weapon) => {
-    const skill = skills[filter(skillIds, id => skills[id] && skills[id].weapon_type === weapon)[0]];
-
-    if(skill) {
+    if(possibleSkill.length) {
         return (
-            <SkillTooltip skill={skill}>
-                <SkillIcon skill={skill} size={32}/>
+            <SkillTooltip skill={skills[possibleSkill[0].id]}>
+                <SkillIcon skill={skills[possibleSkill[0].id]} size={32}/>
             </SkillTooltip>
         );
     } else {
@@ -20,12 +19,12 @@ const renderSkill = (skills, weapon) => {
     }
 };
 
-const Warrior = ({ skills, weapon }) => (
+const Warrior = ({ professionSkills, skills, weapon }) => (
     <div className={style.component}>
         <div className={style.bar}>
             <span/><span/><span/>
         </div>
-        {renderSkill(skills, weapon)}
+        {renderSkill(skills, professionSkills, weapon)}
     </div>
 );
 
