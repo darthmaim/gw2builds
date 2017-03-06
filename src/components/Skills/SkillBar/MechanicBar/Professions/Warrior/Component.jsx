@@ -23,7 +23,7 @@ const renderSkill = (skills, weapon) => {
 const Warrior = ({ skills, weapon }) => (
     <div className={style.component}>
         <div className={style.bar}>
-            <span/><span/>
+            <span/><span/><span/>
         </div>
         {renderSkill(skills, weapon)}
     </div>

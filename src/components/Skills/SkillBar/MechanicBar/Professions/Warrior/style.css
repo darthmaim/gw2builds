@@ -13,14 +13,15 @@
 .bar > span {
     border: 1px solid #6c3c06;
     display: inline-block;
-    width: 100px;
-    margin-right: 8px;
+    width: 90px;
+    margin-right: 4px;
     height: 16px;
+    background: linear-gradient(to right, #fdef00, #fac600);
 }
 
 .bar > span:first-child {
-    background: linear-gradient(to right, #f2eb88, #e5c74e);
+    background: linear-gradient(to right, #fef800, #fcf200);
 }
 .bar > span:last-child {
-    background: linear-gradient(to right, #e3c040, #d8962d);
+    background: linear-gradient(to right, #fab400, #f48800);
 }
