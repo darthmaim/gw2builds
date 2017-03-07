@@ -9,11 +9,17 @@ import { setMajorTrait } from '../actions/traits';
  * @return {Promise|undefined} Promise or undefined.
  */
 export function initializeBuildFromString(store, buildString) {
-    const build = deserialize(buildString);
     const dispatch = store.dispatch;
+    let build;
+
+    try {
+        build = deserialize(buildString);
+    } catch(e) {
+        return Promise.reject(e);
+    }
 
     if (!build) {
-        return;
+        return Promise.reject(new Error('Invalid build string'));
     }
 
     const disp = (propName, prop, action, creator = (v, p, n) => ({ [n]: v })) => {

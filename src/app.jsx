@@ -41,6 +41,11 @@ class Editor extends React.Component {
                 .then(() => {
                     console.log('Loaded build from url.');
                     this.setState({ loading: false });
+                })
+                .catch(e => {
+                    console.log('Couldn\'t load build from url:', e);
+                    window.history.replaceState(undefined, '', '/');
+                    this.setState({ loading: false });
                 });
         } else {
             this.setState({ loading: false });
