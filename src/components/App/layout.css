@@ -27,10 +27,26 @@ html, body {
     border-radius: 2px;
     opacity: 0;
     transition: opacity .5s ease-in;
+    pointer-events: none;
 }
 
 .loadingVisible {
     composes: loading;
 
     opacity: 1;
+}
+
+@media(max-width: 768px) {
+    .frame {
+        height: auto;
+        display: block;
+    }
+
+    html, body, :global(#container) {
+        height: auto;
+    }
+
+    .loading {
+        top: 24px;
+    }
 }

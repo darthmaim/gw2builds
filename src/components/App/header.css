@@ -26,3 +26,28 @@
     display: inline-block;
     margin: 10px 16px;
 }
+
+@media(max-width: 768px) {
+    .header {
+        height: 48px;
+    }
+
+    .logo {
+        width: 48px;
+        height: 48px;
+    }
+
+    .logo img {
+        margin: 5px;
+        height: 38px;
+    }
+
+    .title {
+        margin: 5px 8px;
+    }
+
+    .title img {
+        height: 38px;
+        max-width: 100%;
+    }
+}

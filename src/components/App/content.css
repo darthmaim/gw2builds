@@ -14,3 +14,16 @@
     border-left: 1px solid #eee;
     overflow: auto;
 }
+
+@media(max-width: 768px) {
+    .container {
+        display: initial;
+    }
+
+    .stats {
+        width: 100%;
+        max-width: none;
+        min-width: none;
+        border-left: 0;
+    }
+}

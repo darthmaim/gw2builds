@@ -6,6 +6,8 @@
     overflow: hidden;
     position: relative;
     user-select: none;
+    background: #fff;
+    z-index: 11;
 }
 
 .sections {
@@ -46,4 +48,29 @@
 
 .button img {
     vertical-align: middle;
+}
+
+@media(max-width: 768px) {
+    .sidebar {
+        flex-direction: row;
+        width: 100%;
+        height: 48px;
+        border-right: 0;
+        border-bottom: 1px solid #eee;
+
+        position: sticky;
+        top: 0;
+        overflow: visible;
+    }
+
+    .button {
+        width: 48px;
+        height: 48px;
+        line-height: 48px;
+    }
+
+    .button img {
+        height: 38px;
+        width: 38px;
+    }
 }

@@ -47,3 +47,39 @@
 .selectorItem {
     composes: button;
 }
+
+@media(max-width: 768px) {
+    .container {
+        width: 48px;
+        height: 48px;
+        overflow: hidden;
+    }
+
+    .button {
+        width: 48px;
+        height: 48px;
+        line-height: 48px;
+        font-size: 22px;
+    }
+
+    .dropdown {
+        transform: none !important;
+    }
+
+    .containerOpen {
+        overflow: visible;
+    }
+
+    .active {
+        border-left: 1px solid #fff;
+    }
+
+    .containerOpen .active {
+        border-left-color: #eee;
+    }
+
+    .selector {
+        border-left: 1px solid #eee;
+        border-bottom: 1px solid #eee;
+    }
+}

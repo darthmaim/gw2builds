@@ -136,3 +136,9 @@ Icons
     composes: listitem;
     background-image: url(../img/stats-boon-duration.png);
 }
+
+@media(max-width: 768px) {
+    .panel {
+        border-top: 1px solid #eee;
+    }
+}

@@ -11,4 +11,5 @@
 
 .content {
     padding: 16px;
+    overflow-x: auto;
 }
