@@ -12,13 +12,29 @@ class Tooltip extends PureComponent {
 
         this.handleMouseEnter = this.handleMouseEnter.bind(this);
         this.handleMouseOut = this.handleMouseOut.bind(this);
+        this.handleTouch = this.handleTouch.bind(this);
     }
 
-    handleMouseEnter() {
-        this.context.tooltipContext.setTooltip(this.props.tooltip);
+    handleMouseEnter(e) {
+        if(e.pointerType === 'touch') {
+            return;
+        }
+
+        this.context.tooltipContext.setTooltip(this.props.tooltip, e);
+    }
+
+    handleTouch(e) {
+        if(!this.state.visible) {
+            this.context.tooltipContext.setTooltip(this.props.tooltip, e);
+            e.preventDefault();
+        }
     }
 
     handleMouseOut(e) {
+        if(e.pointerType === 'touch') {
+            return;
+        }
+
         let node = e.relatedTarget;
 
         while (node && node !== e.currentTarget) {
@@ -26,18 +42,24 @@ class Tooltip extends PureComponent {
         }
 
         if (!node) {
-            this.context.tooltipContext.hideTooltip();
+            this.context.tooltipContext.hideTooltip(e);
         }
     }
 
     attachEvents() {
-        this.node.addEventListener('mouseenter', this.handleMouseEnter);
-        this.node.addEventListener('mouseout', this.handleMouseOut);
+        this.node.addEventListener('pointerenter', this.handleMouseEnter);
+        this.node.addEventListener('pointerout', this.handleMouseOut);
+        this.node.addEventListener('touchstart', this.handleTouch);
+        this.unregisterTooltipChangeEvent = this.context.tooltipContext.onTooltipChange(tooltip => {
+            this.setState({ visible: tooltip === this.props.tooltip });
+        });
     }
 
     dettachEvents() {
-        this.node.removeEventListener('mouseenter', this.handleMouseEnter);
-        this.node.removeEventListener('mouseout', this.handleMouseOut);
+        this.node.removeEventListener('pointerenter', this.handleMouseEnter);
+        this.node.removeEventListener('pointerout', this.handleMouseOut);
+        this.node.removeEventListener('touchstart', this.handleTouch);
+        this.unregisterTooltipChangeEvent();
     }
 
     componentDidMount() {

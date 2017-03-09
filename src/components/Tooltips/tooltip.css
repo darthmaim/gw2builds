@@ -1,8 +1,36 @@
 .tooltip {
-    position: absolute;
+    position: fixed;
     top: 0; left: 0;
 
     z-index: 100;
     pointer-events: none;
     will-change: transform;
 }
+
+.inner {
+    background: #fff;
+    padding: 8px;
+    margin: 8px;
+    border: 1px solid #eee;
+    max-width: 500px;
+}
+
+.touch .inner {
+    margin: 0 auto;
+    border: none;
+}
+
+.touch {
+    position: fixed;
+    left: 0; right: 0;
+    bottom: 0;
+    box-shadow: 0 0 32px rgba(0,0,0,.3);
+    background: #fff;
+    padding-top: 8px;
+
+
+    z-index: 100;
+    transform: translateY(100%) translateY(-100px);
+}
+
+.a {}

@@ -12,24 +12,35 @@ class TooltipContext extends Component {
 
         this.tooltips = [];
         this.listeners = [];
+        this.lastWasTouch = false;
     }
 
     getChildContext() {
         return {
             tooltipContext: {
-                setTooltip: tooltip => {
-                    this.tooltips = [tooltip, ...this.tooltips];
+                setTooltip: (tooltip, e) => {
+                    if(e.constructor.name === 'TouchEvent') {
+                        this.lastWasTouch = true;
+                        this.tooltips = [tooltip];
+                    } else {
+                        if(this.lastWasTouch) {
+                            this.tooltips = [];
+                        }
+
+                        this.tooltips = [tooltip, ...this.tooltips];
+                        this.lastWasTouch = false;
+                    }
 
                     this.listeners.forEach(listener => listener(
-                        tooltip
+                        tooltip, e
                     ));
                 },
-                hideTooltip: () => {
+                hideTooltip: e => {
                     const [, ...tooltips] = this.tooltips;
                     this.tooltips = tooltips;
 
                     this.listeners.forEach(listener => listener(
-                        tooltips[0] || null
+                        tooltips[0] || null, e
                     ));
                 },
                 onTooltipChange: listener => {
