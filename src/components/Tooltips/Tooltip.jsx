@@ -16,7 +16,7 @@ class Tooltip extends PureComponent {
     }
 
     handleMouseEnter(e) {
-        if(e.pointerType === 'touch') {
+        if (e.pointerType === 'touch') {
             return;
         }
 
@@ -24,14 +24,14 @@ class Tooltip extends PureComponent {
     }
 
     handleTouch(e) {
-        if(!this.state.visible) {
+        if (!this.state.visible) {
             this.context.tooltipContext.setTooltip(this.props.tooltip, e);
             e.preventDefault();
         }
     }
 
     handleMouseOut(e) {
-        if(e.pointerType === 'touch') {
+        if (e.pointerType === 'touch') {
             return;
         }
 

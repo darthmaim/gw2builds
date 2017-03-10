@@ -29,7 +29,7 @@ class Editor extends React.Component {
 
         this.state = {
             loading: true
-        }
+        };
     }
 
     componentWillMount() {
@@ -54,7 +54,7 @@ class Editor extends React.Component {
 
     componentDidUpdate() {
         // prevent updating the url/title while a build is loaded
-        if(this.state.loading) {
+        if (this.state.loading) {
             return;
         }
 

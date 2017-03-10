@@ -15,7 +15,7 @@ const renderSkills = (professionSkills, skills) => {
                 </SkillTooltip>
             );
         } else {
-            <SkillIcon/>
+            <SkillIcon/>;
         }
     });
 };

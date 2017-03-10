@@ -12,7 +12,7 @@ class TooltipElement extends Component {
         this.touch = {
             identifier: undefined,
             position: 0,
-            offset: -100,
+            offset: -100
         };
 
         this.state = {
@@ -33,11 +33,11 @@ class TooltipElement extends Component {
             (tooltip, event) => {
                 const touch = event.constructor.name === 'TouchEvent';
                 this.setState({ tooltip, touch }, () => {
-                    if(touch && this.element) {
+                    if (touch && this.element) {
                         this.touch.offset = Math.max(Math.min(-100, this.touch.offset), -this.element.offsetHeight);
                         this.element.style.transform = `translateY(100%) translateY(${this.touch.offset}px)`;
                     }
-                })
+                });
             }
         );
 
@@ -66,7 +66,7 @@ class TooltipElement extends Component {
     }
 
     handleTouchStart(e) {
-        if(this.touch.identifier !== undefined) {
+        if (this.touch.identifier !== undefined) {
             return;
         }
 
@@ -77,16 +77,16 @@ class TooltipElement extends Component {
     }
 
     handleTouchMove(e) {
-        if(this.touch.identifier === undefined) {
+        if (this.touch.identifier === undefined) {
             return;
         }
 
         e.preventDefault();
 
         Array.from(e.changedTouches).forEach(touch => {
-            if(touch.identifier === this.touch.identifier) {
+            if (touch.identifier === this.touch.identifier) {
                 const delta = touch.screenY - this.touch.position;
-                this.touch.position  = touch.screenY;
+                this.touch.position = touch.screenY;
                 this.touch.offset += delta;
 
                 this.touch.offset = Math.max(this.touch.offset, -this.element.offsetHeight);
@@ -97,7 +97,7 @@ class TooltipElement extends Component {
     }
 
     handleTouchEnd(e) {
-        if(this.touch.identifier === undefined) {
+        if (this.touch.identifier === undefined) {
             return;
         }
 
@@ -105,13 +105,13 @@ class TooltipElement extends Component {
 
         this.touch.identifier = undefined;
 
-        if(this.touch.offset >= -30) {
+        if (this.touch.offset >= -30) {
             this.context.tooltipContext.hideTooltip(e);
         }
     }
 
     addElementEventListeners() {
-        if(this.element) {
+        if (this.element) {
             this.element.addEventListener('touchstart', this.handleTouchStart);
             this.element.addEventListener('touchmove', this.handleTouchMove);
             this.element.addEventListener('touchend', this.handleTouchEnd);
@@ -119,7 +119,7 @@ class TooltipElement extends Component {
     }
 
     removeElementEventListeners() {
-        if(this.element) {
+        if (this.element) {
             this.element.removeEventListener('touchstart', this.handleTouchStart);
             this.element.removeEventListener('touchmove', this.handleTouchMove);
             this.element.removeEventListener('touchend', this.handleTouchEnd);

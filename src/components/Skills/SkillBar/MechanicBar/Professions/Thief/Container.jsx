@@ -3,7 +3,7 @@ import Thief from './Component';
 
 const mapStateToProps = (state, ownProps) => ({
     skills: state.skills,
-    professionSkills: state.professionSkills,
+    professionSkills: state.professionSkills
 });
 
 export default connect(mapStateToProps)(Thief);

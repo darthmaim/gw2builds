@@ -19,11 +19,11 @@ class TooltipContext extends Component {
         return {
             tooltipContext: {
                 setTooltip: (tooltip, e) => {
-                    if(e.constructor.name === 'TouchEvent') {
+                    if (e.constructor.name === 'TouchEvent') {
                         this.lastWasTouch = true;
                         this.tooltips = [tooltip];
                     } else {
-                        if(this.lastWasTouch) {
+                        if (this.lastWasTouch) {
                             this.tooltips = [];
                         }
 

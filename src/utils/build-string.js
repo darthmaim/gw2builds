@@ -14,7 +14,7 @@ export function initializeBuildFromString(store, buildString) {
 
     try {
         build = deserialize(buildString);
-    } catch(e) {
+    } catch (e) {
         return Promise.reject(e);
     }
 

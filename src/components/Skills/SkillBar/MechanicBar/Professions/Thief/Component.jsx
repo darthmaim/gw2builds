@@ -20,7 +20,7 @@ const Thief = ({ professionSkills, skills }) => (
         {renderSkill(professionSkills, skills)}
         <SkillIcon.Empty size={32}/>
         <div className={style.initiative}>
-            {range(0, 15).map(i => (<span key={i}></span>))}
+            {range(0, 15).map(i => (<span key={i}/>))}
         </div>
     </div>
 );
