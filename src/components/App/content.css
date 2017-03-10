@@ -23,7 +23,7 @@
     .stats {
         width: 100%;
         max-width: none;
-        min-width: none;
+        min-width: 0;
         border-left: 0;
     }
 }
