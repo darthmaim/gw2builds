@@ -1,5 +1,5 @@
 .section {
-
+    position: relative;
 }
 
 .header {
@@ -12,4 +12,16 @@
 .content {
     padding: 16px;
     overflow-x: auto;
+}
+
+.anchor {
+    width: 0; height: 0;
+    visibility: hidden;
+    position: absolute;
+}
+
+@media(max-width: 768px) {
+    .anchor {
+        margin-top: -48px;
+    }
 }

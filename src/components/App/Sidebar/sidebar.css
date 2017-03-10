@@ -39,7 +39,6 @@
     line-height: 64px;
     cursor: pointer;
     transition: background .3s ease;
-    outline: none;
 }
 
 .button:hover {
@@ -72,5 +71,11 @@
     .button img {
         height: 38px;
         width: 38px;
+    }
+
+    .marker {
+        height: 4px;
+        width: 48px;
+        top: calc(48px - 3px);
     }
 }

@@ -6,9 +6,18 @@ class Sidebar extends Component {
     constructor(props, context) {
         super(props, context);
 
+        const mql = window.matchMedia('(max-width: 768px)');
+
         this.state = {
-            currentIndex: props.currentIndex
+            currentIndex: props.currentIndex,
+            isResponsive: mql.matches
         };
+
+        mql.addListener(this.handleResponsiveChange.bind(this));
+    }
+
+    handleResponsiveChange(mql) {
+        this.setState({ isResponsive: mql.matches });
     }
 
     onClick(currentIndex) {
@@ -26,12 +35,16 @@ class Sidebar extends Component {
     }
 
     shouldComponentUpdate(props, state) {
-        return this.props.currentIndex !== props.currentIndex || this.state.currentIndex !== state.currentIndex;
+        return this.props.currentIndex !== props.currentIndex ||
+            this.state.currentIndex !== state.currentIndex ||
+            this.state.isResponsive !== state.isResponsive;
     }
 
     render() {
         const markerStyle = {
-            transform: `translateY(${this.state.currentIndex * 64}px)`
+            transform: this.state.isResponsive
+                ? `translateX(${this.state.currentIndex * 48}px)`
+                : `translateY(${this.state.currentIndex * 64}px)`
         };
         return (
             <div className={style.sidebar}>
