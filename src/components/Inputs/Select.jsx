@@ -5,7 +5,7 @@ function Select({ children, onChange, value, placeholder }) {
     return (
         <div className={style.wrapper}>
             <select onChange={event => onChange(event.target.value)} value={value || '?'} className={style.select}>
-                {!value && placeholder && <option value="?">{placeholder}</option>}
+                {!value && placeholder && <option value="?" disabled>{placeholder}</option>}
                 {children}
             </select>
         </div>
