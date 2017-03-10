@@ -62,7 +62,7 @@ class MainContent extends React.Component {
 
         let { scrollTop, scrollHeight, offsetHeight } = this.panelNode;
 
-        if (scrollTop + offsetHeight === scrollHeight) {
+        if (scrollTop + offsetHeight >= scrollHeight) {
             this.props.onSectionChange(this.sectionNodes.length - 1);
             return;
         }
@@ -77,7 +77,7 @@ class MainContent extends React.Component {
 
         let { scrollTop, scrollHeight } = window.document.scrollingElement;
 
-        if (scrollTop + window.innerHeight === scrollHeight) {
+        if (scrollTop + window.innerHeight >= scrollHeight) {
             this.props.onSectionChange(this.sectionNodes.length - 1);
             return;
         }

@@ -3,6 +3,7 @@ html, body {
     font-family: 'Open Sans', sans-serif;
     font-size: 14px;
     height: 100%;
+    overflow: hidden;
 }
 
 :global(#container) {
@@ -44,6 +45,7 @@ html, body {
 
     html, body, :global(#container) {
         height: auto;
+        overflow: initial;
     }
 
     .loading {
