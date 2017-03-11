@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import SelectableSkill from '../../SelectableSkill';
 import SkillTooltip from '~/components/Tooltips/Skills/TooltipContainer';
 import SkillIcon from '../../Icon';
 
@@ -24,7 +25,6 @@ class UtilityBar extends Component {
     }
 
     render() {
-        console.log(this.props);
         const getSkillsForSlot = this.getSkillsForSlot(this.props);
 
         const slots = [0, 1, 2, 3, 4].map(getSkillsForSlot);
@@ -42,6 +42,11 @@ class UtilityBar extends Component {
                 <SkillIcon.Empty key={index}/>
             );
         }
+        const slotName = (index==0?'Heal':(index==4?'Elite':'Utility'));
+
+        return (
+            <SelectableSkill slot={slotName}/>
+        );
 
         return (
             <SkillTooltip key={index} skill={skill}>
