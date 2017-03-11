@@ -1,0 +1,7 @@
+.skill {
+    display: inline-block;
+}
+
+.skill + .skill > div {
+    border-left: 0;
+}

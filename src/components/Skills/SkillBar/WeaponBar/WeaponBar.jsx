@@ -41,7 +41,7 @@ class WeaponBar extends Component {
         const slots = [0, 1, 2, 3, 4].map(getSkillInSlot);
 
         return (
-            <div>
+            <div style={{display:'inline-block'}}>
                 {slots.map(this.renderSkill)}
             </div>
         );

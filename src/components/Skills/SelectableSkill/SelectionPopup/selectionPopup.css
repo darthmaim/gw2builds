@@ -8,8 +8,14 @@
     color: white;
 }
 
+.selectionPopupLeft,
 .selectionPopupInner {
     background: rgba(0, 0, 0, 0.8);
+}
+
+.selectionPopupLeft {
+    height: 100%;
+    width: 12px;
 }
 
 .selectionPopupInner {
@@ -17,7 +23,6 @@
     left: 0;
     margin-left: 12px;
     padding: 7px 7px 7px 11px;
-    min-height: calc(100% + 76px);
     top: 50%;
     transform: translateY(-50%);
     white-space: nowrap;
