@@ -6,14 +6,20 @@ class Sidebar extends Component {
     constructor(props, context) {
         super(props, context);
 
-        const mql = window.matchMedia('(max-width: 768px)');
+        this.responsiveMediaQuery = window.matchMedia('(max-width: 768px)');
 
         this.state = {
             currentIndex: props.currentIndex,
-            isResponsive: mql.matches
+            isResponsive: this.responsiveMediaQuery.matches
         };
 
-        mql.addListener(this.handleResponsiveChange.bind(this));
+        this.handleResponsiveChange = this.handleResponsiveChange.bind(this);
+
+        this.responsiveMediaQuery.addListener(this.handleResponsiveChange);
+    }
+
+    componentWillUnmount() {
+        this.responsiveMediaQuery.removeListener(this.handleResponsiveChange);
     }
 
     handleResponsiveChange(mql) {

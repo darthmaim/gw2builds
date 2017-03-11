@@ -18,21 +18,23 @@ class MainContent extends React.Component {
 
         this.setSectionRef = this.setSectionRef.bind(this);
         this.setPanelRef = this.setPanelRef.bind(this);
+        this.handleResponsiveChange = this.handleResponsiveChange.bind(this);
         this.handleScroll = throttle(this.handleScroll.bind(this), 200);
         this.handleWindowScroll = throttle(this.handleWindowScroll.bind(this), 200);
 
-        const mql = window.matchMedia('(max-width: 768px)');
-        mql.addListener(this.handleResponsiveChange.bind(this));
+        this.responsiveMediaQuery = window.matchMedia('(max-width: 768px)');
+        this.responsiveMediaQuery.addListener(this.handleResponsiveChange);
         window.addEventListener('scroll', this.handleWindowScroll);
 
         this.state = {
-            isResponsive: mql.matches
+            isResponsive: this.responsiveMediaQuery.matches
         }
     }
 
     componentWillUnmount() {
         this.handleScroll.cancel();
         this.panelNode.removeEventListener('scroll', this.handleScroll);
+        this.responsiveMediaQuery.removeListener(this.handleResponsiveChange);
         window.removeEventListener('scroll', this.handleWindowScroll);
     }
 
