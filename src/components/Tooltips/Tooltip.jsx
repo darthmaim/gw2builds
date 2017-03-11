@@ -68,6 +68,10 @@ class Tooltip extends PureComponent {
     }
 
     componentWillUnmount() {
+        if(this.state.visible) {
+            this.context.tooltipContext.hideTooltip();
+        }
+
         this.dettachEvents();
     }
 
