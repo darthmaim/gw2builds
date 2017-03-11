@@ -138,7 +138,7 @@ class MainContent extends React.Component {
     render() {
         return (
             <div ref={this.setPanelRef} className={style.panel}>
-                <Section domRef={this.setSectionRef(0)} anchorRef={this.setAnchorRef(0)} name="Character">
+                <Section domRef={this.setSectionRef(0)} anchorRef={this.setAnchorRef(0)} name="General">
                     <Settings/>
                 </Section>
                 <Section domRef={this.setSectionRef(1)} anchorRef={this.setAnchorRef(1)} name="Skills">
