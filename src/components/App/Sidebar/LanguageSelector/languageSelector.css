@@ -52,6 +52,7 @@
     .container {
         width: 48px;
         height: 48px;
+        border-left: 1px solid #fff;
         overflow: hidden;
     }
 
@@ -68,17 +69,11 @@
 
     .containerOpen {
         overflow: visible;
-    }
-
-    .active {
-        border-left: 1px solid #fff;
-    }
-
-    .containerOpen .active {
         border-left-color: #eee;
     }
 
     .selector {
+        margin-left: -1px;
         border-left: 1px solid #eee;
         border-bottom: 1px solid #eee;
     }
