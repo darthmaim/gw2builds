@@ -23,6 +23,7 @@
     background-color: #C56CD6;
     z-index: 1;
 
+    will-change: transform;
     transition: transform .3s cubic-bezier(0.5, 0.01, 0.2, 1);
 }
 
