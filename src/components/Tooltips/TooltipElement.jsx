@@ -31,7 +31,7 @@ class TooltipElement extends Component {
     componentDidMount() {
         this.unsubscribeTooltipChange = this.context.tooltipContext.onTooltipChange(
             (tooltip, event) => {
-                const touch = event.constructor.name === 'TouchEvent';
+                const touch = event !== undefined && event.constructor.name === 'TouchEvent';
                 this.setState({ tooltip, touch }, () => {
                     if (touch && this.element) {
                         this.touch.offset = Math.max(Math.min(-100, this.touch.offset), -this.element.offsetHeight);
