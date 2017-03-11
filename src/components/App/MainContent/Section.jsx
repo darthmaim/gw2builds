@@ -4,7 +4,7 @@ import style from './section.css';
 class Section extends Component {
     render() {
         return (
-            <div className={style.section} ref={this.props.domRef}>
+            <div className={[style.section, this.props.className].join(' ')} ref={this.props.domRef}>
                 <span className={style.anchor} ref={this.props.anchorRef}/>
                 <div className={style.header}>{this.props.name}</div>
                 <div className={style.content}>
@@ -18,8 +18,9 @@ class Section extends Component {
 Section.propTypes = {
     name: React.PropTypes.string.isRequired,
     children: React.PropTypes.node.isRequired,
-    domRef: React.PropTypes.func.isRequired,
-    anchorRef: React.PropTypes.func.isRequired
+    domRef: React.PropTypes.func,
+    anchorRef: React.PropTypes.func,
+    className: React.PropTypes.string
 };
 
 export default Section;
