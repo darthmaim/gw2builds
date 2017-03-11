@@ -1,4 +1,5 @@
 import React from 'react';
+import classnames from 'classnames';
 import style from './Icon.css';
 
 const inlineSize = size => size && size !== 64
@@ -13,7 +14,7 @@ const SkillIcon = ({ skill, size, className, ...props }) => {
     }
 
     return (
-        <div className={style.skill + ' ' + className} style={inline} {...props}>
+        <div className={classnames(style.skill, className)} style={inline} {...props}>
             <img src={skill.icon}/>
         </div>
     );

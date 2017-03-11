@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
+import classnames from 'classnames';
 import style from './section.css';
 
 class Section extends Component {
     render() {
         return (
-            <div className={[style.section, this.props.className].join(' ')} ref={this.props.domRef}>
+            <div className={classnames(style.section, this.props.className)} ref={this.props.domRef}>
                 <span className={style.anchor} ref={this.props.anchorRef}/>
                 <div className={style.header}>{this.props.name}</div>
                 <div className={style.content}>
