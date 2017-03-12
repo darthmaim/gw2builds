@@ -29,5 +29,6 @@
     padding-top: 8px;
 
     z-index: 100;
+    will-change: transform;
     transform: translateY(100%) translateY(-100px);
 }
