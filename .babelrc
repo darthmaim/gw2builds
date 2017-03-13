@@ -10,7 +10,7 @@
     [
       "react-intl",
       {
-        "messagesDir": "./build/messages/",
+        "messagesDir": "./temp/messages/",
         "enforceDescriptions": true
       }
     ]
