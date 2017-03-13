@@ -8,7 +8,7 @@ const
     cookieParser = require('cookie-parser'),
     bodyParser = require('body-parser');
 
-let manifest = require('./public/rev-manifest.json');
+let manifest = require('../public/rev-manifest.json');
 
 const routes = require('./routes/index');
 
@@ -20,8 +20,8 @@ app.set('view engine', 'pug');
 app.locals.asset = function (file) {
     file = file.replace(/\\/g, '/');
     if (process.env.NODE_ENV == 'development') {
-        delete require.cache[require.resolve('./public/rev-manifest.json')];
-        manifest = require('./public/rev-manifest.json');
+        delete require.cache[require.resolve('../public/rev-manifest.json')];
+        manifest = require('../public/rev-manifest.json');
     }
     if (file in manifest) {
         return manifest[file];
@@ -37,15 +37,15 @@ app.locals.js = function (file) {
 app.locals.img = function (file) {
     return app.locals.asset(path.join('img', file));
 };
-app.locals.manifest = require('./assets/manifest.json');
+app.locals.manifest = require('../assets/manifest.json');
 
 debug('Setting up middleware');
-app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
+app.use(favicon(path.join(__dirname, '..', 'public', 'favicon.ico')));
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, '..', 'public')));
 
 debug('Setting up routes');
 app.use('/', routes);

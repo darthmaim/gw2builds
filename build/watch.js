@@ -58,8 +58,8 @@ gulp.task('dev', callback => {
 gulp.task('nodemon', ['build'], callback => {
     let called = false;
     return nodemon({
-        script: './bin/www',
-        watch: ['app.js', 'bin/www']
+        script: './server/bin/www',
+        watch: ['server/app.js', 'server/bin/www']
     }).on('start', () => {
         if (!called) {
             called = true;
