@@ -38,6 +38,9 @@ app.locals.img = function (file) {
     return app.locals.asset(path.join('img', file));
 };
 app.locals.manifest = require('../assets/manifest.json');
+app.locals.google = {
+    analytics: process.env.GOOGLE_ANALYTICS_TRACKING_ID || false
+};
 
 debug('Setting up middleware');
 app.use(favicon(path.join(__dirname, '..', 'public', 'favicon.ico')));

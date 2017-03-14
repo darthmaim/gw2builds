@@ -19,9 +19,20 @@ html
         //- styles
         link(rel="preload", as="style", href=css("app.css"), onload="this.rel='stylesheet'")
         link(rel="preload", as="style", href="https://fonts.googleapis.com/css?family=Open+Sans:400", onload="this.rel='stylesheet'")
+
+        script.
+            addEventListener('error', window.__e=function f(e){f.q=f.q||[];f.q.push(e)});
     body
         block content
+
+        //- Load the main app
         script(src=js("app.js"), async)
+
+        //- Add google analytics if GOOGLE_ANALYTICS_TRACKING_ID environment variable is set
+        if google.analytics !== false
+            script#analytics(src="https://www.google-analytics.com/analytics.js", async, data-tracking-id=google.analytics)
+
+        //- register service worker
         script.
             if ('serviceWorker' in navigator) {
                 navigator.serviceWorker.register('/sw.js');

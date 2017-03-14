@@ -14,6 +14,9 @@ import { TooltipContext } from './components/Tooltips';
 import Layout from './components/App';
 import { getUrl } from './selectors/url';
 import { initializeBuildFromString } from './utils/build-string';
+import { init as initAnalytics } from './utils/analytics';
+
+initAnalytics();
 
 const Gw2Api = extendApiClient(apiClient(), extendApiData).cacheStorage(cacheMemory());
 const initialState = {
