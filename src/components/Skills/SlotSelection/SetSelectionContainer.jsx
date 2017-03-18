@@ -1,10 +1,11 @@
 import { connect } from 'react-redux';
 import { setWeaponSet } from '~/actions';
 import SetSelection from './SetSelection';
+import { getHasMultipleWeaponsets } from '~/selectors/skills';
 
 const mapStateToProps = state => ({
     activeWeaponSet: state.activeWeaponSet,
-    profession: state.profession
+    hasMultipleWeaponsets: getHasMultipleWeaponsets(state)
 });
 
 const mapDispatchToProps = dispatch => ({

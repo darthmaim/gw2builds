@@ -5,6 +5,7 @@ const getWeapons = state => state.weapons;
 const getActiveWeaponSet = state => state.activeWeaponSet;
 const getActiveMainhandWeapons = state => state.activeMainhandWeapons;
 const getActiveOffhandWeapons = state => state.activeOffhandWeapons;
+const getProfession = state => state.profession;
 
 const hasMainhandSkill = weapon => weapon.skills.some(skill => skill.slot === 'Weapon_1');
 const hasOffhandSkill = weapon => weapon.skills.some(skill => skill.slot === 'Weapon_5');
@@ -42,6 +43,11 @@ export const getIsTwoHandedActive = createSelector(
     weapon => is2Handed(null, weapon)
 );
 
+export const getHasMultipleWeaponsets = createSelector(
+    [getProfession],
+    profession => profession !== 'Elementalist' && profession !== 'Engineer'
+);
+
 export default {
-    getMainhandWeapons, getOffhandWeapons, getActiveMainhand, getActiveOffhand, getIsTwoHandedActive
+    getMainhandWeapons, getOffhandWeapons, getActiveMainhand, getActiveOffhand, getIsTwoHandedActive, getHasMultipleWeaponsets
 };
