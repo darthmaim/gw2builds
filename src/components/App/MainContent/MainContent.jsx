@@ -93,7 +93,7 @@ class MainContent extends React.Component {
         this.sectionNodes.some(section => {
             scrollTop -= section.offsetHeight;
 
-            if (scrollTop <= 0) {
+            if (scrollTop < 0) {
                 this.props.onSectionChange(sectionIndex);
 
                 return true;
