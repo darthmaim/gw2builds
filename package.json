@@ -69,6 +69,7 @@
     "redux": "^3.6.0",
     "redux-actions": "^1.2.0",
     "redux-promise": "^0.5.3",
+    "redux-sync-reducer": "^0.0.3",
     "redux-thunk": "^2.1.0",
     "reselect": "^2.5.4",
     "run-sequence": "^1.2.2",

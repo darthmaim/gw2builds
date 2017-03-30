@@ -15,6 +15,7 @@ import Layout from './components/App';
 import { getUrl } from './selectors/url';
 import { initializeBuildFromString } from './utils/build-string';
 import { init as initAnalytics } from './utils/analytics';
+import { syncMiddleware } from 'redux-sync-reducer';
 
 initAnalytics();
 
@@ -24,7 +25,7 @@ const initialState = {
     race: 'none'
 };
 
-const store = createStore(editor, initialState, applyMiddleware(thunk.withExtraArgument(Gw2Api), promiseMiddleware));
+const store = createStore(editor, initialState, applyMiddleware(thunk.withExtraArgument(Gw2Api), promiseMiddleware, syncMiddleware));
 
 class Editor extends React.Component {
     constructor(props, context) {

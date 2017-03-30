@@ -1,8 +1,9 @@
 import * as actions from '../actions';
 import { handleSimpleAction } from './utils';
+import { syncedReducer } from 'redux-sync-reducer';
 
 /** The language reducer. */
-export const language = handleSimpleAction(actions.SET_LANGUAGE, 'en', 'language');
+export const language = syncedReducer(handleSimpleAction(actions.SET_LANGUAGE, 'en', 'language'), { name: 'language' });
 
 /** The game mode reducer. */
 export const gameMode = handleSimpleAction(actions.SET_GAMEMODE, null, 'gameMode');
