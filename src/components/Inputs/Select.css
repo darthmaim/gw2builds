@@ -25,3 +25,9 @@
     border-bottom: 1px solid #eee;
     padding: 4px 16px 4px 0;
 }
+
+.placeholder {
+    composes: select;
+
+    color: rgba(0,0,0,.55);
+}
