@@ -48,7 +48,6 @@ gulp.task('dev', callback => {
         // watch some easier assets
         gulp.watch('./assets/img/**', ['browsersync-reload:img']);
         gulp.watch('./server/views/**', ['browsersync-reload']);
-        gulp.watch('./assets/js/sw.js', ['build:service-worker']);
 
         callback();
     });
