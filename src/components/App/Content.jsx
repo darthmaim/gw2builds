@@ -32,13 +32,23 @@ class Content extends Component {
     }
 
     render() {
+        const delimiter = ' • ';
+        const currentYear = (new Date()).getFullYear();
+
         return (
             <div className={style.container}>
                 <Sidebar currentIndex={this.state.currentIndex} onSectionChange={this.handleIndexChange}/>
                 <MainContent ref={this.setContentRef} onSectionChange={this.handleSectionScroll}/>
-                <Section name="Stats" className={style.stats}>
-                    <StatsOverview/>
-                </Section>
+                <div className={style.stats}>
+                    <Section name="Stats">
+                        <StatsOverview/>
+                    </Section>
+                    <div className={style.footer}>
+                        <a href="https://gw2efficiency.com/">gw2efficiency</a> &copy; {currentYear}
+                        {delimiter}<a href="https://github.com/darthmaim/gw2builds">Github</a>
+                        {delimiter}<a href="https://gitter.im/gw2builds/Lobby">Gitter</a>
+                    </div>
+                </div>
             </div>
         );
     }
