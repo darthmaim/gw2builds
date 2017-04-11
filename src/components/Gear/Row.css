@@ -1,0 +1,50 @@
+.row {
+    padding: 4px 0;
+    display: flex;
+    align-items: center;
+}
+
+.row + .row {
+    border-top: 1px solid #eee;
+}
+
+.row :external(select from "../Inputs/Select.css") {
+    min-width: 100px;
+    max-width: 100px;
+}
+
+.icon {
+    width: 48px;
+    height: 48px;
+    display: inline-block;
+    border: 2px solid #f4f4f4;
+    background: #f9f9f9;
+    vertical-align: middle;
+    margin-right: 8px;
+}
+
+.attributes {
+    /*color: #484848;*/
+    margin-left: 20px;
+    flex: 1;
+    text-align: right;
+}
+
+.attributes > span {
+    min-width: 150px;
+}
+.attributes > span + span:before {
+    content: '';
+    color: #ddd;
+    margin: 0 16px;
+
+    height: 36px;
+    border-left: 1px solid #eee;
+    transform: skewX(-20deg);
+    display: inline-block;
+    vertical-align: middle;
+}
+.attributes > span > span {
+    display: inline-block;
+    min-width: 25px;
+}

@@ -8,7 +8,8 @@
     "build": "gulp build",
     "production": "NODE_ENV=production gulp build",
     "dev": "gulp dev",
-    "start": "node server/bin/www"
+    "start": "node server/bin/www",
+    "gear": "gulp gw2b:gear"
   },
   "description": "Guild Wars 2 build editor",
   "main": "app.js",

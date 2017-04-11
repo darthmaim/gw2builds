@@ -1,0 +1,23 @@
+.panel {
+
+}
+
+.section {
+    break-inside: avoid;
+}
+
+.section + .section {
+    margin-top: 24px;
+}
+
+.header {
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+@media (min-width: 1920px) {
+    .panel {
+        columns: 2;
+        column-gap: 80px;
+    }
+}
