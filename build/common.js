@@ -8,7 +8,7 @@ gulp.task('clean', () => {
 });
 
 gulp.task('build', callback => {
-    runSequence('clean', ['build:source', 'build:img', 'build:favicon', 'build:service-worker'], 'revision', callback);
+    runSequence('clean', ['build:source', 'build:img', 'build:favicon', 'build:service-worker', 'build:fonts'], 'revision', callback);
 });
 
 gulp.task('help', () => {

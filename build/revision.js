@@ -4,7 +4,7 @@ import gulp from 'gulp';
 gulp.task('revision', () => {
     return gulp.src('./temp/**')
         .pipe(rev.revision({
-            includeFilesInManifest: ['.css', '.js', '.png', '.jpg', '.gif', '.svg']
+            includeFilesInManifest: ['.css', '.js', '.png', '.jpg', '.gif', '.svg', '.woff', '.woff2', '.eot']
         }))
         .pipe(gulp.dest('./public/'))
         .pipe(rev.manifestFile())

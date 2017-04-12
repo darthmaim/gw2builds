@@ -6,8 +6,14 @@ export function install() {
     return fetch('/rev-manifest.json')
         .then(response => response.json())
 
-        // store the manifest for later (and prefix all paths with /)
-        .then(manifest => lastManifest = Object.values(manifest).map(path => path.indexOf('/') === 0 ? path : '/' + path))
+        // store the manifest for later
+        .then(manifest => (lastManifest = Object.values(manifest)
+            // prefix all values with a slash
+            .map(path => path.indexOf('/') === 0 ? path : '/' + path))
+            // we don't precache fonts (fonts are added later on first fetch)
+            // because we don't know yet what format this client supports (woff2, woff, eot, ...)
+            .filter(path => path.indexOf('/fonts/') === -1)
+        )
 
         // add all entries of the manifest to the cache
         .then(manifest => caches.open('assets')
@@ -35,7 +41,7 @@ function deleteIfOutdated(key, cache) {
 }
 
 export function canHandleFetch({ url, request }) {
-    return request.method === 'GET' && ['/img/', '/css/', '/js/'].some(path => url.pathname.indexOf(path) === 0);
+    return request.method === 'GET' && ['/img/', '/css/', '/js/', '/fonts/'].some(path => url.pathname.indexOf(path) === 0);
 }
 
 export function handleFetch({ request }) {

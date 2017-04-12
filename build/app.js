@@ -8,6 +8,8 @@ import gutil from 'gulp-util';
 import uglify from 'gulp-uglify';
 import sourcemaps from 'gulp-sourcemaps';
 import source from 'vinyl-source-stream';
+import cssImport from 'postcss-import';
+import urlrewrite from 'postcss-urlrewrite';
 
 export function bundle() {
     return browserify({
@@ -21,7 +23,16 @@ export function bundle() {
         .plugin('modular-css/browserify', {
             css: './temp/css/app.css',
             sourcemaps: true,
+            before: [
+            ],
             after: [
+                // inline @import styles
+                cssImport(),
+
+                // rewrite font (node_modules/typeface-open-sans) src urls (see gulp task build:fonts)
+                urlrewrite({ rules: [{ from: /files\/(open-sans.*)/, to: '../fonts/$1' }] }),
+
+                // prefix css
                 autoprefixer()
             ],
             done: [
@@ -45,3 +56,7 @@ gulp.task('build:source', () => {
     return buildSource(bundle().bundle());
 });
 
+gulp.task('build:fonts', () => {
+    return gulp.src('./node_modules/typeface-open-sans/files/*')
+        .pipe(gulp.dest('./temp/fonts/'));
+});
