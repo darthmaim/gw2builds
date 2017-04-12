@@ -6,13 +6,20 @@ const
     favicon = require('serve-favicon'),
     logger = require('morgan'),
     cookieParser = require('cookie-parser'),
-    bodyParser = require('body-parser');
+    bodyParser = require('body-parser'),
+
+    crypto = require('crypto'),
+    fs = require('fs');
 
 let manifest = require('../public/rev-manifest.json');
 
 const routes = require('./routes/index');
 
 const app = express();
+
+function publicPath(file) {
+    return path.join.apply(null, [__dirname, '..', 'public', file || '']);
+}
 
 debug('Setting up view engine');
 app.set('views', path.join(__dirname, 'views'));
@@ -42,13 +49,19 @@ app.locals.google = {
     analytics: process.env.GOOGLE_ANALYTICS_TRACKING_ID || false
 };
 
+const integrityCache = {};
+app.locals.integrity = function (file) {
+    return integrityCache[file] ||
+        (integrityCache[file] = 'sha256-' + crypto.createHash('sha256').update(fs.readFileSync(publicPath(file))).digest('base64'));
+};
+
 debug('Setting up middleware');
-app.use(favicon(path.join(__dirname, '..', 'public', 'favicon.ico')));
+app.use(favicon(publicPath('favicon.ico')));
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, '..', 'public')));
+app.use(express.static(publicPath()));
 
 debug('Setting up routes');
 app.use('/', routes);
