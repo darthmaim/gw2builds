@@ -26,6 +26,14 @@
     padding: 4px 16px 4px 0;
 }
 
+.select > option {
+    color: #000000;
+}
+
+.select > option:disabled {
+    color: #888888;
+}
+
 .placeholder {
     composes: select;
 
