@@ -48,26 +48,22 @@ block content
                 border-top-color: #3023ae;
                 border-radius: 50%;
                 will-change: transform;
-                animation: loading 2s linear infinite, fade-in 4s ease-out;
+                animation: rotate 2s linear infinite, color 3s linear infinite, fade-in 4s ease-out;
             }
             @keyframes fade-in {
                 0% { opacity: 0; }
                 25% { opacity: 0; }
                 100% { opacity: 1; }
             }
-            @keyframes loading {
-                0% {
-                    transform: rotate(0deg);
-                    border-top-color: #3023ae;
-                }
-                50% {
-                    transform: rotate(360deg);
-                    border-top-color: #c86dd7;
-                }
-                100% {
-                    transform: rotate(720deg);
-                    border-top-color: #3023ae;
-                }
+            @keyframes rotate {
+                0% { transform: rotate(0deg); }
+                50% { transform: rotate(360deg); }
+                100% { transform: rotate(720deg); }
+            }
+            @keyframes color {
+                0% { border-top-color: #3023ae; }
+                50% { border-top-color: #c86dd7; }
+                100% { border-top-color: #3023ae; }
             }
             @media(max-width: 768px) {
                 .header { height: 56px; }
