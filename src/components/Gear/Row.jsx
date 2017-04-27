@@ -24,9 +24,11 @@ export default class Row extends React.Component {
 
         return (
             <div className={style.row}>
-                {this.renderRaritySelect()}
-                {this.renderAttributeSelect(availableAttributeSets, language)}
-                {text}
+                <div className={style.header}>
+                    {this.renderRaritySelect()}
+                    {this.renderAttributeSelect(availableAttributeSets, language)}
+                    <span className={style.text}>{text}</span>
+                </div>
                 {this.renderAttributes(selected)}
             </div>
         );
@@ -62,7 +64,7 @@ export default class Row extends React.Component {
         return (
             <span className={style.attributes}>
                 {selected && map(selected.attributes, (value, key) => (
-                    <span key={key}>{key}: <span>{value}</span></span>
+                    <span className={style.attribute} key={key}><span>{value}</span><span>{key}</span></span>
                 ))}
             </span>
         );
