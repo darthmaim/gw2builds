@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { FormattedNumber } from 'react-intl';
 import style from './style.css';
@@ -52,9 +53,9 @@ class Attribute extends Component {
 }
 
 Attribute.propTypes = {
-    label: React.PropTypes.string.isRequired,
-    value: React.PropTypes.number.isRequired,
-    percent: React.PropTypes.bool
+    label: PropTypes.string.isRequired,
+    value: PropTypes.number.isRequired,
+    percent: PropTypes.bool
 };
 
 export default Attribute;

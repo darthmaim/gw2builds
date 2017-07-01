@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import SkillTooltip from '~/components/Tooltips/Skills/TooltipContainer';
 import SkillIcon from '../../Icon';
@@ -63,20 +64,20 @@ class WeaponBar extends Component {
 }
 
 WeaponBar.propTypes = {
-    mainhand: React.PropTypes.string,
-    offhand: React.PropTypes.string,
-    isTwoHanded: React.PropTypes.bool,
-    attunement: React.PropTypes.string,
-    weapons: React.PropTypes.objectOf(React.PropTypes.shape({
-        skills: React.PropTypes.arrayOf(React.PropTypes.shape({
-            id: React.PropTypes.number.isRequired,
-            slot: React.PropTypes.string.isRequired,
-            attunement: React.PropTypes.string,
-            offhand: React.PropTypes.string
+    mainhand: PropTypes.string,
+    offhand: PropTypes.string,
+    isTwoHanded: PropTypes.bool,
+    attunement: PropTypes.string,
+    weapons: PropTypes.objectOf(PropTypes.shape({
+        skills: PropTypes.arrayOf(PropTypes.shape({
+            id: PropTypes.number.isRequired,
+            slot: PropTypes.string.isRequired,
+            attunement: PropTypes.string,
+            offhand: PropTypes.string
         })).isRequired,
-        specialization: React.PropTypes.number
+        specialization: PropTypes.number
     })).isRequired,
-    skills: React.PropTypes.object.isRequired
+    skills: PropTypes.object.isRequired
 };
 
 export default WeaponBar;

@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import style from './traitMajorIcon.css';
 
@@ -35,12 +36,12 @@ class TraitMajorIcon extends React.Component {
 }
 
 TraitMajorIcon.propTypes = {
-    imageUrl: React.PropTypes.string,
-    isSelected: React.PropTypes.bool,
-    traitId: React.PropTypes.number,
+    imageUrl: PropTypes.string,
+    isSelected: PropTypes.bool,
+    traitId: PropTypes.number,
 
     // Events
-    onSelected: React.PropTypes.func
+    onSelected: PropTypes.func
 };
 
 export default TraitMajorIcon;

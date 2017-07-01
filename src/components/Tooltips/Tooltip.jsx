@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React, { PureComponent } from 'react';
 import { findDOMNode } from 'react-dom';
 import { ContextShape } from './TooltipContext';
@@ -81,8 +82,8 @@ class Tooltip extends PureComponent {
 }
 
 Tooltip.propTypes = {
-    children: React.PropTypes.node.isRequired,
-    tooltip: React.PropTypes.oneOfType([React.PropTypes.node, React.PropTypes.func]).isRequired
+    children: PropTypes.node.isRequired,
+    tooltip: PropTypes.oneOfType([PropTypes.node, PropTypes.func]).isRequired
 };
 
 Tooltip.contextTypes = {

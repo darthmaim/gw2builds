@@ -1,4 +1,5 @@
 import map from 'lodash/map';
+import PropTypes from 'prop-types';
 import React from 'react';
 import { Select } from '~/components/Inputs';
 
@@ -27,14 +28,14 @@ const WeaponSelection = ({
 );
 
 WeaponSelection.propTypes = {
-    activeSpecializations: React.PropTypes.arrayOf(React.PropTypes.number),
-    mainhandWeapons: React.PropTypes.object,
-    offhandWeapons: React.PropTypes.object,
-    onMainhandChange: React.PropTypes.func.isRequired,
-    onOffhandChange: React.PropTypes.func.isRequired,
-    activeMainhand: React.PropTypes.string,
-    activeOffhand: React.PropTypes.string,
-    twoHanded: React.PropTypes.bool.isRequired
+    activeSpecializations: PropTypes.arrayOf(PropTypes.number),
+    mainhandWeapons: PropTypes.object,
+    offhandWeapons: PropTypes.object,
+    onMainhandChange: PropTypes.func.isRequired,
+    onOffhandChange: PropTypes.func.isRequired,
+    activeMainhand: PropTypes.string,
+    activeOffhand: PropTypes.string,
+    twoHanded: PropTypes.bool.isRequired
 };
 
 export default WeaponSelection;

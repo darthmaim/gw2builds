@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import SpecializationIcon from './SpecializationIcon';
 import style from './selectionPopup.css';
@@ -66,17 +67,17 @@ class SelectionPopup extends React.Component {
 }
 
 SelectionPopup.propTypes = {
-    supportsElite: React.PropTypes.bool,
+    supportsElite: PropTypes.bool,
 
     // Events
-    onSpecializationChange: React.PropTypes.func,
-    onWantsClose: React.PropTypes.func,
+    onSpecializationChange: PropTypes.func,
+    onWantsClose: PropTypes.func,
 
     // Redux states
-    activeSpecializationIds: React.PropTypes.arrayOf(React.PropTypes.number),
-    availableCoreSpecializationIds: React.PropTypes.arrayOf(React.PropTypes.number),
-    availableEliteSpecializationIds: React.PropTypes.arrayOf(React.PropTypes.number),
-    specializations: React.PropTypes.object
+    activeSpecializationIds: PropTypes.arrayOf(PropTypes.number),
+    availableCoreSpecializationIds: PropTypes.arrayOf(PropTypes.number),
+    availableEliteSpecializationIds: PropTypes.arrayOf(PropTypes.number),
+    specializations: PropTypes.object
 };
 
 export default SelectionPopup;

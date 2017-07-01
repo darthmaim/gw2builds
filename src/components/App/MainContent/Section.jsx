@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import classnames from 'classnames';
 import style from './section.css';
@@ -17,11 +18,11 @@ class Section extends Component {
 }
 
 Section.propTypes = {
-    name: React.PropTypes.string.isRequired,
-    children: React.PropTypes.node.isRequired,
-    domRef: React.PropTypes.func,
-    anchorRef: React.PropTypes.func,
-    className: React.PropTypes.string
+    name: PropTypes.string.isRequired,
+    children: PropTypes.node.isRequired,
+    domRef: PropTypes.func,
+    anchorRef: PropTypes.func,
+    className: PropTypes.string
 };
 
 export default Section;

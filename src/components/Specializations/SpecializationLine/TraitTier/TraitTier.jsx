@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import TraitTooltip from '~/components/Tooltips/Traits/TooltipContainer';
 import TraitConnection from '../TraitConnection';
@@ -81,17 +82,17 @@ class TraitTier extends React.Component {
 }
 
 TraitTier.propTypes = {
-    traitTier: React.PropTypes.number,
+    traitTier: PropTypes.number,
 
     // Events
-    onBackgroundClick: React.PropTypes.func,
-    onTraitChange: React.PropTypes.func,
+    onBackgroundClick: PropTypes.func,
+    onTraitChange: PropTypes.func,
 
     // Redux states
-    majorTraitIds: React.PropTypes.arrayOf(React.PropTypes.number),
-    minorTraitId: React.PropTypes.number,
-    selectedMajorTraitId: React.PropTypes.number,
-    traits: React.PropTypes.object
+    majorTraitIds: PropTypes.arrayOf(PropTypes.number),
+    minorTraitId: PropTypes.number,
+    selectedMajorTraitId: PropTypes.number,
+    traits: PropTypes.object
 };
 
 export default TraitTier;

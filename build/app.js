@@ -36,7 +36,7 @@ export function bundle() {
                 autoprefixer()
             ],
             done: [
-                cssnano()
+                // cssnano(),
             ]
         })
         .transform('babelify');

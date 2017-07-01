@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import Fact, { FactShape } from '../Facts/Fact';
 import Tooltip from '../Tooltip';
@@ -84,16 +85,16 @@ class TraitTooltip extends Component {
 }
 
 TraitTooltip.propTypes = {
-    children: React.PropTypes.node.isRequired,
-    trait: React.PropTypes.shape({
-        name: React.PropTypes.string.isRequired,
-        description: React.PropTypes.string.isRequired,
-        facts: React.PropTypes.arrayOf(FactShape),
-        traited_facts: React.PropTypes.arrayOf(FactShape)
+    children: PropTypes.node.isRequired,
+    trait: PropTypes.shape({
+        name: PropTypes.string.isRequired,
+        description: PropTypes.string.isRequired,
+        facts: PropTypes.arrayOf(FactShape),
+        traited_facts: PropTypes.arrayOf(FactShape)
     }),
     // bound from redux state
-    activeMajorTraits: React.PropTypes.arrayOf(React.PropTypes.number).isRequired,
-    activeMinorTraits: React.PropTypes.arrayOf(React.PropTypes.number).isRequired
+    activeMajorTraits: PropTypes.arrayOf(PropTypes.number).isRequired,
+    activeMinorTraits: PropTypes.arrayOf(PropTypes.number).isRequired
 };
 
 export default TraitTooltip;

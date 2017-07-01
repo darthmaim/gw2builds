@@ -1,4 +1,5 @@
 import values from 'lodash/values';
+import PropTypes from 'prop-types';
 import React from 'react';
 import onClickOutside from 'react-onclickoutside';
 import TraitTooltip from '~/components/Tooltips/Traits/TooltipContainer';
@@ -143,13 +144,13 @@ class SpecializationLine extends React.Component {
 }
 
 SpecializationLine.propTypes = {
-    supportsElite: React.PropTypes.bool,
-    specializationLine: React.PropTypes.number,
+    supportsElite: PropTypes.bool,
+    specializationLine: PropTypes.number,
 
     // Redux states
-    selectedSpecialization: React.PropTypes.number,
-    specializations: React.PropTypes.object,
-    traits: React.PropTypes.object
+    selectedSpecialization: PropTypes.number,
+    specializations: PropTypes.object,
+    traits: PropTypes.object
 };
 
 export default onClickOutside(SpecializationLine);

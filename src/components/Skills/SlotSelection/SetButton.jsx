@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import style from './SetButton.css';
 
@@ -8,9 +9,9 @@ const SetButton = ({ isActive, children, onClick }) => (
 );
 
 SetButton.propTypes = {
-    isActive: React.PropTypes.bool.isRequired,
-    children: React.PropTypes.node.isRequired,
-    onClick: React.PropTypes.func.isRequired
+    isActive: PropTypes.bool.isRequired,
+    children: PropTypes.node.isRequired,
+    onClick: PropTypes.func.isRequired
 };
 
 export default SetButton;

@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import style from './languageSelector.css';
 
@@ -79,8 +80,8 @@ class LanguageSelector extends Component {
 }
 
 LanguageSelector.propTypes = {
-    language: React.PropTypes.string.isRequired,
-    onLanguageChange: React.PropTypes.func.isRequired
+    language: PropTypes.string.isRequired,
+    onLanguageChange: PropTypes.func.isRequired
 };
 
 export default LanguageSelector;

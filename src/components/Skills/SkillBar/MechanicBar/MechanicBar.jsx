@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import Professions from './Professions';
 
@@ -14,7 +15,7 @@ const MechanicBar = ({ profession }) => {
 };
 
 MechanicBar.propTypes = {
-    profession: React.PropTypes.string
+    profession: PropTypes.string
 };
 
 export default MechanicBar;
