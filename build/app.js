@@ -37,8 +37,15 @@ export function bundle(cb) {
                 autoprefixer(),
             ],
             done: [
-                // cssnano(),
+                // flatten the Root-nodes modular-css creates for cssnano (see tivac/modular-css#346)
+                (css) => css.each(node => {
+                    node.type === 'root' && node.replaceWith(node.nodes);
+                }),
 
+                // minify the generated css
+                cssnano({ preset: 'default' }),
+
+                // notify the bundle we are done with the css processing
                 () => cb()
             ]
         })
