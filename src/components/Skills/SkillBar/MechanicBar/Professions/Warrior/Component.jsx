@@ -6,7 +6,7 @@ import SkillTooltip from '../../../../../Tooltips/Skills/TooltipContainer';
 import style from './style.css';
 
 const renderSkill = (availableSkillObjects, professionSkills, weapon) => {
-    const possibleSkill = filter(professionSkills, s => s.slot = 'Profession_2' && skills[s.id] && includes(skills[s.id].categories, 'Burst') && skills[s.id].weapon_type === weapon);
+    const possibleSkill = filter(professionSkills, s => s.slot = 'Profession_2' && availableSkillObjects[s.id] && includes(availableSkillObjects[s.id].categories, 'Burst') && availableSkillObjects[s.id].weapon_type === weapon);
 
     if (possibleSkill.length) {
         return (

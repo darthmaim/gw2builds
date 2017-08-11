@@ -7,7 +7,10 @@ import Guardian from './Guardian';
 
 // placeholder components until all professions have their mechanics bar implemented
 const NullComponent = () => null;
-const emptyProfession = NullComponent;
+const emptyProfession = {
+    Component: NullComponent,
+    Container: NullComponent
+};
 
 const Revenant = emptyProfession;
 const Engineer = emptyProfession;
