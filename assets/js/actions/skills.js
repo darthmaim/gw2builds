@@ -7,7 +7,7 @@ export const SET_ACTIVE_MAINHAND_WEAPON_ID = 'SET_ACTIVE_MAINHAND_WEAPON_ID';
 export const SET_ACTIVE_OFFHAND_WEAPON_ID = 'SET_ACTIVE_OFFHAND_WEAPON_ID';
 export const WIPE_ALL_SELECTED_WEAPON_IDS = 'WIPE_ALL_SELECTED_WEAPON_IDS';
 
-export const SET_ATTUNEMENT = 'SET_ATTUNEMENT';
+export const SET_ACTIVE_ATTUNEMENT = 'SET_ACTIVE_ATTUNEMENT';
 
 export const FETCH_AVAILABLE_SKILLS = 'FETCH_AVAILABLE_SKILLS';
 
@@ -18,7 +18,7 @@ export const setActiveMainhandWeaponId = createAction(SET_ACTIVE_MAINHAND_WEAPON
 export const setActiveOffhandWeaponId = createAction(SET_ACTIVE_OFFHAND_WEAPON_ID);
 export const wipeAllSelectedWeaponIds = createAction(WIPE_ALL_SELECTED_WEAPON_IDS);
 
-export const setAttunement = createAction(SET_ATTUNEMENT);
+export const setActiveAttunement = createAction(SET_ACTIVE_ATTUNEMENT);
 
 export const fetchAvailableSkills = createApiAction(
     FETCH_AVAILABLE_SKILLS,
@@ -32,7 +32,7 @@ export default {
     SET_ACTIVE_OFFHAND_WEAPON_ID,
     WIPE_ALL_SELECTED_WEAPON_IDS,
 
-    SET_ATTUNEMENT,
+    SET_ACTIVE_ATTUNEMENT,
 
     FETCH_AVAILABLE_SKILLS,
 
@@ -42,7 +42,7 @@ export default {
     setActiveOffhandWeaponId,
     wipeAllSelectedWeaponIds,
 
-    setAttunement,
+    setActiveAttunement,
 
     fetchAvailableSkills
 };

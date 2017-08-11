@@ -34,7 +34,7 @@ The store from `redux` contains the app state that is used globally in various p
 ### Mechanic
 - `activeAttunements` (array)  
   Contains the active attunements, indexed by weapon set.
-- `attunements` (object)  
+- `availableAttunementObjects` (object, indexed by `attunement.id`)  
   Contains the available attunements.
 
 ## Specializations

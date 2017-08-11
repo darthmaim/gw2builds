@@ -28,7 +28,7 @@ class WeaponBar extends Component {
                 // filter offhand (thief)
                 .filter(skill => !skill.offhand || skill.offhand === props.activeOffhandWeaponId || (skill.offhand === 'Nothing' && !props.activeOffhandWeaponId))
                 // filter attunement (elementalist)
-                .filter(skill => !skill.attunement || skill.attunement === props.attunement);
+                .filter(skill => !skill.attunement || skill.attunement === props.activeAttunement);
 
             // return the skill object
             return skillsForSlot[0] && props.availableSkillObjects[skillsForSlot[0].id];
@@ -66,7 +66,7 @@ WeaponBar.propTypes = {
     // Redux states
     activeMainhandWeaponId: React.PropTypes.string,
     activeOffhandWeaponId: React.PropTypes.string,
-    attunement: React.PropTypes.string,
+    activeAttunement: React.PropTypes.string,
     availableSkillObjects: React.PropTypes.object.isRequired,
     availableWeaponObjects: React.PropTypes.objectOf(React.PropTypes.shape({
         skills: React.PropTypes.arrayOf(React.PropTypes.shape({

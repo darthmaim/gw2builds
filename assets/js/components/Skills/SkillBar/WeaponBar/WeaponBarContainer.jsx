@@ -6,7 +6,7 @@ import WeaponBar from './WeaponBar';
 const mapStateToProps = (state, ownProps) => ({
     activeMainhandWeaponId: getActiveMainhandWeaponId(state, ownProps),
     activeOffhandWeaponId: getActiveOffhandWeaponId(state, ownProps),
-    attunement: getActiveAttunement(state, ownProps),
+    activeAttunement: getActiveAttunement(state, ownProps),
     availableSkillObjects: state.availableSkillObjects,
     availableWeaponObjects: state.availableWeaponObjects,
     selectedMajorTraitIds: state.selectedMajorTraitIds,

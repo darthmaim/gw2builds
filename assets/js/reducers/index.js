@@ -2,7 +2,7 @@ import { combineReducers } from 'redux';
 import { selectedLanguage, selectedGameMode, selectedProfession, selectedRace } from './general';
 import { availableSpecializationIds, availableSpecializationObjects, selectedSpecializationIds } from './specializations';
 import { availableTraitIds, availableTraitObjects, selectedMinorTraitIds, selectedMajorTraitIds } from './traits';
-import { availableWeaponObjects, activeWeaponSet, selectedMainhandWeaponIds, selectedOffhandWeaponIds, attunements, activeAttunements, availableSkillIds, availableSkillObjects } from './skills';
+import { availableWeaponObjects, activeWeaponSet, selectedMainhandWeaponIds, selectedOffhandWeaponIds, activeAttunements, availableAttunementObjects, availableSkillIds, availableSkillObjects } from './skills';
 
 export default combineReducers({
     // General
@@ -33,6 +33,6 @@ export default combineReducers({
     selectedOffhandWeaponIds,
 
     // Mechanics
-    attunements,
-    activeAttunements
+    activeAttunements,
+    availableAttunementObjects
 });
