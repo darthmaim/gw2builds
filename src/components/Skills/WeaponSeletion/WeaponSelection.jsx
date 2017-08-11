@@ -39,7 +39,7 @@ WeaponSelection.propTypes = {
     activeOffhandWeaponId: PropTypes.string,
     availableMainhandWeaponObjects: PropTypes.object,
     availableOffhandWeaponObjects: PropTypes.object,
-    selectedSpecializationIds: PropTypes.arrayOf(React.PropTypes.number)
+    selectedSpecializationIds: PropTypes.arrayOf(PropTypes.number)
 };
 
 export default WeaponSelection;

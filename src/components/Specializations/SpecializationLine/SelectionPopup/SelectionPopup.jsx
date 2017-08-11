@@ -74,7 +74,7 @@ SelectionPopup.propTypes = {
     onWantsClose: PropTypes.func,
 
     // Redux states
-    selectedSpecializationIds: PropTypes.arrayOf(React.PropTypes.number),
+    selectedSpecializationIds: PropTypes.arrayOf(PropTypes.number),
     availableCoreSpecializationIds: PropTypes.arrayOf(PropTypes.number),
     availableEliteSpecializationIds: PropTypes.arrayOf(PropTypes.number),
     availableSpecializationObjects: PropTypes.object

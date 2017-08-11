@@ -93,8 +93,8 @@ SkillTooltip.propTypes = {
         traited_facts: PropTypes.arrayOf(FactShape)
     }),
     // bound from redux state
-    selectedMajorTraitIds: PropTypes.arrayOf(React.PropTypes.number).isRequired,
-    selectedMinorTraitIds: PropTypes.arrayOf(React.PropTypes.number).isRequired
+    selectedMajorTraitIds: PropTypes.arrayOf(PropTypes.number).isRequired,
+    selectedMinorTraitIds: PropTypes.arrayOf(PropTypes.number).isRequired
 };
 
 export default SkillTooltip;

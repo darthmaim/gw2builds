@@ -70,7 +70,7 @@ WeaponBar.propTypes = {
     activeAttunement: PropTypes.string,
     availableSkillObjects: PropTypes.object.isRequired,
     availableWeaponObjects: PropTypes.objectOf(PropTypes.shape({
-        skills: PropTypes.arrayOf(React.PropTypes.shape({
+        skills: PropTypes.arrayOf(PropTypes.shape({
             id: PropTypes.number.isRequired,
             slot: PropTypes.string.isRequired,
             attunement: PropTypes.string,
