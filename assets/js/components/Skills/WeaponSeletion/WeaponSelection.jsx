@@ -17,8 +17,8 @@ const renderSelect = (weapons, value, onChange, selectedSpecializationIds) => (
 
 const WeaponSelection = props => (
     <div>
-        {renderSelect(props.availableMainhandWeaponObjects, props.activeMainhandWeaponObject, props.onMainhandChange, props.selectedSpecializationIds)}
-        {!props.twoHanded && renderSelect(props.availableOffhandWeaponObjects, props.activeOffhandWeaponObject, props.onOffhandChange, props.selectedSpecializationIds)}
+        {renderSelect(props.availableMainhandWeaponObjects, props.activeMainhandWeaponId, props.onMainhandChange, props.selectedSpecializationIds)}
+        {!props.twoHanded && renderSelect(props.availableOffhandWeaponObjects, props.activeOffhandWeaponId, props.onOffhandChange, props.selectedSpecializationIds)}
     </div>
 );
 
@@ -30,8 +30,8 @@ WeaponSelection.propTypes = {
     onOffhandChange: React.PropTypes.func.isRequired,
 
     // Redux states
-    activeMainhandWeaponObject: React.PropTypes.string,
-    activeOffhandWeaponObject: React.PropTypes.string,
+    activeMainhandWeaponId: React.PropTypes.string,
+    activeOffhandWeaponId: React.PropTypes.string,
     availableMainhandWeaponObjects: React.PropTypes.object,
     availableOffhandWeaponObjects: React.PropTypes.object,
     selectedSpecializationIds: React.PropTypes.arrayOf(React.PropTypes.number)

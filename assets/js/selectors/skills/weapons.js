@@ -3,8 +3,8 @@ import { createSelector } from 'reselect';
 
 const getAvailableWeaponObjects = state => state.availableWeaponObjects;
 const getActiveWeaponSet = state => state.activeWeaponSet;
-const getSelectedMainhandWeapons = state => state.selectedMainhandWeaponIds;
-const getSelectedOffhandWeapons = state => state.selectedOffhandWeaponIds;
+const getSelectedMainhandWeaponIds = state => state.selectedMainhandWeaponIds;
+const getSelectedOffhandWeaponIds = state => state.selectedOffhandWeaponIds;
 
 const hasMainhandSkill = weapon => weapon.skills.some(skill => skill.slot === 'Weapon_1');
 const hasOffhandSkill = weapon => weapon.skills.some(skill => skill.slot === 'Weapon_5');
@@ -27,21 +27,21 @@ export const getAvailableOffhandWeaponObjects = createSelector(
     weapons => pickBy((weapon, name) => hasOffhandSkill(weapon) && !is2Handed(weapon, name))(weapons)
 );
 
-export const getActiveMainhandWeaponObject = createSelector(
-    [getSelectedMainhandWeapons, getActiveWeaponSet],
+export const getActiveMainhandWeaponId = createSelector(
+    [getSelectedMainhandWeaponIds, getActiveWeaponSet],
     (weapons, set) => weapons[set]
 );
 
-export const getActiveOffhandWeaponObject = createSelector(
-    [getSelectedOffhandWeapons, getActiveWeaponSet],
+export const getActiveOffhandWeaponId = createSelector(
+    [getSelectedOffhandWeaponIds, getActiveWeaponSet],
     (weapons, set) => weapons[set]
 );
 
 export const getIsTwoHandedActive = createSelector(
-    [getActiveMainhandWeaponObject],
+    [getActiveMainhandWeaponId],
     weapon => is2Handed(null, weapon)
 );
 
 export default {
-    getAvailableMainhandWeaponObjects, getAvailableOffhandWeaponObjects, getActiveMainhandWeaponObject, getActiveOffhandWeaponObject, getIsTwoHandedActive
+    getAvailableMainhandWeaponObjects, getAvailableOffhandWeaponObjects, getActiveMainhandWeaponId, getActiveOffhandWeaponId, getIsTwoHandedActive
 };
