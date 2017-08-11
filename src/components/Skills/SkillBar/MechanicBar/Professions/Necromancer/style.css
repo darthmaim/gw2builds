@@ -1,0 +1,18 @@
+.component {
+    display: flex;
+    width: 326px;
+    margin-bottom: 4px;
+}
+
+.bar {
+    flex: 1;
+    align-self: center;
+    height: 16px;
+    line-height: 16px;
+    background: #315F17;
+    background-image: linear-gradient(to right, #2A571C, #315F17);
+    text-align: center;
+    color: #fff;
+    border: 1px solid #000;
+    border-right: 0;
+}

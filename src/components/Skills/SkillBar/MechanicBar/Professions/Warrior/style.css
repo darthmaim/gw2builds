@@ -1,0 +1,27 @@
+.component {
+    display: flex;
+    margin-bottom: 4px;
+    width: 326px;
+}
+
+.bar {
+    flex: 1;
+    line-height: 16px;
+    align-self: center;
+}
+
+.bar > span {
+    border: 1px solid #6c3c06;
+    display: inline-block;
+    width: 90px;
+    margin-right: 4px;
+    height: 16px;
+    background: linear-gradient(to right, #fdef00, #fac600);
+}
+
+.bar > span:first-child {
+    background: linear-gradient(to right, #fef800, #fcf200);
+}
+.bar > span:last-child {
+    background: linear-gradient(to right, #fab400, #f48800);
+}

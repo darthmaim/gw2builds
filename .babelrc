@@ -3,14 +3,14 @@
     [
       "babel-root-import",
       {
-        "rootPathSuffix": "assets/js"
+        "rootPathSuffix": "src"
       }
     ],
     "lodash",
     [
       "react-intl",
       {
-        "messagesDir": "./build/messages/",
+        "messagesDir": "./temp/messages/",
         "enforceDescriptions": true
       }
     ]

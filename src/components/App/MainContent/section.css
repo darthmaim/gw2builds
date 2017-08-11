@@ -1,0 +1,27 @@
+.section {
+    position: relative;
+}
+
+.header {
+    background: #f9f9f9;
+    line-height: 64px;
+    padding: 0 16px;
+    font-size: 16px;
+}
+
+.content {
+    padding: 16px;
+    overflow-x: auto;
+}
+
+.anchor {
+    width: 0; height: 0;
+    visibility: hidden;
+    position: absolute;
+}
+
+@media(max-width: 768px) {
+    .anchor {
+        margin-top: -48px;
+    }
+}

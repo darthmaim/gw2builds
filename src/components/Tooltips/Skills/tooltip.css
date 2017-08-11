@@ -1,0 +1,12 @@
+.tooltip {
+    composes: inner from '../tooltip.css';
+}
+
+.title {
+    font-weight: bold;
+    margin-bottom: 4px;
+}
+
+.facts {
+    margin-top: 8px;
+}

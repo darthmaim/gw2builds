@@ -1,0 +1,6 @@
+.component {
+    display: flex;
+    margin-bottom: 4px;
+    width: 326px;
+    justify-content: center;
+}

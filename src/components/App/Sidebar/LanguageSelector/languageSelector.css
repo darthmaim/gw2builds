@@ -1,0 +1,80 @@
+.container {
+    width: 64px;
+    height: 64px;
+}
+
+.containerOpen {
+    composes: container;
+}
+
+.containerOpen .active {
+    background: #f9f9f9;
+}
+
+.dropdown {
+    transition: transform .3s ease;
+}
+
+.containerOpen .dropdown {
+    transform: translateY(calc(-100% + 64px));
+}
+
+.button {
+    width: 64px;
+    height: 64px;
+
+    border: none;
+    border-radius: 0;
+
+    font: inherit;
+    font-size: 26px;
+    line-height: 64px;
+    text-align: center;
+
+    background: #fff;
+    color: #CCCCCC;
+
+    cursor: pointer;
+}
+
+.active {
+    composes: button;
+}
+
+.selector {
+}
+
+.selectorItem {
+    composes: button;
+}
+
+@media(max-width: 768px) {
+    .container {
+        width: 48px;
+        height: 48px;
+        border-left: 1px solid #fff;
+        overflow: hidden;
+    }
+
+    .button {
+        width: 48px;
+        height: 48px;
+        line-height: 48px;
+        font-size: 22px;
+    }
+
+    .dropdown {
+        transform: none !important;
+    }
+
+    .containerOpen {
+        overflow: visible;
+        border-left-color: #eee;
+    }
+
+    .selector {
+        margin-left: -1px;
+        border-left: 1px solid #eee;
+        border-bottom: 1px solid #eee;
+    }
+}
