@@ -4,7 +4,7 @@ import Warrior from './Component';
 
 const mapStateToProps = (state, ownProps) => ({
     availableSkillObjects: state.availableSkillObjects,
-    professionSkills: state.professionSkills,
+    availableProfessionSkillObjects: state.availableProfessionSkillObjects,
     weapon: getActiveMainhandWeaponId(state, ownProps)
 });
 

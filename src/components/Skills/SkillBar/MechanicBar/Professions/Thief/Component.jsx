@@ -4,8 +4,8 @@ import SkillIcon from '../../../../Icon';
 import SkillTooltip from '../../../../../Tooltips/Skills/TooltipContainer';
 import style from './style.css';
 
-const renderSkill = (professionSkills, availableSkillObjects) => {
-    const possibleSkill = professionSkills.filter(skill => skill.slot === 'Profession_1')[0];
+const renderSkill = (availableProfessionSkillObjects, availableSkillObjects) => {
+    const possibleSkill = availableProfessionSkillObjects.filter(skill => skill.slot === 'Profession_1')[0];
     const skill = possibleSkill ? availableSkillObjects[possibleSkill.id] : null;
 
     return (
@@ -15,9 +15,9 @@ const renderSkill = (professionSkills, availableSkillObjects) => {
     );
 };
 
-const Thief = ({ professionSkills, availableSkillObjects }) => (
+const Thief = ({ availableProfessionSkillObjects, availableSkillObjects }) => (
     <div className={style.component}>
-        {renderSkill(professionSkills, availableSkillObjects)}
+        {renderSkill(availableProfessionSkillObjects, availableSkillObjects)}
         <SkillIcon.Empty size={32}/>
         <div className={style.initiative}>
             {range(0, 15).map(i => (<span key={i}/>))}

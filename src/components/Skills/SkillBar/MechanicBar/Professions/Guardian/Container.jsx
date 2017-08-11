@@ -4,7 +4,7 @@ import Guardian from './Component';
 const mapStateToProps = (state, ownProps) => ({
     // Redux states
     availableSkillObjects: state.availableSkillObjects,
-    professionSkills: state.professionSkills
+    availableProfessionSkillObjects: state.availableProfessionSkillObjects
 });
 
 export default connect(mapStateToProps)(Guardian);

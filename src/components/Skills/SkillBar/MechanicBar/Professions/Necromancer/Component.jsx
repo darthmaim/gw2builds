@@ -4,8 +4,8 @@ import SkillTooltip from '../../../../../Tooltips/Skills/TooltipContainer';
 import { FormattedNumber } from 'react-intl';
 import style from './style.css';
 
-const renderSkill = (professionSkills, availableSkillObjects) => {
-    const possibleSkill = professionSkills.filter(skill => skill.slot === 'Profession_1')[0];
+const renderSkill = (availableProfessionSkillObjects, availableSkillObjects) => {
+    const possibleSkill = availableProfessionSkillObjects.filter(skill => skill.slot === 'Profession_1')[0];
     const skill = possibleSkill ? availableSkillObjects[possibleSkill.id] : null;
 
     return (
@@ -15,10 +15,10 @@ const renderSkill = (professionSkills, availableSkillObjects) => {
     );
 };
 
-const Necromancer = ({ professionSkills, availableSkillObjects, health }) => (
+const Necromancer = ({ availableProfessionSkillObjects, availableSkillObjects, health }) => (
     <div className={style.component}>
         <div className={style.bar}><FormattedNumber value={0.69 * health} maximumFractionDigits={0}/></div>
-        {renderSkill(professionSkills, availableSkillObjects)}
+        {renderSkill(availableProfessionSkillObjects, availableSkillObjects)}
     </div>
 );
 

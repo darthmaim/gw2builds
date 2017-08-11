@@ -13,6 +13,9 @@ The store from `redux` contains the app state that is used globally in various p
 
 ## Skills
 ### Skills
+- `availableProfessionSkillObjects` (array)  
+  Contains all profession skill objects for the current `profession`.  
+  See GW2 API `/v2/professions.skills` for the object format.
 - `availableSkillIds` (array)  
   Contains all valid skill ids for the current `profession`.
 - `availableSkillObjects` (object, indexed by `skill.id`)  
@@ -23,7 +26,7 @@ The store from `redux` contains the app state that is used globally in various p
 - `activeWeaponSet` (integer)  
   Contains the currently selected weapon set.
   Indexed from 0 to 3, where 0 is the first weapon set, 1 is the second weapon set, 2 is the first aquatic weapon set and 3 is the second aquatic weapon set.
-- `availableWeaponObjects` (object, indexed by `weapon.id`)  
+- `availableWeaponObjects` (object, indexed by weapon name (API default))  
   Contains the available weapons for the current `profession`.  
   See GW2 API `/v2/profession.weapons` for the object format.
 - `selectedMainhandWeaponIds` (array)  

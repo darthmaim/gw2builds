@@ -23,13 +23,13 @@ export const availableSkillIds = handleAction(actions.FETCH_PROFESSION, (state, 
 }, []);
 
 export const availableSkillObjects = handleSimpleAction(actions.FETCH_AVAILABLE_SKILLS, {});
-export const professionSkills = handleAction(actions.FETCH_PROFESSION, (state, action) => {
+
+export const availableProfessionSkillObjects = handleAction(actions.FETCH_PROFESSION, (state, action) => {
     return action.payload.skills;
 }, []);
-
 
 export default {
     availableSkillIds,
     availableSkillObjects,
-    professionSkills
+    availableProfessionSkillObjects
 };

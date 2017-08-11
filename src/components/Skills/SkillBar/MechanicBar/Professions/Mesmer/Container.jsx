@@ -3,7 +3,7 @@ import Mesmer from './Component';
 
 const mapStateToProps = (state, ownProps) => ({
     availableSkillObjects: state.availableSkillObjects,
-    professionSkills: state.professionSkills
+    availableProfessionSkillObjects: state.availableProfessionSkillObjects
 });
 
 export default connect(mapStateToProps)(Mesmer);
