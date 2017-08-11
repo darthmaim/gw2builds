@@ -3,7 +3,7 @@ import { getActiveMainhand } from '~/selectors/skills/weapons';
 import Warrior from './Component';
 
 const mapStateToProps = (state, ownProps) => ({
-    skills: state.skills,
+    availableSkillObjects: state.availableSkillObjects,
     professionSkills: state.professionSkills,
     weapon: getActiveMainhand(state, ownProps)
 });

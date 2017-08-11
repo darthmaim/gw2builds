@@ -5,13 +5,13 @@ import SkillIcon from '../../../../Icon';
 import SkillTooltip from '../../../../../Tooltips/Skills/TooltipContainer';
 import style from './style.css';
 
-const renderSkill = (skills, professionSkills, weapon) => {
+const renderSkill = (availableSkillObjects, professionSkills, weapon) => {
     const possibleSkill = filter(professionSkills, s => s.slot = 'Profession_2' && skills[s.id] && includes(skills[s.id].categories, 'Burst') && skills[s.id].weapon_type === weapon);
 
     if (possibleSkill.length) {
         return (
-            <SkillTooltip skill={skills[possibleSkill[0].id]}>
-                <SkillIcon skill={skills[possibleSkill[0].id]} size={32}/>
+            <SkillTooltip skill={availableSkillObjects[possibleSkill[0].id]}>
+                <SkillIcon skill={availableSkillObjects[possibleSkill[0].id]} size={32}/>
             </SkillTooltip>
         );
     } else {
@@ -19,12 +19,12 @@ const renderSkill = (skills, professionSkills, weapon) => {
     }
 };
 
-const Warrior = ({ professionSkills, skills, weapon }) => (
+const Warrior = ({ professionSkills, availableSkillObjects, weapon }) => (
     <div className={style.component}>
         <div className={style.bar}>
             <span/><span/><span/>
         </div>
-        {renderSkill(skills, professionSkills, weapon)}
+        {renderSkill(availableSkillObjects, professionSkills, weapon)}
     </div>
 );
 

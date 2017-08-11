@@ -7,7 +7,7 @@ const MechanicBar = ({ selectedProfession }) => {
         return null;
     }
 
-    const Container = Professions[selectedProfession];
+    const Container = Professions[selectedProfession].Container;
 
     return (
         <Container/>

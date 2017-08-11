@@ -67,7 +67,7 @@ WeaponBar.propTypes = {
     // Redux states
     activeMainhandWeaponId: PropTypes.string,
     activeOffhandWeaponId: PropTypes.string,
-    activeAttunement: ct.PropTypes.string,
+    activeAttunement: PropTypes.string,
     availableSkillObjects: PropTypes.object.isRequired,
     availableWeaponObjects: PropTypes.objectOf(PropTypes.shape({
         skills: PropTypes.arrayOf(React.PropTypes.shape({

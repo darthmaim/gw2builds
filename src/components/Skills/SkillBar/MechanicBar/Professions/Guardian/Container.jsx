@@ -2,7 +2,8 @@ import { connect } from 'react-redux';
 import Guardian from './Component';
 
 const mapStateToProps = (state, ownProps) => ({
-    skills: state.skills,
+    // Redux states
+    availableSkillObjects: state.availableSkillObjects,
     professionSkills: state.professionSkills
 });
 

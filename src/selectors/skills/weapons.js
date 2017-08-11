@@ -38,12 +38,12 @@ export const getActiveOffhandWeaponId = createSelector(
 );
 
 export const getIsTwoHandedActive = createSelector(
-    [getWeapons, getActiveMainhandWeaponId],
+    [getAvailableMainhandWeaponObjects, getActiveMainhandWeaponId],
     (weapons, active)=> hasFlag(weapons[active], 'TwoHand')
 );
 
 export const getHasMultipleWeaponsets = createSelector(
-    [getProfession],
+    [getSelectedProfession],
     profession => profession !== 'Elementalist' && profession !== 'Engineer'
 );
 
@@ -53,5 +53,5 @@ export default {
     getActiveMainhandWeaponId,
     getActiveOffhandWeaponId,
     getIsTwoHandedActive,
-    getHasMultipleWeaponSets
+    getHasMultipleWeaponsets
 };

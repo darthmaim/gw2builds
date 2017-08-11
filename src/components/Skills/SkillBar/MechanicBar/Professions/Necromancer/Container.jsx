@@ -3,7 +3,7 @@ import { getAttributeHealth } from '~/selectors/attributes';
 import Necromancer from './Component';
 
 const mapStateToProps = (state, ownProps) => ({
-    skills: state.skills,
+    availableSkillObjects: state.availableSkillObjects,
     professionSkills: state.professionSkills,
     health: getAttributeHealth(state)
 });
