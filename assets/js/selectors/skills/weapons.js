@@ -1,10 +1,10 @@
 import pickBy from 'lodash/fp/pickBy';
 import { createSelector } from 'reselect';
 
-const getWeapons = state => state.weapons;
+const getAvailableWeaponObjects = state => state.availableWeaponObjects;
 const getActiveWeaponSet = state => state.activeWeaponSet;
-const getActiveMainhandWeapons = state => state.activeMainhandWeapons;
-const getActiveOffhandWeapons = state => state.activeOffhandWeapons;
+const getSelectedMainhandWeapons = state => state.selectedMainhandWeaponIds;
+const getSelectedOffhandWeapons = state => state.selectedOffhandWeaponIds;
 
 const hasMainhandSkill = weapon => weapon.skills.some(skill => skill.slot === 'Weapon_1');
 const hasOffhandSkill = weapon => weapon.skills.some(skill => skill.slot === 'Weapon_5');
@@ -13,35 +13,35 @@ const isAquatic = (weapon, name) => ['Spear', 'Trident', 'Speargun'].indexOf(nam
 const isNotAquatic = (weapon, name) => !isAquatic(weapon, name);
 
 export const getWeaponsBySet = createSelector(
-    [getWeapons, getActiveWeaponSet],
+    [getAvailableWeaponObjects, getActiveWeaponSet],
     (weapons, set) => pickBy((set === 0 || set === 1) ? isNotAquatic : isAquatic)(weapons)
 );
 
-export const getMainhandWeapons = createSelector(
+export const getAvailableMainhandWeaponObjects = createSelector(
     [getWeaponsBySet],
     weapons => pickBy(hasMainhandSkill)(weapons)
 );
 
-export const getOffhandWeapons = createSelector(
+export const getAvailableOffhandWeaponObjects = createSelector(
     [getWeaponsBySet],
     weapons => pickBy((weapon, name) => hasOffhandSkill(weapon) && !is2Handed(weapon, name))(weapons)
 );
 
-export const getActiveMainhand = createSelector(
-    [getActiveMainhandWeapons, getActiveWeaponSet],
+export const getActiveMainhandWeaponObject = createSelector(
+    [getSelectedMainhandWeapons, getActiveWeaponSet],
     (weapons, set) => weapons[set]
 );
 
-export const getActiveOffhand = createSelector(
-    [getActiveOffhandWeapons, getActiveWeaponSet],
+export const getActiveOffhandWeaponObject = createSelector(
+    [getSelectedOffhandWeapons, getActiveWeaponSet],
     (weapons, set) => weapons[set]
 );
 
 export const getIsTwoHandedActive = createSelector(
-    [getActiveMainhand],
+    [getActiveMainhandWeaponObject],
     weapon => is2Handed(null, weapon)
 );
 
 export default {
-    getMainhandWeapons, getOffhandWeapons, getActiveMainhand, getActiveOffhand, getIsTwoHandedActive
+    getAvailableMainhandWeaponObjects, getAvailableOffhandWeaponObjects, getActiveMainhandWeaponObject, getActiveOffhandWeaponObject, getIsTwoHandedActive
 };

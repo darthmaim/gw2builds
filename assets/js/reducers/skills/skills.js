@@ -4,7 +4,7 @@ import * as actions from '~/actions';
 import { handleSimpleAction } from '~/reducers/utils';
 
 /** Reducer for the available skill ids for the current profession. */
-export const skillIds = handleAction(actions.FETCH_PROFESSION, (state, action) => {
+export const availableSkillIds = handleAction(actions.FETCH_PROFESSION, (state, action) => {
     const skills = [];
 
     forEach(action.payload.weapons, weapon => {
@@ -22,9 +22,9 @@ export const skillIds = handleAction(actions.FETCH_PROFESSION, (state, action) =
     return skills;
 }, []);
 
-export const skills = handleSimpleAction(actions.FETCH_SKILLS, {});
+export const availableSkillObjects = handleSimpleAction(actions.FETCH_SKILLS, {});
 
 export default {
-    skillIds,
-    skills
+    availableSkillIds,
+    availableSkillObjects
 };

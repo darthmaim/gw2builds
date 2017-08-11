@@ -15,26 +15,26 @@ const renderSelect = (weapons, value, onChange, selectedSpecializationIds) => (
     </Select>
 );
 
-const WeaponSelection = ({
-    mainhandWeapons, onMainhandChange, activeMainhand,
-    offhandWeapons, onOffhandChange, activeOffhand,
-    twoHanded, selectedSpecializationIds
-}) => (
+const WeaponSelection = props => (
     <div>
-        {renderSelect(mainhandWeapons, activeMainhand, onMainhandChange, selectedSpecializationIds)}
-        {!twoHanded && renderSelect(offhandWeapons, activeOffhand, onOffhandChange, selectedSpecializationIds)}
+        {renderSelect(props.availableMainhandWeaponObjects, props.activeMainhandWeaponObject, props.onMainhandChange, props.selectedSpecializationIds)}
+        {!props.twoHanded && renderSelect(props.availableOffhandWeaponObjects, props.activeOffhandWeaponObject, props.onOffhandChange, props.selectedSpecializationIds)}
     </div>
 );
 
 WeaponSelection.propTypes = {
-    selectedSpecializationIds: React.PropTypes.arrayOf(React.PropTypes.number),
-    mainhandWeapons: React.PropTypes.object,
-    offhandWeapons: React.PropTypes.object,
+    twoHanded: React.PropTypes.bool.isRequired,
+
+    // Events
     onMainhandChange: React.PropTypes.func.isRequired,
     onOffhandChange: React.PropTypes.func.isRequired,
-    activeMainhand: React.PropTypes.string,
-    activeOffhand: React.PropTypes.string,
-    twoHanded: React.PropTypes.bool.isRequired
+
+    // Redux states
+    activeMainhandWeaponObject: React.PropTypes.string,
+    activeOffhandWeaponObject: React.PropTypes.string,
+    availableMainhandWeaponObjects: React.PropTypes.object,
+    availableOffhandWeaponObjects: React.PropTypes.object,
+    selectedSpecializationIds: React.PropTypes.arrayOf(React.PropTypes.number)
 };
 
 export default WeaponSelection;

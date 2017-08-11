@@ -1,17 +1,17 @@
 import { connect } from 'react-redux';
-import { getActiveMainhand, getActiveOffhand, getIsTwoHandedActive } from '~/selectors/skills';
+import { getAvailableWeaponObjects, getActiveMainhandWeaponObject, getActiveOffhandWeaponObject, getIsTwoHandedActive } from '~/selectors/skills';
 import { getActiveAttunement } from '~/selectors/skills/mechanic';
 import WeaponBar from './WeaponBar';
 
 const mapStateToProps = (state, ownProps) => ({
-    mainhand: getActiveMainhand(state, ownProps),
-    offhand: getActiveOffhand(state, ownProps),
-    isTwoHanded: getIsTwoHandedActive(state, ownProps),
+    activeMainhandWeaponId: getActiveMainhandWeaponObject(state, ownProps),
+    activeOffhandWeaponId: getActiveOffhandWeaponObject(state, ownProps),
     attunement: getActiveAttunement(state, ownProps),
-    weapons: state.weapons,
-    skills: state.skills,
+    availableSkillObjects: state.availableSkillObjects,
+    availableWeaponObjects: state.availableWeaponObjects,
     selectedMajorTraitIds: state.selectedMajorTraitIds,
-    selectedMinorTraitIds: state.selectedMinorTraitIds
+    selectedMinorTraitIds: state.selectedMinorTraitIds,
+    twoHanded: getIsTwoHandedActive(state, ownProps)
 });
 
 export default connect(mapStateToProps)(WeaponBar);

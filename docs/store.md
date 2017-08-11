@@ -13,22 +13,24 @@ The store from `redux` contains the app state that is used globally in various p
 
 ## Skills
 ### Skills
-- `skillIds` (array)  
+- `availableSkillIds` (array)  
   Contains all valid skill ids for the current `profession`.
-- `skills` (object, indexed by `skill.id`)  
+- `availableSkillObjects` (object, indexed by `skill.id`)  
   Contains all valid skill objects for the current `profession`.  
   See GW2 API `/v2/skills` for the object format.
 
 ### Weapons
-- `activeMainhandWeapons` (array)  
-  Contains the selected mainhand weapons (string), indexed by weapon set.
-- `activeOffhandWeapons` (array)  
-  Contains the selected offhand weapons (string), indexed by weapon set.
 - `activeWeaponSet` (integer)  
   Contains the currently selected weapon set.
-- `weapons` (array)  
+  Indexed from 0 to 3, where 0 is the first weapon set, 1 is the second weapon set, 2 is the first aquatic weapon set and 3 is the second aquatic weapon set.
+- `availableWeaponObjects` (object, indexed by `weapon.id`)  
   Contains the available weapons for the current `profession`.  
   See GW2 API `/v2/profession.weapons` for the object format.
+- `selectedMainhandWeaponIds` (array)  
+  Contains the selected mainhand weapon ids (strings), indexed by weapon set.
+- `selectedOffhandWeaponIds` (array)  
+  Contains the selected offhand weapon ids (strings), indexed by weapon set.
+
 ### Mechanic
 - `activeAttunements` (array)  
   Contains the active attunements, indexed by weapon set.
@@ -39,7 +41,7 @@ The store from `redux` contains the app state that is used globally in various p
 ### Specializations
 - `availableSpecializationIds` (array)  
   Contains all valid specialization ids for the current `profession`.
-- `availableSpecializationObjects` (object, indexed by specialization id)  
+- `availableSpecializationObjects` (object, indexed by `specialization.id`)  
   Contains all valid specialization objects for the current `profession`.
   See GW2 API `/v2/specializations` for the object format.
 - `selectedSpecializationIds` (array)  
@@ -49,7 +51,7 @@ The store from `redux` contains the app state that is used globally in various p
 ### Traits
 - `availableTraitIds` (array)  
   Contains all valid trait ids for the current `profession` (both minor and major traits).
-- `availableTraitsObjects` (object, indexed by trait id)  
+- `availableTraitsObjects` (object, indexed by `trait.id`)  
   Contains all valid trait objects for the current `profession` (both minor and major traits). See GW2 API `/v2/traits`
   for the object format.
 - `selectedMinorTraitIds` (array)  

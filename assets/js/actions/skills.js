@@ -22,7 +22,7 @@ export const setAttunement = createAction(SET_ATTUNEMENT);
 
 export const fetchSkills = createApiAction(
     FETCH_SKILLS,
-    (state, api) => api.skills().many(state.skillIds).then(convertToIndexed)
+    (state, api) => api.skills().many(state.availableSkillIds).then(convertToIndexed)
 );
 
 export default {

@@ -3,7 +3,7 @@ import * as actions from '~/actions';
 import { handleSimpleAction } from '~/reducers/utils';
 
 /** Reducer for the available weapons for the selected profession */
-export const weapons = handleSimpleAction(actions.FETCH_PROFESSION, {}, 'weapons');
+export const availableWeaponObjects = handleSimpleAction(actions.FETCH_PROFESSION, {}, 'weapons');
 
 export const activeWeaponSet = handleActions({
     [actions.SET_WEAPON_SET]: (state, action) => action.payload.activeWeaponSet,
@@ -11,7 +11,7 @@ export const activeWeaponSet = handleActions({
     [actions.SET_SELECTED_PROFESSION]: () => 0
 }, 0);
 
-export const activeMainhandWeapons = handleActions({
+export const selectedMainhandWeaponIds = handleActions({
     [actions.SET_MAINHAND_WEAPON]: (state, action) => {
         const newState = state.slice();
         newState[action.payload.activeWeaponSet] = action.payload.weaponId;
@@ -21,7 +21,7 @@ export const activeMainhandWeapons = handleActions({
     [actions.SET_SELECTED_PROFESSION]: () => [null, null, null, null]
 }, [null, null, null, null]);
 
-export const activeOffhandWeapons = handleActions({
+export const selectedOffhandWeaponIds = handleActions({
     [actions.SET_OFFHAND_WEAPON]: (state, action) => {
         const newState = state.slice();
         newState[action.payload.activeWeaponSet] = action.payload.weaponId;
@@ -32,8 +32,8 @@ export const activeOffhandWeapons = handleActions({
 }, [null, null, null, null]);
 
 export default {
-    weapons,
+    availableWeaponObjects,
     activeWeaponSet,
-    activeMainhandWeapons,
-    activeOffhandWeapons
+    selectedMainhandWeaponIds,
+    selectedOffhandWeaponIds
 };

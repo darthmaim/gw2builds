@@ -7,7 +7,7 @@ const mapStateToProps = (state, ownProps) => ({
     activeWeaponSet: state.activeWeaponSet,
     attunements: state.attunements,
     activeAttunement: getActiveAttunement(state, ownProps),
-    skills: state.skills,
+    skills: state.availableSkillObjects,
     selectedMajorTraitIds: state.selectedMajorTraitIds,
     selectedMinorTraitIds: state.selectedMinorTraitIds
 });
