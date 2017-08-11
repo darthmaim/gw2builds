@@ -14,7 +14,7 @@ export const activeAttunements = handleActions({
         newState[action.payload.activeWeaponSet] = action.payload.attunement;
         return newState;
     },
-    [actions.WIPE_ALL_WEAPONS]: () => DEFAULT_ATTUNEMENTS,
+    [actions.WIPE_ALL_SELECTED_WEAPON_IDS]: () => DEFAULT_ATTUNEMENTS,
     [actions.SET_SELECTED_PROFESSION]: () => DEFAULT_ATTUNEMENTS
 }, DEFAULT_ATTUNEMENTS);
 

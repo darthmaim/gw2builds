@@ -22,7 +22,7 @@ export const availableSkillIds = handleAction(actions.FETCH_PROFESSION, (state, 
     return skills;
 }, []);
 
-export const availableSkillObjects = handleSimpleAction(actions.FETCH_SKILLS, {});
+export const availableSkillObjects = handleSimpleAction(actions.FETCH_AVAILABLE_SKILLS, {});
 
 export default {
     availableSkillIds,
