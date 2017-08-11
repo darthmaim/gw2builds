@@ -31,7 +31,7 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
                 // (this means that it's hardcoded to support only one active elite specialization at a time,
                 // update this when it changes in the future)
                 // Since the previous dispatch is synchronous, we can immediately do this dispatch
-                dispatch(wipeSelectedSpecializationId({
+                dispatch(wipeSelectedSpecializationIds({
                     specializationLine: existingSpecializationLine
                 }));
             }
