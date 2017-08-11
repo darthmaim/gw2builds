@@ -13,9 +13,9 @@ class SetSelection extends Component {
     }
 
     render() {
-        const { activeWeaponSet, profession } = this.props;
+        const { activeWeaponSet, selectedProfession } = this.props;
 
-        const hasMultipleWeaponsets = profession !== 'Elementalist' && profession !== 'Engineer';
+        const hasMultipleWeaponsets = selectedProfession !== 'Elementalist' && selectedProfession !== 'Engineer';
         const sets = [
             { name: 'Weaponset 1', icon: '/img/weaponset/set1.svg', enabled: true },
             { name: 'Weaponset 2', icon: '/img/weaponset/set2.svg', enabled: hasMultipleWeaponsets },
@@ -38,8 +38,8 @@ class SetSelection extends Component {
 
 SetSelection.propTypes = {
     activeWeaponSet: React.PropTypes.number.isRequired,
-    onWeaponSetChange: React.PropTypes.func.isRequired,
-    profession: React.PropTypes.string
+    selectedProfession: React.PropTypes.string,
+    onWeaponSetChange: React.PropTypes.func.isRequired
 };
 
 export default SetSelection;

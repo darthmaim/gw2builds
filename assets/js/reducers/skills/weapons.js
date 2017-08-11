@@ -32,8 +32,8 @@ export const selectedOffhandWeaponIds = handleActions({
 }, [null, null, null, null]);
 
 export default {
-    availableWeaponObjects,
     activeWeaponSet,
+    availableWeaponObjects,
     selectedMainhandWeaponIds,
     selectedOffhandWeaponIds
 };
