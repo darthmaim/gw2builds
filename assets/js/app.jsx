@@ -25,8 +25,8 @@ const store = createStore(editor, initialState, applyMiddleware(thunk.withExtraA
 class Editor extends React.Component {
     componentDidUpdate() {
         window.history.replaceState(undefined, '', this.props.url);
-        window.document.title = this.props.profession ?
-            `${this.props.profession} | Build Editor - gw2efficiency` :
+        window.document.title = this.props.selectedProfession ?
+            `${this.props.selectedProfession} | Build Editor - gw2efficiency` :
             'Build Editor - gw2efficiency';
     }
 
@@ -42,7 +42,7 @@ class Editor extends React.Component {
 }
 
 Editor = connect(state => {
-    return { locale: state.selectedLanguage, profession: state.selectedProfession, url: getUrl(state) };
+    return { locale: state.selectedLanguage, selectedProfession: state.selectedProfession, url: getUrl(state) };
 })(Editor);
 
 render(
