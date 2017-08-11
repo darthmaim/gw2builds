@@ -73,7 +73,7 @@ WeaponBar.propTypes = {
             id: React.PropTypes.number.isRequired,
             slot: React.PropTypes.string.isRequired,
             attunement: React.PropTypes.string,
-            weapon: React.PropTypes.string
+            offhand: React.PropTypes.string
         })).isRequired,
         specialization: React.PropTypes.number
     })).isRequired,
