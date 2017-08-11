@@ -4,7 +4,9 @@
   "private": true,
   "scripts": {
     "lint": "xo",
-    "test": "mocha --compilers js:babel-core/register --require tests/tools/requireCSS.js tests/**/*.spec.js{,x}",
+    "test": "npm run test:coverage --silent",
+    "test:mocha": "mocha --compilers js:babel-core/register --require tests/tools/requireCSS.js tests/**/*.spec.js{,x}",
+    "test:coverage": "nyc --all --include=src --extension .jsx --reporter=lcov --reporter=text-summary --report-dir=coverage npm run test:mocha",
     "build": "gulp build",
     "production": "NODE_ENV=production gulp build",
     "dev": "gulp dev",
@@ -58,6 +60,7 @@
     "lodash": "^4.17.4",
     "mocha": "^3.2.0",
     "modular-css": "^6.0.0",
+    "nyc": "^11.1.0",
     "postcss-import": "^10.0.0",
     "postcss-urlrewrite": "^0.2.1",
     "prop-types": "^15.5.10",
