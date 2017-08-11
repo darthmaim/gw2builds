@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { setSelectedSpecializationId, swapSelectedSpecializationIds, wipeSelectedSpecializationIds} from '~/actions';
+import { setSelectedSpecializationId, swapSelectedSpecializationIds, wipeSelectedSpecializationId} from '~/actions';
 import { getCoreSpecializationIds, getEliteSpecializationIds, getSelectedSpecializationId } from '~/selectors/specializations';
 import SelectionPopup from './SelectionPopup';
 
@@ -31,7 +31,7 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
                 // (this means that it's hardcoded to support only one active elite specialization at a time,
                 // update this when it changes in the future)
                 // Since the previous dispatch is synchronous, we can immediately do this dispatch
-                dispatch(wipeSelectedSpecializationIds({
+                dispatch(wipeSelectedSpecializationId({
                     specializationLine: existingSpecializationLine
                 }));
             }
