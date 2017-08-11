@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { setWeaponSet } from '~/actions';
+import { setActiveWeaponSet } from '~/actions';
 import SetSelection from './SetSelection';
 
 const mapStateToProps = state => ({
@@ -9,7 +9,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
     onWeaponSetChange: activeWeaponSet => {
-        dispatch(setWeaponSet({
+        dispatch(setActiveWeaponSet({
             activeWeaponSet
         }));
     }

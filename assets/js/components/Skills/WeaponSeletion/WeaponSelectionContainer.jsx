@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { getAvailableMainhandWeaponObjects, getAvailableOffhandWeaponObjects, getActiveMainhandWeaponObject, getActiveOffhandWeaponObject, getIsTwoHandedActive } from '~/selectors/skills';
-import { setMainhandWeapon, setOffhandWeapon } from '~/actions';
+import { setActiveMainhandWeaponId, setActiveOffhandWeaponId } from '~/actions';
 import WeaponSelection from './WeaponSelection';
 
 const mapStateToProps = (state, ownProps) => ({
@@ -15,13 +15,13 @@ const mapStateToProps = (state, ownProps) => ({
 
 const mergeProps = (mappedProps, { dispatch }, ownProps) => Object.assign({}, mappedProps, ownProps, {
     onMainhandChange: weaponId => {
-        dispatch(setMainhandWeapon({
+        dispatch(setActiveMainhandWeaponId({
             weaponId,
             activeWeaponSet: mappedProps.activeWeaponSet
         }));
     },
     onOffhandChange: weaponId => {
-        dispatch(setOffhandWeapon({
+        dispatch(setActiveOffhandWeaponId({
             weaponId,
             activeWeaponSet: mappedProps.activeWeaponSet
         }));
