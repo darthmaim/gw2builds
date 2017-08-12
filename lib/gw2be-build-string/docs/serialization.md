@@ -149,6 +149,59 @@ The current in-development version and will be replaced with version 1 once the 
         <td>uint32</td>
         <td>The id for major trait 3 of specialization 3</td>
     </tr>
+    <tr>
+        <td rowspan="6"><code>weapons</code></td>
+        <td><code>weaponA1</code></td>
+        <td>enum</td>
+        <td rowspan="4">
+            The weapons, where:<br>
+            A = first set, B = second set<br>
+            1 = main-hand, 2 = off-hand<br><br>
+            <em>1 = Axe</em><br>
+            <em>2 = Dagger</em><br>
+            <em>3 = Mace</em><br>
+            <em>4 = Pistol</em><br>
+            <em>5 = Sword</em><br>
+            <em>6 = Scepter</em><br>
+            <em>7 = Focus</em><br>
+            <em>8 = Shield</em><br>
+            <em>9 = Torch</em><br>
+            <em>10 = Warhorn</em><br>
+            <em>11 = Greatsword</em><br>
+            <em>12 = Hammer</em><br>
+            <em>13 = Longbow</em><br>
+            <em>14 = Rifle</em><br>
+            <em>15 = Short bow</em><br>
+            <em>16 = Staff</em>
+        </td>
+    </tr>
+    <tr>
+        <td><code>weaponA2</code></td>
+        <td>enum</td>
+    </tr>
+    <tr>
+        <td><code>weaponB1</code></td>
+        <td>enum</td>
+    </tr>
+    <tr>
+        <td><code>weaponB2</code></td>
+        <td>enum</td>
+    </tr>
+    <tr>
+        <td><code>aquaticA</code></td>
+        <td>enum</td>
+        <td rowspan="2">
+            The aquatic weapons, where:<br>
+            A = first set, B = second set<br><br>
+            <em>1 = Harpoon gun</em><br>
+            <em>2 = Spear</em><br>
+            <em>3 = Trident</em><br>
+        </td>
+    </tr>
+    <tr>
+        <td><code>aquaticB</code></td>
+        <td>enum</td>
+    </tr>
 </table>
 
 <sup>1</sup> In order to save space, the serializer converts the build id to a 17-bit unsigned integer by subtracting the build id with the lower boundary.
