@@ -2,6 +2,16 @@
 The editor has the ability to compile and decompile a build to a base64 string that is used in URLs.
 This allows people to share their builds easily with others.
 
+## Global types
+The global types are as follows:
+
+ Type   | Description
+--------|-------------
+ uint8  | Unsigned 8-bit integer (also known as a byte)
+ uint16 | Unsigned 16-bit integer
+ uint32 | Unsigned 32-bit integer
+ enum   | Enumerator (*0 = null or none*)
+
 ## Data structure
 The data is encoded as follows:
 
@@ -21,14 +31,6 @@ This means that in the base64 string, the `+` and `/` are encoded as `-` and `_`
 ### v0 (dev)
 The current in-development version and will be replaced with version 1 once the first format is finalized.
 
-Possible types:
-
- Type   | Description
---------|-------------
- uint8  | Unsigned 8-bit integer (also known as a byte)
- uint32 | Unsigned 32-bit integer
- enum   | Enumerator (*0 = null or none*)
-
 #### Deserialized data structure
 <table>
     <tr>
@@ -40,10 +42,10 @@ Possible types:
     <tr>
         <td rowspan="4"><code>general</code></td>
         <td><code>build</code></td>
-        <td>uint32</td>
+        <td>uint32<sup>1</sup></td>
         <td>
             The GW2 build id the build is made for<br>
-            <em>Valid values<sup>1</sup>: 65536 – 131072</em>
+            <em>Valid values<sup>1</sup>: 65536 – 196608</em>
         </td>
     </tr>
     <tr>
@@ -149,8 +151,10 @@ Possible types:
     </tr>
 </table>
 
-<sup>1</sup> The serializer converts the build id to a `uint16` to save space.
+<sup>1</sup> In order to save space, the serializer converts the build id to a 17-bit unsigned integer by subtracting the build id with the lower boundary.
 Make sure that the build id is within the specified boundaries.
+Because the build id slowly increments, at some point a new version might be needed to update the boundary.
+But this probably won't happen before 2023.
 
 #### Serialized data structure
  Byte | Type   | Description
