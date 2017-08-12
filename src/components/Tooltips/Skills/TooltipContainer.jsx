@@ -2,8 +2,8 @@ import { connect } from 'react-redux';
 import Tooltip from './Tooltip';
 
 const mapStateToProps = (state, ownProps) => ({
-    activeMajorTraits: state.activeMajorTraits,
-    activeMinorTraits: state.activeMinorTraits
+    selectedMajorTraitIds: state.selectedMajorTraitIds,
+    selectedMinorTraitIds: state.selectedMinorTraitIds
 });
 
 export default connect(mapStateToProps)(Tooltip);
