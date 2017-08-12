@@ -221,6 +221,28 @@ This version uses the following enums for serialization:
     <tr>
         <td><code>aquaticB</code></td>
     </tr>
+    <tr>
+        <td rowspan="6"><code>skills</code></td>
+        <td><code>healing</code></td>
+        <td rowspan="5">uint32</td>
+        <td>Healing skill id</td>
+    </tr>
+    <tr>
+        <td><code>utility1</code></td>
+        <td>Utility skill 1 id</code>
+    </tr>
+    <tr>
+        <td><code>utility2</code></td>
+        <td>Utility skill 2 id</code>
+    </tr>
+    <tr>
+        <td><code>utility3</code></td>
+        <td>Utility skill 3 id</td>
+    </tr>
+    <tr>
+        <td><code>elite</code></td>
+        <td>Elite skill id</td>
+    </tr>
 </table>
 
 <sup>1</sup> In order to save space, the serializer converts the build id to a 17-bit unsigned integer by subtracting the build id with the lower boundary.
@@ -252,7 +274,7 @@ The following table shows how the list of bits used for storage types are stored
         <td>reserved</td>
         <td>reserved</td>
         <td>reserved</td>
-        <td>reserved</td>
+        <td>skill</td>
         <td>trait</td>
         <td>specialization</td>
     </tr>
@@ -394,5 +416,31 @@ Every block is encoded as follows:
         <td>5</td>
         <td><code>aquaticB</code></td>
         <td>aquaticWeapon (enum)</td>
+    </tr>
+    <tr>
+        <td rowspan="5"><code>skills</code> (22)</td>
+        <td>0</td>
+        <td><code>healing</code></td>
+        <td>skill</td>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td><code>utility1</code></td>
+        <td>skill</td>
+    </tr>
+    <tr>
+        <td>2</td>
+        <td><code>utility2</code></td>
+        <td>skill</td>
+    </tr>
+    <tr>
+        <td>3</td>
+        <td><code>utility3</code></td>
+        <td>skill</td>
+    </tr>
+    <tr>
+        <td>4</td>
+        <td><code>elite</code></td>
+        <td>skill</td>
     </tr>
 </table>

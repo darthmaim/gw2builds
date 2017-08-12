@@ -60,6 +60,8 @@ export function initializeBuildFromString(store, buildString) {
         disp('weaponB2', build.weapons, setSelectedOffhandWeaponId, id => ({ weaponSet: 1, weaponId: id }) );
         disp('aquaticA', build.weapons, setSelectedMainhandWeaponId, id => ({ weaponSet: 2, weaponId: id }) );
         disp('aquaticB', build.weapons, setSelectedMainhandWeaponId, id => ({ weaponSet: 3, weaponId: id }) );
+
+        // TODO: skills
     });
 }
 
@@ -101,6 +103,7 @@ export function exportBuildToString(state) {
             aquaticA: state.selectedMainhandWeaponIds[2],
             aquaticB: state.selectedMainhandWeaponIds[3]
         }
+        // TODO: skills
     };
 
     return serialize(build);
