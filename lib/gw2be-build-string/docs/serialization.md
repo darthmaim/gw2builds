@@ -345,4 +345,35 @@ Every block is encoded as follows:
         <td><code>majorTrait3</code></td>
         <td>trait</td>
     </tr>
+    <tr>
+        <td rowspan="6"><code>weapons</code> (21)</td>
+        <td>0</td>
+        <td><code>weaponA1</code></td>
+        <td>enum</td>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td><code>weaponA2</code></td>
+        <td>enum</td>
+    </tr>
+    <tr>
+        <td>2</td>
+        <td><code>weaponB1</code></td>
+        <td>enum</td>
+    </tr>
+    <tr>
+        <td>3</td>
+        <td><code>weaponB2</code></td>
+        <td>enum</td>
+    </tr>
+    <tr>
+        <td>4</td>
+        <td><code>aquaticA</code></td>
+        <td>enum</td>
+    </tr>
+    <tr>
+        <td>5</td>
+        <td><code>aquaticB</code></td>
+        <td>enum</td>
+    </tr>
 </table>
