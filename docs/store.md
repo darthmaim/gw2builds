@@ -1,53 +1,195 @@
 # Store
 The store from `redux` contains the app state that is used globally in various places like `./selectors` and `./containers`.
 
+The types in the tables below are written with a specific format.
+In case of an array, the element type is indicated between brackets.
+In case of an object, the element type is indicated as the first item between the brackets, while the indexer property is indicated as the second item between the brackets.
+Sometimes the type is represented as a GW2 API endpoint.
+
 ## General
-- `selectedLanguage` (string)  
-  Options: *en*, *de*, *fr*, *es*.
-- `selectedGameMode` (string)  
-  Options: *pve*, *pvp*, *wvw*.
-- `selectedProfession` (string)  
-  Options: *Guardian*, *Revenant*, *Warrior*, *Engineer*, *Ranger*, *Thief*, *Elementalist*, *Mesmer*, *Necromancer*.
-- `selectedRace` (string)  
-  Options: *none*, *Asura*, *Charr*, *Human*, *Norn*, *Sylvari*.
+<table>
+    <tr>
+        <th>Property</th>
+        <th>Type</th>
+        <th>Description</th>
+    </tr>
+    <tr>
+        <td><code>selectedLanguage</code></td>
+        <td>string</td>
+        <td>
+            Selected language.<br>
+            Options: <em>en</em>, <em>de</em>, <em>fr</em>, <em>es</em>
+        </td>
+    </tr>
+    <tr>
+        <td><code>selectedGameMode</code></td>
+        <td>string</td>
+        <td>
+            Selected game mode.<br>
+            Options: <em>pve</em>, <em>pvp</em>, <em>wvw</em>
+        </td>
+    </tr>
+    <tr>
+        <td><code>selectedProfession</code></td>
+        <td>string</td>
+        <td>
+            Selected profession.<br>
+            Options:
+            <em>Guardian</em>,
+            <em>Revenant</em>,
+            <em>Warrior</em>,
+            <em>Engineer</em>,
+            <em>Ranger</em>,
+            <em>Thief</em>,
+            <em>Elementalist</em>,
+            <em>Mesmer</em>,
+            <em>Necromancer</em>
+        </td>
+    </tr>
+    <tr>
+        <td><code>selectedRace</code></td>
+        <td>string</td>
+        <td>
+            Selected race.<br>
+            Options:
+            <em>none</em>,
+            <em>Asura</em>,
+            <em>Charr</em>,
+            <em>Human</em>,
+            <em>Norn</em>,
+            <em>Sylvari</em>
+        </td>
+    </tr>
+</table>
 
 ## Mechanics
-- `selectedRevenantLegendIds` (array)  
-  Contains the currently selected revenant legend ids.  
-  Indexed from 0 to 1, where 0 is the first legend, and 1 is the second legend.
-- `selectedRangerPetIds` (array)  
-  Contains the currently selected ranger pet ids.  
-  Indexed from 0 to 3, where 0 is the first terrestrial pet, 1 is the second terrestrial pet, 2 is the first aquatic pet, and 3 is the second aquatic pet.
-- `selectedElementalistAttunementId` (string)  
-  Contains the currently selected elementalist attunement id.
-- `selectedWeaverPreviousAttunementId` (string)  
-  Contains the currently selected weaver previous attunement id.
+<table>
+    <tr>
+        <th>Property</th>
+        <th>Type</th>
+        <th>Description</th>
+    </tr>
+    <tr>
+        <td><code>selectedRevenantLegendIds</code></td>
+        <td>array (string)</td>
+        <td>
+            Selected revenant legend ids.<br>
+            [0] = first legend<br>
+            [1] = second legend
+        </td>
+    </tr>
+    <tr>
+        <td><code>selectedRangerPetIds</code></td>
+        <td>array (string)</td>
+        <td>
+            Selected ranger pet ids.<br>
+            [0] = first terrestrial pet<br>
+            [1] = second terrestial pet<br>
+            [2] = first aquatic pet<br>
+            [3] = second aquatic pet
+        </td>
+    </tr>
+    <tr>
+        <td><code>selectedElementalistAttunementId</code></td>
+        <td>string</td>
+        <td>
+            Selected elementalist attunement id.<br>
+            Options: <em>Fire</em>, <em>Water</em>, <em>Air</em>, <em>Earth</em>
+        </td>
+    </tr>
+    <tr>
+        <td><code>selectedWeaverPreviousAttunementId</code></td>
+        <td>string</td>
+        <td>
+            Selected weaver previous attunement id.<br>
+            Options: <em>Fire</em>, <em>Water</em>, <em>Air</em>, <em>Earth</em>
+        </td>
+    </tr>
+</table>
 
 ## Skills
 ### Skills
-- `availableProfessionSkillObjects` (array)  
-  Contains all profession skill objects for the current `profession`.  
-  See GW2 API `/v2/professions.skills` for the object format.
-- `availableSkillIds` (array)  
-  Contains all valid skill ids for the current `profession`.
-- `availableSkillObjects` (object, indexed by `skill.id`)  
-  Contains all valid skill objects for the current `profession`.  
-  See GW2 API `/v2/skills` for the object format.
-- `selectedSkillIds` (array)  
-  Contains all selected skill ids for the current build.
-  Indexed from 0 to 4, where 0 is healing, 1 is utility 1, 2 is utility 2, 3 is utility 3, 4 is elite.
+<table>
+    <tr>
+        <th>Property</th>
+        <th>Type</th>
+        <th>Description</th>
+    </tr>
+    <tr>
+        <td><code>availableProfessionSkillObjects</code></td>
+        <td>array (<code>/v2/professions.skills</code>)</td>
+        <td>Available profession skill objects for the selected profession.</td>
+    </tr>
+    <tr>
+        <td><code>availableSkillIds</code></td>
+        <td>array (integer)</td>
+        <td>Available skill ids for the selected profession.</td>
+    </tr>
+    <tr>
+        <td><code>availableSkillObjects</code></td>
+        <td>object (<code>/v2/skills</code>, <code>id</code>)</td>
+        <td>Available skill objects for the selected profession.</td>
+    </tr>
+    <tr>
+        <td><code>selectedSkillIds</code></td>
+        <td>array (integer)</td>
+        <td>
+            Selected skill ids.<br>
+            [0] = healing<br>
+            [1] = first utility<br>
+            [2] = second utility<br>
+            [3] = third utility<br>
+            [4] = elite
+        </td>
+    </tr>
+</table>
 
 ### Weapons
-- `activeWeaponSet` (integer)  
-  Contains the currently selected weapon set.
-  Indexed from 0 to 3, where 0 is the first weapon set, 1 is the second weapon set, 2 is the first aquatic weapon set and 3 is the second aquatic weapon set.
-- `availableWeaponObjects` (object, indexed by weapon name (API default))  
-  Contains the available weapons for the current `profession`.  
-  See GW2 API `/v2/profession.weapons` for the object format.
-- `selectedMainhandWeaponIds` (array)  
-  Contains the selected mainhand weapon ids (strings), indexed by weapon set.
-- `selectedOffhandWeaponIds` (array)  
-  Contains the selected offhand weapon ids (strings), indexed by weapon set.
+<table>
+    <tr>
+        <th>Property</th>
+        <th>Type</th>
+        <th>Description</th>
+    </tr>
+    <tr>
+        <td><code>activeWeaponSet</code>
+        <td>integer</td>
+        <td>
+            Active weapon set.<br>
+            0 = first weapon set<br>
+            1 = second weapon set<br>
+            2 = first aquatic weapon set<br>
+            3 = second aquatic weapon set
+        </td>
+    </tr>
+    <tr>
+        <td><code>availableWeaponObjects</code>
+        <td>object (<code>/v2/profession.weapons</code>, inherited)</td>
+        <td>Available weapon objects for the selected profession.</td>
+    </tr>
+    <tr>
+        <td><code>selectedMainhandWeaponIds</code>
+        <td>array (string)</td>
+        <td>
+            Selected main-hand weapon ids.<br>
+            [0] = first weapon set<br>
+            [1] = second weapon set<br>
+            [2] = first aquatic weapon set<br>
+            [3] = second aquatic weapon set
+        </td>
+    </tr>
+    <tr>
+        <td><code>selectedOffhandWeaponIds</code>
+        <td>array (string)</td>
+        <td>
+            Selected off-hand weapon ids.<br>
+            [0] = first weapon set<br>
+            [1] = second weapon set<br>
+            [2] = first aquatic weapon set<br>
+            [3] = second aquatic weapon set
+        </td>
+    </tr>
+</table>
 
 ### Mechanic
 *TODO: Check how this can be adapted or integrated into the new mechanics store.* 
@@ -57,29 +199,81 @@ The store from `redux` contains the app state that is used globally in various p
   Contains the available attunements.
 
 ## Specializations
-### Specializations
-- `availableSpecializationIds` (array)  
-  Contains all valid specialization ids for the current `profession`.
-- `availableSpecializationObjects` (object, indexed by `specialization.id`)  
-  Contains all valid specialization objects for the current `profession`.
-  See GW2 API `/v2/specializations` for the object format.
-- `selectedSpecializationIds` (array)  
-  Contains all selected specialization ids for the current build.
-  Indexed from 0 to 2, where 0 is the first selected specialization.
+<table>
+    <tr>
+        <th>Property</th>
+        <th>Type</th>
+        <th>Description</th>
+    </tr>
+    <tr>
+        <td><code>availableSpecializationIds</code>
+        <td>array (integer)</td>
+        <td>Available specialization ids for the selected profession.</td>
+    </tr>
+    <tr>
+        <td><code>availableSpecializationObjects</code>
+        <td>object (<code>/v2/specializations</code>, <code>id</code>)</td>
+        <td>Available specialization objects for the selected profession.</td>
+    </tr>
+    <tr>
+        <td><code>selectedSpecializationIds</code>
+        <td>array (integer)</td>
+        <td>
+            Selected specialization ids.<br>
+            [0] = first specialization<br>
+            [1] = second specialization<br>
+            [2] = third specialization<br>
+        </td>
+    </tr>
+</table>
 
-### Traits
-- `availableTraitIds` (array)  
-  Contains all valid trait ids for the current `profession` (both minor and major traits).
-- `availableTraitsObjects` (object, indexed by `trait.id`)  
-  Contains all valid trait objects for the current `profession` (both minor and major traits). See GW2 API `/v2/traits`
-  for the object format.
-- `selectedMinorTraitIds` (array)  
-  Contains all selected *minor* trait ids for the current build.
-  Indexed from 0 to 8, where 0 is the tier 1 trait from the first selected specialization,
-  and 8 is the tier 3 trait from the last selected specialization.
-  An element can be `null` or `undefined` if there is no selection for that slot.  
-- `selectedMajorTraitIds` (array)  
-  Contains all selected *major* trait ids for the current build.
-  Indexed from 0 to 8, where 0 is the selected tier 1 trait from the first selected specialization,
-  and 8 is the selected tier 3 trait from the last selected specialization.
-  An element can be `null` or `undefined` if there is no selection for that slot.
+## Traits
+<table>
+    <tr>
+        <th>Property</th>
+        <th>Type</th>
+        <th>Description</th>
+    </tr>
+    <tr>
+        <td><code>availableTraitIds</code>
+        <td>array (integer)</td>
+        <td>Available trait ids for the selected profession.</td>
+    </tr>
+    <tr>
+        <td><code>availableTraitsObjects</code>
+        <td>object (<code>/v2/traits</code>, <code>id</code>)</td>
+        <td>Available trait objects for the selected profession.</td>
+    </tr>
+    <tr>
+        <td><code>selectedMinorTraitIds</code>
+        <td>array (integer)</td>
+        <td>
+            Selected <strong>minor</strong> trait ids.<br>
+            [0] = adept trait of first specialization<br>
+            [1] = master trait of first specialization<br>
+            [2] = grandmaster trait of first specialization<br>
+            [3] = adept trait of second specialization<br>
+            [4] = master trait of second specialization<br>
+            [5] = grandmaster trait of second specialization<br>
+            [6] = adept trait of third specialization<br>
+            [7] = master trait of third specialization<br>
+            [8] = grandmaster trait of third specialization
+        </td>
+    </tr>
+    <tr>
+        <td><code>selectedMajorTraitIds</code>
+        <td>array (integer)</td>
+        <td>
+            Selected <strong>major</strong> trait ids.<br>
+            [0] = adept trait of first specialization<br>
+            [1] = master trait of first specialization<br>
+            [2] = grandmaster trait of first specialization<br>
+            [3] = adept trait of second specialization<br>
+            [4] = master trait of second specialization<br>
+            [5] = grandmaster trait of second specialization<br>
+            [6] = adept trait of third specialization<br>
+            [7] = master trait of third specialization<br>
+            [8] = grandmaster trait of third specialization
+        </td>
+    </tr>
+</table>

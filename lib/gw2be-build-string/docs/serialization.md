@@ -173,7 +173,7 @@ This allows supporting new revenant legends in future expansions without being l
     </tr>
     <tr>
         <td><code>majorTrait3</code></td>
-        <td>Grandmaster major trait id specialization 1</td>
+        <td>Grandmaster major trait id for specialization 1</td>
     </tr>
     <tr>
         <td rowspan="4"><code>specialization2</code></td>
@@ -192,7 +192,7 @@ This allows supporting new revenant legends in future expansions without being l
     </tr>
     <tr>
         <td><code>majorTrait3</code></td>
-        <td>Grandmaster major trait id specialization 2</td>
+        <td>Grandmaster major trait id for specialization 2</td>
     </tr>
     <tr>
         <td rowspan="4"><code>specialization3</code></td>
@@ -211,7 +211,7 @@ This allows supporting new revenant legends in future expansions without being l
     </tr>
     <tr>
         <td><code>majorTrait3</code></td>
-        <td>Grandmaster major trait id specialization 3</td>
+        <td>Grandmaster major trait id for specialization 3</td>
     </tr>
     <tr>
         <td rowspan="6"><code>weapons</code></td>
