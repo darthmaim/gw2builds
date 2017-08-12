@@ -15,8 +15,8 @@ class TraitTier extends React.Component {
     }
 
     getIcon(id) {
-        if (id && this.props.traits && this.props.traits[id]) {
-            return this.props.traits[id].icon;
+        if (id && this.props.availableTraitObjects && this.props.availableTraitObjects[id]) {
+            return this.props.availableTraitObjects[id].icon;
         }
     }
 
@@ -42,8 +42,8 @@ class TraitTier extends React.Component {
             line = lineTranslate[this.props.majorTraitIds.indexOf(this.props.selectedMajorTraitId)];
         }
 
-        const minorTrait = this.props.traits && this.props.traits[this.props.minorTraitId];
-        const majorTraits = this.props.traits ? this.props.majorTraitIds.map(id => this.props.traits[id]) : [null, null, null];
+        const minorTrait = this.props.availableTraitObjects && this.props.availableTraitObjects[this.props.minorTraitId];
+        const majorTraits = this.props.availableTraitObjects ? this.props.majorTraitIds.map(id => this.props.availableTraitObjects[id]) : [null, null, null];
 
         return (
             <div className={style.traitTier} onClick={this.handleClick}>
@@ -89,10 +89,10 @@ TraitTier.propTypes = {
     onTraitChange: PropTypes.func,
 
     // Redux states
+    availableTraitObjects: PropTypes.object,
     majorTraitIds: PropTypes.arrayOf(PropTypes.number),
     minorTraitId: PropTypes.number,
     selectedMajorTraitId: PropTypes.number,
-    traits: PropTypes.object
 };
 
 export default TraitTier;

@@ -1,21 +1,21 @@
 import { createSelector } from 'reselect';
 import { exportBuildToString } from '../utils/build-string';
 
-const getGameMode = state => state.gameMode;
-const getProfession = state => state.profession;
-const getRace = state => state.race;
-const getActiveSpecializationIds = state => state.activeSpecializations;
-const getActiveMajorTraitIds = state => state.activeMajorTraits;
+const getSelectedGameMode = state => state.selectedGameMode;
+const getSelectedProfession = state => state.selectedProfession;
+const getSelectedRace = state => state.selectedRace;
+const getSelectedSpecializationIds = state => state.selectedSpecializationIds;
+const getSelectedMajorTraitIds = state => state.selectedMajorTraitIds;
 
 export const getUrl = createSelector(
-    [getGameMode, getProfession, getRace, getActiveSpecializationIds, getActiveMajorTraitIds],
-    (gameMode, profession, race, activeSpecializations, activeMajorTraits) => {
+    [getSelectedGameMode, getSelectedProfession, getSelectedRace, getSelectedSpecializationIds, getSelectedMajorTraitIds],
+    (selectedGameMode, selectedProfession, selectedRace, selectedSpecializationIds, selectedMajorTraitIds) => {
         return exportBuildToString({
-            gameMode,
-            profession,
-            race,
-            activeSpecializations,
-            activeMajorTraits
+            selectedGameMode,
+            selectedProfession,
+            selectedRace,
+            selectedSpecializationIds,
+            selectedMajorTraitIds
         });
     }
 );

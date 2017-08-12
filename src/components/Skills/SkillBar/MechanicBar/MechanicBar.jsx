@@ -2,12 +2,12 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import Professions from './Professions';
 
-const MechanicBar = ({ profession }) => {
-    if (!profession) {
+const MechanicBar = ({ selectedProfession }) => {
+    if (!selectedProfession) {
         return null;
     }
 
-    const Container = Professions[profession].Container;
+    const Container = Professions[selectedProfession].Container;
 
     return (
         <Container/>
@@ -15,7 +15,7 @@ const MechanicBar = ({ profession }) => {
 };
 
 MechanicBar.propTypes = {
-    profession: PropTypes.string
+    selectedProfession: PropTypes.string
 };
 
 export default MechanicBar;

@@ -1,20 +1,20 @@
 import { createSelector } from 'reselect';
 
-const getActiveSpecializationIds = state => state.activeSpecializations;
+const getSelectedSpecializationIds = state => state.selectedSpecializationIds;
 const getCurrentSpecializationLine = (_, props) => props.specializationLine;
-const getSpecializations = state => state.specializations;
-const getSpecializationIds = state => state.specializationIds;
+const getAvailableSpecializationObjects = state => state.availableSpecializationObjects;
+const getAvailableSpecializationIds = state => state.availableSpecializationIds;
 const isEliteSupported = (_, props) => props.supportsElite;
 
 export const getCoreSpecializationIds = createSelector(
-    [getSpecializationIds, getSpecializations],
+    [getAvailableSpecializationIds, getAvailableSpecializationObjects],
     (ids, specializations) => {
         return ids.filter(id => !specializations[id].elite);
     }
 );
 
 export const getEliteSpecializationIds = createSelector(
-    [getSpecializationIds, getSpecializations, isEliteSupported],
+    [getAvailableSpecializationIds, getAvailableSpecializationObjects, isEliteSupported],
     (ids, specializations, supportsElite) => {
         if (supportsElite) {
             return ids.filter(id => specializations[id].elite);
@@ -24,8 +24,8 @@ export const getEliteSpecializationIds = createSelector(
 );
 
 export const getSelectedSpecializationId = createSelector(
-    [getActiveSpecializationIds, getCurrentSpecializationLine],
-    (activeSpecializations, specializationLine) => activeSpecializations[specializationLine]
+    [getSelectedSpecializationIds, getCurrentSpecializationLine],
+    (selectedSpecializationIds, specializationLine) => selectedSpecializationIds[specializationLine]
 );
 
 export default {

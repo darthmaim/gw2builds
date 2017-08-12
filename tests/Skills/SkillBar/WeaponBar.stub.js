@@ -11,7 +11,7 @@ export const WEAPON_ATTUNEMENT = 'Attunement';
 export const ATTUNEMENT1 = 'Foo';
 export const ATTUNEMENT2 = 'Bar';
 
-export const skills = {
+export const availableSkillObjects = {
     [SKILL_SIMPLE.id]: SKILL_SIMPLE,
     [SKILL_OFFHAND_NOTHING.id]: SKILL_OFFHAND_NOTHING,
     [SKILL_OFFHAND_SOMETHING.id]: SKILL_OFFHAND_SOMETHING,
@@ -19,7 +19,7 @@ export const skills = {
     [SKILL_ATTUNEMENT_2.id]: SKILL_ATTUNEMENT_2
 };
 
-export const weapons = {
+export const availableWeaponObjects = {
     [WEAPON_SIMPLE]: {
         skills: [
             { id: SKILL_SIMPLE.id, slot: 'Weapon_1' },
@@ -55,5 +55,5 @@ export const weapons = {
     }
 };
 
-export const activeMajorTraits = [];
-export const activeMinorTraits = [];
+export const selectedMajorTraits = [];
+export const selectedMinorTraits = [];

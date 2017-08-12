@@ -5,37 +5,41 @@ import { Select } from '~/components/Inputs';
 
 // a weapon is available if it doesn't require a specialization
 // or if the specialization is active.
-const isWeaponAvailable = (weapon, activeSpecializations) =>
-    !weapon.specialization || activeSpecializations.some(id => id === weapon.specialization);
+const isWeaponAvailable = (weapon, selectedSpecializationIds) =>
+    !weapon.specialization || selectedSpecializationIds.some(id => id === weapon.specialization);
 
-const renderSelect = (weapons, value, onChange, activeSpecializations) => (
+const renderSelect = (weapons, value, onChange, selectedSpecializationIds) => (
     <Select value={value} onChange={onChange} placeholder="None">
         {map(weapons, (weapon, name) => (
-            <option key={name} value={name} disabled={!isWeaponAvailable(weapon, activeSpecializations)}>{name}</option>
+            <option key={name} value={name} disabled={!isWeaponAvailable(weapon, selectedSpecializationIds)}>{name}</option>
         ))}
     </Select>
 );
 
 const WeaponSelection = ({
-    mainhandWeapons, onMainhandChange, activeMainhand,
-    offhandWeapons, onOffhandChange, activeOffhand,
-    twoHanded, activeSpecializations
+    availableMainhandWeaponObjects, onMainhandChange, activeMainhandWeaponId,
+    availableOffhandWeaponObjects, onOffhandChange, activeOffhandWeaponId,
+    twoHanded, selectedSpecializationIds
 }) => (
     <div>
-        {renderSelect(mainhandWeapons, activeMainhand, onMainhandChange, activeSpecializations)}
-        {!twoHanded && renderSelect(offhandWeapons, activeOffhand, onOffhandChange, activeSpecializations)}
+        {renderSelect(availableMainhandWeaponObjects, activeMainhandWeaponId, onMainhandChange, selectedSpecializationIds)}
+        {!twoHanded && renderSelect(availableOffhandWeaponObjects, activeOffhandWeaponId, onOffhandChange, selectedSpecializationIds)}
     </div>
 );
 
 WeaponSelection.propTypes = {
-    activeSpecializations: PropTypes.arrayOf(PropTypes.number),
-    mainhandWeapons: PropTypes.object,
-    offhandWeapons: PropTypes.object,
+    twoHanded: PropTypes.bool.isRequired,
+
+    // Events
     onMainhandChange: PropTypes.func.isRequired,
     onOffhandChange: PropTypes.func.isRequired,
-    activeMainhand: PropTypes.string,
-    activeOffhand: PropTypes.string,
-    twoHanded: PropTypes.bool.isRequired
+
+    // Redux states
+    activeMainhandWeaponId: PropTypes.string,
+    activeOffhandWeaponId: PropTypes.string,
+    availableMainhandWeaponObjects: PropTypes.object,
+    availableOffhandWeaponObjects: PropTypes.object,
+    selectedSpecializationIds: PropTypes.arrayOf(PropTypes.number)
 };
 
 export default WeaponSelection;

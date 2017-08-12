@@ -38,8 +38,8 @@ class SetSelection extends Component {
 
 SetSelection.propTypes = {
     activeWeaponSet: PropTypes.number.isRequired,
-    onWeaponSetChange: PropTypes.func.isRequired,
-    profession: PropTypes.string
+    selectedProfession: PropTypes.string,
+    onWeaponSetChange: PropTypes.func.isRequired
 };
 
 export default SetSelection;

@@ -10,37 +10,35 @@ class WeaponBar extends Component {
         this.renderSkill = this.renderSkill.bind(this);
     }
 
-    getSkillInSlot({ mainhand, offhand, isTwoHanded, weapons, skills, attunement }) {
+    getSkillInSlot({ activeMainhandWeaponId, activeOffhandWeaponId, isTwoHanded, availableWeaponObjects, availableSkillObjects, activeAttunement }) {
         return index => {
             const getFromMainhand = index < 3 || isTwoHanded;
 
             // handle empty weapon
-            if ((getFromMainhand && !mainhand) || (!getFromMainhand && !offhand)) {
+            if ((getFromMainhand && !activeMainhandWeaponId) || (!getFromMainhand && !activeOffhandWeaponId)) {
                 return null;
             }
 
-            const weapon = getFromMainhand ? mainhand : offhand;
+            const weapon = getFromMainhand ? activeMainhandWeaponId : activeOffhandWeaponId;
             const slotName = `Weapon_${index + 1}`;
 
             // find all matching skills for the requested slot
-            const skillsForSlot = weapons[weapon].skills
+            const skillsForSlot = availableWeaponObjects[weapon].skills
                 // filter slot
                 .filter(skill => skill.slot === slotName)
                 // filter offhand (thief)
-                .filter(skill => !skill.offhand || skill.offhand === offhand || (skill.offhand === 'Nothing' && !offhand))
+                .filter(skill => !skill.offhand || skill.offhand === activeOffhandWeaponId || (skill.offhand === 'Nothing' && !activeOffhandWeaponId))
                 // filter attunement (elementalist)
-                .filter(skill => !skill.attunement || skill.attunement === attunement);
+                .filter(skill => !skill.attunement || skill.attunement === activeAttunement);
 
             // return the skill object
-            return skillsForSlot[0] && skills[skillsForSlot[0].id];
+            return skillsForSlot[0] && availableSkillObjects[skillsForSlot[0].id];
         };
     }
 
     render() {
         const getSkillInSlot = this.getSkillInSlot(this.props);
-
         const slots = [0, 1, 2, 3, 4].map(getSkillInSlot);
-
         return (
             <div>
                 {slots.map(this.renderSkill)}
@@ -64,11 +62,14 @@ class WeaponBar extends Component {
 }
 
 WeaponBar.propTypes = {
-    mainhand: PropTypes.string,
-    offhand: PropTypes.string,
     isTwoHanded: PropTypes.bool,
-    attunement: PropTypes.string,
-    weapons: PropTypes.objectOf(PropTypes.shape({
+
+    // Redux states
+    activeMainhandWeaponId: PropTypes.string,
+    activeOffhandWeaponId: PropTypes.string,
+    activeAttunement: PropTypes.string,
+    availableSkillObjects: PropTypes.object.isRequired,
+    availableWeaponObjects: PropTypes.objectOf(PropTypes.shape({
         skills: PropTypes.arrayOf(PropTypes.shape({
             id: PropTypes.number.isRequired,
             slot: PropTypes.string.isRequired,
@@ -77,7 +78,6 @@ WeaponBar.propTypes = {
         })).isRequired,
         specialization: PropTypes.number
     })).isRequired,
-    skills: PropTypes.object.isRequired
 };
 
 export default WeaponBar;

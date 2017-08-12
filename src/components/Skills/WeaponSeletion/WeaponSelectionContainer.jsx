@@ -1,27 +1,27 @@
 import { connect } from 'react-redux';
-import { getMainhandWeapons, getOffhandWeapons, getActiveMainhand, getActiveOffhand, getIsTwoHandedActive } from '~/selectors/skills';
-import { setMainhandWeapon, setOffhandWeapon } from '~/actions';
+import { getAvailableMainhandWeaponObjects, getAvailableOffhandWeaponObjects, getActiveMainhandWeaponId, getActiveOffhandWeaponId, getIsTwoHandedActive } from '~/selectors/skills';
+import { setActiveMainhandWeaponId, setActiveOffhandWeaponId } from '~/actions';
 import WeaponSelection from './WeaponSelection';
 
 const mapStateToProps = (state, ownProps) => ({
-    mainhandWeapons: getMainhandWeapons(state, ownProps),
-    offhandWeapons: getOffhandWeapons(state, ownProps),
-    activeMainhand: getActiveMainhand(state, ownProps),
-    activeOffhand: getActiveOffhand(state, ownProps),
-    twoHanded: getIsTwoHandedActive(state, ownProps),
+    activeMainhandWeaponId: getActiveMainhandWeaponId(state, ownProps),
+    activeOffhandWeaponId: getActiveOffhandWeaponId(state, ownProps),
     activeWeaponSet: state.activeWeaponSet,
-    activeSpecializations: state.activeSpecializations
+    availableMainhandWeaponObjects: getAvailableMainhandWeaponObjects(state, ownProps),
+    availableOffhandWeaponObjects: getAvailableOffhandWeaponObjects(state, ownProps),
+    twoHanded: getIsTwoHandedActive(state, ownProps),
+    selectedSpecializationIds: state.selectedSpecializationIds
 });
 
 const mergeProps = (mappedProps, { dispatch }, ownProps) => Object.assign({}, mappedProps, ownProps, {
     onMainhandChange: weaponId => {
-        dispatch(setMainhandWeapon({
+        dispatch(setActiveMainhandWeaponId({
             weaponId,
             activeWeaponSet: mappedProps.activeWeaponSet
         }));
     },
     onOffhandChange: weaponId => {
-        dispatch(setOffhandWeapon({
+        dispatch(setActiveOffhandWeaponId({
             weaponId,
             activeWeaponSet: mappedProps.activeWeaponSet
         }));

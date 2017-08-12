@@ -1,18 +1,18 @@
 import { connect } from 'react-redux';
-import { setMajorTrait } from '~/actions';
-import { getActiveMajorTrait, getMajorTraitIds, getMinorTraitId, getSpecializationTraitsFromTier } from '~/selectors/specializations';
+import { setSelectedMajorTraitId } from '~/actions';
+import { getSelectedMajorTraitId, getMajorTraitIds, getMinorTraitId, getSpecializationTraitsFromTier } from '~/selectors/specializations';
 import TraitTier from './TraitTier';
 
 const mapStateToProps = (state, ownProps) => ({
+    availableTraitObjects: getSpecializationTraitsFromTier(state, ownProps),
     majorTraitIds: getMajorTraitIds(state, ownProps),
     minorTraitId: getMinorTraitId(state, ownProps),
-    selectedMajorTraitId: getActiveMajorTrait(state, ownProps),
-    traits: getSpecializationTraitsFromTier(state, ownProps)
+    selectedMajorTraitId: getSelectedMajorTraitId(state, ownProps)
 });
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
     onTraitChange: traitId => {
-        dispatch(setMajorTrait({
+        dispatch(setSelectedMajorTraitId({
             specializationLine: ownProps.specializationLine,
             traitTier: ownProps.traitTier,
             traitId
