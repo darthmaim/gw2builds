@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import Fact, { FactShape } from '../Facts/Fact';
 import Tooltip from '../Tooltip';
@@ -10,11 +11,11 @@ class SkillTooltip extends Component {
         this.renderTooltip = this.renderTooltip.bind(this);
     }
 
-    isTraitActive(traitId) {
-        const isActiveMajorTrait = this.props.activeMajorTraits.indexOf(traitId) !== -1;
-        const isActiveMinorTrait = this.props.activeMinorTraits.indexOf(traitId) !== -1;
+    isTraitSelected(traitId) {
+        const isSelectedMajorTrait = this.props.selectedMajorTraitIds.indexOf(traitId) !== -1;
+        const isSelectedMinorTrait = this.props.selectedMinorTraitIds.indexOf(traitId) !== -1;
 
-        return isActiveMajorTrait || isActiveMinorTrait;
+        return isSelectedMajorTrait || isSelectedMinorTrait;
     }
 
     render() {
@@ -38,7 +39,7 @@ class SkillTooltip extends Component {
 
         // override active traits with traited facts if the required trait is active
         (traitedFacts || []).forEach(fact => {
-            if (this.isTraitActive(fact.requires_trait)) {
+            if (this.isTraitSelected(fact.requires_trait)) {
                 const traitedFact = Object.assign({}, fact, { isTraitedFact: true });
                 if (fact.overrides !== undefined) {
                     activeFacts[fact.overrides] = traitedFact;
@@ -84,16 +85,16 @@ class SkillTooltip extends Component {
 }
 
 SkillTooltip.propTypes = {
-    children: React.PropTypes.node.isRequired,
-    skill: React.PropTypes.shape({
-        name: React.PropTypes.string.isRequired,
-        description: React.PropTypes.string.isRequired,
-        facts: React.PropTypes.arrayOf(FactShape),
-        traited_facts: React.PropTypes.arrayOf(FactShape)
+    children: PropTypes.node.isRequired,
+    skill: PropTypes.shape({
+        name: PropTypes.string.isRequired,
+        description: PropTypes.string.isRequired,
+        facts: PropTypes.arrayOf(FactShape),
+        traited_facts: PropTypes.arrayOf(FactShape)
     }),
     // bound from redux state
-    activeMajorTraits: React.PropTypes.arrayOf(React.PropTypes.number).isRequired,
-    activeMinorTraits: React.PropTypes.arrayOf(React.PropTypes.number).isRequired
+    selectedMajorTraitIds: PropTypes.arrayOf(PropTypes.number).isRequired,
+    selectedMinorTraitIds: PropTypes.arrayOf(PropTypes.number).isRequired
 };
 
 export default SkillTooltip;

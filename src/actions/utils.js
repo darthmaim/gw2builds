@@ -62,7 +62,7 @@ export function createApiAction(actionType, apiCall) {
     return (...args) => {
         return (dispatch, getState, Gw2Api) => {
             return dispatch(createAction(actionType, (...args) => {
-                return apiCall(getState(), Gw2Api.language(getState().language), ...args);
+                return apiCall(getState(), Gw2Api.language(getState().selectedLanguage), ...args);
             })(...args));
         };
     };

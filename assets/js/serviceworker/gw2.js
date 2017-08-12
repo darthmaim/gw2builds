@@ -50,15 +50,11 @@ function fetchCurrentBuildVersion() {
 
 let currentBuild;
 function getCurrentBuildVersion() {
-    return !currentBuild
-        ? ensureBuildVersion().then(build => currentBuild = build)
-        : Promise.resolve(currentBuild);
-}
-
-// try to load build version from storage, otherwise load from api
-function ensureBuildVersion() {
-    return storage.getItem('build')
-        .then(build => !build ? updateBuildVersion() : build);
+    return currentBuild
+        ? Promise.resolve(currentBuild)
+        : updateBuildVersion()
+            .catch(() => storage.getItem('build'))
+            .then(build => currentBuild = build)
 }
 
 // load the current build from the api and save it to storage

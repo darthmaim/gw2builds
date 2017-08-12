@@ -2,8 +2,8 @@ import { connect } from 'react-redux';
 import Mesmer from './Component';
 
 const mapStateToProps = (state, ownProps) => ({
-    skills: state.skills,
-    professionSkills: state.professionSkills
+    availableSkillObjects: state.availableSkillObjects,
+    availableProfessionSkillObjects: state.availableProfessionSkillObjects
 });
 
 export default connect(mapStateToProps)(Mesmer);

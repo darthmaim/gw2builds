@@ -1,18 +1,19 @@
 import { connect } from 'react-redux';
-import { setAttunement } from '~/actions/skills';
+import { setActiveAttunement } from '~/actions/skills';
 import { getActiveAttunement } from '~/selectors/skills/mechanic';
 import Elementalist from './Component';
 
 const mapStateToProps = (state, ownProps) => ({
-    activeWeaponSet: state.activeWeaponSet,
-    attunements: state.attunements,
+    // Redux states
     activeAttunement: getActiveAttunement(state, ownProps),
-    skills: state.skills
+    activeWeaponSet: state.activeWeaponSet,
+    availableAttunementObjects: state.availableAttunementObjects,
+    availableSkillObjects: state.availableSkillObjects,
 });
 
 const mergeProps = (mappedProps, { dispatch }, ownProps) => Object.assign({}, mappedProps, ownProps, {
     onAttunementChange: attunement => {
-        dispatch(setAttunement({
+        dispatch(setActiveAttunement({
             attunement,
             activeWeaponSet: mappedProps.activeWeaponSet
         }));

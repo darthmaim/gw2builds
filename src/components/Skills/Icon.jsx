@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import classnames from 'classnames';
 import style from './Icon.css';
@@ -21,8 +22,8 @@ const SkillIcon = ({ skill, size, className, ...props }) => {
 };
 
 SkillIcon.propTypes = {
-    skill: React.PropTypes.object,
-    size: React.PropTypes.number
+    skill: PropTypes.object,
+    size: PropTypes.number
 };
 
 SkillIcon.Empty = ({ size, ...props }) => (

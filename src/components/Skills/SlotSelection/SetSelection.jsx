@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import SetButton from './SetButton';
 
@@ -36,9 +37,9 @@ class SetSelection extends Component {
 }
 
 SetSelection.propTypes = {
-    activeWeaponSet: React.PropTypes.number.isRequired,
-    onWeaponSetChange: React.PropTypes.func.isRequired,
-    profession: React.PropTypes.string
+    activeWeaponSet: PropTypes.number.isRequired,
+    selectedProfession: PropTypes.string,
+    onWeaponSetChange: PropTypes.func.isRequired
 };
 
 export default SetSelection;

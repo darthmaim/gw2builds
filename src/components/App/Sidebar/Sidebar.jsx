@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import LanguageSelector from './LanguageSelector';
 import style from './sidebar.css';
@@ -76,8 +77,8 @@ class Sidebar extends Component {
 }
 
 Sidebar.propTypes = {
-    currentIndex: React.PropTypes.number.isRequired,
-    onSectionChange: React.PropTypes.func.isRequired
+    currentIndex: PropTypes.number.isRequired,
+    onSectionChange: PropTypes.func.isRequired
 };
 
 export default Sidebar;

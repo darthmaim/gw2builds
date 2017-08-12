@@ -1,20 +1,20 @@
 import { connect } from 'react-redux';
-import { setSpecialization, swapSpecializations, wipeActiveSpecialization } from '~/actions';
+import { setSelectedSpecializationId, swapSelectedSpecializationIds, wipeSelectedSpecializationId } from '~/actions';
 import { getCoreSpecializationIds, getEliteSpecializationIds, getSelectedSpecializationId } from '~/selectors/specializations';
 import SelectionPopup from './SelectionPopup';
 
 const mapStateToProps = (state, ownProps) => ({
-    activeSpecializationIds: state.activeSpecializations,
     availableCoreSpecializationIds: getCoreSpecializationIds(state, ownProps),
     availableEliteSpecializationIds: getEliteSpecializationIds(state, ownProps),
+    availableSpecializationObjects: state.availableSpecializationObjects,
     selectedSpecializationId: getSelectedSpecializationId(state, ownProps),
-    specializations: state.specializations
+    selectedSpecializationIds: state.selectedSpecializationIds
 });
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
-    onSpecializationChange: (specializationId, activeSpecializationIds, specializations) => {
+    onSpecializationChange: (specializationId, selectedSpecializationIds, specializations) => {
         // Check if the chosen specialization id is already active
-        const existingSpecializationLine = activeSpecializationIds.indexOf(specializationId);
+        const existingSpecializationLine = selectedSpecializationIds.indexOf(specializationId);
         if (existingSpecializationLine === ownProps.specializationLine) {
             // Same line, do nothing
             return;
@@ -22,22 +22,22 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
 
         if (existingSpecializationLine > -1) {
             // The chosen specialization is already added
-            dispatch(swapSpecializations({
+            dispatch(swapSelectedSpecializationIds({
                 specializationLine1: ownProps.specializationLine,
                 specializationLine2: existingSpecializationLine
             }));
-            if (specializations[activeSpecializationIds[ownProps.specializationLine]].elite) {
+            if (specializations[selectedSpecializationIds[ownProps.specializationLine]].elite) {
                 // Elite specializations can't be swapped, so make sure to wipe it
                 // (this means that it's hardcoded to support only one active elite specialization at a time,
                 // update this when it changes in the future)
                 // Since the previous dispatch is synchronous, we can immediately do this dispatch
-                dispatch(wipeActiveSpecialization({
+                dispatch(wipeSelectedSpecializationId({
                     specializationLine: existingSpecializationLine
                 }));
             }
         } else {
             // The chosen specialization is unique
-            dispatch(setSpecialization({
+            dispatch(setSelectedSpecializationId({
                 specializationLine: ownProps.specializationLine,
                 specializationId,
                 specializations

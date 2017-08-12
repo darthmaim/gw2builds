@@ -21,8 +21,7 @@ initAnalytics();
 
 const Gw2Api = extendApiClient(apiClient(), extendApiData).cacheStorage(cacheMemory());
 const initialState = {
-    language: 'en',
-    race: 'none'
+    selectedLanguage: 'en'
 };
 
 const store = createStore(editor, initialState, applyMiddleware(thunk.withExtraArgument(Gw2Api), promiseMiddleware, syncMiddleware));
@@ -63,8 +62,8 @@ class Editor extends React.Component {
         }
 
         window.history.replaceState(undefined, '', this.props.url);
-        window.document.title = this.props.profession ?
-            `${this.props.profession} | Build Editor - gw2efficiency` :
+        window.document.title = this.props.selectedProfession ?
+            `${this.props.selectedProfession} | Build Editor - gw2efficiency` :
             'Build Editor - gw2efficiency';
     }
 
@@ -80,7 +79,7 @@ class Editor extends React.Component {
 }
 
 Editor = connect(state => {
-    return { locale: state.language, profession: state.profession, url: getUrl(state) };
+    return { locale: state.selectedLanguage, selectedProfession: state.selectedProfession, url: getUrl(state) };
 })(Editor);
 
 render(

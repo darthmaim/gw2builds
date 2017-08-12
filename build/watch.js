@@ -3,7 +3,7 @@ import runSequence from 'run-sequence';
 import browserSync from 'browser-sync';
 import nodemon from 'gulp-nodemon';
 import watchify from 'watchify';
-import { buildSource, bundle } from './app';
+import { buildSource, bundle, createController } from './app';
 
 // create a browsersync instance
 const sync = browserSync.create();
@@ -32,18 +32,22 @@ gulp.task('dev', callback => {
             port: '5000'
         });
 
+        const controller = createController();
+
         // create a bundle config with watchify
-        const watchifyBundle = bundle().plugin(watchify);
+        const watchifyBundle = bundle(controller.done).plugin(watchify);
 
         // handle file changes
         watchifyBundle.on('update', () => {
+            controller.reset();
+
             // rebuild bundle, then revision the files and reload connected browsers
-            buildSource(watchifyBundle.bundle())
+            buildSource(watchifyBundle.bundle(), controller.wait)
                 .on('finish', () => runSequence('revision', 'browsersync-reload'));
         });
 
         // initial build
-        buildSource(watchifyBundle.bundle());
+        buildSource(watchifyBundle.bundle(), controller.wait);
 
         // watch some easier assets
         gulp.watch('./assets/img/**', ['browsersync-reload:img']);

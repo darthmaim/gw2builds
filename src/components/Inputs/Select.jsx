@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import style from './Select.css';
 
@@ -13,10 +14,10 @@ function Select({ children, onChange, value, placeholder }) {
 }
 
 Select.propTypes = {
-    children: React.PropTypes.node.isRequired,
-    onChange: React.PropTypes.func.isRequired,
-    value: React.PropTypes.string,
-    placeholder: React.PropTypes.string
+    children: PropTypes.node.isRequired,
+    onChange: PropTypes.func.isRequired,
+    value: PropTypes.string,
+    placeholder: PropTypes.string
 };
 
 Select.defaultProps = {

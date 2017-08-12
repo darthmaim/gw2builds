@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import style from './languageSelector.css';
 
@@ -22,7 +23,7 @@ class LanguageSelector extends Component {
     }
 
     filterLanguageOptions(lang) {
-        return lang !== this.props.language;
+        return lang !== this.props.selectedLanguage;
     }
 
     setLanguage(language) {
@@ -57,7 +58,7 @@ class LanguageSelector extends Component {
             <div className={this.state.open ? style.containerOpen : style.container}>
                 <div className={style.dropdown}>
                     <div className={style.active} onClick={this.handleToggle}>
-                        {this.props.language.toUpperCase()}
+                        {this.props.selectedLanguage.toUpperCase()}
                     </div>
                     {this.renderSelect()}
                 </div>
@@ -79,8 +80,8 @@ class LanguageSelector extends Component {
 }
 
 LanguageSelector.propTypes = {
-    language: React.PropTypes.string.isRequired,
-    onLanguageChange: React.PropTypes.func.isRequired
+    selectedLanguage: PropTypes.string.isRequired,
+    onLanguageChange: PropTypes.func.isRequired
 };
 
 export default LanguageSelector;

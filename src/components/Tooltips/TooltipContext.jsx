@@ -1,9 +1,10 @@
+import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 
-const ContextShape = React.PropTypes.shape({
-    setTooltip: React.PropTypes.func,
-    hideTooltip: React.PropTypes.func,
-    onTooltipChange: React.PropTypes.func
+const ContextShape = PropTypes.shape({
+    setTooltip: PropTypes.func,
+    hideTooltip: PropTypes.func,
+    onTooltipChange: PropTypes.func
 });
 
 class TooltipContext extends Component {
@@ -58,7 +59,7 @@ class TooltipContext extends Component {
 }
 
 TooltipContext.propTypes = {
-    children: React.PropTypes.node.isRequired
+    children: PropTypes.node.isRequired
 };
 
 TooltipContext.childContextTypes = {

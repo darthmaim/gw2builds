@@ -2,22 +2,22 @@ import values from 'lodash/values';
 import keyBy from 'lodash/fp/keyBy';
 import { createSelector } from 'reselect';
 
-const getActiveSpecializationIds = state => state.activeSpecializations;
-const getActiveMajorTraitIds = state => state.activeMajorTraits;
+const getSelectedSpecializationIds = state => state.selectedSpecializationIds;
+const getSelectedMajorTraitIds = state => state.selectedMajorTraitIds;
 const getCurrentSpecializationLine = (_, props) => props.specializationLine;
 const getCurrentTraitTier = (_, props) => props.traitTier;
-const getTraits = state => state.traits;
+const getAvailableTraits = state => state.availableTraitObjects;
 
-export const getActiveMajorTrait = createSelector(
-    [getActiveMajorTraitIds, getCurrentSpecializationLine, getCurrentTraitTier],
-    (activeMajorTraitIds, specializationLine, traitTier) => activeMajorTraitIds[(specializationLine * 3) + traitTier - 1]
+export const getSelectedMajorTraitId = createSelector(
+    [getSelectedMajorTraitIds, getCurrentSpecializationLine, getCurrentTraitTier],
+    (selectedMajorTraitIds, specializationLine, traitTier) => selectedMajorTraitIds[(specializationLine * 3) + traitTier - 1]
 );
 
 export const getSpecializationTraitsFromTier = createSelector(
-    [getTraits, getActiveSpecializationIds, getCurrentSpecializationLine, getCurrentTraitTier],
-    (traits, activeSpecializationIds, specializationLine, traitTier) =>
-        keyBy(t => t.id)(values(traits)
-            .filter(t => t.tier === traitTier && t.specialization === activeSpecializationIds[specializationLine]))
+    [getAvailableTraits, getSelectedSpecializationIds, getCurrentSpecializationLine, getCurrentTraitTier],
+    (availableTraits, selectedSpecializationIds, specializationLine, traitTier) =>
+        keyBy(t => t.id)(values(availableTraits)
+            .filter(t => t.tier === traitTier && t.specialization === selectedSpecializationIds[specializationLine]))
 );
 
 export const getMinorTraitId = createSelector(
@@ -39,7 +39,7 @@ export const getMajorTraitIds = createSelector(
 );
 
 export default {
-    getActiveMajorTrait,
+    getSelectedMajorTraitId,
     getSpecializationTraitsFromTier,
     getMinorTraitId,
     getMajorTraitIds

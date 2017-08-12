@@ -10,8 +10,9 @@ import sourcemaps from 'gulp-sourcemaps';
 import source from 'vinyl-source-stream';
 import cssImport from 'postcss-import';
 import urlrewrite from 'postcss-urlrewrite';
+import through from 'through2';
 
-export function bundle() {
+export function bundle(cb) {
     return browserify({
         entries: './src/app',
         extensions: ['.js', '.jsx'],
@@ -30,30 +31,77 @@ export function bundle() {
                 cssImport(),
 
                 // rewrite font (node_modules/typeface-open-sans) src urls (see gulp task build:fonts)
-                urlrewrite({ rules: [{ from: /files\/(open-sans.*)/, to: '../fonts/$1' }] }),
+                urlrewrite({ rules: [{ from: /\.\/files\/(open-sans.*)/, to: '../fonts/$1' }] }),
 
                 // prefix css
-                autoprefixer()
+                autoprefixer(),
             ],
             done: [
-                cssnano()
+                // flatten the Root-nodes modular-css creates for cssnano (see tivac/modular-css#346)
+                (css) => css.each(node => {
+                    node.type === 'root' && node.replaceWith(node.nodes);
+                }),
+
+                // minify the generated css
+                cssnano({ preset: 'default' }),
+
+                // notify the bundle we are done with the css processing
+                () => cb()
             ]
         })
         .transform('babelify');
 }
 
-export function buildSource(bundle) {
+export function buildSource(bundle, wait) {
     return bundle.on('error', logError)
         .pipe(source('app.js'))
         .pipe(buffer())
+        .pipe(delayStream(wait))
         .pipe(sourcemaps.init({ loadMaps: true }))
         .pipe(!isDev() ? uglify() : gutil.noop()).on('error', logError)
         .pipe(sourcemaps.write('./'))
-        .pipe(gulp.dest('./temp/js/'));
+        .pipe(gulp.dest('./temp/js/'))
+}
+
+function delayStream(wait) {
+    return through.obj(
+        (file, enc, cb) => cb(null, file),
+        (cb) => wait(() => cb())
+    );
+}
+
+export function createController() {
+    const callbacks = [];
+    let isDone = false;
+
+    return {
+        done() {
+            if(!isDone) {
+                callbacks.forEach(cb => cb())
+            }
+
+            isDone = true;
+        },
+
+        wait(cb) {
+            if(isDone) {
+                cb();
+            }
+
+            callbacks.push(cb);
+        },
+
+        reset() {
+            isDone = false;
+            callbacks.length = 0;
+        }
+    }
 }
 
 gulp.task('build:source', () => {
-    return buildSource(bundle().bundle());
+    const controller = createController();
+
+    return buildSource(bundle(controller.done).bundle(), controller.wait);
 });
 
 gulp.task('build:fonts', () => {

@@ -1,10 +1,10 @@
 import { createSelector } from 'reselect';
 import { getAttributeVitality } from './vitality';
 
-const getProfession = state => state.profession;
+const getSelectedProfession = state => state.selectedProfession;
 
 export const getAttributeHealthBase = createSelector(
-    [getProfession],
+    [getSelectedProfession],
     profession => {
         switch (profession) {
             case 'Warrior':

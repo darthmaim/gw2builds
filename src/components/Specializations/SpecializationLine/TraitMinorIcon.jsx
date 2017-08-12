@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import style from './traitMinorIcon.css';
 
@@ -13,8 +14,8 @@ const TraitMinorIcon = props => (
 );
 
 TraitMinorIcon.propTypes = {
-    classes: React.PropTypes.string,
-    imageUrl: React.PropTypes.string
+    classes: PropTypes.string,
+    imageUrl: PropTypes.string
 };
 
 export default TraitMinorIcon;

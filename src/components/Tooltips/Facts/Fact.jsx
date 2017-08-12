@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import style from './fact.css';
 
@@ -64,26 +65,26 @@ const Fact = ({ fact }) => {
     );
 };
 
-export const FactShape = React.PropTypes.shape({
-    icon: React.PropTypes.string.isRequired,
-    type: React.PropTypes.string.isRequired,
-    description: React.PropTypes.string,
-    distance: React.PropTypes.number,
-    duration: React.PropTypes.number,
-    field_type: React.PropTypes.string,
-    finisher_type: React.PropTypes.string,
-    isTraitedFact: React.PropTypes.bool,
-    percent: React.PropTypes.number,
-    source: React.PropTypes.string,
-    status: React.PropTypes.string,
-    target: React.PropTypes.string,
-    text: React.PropTypes.string,
-    value: React.PropTypes.oneOfType([React.PropTypes.number, React.PropTypes.bool]),
-    prefix: React.PropTypes.shape({
-        icon: React.PropTypes.string.isRequired,
-        description: React.PropTypes.string,
-        status: React.PropTypes.string,
-        text: React.PropTypes.string
+export const FactShape = PropTypes.shape({
+    icon: PropTypes.string.isRequired,
+    type: PropTypes.string.isRequired,
+    description: PropTypes.string,
+    distance: PropTypes.number,
+    duration: PropTypes.number,
+    field_type: PropTypes.string,
+    finisher_type: PropTypes.string,
+    isTraitedFact: PropTypes.bool,
+    percent: PropTypes.number,
+    source: PropTypes.string,
+    status: PropTypes.string,
+    target: PropTypes.string,
+    text: PropTypes.string,
+    value: PropTypes.oneOfType([PropTypes.number, PropTypes.bool]),
+    prefix: PropTypes.shape({
+        icon: PropTypes.string.isRequired,
+        description: PropTypes.string,
+        status: PropTypes.string,
+        text: PropTypes.string
     })
 });
 

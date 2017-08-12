@@ -1,5 +1,6 @@
 /* global window */
 
+import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import isFunction from 'lodash/isFunction';
 import style from './tooltip.css';
@@ -148,7 +149,7 @@ class TooltipElement extends Component {
 }
 
 TooltipElement.contextTypes = {
-    tooltipContext: React.PropTypes.any
+    tooltipContext: PropTypes.any
 };
 
 export default TooltipElement;

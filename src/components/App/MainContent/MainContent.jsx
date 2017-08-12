@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import throttle from 'lodash/throttle';
 import Settings from '~/containers/settings';
@@ -156,7 +157,7 @@ class MainContent extends React.Component {
 }
 
 MainContent.propTypes = {
-    onSectionChange: React.PropTypes.func.isRequired
+    onSectionChange: PropTypes.func.isRequired
 };
 
 export default MainContent;

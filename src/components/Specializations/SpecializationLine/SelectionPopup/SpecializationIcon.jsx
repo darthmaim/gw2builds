@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import style from './specializationIcon.css';
 
@@ -26,13 +27,13 @@ class SpecializationIcon extends React.Component {
 }
 
 SpecializationIcon.propTypes = {
-    icon: React.PropTypes.string,
-    id: React.PropTypes.number,
-    isSelected: React.PropTypes.bool,
-    name: React.PropTypes.string,
+    icon: PropTypes.string,
+    id: PropTypes.number,
+    isSelected: PropTypes.bool,
+    name: PropTypes.string,
 
     // Events
-    onClick: React.PropTypes.func
+    onClick: PropTypes.func
 };
 
 export default SpecializationIcon;
