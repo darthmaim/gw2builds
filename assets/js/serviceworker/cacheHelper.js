@@ -11,6 +11,10 @@ export function serveFromNetworkFallbackToCache(request, cacheName) {
 }
 
 export function saveRequestToCache(request, response, cacheName) {
+    if(!response.ok) {
+        return response;
+    }
+
     return caches.open(cacheName).then(cache => {
         cache.put(request, response.clone());
         return response;
