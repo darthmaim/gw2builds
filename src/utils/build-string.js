@@ -1,9 +1,9 @@
 import { serialize, deserialize } from 'gw2be-build-string';
 import { setSelectedGameMode, setSelectedProfession, setSelectedRace } from '../actions/general';
+import { setSelectedElementalistAttunementId, setSelectedWeaverPreviousAttunementId, setSelectedRangerPetId, setSelectedRevenantLegendId } from '../actions/mechanics';
+import { setSelectedMainhandWeaponId, setSelectedOffhandWeaponId, setSelectedSkillId } from '../actions/skills';
 import { setSelectedSpecializationId } from '../actions/specializations';
 import { setSelectedMajorTraitId } from '../actions/traits';
-import { setSelectedMainhandWeaponId, setSelectedOffhandWeaponId, setSelectedSkillId } from '../actions/skills';
-
 
 /**
  * Initializes a build.
@@ -52,6 +52,17 @@ export function initializeBuildFromString(store, buildString) {
             disp('majorTrait1', build.specialization3, setSelectedMajorTraitId, id => ({ specializationLine: 2, traitTier: 1, traitId: id })),
             disp('majorTrait2', build.specialization3, setSelectedMajorTraitId, id => ({ specializationLine: 2, traitTier: 2, traitId: id })),
             disp('majorTrait3', build.specialization3, setSelectedMajorTraitId, id => ({ specializationLine: 2, traitTier: 3, traitId: id }))
+        ]);
+    }).then(() => {
+        return Promise.all([
+            disp('legendA', build.professionRevenant, setSelectedRevenantLegendId, id => ({ slotId: 0, legendId: id })),
+            disp('legendB', build.professionRevenant, setSelectedRevenantLegendId, id => ({ slotId: 1, legendId: id })),
+            disp('petA', build.professionRanger, setSelectedRangerPetId, id => ({ slotId: 0, petId: id })),
+            disp('petB', build.professionRanger, setSelectedRangerPetId, id => ({ slotId: 1, petId: id })),
+            disp('petAquaticA', build.professionRanger, setSelectedRangerPetId, id => ({ slotId: 2, petId: id })),
+            disp('petAquaticB', build.professionRanger, setSelectedRangerPetId, id => ({ slotId: 3, petId: id })),
+            disp('attunement', build.professionElementalist, setSelectedElementalistAttunementId),
+            disp('prevAttunementWeaver', build.professionElementalist, setSelectedWeaverPreviousAttunementId)
         ]);
     }).then(() => {
         return Promise.all([
@@ -117,6 +128,20 @@ export function exportBuildToString(state) {
             utility2: state.selectedSkillIds[2],
             utility3: state.selectedSkillIds[3],
             elite: state.selectedSkillIds[4]
+        },
+        professionRevenant: {
+            legendA: state.selectedRevenantLegendIds[0],
+            legendB: state.selectedRevenantLegendIds[1]
+        },
+        professionRanger: {
+            petA: state.selectedRangerPetIds[0],
+            petB: state.selectedRangerPetIds[1],
+            petAquaticA: state.selectedRangerPetIds[2],
+            petAquaticB: state.selectedRangerPetIds[3],
+        },
+        professionElementalist: {
+            attunement: state.selectedElementalistAttunementId,
+            prevAttunementWeaver: state.selectedWeaverPreviousAttunementId
         }
     };
 

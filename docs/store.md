@@ -11,6 +11,18 @@ The store from `redux` contains the app state that is used globally in various p
 - `selectedRace` (string)  
   Options: *none*, *Asura*, *Charr*, *Human*, *Norn*, *Sylvari*.
 
+## Mechanics
+- `selectedRevenantLegendIds` (array)  
+  Contains the currently selected revenant legend ids.  
+  Indexed from 0 to 1, where 0 is the first legend, and 1 is the second legend.
+- `selectedRangerPetIds` (array)  
+  Contains the currently selected ranger pet ids.  
+  Indexed from 0 to 3, where 0 is the first terrestrial pet, 1 is the second terrestrial pet, 2 is the first aquatic pet, and 3 is the second aquatic pet.
+- `selectedElementalistAttunementId` (string)  
+  Contains the currently selected elementalist attunement id.
+- `selectedWeaverPreviousAttunementId` (string)  
+  Contains the currently selected weaver previous attunement id.
+
 ## Skills
 ### Skills
 - `availableProfessionSkillObjects` (array)  
@@ -38,6 +50,7 @@ The store from `redux` contains the app state that is used globally in various p
   Contains the selected offhand weapon ids (strings), indexed by weapon set.
 
 ### Mechanic
+*TODO: Check how this can be adapted or integrated into the new mechanics store.* 
 - `activeAttunements` (array)  
   Contains the active attunements, indexed by weapon set.
 - `availableAttunementObjects` (object, indexed by `attunement.id`)  

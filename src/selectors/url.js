@@ -9,6 +9,10 @@ const getSelectedMajorTraitIds = state => state.selectedMajorTraitIds;
 const getSelectedMainhandWeaponIds = state => state.selectedMainhandWeaponIds;
 const getSelectedOffhandWeaponIds = state => state.selectedOffhandWeaponIds;
 const getSelectedSkillIds = state => state.selectedSkillIds;
+const getSelectedRevenantLegendIds = state => state.selectedRevenantLegendIds;
+const getSelectedRangerPetIds = state => state.selectedRangerPetIds;
+const getSelectedElementalistAttunementId = state => state.selectedElementalistAttunementId;
+const getSelectedWeaverPreviousAttunementId = state => state.selectedWeaverPreviousAttunementId;
 
 export const getUrl = createSelector(
     [
@@ -19,7 +23,11 @@ export const getUrl = createSelector(
         getSelectedMajorTraitIds,
         getSelectedMainhandWeaponIds,
         getSelectedOffhandWeaponIds,
-        getSelectedSkillIds
+        getSelectedSkillIds,
+        getSelectedRevenantLegendIds,
+        getSelectedRangerPetIds,
+        getSelectedElementalistAttunementId,
+        getSelectedWeaverPreviousAttunementId
     ],
     (
         selectedGameMode,
@@ -29,7 +37,11 @@ export const getUrl = createSelector(
         selectedMajorTraitIds,
         selectedMainhandWeaponIds,
         selectedOffhandWeaponIds,
-        selectedSkillIds
+        selectedSkillIds,
+        selectedRevenantLegendIds,
+        selectedRangerPetIds,
+        selectedElementalistAttunementId,
+        selectedWeaverPreviousAttunementId
     ) => {
         return exportBuildToString({
             selectedGameMode,
@@ -39,7 +51,11 @@ export const getUrl = createSelector(
             selectedMajorTraitIds,
             selectedMainhandWeaponIds,
             selectedOffhandWeaponIds,
-            selectedSkillIds
+            selectedSkillIds,
+            selectedRevenantLegendIds,
+            selectedRangerPetIds,
+            selectedElementalistAttunementId,
+            selectedWeaverPreviousAttunementId
         });
     }
 );
