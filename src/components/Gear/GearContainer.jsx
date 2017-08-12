@@ -3,10 +3,10 @@ import { getHasMultipleWeaponsets } from '~/selectors/skills';
 import Gear from './Gear';
 
 const mapStateToProps = (state, ownProps) => ({
-    activeMainhandWeapons: state.activeMainhandWeapons,
-    activeOffhandWeapons: state.activeOffhandWeapons,
+    selectedMainhandWeaponIds: state.selectedMainhandWeaponIds,
+    selectedOffhandWeaponIds: state.selectedOffhandWeaponIds,
     hasMultipleWeaponsets: getHasMultipleWeaponsets(state, ownProps),
-    language: state.language
+    selectedLanguage: state.selectedLanguage
 });
 
 export default connect(mapStateToProps)(Gear);

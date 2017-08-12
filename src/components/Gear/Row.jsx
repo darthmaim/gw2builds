@@ -14,7 +14,7 @@ export default class Row extends React.Component {
     }
 
     render() {
-        const { type, slot, language, text } = this.props;
+        const { type, slot, selectedLanguage, text } = this.props;
 
         const availableAttributeSets = attributeSets[type] !== undefined && attributeSets[type][slot] !== undefined
             ? (attributeSets[type][slot][this.state.rarity] || [])
@@ -26,7 +26,7 @@ export default class Row extends React.Component {
             <div className={style.row}>
                 <div className={style.header}>
                     {this.renderRaritySelect()}
-                    {this.renderAttributeSelect(availableAttributeSets, language)}
+                    {this.renderAttributeSelect(availableAttributeSets, selectedLanguage)}
                     <span className={style.text}>{text}</span>
                 </div>
                 {this.renderAttributes(selected)}
@@ -47,14 +47,14 @@ export default class Row extends React.Component {
         );
     }
 
-    renderAttributeSelect(availableAttributeSets, language) {
+    renderAttributeSelect(availableAttributeSets, selectedLanguage) {
         return (
             <Select
                 onChange={stats => this.setState({stats})}
                 value={this.state.stats}
                 placeholder="Stats">
                 {availableAttributeSets.map(set => (
-                    <option value={set.id} key={set.id}>{set.names[language]}</option>
+                    <option value={set.id} key={set.id}>{set.names[selectedLanguage]}</option>
                 ))}
             </Select>
         );
