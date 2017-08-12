@@ -1,6 +1,6 @@
 {
   "name": "gw2be-build-string",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Build string serializer/deserializer used by GW2BE",
   "main": "index.js",
   "scripts": {

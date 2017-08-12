@@ -17,6 +17,11 @@ export const selectedMainhandWeaponIds = handleActions({
         newState[action.payload.activeWeaponSet] = action.payload.weaponId;
         return newState;
     },
+    [actions.SET_SELECTED_MAINHAND_WEAPON_ID]: (state, action) => {
+        const newState = state.slice();
+        newState[action.payload.weaponSet] = action.payload.weaponId;
+        return newState;
+    },
     [actions.WIPE_ALL_SELECTED_WEAPON_IDS]: () => [null, null, null, null],
     [actions.SET_SELECTED_PROFESSION]: () => [null, null, null, null]
 }, [null, null, null, null]);
@@ -25,6 +30,11 @@ export const selectedOffhandWeaponIds = handleActions({
     [actions.SET_ACTIVE_OFFHAND_WEAPON_ID]: (state, action) => {
         const newState = state.slice();
         newState[action.payload.activeWeaponSet] = action.payload.weaponId;
+        return newState;
+    },
+    [actions.SET_SELECTED_OFFHAND_WEAPON_ID]: (state, action) => {
+        const newState = state.slice();
+        newState[action.payload.weaponSet] = action.payload.weaponId;
         return newState;
     },
     [actions.WIPE_ALL_SELECTED_WEAPON_IDS]: () => [null, null, null, null],

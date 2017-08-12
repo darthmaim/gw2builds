@@ -2,6 +2,8 @@ import { serialize, deserialize } from 'gw2be-build-string';
 import { setSelectedGameMode, setSelectedProfession, setSelectedRace } from '../actions/general';
 import { setSelectedSpecializationId } from '../actions/specializations';
 import { setSelectedMajorTraitId } from '../actions/traits';
+import { setSelectedMainhandWeaponId, setSelectedOffhandWeaponId } from '../actions/skills';
+
 
 /**
  * Initializes a build.
@@ -51,6 +53,13 @@ export function initializeBuildFromString(store, buildString) {
             disp('majorTrait2', build.specialization3, setSelectedMajorTraitId, id => ({ specializationLine: 2, traitTier: 2, traitId: id })),
             disp('majorTrait3', build.specialization3, setSelectedMajorTraitId, id => ({ specializationLine: 2, traitTier: 3, traitId: id }))
         ]);
+    }).then(() => {
+        disp('weaponA1', build.weapons, setSelectedMainhandWeaponId, id => ({ weaponSet: 0, weaponId: id }) );
+        disp('weaponA2', build.weapons, setSelectedOffhandWeaponId, id => ({ weaponSet: 0, weaponId: id }) );
+        disp('weaponB1', build.weapons, setSelectedMainhandWeaponId, id => ({ weaponSet: 1, weaponId: id }) );
+        disp('weaponB2', build.weapons, setSelectedOffhandWeaponId, id => ({ weaponSet: 1, weaponId: id }) );
+        disp('aquaticA', build.weapons, setSelectedMainhandWeaponId, id => ({ weaponSet: 2, weaponId: id }) );
+        disp('aquaticB', build.weapons, setSelectedMainhandWeaponId, id => ({ weaponSet: 3, weaponId: id }) );
     });
 }
 
@@ -83,6 +92,14 @@ export function exportBuildToString(state) {
             majorTrait1: state.selectedMajorTraitIds[6],
             majorTrait2: state.selectedMajorTraitIds[7],
             majorTrait3: state.selectedMajorTraitIds[8]
+        },
+        weapons: {
+            weaponA1: state.selectedMainhandWeaponIds[0],
+            weaponA2: state.selectedOffhandWeaponIds[0],
+            weaponB1: state.selectedMainhandWeaponIds[1],
+            weaponB2: state.selectedOffhandWeaponIds[1],
+            aquaticA: state.selectedMainhandWeaponIds[2],
+            aquaticB: state.selectedMainhandWeaponIds[3]
         }
     };
 
