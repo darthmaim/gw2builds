@@ -99,8 +99,30 @@ This version uses the following enums for serialization:
             3 = Trident
         </td>
     </tr>
+    <tr>
+        <td><code>legend</code><sup>1</sup></td>
+        <td>
+            1 = Assassin<br>
+            2 = Demon<br>
+            3 = Dwarf<br>
+            4 = Centaur<br>
+            5 = Dragon<br>
+            6 = Renegade
+        </td>
+    </tr>
+    <tr>
+        <td><code>attunement</code></td>
+        <td>
+            1 = Fire<br>
+            2 = Water<br>
+            3 = Air<br>
+            4 = Earth
+        </td>
+    </tr>
 </table>
 
+<sup>1</sup> The `legend` enum is stored as 4 bits, instead of 3 bits.
+This allows supporting new revenant legends in future expansions without being limited by only 7 legends in total.
 
 #### Deserialized data structure
 <table>
@@ -222,7 +244,7 @@ This version uses the following enums for serialization:
         <td><code>aquaticB</code></td>
     </tr>
     <tr>
-        <td rowspan="6"><code>skills</code></td>
+        <td rowspan="5"><code>skills</code></td>
         <td><code>healing</code></td>
         <td rowspan="5">uint32</td>
         <td>Healing skill id</td>
@@ -242,6 +264,68 @@ This version uses the following enums for serialization:
     <tr>
         <td><code>elite</code></td>
         <td>Elite skill id</td>
+    </tr>
+    <tr>
+        <td><code>professionGuardian</code></td>
+        <td colspan="3">Reserved</td>
+    </tr>
+    <tr>
+        <td rowspan="2"><code>professionRevenant</code></td>
+        <td><code>legendA</code></td>
+        <td rowspan="2">legend (enum)</td>
+        <td>First legend</td>
+    </tr>
+    <tr>
+        <td><code>legendB</code></td>
+        <td>Second legend</td>
+    </tr>
+    <tr>
+        <td><code>professionWarrior</code></td>
+        <td colspan="3">Reserved</td>
+    </tr>
+    <tr>
+        <td><code>professionEngineer</code></td>
+        <td colspan="3">Reserved</td>
+    </tr>
+    <tr>
+        <td rowspan="4"><code>professionRanger</code></td>
+        <td><code>petA</code></td>
+        <td rowspan="4">uint32</td>
+        <td>First pet id</td>
+    </tr>
+    <tr>
+        <td><code>petB</code></td>
+        <td>Second pet id</td>
+    </tr>
+    <tr>
+        <td><code>petAquaticA</code></td>
+        <td>First aquatic pet id</td>
+    </tr>
+    <tr>
+        <td><code>petAquaticB</code></td>
+        <td>Second aquatic pet id</td>
+    </tr>
+    <tr>
+        <td><code>professionThief</code></td>
+        <td colspan="3">Reserved</td>
+    </tr>
+    <tr>
+        <td rowspan="2"><code>professionElementalist</code></td>
+        <td><code>attunement</code></td>
+        <td rowspan="2">attunement (enum)</td>
+        <td>Active attunement</td>
+    </tr>
+    <tr>
+        <td><code>prevAttunementWeaver</code></td>
+        <td>Previous active attunement (Weaver specific)</td>
+    </tr>
+    <tr>
+        <td><code>professionMesmer</code></td>
+        <td colspan="3">Reserved</td>
+    </tr>
+    <tr>
+        <td><code>professionNecromancer</code></td>
+        <td colspan="3">Reserved</td>
     </tr>
 </table>
 
@@ -273,7 +357,7 @@ The following table shows how the list of bits used for storage types are stored
         <td>empty</td>
         <td>reserved</td>
         <td>reserved</td>
-        <td>reserved</td>
+        <td>pet</td>
         <td>skill</td>
         <td>trait</td>
         <td>specialization</td>
@@ -290,7 +374,7 @@ Every block is encoded as follows:
 
 - If the block data contains only zeroes (and no actual data), it is skipped in the serialized result to save space
 - The block contains values that are stored with the least amount of bits required, and are saved in the given order of the array
-  - If the value is an enum, the amount of bits required is taken from the maximum enum value possible
+  - If the value is an enum, the amount of bits required is taken from the maximum enum value possible (unless noted otherwise in the enums section above)
   - Otherwise it's determined beforehand and available in the list of storage type bits above
 - The values are stored right after another with the most significant bit first
 - The blocks are aligned to byte-boundaries; it adds zero-padding at the end if the block isn't aligned
@@ -442,5 +526,72 @@ Every block is encoded as follows:
         <td>4</td>
         <td><code>elite</code></td>
         <td>skill</td>
+    </tr>
+    <tr>
+        <td><code>professionGuardian</code> (31)</td>
+        <td colspan="3">Reserved</td>
+    </tr>
+    <tr>
+        <td rowspan="2"><code>professionRevenant</code> (32)</td>
+        <td>0</td>
+        <td><code>legendA</code></td>
+        <td>legend (enum)</td>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td><code>legendB</code></td>
+        <td>legend (enum)</td>
+    </tr>
+    <tr>
+        <td><code>professionWarrior</code> (33)</td>
+        <td colspan="3">Reserved</td>
+    </tr>
+    <tr>
+        <td><code>professionEngineer</code> (34)</td>
+        <td colspan="3">Reserved</td>
+    </tr>
+    <tr>
+        <td rowspan="4"><code>professionRanger</code> (35)</td>
+        <td>0</td>
+        <td><code>petA</code></td>
+        <td>pet</td>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td><code>petB</code></td>
+        <td>pet</td>
+    </tr>
+    <tr>
+        <td>2</td>
+        <td><code>petAquaticA</code></td>
+        <td>pet</td>
+    </tr>
+    <tr>
+        <td>3</td>
+        <td><code>petAquaticB</code></td>
+        <td>pet</td>
+    </tr>
+    <tr>
+        <td><code>professionThief</code> (36)</td>
+        <td colspan="3">Reserved</td>
+    </tr>
+    <tr>
+        <td rowspan="2"><code>professionElementalist</code> (37)</td>
+        <td>0</td>
+        <td><code>attunement</code></td>
+        <td>attunement (enum)</td>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td><code>prevAttunementWeaver</code></td>
+        <td>attunement (enum)</td>
+    </tr>
+    <tr>
+        <td><code>professionMesmer</code> (38)</td>
+        <td colspan="3">Reserved</td>
+    </tr>
+    <tr>
+        <td><code>professionNecromancer</code> (39)</td>
+        <td colspan="3">Reserved</td>
     </tr>
 </table>
