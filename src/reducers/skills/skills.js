@@ -1,5 +1,5 @@
 import forEach from 'lodash/forEach';
-import { handleAction } from 'redux-actions';
+import { handleAction, handleActions } from 'redux-actions';
 import * as actions from '~/actions';
 import { handleSimpleAction } from '~/reducers/utils';
 
@@ -28,8 +28,19 @@ export const availableProfessionSkillObjects = handleAction(actions.FETCH_PROFES
     return action.payload.skills;
 }, []);
 
+export const selectedSkillIds = handleActions({
+    [actions.SET_SELECTED_SKILL_ID]: (state, action) => {
+        const newState = state.slice();
+        newState[action.payload.slotId] = action.payload.skillId;
+        return newState;
+    },
+    [actions.WIPE_ALL_SELECTED_SKILL_IDS]: () => [null, null, null, null, null],
+    [actions.SET_SELECTED_PROFESSION]: () => [null, null, null, null, null]
+}, [null, null, null, null, null]);
+
 export default {
     availableSkillIds,
     availableSkillObjects,
-    availableProfessionSkillObjects
+    availableProfessionSkillObjects,
+    selectedSkillIds
 };

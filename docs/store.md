@@ -21,6 +21,9 @@ The store from `redux` contains the app state that is used globally in various p
 - `availableSkillObjects` (object, indexed by `skill.id`)  
   Contains all valid skill objects for the current `profession`.  
   See GW2 API `/v2/skills` for the object format.
+- `selectedSkillIds` (array)  
+  Contains all selected skill ids for the current build.
+  Indexed from 0 to 4, where 0 is healing, 1 is utility 1, 2 is utility 2, 3 is utility 3, 4 is elite.
 
 ### Weapons
 - `activeWeaponSet` (integer)  

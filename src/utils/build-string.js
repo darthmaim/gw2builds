@@ -2,7 +2,7 @@ import { serialize, deserialize } from 'gw2be-build-string';
 import { setSelectedGameMode, setSelectedProfession, setSelectedRace } from '../actions/general';
 import { setSelectedSpecializationId } from '../actions/specializations';
 import { setSelectedMajorTraitId } from '../actions/traits';
-import { setSelectedMainhandWeaponId, setSelectedOffhandWeaponId } from '../actions/skills';
+import { setSelectedMainhandWeaponId, setSelectedOffhandWeaponId, setSelectedSkillId } from '../actions/skills';
 
 
 /**
@@ -62,7 +62,14 @@ export function initializeBuildFromString(store, buildString) {
             disp('aquaticA', build.weapons, setSelectedMainhandWeaponId, id => ({ weaponSet: 2, weaponId: id }) ),
             disp('aquaticB', build.weapons, setSelectedMainhandWeaponId, id => ({ weaponSet: 3, weaponId: id }) )
         ]);
-        // TODO: skills
+    }).then(() => {
+        return Promise.all([
+            disp('healing', build.skills, setSelectedSkillId, id => ({ slotId: 0, skillId: id })),
+            disp('utility1', build.skills, setSelectedSkillId, id => ({ slotId: 1, skillId: id })),
+            disp('utility2', build.skills, setSelectedSkillId, id => ({ slotId: 2, skillId: id })),
+            disp('utility3', build.skills, setSelectedSkillId, id => ({ slotId: 3, skillId: id })),
+            disp('elite', build.skills, setSelectedSkillId, id => ({ slotId: 4, skillId: id }))
+        ]);
     });
 }
 
@@ -103,8 +110,14 @@ export function exportBuildToString(state) {
             weaponB2: state.selectedOffhandWeaponIds[1],
             aquaticA: state.selectedMainhandWeaponIds[2],
             aquaticB: state.selectedMainhandWeaponIds[3]
+        },
+        skills: {
+            healing: state.selectedSkillIds[0],
+            utility1: state.selectedSkillIds[1],
+            utility2: state.selectedSkillIds[2],
+            utility3: state.selectedSkillIds[3],
+            elite: state.selectedSkillIds[4]
         }
-        // TODO: skills
     };
 
     return serialize(build);

@@ -8,6 +8,7 @@ const getSelectedSpecializationIds = state => state.selectedSpecializationIds;
 const getSelectedMajorTraitIds = state => state.selectedMajorTraitIds;
 const getSelectedMainhandWeaponIds = state => state.selectedMainhandWeaponIds;
 const getSelectedOffhandWeaponIds = state => state.selectedOffhandWeaponIds;
+const getSelectedSkillIds = state => state.selectedSkillIds;
 
 export const getUrl = createSelector(
     [
@@ -17,7 +18,8 @@ export const getUrl = createSelector(
         getSelectedSpecializationIds,
         getSelectedMajorTraitIds,
         getSelectedMainhandWeaponIds,
-        getSelectedOffhandWeaponIds
+        getSelectedOffhandWeaponIds,
+        getSelectedSkillIds
     ],
     (
         selectedGameMode,
@@ -26,7 +28,8 @@ export const getUrl = createSelector(
         selectedSpecializationIds,
         selectedMajorTraitIds,
         selectedMainhandWeaponIds,
-        selectedOffhandWeaponIds
+        selectedOffhandWeaponIds,
+        selectedSkillIds
     ) => {
         return exportBuildToString({
             selectedGameMode,
@@ -35,7 +38,8 @@ export const getUrl = createSelector(
             selectedSpecializationIds,
             selectedMajorTraitIds,
             selectedMainhandWeaponIds,
-            selectedOffhandWeaponIds
+            selectedOffhandWeaponIds,
+            selectedSkillIds
         });
     }
 );
