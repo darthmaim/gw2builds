@@ -12,11 +12,6 @@ export const activeWeaponSet = handleActions({
 }, 0);
 
 export const selectedMainhandWeaponIds = handleActions({
-    [actions.SET_ACTIVE_MAINHAND_WEAPON_ID]: (state, action) => {
-        const newState = state.slice();
-        newState[action.payload.activeWeaponSet] = action.payload.weaponId;
-        return newState;
-    },
     [actions.SET_SELECTED_MAINHAND_WEAPON_ID]: (state, action) => {
         const newState = state.slice();
         newState[action.payload.weaponSet] = action.payload.weaponId;
@@ -27,11 +22,6 @@ export const selectedMainhandWeaponIds = handleActions({
 }, [null, null, null, null]);
 
 export const selectedOffhandWeaponIds = handleActions({
-    [actions.SET_ACTIVE_OFFHAND_WEAPON_ID]: (state, action) => {
-        const newState = state.slice();
-        newState[action.payload.activeWeaponSet] = action.payload.weaponId;
-        return newState;
-    },
     [actions.SET_SELECTED_OFFHAND_WEAPON_ID]: (state, action) => {
         const newState = state.slice();
         newState[action.payload.weaponSet] = action.payload.weaponId;
