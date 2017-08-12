@@ -31,6 +31,77 @@ This means that in the base64 string, the `+` and `/` are encoded as `-` and `_`
 ### v0 (dev)
 The current in-development version and will be replaced with version 1 once the first format is finalized.
 
+#### Enums
+This version uses the following enums for serialization:
+<table>
+    <tr>
+        <th>Enum</th>
+        <th>Values</th>
+    </tr>
+    <tr>
+        <td><code>gameMode</code></td>
+        <td>
+            1 = pve<br>
+            2 = pvp<br>
+            3 = wvw
+        </td>
+    </tr>
+    <tr>
+        <td><code>profession</code></td>
+        <td>
+            1 = Guardian<br>
+            2 = Revenant<br>
+            3 = Warrior<br>
+            4 = Engineer<br>
+            5 = Ranger<br>
+            6 = Thief<br>
+            7 = Elementalist<br>
+            8 = Mesmer<br>
+            9 = Necromancer
+        </td>
+    </tr>
+    <tr>
+        <td><code>race</code></td>
+        <td>
+            1 = Asura<br>
+            2 = Charr<br>
+            3 = Human<br>
+            4 = Norn<br>
+            5 = Sylvari
+        </td>
+    </tr>
+    <tr>
+        <td><code>weapon</code></td>
+        <td>
+            1 = Axe<br>
+            2 = Dagger<br>
+            3 = Mace<br>
+            4 = Pistol<br>
+            5 = Sword<br>
+            6 = Scepter<br>
+            7 = Focus<br>
+            8 = Shield<br>
+            9 = Torch<br>
+            10 = Warhorn<br>
+            11 = Greatsword<br>
+            12 = Hammer<br>
+            13 = Longbow<br>
+            14 = Rifle<br>
+            15 = Short bow<br>
+            16 = Staff
+        </td>
+    </tr>
+    <tr>
+        <td><code>aquaticWeapon</code></td>
+        <td>
+            1 = Harpoon gun<br>
+            2 = Spear<br>
+            3 = Trident
+        </td>
+    </tr>
+</table>
+
+
 #### Deserialized data structure
 <table>
     <tr>
@@ -44,163 +115,111 @@ The current in-development version and will be replaced with version 1 once the 
         <td><code>build</code></td>
         <td>uint32<sup>1</sup></td>
         <td>
-            The GW2 build id the build is made for<br>
+            GW2 build id<br>
             <em>Valid values<sup>1</sup>: 65536 – 196608</em>
         </td>
     </tr>
     <tr>
         <td><code>gameMode</code></td>
-        <td>enum</td>
-        <td>
-            The game mode:<br>
-            <em>1 = pve</em><br>
-            <em>2 = pvp</em><br>
-            <em>3 = wvw</em>
-        </td>
+        <td>gameMode (enum)</td>
+        <td>Game mode</td>
     </tr>
     <tr>
         <td><code>profession</code></td>
-        <td>enum</td>
-        <td>
-            The profession:<br>
-            <em>1 = Guardian</em><br>
-            <em>2 = Revenant</em><br>
-            <em>3 = Warrior</em><br>
-            <em>4 = Engineer</em><br>
-            <em>5 = Ranger</em><br>
-            <em>6 = Thief</em><br>
-            <em>7 = Elementalist</em><br>
-            <em>8 = Mesmer</em><br>
-            <em>9 = Necromancer</em>
-        </td>
+        <td>profession (enum)</td>
+        <td>Profession</td>
     </tr>
     <tr>
         <td><code>race</code></td>
-        <td>enum</td>
-        <td>
-            The race:<br>
-            <em>1 = Asura</em><br>
-            <em>2 = Charr</em><br>
-            <em>3 = Human</em><br>
-            <em>4 = Norn</em><br>
-            <em>5 = Sylvari</em>
-        </td>
+        <td>race (enum)</td>
+        <td>Race</td>
     </tr>
     <tr>
         <td rowspan="4"><code>specialization1</code></td>
         <td><code>specialization</code></td>
         <td>uint32</td>
-        <td>The id for specialization 1</td>
+        <td>Specialization 1 id</td>
     </tr>
     <tr>
         <td><code>majorTrait1</code></td>
-        <td>uint32</td>
-        <td>The id for major trait 1 of specialization 1</td>
+        <td rowspan="3">uint32</td>
+        <td>Adept major trait id for specialization 1</td>
     </tr>
     <tr>
         <td><code>majorTrait2</code></td>
-        <td>uint32</td>
-        <td>The id for major trait 2 of specialization 1</td>
+        <td>Master major trait id for specialization 1</td>
     </tr>
     <tr>
         <td><code>majorTrait3</code></td>
-        <td>uint32</td>
-        <td>The id for major trait 3 of specialization 1</td>
+        <td>Grandmaster major trait id specialization 1</td>
     </tr>
     <tr>
         <td rowspan="4"><code>specialization2</code></td>
         <td><code>specialization</code></td>
         <td>uint32</td>
-        <td>The id for specialization 2</td>
+        <td>Specialization 2 id</td>
     </tr>
     <tr>
         <td><code>majorTrait1</code></td>
-        <td>uint32</td>
-        <td>The id for major trait 1 of specialization 2</td>
+        <td rowspan="3">uint32</td>
+        <td>Adept major trait id for specialization 2</td>
     </tr>
     <tr>
         <td><code>majorTrait2</code></td>
-        <td>uint32</td>
-        <td>The id for major trait 2 of specialization 2</td>
+        <td>Master major trait id for specialization 2</td>
     </tr>
     <tr>
         <td><code>majorTrait3</code></td>
-        <td>uint32</td>
-        <td>The id for major trait 3 of specialization 2</td>
+        <td>Grandmaster major trait id specialization 2</td>
     </tr>
     <tr>
         <td rowspan="4"><code>specialization3</code></td>
         <td><code>specialization</code></td>
         <td>uint32</td>
-        <td>The id for specialization 3</td>
+        <td>Specialization 3 id</td>
     </tr>
     <tr>
         <td><code>majorTrait1</code></td>
-        <td>uint32</td>
-        <td>The id for major trait 1 of specialization 3</td>
+        <td rowspan="3">uint32</td>
+        <td>Adept major trait id for specialization 3</td>
     </tr>
     <tr>
         <td><code>majorTrait2</code></td>
-        <td>uint32</td>
-        <td>The id for major trait 2 of specialization 3</td>
+        <td>Master major trait id for specialization 3</td>
     </tr>
     <tr>
         <td><code>majorTrait3</code></td>
-        <td>uint32</td>
-        <td>The id for major trait 3 of specialization 3</td>
+        <td>Grandmaster major trait id specialization 3</td>
     </tr>
     <tr>
         <td rowspan="6"><code>weapons</code></td>
         <td><code>weaponA1</code></td>
-        <td>enum</td>
+        <td rowspan="4">weapon (enum)</td>
         <td rowspan="4">
-            The weapons, where:<br>
+            Weapons, where:<br>
             A = first set, B = second set<br>
-            1 = main-hand, 2 = off-hand<br><br>
-            <em>1 = Axe</em><br>
-            <em>2 = Dagger</em><br>
-            <em>3 = Mace</em><br>
-            <em>4 = Pistol</em><br>
-            <em>5 = Sword</em><br>
-            <em>6 = Scepter</em><br>
-            <em>7 = Focus</em><br>
-            <em>8 = Shield</em><br>
-            <em>9 = Torch</em><br>
-            <em>10 = Warhorn</em><br>
-            <em>11 = Greatsword</em><br>
-            <em>12 = Hammer</em><br>
-            <em>13 = Longbow</em><br>
-            <em>14 = Rifle</em><br>
-            <em>15 = Short bow</em><br>
-            <em>16 = Staff</em>
+            1 = main-hand, 2 = off-hand
         </td>
     </tr>
     <tr>
         <td><code>weaponA2</code></td>
-        <td>enum</td>
     </tr>
     <tr>
         <td><code>weaponB1</code></td>
-        <td>enum</td>
     </tr>
     <tr>
         <td><code>weaponB2</code></td>
-        <td>enum</td>
     </tr>
     <tr>
         <td><code>aquaticA</code></td>
-        <td>enum</td>
+        <td rowspan="2">aquaticWeapon (enum)</td>
         <td rowspan="2">
-            The aquatic weapons, where:<br>
-            A = first set, B = second set<br><br>
-            <em>1 = Harpoon gun</em><br>
-            <em>2 = Spear</em><br>
-            <em>3 = Trident</em><br>
+            Aquatic weapons, where:<br>
+            A = first set, B = second set
         </td>
     </tr>
     <tr>
         <td><code>aquaticB</code></td>
-        <td>enum</td>
     </tr>
 </table>
 
@@ -265,22 +284,22 @@ Every block is encoded as follows:
         <td rowspan="4"><code>general</code> (1)</td>
         <td>0</td>
         <td><code>build</code></td>
-        <td>build</td>
+        <td>build (unsigned 17-bit)</td>
     </tr>
     <tr>
         <td>1</td>
         <td><code>gameMode</code></td>
-        <td>enum</td>
+        <td>gameMode (enum)</td>
     </tr>
     <tr>
         <td>2</td>
         <td><code>profession</code></td>
-        <td>enum</td>
+        <td>profession (enum)</td>
     </tr>
     <tr>
         <td>3</td>
         <td><code>race</code></td>
-        <td>enum</td>
+        <td>race (enum)</td>
     </tr>
     <tr>
         <td rowspan="4"><code>specialization1</code> (11)</td>
@@ -349,31 +368,31 @@ Every block is encoded as follows:
         <td rowspan="6"><code>weapons</code> (21)</td>
         <td>0</td>
         <td><code>weaponA1</code></td>
-        <td>enum</td>
+        <td>weapon (enum)</td>
     </tr>
     <tr>
         <td>1</td>
         <td><code>weaponA2</code></td>
-        <td>enum</td>
+        <td>weapon (enum)</td>
     </tr>
     <tr>
         <td>2</td>
         <td><code>weaponB1</code></td>
-        <td>enum</td>
+        <td>weapon (enum)</td>
     </tr>
     <tr>
         <td>3</td>
         <td><code>weaponB2</code></td>
-        <td>enum</td>
+        <td>weapon (enum)</td>
     </tr>
     <tr>
         <td>4</td>
         <td><code>aquaticA</code></td>
-        <td>enum</td>
+        <td>aquaticWeapon (enum)</td>
     </tr>
     <tr>
         <td>5</td>
         <td><code>aquaticB</code></td>
-        <td>enum</td>
+        <td>aquaticWeapon (enum)</td>
     </tr>
 </table>
