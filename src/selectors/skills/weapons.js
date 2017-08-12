@@ -7,7 +7,9 @@ const getSelectedMainhandWeaponIds = state => state.selectedMainhandWeaponIds;
 const getSelectedOffhandWeaponIds = state => state.selectedOffhandWeaponIds;
 const getSelectedProfession = state => state.selectedProfession;
 
-const hasFlag = (weapon, flag) => weapon && weapon.flags.indexOf(flag) !== -1;
+const hasFlag = (weapon, flag) => weapon
+    ? weapon.flags.indexOf(flag) !== -1
+    : false;
 
 export const getWeaponsBySet = createSelector(
     [getAvailableWeaponObjects, getActiveWeaponSet],
