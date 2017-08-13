@@ -2,7 +2,7 @@ import values from 'lodash/values';
 import PropTypes from 'prop-types';
 import React from 'react';
 import onClickOutside from 'react-onclickoutside';
-import TraitTooltip from '~/components/Tooltips/Traits/TooltipContainer';
+import TraitTooltip from '../../Tooltips/Traits/TooltipContainer';
 import SelectionPopup from './SelectionPopup';
 import TraitTier from './TraitTier';
 import TraitMinorIcon from './TraitMinorIcon';

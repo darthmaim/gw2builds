@@ -1,6 +1,6 @@
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
-import { getEditorModeConfiguration } from '~/editor-modes';
+import { getEditorModeConfiguration } from '../../editor-modes';
 import Option from './Option';
 import tl from './Messages';
 import style from './style.css';

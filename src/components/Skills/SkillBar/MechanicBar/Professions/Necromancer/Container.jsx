@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { getAttributeHealth } from '~/selectors/attributes';
+import { getAttributeHealth } from '../../../../../../selectors/attributes';
 import Necromancer from './Component';
 
 const mapStateToProps = (state, ownProps) => ({

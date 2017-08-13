@@ -1,6 +1,6 @@
 import { handleActions } from 'redux-actions';
-import * as actions from '~/actions';
-import { handleSimpleAction } from '~/reducers/utils';
+import * as actions from '../../actions';
+import { handleSimpleAction } from '../../reducers/utils';
 
 /** Reducer for the available weapons for the selected profession */
 export const availableWeaponObjects = handleSimpleAction(actions.FETCH_PROFESSION, {}, 'weapons');

@@ -1,10 +1,10 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import throttle from 'lodash/throttle';
-import Settings from '~/containers/settings';
-import Skills from '~/components/Skills';
-import Specializations from '~/components/Specializations';
-import Gear from '~/components/Gear';
+import Settings from '../../../containers/settings';
+import Skills from '../../Skills';
+import Specializations from '../../Specializations';
+import Gear from '../../Gear';
 import Section from './Section';
 import style from './mainContent.css';
 

@@ -1,7 +1,7 @@
 import forEach from 'lodash/forEach';
 import { handleAction } from 'redux-actions';
-import * as actions from '~/actions';
-import { handleSimpleAction } from '~/reducers/utils';
+import * as actions from '../../actions';
+import { handleSimpleAction } from '../../reducers/utils';
 
 /** Reducer for the available skill ids for the current profession. */
 export const availableSkillIds = handleAction(actions.FETCH_PROFESSION, (state, action) => {

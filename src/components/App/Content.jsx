@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import StatsOverview from '~/components/StatsOverview';
+import StatsOverview from '../StatsOverview';
 import MainContent from './MainContent';
 import Sidebar from './Sidebar';
 import style from './content.css';

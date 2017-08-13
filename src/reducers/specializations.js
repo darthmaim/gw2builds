@@ -1,5 +1,5 @@
 import { handleActions } from 'redux-actions';
-import * as actions from '~/actions';
+import * as actions from '../actions';
 import { handleSimpleAction, swapElements } from './utils';
 
 /** Reducer for the available specialization ids for the current profession. */

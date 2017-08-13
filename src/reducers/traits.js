@@ -1,6 +1,6 @@
 import flatMapDeep from 'lodash/fp/flatMapDeep';
 import { handleAction, handleActions } from 'redux-actions';
-import * as actions from '~/actions';
+import * as actions from '../actions';
 import { handleSimpleAction, swapElements } from './utils';
 
 /** Reducer for the available trait ids for the current profession. */
