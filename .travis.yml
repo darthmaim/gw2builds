@@ -7,10 +7,5 @@ install:
  - yarn
  - yarn global add codecov
 
-cache:
-  yarn: true
-  directories:
-    - node_modules
-
 after_success:
  - codecov -f coverage/lcov.info
