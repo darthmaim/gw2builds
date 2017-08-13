@@ -4,7 +4,7 @@ import {
     getAttributeFerocity, getAttributeConditionDamage, getAttributeExpertise, getAttributeConcentration,
     getAttributeProfession, getAttributeArmor, getAttributeHealth, getAttributeCriticalChance, getAttributeCriticalDamage,
     getAttributeHealingPower, getAttributeConditionDuration, getAttributeBoonDuration
-} from '~/selectors/attributes';
+} from '../../selectors/attributes';
 import StatsOverview from './StatsOverview';
 
 const mapStateToProps = state => ({

@@ -1,5 +1,5 @@
 import { handleAction, handleActions } from 'redux-actions';
-import * as actions from '~/actions';
+import * as actions from '../../actions';
 
 export const availableAttunementObjects = handleAction(actions.FETCH_PROFESSION, (state, action) => {
     return action.payload.attunements || {};

@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
-import { setActiveAttunement } from '~/actions/skills';
-import { getActiveAttunement } from '~/selectors/skills/mechanic';
+import { setActiveAttunement } from '../../../../../../actions/skills';
+import { getActiveAttunement } from '../../../../../../selectors/skills/mechanic';
 import Elementalist from './Component';
 
 const mapStateToProps = (state, ownProps) => ({

@@ -1,11 +1,5 @@
 {
   "plugins": [
-    [
-      "babel-root-import",
-      {
-        "rootPathSuffix": "src"
-      }
-    ],
     "lodash",
     [
       "react-intl",

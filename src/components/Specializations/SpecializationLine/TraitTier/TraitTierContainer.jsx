@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
-import { setSelectedMajorTraitId } from '~/actions';
-import { getSelectedMajorTraitId, getMajorTraitIds, getMinorTraitId, getSpecializationTraitsFromTier } from '~/selectors/specializations';
+import { setSelectedMajorTraitId } from '../../../../actions';
+import { getSelectedMajorTraitId, getMajorTraitIds, getMinorTraitId, getSpecializationTraitsFromTier } from '../../../../selectors/specializations';
 import TraitTier from './TraitTier';
 
 const mapStateToProps = (state, ownProps) => ({
