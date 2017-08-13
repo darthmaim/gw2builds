@@ -5,13 +5,14 @@ This allows people to share their builds easily with others.
 ## Global types
 The global types are as follows:
 
- Type   | Description
---------|-------------
- bool   | 1-bit boolean
- uint8  | Unsigned 8-bit integer (also known as a byte)
- uint16 | Unsigned 16-bit integer
- uint32 | Unsigned 32-bit integer
- enum   | Enumerator (*0 = null or none*)
+ Type     | Description
+----------|-------------
+ bool     | 1-bit boolean
+ uint8    | Unsigned 8-bit integer (also known as a byte)
+ uint16   | Unsigned 16-bit integer
+ uint32   | Unsigned 32-bit integer
+ bitflags | An x-bit integer with boolean bit flags: it adds an additional bit in front of the other bits; if the first bit is set, all bits are set and are skipped in (de)serialization for compression; if the first bit is not set, all bits are (de)serialized as normal
+ enum     | Enumerator (*0 = null or none*)
 
 ## Data structure
 The data is encoded as follows:
@@ -404,80 +405,80 @@ This allows supporting new revenant legends in future expansions without being l
         <td>Second ring itemstat id</td>
     </tr>
     <tr>
-        <td><code>weaponA1IsAscended</code></td>
+        <td><code>ascendedFlags.weaponA1</code></td>
         <td rowspan="19">bool</td>
         <td>Ascended flag for main-hand weapon of first weapon set</td>
     </tr>
     <tr>
-        <td><code>weaponA2IsAscended</code></td>
+        <td><code>ascendedFlags.weaponA2</code></td>
         <td>Ascended flag for off-hand weapon of first weapon set</td>
     </tr>
     <tr>
-        <td><code>weaponB1IsAscended</code></td>
+        <td><code>ascendedFlags.weaponB1</code></td>
         <td>Ascended flag for main-hand weapon of second weapon set</td>
     </tr>
     <tr>
-        <td><code>weaponB2IsAscended</code></td>
+        <td><code>ascendedFlags.weaponB2</code></td>
         <td>Ascended flag for off-hand weapon of second weapon set</td>
     </tr>
     <tr>
-        <td><code>weaponAquaticAIsAscended</code></td>
+        <td><code>ascendedFlags.weaponAquaticA</code></td>
         <td>First aquatic weapon ascended flag</td>
     </tr>
     <tr>
-        <td><code>weaponAquaticBIsAscended</code></td>
+        <td><code>ascendedFlags.weaponAquaticB</code></td>
         <td>Second aquatic weapon ascended flag</td>
     </tr>
     <tr>
-        <td><code>helmIsAscended</code></td>
+        <td><code>ascendedFlags.helm</code></td>
         <td>Helm armor ascended flag</td>
     </tr>
     <tr>
-        <td><code>shouldersIsAscended</code></td>
+        <td><code>ascendedFlags.shoulders</code></td>
         <td>Shoulder armor ascended flag</td>
     </tr>
     <tr>
-        <td><code>coatIsAscended</code></td>
+        <td><code>ascendedFlags.coat</code></td>
         <td>Coat armor ascended flag</td>
     </tr>
     <tr>
-        <td><code>glovesIsAscended</code></td>
+        <td><code>ascendedFlags.gloves</code></td>
         <td>Gloves armor ascended flag</td>
     </tr>
     <tr>
-        <td><code>leggingsIsAscended</code></td>
+        <td><code>ascendedFlags.leggings</code></td>
         <td>Leggings armor ascended flag</td>
     </tr>
     <tr>
-        <td><code>bootsIsAscended</code></td>
+        <td><code>ascendedFlags.boots</code></td>
         <td>Boots armor ascended flag</td>
     </tr>
     <tr>
-        <td><code>helmAquaticIsAscended</code></td>
+        <td><code>ascendedFlags.helmAquatic</code></td>
         <td>Aquatic helm armor ascended flag</td>
     </tr>
     <tr>
-        <td><code>backpackIsAscended</code></td>
+        <td><code>ascendedFlags.backpack</code></td>
         <td>Backpack ascended flag</td>
     </tr>
     <tr>
-        <td><code>accessory1IsAscended</code></td>
+        <td><code>ascendedFlags.accessory1</code></td>
         <td>First accessory ascended flag</td>
     </tr>
     <tr>
-        <td><code>accessory2IsAscended</code></td>
+        <td><code>ascendedFlags.accessory2</code></td>
         <td>Second accessory ascended flag</td>
     </tr>
     <tr>
-        <td><code>amuletIsAscended</code></td>
+        <td><code>ascendedFlags.amulet</code></td>
         <td>Amulet ascended flag</td>
     </tr>
     <tr>
-        <td><code>ring1IsAscended</code></td>
+        <td><code>ascendedFlags.ring1</code></td>
         <td>First ring ascended flag</td>
     </tr>
     <tr>
-        <td><code>ring2IsAscended</code></td>
+        <td><code>ascendedFlags.ring2</code></td>
         <td>Second ring ascended flag</td>
     </tr>
 </table>
@@ -750,7 +751,7 @@ Every block is encoded as follows:
         <td colspan="3">Reserved</td>
     </tr>
     <tr>
-        <td rowspan="38"><code>gearStats</code>(41)</td>
+        <td rowspan="39"><code>gearStats</code>(41)</td>
         <td>0</td>
         <td><code>weaponA1</code></td>
         <td>itemstat</td>
@@ -846,98 +847,103 @@ Every block is encoded as follows:
         <td>itemstat</td>
     </tr>
     <tr>
-        <td>19</td>
-        <td><code>weaponA1IsAscended</code></td>
+        <td rowspan>19</td>
+        <td><code>ascendedFlags</code></td>
+        <td>bitflags</td>
+    </tr>
+    <tr>
+        <td>19.0</td>
+        <td><code>ascendedFlags.weaponA1</code></td>
         <td>bool</td>
     </tr>
     <tr>
-        <td>20</td>
-        <td><code>weaponA2IsAscended</code></td>
+        <td>19.1</td>
+        <td><code>ascendedFlags.weaponA2</code></td>
         <td>bool</td>
     </tr>
     <tr>
-        <td>21</td>
-        <td><code>weaponB1IsAscended</code></td>
+        <td>19.2</td>
+        <td><code>ascendedFlags.weaponB1</code></td>
         <td>bool</td>
     </tr>
     <tr>
-        <td>22</td>
-        <td><code>weaponB2IsAscended</code></td>
+        <td>19.3</td>
+        <td><code>ascendedFlags.weaponB2</code></td>
         <td>bool</td>
     </tr>
     <tr>
-        <td>23</td>
-        <td><code>weaponAquaticAIsAscended</code></td>
+        <td>19.4</td>
+        <td><code>ascendedFlags.weaponAquaticA</code></td>
         <td>bool</td>
     </tr>
     <tr>
-        <td>24</td>
-        <td><code>weaponAquaticBIsAscended</code></td>
+        <td>19.5</td>
+        <td><code>ascendedFlags.weaponAquaticB</code></td>
         <td>bool</td>
     </tr>
     <tr>
-        <td>25</td>
-        <td><code>helmIsAscended</code></td>
+        <td>19.6</td>
+        <td><code>ascendedFlags.helm</code></td>
         <td>bool</td>
     </tr>
     <tr>
-        <td>26</td>
-        <td><code>shouldersIsAscended</code></td>
+        <td>19.7</td>
+        <td><code>ascendedFlags.shoulders</code></td>
         <td>bool</td>
     </tr>
     <tr>
-        <td>27</td>
-        <td><code>coatIsAscended</code></td>
+        <td>19.8</td>
+        <td><code>ascendedFlags.coat</code></td>
         <td>bool</td>
     </tr>
     <tr>
-        <td>28</td>
-        <td><code>glovesIsAscended</code></td>
+        <td>19.9</td>
+        <td><code>ascendedFlags.gloves</code></td>
         <td>bool</td>
     </tr>
     <tr>
-        <td>29</td>
-        <td><code>leggingsIsAscended</code></td>
+        <td>19.10</td>
+        <td><code>ascendedFlags.leggings</code></td>
         <td>bool</td>
     </tr>
     <tr>
-        <td>30</td>
-        <td><code>bootsIsAscended</code></td>
+        <td>19.11</td>
+        <td><code>ascendedFlags.boots</code></td>
         <td>bool</td>
     </tr>
     <tr>
-        <td>31</td>
-        <td><code>helmAquaticIsAscended</code></td>
+        <td>19.12</td>
+        <td><code>ascendedFlags.helmAquatic</code></td>
         <td>bool</td>
     </tr>
     <tr>
-        <td>32</td>
-        <td><code>backpackIsAscended</code></td>
+        <td>19.13</td>
+        <td><code>ascendedFlags.backpack</code></td>
         <td>bool</td>
     </tr>
     <tr>
-        <td>33</td>
-        <td><code>accessory1IsAscended</code></td>
+        <td>19.14</td>
+        <td><code>ascendedFlags.accessory1</code></td>
         <td>bool</td>
     </tr>
     <tr>
-        <td>34</td>
-        <td><code>accessory2IsAscended</code></td>
+        <td>19.15</td>
+        <td><code>ascendedFlags.accessory2</code></td>
         <td>bool</td>
     </tr>
     <tr>
-        <td>35</td>
-        <td><code>amuletIsAscended</code></td>
+        <td>19.16</td>
+        <td><code>ascendedFlags.amulet</code></td>
         <td>bool</td>
     </tr>
     <tr>
-        <td>36</td>
-        <td><code>ring1IsAscended</code></td>
+        <td>19.17</td>
+        <td><code>ascendedFlags.ring1</code></td>
         <td>bool</td>
     </tr>
     <tr>
-        <td>37</td>
-        <td><code>ring2IsAscended</code></td>
+        <td>19.18</td>
+        <td><code>ascendedFlags.ring2</code></td>
         <td>bool</td>
     </tr>
     <tr>
