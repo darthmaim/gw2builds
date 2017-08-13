@@ -62,6 +62,41 @@ Sometimes the type is represented as a GW2 API endpoint.
     </tr>
 </table>
 
+## Gear
+<table>
+    <tr>
+        <th>Property</th>
+        <th>Type</th>
+        <th>Description</th>
+    </tr>
+    <tr>
+        <td><code>selectedItemstatIds</code></td>
+        <td>object (integer)</td>
+        <td>
+            Selected itemstat ids.<br>
+            <code>.weaponA1</code> = main-hand weapon of first weapon set<br>
+            <code>.weaponA2</code> = off-hand weapon of first weapon set<br>
+            <code>.weaponB1</code> = main-hand weapon of second weapon set<br>
+            <code>.weaponB2</code> = off-hand weapon of second weapon set<br>
+            <code>.weaponAquaticA</code> = first aquatic weapon<br>
+            <code>.weaponAquaticB</code> = second aquatic weapon<br>
+            <code>.helm</code> = helm<br>
+            <code>.shoulders</code> = shoulders<br>
+            <code>.coat</code> = coat<br>
+            <code>.gloves</code> = gloves<br>
+            <code>.leggings</code> = leggings<br>
+            <code>.boots</code> = boots<br>
+            <code>.helmAquatic</code> = helmAquatic<br>
+            <code>.backpack</code> = backpack<br>
+            <code>.accessory1</code> = first accessory<br>
+            <code>.accessory2</code> = second accessory<br>
+            <code>.amulet</code> = amulet<br>
+            <code>.ring1</code> = first ring<br>
+            <code>.ring2</code> = second ring
+        </td>
+    </tr>
+</table>
+
 ## Mechanics
 <table>
     <tr>

@@ -1,5 +1,6 @@
 import { serialize, deserialize } from 'gw2be-build-string';
 import { setSelectedGameMode, setSelectedProfession, setSelectedRace } from '../actions/general';
+import { setSelectedItemstatId } from '../actions/gear';
 import { setSelectedElementalistAttunementId, setSelectedWeaverPreviousAttunementId, setSelectedRangerPetId, setSelectedRevenantLegendId } from '../actions/mechanics';
 import { setSelectedMainhandWeaponId, setSelectedOffhandWeaponId, setSelectedSkillId } from '../actions/skills';
 import { setSelectedSpecializationId } from '../actions/specializations';
@@ -40,6 +41,28 @@ export function initializeBuildFromString(store, buildString) {
             disp('specialization', build.specialization1, setSelectedSpecializationId, id => ({ specializationLine: 0, specializationId: id, specializations })),
             disp('specialization', build.specialization2, setSelectedSpecializationId, id => ({ specializationLine: 1, specializationId: id, specializations })),
             disp('specialization', build.specialization3, setSelectedSpecializationId, id => ({ specializationLine: 2, specializationId: id, specializations }))
+        ]);
+    }).then(() => {
+        return Promise.all([
+            disp('weaponA1', build.gearStats, setSelectedItemstatId, id => ({ slotId: 'weaponA1', itemstatId: id })),
+            disp('weaponA2', build.gearStats, setSelectedItemstatId, id => ({ slotId: 'weaponA2', itemstatId: id })),
+            disp('weaponB1', build.gearStats, setSelectedItemstatId, id => ({ slotId: 'weaponB1', itemstatId: id })),
+            disp('weaponB2', build.gearStats, setSelectedItemstatId, id => ({ slotId: 'weaponB2', itemstatId: id })),
+            disp('weaponAquaticA', build.gearStats, setSelectedItemstatId, id => ({ slotId: 'weaponAquaticA', itemstatId: id })),
+            disp('weaponAquaticB', build.gearStats, setSelectedItemstatId, id => ({ slotId: 'weaponAquaticB', itemstatId: id })),
+            disp('helm', build.gearStats, setSelectedItemstatId, id => ({ slotId: 'helm', itemstatId: id })),
+            disp('shoulders', build.gearStats, setSelectedItemstatId, id => ({ slotId: 'shoulders', itemstatId: id })),
+            disp('coat', build.gearStats, setSelectedItemstatId, id => ({ slotId: 'coat', itemstatId: id })),
+            disp('gloves', build.gearStats, setSelectedItemstatId, id => ({ slotId: 'gloves', itemstatId: id })),
+            disp('leggings', build.gearStats, setSelectedItemstatId, id => ({ slotId: 'leggings', itemstatId: id })),
+            disp('boots', build.gearStats, setSelectedItemstatId, id => ({ slotId: 'boots', itemstatId: id })),
+            disp('helmAquatic', build.gearStats, setSelectedItemstatId, id => ({ slotId: 'helmAquatic', itemstatId: id })),
+            disp('backpack', build.gearStats, setSelectedItemstatId, id => ({ slotId: 'backpack', itemstatId: id })),
+            disp('accessory1', build.gearStats, setSelectedItemstatId, id => ({ slotId: 'accessory1', itemstatId: id })),
+            disp('accessory2', build.gearStats, setSelectedItemstatId, id => ({ slotId: 'accessory2', itemstatId: id })),
+            disp('amulet', build.gearStats, setSelectedItemstatId, id => ({ slotId: 'amulet', itemstatId: id })),
+            disp('ring1', build.gearStats, setSelectedItemstatId, id => ({ slotId: 'ring1', itemstatId: id })),
+            disp('ring2', build.gearStats, setSelectedItemstatId, id => ({ slotId: 'ring2', itemstatId: id }))
         ]);
     }).then(() => {
         return Promise.all([
@@ -142,7 +165,8 @@ export function exportBuildToString(state) {
         professionElementalist: {
             attunement: state.selectedElementalistAttunementId,
             prevAttunementWeaver: state.selectedWeaverPreviousAttunementId
-        }
+        },
+        gearStats: Object.assign({}, state.selectedItemstatIds)
     };
 
     return serialize(build);

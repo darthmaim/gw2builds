@@ -13,6 +13,7 @@ const getSelectedRevenantLegendIds = state => state.selectedRevenantLegendIds;
 const getSelectedRangerPetIds = state => state.selectedRangerPetIds;
 const getSelectedElementalistAttunementId = state => state.selectedElementalistAttunementId;
 const getSelectedWeaverPreviousAttunementId = state => state.selectedWeaverPreviousAttunementId;
+const getSelectedItemstatIds = state => state.selectedItemstatIds;
 
 export const getUrl = createSelector(
     [
@@ -27,7 +28,8 @@ export const getUrl = createSelector(
         getSelectedRevenantLegendIds,
         getSelectedRangerPetIds,
         getSelectedElementalistAttunementId,
-        getSelectedWeaverPreviousAttunementId
+        getSelectedWeaverPreviousAttunementId,
+        getSelectedItemstatIds
     ],
     (
         selectedGameMode,
@@ -41,7 +43,8 @@ export const getUrl = createSelector(
         selectedRevenantLegendIds,
         selectedRangerPetIds,
         selectedElementalistAttunementId,
-        selectedWeaverPreviousAttunementId
+        selectedWeaverPreviousAttunementId,
+        selectedItemstatIds
     ) => {
         return exportBuildToString({
             selectedGameMode,
@@ -55,7 +58,8 @@ export const getUrl = createSelector(
             selectedRevenantLegendIds,
             selectedRangerPetIds,
             selectedElementalistAttunementId,
-            selectedWeaverPreviousAttunementId
+            selectedWeaverPreviousAttunementId,
+            selectedItemstatIds
         });
     }
 );
