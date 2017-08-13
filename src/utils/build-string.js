@@ -1,6 +1,6 @@
 import { serialize, deserialize } from 'gw2be-build-string';
 import { setSelectedGameMode, setSelectedProfession, setSelectedRace } from '../actions/general';
-import { setSelectedItemstatId } from '../actions/gear';
+import { setSelectedGearItemstatId, setSelectedGearIsAscended } from '../actions/gear';
 import { setSelectedElementalistAttunementId, setSelectedWeaverPreviousAttunementId, setSelectedRangerPetId, setSelectedRevenantLegendId } from '../actions/mechanics';
 import { setSelectedMainhandWeaponId, setSelectedOffhandWeaponId, setSelectedSkillId } from '../actions/skills';
 import { setSelectedSpecializationId } from '../actions/specializations';
@@ -44,25 +44,45 @@ export function initializeBuildFromString(store, buildString) {
         ]);
     }).then(() => {
         return Promise.all([
-            disp('weaponA1', build.gearStats, setSelectedItemstatId, id => ({ slotId: 'weaponA1', itemstatId: id })),
-            disp('weaponA2', build.gearStats, setSelectedItemstatId, id => ({ slotId: 'weaponA2', itemstatId: id })),
-            disp('weaponB1', build.gearStats, setSelectedItemstatId, id => ({ slotId: 'weaponB1', itemstatId: id })),
-            disp('weaponB2', build.gearStats, setSelectedItemstatId, id => ({ slotId: 'weaponB2', itemstatId: id })),
-            disp('weaponAquaticA', build.gearStats, setSelectedItemstatId, id => ({ slotId: 'weaponAquaticA', itemstatId: id })),
-            disp('weaponAquaticB', build.gearStats, setSelectedItemstatId, id => ({ slotId: 'weaponAquaticB', itemstatId: id })),
-            disp('helm', build.gearStats, setSelectedItemstatId, id => ({ slotId: 'helm', itemstatId: id })),
-            disp('shoulders', build.gearStats, setSelectedItemstatId, id => ({ slotId: 'shoulders', itemstatId: id })),
-            disp('coat', build.gearStats, setSelectedItemstatId, id => ({ slotId: 'coat', itemstatId: id })),
-            disp('gloves', build.gearStats, setSelectedItemstatId, id => ({ slotId: 'gloves', itemstatId: id })),
-            disp('leggings', build.gearStats, setSelectedItemstatId, id => ({ slotId: 'leggings', itemstatId: id })),
-            disp('boots', build.gearStats, setSelectedItemstatId, id => ({ slotId: 'boots', itemstatId: id })),
-            disp('helmAquatic', build.gearStats, setSelectedItemstatId, id => ({ slotId: 'helmAquatic', itemstatId: id })),
-            disp('backpack', build.gearStats, setSelectedItemstatId, id => ({ slotId: 'backpack', itemstatId: id })),
-            disp('accessory1', build.gearStats, setSelectedItemstatId, id => ({ slotId: 'accessory1', itemstatId: id })),
-            disp('accessory2', build.gearStats, setSelectedItemstatId, id => ({ slotId: 'accessory2', itemstatId: id })),
-            disp('amulet', build.gearStats, setSelectedItemstatId, id => ({ slotId: 'amulet', itemstatId: id })),
-            disp('ring1', build.gearStats, setSelectedItemstatId, id => ({ slotId: 'ring1', itemstatId: id })),
-            disp('ring2', build.gearStats, setSelectedItemstatId, id => ({ slotId: 'ring2', itemstatId: id }))
+            disp('weaponA1', build.gearStats, setSelectedGearItemstatId, id => ({ slotId: 'weaponA1', itemstatId: id })),
+            disp('weaponA2', build.gearStats, setSelectedGearItemstatId, id => ({ slotId: 'weaponA2', itemstatId: id })),
+            disp('weaponB1', build.gearStats, setSelectedGearItemstatId, id => ({ slotId: 'weaponB1', itemstatId: id })),
+            disp('weaponB2', build.gearStats, setSelectedGearItemstatId, id => ({ slotId: 'weaponB2', itemstatId: id })),
+            disp('weaponAquaticA', build.gearStats, setSelectedGearItemstatId, id => ({ slotId: 'weaponAquaticA', itemstatId: id })),
+            disp('weaponAquaticB', build.gearStats, setSelectedGearItemstatId, id => ({ slotId: 'weaponAquaticB', itemstatId: id })),
+            disp('helm', build.gearStats, setSelectedGearItemstatId, id => ({ slotId: 'helm', itemstatId: id })),
+            disp('shoulders', build.gearStats, setSelectedGearItemstatId, id => ({ slotId: 'shoulders', itemstatId: id })),
+            disp('coat', build.gearStats, setSelectedGearItemstatId, id => ({ slotId: 'coat', itemstatId: id })),
+            disp('gloves', build.gearStats, setSelectedGearItemstatId, id => ({ slotId: 'gloves', itemstatId: id })),
+            disp('leggings', build.gearStats, setSelectedGearItemstatId, id => ({ slotId: 'leggings', itemstatId: id })),
+            disp('boots', build.gearStats, setSelectedGearItemstatId, id => ({ slotId: 'boots', itemstatId: id })),
+            disp('helmAquatic', build.gearStats, setSelectedGearItemstatId, id => ({ slotId: 'helmAquatic', itemstatId: id })),
+            disp('backpack', build.gearStats, setSelectedGearItemstatId, id => ({ slotId: 'backpack', itemstatId: id })),
+            disp('accessory1', build.gearStats, setSelectedGearItemstatId, id => ({ slotId: 'accessory1', itemstatId: id })),
+            disp('accessory2', build.gearStats, setSelectedGearItemstatId, id => ({ slotId: 'accessory2', itemstatId: id })),
+            disp('amulet', build.gearStats, setSelectedGearItemstatId, id => ({ slotId: 'amulet', itemstatId: id })),
+            disp('ring1', build.gearStats, setSelectedGearItemstatId, id => ({ slotId: 'ring1', itemstatId: id })),
+            disp('ring2', build.gearStats, setSelectedGearItemstatId, id => ({ slotId: 'ring2', itemstatId: id })),
+            
+            disp('weaponA1', build.gearStats.ascendedFlags, setSelectedGearIsAscended, flag => ({ slotId: 'weaponA1', isAscended: flag })),
+            disp('weaponA2', build.gearStats.ascendedFlags, setSelectedGearIsAscended, flag => ({ slotId: 'weaponA2', isAscended: flag })),
+            disp('weaponB1', build.gearStats.ascendedFlags, setSelectedGearIsAscended, flag => ({ slotId: 'weaponB1', isAscended: flag })),
+            disp('weaponB2', build.gearStats.ascendedFlags, setSelectedGearIsAscended, flag => ({ slotId: 'weaponB2', isAscended: flag })),
+            disp('weaponAquaticA', build.gearStats.ascendedFlags, setSelectedGearIsAscended, flag => ({ slotId: 'weaponAquaticA', isAscended: flag })),
+            disp('weaponAquaticB', build.gearStats.ascendedFlags, setSelectedGearIsAscended, flag => ({ slotId: 'weaponAquaticB', isAscended: flag })),
+            disp('helm', build.gearStats.ascendedFlags, setSelectedGearIsAscended, flag => ({ slotId: 'helm', isAscended: flag })),
+            disp('shoulders', build.gearStats.ascendedFlags, setSelectedGearIsAscended, flag => ({ slotId: 'shoulders', isAscended: flag })),
+            disp('coat', build.gearStats.ascendedFlags, setSelectedGearIsAscended, flag => ({ slotId: 'coat', isAscended: flag })),
+            disp('gloves', build.gearStats.ascendedFlags, setSelectedGearIsAscended, flag => ({ slotId: 'gloves', isAscended: flag })),
+            disp('leggings', build.gearStats.ascendedFlags, setSelectedGearIsAscended, flag => ({ slotId: 'leggings', isAscended: flag })),
+            disp('boots', build.gearStats.ascendedFlags, setSelectedGearIsAscended, flag => ({ slotId: 'boots', isAscended: flag })),
+            disp('helmAquatic', build.gearStats.ascendedFlags, setSelectedGearIsAscended, flag => ({ slotId: 'helmAquatic', isAscended: flag })),
+            disp('backpack', build.gearStats.ascendedFlags, setSelectedGearIsAscended, flag => ({ slotId: 'backpack', isAscended: flag })),
+            disp('accessory1', build.gearStats.ascendedFlags, setSelectedGearIsAscended, flag => ({ slotId: 'accessory1', isAscended: flag })),
+            disp('accessory2', build.gearStats.ascendedFlags, setSelectedGearIsAscended, flag => ({ slotId: 'accessory2', isAscended: flag })),
+            disp('amulet', build.gearStats.ascendedFlags, setSelectedGearIsAscended, flag => ({ slotId: 'amulet', isAscended: flag })),
+            disp('ring1', build.gearStats.ascendedFlags, setSelectedGearIsAscended, flag => ({ slotId: 'ring1', isAscended: flag })),
+            disp('ring2', build.gearStats.ascendedFlags, setSelectedGearIsAscended, flag => ({ slotId: 'ring2', isAscended: flag }))
         ]);
     }).then(() => {
         return Promise.all([
@@ -166,7 +186,9 @@ export function exportBuildToString(state) {
             attunement: state.selectedElementalistAttunementId,
             prevAttunementWeaver: state.selectedWeaverPreviousAttunementId
         },
-        gearStats: Object.assign({}, state.selectedItemstatIds)
+        gearStats: Object.assign({}, state.selectedGearItemstatIds, {
+            ascendedFlags: Object.assign({}, state.selectedGearIsAscended)
+        })
     };
 
     return serialize(build);
