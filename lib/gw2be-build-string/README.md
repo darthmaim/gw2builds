@@ -4,17 +4,18 @@ Please report all issues regarding the editor in the [main repository](https://g
 
 If there is a specific issue with this module, you can create an issue here.
 
+
 ## Documentation
 - [Build string serialization](docs/serialization.md)
 
-## Installation
-**TODO:** This module is currently part of the main repository and not yet available on npmjs.com. 
-```
-npm install gw2be-build-string
-```
 
-## Usage
-### Serialize a build
+## Installation
+**TODO:** This module is currently part of the main repository and not yet available on npmjs.com.
+
+Install this module with your favorite package manager, e.g. `npm install gw2be-build-string`.
+
+
+### Usage
 The build is defined as an object that is structured as one of the versioned deserialized
 data structures that can be found in the [serialization documentation](docs/serialization.md).
 
@@ -22,7 +23,7 @@ data structures that can be found in the [serialization documentation](docs/seri
 import { serialize, deserialize } from 'gw2be-build-string';
 
 // This is an example build object for version 0.
-// Don't forget to use the latest version available.
+// Don't forget to use the latest available version.
 const build = {
     general: {
         build: 70000, // GW2 client build 70000
@@ -46,12 +47,21 @@ const serializedBuild = serialize(build); // "AAAAAUMBAABJAAvuA6_4GA"
 const deserializedBuild = deserialize(serializedBuild); // Gives back the original build above
 ```
 
-## Tests
+
+## Development
+Note: This repository uses [Yarn](https://yarnpkg.com/) instead of NPM.
+Make sure it's installed before continuing.
+
+1. Clone this repository.
+2. Install all dependencies (`yarn`).
+
+### Tests
 ```
-npm test
-npm run lint
-npm run cover
+yarn test
+yarn lint
+yarn cover
 ```
+
 
 ## License
 This module for **gw2efficiency Build Editor** is licensed under the [MIT License](LICENSE).
