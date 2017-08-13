@@ -16,11 +16,11 @@ export default class Row extends React.Component {
     render() {
         const { type, slot, selectedLanguage, text } = this.props;
 
-        const availableAttributeSets = attributeSets[type] !== undefined && attributeSets[type][slot] !== undefined
-            ? (attributeSets[type][slot][this.state.rarity] || [])
+        const availableAttributeSets = attributeSets[type] && attributeSets[type][slot] && attributeSets[type][slot][this.state.rarity]
+            ? (attributeSets[type][slot][this.state.rarity].itemstats || [])
             : [];
 
-        const selected = availableAttributeSets.filter(set => set.id == this.state.stats)[0];
+        const selected = availableAttributeSets.filter(set => set.id === this.state.stats)[0];
 
         return (
             <div className={style.row}>
@@ -50,7 +50,7 @@ export default class Row extends React.Component {
     renderAttributeSelect(availableAttributeSets, selectedLanguage) {
         return (
             <Select
-                onChange={stats => this.setState({stats})}
+                onChange={stats => this.setState({stats: parseInt(stats)})}
                 value={this.state.stats}
                 placeholder="Stats">
                 {availableAttributeSets.map(set => (

@@ -61,14 +61,31 @@ function buildAttributes() {
                 nice[item.type][type] = nice[item.type][type] || {};
                 const collection = nice[item.type][type];
 
-                collection[item.rarity] = collection[item.rarity] || [];
+                collection[item.rarity] = collection[item.rarity] || { itemstats: [] };
 
+                // convert attributes to be smaller for the json
                 const attributes = {};
                 item.details.infix_upgrade.attributes.forEach(({attribute, modifier}) => {
                     attributes[attribute] = modifier
                 });
 
-                collection[item.rarity].push({
+                // if this is a weapon, save the damage
+                if(item.type === 'Weapon') {
+                    collection[item.rarity].damage = {
+                        min: item.details.min_power,
+                        max: item.details.max_power
+                    };
+                }
+
+                // if its a armor, store the armor value
+                if(item.type === 'Armor') {
+                    collection[item.rarity].defense = {
+                        defense: item.details.defense
+                    };
+                }
+
+                // add the itemstat to this item
+                collection[item.rarity].itemstats.push({
                     id: attributeSet.id,
                     names: {
                         de: itemstats.de[attributeSet.id].name,
