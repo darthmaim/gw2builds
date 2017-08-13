@@ -1,5 +1,5 @@
 import { handleActions } from 'redux-actions';
-import * as actions from '~/actions';
+import * as actions from '../../actions';
 
 export const selectedElementalistAttunementId = handleActions({
     // Set the attunement

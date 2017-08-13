@@ -1,6 +1,6 @@
 import { handleActions } from 'redux-actions';
-import * as actions from '~/actions';
-import { swapElements } from '~/reducers/utils';
+import * as actions from '../../actions';
+import { swapElements } from '../utils';
 
 export const selectedRangerPetIds = handleActions({
     [actions.SET_SELECTED_RANGER_PET_ID]: (state, action) => {

@@ -1,5 +1,5 @@
 import { handleAction, handleActions } from 'redux-actions';
-import * as actions from '~/actions';
+import * as actions from '../../actions';
 
 export const selectedGearItemstatIds = handleActions({
     [actions.SET_SELECTED_GEAR_ITEMSTAT_ID]: (state, action) => {

@@ -1,6 +1,6 @@
 import { handleActions } from 'redux-actions';
-import * as actions from '~/actions';
-import { swapElements } from '~/reducers/utils';
+import * as actions from '../../actions';
+import { swapElements } from '../utils';
 
 export const selectedRevenantLegendIds = handleActions({
     [actions.SET_SELECTED_REVENANT_LEGEND_ID]: (state, action) => {
