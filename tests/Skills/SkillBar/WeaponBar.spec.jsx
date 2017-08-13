@@ -10,8 +10,8 @@ import {
     SKILL_SIMPLE, SKILL_OFFHAND_NOTHING, SKILL_OFFHAND_SOMETHING, SKILL_ATTUNEMENT_1, SKILL_ATTUNEMENT_2
 } from './WeaponBar.stub';
 
-import WeaponBar from '~/components/Skills/SkillBar/WeaponBar/WeaponBar';
-import SkillIcon from '~/components/Skills/Icon';
+import WeaponBar from '../../../src/components/Skills/SkillBar/WeaponBar/WeaponBar';
+import SkillIcon from '../../../src/components/Skills/Icon';
 
 describe('WeaponBar', () => {
     it('renders 5 empty skill icons', () => {

@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
-import { setSelectedLanguage } from '~/actions';
-import { applyEditorMode } from '~/editor-modes';
+import { setSelectedLanguage } from '../../../../actions';
+import { applyEditorMode } from '../../../../editor-modes';
 import LanguageSelector from './LanguageSelector';
 
 const mapStateToProps = state => ({

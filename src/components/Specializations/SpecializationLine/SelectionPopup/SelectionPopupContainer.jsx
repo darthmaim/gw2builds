@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
-import { setSelectedSpecializationId, swapSelectedSpecializationIds, wipeSelectedSpecializationId } from '~/actions';
-import { getCoreSpecializationIds, getEliteSpecializationIds, getSelectedSpecializationId } from '~/selectors/specializations';
+import { setSelectedSpecializationId, swapSelectedSpecializationIds, wipeSelectedSpecializationId } from '../../../../actions';
+import { getCoreSpecializationIds, getEliteSpecializationIds, getSelectedSpecializationId } from '../../../../selectors/specializations';
 import SelectionPopup from './SelectionPopup';
 
 const mapStateToProps = (state, ownProps) => ({

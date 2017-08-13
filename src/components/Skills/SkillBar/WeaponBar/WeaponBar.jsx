@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
-import SkillTooltip from '~/components/Tooltips/Skills/TooltipContainer';
+import SkillTooltip from '../../../Tooltips/Skills/TooltipContainer';
 import SkillIcon from '../../Icon';
 
 class WeaponBar extends Component {

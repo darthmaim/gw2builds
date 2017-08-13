@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import TraitTooltip from '~/components/Tooltips/Traits/TooltipContainer';
+import TraitTooltip from '../../../Tooltips/Traits/TooltipContainer';
 import TraitConnection from '../TraitConnection';
 import TraitMajorIcon from '../TraitMajorIcon';
 import TraitMinorIcon from '../TraitMinorIcon';

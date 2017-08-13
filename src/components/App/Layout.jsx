@@ -1,5 +1,5 @@
 import React from 'react';
-import { TooltipElement } from '~/components/Tooltips';
+import { TooltipElement } from '../Tooltips';
 import Header from './Header';
 import Content from './Content';
 import style from './layout.css';
