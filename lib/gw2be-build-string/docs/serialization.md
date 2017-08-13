@@ -324,6 +324,84 @@ This allows supporting new revenant legends in future expansions without being l
         <td><code>professionNecromancer</code></td>
         <td colspan="3">Reserved</td>
     </tr>
+    <tr>
+        <td rowspan="19"><code>gearStats</code></td>
+        <td><code>weaponA1</code></td>
+        <td rowspan="19">uint32</td>
+        <td>Itemstat id of main-hand weapon of first weapon set</td>
+    </tr>
+    <tr>
+        <td><code>weaponA2</code></td>
+        <td>Itemstat id of off-hand weapon of first weapon set</td>
+    </tr>
+    <tr>
+        <td><code>weaponB1</code></td>
+        <td>Itemstat id of main-hand weapon of second weapon set</td>
+    </tr>
+    <tr>
+        <td><code>weaponB2</code></td>
+        <td>Itemstat id of off-hand weapon of second weapon set</td>
+    </tr>
+    <tr>
+        <td><code>weaponAquaticA</code></td>
+        <td>First aquatic weapon itemstat id</td>
+    </tr>
+    <tr>
+        <td><code>weaponAquaticB</code></td>
+        <td>Second aquatic weapon itemstat id</td>
+    </tr>
+    <tr>
+        <td><code>helm</code></td>
+        <td>Helm armor itemstat id</td>
+    </tr>
+    <tr>
+        <td><code>shoulders</code></td>
+        <td>Shoulder armor itemstat id</td>
+    </tr>
+    <tr>
+        <td><code>coat</code></td>
+        <td>Coat armor itemstat id</td>
+    </tr>
+    <tr>
+        <td><code>gloves</code></td>
+        <td>Gloves armor itemstat id</td>
+    </tr>
+    <tr>
+        <td><code>leggings</code></td>
+        <td>Leggings armor itemstat id</td>
+    </tr>
+    <tr>
+        <td><code>boots</code></td>
+        <td>Boots armor itemstat id</td>
+    </tr>
+    <tr>
+        <td><code>helmAquatic</code></td>
+        <td>Aquatic helm armor itemstat id</td>
+    </tr>
+    <tr>
+        <td><code>backpack</code></td>
+        <td>Backpack itemstat id</td>
+    </tr>
+    <tr>
+        <td><code>accessory1</code></td>
+        <td>First accessory itemstat id</td>
+    </tr>
+    <tr>
+        <td><code>accessory2</code></td>
+        <td>Second accessory itemstat id</td>
+    </tr>
+    <tr>
+        <td><code>amulet</code></td>
+        <td>Amulet itemstat id</td>
+    </tr>
+    <tr>
+        <td><code>ring1</code></td>
+        <td>First ring itemstat id</td>
+    </tr>
+    <tr>
+        <td><code>ring2</code></td>
+        <td>Second ring itemstat id</td>
+    </tr>
 </table>
 
 <sup>1</sup> In order to save space, the serializer converts the build id to a 17-bit unsigned integer by subtracting the build id with the lower boundary.
@@ -353,13 +431,15 @@ The following table shows how the list of bits used for storage types are stored
         <th>Type</th>
         <td>empty</td>
         <td>reserved</td>
-        <td>reserved</td>
+        <td>itemstat<sup>1</sup></td>
         <td>pet</td>
         <td>skill</td>
         <td>trait</td>
         <td>specialization</td>
     </tr>
 </table>
+
+<sup>1</sup> The itemstat is used for both PvE/WvW itemstat and PvP amulet stat ids, because these types can't appear both at once.
 
 ##### Blocks
 Every block is encoded as follows:
@@ -590,5 +670,113 @@ Every block is encoded as follows:
     <tr>
         <td><code>professionNecromancer</code> (39)</td>
         <td colspan="3">Reserved</td>
+    </tr>
+    <tr>
+        <td rowspan="19"><code>gearStats</code>(41)</td>
+        <td>0</td>
+        <td><code>weaponA1</code></td>
+        <td>itemstat</td>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td><code>weaponA2</code></td>
+        <td>itemstat</td>
+    </tr>
+    <tr>
+        <td>2</td>
+        <td><code>weaponB1</code></td>
+        <td>itemstat</td>
+    </tr>
+    <tr>
+        <td>3</td>
+        <td><code>weaponB2</code></td>
+        <td>itemstat</td>
+    </tr>
+    <tr>
+        <td>4</td>
+        <td><code>weaponAquaticA</code></td>
+        <td>itemstat</td>
+    </tr>
+    <tr>
+        <td>5</td>
+        <td><code>weaponAquaticB</code></td>
+        <td>itemstat</td>
+    </tr>
+    <tr>
+        <td>6</td>
+        <td><code>helm</code></td>
+        <td>itemstat</td>
+    </tr>
+    <tr>
+        <td>7</td>
+        <td><code>shoulders</code></td>
+        <td>itemstat</td>
+    </tr>
+    <tr>
+        <td>8</td>
+        <td><code>coat</code></td>
+        <td>itemstat</td>
+    </tr>
+    <tr>
+        <td>9</td>
+        <td><code>gloves</code></td>
+        <td>itemstat</td>
+    </tr>
+    <tr>
+        <td>10</td>
+        <td><code>leggings</code></td>
+        <td>itemstat</td>
+    </tr>
+    <tr>
+        <td>11</td>
+        <td><code>boots</code></td>
+        <td>itemstat</td>
+    </tr>
+    <tr>
+        <td>12</td>
+        <td><code>helmAquatic</code></td>
+        <td>itemstat</td>
+    </tr>
+    <tr>
+        <td>13</td>
+        <td><code>backpack</code></td>
+        <td>itemstat</td>
+    </tr>
+    <tr>
+        <td>14</td>
+        <td><code>accessory1</code></td>
+        <td>itemstat</td>
+    </tr>
+    <tr>
+        <td>15</td>
+        <td><code>accessory2</code></td>
+        <td>itemstat</td>
+    </tr>
+    <tr>
+        <td>16</td>
+        <td><code>amulet</code></td>
+        <td>itemstat</td>
+    </tr>
+    <tr>
+        <td>17</td>
+        <td><code>ring1</code></td>
+        <td>itemstat</td>
+    </tr>
+    <tr>
+        <td>18</td>
+        <td><code>ring2</code></td>
+        <td>itemstat</td>
+    </tr>
+    <tr>
+        <td><code>gearUpgrades</code> (42)</td>
+    </tr>
+    <tr>
+        <td><code>gearInfusions</code> (43)</td>
+    </tr>
+    <tr>
+        <td><code>gearPvp</code> (44)</td>
+        <td>0</td>
+        <td><code>amulet</code></td>
+        <td>itemstat</td>
     </tr>
 </table>
