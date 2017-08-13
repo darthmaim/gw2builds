@@ -21,7 +21,7 @@ export const selectedGearIsAscended = handleAction(actions.SET_SELECTED_GEAR_ISA
     const newState = Object.assign({}, state);
     newState[action.payload.slotId] = action.payload.isAscended;
     return newState;
-});
+}, {});
 
 export default {
     selectedGearItemstatIds,
