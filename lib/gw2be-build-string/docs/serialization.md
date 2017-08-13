@@ -217,31 +217,28 @@ This allows supporting new revenant legends in future expansions without being l
         <td rowspan="6"><code>weapons</code></td>
         <td><code>weaponA1</code></td>
         <td rowspan="4">weapon (enum)</td>
-        <td rowspan="4">
-            Weapons, where:<br>
-            A = first set, B = second set<br>
-            1 = main-hand, 2 = off-hand
-        </td>
+        <td>Main-hand weapon of first weapon set</td>
     </tr>
     <tr>
         <td><code>weaponA2</code></td>
+        <td>Off-hand weapon of first weapon set</td>
     </tr>
     <tr>
         <td><code>weaponB1</code></td>
+        <td>Main-hand weapon of second weapon set</td>
     </tr>
     <tr>
         <td><code>weaponB2</code></td>
+        <td>Off-hand weapon of second weapon set</td>
     </tr>
     <tr>
         <td><code>aquaticA</code></td>
         <td rowspan="2">aquaticWeapon (enum)</td>
-        <td rowspan="2">
-            Aquatic weapons, where:<br>
-            A = first set, B = second set
-        </td>
+        <td>First aquatic weapon set</td>
     </tr>
     <tr>
         <td><code>aquaticB</code></td>
+        <td>Second aquatic weapon set</td>
     </tr>
     <tr>
         <td rowspan="5"><code>skills</code></td>
