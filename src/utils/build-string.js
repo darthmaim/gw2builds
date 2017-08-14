@@ -45,51 +45,53 @@ export function initializeBuildFromString(store, buildString) {
             disp('specialization', build.specialization3, setSelectedSpecializationId, id => ({ specializationLine: 2, specializationId: id, specializations }))
         ]);
     }).then(() => {
-        return Promise.all([
-            // Weapon stats
-            disp('weaponA1', build.gearStats, setSelectedMainhandWeaponItemstatId, id => ({ slotId: 0, itemstatId: id })),
-            disp('weaponA2', build.gearStats, setSelectedOffhandWeaponItemstatId, id => ({ slotId: 0, itemstatId: id })),
-            disp('weaponB1', build.gearStats, setSelectedMainhandWeaponItemstatId, id => ({ slotId: 1, itemstatId: id })),
-            disp('weaponB2', build.gearStats, setSelectedOffhandWeaponItemstatId, id => ({ slotId: 1, itemstatId: id })),
-            disp('weaponAquaticA', build.gearStats, setSelectedMainhandWeaponItemstatId, id => ({ slotId: 2, itemstatId: id })),
-            disp('weaponAquaticB', build.gearStats, setSelectedMainhandWeaponItemstatId, id => ({ slotId: 3, itemstatId: id })),
-            disp('weaponA1', build.gearStats.ascendedFlags, setSelectedMainhandWeaponIsAscended, flag => ({ slotId: 0, isAscended: flag })),
-            disp('weaponA2', build.gearStats.ascendedFlags, setSelectedOffhandWeaponIsAscended, flag => ({ slotId: 0, isAscended: flag })),
-            disp('weaponB1', build.gearStats.ascendedFlags, setSelectedMainhandWeaponIsAscended, flag => ({ slotId: 1, isAscended: flag })),
-            disp('weaponB2', build.gearStats.ascendedFlags, setSelectedOffhandWeaponIsAscended, flag => ({ slotId: 1, isAscended: flag })),
-            disp('weaponAquaticA', build.gearStats.ascendedFlags, setSelectedMainhandWeaponIsAscended, flag => ({ slotId: 2, isAscended: flag })),
-            disp('weaponAquaticB', build.gearStats.ascendedFlags, setSelectedMainhandWeaponIsAscended, flag => ({ slotId: 3, isAscended: flag })),
+        if (build.gearStats) {
+            return Promise.all([
+                // Weapon stats
+                disp('weaponA1', build.gearStats, setSelectedMainhandWeaponItemstatId, id => ({ slotId: 0, itemstatId: id })),
+                disp('weaponA2', build.gearStats, setSelectedOffhandWeaponItemstatId, id => ({ slotId: 0, itemstatId: id })),
+                disp('weaponB1', build.gearStats, setSelectedMainhandWeaponItemstatId, id => ({ slotId: 1, itemstatId: id })),
+                disp('weaponB2', build.gearStats, setSelectedOffhandWeaponItemstatId, id => ({ slotId: 1, itemstatId: id })),
+                disp('weaponAquaticA', build.gearStats, setSelectedMainhandWeaponItemstatId, id => ({ slotId: 2, itemstatId: id })),
+                disp('weaponAquaticB', build.gearStats, setSelectedMainhandWeaponItemstatId, id => ({ slotId: 3, itemstatId: id })),
+                disp('weaponA1', build.gearStats.ascendedFlags, setSelectedMainhandWeaponIsAscended, flag => ({ slotId: 0, isAscended: flag })),
+                disp('weaponA2', build.gearStats.ascendedFlags, setSelectedOffhandWeaponIsAscended, flag => ({ slotId: 0, isAscended: flag })),
+                disp('weaponB1', build.gearStats.ascendedFlags, setSelectedMainhandWeaponIsAscended, flag => ({ slotId: 1, isAscended: flag })),
+                disp('weaponB2', build.gearStats.ascendedFlags, setSelectedOffhandWeaponIsAscended, flag => ({ slotId: 1, isAscended: flag })),
+                disp('weaponAquaticA', build.gearStats.ascendedFlags, setSelectedMainhandWeaponIsAscended, flag => ({ slotId: 2, isAscended: flag })),
+                disp('weaponAquaticB', build.gearStats.ascendedFlags, setSelectedMainhandWeaponIsAscended, flag => ({ slotId: 3, isAscended: flag })),
 
-            // Armor stats
-            disp('helm', build.gearStats, setSelectedArmorItemstatId, id => ({ slotId: 0, itemstatId: id })),
-            disp('shoulders', build.gearStats, setSelectedArmorItemstatId, id => ({ slotId: 1, itemstatId: id })),
-            disp('coat', build.gearStats, setSelectedArmorItemstatId, id => ({ slotId: 2, itemstatId: id })),
-            disp('gloves', build.gearStats, setSelectedArmorItemstatId, id => ({ slotId: 3, itemstatId: id })),
-            disp('leggings', build.gearStats, setSelectedArmorItemstatId, id => ({ slotId: 4, itemstatId: id })),
-            disp('boots', build.gearStats, setSelectedArmorItemstatId, id => ({ slotId: 5, itemstatId: id })),
-            disp('helmAquatic', build.gearStats, setSelectedArmorItemstatId, id => ({ slotId: 6, itemstatId: id })),
-            disp('helm', build.gearStats.ascendedFlags, setSelectedArmorIsAscended, flag => ({ slotId: 0, isAscended: flag })),
-            disp('shoulders', build.gearStats.ascendedFlags, setSelectedArmorIsAscended, flag => ({ slotId: 1, isAscended: flag })),
-            disp('coat', build.gearStats.ascendedFlags, setSelectedArmorIsAscended, flag => ({ slotId: 2, isAscended: flag })),
-            disp('gloves', build.gearStats.ascendedFlags, setSelectedArmorIsAscended, flag => ({ slotId: 3, isAscended: flag })),
-            disp('leggings', build.gearStats.ascendedFlags, setSelectedArmorIsAscended, flag => ({ slotId: 4, isAscended: flag })),
-            disp('boots', build.gearStats.ascendedFlags, setSelectedArmorIsAscended, flag => ({ slotId: 5, isAscended: flag })),
-            disp('helmAquatic', build.gearStats.ascendedFlags, setSelectedArmorIsAscended, flag => ({ slotId: 6, isAscended: flag })),
+                // Armor stats
+                disp('helm', build.gearStats, setSelectedArmorItemstatId, id => ({ slotId: 0, itemstatId: id })),
+                disp('shoulders', build.gearStats, setSelectedArmorItemstatId, id => ({ slotId: 1, itemstatId: id })),
+                disp('coat', build.gearStats, setSelectedArmorItemstatId, id => ({ slotId: 2, itemstatId: id })),
+                disp('gloves', build.gearStats, setSelectedArmorItemstatId, id => ({ slotId: 3, itemstatId: id })),
+                disp('leggings', build.gearStats, setSelectedArmorItemstatId, id => ({ slotId: 4, itemstatId: id })),
+                disp('boots', build.gearStats, setSelectedArmorItemstatId, id => ({ slotId: 5, itemstatId: id })),
+                disp('helmAquatic', build.gearStats, setSelectedArmorItemstatId, id => ({ slotId: 6, itemstatId: id })),
+                disp('helm', build.gearStats.ascendedFlags, setSelectedArmorIsAscended, flag => ({ slotId: 0, isAscended: flag })),
+                disp('shoulders', build.gearStats.ascendedFlags, setSelectedArmorIsAscended, flag => ({ slotId: 1, isAscended: flag })),
+                disp('coat', build.gearStats.ascendedFlags, setSelectedArmorIsAscended, flag => ({ slotId: 2, isAscended: flag })),
+                disp('gloves', build.gearStats.ascendedFlags, setSelectedArmorIsAscended, flag => ({ slotId: 3, isAscended: flag })),
+                disp('leggings', build.gearStats.ascendedFlags, setSelectedArmorIsAscended, flag => ({ slotId: 4, isAscended: flag })),
+                disp('boots', build.gearStats.ascendedFlags, setSelectedArmorIsAscended, flag => ({ slotId: 5, isAscended: flag })),
+                disp('helmAquatic', build.gearStats.ascendedFlags, setSelectedArmorIsAscended, flag => ({ slotId: 6, isAscended: flag })),
 
-            // Trinket stats
-            disp('backpack', build.gearStats, setSelectedTrinketItemstatId, id => ({ slotId: 0, itemstatId: id })),
-            disp('accessory1', build.gearStats, setSelectedTrinketItemstatId, id => ({ slotId: 1, itemstatId: id })),
-            disp('accessory2', build.gearStats, setSelectedTrinketItemstatId, id => ({ slotId: 2, itemstatId: id })),
-            disp('amulet', build.gearStats, setSelectedTrinketItemstatId, id => ({ slotId: 3, itemstatId: id })),
-            disp('ring1', build.gearStats, setSelectedTrinketItemstatId, id => ({ slotId: 4, itemstatId: id })),
-            disp('ring2', build.gearStats, setSelectedTrinketItemstatId, id => ({ slotId: 5, itemstatId: id })),
-            disp('backpack', build.gearStats.ascendedFlags, setSelectedTrinketIsAscended, flag => ({ slotId: 0, isAscended: flag })),
-            disp('accessory1', build.gearStats.ascendedFlags, setSelectedTrinketIsAscended, flag => ({ slotId: 1, isAscended: flag })),
-            disp('accessory2', build.gearStats.ascendedFlags, setSelectedTrinketIsAscended, flag => ({ slotId: 2, isAscended: flag })),
-            disp('amulet', build.gearStats.ascendedFlags, setSelectedTrinketIsAscended, flag => ({ slotId: 3, isAscended: flag })),
-            disp('ring1', build.gearStats.ascendedFlags, setSelectedTrinketIsAscended, flag => ({ slotId: 4, isAscended: flag })),
-            disp('ring2', build.gearStats.ascendedFlags, setSelectedTrinketIsAscended, flag => ({ slotId: 5, isAscended: flag }))
-        ]);
+                // Trinket stats
+                disp('backpack', build.gearStats, setSelectedTrinketItemstatId, id => ({ slotId: 0, itemstatId: id })),
+                disp('accessory1', build.gearStats, setSelectedTrinketItemstatId, id => ({ slotId: 1, itemstatId: id })),
+                disp('accessory2', build.gearStats, setSelectedTrinketItemstatId, id => ({ slotId: 2, itemstatId: id })),
+                disp('amulet', build.gearStats, setSelectedTrinketItemstatId, id => ({ slotId: 3, itemstatId: id })),
+                disp('ring1', build.gearStats, setSelectedTrinketItemstatId, id => ({ slotId: 4, itemstatId: id })),
+                disp('ring2', build.gearStats, setSelectedTrinketItemstatId, id => ({ slotId: 5, itemstatId: id })),
+                disp('backpack', build.gearStats.ascendedFlags, setSelectedTrinketIsAscended, flag => ({ slotId: 0, isAscended: flag })),
+                disp('accessory1', build.gearStats.ascendedFlags, setSelectedTrinketIsAscended, flag => ({ slotId: 1, isAscended: flag })),
+                disp('accessory2', build.gearStats.ascendedFlags, setSelectedTrinketIsAscended, flag => ({ slotId: 2, isAscended: flag })),
+                disp('amulet', build.gearStats.ascendedFlags, setSelectedTrinketIsAscended, flag => ({ slotId: 3, isAscended: flag })),
+                disp('ring1', build.gearStats.ascendedFlags, setSelectedTrinketIsAscended, flag => ({ slotId: 4, isAscended: flag })),
+                disp('ring2', build.gearStats.ascendedFlags, setSelectedTrinketIsAscended, flag => ({ slotId: 5, isAscended: flag }))
+            ]);
+        }
     }).then(() => {
         return Promise.all([
             // Traits
