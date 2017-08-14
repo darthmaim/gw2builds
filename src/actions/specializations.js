@@ -17,13 +17,13 @@ export const fetchAvailableSpecializations = createChainedAction(
     fetchAvailableTraits
 );
 
-/** Action to set a specific specialization line. Params: { specializationLine, specializationId, specializations } */
+/** Action to set a selected specialization line. Params: { specializationLine, specializationId, specializations } */
 export const setSelectedSpecializationId = createChainedAction(
     createAction(SET_SELECTED_SPECIALIZATION_ID),
     wipeSelectedTraitIds
 );
 
-/** Action to swap two set specializations with each other. Params: { specializationLine1, specializationLine2 } */
+/** Action to swap two selected specializations with each other. Params: { specializationLine1, specializationLine2 } */
 export const swapSelectedSpecializationIds = createAction(SWAP_SELECTED_SPECIALIZATION_IDS);
 
 /** Action to wipe a selected specialization. Params: { specializationLine } */

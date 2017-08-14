@@ -2,7 +2,7 @@ import { handleAction, handleActions } from 'redux-actions';
 import * as actions from '../../actions';
 import { handleSimpleAction } from '../../reducers/utils';
 
-/** Reducer for the available weapons for the selected profession */
+/** Reducer for the available weapons for the selected profession. */
 export const availableWeaponObjects = handleSimpleAction(actions.FETCH_PROFESSION, {}, 'weapons');
 
 /** Reducer for the active weapon set */
@@ -15,7 +15,7 @@ export const activeWeaponSet = handleActions({
     [actions.SET_SELECTED_PROFESSION]: () => 0
 }, 0);
 
-/** Reducer for the selected main-hand weapon ids */
+/** Reducer for the selected main-hand weapon ids. */
 export const selectedMainhandWeaponIds = handleActions({
     // Set the selected main-hand weapon id
     [actions.SET_SELECTED_MAINHAND_WEAPON_ID]: (state, action) => {
@@ -29,7 +29,7 @@ export const selectedMainhandWeaponIds = handleActions({
     [actions.SET_SELECTED_PROFESSION]: () => []
 }, []);
 
-/** Reducer for the selected off-hand weapon ids */
+/** Reducer for the selected off-hand weapon ids. */
 export const selectedOffhandWeaponIds = handleActions({
     // Set the selected off-hand weapon id
     [actions.SET_SELECTED_OFFHAND_WEAPON_ID]: (state, action) => {
@@ -43,7 +43,7 @@ export const selectedOffhandWeaponIds = handleActions({
     [actions.SET_SELECTED_PROFESSION]: () => []
 }, []);
 
-/** Reducer for the selected main-hand weapon itemstat ids */
+/** Reducer for the selected main-hand weapon itemstat ids. */
 export const selectedMainhandWeaponItemstatIds = handleActions({
     // Set a main-hand weapon itemstat
     [actions.SET_SELECTED_MAINHAND_WEAPON_ITEMSTAT_ID]: (state, action) => {
@@ -55,12 +55,12 @@ export const selectedMainhandWeaponItemstatIds = handleActions({
     // Reset a main-hand weapon itemstat
     [actions.WIPE_SELECTED_MAINHAND_WEAPON_ITEMSTAT_ID]: (state, action) => {
         const newState = state.slice();
-        newState[action.payload.slotId] = null;
+        newState[action.payload.slotId] = undefined;
         return newState;
     }
 }, []);
 
-/** Reducer for the selected off-hand weapon itemstat ids */
+/** Reducer for the selected off-hand weapon itemstat ids. */
 export const selectedOffhandWeaponItemstatIds = handleActions({
     // Set an off-hand weapon itemstat
     [actions.SET_SELECTED_OFFHAND_WEAPON_ITEMSTAT_ID]: (state, action) => {
@@ -72,12 +72,12 @@ export const selectedOffhandWeaponItemstatIds = handleActions({
     // Reset an off-hand weapon itemstat
     [actions.WIPE_SELECTED_OFFHAND_WEAPON_ITEMSTAT_ID]: (state, action) => {
         const newState = state.slice();
-        newState[action.payload.slotId] = null;
+        newState[action.payload.slotId] = undefined;
         return newState;
     }
 }, []);
 
-/** Reducer for the main-hand weapon ascended flag */
+/** Reducer for the main-hand weapon ascended flag. */
 export const selectedMainhandWeaponIsAscended = handleAction(actions.SET_SELECTED_MAINHAND_WEAPON_ISASCENDED, (state, action) => {
     // Set the ascended flag on a main-hand weapon
     const newState = state.slice();
@@ -85,7 +85,7 @@ export const selectedMainhandWeaponIsAscended = handleAction(actions.SET_SELECTE
     return newState;
 }, []);
 
-/** Reducer for the off-hand weapon ascended flag */
+/** Reducer for the off-hand weapon ascended flag. */
 export const selectedOffhandWeaponIsAscended = handleAction(actions.SET_SELECTED_OFFHAND_WEAPON_ISASCENDED, (state, action) => {
     // Set the ascended flag on an off-hand weapon
     const newState = state.slice();

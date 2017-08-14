@@ -1,21 +1,24 @@
 import { handleAction, handleActions } from 'redux-actions';
 import * as actions from '../../actions';
 
+/** Reducer for the selected trinket itemstat ids. */
 export const selectedTrinketItemstatIds = handleActions({
+    // Set a trinket itemstat
     [actions.SET_SELECTED_TRINKET_ITEMSTAT_ID]: (state, action) => {
-        // Set a trinket itemstat
         const newState = state.slice();
         newState[action.payload.slotId] = action.payload.itemstatId;
         return newState;
     },
+
+    // Reset a trinket itemstat
     [actions.WIPE_SELECTED_TRINKET_ITEMSTAT_ID]: (state, action) => {
-        // Wipe a trinket itemstat
         const newState = state.slice();
-        newState[action.payload.slotId] = null;
+        newState[action.payload.slotId] = undefined;
         return newState;
     }
 }, []);
 
+/** Reducer for the trinket ascended flag. */
 export const selectedTrinketIsAscended = handleAction(actions.SET_SELECTED_TRINKET_ISASCENDED, (state, action) => {
     // Set the ascended flag on a trinket
     const newState = state.slice();

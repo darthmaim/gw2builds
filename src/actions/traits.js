@@ -12,7 +12,7 @@ export const fetchAvailableTraits = createApiAction(
     (state, api) => api.traits().many(state.availableTraitIds).then(convertToIndexed)
 );
 
-/** Action to set a specific major trait in a trait tier of a specialization line. Params: { specializationLine, traitTier, traitId } */
+/** Action to set a selected major trait in a trait tier of a specialization line. Params: { specializationLine, traitTier, traitId } */
 export const setSelectedMajorTraitId = createAction(SET_SELECTED_MAJOR_TRAIT_ID);
 
 /** Action to wipe the selected traits of a specific specialization line. Params: { specializationLine } */

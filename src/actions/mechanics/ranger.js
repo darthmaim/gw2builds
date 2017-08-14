@@ -5,10 +5,10 @@ export const SWAP_SELECTED_RANGER_PET_IDS = 'SWAP_SELECTED_RANGER_PET_IDS';
 export const WIPE_SELECTED_RANGER_PET_ID = 'WIPE_SELECTED_RANGER_PET_ID';
 export const WIPE_ALL_SELECTED_RANGER_PET_IDS = 'WIPE_ALL_SELECTED_RANGER_PET_IDS';
 
-/** Action to set a specific ranger pet id. Params: { slotId, petId } */
+/** Action to set a selected ranger pet id. Params: { slotId, petId } */
 export const setSelectedRangerPetId = createAction(SET_SELECTED_RANGER_PET_ID);
 
-/** Action to swap two set ranger pets with each other. Params: { slotId1, slotId2 } */
+/** Action to swap two selected ranger pets with each other. Params: { slotId1, slotId2 } */
 export const swapSelectedRangerPetIds = createAction(SWAP_SELECTED_RANGER_PET_IDS);
 
 /** Action to wipe a selected ranger pet. Params: { slotId } */
