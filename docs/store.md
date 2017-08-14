@@ -99,7 +99,7 @@ This category contains the following local types:
     </tr>
     <tr>
         <td><code>selectedArmorItemstatIds</code></td>
-        <td>armorArray (integer)</td>
+        <td>armorArray (<code>/v2/itemstats.id</code>)</td>
         <td>Selected armor itemstat ids.</td>
     </tr>
 </table>
@@ -139,7 +139,7 @@ This category contains the following local types:
     </tr>
     <tr>
         <td><code>selectedTrinketsItemstatIds</code></td>
-        <td>trinketsArray (integer)</td>
+        <td>trinketsArray (<code>/v2/itemstats.id</code>)</td>
         <td>Selected trinkets itemstat ids.</td>
     </tr>
 </table>
@@ -206,7 +206,7 @@ This category contains the following local types:
     </tr>
     <tr>
         <td><code>selectedMainhandWeaponItemstatIds</code></td>
-        <td>mainhandWeaponArray (integer)</td>
+        <td>mainhandWeaponArray (<code>/v2/itemstats.id</code>)</td>
         <td>Selected main-hand weapon itemstat ids.</td>
     </tr>
     <tr>
@@ -221,7 +221,7 @@ This category contains the following local types:
     </tr>
     <tr>
         <td><code>selectedOffhandWeaponItemstatIds</code></td>
-        <td>offhandWeaponArray (integer)</td>
+        <td>offhandWeaponArray (<code>/v2/itemstats.id</code>)</td>
         <td>Selected main-hand weapon itemstat ids.</td>
     </tr>
 </table>
@@ -239,12 +239,13 @@ This category contains the following local types:
         <td>
             Selected revenant legend ids.<br>
             [0] = first legend<br>
-            [1] = second legend
-        </td>
+            [1] = second legend<br>
+            Options: <em>Assassin</em>, <em>Demon</em>, <em>Dwarf</em>, <em>Centaur</em>, <em>Dragon</em>, <em>Renegade</em>
+       </td>
     </tr>
     <tr>
         <td><code>selectedRangerPetIds</code></td>
-        <td>array (string)</td>
+        <td>array (<code>/v2/pets.id</code>)</td>
         <td>
             Selected ranger pet ids.<br>
             [0] = first terrestrial pet<br>
@@ -286,7 +287,7 @@ This category contains the following local types:
     </tr>
     <tr>
         <td><code>availableSkillIds</code></td>
-        <td>array (integer)</td>
+        <td>array (<code>/v2/skills.id</code>)</td>
         <td>Available skill ids for the selected profession.</td>
     </tr>
     <tr>
@@ -296,7 +297,7 @@ This category contains the following local types:
     </tr>
     <tr>
         <td><code>selectedSkillIds</code></td>
-        <td>array (integer)</td>
+        <td>array (<code>/v2/skills.id</code>)</td>
         <td>
             Selected skill ids.<br>
             [0] = healing<br>
@@ -324,7 +325,7 @@ This category contains the following local types:
     </tr>
     <tr>
         <td><code>availableSpecializationIds</code>
-        <td>array (integer)</td>
+        <td>array (<code>/v2/specializations.id</code>)</td>
         <td>Available specialization ids for the selected profession.</td>
     </tr>
     <tr>
@@ -334,7 +335,7 @@ This category contains the following local types:
     </tr>
     <tr>
         <td><code>selectedSpecializationIds</code>
-        <td>array (integer)</td>
+        <td>array (<code>/v2/specializations.id</code>)</td>
         <td>
             Selected specialization ids.<br>
             [0] = first specialization<br>
@@ -377,7 +378,7 @@ This category contains the following local types:
     </tr>
     <tr>
         <td><code>availableTraitIds</code>
-        <td>array (integer)</td>
+        <td>array (<code>/v2/traits.id</code>)</td>
         <td>Available trait ids for the selected profession.</td>
     </tr>
     <tr>
@@ -387,12 +388,12 @@ This category contains the following local types:
     </tr>
     <tr>
         <td><code>selectedMinorTraitIds</code>
-        <td>traitArray (integer)</td>
+        <td>traitArray (<code>/v2/traits.id</code>)</td>
         <td>Selected <strong>minor</strong> trait ids.</td>
     </tr>
     <tr>
         <td><code>selectedMajorTraitIds</code>
-        <td>traitArray (integer)</td>
+        <td>traitArray (<code>/v2/traits.id</code>)</td>
         <td>Selected <strong>major</strong> trait ids.</td>
     </tr>
 </table>
