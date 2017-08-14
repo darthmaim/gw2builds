@@ -96,7 +96,7 @@ This version uses the following enums for serialization:
     <tr>
         <td><code>aquaticWeapon</code></td>
         <td>
-            1 = Harpoon gun<br>
+            1 = Speargun<br>
             2 = Spear<br>
             3 = Trident
         </td>
