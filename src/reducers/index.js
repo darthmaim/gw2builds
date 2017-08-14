@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
 import { selectedLanguage, selectedGameMode, selectedProfession, selectedRace } from './general';
-import { selectedGearItemstatIds, selectedGearIsAscended } from './gear';
+import { selectedArmorItemstatIds, selectedArmorIsAscended, selectedTrinketItemstatIds, selectedTrinketIsAscended, selectedMainhandWeaponItemstatIds, selectedMainhandWeaponIsAscended, selectedOffhandWeaponItemstatIds, selectedOffhandWeaponIsAscended } from './gear';
 import { availableSpecializationIds, availableSpecializationObjects, selectedSpecializationIds } from './specializations';
 import { availableTraitIds, availableTraitObjects, selectedMinorTraitIds, selectedMajorTraitIds } from './traits';
 import { availableWeaponObjects, activeWeaponSet, selectedMainhandWeaponIds, selectedOffhandWeaponIds, activeAttunements, availableAttunementObjects, availableSkillIds, selectedSkillIds, availableSkillObjects, availableProfessionSkillObjects } from './skills';
@@ -14,8 +14,14 @@ export default combineReducers({
     selectedRace,
 
     // Gear
-    selectedGearItemstatIds,
-    selectedGearIsAscended,
+    selectedArmorItemstatIds,
+    selectedArmorIsAscended,
+    selectedTrinketItemstatIds,
+    selectedTrinketIsAscended,
+    selectedMainhandWeaponItemstatIds,
+    selectedMainhandWeaponIsAscended,
+    selectedOffhandWeaponItemstatIds,
+    selectedOffhandWeaponIsAscended,
 
     // Specializations: specializations
     availableSpecializationIds,

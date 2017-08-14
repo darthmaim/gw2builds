@@ -13,8 +13,14 @@ const getSelectedRevenantLegendIds = state => state.selectedRevenantLegendIds;
 const getSelectedRangerPetIds = state => state.selectedRangerPetIds;
 const getSelectedElementalistAttunementId = state => state.selectedElementalistAttunementId;
 const getSelectedWeaverPreviousAttunementId = state => state.selectedWeaverPreviousAttunementId;
-const getSelectedGearItemstatIds = state => state.selectedGearItemstatIds;
-const getSelectedGearIsAscended = state => state.selectedGearIsAscended;
+const getSelectedArmorItemstatIds = state => state.selectedArmorItemstatIds;
+const getSelectedArmorIsAscended = state => state.selectedArmorIsAscended;
+const getSelectedTrinketItemstatIds = state => state.selectedTrinketItemstatIds;
+const getSelectedTrinketIsAscended = state => state.selectedTrinketIsAscended;
+const getSelectedMainhandWeaponItemstatIds = state => state.selectedMainhandWeaponItemstatIds;
+const getSelectedMainhandWeaponIsAscended = state => state.selectedMainhandWeaponIsAscended;
+const getSelectedOffhandWeaponItemstatIds = state => state.selectedOffhandWeaponItemstatIds;
+const getSelectedOffhandWeaponIsAscended = state => state.selectedOffhandWeaponIsAscended;
 
 export const getUrl = createSelector(
     [
@@ -30,8 +36,14 @@ export const getUrl = createSelector(
         getSelectedRangerPetIds,
         getSelectedElementalistAttunementId,
         getSelectedWeaverPreviousAttunementId,
-        getSelectedGearItemstatIds,
-        getSelectedGearIsAscended
+        getSelectedArmorItemstatIds,
+        getSelectedArmorIsAscended,
+        getSelectedTrinketItemstatIds,
+        getSelectedTrinketIsAscended,
+        getSelectedMainhandWeaponItemstatIds,
+        getSelectedMainhandWeaponIsAscended,
+        getSelectedOffhandWeaponItemstatIds,
+        getSelectedOffhandWeaponIsAscended
     ],
     (
         selectedGameMode,
@@ -46,8 +58,14 @@ export const getUrl = createSelector(
         selectedRangerPetIds,
         selectedElementalistAttunementId,
         selectedWeaverPreviousAttunementId,
-        selectedItemstatIds,
-        selectedGearIsAscended
+        selectedArmorItemstatIds,
+        selectedArmorIsAscended,
+        selectedTrinketItemstatIds,
+        selectedTrinketIsAscended,
+        selectedMainhandWeaponItemstatIds,
+        selectedMainhandWeaponIsAscended,
+        selectedOffhandWeaponItemstatIds,
+        selectedOffhandWeaponIsAscended
     ) => {
         return exportBuildToString({
             selectedGameMode,
@@ -62,8 +80,14 @@ export const getUrl = createSelector(
             selectedRangerPetIds,
             selectedElementalistAttunementId,
             selectedWeaverPreviousAttunementId,
-            selectedItemstatIds,
-            selectedGearIsAscended
+            selectedArmorItemstatIds,
+            selectedArmorIsAscended,
+            selectedTrinketItemstatIds,
+            selectedTrinketIsAscended,
+            selectedMainhandWeaponItemstatIds,
+            selectedMainhandWeaponIsAscended,
+            selectedOffhandWeaponItemstatIds,
+            selectedOffhandWeaponIsAscended
         });
     }
 );

@@ -63,6 +63,29 @@ Sometimes the type is represented as a GW2 API endpoint.
 </table>
 
 ## Gear
+### Armor
+This category contains the following local types:
+
+<table>
+    <tr>
+        <th>Name</th>
+        <th>Description</th>
+    </tr>
+    <tr>
+        <td>armorArray</td>
+        <td>
+            Array for armor with indexers.<br>
+            [0] = helm<br>
+            [1] = shoulders<br>
+            [2] = coat<br>
+            [3] = gloves<br>
+            [4] = leggings<br>
+            [5] = boots<br>
+            [6] = aquatic helm
+        </td>
+    </tr>
+</table>
+
 <table>
     <tr>
         <th>Property</th>
@@ -70,56 +93,136 @@ Sometimes the type is represented as a GW2 API endpoint.
         <th>Description</th>
     </tr>
     <tr>
-        <td><code>selectedGearItemstatIds</code></td>
-        <td>object (integer)</td>
+        <td><code>selectedArmorIsAscended</code></td>
+        <td>armorArray (bool)</td>
+        <td>Selected armor ascended flag.</td>
+    </tr>
+    <tr>
+        <td><code>selectedArmorItemstatIds</code></td>
+        <td>armorArray (integer)</td>
+        <td>Selected armor itemstat ids.</td>
+    </tr>
+</table>
+
+### Trinkets
+This category contains the following local types:
+
+<table>
+    <tr>
+        <th>Name</th>
+        <th>Description</th>
+    </tr>
+    <tr>
+        <td>trinketsArray</td>
         <td>
-            Selected itemstat ids.<br>
-            <code>.weaponA1</code> = main-hand weapon of first weapon set<br>
-            <code>.weaponA2</code> = off-hand weapon of first weapon set<br>
-            <code>.weaponB1</code> = main-hand weapon of second weapon set<br>
-            <code>.weaponB2</code> = off-hand weapon of second weapon set<br>
-            <code>.weaponAquaticA</code> = first aquatic weapon<br>
-            <code>.weaponAquaticB</code> = second aquatic weapon<br>
-            <code>.helm</code> = helm<br>
-            <code>.shoulders</code> = shoulders<br>
-            <code>.coat</code> = coat<br>
-            <code>.gloves</code> = gloves<br>
-            <code>.leggings</code> = leggings<br>
-            <code>.boots</code> = boots<br>
-            <code>.helmAquatic</code> = helmAquatic<br>
-            <code>.backpack</code> = backpack<br>
-            <code>.accessory1</code> = first accessory<br>
-            <code>.accessory2</code> = second accessory<br>
-            <code>.amulet</code> = amulet<br>
-            <code>.ring1</code> = first ring<br>
-            <code>.ring2</code> = second ring
+            Array for trinkets with indexers.<br>
+            [0] = backpack<br>
+            [1] = first accessory<br>
+            [2] = second accessory<br>
+            [3] = amulet<br>
+            [4] = first ring<br>
+            [5] = second ring
+        </td>
+    </tr>
+</table>
+
+<table>
+    <tr>
+        <th>Property</th>
+        <th>Type</th>
+        <th>Description</th>
+    </tr>
+    <tr>
+        <td><code>selectedTrinketsIsAscended</code></td>
+        <td>trinketsArray (bool)</td>
+        <td>Selected trinkets ascended flag.</td>
+    </tr>
+    <tr>
+        <td><code>selectedTrinketsItemstatIds</code></td>
+        <td>trinketsArray (integer)</td>
+        <td>Selected trinkets itemstat ids.</td>
+    </tr>
+</table>
+
+### Weapons
+This category contains the following local types:
+
+<table>
+    <tr>
+        <th>Name</th>
+        <th>Description</th>
+    </tr>
+    <tr>
+        <td>mainhandWeaponArray</td>
+        <td>
+            Array for main-hand weapons with weapon set indexers.<br>
+            [0] = first weapon set<br>
+            [1] = second weapon set<br>
+            [2] = first aquatic weapon set<br>
+            [3] = second aquatic weapon set
         </td>
     </tr>
     <tr>
-        <td><code>selectedGearIsAscended</code></td>
-        <td>object (bool)</td>
+        <td>offhandWeaponArray</td>
         <td>
-            If true, gear is ascended; if false, gear is exotic.<br>
-            <code>.weaponA1</code> = main-hand weapon of first weapon set<br>
-            <code>.weaponA2</code> = off-hand weapon of first weapon set<br>
-            <code>.weaponB1</code> = main-hand weapon of second weapon set<br>
-            <code>.weaponB2</code> = off-hand weapon of second weapon set<br>
-            <code>.weaponAquaticA</code> = first aquatic weapon<br>
-            <code>.weaponAquaticB</code> = second aquatic weapon<br>
-            <code>.helm</code> = helm<br>
-            <code>.shoulders</code> = shoulders<br>
-            <code>.coat</code> = coat<br>
-            <code>.gloves</code> = gloves<br>
-            <code>.leggings</code> = leggings<br>
-            <code>.boots</code> = boots<br>
-            <code>.helmAquatic</code> = helmAquatic<br>
-            <code>.backpack</code> = backpack<br>
-            <code>.accessory1</code> = first accessory<br>
-            <code>.accessory2</code> = second accessory<br>
-            <code>.amulet</code> = amulet<br>
-            <code>.ring1</code> = first ring<br>
-            <code>.ring2</code> = second ring
+            Array for off-hand weapons with weapon set indexers.<br>
+            [0] = first weapon set<br>
+            [1] = second weapon set
         </td>
+     </tr>
+</table>
+
+<table>
+    <tr>
+        <th>Property</th>
+        <th>Type</th>
+        <th>Description</th>
+    </tr>
+    <tr>
+        <td><code>activeWeaponSet</code>
+        <td>integer</td>
+        <td>
+            Active weapon set.<br>
+            0 = first weapon set<br>
+            1 = second weapon set<br>
+            2 = first aquatic weapon set<br>
+            3 = second aquatic weapon set
+        </td>
+    </tr>
+    <tr>
+        <td><code>availableWeaponObjects</code>
+        <td>object (<code>/v2/profession.weapons</code>, inherited)</td>
+        <td>Available weapon objects for the selected profession.</td>
+    </tr>
+    <tr>
+        <td><code>selectedMainhandWeaponIds</code>
+        <td>mainhandWeaponArray (string)</td>
+        <td>Selected main-hand weapon ids.</td>
+    </tr>
+    <tr>
+        <td><code>selectedMainhandWeaponIsAscended</code></td>
+        <td>mainhandWeaponArray (bool)</td>
+        <td>Selected main-hand weapon ascended flag.</td>
+    </tr>
+    <tr>
+        <td><code>selectedMainhandWeaponItemstatIds</code></td>
+        <td>mainhandWeaponArray (integer)</td>
+        <td>Selected main-hand weapon itemstat ids.</td>
+    </tr>
+    <tr>
+        <td><code>selectedOffhandWeaponIds</code>
+        <td>offhandWeaponArray (string)</td>
+        <td>Selected off-hand weapon ids.</td>
+    </tr>
+    <tr>
+        <td><code>selectedOffhandWeaponIsAscended</code></td>
+        <td>offhandWeaponArray (bool)</td>
+        <td>Selected off-hand weapon ascended flag.</td>
+    </tr>
+    <tr>
+        <td><code>selectedOffhandWeaponItemstatIds</code></td>
+        <td>offhandWeaponArray (integer)</td>
+        <td>Selected main-hand weapon itemstat ids.</td>
     </tr>
 </table>
 
@@ -205,53 +308,6 @@ Sometimes the type is represented as a GW2 API endpoint.
     </tr>
 </table>
 
-### Weapons
-<table>
-    <tr>
-        <th>Property</th>
-        <th>Type</th>
-        <th>Description</th>
-    </tr>
-    <tr>
-        <td><code>activeWeaponSet</code>
-        <td>integer</td>
-        <td>
-            Active weapon set.<br>
-            0 = first weapon set<br>
-            1 = second weapon set<br>
-            2 = first aquatic weapon set<br>
-            3 = second aquatic weapon set
-        </td>
-    </tr>
-    <tr>
-        <td><code>availableWeaponObjects</code>
-        <td>object (<code>/v2/profession.weapons</code>, inherited)</td>
-        <td>Available weapon objects for the selected profession.</td>
-    </tr>
-    <tr>
-        <td><code>selectedMainhandWeaponIds</code>
-        <td>array (string)</td>
-        <td>
-            Selected main-hand weapon ids.<br>
-            [0] = first weapon set<br>
-            [1] = second weapon set<br>
-            [2] = first aquatic weapon set<br>
-            [3] = second aquatic weapon set
-        </td>
-    </tr>
-    <tr>
-        <td><code>selectedOffhandWeaponIds</code>
-        <td>array (string)</td>
-        <td>
-            Selected off-hand weapon ids.<br>
-            [0] = first weapon set<br>
-            [1] = second weapon set<br>
-            [2] = first aquatic weapon set<br>
-            [3] = second aquatic weapon set
-        </td>
-    </tr>
-</table>
-
 ### Mechanic
 *TODO: Check how this can be adapted or integrated into the new mechanics store.* 
 - `activeAttunements` (array)  
@@ -289,6 +345,30 @@ Sometimes the type is represented as a GW2 API endpoint.
 </table>
 
 ## Traits
+This category contains the following local types:
+
+<table>
+    <tr>
+        <th>Name</th>
+        <th>Description</th>
+    </tr>
+    <tr>
+        <td>traitArray</td>
+        <td>
+            Array for traits with indexers.<br>
+            [0] = adept trait of first specialization<br>
+            [1] = master trait of first specialization<br>
+            [2] = grandmaster trait of first specialization<br>
+            [3] = adept trait of second specialization<br>
+            [4] = master trait of second specialization<br>
+            [5] = grandmaster trait of second specialization<br>
+            [6] = adept trait of third specialization<br>
+            [7] = master trait of third specialization<br>
+            [8] = grandmaster trait of third specialization
+        </td>
+    </tr>
+</table>
+
 <table>
     <tr>
         <th>Property</th>
@@ -307,34 +387,12 @@ Sometimes the type is represented as a GW2 API endpoint.
     </tr>
     <tr>
         <td><code>selectedMinorTraitIds</code>
-        <td>array (integer)</td>
-        <td>
-            Selected <strong>minor</strong> trait ids.<br>
-            [0] = adept trait of first specialization<br>
-            [1] = master trait of first specialization<br>
-            [2] = grandmaster trait of first specialization<br>
-            [3] = adept trait of second specialization<br>
-            [4] = master trait of second specialization<br>
-            [5] = grandmaster trait of second specialization<br>
-            [6] = adept trait of third specialization<br>
-            [7] = master trait of third specialization<br>
-            [8] = grandmaster trait of third specialization
-        </td>
+        <td>traitArray (integer)</td>
+        <td>Selected <strong>minor</strong> trait ids.</td>
     </tr>
     <tr>
         <td><code>selectedMajorTraitIds</code>
-        <td>array (integer)</td>
-        <td>
-            Selected <strong>major</strong> trait ids.<br>
-            [0] = adept trait of first specialization<br>
-            [1] = master trait of first specialization<br>
-            [2] = grandmaster trait of first specialization<br>
-            [3] = adept trait of second specialization<br>
-            [4] = master trait of second specialization<br>
-            [5] = grandmaster trait of second specialization<br>
-            [6] = adept trait of third specialization<br>
-            [7] = master trait of third specialization<br>
-            [8] = grandmaster trait of third specialization
-        </td>
+        <td>traitArray (integer)</td>
+        <td>Selected <strong>major</strong> trait ids.</td>
     </tr>
 </table>
