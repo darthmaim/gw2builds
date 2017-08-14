@@ -1,8 +1,13 @@
 import { serialize, deserialize } from 'gw2be-build-string';
 import { setSelectedGameMode, setSelectedProfession, setSelectedRace } from '../actions/general';
-import { setSelectedArmorItemstatId, setSelectedArmorIsAscended, setSelectedTrinketItemstatId, setSelectedTrinketIsAscended, setSelectedMainhandWeaponItemstatId, setSelectedMainhandWeaponIsAscended, setSelectedOffhandWeaponItemstatId, setSelectedOffhandWeaponIsAscended } from '../actions/gear';
+import {
+    setSelectedArmorItemstatId, setSelectedArmorIsAscended,
+    setSelectedTrinketItemstatId, setSelectedTrinketIsAscended,
+    setSelectedMainhandWeaponId, setSelectedMainhandWeaponItemstatId, setSelectedMainhandWeaponIsAscended,
+    setSelectedOffhandWeaponId, setSelectedOffhandWeaponItemstatId, setSelectedOffhandWeaponIsAscended
+} from '../actions/gear';
 import { setSelectedElementalistAttunementId, setSelectedWeaverPreviousAttunementId, setSelectedRangerPetId, setSelectedRevenantLegendId } from '../actions/mechanics';
-import { setSelectedMainhandWeaponId, setSelectedOffhandWeaponId, setSelectedSkillId } from '../actions/skills';
+import { setSelectedSkillId } from '../actions/skills';
 import { setSelectedSpecializationId } from '../actions/specializations';
 import { setSelectedMajorTraitId } from '../actions/traits';
 

@@ -1,9 +1,16 @@
 import { combineReducers } from 'redux';
 import { selectedLanguage, selectedGameMode, selectedProfession, selectedRace } from './general';
-import { selectedArmorItemstatIds, selectedArmorIsAscended, selectedTrinketItemstatIds, selectedTrinketIsAscended, selectedMainhandWeaponItemstatIds, selectedMainhandWeaponIsAscended, selectedOffhandWeaponItemstatIds, selectedOffhandWeaponIsAscended } from './gear';
+import {
+    activeWeaponSet,
+    availableWeaponObjects,
+    selectedArmorItemstatIds, selectedArmorIsAscended,
+    selectedTrinketItemstatIds, selectedTrinketIsAscended,
+    selectedMainhandWeaponIds, selectedMainhandWeaponItemstatIds, selectedMainhandWeaponIsAscended,
+    selectedOffhandWeaponIds, selectedOffhandWeaponItemstatIds, selectedOffhandWeaponIsAscended
+} from './gear';
 import { availableSpecializationIds, availableSpecializationObjects, selectedSpecializationIds } from './specializations';
 import { availableTraitIds, availableTraitObjects, selectedMinorTraitIds, selectedMajorTraitIds } from './traits';
-import { availableWeaponObjects, activeWeaponSet, selectedMainhandWeaponIds, selectedOffhandWeaponIds, activeAttunements, availableAttunementObjects, availableSkillIds, selectedSkillIds, availableSkillObjects, availableProfessionSkillObjects } from './skills';
+import { activeAttunements, availableAttunementObjects, availableSkillIds, selectedSkillIds, availableSkillObjects, availableProfessionSkillObjects } from './skills';
 import { selectedElementalistAttunementId, selectedWeaverPreviousAttunementId, selectedRangerPetIds, selectedRevenantLegendIds } from './mechanics';
 
 export default combineReducers({
@@ -18,6 +25,12 @@ export default combineReducers({
     selectedArmorIsAscended,
     selectedTrinketItemstatIds,
     selectedTrinketIsAscended,
+
+    // Gear: weapons
+    activeWeaponSet,
+    availableWeaponObjects,
+    selectedMainhandWeaponIds,
+    selectedOffhandWeaponIds,
     selectedMainhandWeaponItemstatIds,
     selectedMainhandWeaponIsAscended,
     selectedOffhandWeaponItemstatIds,
@@ -39,12 +52,6 @@ export default combineReducers({
     availableSkillObjects,
     availableProfessionSkillObjects,
     selectedSkillIds,
-
-    // Weapons
-    activeWeaponSet,
-    availableWeaponObjects,
-    selectedMainhandWeaponIds,
-    selectedOffhandWeaponIds,
 
     // Mechanics
     selectedElementalistAttunementId,
