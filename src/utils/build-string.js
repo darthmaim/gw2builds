@@ -1,15 +1,5 @@
 import { serialize, deserialize } from 'gw2be-build-string';
-import { setSelectedGameMode, setSelectedProfession, setSelectedRace } from '../actions/general';
-import {
-    setSelectedArmorItemstatId, setSelectedArmorIsAscended,
-    setSelectedTrinketItemstatId, setSelectedTrinketIsAscended,
-    setSelectedMainhandWeaponId, setSelectedMainhandWeaponItemstatId, setSelectedMainhandWeaponIsAscended,
-    setSelectedOffhandWeaponId, setSelectedOffhandWeaponItemstatId, setSelectedOffhandWeaponIsAscended
-} from '../actions/gear';
-import { setSelectedElementalistAttunementId, setSelectedWeaverPreviousAttunementId, setSelectedRangerPetId, setSelectedRevenantLegendId } from '../actions/mechanics';
-import { setSelectedSkillId } from '../actions/skills';
-import { setSelectedSpecializationId } from '../actions/specializations';
-import { setSelectedMajorTraitId } from '../actions/traits';
+import * as actions from '../actions';
 
 /**
  * Initializes a build.
@@ -38,108 +28,108 @@ export function initializeBuildFromString(store, buildString) {
 
     return Promise.all([
         // General
-        disp('gameMode', build.general, setSelectedGameMode),
-        disp('profession', build.general, setSelectedProfession),
-        disp('race', build.general, setSelectedRace)
+        disp('gameMode', build.general, actions.setSelectedGameMode),
+        disp('profession', build.general, actions.setSelectedProfession),
+        disp('race', build.general, actions.setSelectedRace)
     ]).then(() => {
         const specializations = store.getState().availableSpecializationObjects;
         return Promise.all([
             // Specializations
-            disp('specialization', build.specialization1, setSelectedSpecializationId, id => ({ specializationLine: 0, specializationId: id, specializations })),
-            disp('specialization', build.specialization2, setSelectedSpecializationId, id => ({ specializationLine: 1, specializationId: id, specializations })),
-            disp('specialization', build.specialization3, setSelectedSpecializationId, id => ({ specializationLine: 2, specializationId: id, specializations }))
+            disp('specialization', build.specialization1, actions.setSelectedSpecializationId, id => ({ specializationLine: 0, specializationId: id, specializations })),
+            disp('specialization', build.specialization2, actions.setSelectedSpecializationId, id => ({ specializationLine: 1, specializationId: id, specializations })),
+            disp('specialization', build.specialization3, actions.setSelectedSpecializationId, id => ({ specializationLine: 2, specializationId: id, specializations }))
         ]);
     }).then(() => {
         if (build.gearStats) {
             return Promise.all([
                 // Weapon stats
-                disp('weaponA1', build.gearStats, setSelectedMainhandWeaponItemstatId, id => ({ slotId: 0, itemstatId: id })),
-                disp('weaponA2', build.gearStats, setSelectedOffhandWeaponItemstatId, id => ({ slotId: 0, itemstatId: id })),
-                disp('weaponB1', build.gearStats, setSelectedMainhandWeaponItemstatId, id => ({ slotId: 1, itemstatId: id })),
-                disp('weaponB2', build.gearStats, setSelectedOffhandWeaponItemstatId, id => ({ slotId: 1, itemstatId: id })),
-                disp('weaponAquaticA', build.gearStats, setSelectedMainhandWeaponItemstatId, id => ({ slotId: 2, itemstatId: id })),
-                disp('weaponAquaticB', build.gearStats, setSelectedMainhandWeaponItemstatId, id => ({ slotId: 3, itemstatId: id })),
-                disp('weaponA1', build.gearStats.ascendedFlags, setSelectedMainhandWeaponIsAscended, flag => ({ slotId: 0, isAscended: flag })),
-                disp('weaponA2', build.gearStats.ascendedFlags, setSelectedOffhandWeaponIsAscended, flag => ({ slotId: 0, isAscended: flag })),
-                disp('weaponB1', build.gearStats.ascendedFlags, setSelectedMainhandWeaponIsAscended, flag => ({ slotId: 1, isAscended: flag })),
-                disp('weaponB2', build.gearStats.ascendedFlags, setSelectedOffhandWeaponIsAscended, flag => ({ slotId: 1, isAscended: flag })),
-                disp('weaponAquaticA', build.gearStats.ascendedFlags, setSelectedMainhandWeaponIsAscended, flag => ({ slotId: 2, isAscended: flag })),
-                disp('weaponAquaticB', build.gearStats.ascendedFlags, setSelectedMainhandWeaponIsAscended, flag => ({ slotId: 3, isAscended: flag })),
+                disp('weaponA1', build.gearStats, actions.setSelectedMainhandWeaponItemstatId, id => ({ slotId: 0, itemstatId: id })),
+                disp('weaponA2', build.gearStats, actions.setSelectedOffhandWeaponItemstatId, id => ({ slotId: 0, itemstatId: id })),
+                disp('weaponB1', build.gearStats, actions.setSelectedMainhandWeaponItemstatId, id => ({ slotId: 1, itemstatId: id })),
+                disp('weaponB2', build.gearStats, actions.setSelectedOffhandWeaponItemstatId, id => ({ slotId: 1, itemstatId: id })),
+                disp('weaponAquaticA', build.gearStats, actions.setSelectedMainhandWeaponItemstatId, id => ({ slotId: 2, itemstatId: id })),
+                disp('weaponAquaticB', build.gearStats, actions.setSelectedMainhandWeaponItemstatId, id => ({ slotId: 3, itemstatId: id })),
+                disp('weaponA1', build.gearStats.ascendedFlags, actions.setSelectedMainhandWeaponIsAscended, flag => ({ slotId: 0, isAscended: flag })),
+                disp('weaponA2', build.gearStats.ascendedFlags, actions.setSelectedOffhandWeaponIsAscended, flag => ({ slotId: 0, isAscended: flag })),
+                disp('weaponB1', build.gearStats.ascendedFlags, actions.setSelectedMainhandWeaponIsAscended, flag => ({ slotId: 1, isAscended: flag })),
+                disp('weaponB2', build.gearStats.ascendedFlags, actions.setSelectedOffhandWeaponIsAscended, flag => ({ slotId: 1, isAscended: flag })),
+                disp('weaponAquaticA', build.gearStats.ascendedFlags, actions.setSelectedMainhandWeaponIsAscended, flag => ({ slotId: 2, isAscended: flag })),
+                disp('weaponAquaticB', build.gearStats.ascendedFlags, actions.setSelectedMainhandWeaponIsAscended, flag => ({ slotId: 3, isAscended: flag })),
 
                 // Armor stats
-                disp('helm', build.gearStats, setSelectedArmorItemstatId, id => ({ slotId: 0, itemstatId: id })),
-                disp('shoulders', build.gearStats, setSelectedArmorItemstatId, id => ({ slotId: 1, itemstatId: id })),
-                disp('coat', build.gearStats, setSelectedArmorItemstatId, id => ({ slotId: 2, itemstatId: id })),
-                disp('gloves', build.gearStats, setSelectedArmorItemstatId, id => ({ slotId: 3, itemstatId: id })),
-                disp('leggings', build.gearStats, setSelectedArmorItemstatId, id => ({ slotId: 4, itemstatId: id })),
-                disp('boots', build.gearStats, setSelectedArmorItemstatId, id => ({ slotId: 5, itemstatId: id })),
-                disp('helmAquatic', build.gearStats, setSelectedArmorItemstatId, id => ({ slotId: 6, itemstatId: id })),
-                disp('helm', build.gearStats.ascendedFlags, setSelectedArmorIsAscended, flag => ({ slotId: 0, isAscended: flag })),
-                disp('shoulders', build.gearStats.ascendedFlags, setSelectedArmorIsAscended, flag => ({ slotId: 1, isAscended: flag })),
-                disp('coat', build.gearStats.ascendedFlags, setSelectedArmorIsAscended, flag => ({ slotId: 2, isAscended: flag })),
-                disp('gloves', build.gearStats.ascendedFlags, setSelectedArmorIsAscended, flag => ({ slotId: 3, isAscended: flag })),
-                disp('leggings', build.gearStats.ascendedFlags, setSelectedArmorIsAscended, flag => ({ slotId: 4, isAscended: flag })),
-                disp('boots', build.gearStats.ascendedFlags, setSelectedArmorIsAscended, flag => ({ slotId: 5, isAscended: flag })),
-                disp('helmAquatic', build.gearStats.ascendedFlags, setSelectedArmorIsAscended, flag => ({ slotId: 6, isAscended: flag })),
+                disp('helm', build.gearStats, actions.setSelectedArmorItemstatId, id => ({ slotId: 0, itemstatId: id })),
+                disp('shoulders', build.gearStats, actions.setSelectedArmorItemstatId, id => ({ slotId: 1, itemstatId: id })),
+                disp('coat', build.gearStats, actions.setSelectedArmorItemstatId, id => ({ slotId: 2, itemstatId: id })),
+                disp('gloves', build.gearStats, actions.setSelectedArmorItemstatId, id => ({ slotId: 3, itemstatId: id })),
+                disp('leggings', build.gearStats, actions.setSelectedArmorItemstatId, id => ({ slotId: 4, itemstatId: id })),
+                disp('boots', build.gearStats, actions.setSelectedArmorItemstatId, id => ({ slotId: 5, itemstatId: id })),
+                disp('helmAquatic', build.gearStats, actions.setSelectedArmorItemstatId, id => ({ slotId: 6, itemstatId: id })),
+                disp('helm', build.gearStats.ascendedFlags, actions.setSelectedArmorIsAscended, flag => ({ slotId: 0, isAscended: flag })),
+                disp('shoulders', build.gearStats.ascendedFlags, actions.setSelectedArmorIsAscended, flag => ({ slotId: 1, isAscended: flag })),
+                disp('coat', build.gearStats.ascendedFlags, actions.setSelectedArmorIsAscended, flag => ({ slotId: 2, isAscended: flag })),
+                disp('gloves', build.gearStats.ascendedFlags, actions.setSelectedArmorIsAscended, flag => ({ slotId: 3, isAscended: flag })),
+                disp('leggings', build.gearStats.ascendedFlags, actions.setSelectedArmorIsAscended, flag => ({ slotId: 4, isAscended: flag })),
+                disp('boots', build.gearStats.ascendedFlags, actions.setSelectedArmorIsAscended, flag => ({ slotId: 5, isAscended: flag })),
+                disp('helmAquatic', build.gearStats.ascendedFlags, actions.setSelectedArmorIsAscended, flag => ({ slotId: 6, isAscended: flag })),
 
                 // Trinket stats
-                disp('backpack', build.gearStats, setSelectedTrinketItemstatId, id => ({ slotId: 0, itemstatId: id })),
-                disp('accessory1', build.gearStats, setSelectedTrinketItemstatId, id => ({ slotId: 1, itemstatId: id })),
-                disp('accessory2', build.gearStats, setSelectedTrinketItemstatId, id => ({ slotId: 2, itemstatId: id })),
-                disp('amulet', build.gearStats, setSelectedTrinketItemstatId, id => ({ slotId: 3, itemstatId: id })),
-                disp('ring1', build.gearStats, setSelectedTrinketItemstatId, id => ({ slotId: 4, itemstatId: id })),
-                disp('ring2', build.gearStats, setSelectedTrinketItemstatId, id => ({ slotId: 5, itemstatId: id })),
-                disp('backpack', build.gearStats.ascendedFlags, setSelectedTrinketIsAscended, flag => ({ slotId: 0, isAscended: flag })),
-                disp('accessory1', build.gearStats.ascendedFlags, setSelectedTrinketIsAscended, flag => ({ slotId: 1, isAscended: flag })),
-                disp('accessory2', build.gearStats.ascendedFlags, setSelectedTrinketIsAscended, flag => ({ slotId: 2, isAscended: flag })),
-                disp('amulet', build.gearStats.ascendedFlags, setSelectedTrinketIsAscended, flag => ({ slotId: 3, isAscended: flag })),
-                disp('ring1', build.gearStats.ascendedFlags, setSelectedTrinketIsAscended, flag => ({ slotId: 4, isAscended: flag })),
-                disp('ring2', build.gearStats.ascendedFlags, setSelectedTrinketIsAscended, flag => ({ slotId: 5, isAscended: flag }))
+                disp('backpack', build.gearStats, actions.setSelectedTrinketItemstatId, id => ({ slotId: 0, itemstatId: id })),
+                disp('accessory1', build.gearStats, actions.setSelectedTrinketItemstatId, id => ({ slotId: 1, itemstatId: id })),
+                disp('accessory2', build.gearStats, actions.setSelectedTrinketItemstatId, id => ({ slotId: 2, itemstatId: id })),
+                disp('amulet', build.gearStats, actions.setSelectedTrinketItemstatId, id => ({ slotId: 3, itemstatId: id })),
+                disp('ring1', build.gearStats, actions.setSelectedTrinketItemstatId, id => ({ slotId: 4, itemstatId: id })),
+                disp('ring2', build.gearStats, actions.setSelectedTrinketItemstatId, id => ({ slotId: 5, itemstatId: id })),
+                disp('backpack', build.gearStats.ascendedFlags, actions.setSelectedTrinketIsAscended, flag => ({ slotId: 0, isAscended: flag })),
+                disp('accessory1', build.gearStats.ascendedFlags, actions.setSelectedTrinketIsAscended, flag => ({ slotId: 1, isAscended: flag })),
+                disp('accessory2', build.gearStats.ascendedFlags, actions.setSelectedTrinketIsAscended, flag => ({ slotId: 2, isAscended: flag })),
+                disp('amulet', build.gearStats.ascendedFlags, actions.setSelectedTrinketIsAscended, flag => ({ slotId: 3, isAscended: flag })),
+                disp('ring1', build.gearStats.ascendedFlags, actions.setSelectedTrinketIsAscended, flag => ({ slotId: 4, isAscended: flag })),
+                disp('ring2', build.gearStats.ascendedFlags, actions.setSelectedTrinketIsAscended, flag => ({ slotId: 5, isAscended: flag }))
             ]);
         }
     }).then(() => {
         return Promise.all([
             // Traits
-            disp('majorTrait1', build.specialization1, setSelectedMajorTraitId, id => ({ specializationLine: 0, traitTier: 1, traitId: id })),
-            disp('majorTrait2', build.specialization1, setSelectedMajorTraitId, id => ({ specializationLine: 0, traitTier: 2, traitId: id })),
-            disp('majorTrait3', build.specialization1, setSelectedMajorTraitId, id => ({ specializationLine: 0, traitTier: 3, traitId: id })),
-            disp('majorTrait1', build.specialization2, setSelectedMajorTraitId, id => ({ specializationLine: 1, traitTier: 1, traitId: id })),
-            disp('majorTrait2', build.specialization2, setSelectedMajorTraitId, id => ({ specializationLine: 1, traitTier: 2, traitId: id })),
-            disp('majorTrait3', build.specialization2, setSelectedMajorTraitId, id => ({ specializationLine: 1, traitTier: 3, traitId: id })),
-            disp('majorTrait1', build.specialization3, setSelectedMajorTraitId, id => ({ specializationLine: 2, traitTier: 1, traitId: id })),
-            disp('majorTrait2', build.specialization3, setSelectedMajorTraitId, id => ({ specializationLine: 2, traitTier: 2, traitId: id })),
-            disp('majorTrait3', build.specialization3, setSelectedMajorTraitId, id => ({ specializationLine: 2, traitTier: 3, traitId: id }))
+            disp('majorTrait1', build.specialization1, actions.setSelectedMajorTraitId, id => ({ specializationLine: 0, traitTier: 1, traitId: id })),
+            disp('majorTrait2', build.specialization1, actions.setSelectedMajorTraitId, id => ({ specializationLine: 0, traitTier: 2, traitId: id })),
+            disp('majorTrait3', build.specialization1, actions.setSelectedMajorTraitId, id => ({ specializationLine: 0, traitTier: 3, traitId: id })),
+            disp('majorTrait1', build.specialization2, actions.setSelectedMajorTraitId, id => ({ specializationLine: 1, traitTier: 1, traitId: id })),
+            disp('majorTrait2', build.specialization2, actions.setSelectedMajorTraitId, id => ({ specializationLine: 1, traitTier: 2, traitId: id })),
+            disp('majorTrait3', build.specialization2, actions.setSelectedMajorTraitId, id => ({ specializationLine: 1, traitTier: 3, traitId: id })),
+            disp('majorTrait1', build.specialization3, actions.setSelectedMajorTraitId, id => ({ specializationLine: 2, traitTier: 1, traitId: id })),
+            disp('majorTrait2', build.specialization3, actions.setSelectedMajorTraitId, id => ({ specializationLine: 2, traitTier: 2, traitId: id })),
+            disp('majorTrait3', build.specialization3, actions.setSelectedMajorTraitId, id => ({ specializationLine: 2, traitTier: 3, traitId: id }))
         ]);
     }).then(() => {
         return Promise.all([
             // Profession-specific data
-            disp('legendA', build.professionRevenant, setSelectedRevenantLegendId, id => ({ slotId: 0, legendId: id })),
-            disp('legendB', build.professionRevenant, setSelectedRevenantLegendId, id => ({ slotId: 1, legendId: id })),
-            disp('petA', build.professionRanger, setSelectedRangerPetId, id => ({ slotId: 0, petId: id })),
-            disp('petB', build.professionRanger, setSelectedRangerPetId, id => ({ slotId: 1, petId: id })),
-            disp('petAquaticA', build.professionRanger, setSelectedRangerPetId, id => ({ slotId: 2, petId: id })),
-            disp('petAquaticB', build.professionRanger, setSelectedRangerPetId, id => ({ slotId: 3, petId: id })),
-            disp('attunement', build.professionElementalist, setSelectedElementalistAttunementId),
-            disp('prevAttunementWeaver', build.professionElementalist, setSelectedWeaverPreviousAttunementId)
+            disp('legendA', build.professionRevenant, actions.setSelectedRevenantLegendId, id => ({ slotId: 0, legendId: id })),
+            disp('legendB', build.professionRevenant, actions.setSelectedRevenantLegendId, id => ({ slotId: 1, legendId: id })),
+            disp('petA', build.professionRanger, actions.setSelectedRangerPetId, id => ({ slotId: 0, petId: id })),
+            disp('petB', build.professionRanger, actions.setSelectedRangerPetId, id => ({ slotId: 1, petId: id })),
+            disp('petAquaticA', build.professionRanger, actions.setSelectedRangerPetId, id => ({ slotId: 2, petId: id })),
+            disp('petAquaticB', build.professionRanger, actions.setSelectedRangerPetId, id => ({ slotId: 3, petId: id })),
+            disp('attunement', build.professionElementalist, actions.setSelectedElementalistAttunementId),
+            disp('prevAttunementWeaver', build.professionElementalist, actions.setSelectedWeaverPreviousAttunementId)
         ]);
     }).then(() => {
         return Promise.all([
             // Weapon types
-            disp('weaponA1', build.weapons, setSelectedMainhandWeaponId, id => ({ weaponSet: 0, weaponId: id }) ),
-            disp('weaponA2', build.weapons, setSelectedOffhandWeaponId, id => ({ weaponSet: 0, weaponId: id }) ),
-            disp('weaponB1', build.weapons, setSelectedMainhandWeaponId, id => ({ weaponSet: 1, weaponId: id }) ),
-            disp('weaponB2', build.weapons, setSelectedOffhandWeaponId, id => ({ weaponSet: 1, weaponId: id }) ),
-            disp('aquaticA', build.weapons, setSelectedMainhandWeaponId, id => ({ weaponSet: 2, weaponId: id }) ),
-            disp('aquaticB', build.weapons, setSelectedMainhandWeaponId, id => ({ weaponSet: 3, weaponId: id }) )
+            disp('weaponA1', build.weapons, actions.setSelectedMainhandWeaponId, id => ({ weaponSet: 0, weaponId: id }) ),
+            disp('weaponA2', build.weapons, actions.setSelectedOffhandWeaponId, id => ({ weaponSet: 0, weaponId: id }) ),
+            disp('weaponB1', build.weapons, actions.setSelectedMainhandWeaponId, id => ({ weaponSet: 1, weaponId: id }) ),
+            disp('weaponB2', build.weapons, actions.setSelectedOffhandWeaponId, id => ({ weaponSet: 1, weaponId: id }) ),
+            disp('aquaticA', build.weapons, actions.setSelectedMainhandWeaponId, id => ({ weaponSet: 2, weaponId: id }) ),
+            disp('aquaticB', build.weapons, actions.setSelectedMainhandWeaponId, id => ({ weaponSet: 3, weaponId: id }) )
         ]);
     }).then(() => {
         return Promise.all([
             // Skills
-            disp('healing', build.skills, setSelectedSkillId, id => ({ slotId: 0, skillId: id })),
-            disp('utility1', build.skills, setSelectedSkillId, id => ({ slotId: 1, skillId: id })),
-            disp('utility2', build.skills, setSelectedSkillId, id => ({ slotId: 2, skillId: id })),
-            disp('utility3', build.skills, setSelectedSkillId, id => ({ slotId: 3, skillId: id })),
-            disp('elite', build.skills, setSelectedSkillId, id => ({ slotId: 4, skillId: id }))
+            disp('healing', build.skills, actions.setSelectedSkillId, id => ({ slotId: 0, skillId: id })),
+            disp('utility1', build.skills, actions.setSelectedSkillId, id => ({ slotId: 1, skillId: id })),
+            disp('utility2', build.skills, actions.setSelectedSkillId, id => ({ slotId: 2, skillId: id })),
+            disp('utility3', build.skills, actions.setSelectedSkillId, id => ({ slotId: 3, skillId: id })),
+            disp('elite', build.skills, actions.setSelectedSkillId, id => ({ slotId: 4, skillId: id }))
         ]);
     }).then(() => build);
 }
