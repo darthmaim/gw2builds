@@ -107,6 +107,11 @@ This category contains the following local types:
         <td>armorArray (<code>/v2/items.id</code>)</td>
         <td>Selected armor upgrade ids.</td>
     </tr>
+    <tr>
+        <td><code>selectedArmorInfusionIds</code></td>
+        <td>armorArray (<code>/v2/items.id</code>)</td>
+        <td>Selected armor infusion ids.</td>
+    </tr>
 </table>
 
 ### Trinkets
@@ -151,6 +156,23 @@ This category contains the following local types:
         <td><code>selectedTrinketUpgradeIds</code></td>
         <td>trinketsArray (<code>/v2/items.id</code>)</td>
         <td>Selected trinket upgrade ids.</td>
+    </tr>
+    <tr>
+        <td><code>selectedTrinketInfusionIds</code></td>
+        <td>array (<code>/v2/items.id</code>)</td>
+        <td>
+            Selected trinket infusion ids.<br>
+            [0] = backpack<br>
+            [1] = first accessory<br>
+            [2] = second accessory<br>
+            [4] = first ring<br>
+            [5] = second ring<br>
+            [6] = backpack (2)<br>
+            [7] = first ring (2)<br>
+            [8] = first ring (3)<br>
+            [9] = second ring (2)<br>
+            [10] = second ring (3)
+        </td>
     </tr>
 </table>
 
@@ -225,6 +247,11 @@ This category contains the following local types:
         <td>Selected main-hand weapon upgrade ids.</td>
     </tr>
     <tr>
+        <td><code>selectedMainhandWeaponInfusionIds</code></td>
+        <td>mainhandWeaponArray (<code>/v2/items.id</code>)</td>
+        <td>Selected main-hand weapon infusion ids.</td>
+    </tr>
+    <tr>
         <td><code>selectedOffhandWeaponIds</code>
         <td>offhandWeaponArray (string)</td>
         <td>Selected off-hand weapon ids.</td>
@@ -243,6 +270,11 @@ This category contains the following local types:
         <td><code>selectedOffhandWeaponUpgradeIds</code></td>
         <td>offhandWeaponArray (<code>/v2/items.id</code>)</td>
         <td>Selected off-hand weapon upgrade ids.</td>
+    </tr>
+    <tr>
+        <td><code>selectedOffhandWeaponInfusionIds</code></td>
+        <td>offhandWeaponArray (<code>/v2/items.id</code>)</td>
+        <td>Selected off-hand weapon infusion ids.</td>
     </tr>
 </table>
 

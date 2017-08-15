@@ -16,15 +16,19 @@ const getSelectedWeaverPreviousAttunementId = state => state.selectedWeaverPrevi
 const getSelectedArmorItemstatIds = state => state.selectedArmorItemstatIds;
 const getSelectedArmorIsAscended = state => state.selectedArmorIsAscended;
 const getSelectedArmorUpgradeIds = state => state.selectedArmorUpgradeIds;
+const getSelectedArmorInfusionIds = state => state.selectedArmorInfusionIds;
 const getSelectedTrinketItemstatIds = state => state.selectedTrinketItemstatIds;
 const getSelectedTrinketIsAscended = state => state.selectedTrinketIsAscended;
 const getSelectedTrinketUpgradeIds = state => state.selectedTrinketUpgradeIds;
+const getSelectedTrinketInfusionIds = state => state.selectedTrinketInfusionIds;
 const getSelectedMainhandWeaponItemstatIds = state => state.selectedMainhandWeaponItemstatIds;
 const getSelectedMainhandWeaponIsAscended = state => state.selectedMainhandWeaponIsAscended;
 const getSelectedMainhandWeaponUpgradeIds = state => state.selectedMainhandWeaponUpgradeIds;
+const getSelectedMainhandWeaponInfusionIds = state => state.selectedMainhandWeaponInfusionIds;
 const getSelectedOffhandWeaponItemstatIds = state => state.selectedOffhandWeaponItemstatIds;
 const getSelectedOffhandWeaponIsAscended = state => state.selectedOffhandWeaponIsAscended;
 const getSelectedOffhandWeaponUpgradeIds = state => state.selectedOffhandWeaponUpgradeIds;
+const getSelectedOffhandWeaponInfusionIds = state => state.selectedOffhandWeaponInfusionIds;
 
 export const getUrl = createSelector(
     [
@@ -43,15 +47,19 @@ export const getUrl = createSelector(
         getSelectedArmorItemstatIds,
         getSelectedArmorIsAscended,
         getSelectedArmorUpgradeIds,
+        getSelectedArmorInfusionIds,
         getSelectedTrinketItemstatIds,
         getSelectedTrinketIsAscended,
         getSelectedTrinketUpgradeIds,
+        getSelectedTrinketInfusionIds,
         getSelectedMainhandWeaponItemstatIds,
         getSelectedMainhandWeaponIsAscended,
         getSelectedMainhandWeaponUpgradeIds,
+        getSelectedMainhandWeaponInfusionIds,
         getSelectedOffhandWeaponItemstatIds,
         getSelectedOffhandWeaponIsAscended,
-        getSelectedOffhandWeaponUpgradeIds
+        getSelectedOffhandWeaponUpgradeIds,
+        getSelectedOffhandWeaponInfusionIds
     ],
     (
         selectedGameMode,
@@ -69,15 +77,19 @@ export const getUrl = createSelector(
         selectedArmorItemstatIds,
         selectedArmorIsAscended,
         selectedArmorUpgradeIds,
+        selectedArmorInfusionIds,
         selectedTrinketItemstatIds,
         selectedTrinketIsAscended,
         selectedTrinketUpgradeIds,
+        selectedTrinketInfusionIds,
         selectedMainhandWeaponItemstatIds,
         selectedMainhandWeaponIsAscended,
         selectedMainhandWeaponUpgradeIds,
+        selectedMainhandWeaponInfusionIds,
         selectedOffhandWeaponItemstatIds,
         selectedOffhandWeaponIsAscended,
-        selectedOffhandWeaponUpgradeIds
+        selectedOffhandWeaponUpgradeIds,
+        selectedOffhandWeaponInfusionIds
     ) => {
         return exportBuildToString({
             selectedGameMode,
@@ -95,15 +107,19 @@ export const getUrl = createSelector(
             selectedArmorItemstatIds,
             selectedArmorIsAscended,
             selectedArmorUpgradeIds,
+            selectedArmorInfusionIds,
             selectedTrinketItemstatIds,
             selectedTrinketIsAscended,
             selectedTrinketUpgradeIds,
+            selectedTrinketInfusionIds,
             selectedMainhandWeaponItemstatIds,
             selectedMainhandWeaponIsAscended,
             selectedMainhandWeaponUpgradeIds,
+            selectedMainhandWeaponInfusionIds,
             selectedOffhandWeaponItemstatIds,
             selectedOffhandWeaponIsAscended,
-            selectedOffhandWeaponUpgradeIds
+            selectedOffhandWeaponUpgradeIds,
+            selectedOffhandWeaponInfusionIds
         });
     }
 );

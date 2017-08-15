@@ -127,6 +127,58 @@ export const selectedOffhandWeaponUpgradeIds = handleActions({
     }
 }, []);
 
+/** Reducer for the selected main-hand weapon infusion item ids. */
+export const selectedMainhandWeaponInfusionIds = handleActions({
+    // Set a main-hand weapon infusion item
+    [actions.SET_SELECTED_MAINHAND_WEAPON_INFUSION_ID]: (state, action) => {
+        const newState = state.slice();
+        newState[action.payload.slotId] = action.payload.itemId;
+        return newState;
+    },
+
+    // Reset a main-hand weapon infusion item
+    [actions.WIPE_SELECTED_MAINHAND_WEAPON_INFUSION_ID]: (state, action) => {
+        const newState = state.slice();
+        newState[action.payload.slotId] = undefined;
+        return newState;
+    },
+    [actions.SET_SELECTED_MAINHAND_WEAPON_ISASCENDED]: (state, action) => {
+        if (!action.payload.isAscended) {
+            // Non-ascended weapons don't allow infusions
+            const newState = state.slice();
+            newState[action.payload.slotId] = undefined;
+            return newState;
+        }
+        return state;
+    }
+}, []);
+
+/** Reducer for the selected off-hand weapon infusion item ids. */
+export const selectedOffhandWeaponInfusionIds = handleActions({
+    // Set a off-hand weapon infusion item
+    [actions.SET_SELECTED_OFFHAND_WEAPON_INFUSION_ID]: (state, action) => {
+        const newState = state.slice();
+        newState[action.payload.slotId] = action.payload.itemId;
+        return newState;
+    },
+
+    // Reset a off-hand weapon infusion item
+    [actions.WIPE_SELECTED_OFFHAND_WEAPON_INFUSION_ID]: (state, action) => {
+        const newState = state.slice();
+        newState[action.payload.slotId] = undefined;
+        return newState;
+    },
+    [actions.SET_SELECTED_OFFHAND_WEAPON_ISASCENDED]: (state, action) => {
+        if (!action.payload.isAscended) {
+            // Non-ascended weapons don't allow infusions
+            const newState = state.slice();
+            newState[action.payload.slotId] = undefined;
+            return newState;
+        }
+        return state;
+    }
+}, []);
+
 export default {
     activeWeaponSet,
     availableWeaponObjects,
@@ -138,5 +190,7 @@ export default {
     selectedMainhandWeaponIsAscended,
     selectedOffhandWeaponIsAscended,
     selectedMainhandWeaponUpgradeIds,
-    selectedOffhandWeaponUpgradeIds
+    selectedOffhandWeaponUpgradeIds,
+    selectedMainhandWeaponInfusionIds,
+    selectedOffhandWeaponInfusionIds
 };

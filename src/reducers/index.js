@@ -3,10 +3,10 @@ import { selectedLanguage, selectedGameMode, selectedProfession, selectedRace } 
 import {
     activeWeaponSet,
     availableWeaponObjects,
-    selectedArmorItemstatIds, selectedArmorIsAscended, selectedArmorUpgradeIds,
-    selectedTrinketItemstatIds, selectedTrinketIsAscended, selectedTrinketUpgradeIds,
-    selectedMainhandWeaponIds, selectedMainhandWeaponItemstatIds, selectedMainhandWeaponIsAscended, selectedMainhandWeaponUpgradeIds,
-    selectedOffhandWeaponIds, selectedOffhandWeaponItemstatIds, selectedOffhandWeaponIsAscended, selectedOffhandWeaponUpgradeIds
+    selectedArmorItemstatIds, selectedArmorIsAscended, selectedArmorUpgradeIds, selectedArmorInfusionIds,
+    selectedTrinketItemstatIds, selectedTrinketIsAscended, selectedTrinketUpgradeIds, selectedTrinketInfusionIds,
+    selectedMainhandWeaponIds, selectedMainhandWeaponItemstatIds, selectedMainhandWeaponIsAscended, selectedMainhandWeaponUpgradeIds, selectedMainhandWeaponInfusionIds,
+    selectedOffhandWeaponIds, selectedOffhandWeaponItemstatIds, selectedOffhandWeaponIsAscended, selectedOffhandWeaponUpgradeIds, selectedOffhandWeaponInfusionIds
 } from './gear';
 import { availableSpecializationIds, availableSpecializationObjects, selectedSpecializationIds } from './specializations';
 import { availableTraitIds, availableTraitObjects, selectedMinorTraitIds, selectedMajorTraitIds } from './traits';
@@ -28,6 +28,13 @@ export default combineReducers({
     selectedArmorItemstatIds,
     selectedArmorIsAscended,
     selectedArmorUpgradeIds,
+    selectedArmorInfusionIds,
+
+    // Gear: trinkets
+    selectedTrinketItemstatIds,
+    selectedTrinketIsAscended,
+    selectedTrinketUpgradeIds,
+    selectedTrinketInfusionIds,
 
     // Gear: weapons
     activeWeaponSet,
@@ -40,11 +47,8 @@ export default combineReducers({
     selectedOffhandWeaponIsAscended,
     selectedMainhandWeaponUpgradeIds,
     selectedOffhandWeaponUpgradeIds,
-
-    // Gear: trinkets
-    selectedTrinketItemstatIds,
-    selectedTrinketIsAscended,
-    selectedTrinketUpgradeIds,
+    selectedMainhandWeaponInfusionIds,
+    selectedOffhandWeaponInfusionIds,
 
     // Specializations: specializations
     availableSpecializationIds,

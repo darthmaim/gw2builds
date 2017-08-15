@@ -560,6 +560,100 @@ This allows supporting new revenant legends in future expansions without being l
         <td><code>ring2</code></td>
         <td>Second ring upgrade item id</td>
     </tr>
+    <tr>
+        <td rowspan="23"><code>gearInfusions</code></td>
+        <td><code>weaponA1</code></td>
+        <td rowspan="23">uint32</td>
+        <td>Infusion item id of main-hand weapon of first weapon set</td>
+    </tr>
+    <tr>
+        <td><code>weaponA2</code></td>
+        <td>Infusion item id of off-hand weapon of first weapon set</td>
+    </tr>
+    <tr>
+        <td><code>weaponB1</code></td>
+        <td>Infusion item id of main-hand weapon of second weapon set</td>
+    </tr>
+    <tr>
+        <td><code>weaponB2</code></td>
+        <td>Infusion item id of off-hand weapon of second weapon set</td>
+    </tr>
+    <tr>
+        <td><code>weaponAquaticA</code></td>
+        <td>First aquatic weapon infusion item id</td>
+    </tr>
+    <tr>
+        <td><code>weaponAquaticB</code></td>
+        <td>Second aquatic weapon infusion item id</td>
+    </tr>
+    <tr>
+        <td><code>helm</code></td>
+        <td>Helm armor infusion item id</td>
+    </tr>
+    <tr>
+        <td><code>shoulders</code></td>
+        <td>Shoulder armor infusion item id</td>
+    </tr>
+    <tr>
+        <td><code>coat</code></td>
+        <td>Coat armor infusion item id</td>
+    </tr>
+    <tr>
+        <td><code>gloves</code></td>
+        <td>Gloves armor infusion item id</td>
+    </tr>
+    <tr>
+        <td><code>leggings</code></td>
+        <td>Leggings armor infusion item id</td>
+    </tr>
+    <tr>
+        <td><code>boots</code></td>
+        <td>Boots armor infusion item id</td>
+    </tr>
+    <tr>
+        <td><code>helmAquatic</code></td>
+        <td>Aquatic helm armor infusion item id</td>
+    </tr>
+    <tr>
+        <td><code>backpack</code></td>
+        <td>Backpack infusion item id</td>
+    </tr>
+    <tr>
+        <td><code>backpackInfused</code></td>
+        <td>Second backpack infusion item id</td>
+    </tr>
+    <tr>
+        <td><code>accessory1</code></td>
+        <td>First accessory infusion item id</td>
+    </tr>
+    <tr>
+        <td><code>accessory2</code></td>
+        <td>Second accessory infusion item id</td>
+    </tr>
+    <tr>
+        <td><code>ring1</code></td>
+        <td>First ring infusion item id</td>
+    </tr>
+    <tr>
+        <td><code>ring1Infused</code></td>
+        <td>Second infusion item id of first ring</td>
+    </tr>
+    <tr>
+        <td><code>ring1Attuned</code></td>
+        <td>Third infusion item id of first ring</td>
+    </tr>
+    <tr>
+        <td><code>ring2</code></td>
+        <td>Second ring infusion item id</td>
+    </tr>
+    <tr>
+        <td><code>ring2Infused</code></td>
+        <td>Second infusion item id of second ring</td>
+    </tr>
+    <tr>
+        <td><code>ring2Attuned</code></td>
+        <td>Third infusion item id of second ring</td>
+    </tr>
 </table>
 
 <sup>1</sup> In order to save space, the serializer converts the build id to a 17-bit unsigned integer by subtracting the build id with the lower boundary.
@@ -1132,7 +1226,125 @@ Every block is encoded as follows:
         <td>duplicateValue(item)</td>
     </tr>
     <tr>
-        <td><code>gearInfusions</code> (43)</td>
+        <td rowspan="24"><code>gearInfusions</code> (43)</td>
+        <td>0</td>
+        <td><code>isInfusionsDuplicated</code></td>
+        <td>duplicateFlag</td>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td><code>weaponA1</code></td>
+        <td>duplicateValue(item)</td>
+    </tr>
+    <tr>
+        <td>2</td>
+        <td><code>weaponA2</code></td>
+        <td>duplicateValue(item)</td>
+    </tr>
+    <tr>
+        <td>3</td>
+        <td><code>weaponB1</code></td>
+        <td>duplicateValue(item)</td>
+    </tr>
+    <tr>
+        <td>4</td>
+        <td><code>weaponB2</code></td>
+        <td>duplicateValue(item)</td>
+    </tr>
+    <tr>
+        <td>5</td>
+        <td><code>weaponAquaticA</code></td>
+        <td>duplicateValue(item)</td>
+    </tr>
+    <tr>
+        <td>6</td>
+        <td><code>weaponAquaticB</code></td>
+        <td>duplicateValue(item)</td>
+    </tr>
+    <tr>
+        <td>7</td>
+        <td><code>helm</code></td>
+        <td>duplicateValue(item)</td>
+    </tr>
+    <tr>
+        <td>8</td>
+        <td><code>shoulders</code></td>
+        <td>duplicateValue(item)</td>
+    </tr>
+    <tr>
+        <td>9</td>
+        <td><code>coat</code></td>
+        <td>duplicateValue(item)</td>
+    </tr>
+    <tr>
+        <td>10</td>
+        <td><code>gloves</code></td>
+        <td>duplicateValue(item)</td>
+    </tr>
+    <tr>
+        <td>11</td>
+        <td><code>leggings</code></td>
+        <td>duplicateValue(item)</td>
+    </tr>
+    <tr>
+        <td>12</td>
+        <td><code>boots</code></td>
+        <td>duplicateValue(item)</td>
+    </tr>
+    <tr>
+        <td>13</td>
+        <td><code>helmAquatic</code></td>
+        <td>duplicateValue(item)</td>
+    </tr>
+    <tr>
+        <td>14</td>
+        <td><code>backpack</code></td>
+        <td>duplicateValue(item)</td>
+    </tr>
+    <tr>
+        <td>14</td>
+        <td><code>backpackInfused</code></td>
+        <td>duplicateValue(item)</td>
+    </tr>
+    <tr>
+        <td>16</td>
+        <td><code>accessory1</code></td>
+        <td>duplicateValue(item)</td>
+    </tr>
+    <tr>
+        <td>17</td>
+        <td><code>accessory2</code></td>
+        <td>duplicateValue(item)</td>
+    </tr>
+    <tr>
+        <td>18</td>
+        <td><code>ring1</code></td>
+        <td>duplicateValue(item)</td>
+    </tr>
+    <tr>
+        <td>19</td>
+        <td><code>ring1Infused</code></td>
+        <td>duplicateValue(item)</td>
+    </tr>
+    <tr>
+        <td>20</td>
+        <td><code>ring1Attuned</code></td>
+        <td>duplicateValue(item)</td>
+    </tr>
+    <tr>
+        <td>21</td>
+        <td><code>ring2</code></td>
+        <td>duplicateValue(item)</td>
+    </tr>
+    <tr>
+        <td>22</td>
+        <td><code>ring2Infused</code></td>
+        <td>duplicateValue(item)</td>
+    </tr>
+    <tr>
+        <td>23</td>
+        <td><code>ring2Attuned</code></td>
+        <td>duplicateValue(item)</td>
     </tr>
     <tr>
         <td><code>gearPvp</code> (44)</td>

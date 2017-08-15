@@ -43,8 +43,53 @@ export const selectedTrinketUpgradeIds = handleActions({
     }
 }, []);
 
+/** Reducer for the selected trinket infusion item ids. */
+export const selectedTrinketInfusionIds = handleActions({
+    // Set a trinket infusion item
+    [actions.SET_SELECTED_TRINKET_INFUSION_ID]: (state, action) => {
+        const newState = state.slice();
+        newState[action.payload.slotId] = action.payload.itemId;
+        return newState;
+    },
+
+    // Reset a trinket infusion item
+    [actions.WIPE_SELECTED_TRINKET_INFUSION_ID]: (state, action) => {
+        const newState = state.slice();
+        newState[action.payload.slotId] = undefined;
+        return newState;
+    },
+    [actions.SET_SELECTED_TRINKET_ISASCENDED]: (state, action) => {
+        if (!action.payload.isAscended) {
+            // Some non-ascended armor pieces don't allow infusions
+            let toRemove = [];
+            switch (action.payload.slotId) {
+                case 0:
+                    // Some backpacks allow 1 infusion, remove second only
+                    toRemove = [6];
+                    break;
+                case 4:
+                    toRemove = [4, 7, 8];
+                    break;
+                case 5:
+                    toRemove = [5, 9, 10];
+                    break;
+                default:
+                    toRemove = [action.payload.slotId];
+                    break;
+            }
+            const newState = state.slice();
+            for (const slot of toRemove) {
+                newState[slot] = undefined;
+            }
+            return newState;
+        }
+        return state;
+    }
+}, []);
+
 export default {
     selectedTrinketItemstatIds,
     selectedTrinketIsAscended,
-    selectedTrinketUpgradeIds
+    selectedTrinketUpgradeIds,
+    selectedTrinketInfusionIds
 };

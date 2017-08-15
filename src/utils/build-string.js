@@ -60,6 +60,12 @@ export function initializeBuildFromString(store, buildString) {
             disp('weaponB2', build.gearUpgrades, actions.setSelectedOffhandWeaponUpgradeId, id => ({ slotId: 1, itemId: id })),
             disp('weaponAquaticA', build.gearUpgrades, actions.setSelectedMainhandWeaponUpgradeId, id => ({ slotId: 2, itemId: id })),
             disp('weaponAquaticB', build.gearUpgrades, actions.setSelectedMainhandWeaponUpgradeId, id => ({ slotId: 3, itemId: id })),
+            disp('weaponA1', build.gearInfusions, actions.setSelectedMainhandWeaponInfusionId, id => ({ slotId: 0, itemId: id })),
+            disp('weaponA2', build.gearInfusions, actions.setSelectedOffhandWeaponInfusionId, id => ({ slotId: 0, itemId: id })),
+            disp('weaponB1', build.gearInfusions, actions.setSelectedMainhandWeaponInfusionId, id => ({ slotId: 1, itemId: id })),
+            disp('weaponB2', build.gearInfusions, actions.setSelectedOffhandWeaponInfusionId, id => ({ slotId: 1, itemId: id })),
+            disp('weaponAquaticA', build.gearInfusions, actions.setSelectedMainhandWeaponInfusionId, id => ({ slotId: 2, itemId: id })),
+            disp('weaponAquaticB', build.gearInfusions, actions.setSelectedMainhandWeaponInfusionId, id => ({ slotId: 3, itemId: id })),
 
             // Armor
             disp('helm', build.gearStats, actions.setSelectedArmorItemstatId, id => ({ slotId: 0, itemstatId: id })),
@@ -83,6 +89,13 @@ export function initializeBuildFromString(store, buildString) {
             disp('leggings', build.gearUpgrades, actions.setSelectedArmorUpgradeId, id => ({ slotId: 4, itemId: id })),
             disp('boots', build.gearUpgrades, actions.setSelectedArmorUpgradeId, id => ({ slotId: 5, itemId: id })),
             disp('helmAquatic', build.gearUpgrades, actions.setSelectedArmorUpgradeId, id => ({ slotId: 6, itemId: id })),
+            disp('helm', build.gearInfusions, actions.setSelectedArmorInfusionId, id => ({ slotId: 0, itemId: id })),
+            disp('shoulders', build.gearInfusions, actions.setSelectedArmorInfusionId, id => ({ slotId: 1, itemId: id })),
+            disp('coat', build.gearInfusions, actions.setSelectedArmorInfusionId, id => ({ slotId: 2, itemId: id })),
+            disp('gloves', build.gearInfusions, actions.setSelectedArmorInfusionId, id => ({ slotId: 3, itemId: id })),
+            disp('leggings', build.gearInfusions, actions.setSelectedArmorInfusionId, id => ({ slotId: 4, itemId: id })),
+            disp('boots', build.gearInfusions, actions.setSelectedArmorInfusionId, id => ({ slotId: 5, itemId: id })),
+            disp('helmAquatic', build.gearInfusions, actions.setSelectedArmorInfusionId, id => ({ slotId: 6, itemId: id })),
 
             // Trinkets
             disp('backpack', build.gearStats, actions.setSelectedTrinketItemstatId, id => ({ slotId: 0, itemstatId: id })),
@@ -103,6 +116,16 @@ export function initializeBuildFromString(store, buildString) {
             disp('amulet', build.gearUpgrades, actions.setSelectedTrinketUpgradeId, id => ({ slotId: 3, itemId: id })),
             disp('ring1', build.gearUpgrades, actions.setSelectedTrinketUpgradeId, id => ({ slotId: 4, itemId: id })),
             disp('ring2', build.gearUpgrades, actions.setSelectedTrinketUpgradeId, id => ({ slotId: 5, itemId: id })),
+            disp('backpack', build.gearInfusions, actions.setSelectedTrinketInfusionId, id => ({ slotId: 0, itemId: id })),
+            disp('accessory1', build.gearInfusions, actions.setSelectedTrinketInfusionId, id => ({ slotId: 1, itemId: id })),
+            disp('accessory2', build.gearInfusions, actions.setSelectedTrinketInfusionId, id => ({ slotId: 2, itemId: id })),
+            disp('ring1', build.gearInfusions, actions.setSelectedTrinketInfusionId, id => ({ slotId: 4, itemId: id })),
+            disp('ring2', build.gearInfusions, actions.setSelectedTrinketInfusionId, id => ({ slotId: 5, itemId: id })),
+            disp('backpackInfused', build.gearInfusions, actions.setSelectedTrinketInfusionId, id => ({ slotId: 6, itemId: id })),
+            disp('ring1Infused', build.gearInfusions, actions.setSelectedTrinketInfusionId, id => ({ slotId: 7, itemId: id })),
+            disp('ring1Attuned', build.gearInfusions, actions.setSelectedTrinketInfusionId, id => ({ slotId: 8, itemId: id })),
+            disp('ring2Infused', build.gearInfusions, actions.setSelectedTrinketInfusionId, id => ({ slotId: 9, itemId: id })),
+            disp('ring2Attuned', build.gearInfusions, actions.setSelectedTrinketInfusionId, id => ({ slotId: 10, itemId: id }))
         ]);
     }).then(() => {
         return Promise.all([
@@ -270,6 +293,31 @@ export function exportBuildToString(state) {
             amulet: state.selectedTrinketUpgradeIds[3],
             ring1: state.selectedTrinketUpgradeIds[4],
             ring2: state.selectedTrinketUpgradeIds[5]
+        },
+        gearInfusions: {
+            weaponA1: state.selectedMainhandWeaponInfusionIds[0],
+            weaponA2: state.selectedOffhandWeaponInfusionIds[0],
+            weaponB1: state.selectedMainhandWeaponInfusionIds[1],
+            weaponB2: state.selectedOffhandWeaponInfusionIds[1],
+            weaponAquaticA: state.selectedMainhandWeaponInfusionIds[2],
+            weaponAquaticB: state.selectedMainhandWeaponInfusionIds[3],
+            helm: state.selectedArmorInfusionIds[0],
+            shoulders: state.selectedArmorInfusionIds[1],
+            coat: state.selectedArmorInfusionIds[2],
+            gloves: state.selectedArmorInfusionIds[3],
+            leggings: state.selectedArmorInfusionIds[4],
+            boots: state.selectedArmorInfusionIds[5],
+            helmAquatic: state.selectedArmorInfusionIds[6],
+            backpack: state.selectedTrinketInfusionIds[0],
+            accessory1: state.selectedTrinketInfusionIds[1],
+            accessory2: state.selectedTrinketInfusionIds[2],
+            ring1: state.selectedTrinketInfusionIds[4],
+            ring2: state.selectedTrinketInfusionIds[5],
+            backpackInfused: state.selectedTrinketInfusionIds[6],
+            ring1Infused: state.selectedTrinketInfusionIds[7],
+            ring1Attuned: state.selectedTrinketInfusionIds[8],
+            ring2Infused: state.selectedTrinketInfusionIds[9],
+            ring2Attuned: state.selectedTrinketInfusionIds[10]
         }
     };
 

@@ -43,8 +43,35 @@ export const selectedArmorUpgradeIds = handleActions({
     }
 }, []);
 
+/** Reducer for the selected armor infusion item ids. */
+export const selectedArmorInfusionIds = handleActions({
+    // Set the infusion item of a piece of armor
+    [actions.SET_SELECTED_ARMOR_INFUSION_ID]: (state, action) => {
+        const newState = state.slice();
+        newState[action.payload.slotId] = action.payload.itemId;
+        return newState;
+    },
+
+    // Reset the infusion item of a piece of armor
+    [actions.WIPE_SELECTED_ARMOR_INFUSION_ID]: (state, action) => {
+        const newState = state.slice();
+        newState[action.payload.slotId] = undefined;
+        return newState;
+    },
+    [actions.SET_SELECTED_ARMOR_ISASCENDED]: (state, action) => {
+        if (!action.payload.isAscended) {
+            // Non-ascended armor pieces don't allow infusions
+            const newState = state.slice();
+            newState[action.payload.slotId] = undefined;
+            return newState;
+        }
+        return state;
+    }
+}, []);
+
 export default {
     selectedArmorItemstatIds,
     selectedArmorIsAscended,
-    selectedArmorUpgradeIds
+    selectedArmorUpgradeIds,
+    selectedArmorInfusionIds
 };

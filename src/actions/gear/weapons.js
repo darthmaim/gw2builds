@@ -16,6 +16,10 @@ export const SET_SELECTED_MAINHAND_WEAPON_UPGRADE_ID = 'SET_SELECTED_MAINHAND_WE
 export const SET_SELECTED_OFFHAND_WEAPON_UPGRADE_ID = 'SET_SELECTED_OFFHAND_WEAPON_UPGRADE_ID';
 export const WIPE_SELECTED_MAINHAND_WEAPON_UPGRADE_ID = 'WIPE_SELECTED_MAINHAND_WEAPON_UPGRADE_ID';
 export const WIPE_SELECTED_OFFHAND_WEAPON_UPGRADE_ID = 'WIPE_SELECTED_OFFHAND_WEAPON_UPGRADE_ID';
+export const SET_SELECTED_MAINHAND_WEAPON_INFUSION_ID = 'SET_SELECTED_MAINHAND_WEAPON_INFUSION_ID';
+export const SET_SELECTED_OFFHAND_WEAPON_INFUSION_ID = 'SET_SELECTED_OFFHAND_WEAPON_INFUSION_ID';
+export const WIPE_SELECTED_MAINHAND_WEAPON_INFUSION_ID = 'WIPE_SELECTED_MAINHAND_WEAPON_INFUSION_ID';
+export const WIPE_SELECTED_OFFHAND_WEAPON_INFUSION_ID = 'WIPE_SELECTED_OFFHAND_WEAPON_INFUSION_ID';
 
 /** Action to set the active weapon set. Params: { weaponSet } */
 export const setActiveWeaponSet = createAction(SET_ACTIVE_WEAPON_SET);
@@ -59,6 +63,18 @@ export const wipeSelectedMainhandWeaponUpgradeId = createAction(WIPE_SELECTED_MA
 /** Action to wipe a selected upgrade item id for an off-hand weapon. Params: { slotId } */
 export const wipeSelectedOffhandWeaponUpgradeId = createAction(WIPE_SELECTED_OFFHAND_WEAPON_UPGRADE_ID);
 
+/** Action to set a selected infusion item id for a main-hand weapon. Params: { slotId, itemId } */
+export const setSelectedMainhandWeaponInfusionId = createAction(SET_SELECTED_MAINHAND_WEAPON_INFUSION_ID);
+
+/** Action to set a selected infusion item id for an off-hand weapon. Params: { slotId, itemId } */
+export const setSelectedOffhandWeaponInfusionId = createAction(SET_SELECTED_OFFHAND_WEAPON_INFUSION_ID);
+
+/** Action to wipe a selected infusion item id for a main-hand weapon. Params: { slotId } */
+export const wipeSelectedMainhandWeaponInfusionId = createAction(WIPE_SELECTED_MAINHAND_WEAPON_INFUSION_ID);
+
+/** Action to wipe a selected infusion item id for an off-hand weapon. Params: { slotId } */
+export const wipeSelectedOffhandWeaponInfusionId = createAction(WIPE_SELECTED_OFFHAND_WEAPON_INFUSION_ID);
+
 export default {
     SET_ACTIVE_WEAPON_SET,
     SET_SELECTED_MAINHAND_WEAPON_ID,
@@ -75,6 +91,10 @@ export default {
     SET_SELECTED_OFFHAND_WEAPON_UPGRADE_ID,
     WIPE_SELECTED_MAINHAND_WEAPON_UPGRADE_ID,
     WIPE_SELECTED_OFFHAND_WEAPON_UPGRADE_ID,
+    SET_SELECTED_MAINHAND_WEAPON_INFUSION_ID,
+    SET_SELECTED_OFFHAND_WEAPON_INFUSION_ID,
+    WIPE_SELECTED_MAINHAND_WEAPON_INFUSION_ID,
+    WIPE_SELECTED_OFFHAND_WEAPON_INFUSION_ID,
 
     setActiveWeaponSet,
     setSelectedMainhandWeaponId,
@@ -90,5 +110,9 @@ export default {
     setSelectedMainhandWeaponUpgradeId,
     setSelectedOffhandWeaponUpgradeId,
     wipeSelectedMainhandWeaponUpgradeId,
-    wipeSelectedOffhandWeaponUpgradeId
+    wipeSelectedOffhandWeaponUpgradeId,
+    setSelectedMainhandWeaponInfusionId,
+    setSelectedOffhandWeaponInfusionId,
+    wipeSelectedMainhandWeaponInfusionId,
+    wipeSelectedOffhandWeaponInfusionId
 };
