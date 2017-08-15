@@ -234,6 +234,11 @@ This category contains the following local types:
         <th>Description</th>
     </tr>
     <tr>
+        <td><code>availableElementalistAttunementObjects</code></td>
+        <td>object (string, <code>attunement.id</code>)</td>
+        <td>Available elementalist attunement objects.</td>
+    </tr>
+    <tr>
         <td><code>selectedRevenantLegendIds</code></td>
         <td>array (string)</td>
         <td>
@@ -308,13 +313,6 @@ This category contains the following local types:
         </td>
     </tr>
 </table>
-
-### Mechanic
-*TODO: Check how this can be adapted or integrated into the new mechanics store.* 
-- `activeAttunements` (array)  
-  Contains the active attunements, indexed by weapon set.
-- `availableAttunementObjects` (object, indexed by `attunement.id`)  
-  Contains the available attunements.
 
 ## Specializations
 <table>

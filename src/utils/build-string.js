@@ -109,8 +109,8 @@ export function initializeBuildFromString(store, buildString) {
             disp('petB', build.professionRanger, actions.setSelectedRangerPetId, id => ({ slotId: 1, petId: id })),
             disp('petAquaticA', build.professionRanger, actions.setSelectedRangerPetId, id => ({ slotId: 2, petId: id })),
             disp('petAquaticB', build.professionRanger, actions.setSelectedRangerPetId, id => ({ slotId: 3, petId: id })),
-            disp('attunement', build.professionElementalist, actions.setSelectedElementalistAttunementId),
-            disp('prevAttunementWeaver', build.professionElementalist, actions.setSelectedWeaverPreviousAttunementId)
+            disp('attunement', build.professionElementalist, actions.setSelectedElementalistAttunementId, id => ({ attunementId: id })),
+            disp('prevAttunementWeaver', build.professionElementalist, actions.setSelectedWeaverPreviousAttunementId, id => ({ attunementId: id }))
         ]);
     }).then(() => {
         return Promise.all([

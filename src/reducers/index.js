@@ -10,8 +10,12 @@ import {
 } from './gear';
 import { availableSpecializationIds, availableSpecializationObjects, selectedSpecializationIds } from './specializations';
 import { availableTraitIds, availableTraitObjects, selectedMinorTraitIds, selectedMajorTraitIds } from './traits';
-import { activeAttunements, availableAttunementObjects, availableSkillIds, selectedSkillIds, availableSkillObjects, availableProfessionSkillObjects } from './skills';
-import { selectedElementalistAttunementId, selectedWeaverPreviousAttunementId, selectedRangerPetIds, selectedRevenantLegendIds } from './mechanics';
+import { availableSkillIds, selectedSkillIds, availableSkillObjects, availableProfessionSkillObjects } from './skills';
+import {
+    availableElementalistAttunementObjects, selectedElementalistAttunementId, selectedWeaverPreviousAttunementId,
+    selectedRangerPetIds,
+    selectedRevenantLegendIds
+} from './mechanics';
 
 export default combineReducers({
     // General
@@ -54,10 +58,9 @@ export default combineReducers({
     selectedSkillIds,
 
     // Mechanics
+    availableElementalistAttunementObjects,
     selectedElementalistAttunementId,
     selectedWeaverPreviousAttunementId,
     selectedRangerPetIds,
-    selectedRevenantLegendIds,
-    activeAttunements, // TODO: check if updates are needed
-    availableAttunementObjects // TODO: check if updates are needed
+    selectedRevenantLegendIds
 });

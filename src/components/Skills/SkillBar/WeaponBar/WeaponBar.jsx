@@ -10,7 +10,7 @@ class WeaponBar extends Component {
         this.renderSkill = this.renderSkill.bind(this);
     }
 
-    getSkillInSlot({ activeMainhandWeaponId, activeOffhandWeaponId, isTwoHanded, availableWeaponObjects, availableSkillObjects, activeAttunement }) {
+    getSkillInSlot({ activeMainhandWeaponId, activeOffhandWeaponId, isTwoHanded, availableWeaponObjects, availableSkillObjects, selectedAttunementId }) {
         return index => {
             const getFromMainhand = index < 3 || isTwoHanded;
 
@@ -29,7 +29,7 @@ class WeaponBar extends Component {
                 // filter offhand (thief)
                 .filter(skill => !skill.offhand || skill.offhand === activeOffhandWeaponId || (skill.offhand === 'Nothing' && !activeOffhandWeaponId))
                 // filter attunement (elementalist)
-                .filter(skill => !skill.attunement || skill.attunement === activeAttunement);
+                .filter(skill => !skill.attunement || skill.attunement === selectedAttunementId);
 
             // return the skill object
             return skillsForSlot[0] && availableSkillObjects[skillsForSlot[0].id];
@@ -67,7 +67,6 @@ WeaponBar.propTypes = {
     // Redux states
     activeMainhandWeaponId: PropTypes.string,
     activeOffhandWeaponId: PropTypes.string,
-    activeAttunement: PropTypes.string,
     availableSkillObjects: PropTypes.object.isRequired,
     availableWeaponObjects: PropTypes.objectOf(PropTypes.shape({
         skills: PropTypes.arrayOf(PropTypes.shape({
@@ -78,6 +77,7 @@ WeaponBar.propTypes = {
         })).isRequired,
         specialization: PropTypes.number
     })).isRequired,
+    selectedAttunementId: PropTypes.string
 };
 
 export default WeaponBar;

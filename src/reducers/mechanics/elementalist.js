@@ -1,5 +1,9 @@
-import { handleActions } from 'redux-actions';
+import { handleAction, handleActions } from 'redux-actions';
 import * as actions from '../../actions';
+
+/** Reducer for the available elementalist attunement objects. */
+export const availableElementalistAttunementObjects = handleAction(actions.FETCH_PROFESSION,
+    (state, action) => action.payload.attunements || {}, {});
 
 /** Reducer for the selected elementalist attunement id. */
 export const selectedElementalistAttunementId = handleActions({
@@ -7,8 +11,8 @@ export const selectedElementalistAttunementId = handleActions({
     [actions.SET_SELECTED_ELEMENTALIST_ATTUNEMENT_ID]: (state, action) => action.payload.attunementId,
 
     // Reset the attunement
-    [actions.SET_SELECTED_PROFESSION]: () => 0
-}, 0);
+    [actions.SET_SELECTED_PROFESSION]: () => 'Fire'
+}, 'Fire');
 
 /** Reducer for the selected weaver previous attunement id. */
 export const selectedWeaverPreviousAttunementId = handleActions({
@@ -16,11 +20,12 @@ export const selectedWeaverPreviousAttunementId = handleActions({
     [actions.SET_SELECTED_WEAVER_PREVIOUS_ATTUNEMENT_ID]: (state, action) => action.payload.attunementId,
 
     // Reset the attunement
-    [actions.SET_SELECTED_PROFESSION]: () => 0
+    [actions.SET_SELECTED_PROFESSION]: () => 'Fire'
     // TODO: Also wipe the attunement whenever the build swaps away from weaver
-}, 0);
+}, 'Fire');
 
 export default {
+    availableElementalistAttunementObjects,
     selectedElementalistAttunementId,
     selectedWeaverPreviousAttunementId
 };

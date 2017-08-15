@@ -3,7 +3,9 @@ import { render } from 'react-dom';
 import { IntlProvider } from 'react-intl';
 import { Provider, connect } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
+import { createLogger as createReduxLogger } from 'redux-logger';
 import promiseMiddleware from 'redux-promise';
+import { syncMiddleware } from 'redux-sync-reducer';
 import thunk from 'redux-thunk';
 import apiClient from 'gw2api-client';
 import cacheMemory from 'gw2api-client/build/cache/memory';
@@ -15,7 +17,6 @@ import Layout from './components/App';
 import { getUrl } from './selectors/url';
 import { initializeBuildFromString } from './utils/build-string';
 import { init as initAnalytics } from './utils/analytics';
-import { syncMiddleware } from 'redux-sync-reducer';
 
 initAnalytics();
 
@@ -24,7 +25,8 @@ const initialState = {
     selectedLanguage: 'en'
 };
 
-const store = createStore(editor, initialState, applyMiddleware(thunk.withExtraArgument(Gw2Api), promiseMiddleware, syncMiddleware));
+// TODO: Remove redux logger later in production
+const store = createStore(editor, initialState, applyMiddleware(thunk.withExtraArgument(Gw2Api), promiseMiddleware, syncMiddleware, createReduxLogger({ collapsed: true })));
 
 class Editor extends React.Component {
     constructor(props, context) {
