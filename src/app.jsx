@@ -16,6 +16,7 @@ import { getUrl } from './selectors/url';
 import { initializeBuildFromString } from './utils/build-string';
 import { init as initAnalytics } from './utils/analytics';
 import { syncMiddleware } from 'redux-sync-reducer';
+import { composeWithDevTools } from 'redux-devtools-extension';
 
 initAnalytics();
 
@@ -24,7 +25,9 @@ const initialState = {
     selectedLanguage: 'en'
 };
 
-const store = createStore(editor, initialState, applyMiddleware(thunk.withExtraArgument(Gw2Api), promiseMiddleware, syncMiddleware));
+const store = createStore(editor, initialState, composeWithDevTools(
+    applyMiddleware(thunk.withExtraArgument(Gw2Api), promiseMiddleware, syncMiddleware)
+));
 
 class Editor extends React.Component {
     constructor(props, context) {
