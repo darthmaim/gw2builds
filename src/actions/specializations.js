@@ -8,7 +8,7 @@ export const SWAP_SELECTED_SPECIALIZATION_IDS = 'SWAP_SELECTED_SPECIALIZATION_ID
 export const WIPE_SELECTED_SPECIALIZATION_ID = 'WIPE_SELECTED_SPECIALIZATION_ID';
 export const WIPE_ALL_SELECTED_SPECIALIZATION_IDS = 'WIPE_ALL_SELECTED_SPECIALIZATION_IDS';
 
-/** Action to fetch the current specializations from the GW2 API. */
+/** Action to fetch the available specializations from the GW2 API. */
 export const fetchAvailableSpecializations = createChainedAction(
     createApiAction(
         FETCH_AVAILABLE_SPECIALIZATIONS,
