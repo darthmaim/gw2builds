@@ -5,14 +5,15 @@ This allows people to share their builds easily with others.
 ## Global types
 The global types are as follows:
 
- Type     | Description
-----------|-------------
- bool     | 1-bit boolean
- uint8    | Unsigned 8-bit integer (also known as a byte)
- uint16   | Unsigned 16-bit integer
- uint32   | Unsigned 32-bit integer
- bitflags | An x-bit integer with boolean bit flags: it adds an additional bit in front of the other bits; if the first bit is set, all bits are set and are skipped in (de)serialization for compression; if the first bit is not set, all bits are (de)serialized as normal
- enum     | Enumerator (*0 = null or none*)
+ Type                   | Description
+------------------------|-------------
+ bool                   | 1-bit boolean
+ uint8                  | Unsigned 8-bit integer (also known as a byte)
+ uint16                 | Unsigned 16-bit integer
+ uint32                 | Unsigned 32-bit integer
+ duplicateFlag          | A boolean flag that - if true - signals that *all* next duplicateValues are the same as the first duplicateValue (and therefore skips every duplicateValue after the first to conserve space when serializing); if false, this flag does nothing special  
+ duplicateValue(`type`) | A duplicateFlag is immediately followed by one or more duplicateValues; their type is the same as `type`
+ enum                   | Enumerator (*0 = null or none*)
 
 ## Data structure
 The data is encoded as follows:
@@ -405,81 +406,159 @@ This allows supporting new revenant legends in future expansions without being l
         <td>Second ring itemstat id</td>
     </tr>
     <tr>
-        <td><code>ascendedFlags.weaponA1</code></td>
+        <td><code>weaponA1IsAscended</code></td>
         <td rowspan="19">bool</td>
         <td>Ascended flag for main-hand weapon of first weapon set</td>
     </tr>
     <tr>
-        <td><code>ascendedFlags.weaponA2</code></td>
+        <td><code>weaponA2IsAscended</code></td>
         <td>Ascended flag for off-hand weapon of first weapon set</td>
     </tr>
     <tr>
-        <td><code>ascendedFlags.weaponB1</code></td>
+        <td><code>weaponB1IsAscended</code></td>
         <td>Ascended flag for main-hand weapon of second weapon set</td>
     </tr>
     <tr>
-        <td><code>ascendedFlags.weaponB2</code></td>
+        <td><code>weaponB2IsAscended</code></td>
         <td>Ascended flag for off-hand weapon of second weapon set</td>
     </tr>
     <tr>
-        <td><code>ascendedFlags.weaponAquaticA</code></td>
+        <td><code>weaponAquaticAIsAscended</code></td>
         <td>First aquatic weapon ascended flag</td>
     </tr>
     <tr>
-        <td><code>ascendedFlags.weaponAquaticB</code></td>
+        <td><code>weaponAquaticBIsAscended</code></td>
         <td>Second aquatic weapon ascended flag</td>
     </tr>
     <tr>
-        <td><code>ascendedFlags.helm</code></td>
+        <td><code>helmIsAscended</code></td>
         <td>Helm armor ascended flag</td>
     </tr>
     <tr>
-        <td><code>ascendedFlags.shoulders</code></td>
+        <td><code>shouldersIsAscended</code></td>
         <td>Shoulder armor ascended flag</td>
     </tr>
     <tr>
-        <td><code>ascendedFlags.coat</code></td>
+        <td><code>coatIsAscended</code></td>
         <td>Coat armor ascended flag</td>
     </tr>
     <tr>
-        <td><code>ascendedFlags.gloves</code></td>
+        <td><code>glovesIsAscended</code></td>
         <td>Gloves armor ascended flag</td>
     </tr>
     <tr>
-        <td><code>ascendedFlags.leggings</code></td>
+        <td><code>leggingsIsAscended</code></td>
         <td>Leggings armor ascended flag</td>
     </tr>
     <tr>
-        <td><code>ascendedFlags.boots</code></td>
+        <td><code>bootsIsAscended</code></td>
         <td>Boots armor ascended flag</td>
     </tr>
     <tr>
-        <td><code>ascendedFlags.helmAquatic</code></td>
+        <td><code>helmAquaticIsAscended</code></td>
         <td>Aquatic helm armor ascended flag</td>
     </tr>
     <tr>
-        <td><code>ascendedFlags.backpack</code></td>
+        <td><code>backpackIsAscended</code></td>
         <td>Backpack ascended flag</td>
     </tr>
     <tr>
-        <td><code>ascendedFlags.accessory1</code></td>
+        <td><code>accessory1IsAscended</code></td>
         <td>First accessory ascended flag</td>
     </tr>
     <tr>
-        <td><code>ascendedFlags.accessory2</code></td>
+        <td><code>accessory2IsAscended</code></td>
         <td>Second accessory ascended flag</td>
     </tr>
     <tr>
-        <td><code>ascendedFlags.amulet</code></td>
+        <td><code>amuletIsAscended</code></td>
         <td>Amulet ascended flag</td>
     </tr>
     <tr>
-        <td><code>ascendedFlags.ring1</code></td>
+        <td><code>ring1IsAscended</code></td>
         <td>First ring ascended flag</td>
     </tr>
     <tr>
-        <td><code>ascendedFlags.ring2</code></td>
+        <td><code>ring2IsAscended</code></td>
         <td>Second ring ascended flag</td>
+    </tr>
+    <tr>
+        <td rowspan="19"><code>gearUpgrades</code></td>
+        <td><code>weaponA1</code></td>
+        <td rowspan="19">uint32</td>
+        <td>Upgrade item id of main-hand weapon of first weapon set</td>
+    </tr>
+    <tr>
+        <td><code>weaponA2</code></td>
+        <td>Upgrade item id of off-hand weapon of first weapon set</td>
+    </tr>
+    <tr>
+        <td><code>weaponB1</code></td>
+        <td>Upgrade item id of main-hand weapon of second weapon set</td>
+    </tr>
+    <tr>
+        <td><code>weaponB2</code></td>
+        <td>Upgrade item id of off-hand weapon of second weapon set</td>
+    </tr>
+    <tr>
+        <td><code>weaponAquaticA</code></td>
+        <td>First aquatic weapon upgrade item id</td>
+    </tr>
+    <tr>
+        <td><code>weaponAquaticB</code></td>
+        <td>Second aquatic weapon upgrade item id</td>
+    </tr>
+    <tr>
+        <td><code>helm</code></td>
+        <td>Helm armor upgrade item id</td>
+    </tr>
+    <tr>
+        <td><code>shoulders</code></td>
+        <td>Shoulder armor upgrade item id</td>
+    </tr>
+    <tr>
+        <td><code>coat</code></td>
+        <td>Coat armor upgrade item id</td>
+    </tr>
+    <tr>
+        <td><code>gloves</code></td>
+        <td>Gloves armor upgrade item id</td>
+    </tr>
+    <tr>
+        <td><code>leggings</code></td>
+        <td>Leggings armor upgrade item id</td>
+    </tr>
+    <tr>
+        <td><code>boots</code></td>
+        <td>Boots armor upgrade item id</td>
+    </tr>
+    <tr>
+        <td><code>helmAquatic</code></td>
+        <td>Aquatic helm armor upgrade item id</td>
+    </tr>
+    <tr>
+        <td><code>backpack</code></td>
+        <td>Backpack upgrade item id</td>
+    </tr>
+    <tr>
+        <td><code>accessory1</code></td>
+        <td>First accessory upgrade item id</td>
+    </tr>
+    <tr>
+        <td><code>accessory2</code></td>
+        <td>Second accessory upgrade item id</td>
+    </tr>
+    <tr>
+        <td><code>amulet</code></td>
+        <td>Amulet upgrade item id</td>
+    </tr>
+    <tr>
+        <td><code>ring1</code></td>
+        <td>First ring upgrade item id</td>
+    </tr>
+    <tr>
+        <td><code>ring2</code></td>
+        <td>Second ring upgrade item id</td>
     </tr>
 </table>
 
@@ -509,7 +588,7 @@ The following table shows how the list of bits used for storage types are stored
     <tr>
         <th>Type</th>
         <td>empty</td>
-        <td>reserved</td>
+        <td>item</td>
         <td>itemstat<sup>1</sup></td>
         <td>pet</td>
         <td>skill</td>
@@ -848,106 +927,209 @@ Every block is encoded as follows:
     </tr>
     <tr>
         <td rowspan>19</td>
-        <td><code>ascendedFlags</code></td>
-        <td>bitflags</td>
+        <td><code>isAscendedDuplicatedFlag</code></td>
+        <td>duplicateFlag</td>
     </tr>
     <tr>
-        <td>19.0</td>
-        <td><code>ascendedFlags.weaponA1</code></td>
-        <td>bool</td>
+        <td>20</td>
+        <td><code>weaponA1IsAscended</code></td>
+        <td>duplicateValue(bool)</td>
     </tr>
     <tr>
-        <td>19.1</td>
-        <td><code>ascendedFlags.weaponA2</code></td>
-        <td>bool</td>
+        <td>21</td>
+        <td><code>weaponA2IsAscended</code></td>
+        <td>duplicateValue(bool)</td>
     </tr>
     <tr>
-        <td>19.2</td>
-        <td><code>ascendedFlags.weaponB1</code></td>
-        <td>bool</td>
+        <td>22</td>
+        <td><code>weaponB1IsAscended</code></td>
+        <td>duplicateValue(bool)</td>
     </tr>
     <tr>
-        <td>19.3</td>
-        <td><code>ascendedFlags.weaponB2</code></td>
-        <td>bool</td>
+        <td>23</td>
+        <td><code>weaponB2IsAscended</code></td>
+        <td>duplicateValue(bool)</td>
     </tr>
     <tr>
-        <td>19.4</td>
-        <td><code>ascendedFlags.weaponAquaticA</code></td>
-        <td>bool</td>
+        <td>24</td>
+        <td><code>weaponAquaticAIsAscended</code></td>
+        <td>duplicateValue(bool)</td>
     </tr>
     <tr>
-        <td>19.5</td>
-        <td><code>ascendedFlags.weaponAquaticB</code></td>
-        <td>bool</td>
+        <td>25</td>
+        <td><code>weaponAquaticBIsAscended</code></td>
+        <td>duplicateValue(bool)</td>
     </tr>
     <tr>
-        <td>19.6</td>
-        <td><code>ascendedFlags.helm</code></td>
-        <td>bool</td>
+        <td>26</td>
+        <td><code>helmIsAscended</code></td>
+        <td>duplicateValue(bool)</td>
     </tr>
     <tr>
-        <td>19.7</td>
-        <td><code>ascendedFlags.shoulders</code></td>
-        <td>bool</td>
+        <td>27</td>
+        <td><code>shouldersIsAscended</code></td>
+        <td>duplicateValue(bool)</td>
     </tr>
     <tr>
-        <td>19.8</td>
-        <td><code>ascendedFlags.coat</code></td>
-        <td>bool</td>
+        <td>28</td>
+        <td><code>coatIsAscended</code></td>
+        <td>duplicateValue(bool)</td>
     </tr>
     <tr>
-        <td>19.9</td>
-        <td><code>ascendedFlags.gloves</code></td>
-        <td>bool</td>
+        <td>29</td>
+        <td><code>glovesIsAscended</code></td>
+        <td>duplicateValue(bool)</td>
     </tr>
     <tr>
-        <td>19.10</td>
-        <td><code>ascendedFlags.leggings</code></td>
-        <td>bool</td>
+        <td>30</td>
+        <td><code>leggingsIsAscended</code></td>
+        <td>duplicateValue(bool)</td>
     </tr>
     <tr>
-        <td>19.11</td>
-        <td><code>ascendedFlags.boots</code></td>
-        <td>bool</td>
+        <td>31</td>
+        <td><code>bootsIsAscended</code></td>
+        <td>duplicateValue(bool)</td>
     </tr>
     <tr>
-        <td>19.12</td>
-        <td><code>ascendedFlags.helmAquatic</code></td>
-        <td>bool</td>
+        <td>32</td>
+        <td><code>helmAquaticIsAscended</code></td>
+        <td>duplicateValue(bool)</td>
     </tr>
     <tr>
-        <td>19.13</td>
-        <td><code>ascendedFlags.backpack</code></td>
-        <td>bool</td>
+        <td>33</td>
+        <td><code>backpackIsAscended</code></td>
+        <td>duplicateValue(bool)</td>
     </tr>
     <tr>
-        <td>19.14</td>
-        <td><code>ascendedFlags.accessory1</code></td>
-        <td>bool</td>
+        <td>34</td>
+        <td><code>accessory1IsAscended</code></td>
+        <td>duplicateValue(bool)</td>
     </tr>
     <tr>
-        <td>19.15</td>
-        <td><code>ascendedFlags.accessory2</code></td>
-        <td>bool</td>
+        <td>35</td>
+        <td><code>accessory2IsAscended</code></td>
+        <td>duplicateValue(bool)</td>
     </tr>
     <tr>
-        <td>19.16</td>
-        <td><code>ascendedFlags.amulet</code></td>
-        <td>bool</td>
+        <td>36</td>
+        <td><code>amuletIsAscended</code></td>
+        <td>duplicateValue(bool)</td>
     </tr>
     <tr>
-        <td>19.17</td>
-        <td><code>ascendedFlags.ring1</code></td>
-        <td>bool</td>
+        <td>37</td>
+        <td><code>ring1IsAscended</code></td>
+        <td>duplicateValue(bool)</td>
     </tr>
     <tr>
-        <td>19.18</td>
-        <td><code>ascendedFlags.ring2</code></td>
-        <td>bool</td>
+        <td>38</td>
+        <td><code>ring2IsAscended</code></td>
+        <td>duplicateValue(bool)</td>
     </tr>
     <tr>
-        <td><code>gearUpgrades</code> (42)</td>
+        <td rowspan="21"><code>gearUpgrades</code> (42)</td>
+        <td>0</td>
+        <td><code>weaponA1</code></td>
+        <td>item</td>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td><code>weaponA2</code></td>
+        <td>item</td>
+    </tr>
+    <tr>
+        <td>2</td>
+        <td><code>weaponB1</code></td>
+        <td>item</td>
+    </tr>
+    <tr>
+        <td>3</td>
+        <td><code>weaponB2</code></td>
+        <td>item</td>
+    </tr>
+    <tr>
+        <td>4</td>
+        <td><code>weaponAquaticA</code></td>
+        <td>item</td>
+    </tr>
+    <tr>
+        <td>5</td>
+        <td><code>weaponAquaticB</code></td>
+        <td>item</td>
+    </tr>
+    <tr>
+        <td>6</td>
+        <td><code>isArmorDuplicated</code></td>
+        <td>duplicateFlag</td>
+    </tr>
+    <tr>
+        <td>7</td>
+        <td><code>helm</code></td>
+        <td>duplicateValue(item)</td>
+    </tr>
+    <tr>
+        <td>8</td>
+        <td><code>shoulders</code></td>
+        <td>duplicateValue(item)</td>
+    </tr>
+    <tr>
+        <td>9</td>
+        <td><code>coat</code></td>
+        <td>duplicateValue(item)</td>
+    </tr>
+    <tr>
+        <td>10</td>
+        <td><code>gloves</code></td>
+        <td>duplicateValue(item)</td>
+    </tr>
+    <tr>
+        <td>11</td>
+        <td><code>leggings</code></td>
+        <td>duplicateValue(item)</td>
+    </tr>
+    <tr>
+        <td>12</td>
+        <td><code>boots</code></td>
+        <td>duplicateValue(item)</td>
+    </tr>
+    <tr>
+        <td>13</td>
+        <td><code>helmAquatic</code></td>
+        <td>duplicateValue(item)</td>
+    </tr>
+    <tr>
+        <td>14</td>
+        <td><code>isTrinketsDuplicated</code></td>
+        <td>duplicateFlag</td>
+    </tr>
+    <tr>
+        <td>15</td>
+        <td><code>backpack</code></td>
+        <td>duplicateValue(item)</td>
+    </tr>
+    <tr>
+        <td>16</td>
+        <td><code>accessory1</code></td>
+        <td>duplicateValue(item)</td>
+    </tr>
+    <tr>
+        <td>17</td>
+        <td><code>accessory2</code></td>
+        <td>duplicateValue(item)</td>
+    </tr>
+    <tr>
+        <td>18</td>
+        <td><code>amulet</code></td>
+        <td>duplicateValue(item)</td>
+    </tr>
+    <tr>
+        <td>19</td>
+        <td><code>ring1</code></td>
+        <td>duplicateValue(item)</td>
+    </tr>
+    <tr>
+        <td>20</td>
+        <td><code>ring2</code></td>
+        <td>duplicateValue(item)</td>
     </tr>
     <tr>
         <td><code>gearInfusions</code> (43)</td>

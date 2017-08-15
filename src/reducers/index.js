@@ -3,10 +3,10 @@ import { selectedLanguage, selectedGameMode, selectedProfession, selectedRace } 
 import {
     activeWeaponSet,
     availableWeaponObjects,
-    selectedArmorItemstatIds, selectedArmorIsAscended,
-    selectedTrinketItemstatIds, selectedTrinketIsAscended,
-    selectedMainhandWeaponIds, selectedMainhandWeaponItemstatIds, selectedMainhandWeaponIsAscended,
-    selectedOffhandWeaponIds, selectedOffhandWeaponItemstatIds, selectedOffhandWeaponIsAscended
+    selectedArmorItemstatIds, selectedArmorIsAscended, selectedArmorUpgradeIds,
+    selectedTrinketItemstatIds, selectedTrinketIsAscended, selectedTrinketUpgradeIds,
+    selectedMainhandWeaponIds, selectedMainhandWeaponItemstatIds, selectedMainhandWeaponIsAscended, selectedMainhandWeaponUpgradeIds,
+    selectedOffhandWeaponIds, selectedOffhandWeaponItemstatIds, selectedOffhandWeaponIsAscended, selectedOffhandWeaponUpgradeIds
 } from './gear';
 import { availableSpecializationIds, availableSpecializationObjects, selectedSpecializationIds } from './specializations';
 import { availableTraitIds, availableTraitObjects, selectedMinorTraitIds, selectedMajorTraitIds } from './traits';
@@ -24,11 +24,10 @@ export default combineReducers({
     selectedProfession,
     selectedRace,
 
-    // Gear
+    // Gear: armor
     selectedArmorItemstatIds,
     selectedArmorIsAscended,
-    selectedTrinketItemstatIds,
-    selectedTrinketIsAscended,
+    selectedArmorUpgradeIds,
 
     // Gear: weapons
     activeWeaponSet,
@@ -36,9 +35,16 @@ export default combineReducers({
     selectedMainhandWeaponIds,
     selectedOffhandWeaponIds,
     selectedMainhandWeaponItemstatIds,
-    selectedMainhandWeaponIsAscended,
     selectedOffhandWeaponItemstatIds,
+    selectedMainhandWeaponIsAscended,
     selectedOffhandWeaponIsAscended,
+    selectedMainhandWeaponUpgradeIds,
+    selectedOffhandWeaponUpgradeIds,
+
+    // Gear: trinkets
+    selectedTrinketItemstatIds,
+    selectedTrinketIsAscended,
+    selectedTrinketUpgradeIds,
 
     // Specializations: specializations
     availableSpecializationIds,

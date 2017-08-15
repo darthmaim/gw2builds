@@ -10,9 +10,12 @@ export const SET_SELECTED_MAINHAND_WEAPON_ITEMSTAT_ID = 'SET_SELECTED_MAINHAND_W
 export const SET_SELECTED_OFFHAND_WEAPON_ITEMSTAT_ID = 'SET_SELECTED_OFFHAND_WEAPON_ITEMSTAT_ID';
 export const WIPE_SELECTED_MAINHAND_WEAPON_ITEMSTAT_ID = 'WIPE_SELECTED_MAINHAND_WEAPON_ITEMSTAT_ID';
 export const WIPE_SELECTED_OFFHAND_WEAPON_ITEMSTAT_ID = 'WIPE_SELECTED_OFFHAND_WEAPON_ITEMSTAT_ID';
-
 export const SET_SELECTED_MAINHAND_WEAPON_ISASCENDED = 'SET_SELECTED_MAINHAND_WEAPON_ISASCENDED';
 export const SET_SELECTED_OFFHAND_WEAPON_ISASCENDED = 'SET_SELECTED_OFFHAND_WEAPON_ISASCENDED';
+export const SET_SELECTED_MAINHAND_WEAPON_UPGRADE_ID = 'SET_SELECTED_MAINHAND_WEAPON_UPGRADE_ID';
+export const SET_SELECTED_OFFHAND_WEAPON_UPGRADE_ID = 'SET_SELECTED_OFFHAND_WEAPON_UPGRADE_ID';
+export const WIPE_SELECTED_MAINHAND_WEAPON_UPGRADE_ID = 'WIPE_SELECTED_MAINHAND_WEAPON_UPGRADE_ID';
+export const WIPE_SELECTED_OFFHAND_WEAPON_UPGRADE_ID = 'WIPE_SELECTED_OFFHAND_WEAPON_UPGRADE_ID';
 
 /** Action to set the active weapon set. Params: { weaponSet } */
 export const setActiveWeaponSet = createAction(SET_ACTIVE_WEAPON_SET);
@@ -44,6 +47,18 @@ export const setSelectedMainhandWeaponIsAscended = createAction(SET_SELECTED_MAI
 /** Action to set the ascended flag on a selected main-hand weapon. Params: { slotId, isAscended } */
 export const setSelectedOffhandWeaponIsAscended = createAction(SET_SELECTED_OFFHAND_WEAPON_ISASCENDED);
 
+/** Action to set a selected upgrade item id for a main-hand weapon. Params: { slotId, itemId } */
+export const setSelectedMainhandWeaponUpgradeId = createAction(SET_SELECTED_MAINHAND_WEAPON_UPGRADE_ID);
+
+/** Action to set a selected upgrade item id for an off-hand weapon. Params: { slotId, itemId } */
+export const setSelectedOffhandWeaponUpgradeId = createAction(SET_SELECTED_OFFHAND_WEAPON_UPGRADE_ID);
+
+/** Action to wipe a selected upgrade item id for a main-hand weapon. Params: { slotId } */
+export const wipeSelectedMainhandWeaponUpgradeId = createAction(WIPE_SELECTED_MAINHAND_WEAPON_UPGRADE_ID);
+
+/** Action to wipe a selected upgrade item id for an off-hand weapon. Params: { slotId } */
+export const wipeSelectedOffhandWeaponUpgradeId = createAction(WIPE_SELECTED_OFFHAND_WEAPON_UPGRADE_ID);
+
 export default {
     SET_ACTIVE_WEAPON_SET,
     SET_SELECTED_MAINHAND_WEAPON_ID,
@@ -56,6 +71,10 @@ export default {
     WIPE_SELECTED_OFFHAND_WEAPON_ITEMSTAT_ID,
     SET_SELECTED_MAINHAND_WEAPON_ISASCENDED,
     SET_SELECTED_OFFHAND_WEAPON_ISASCENDED,
+    SET_SELECTED_MAINHAND_WEAPON_UPGRADE_ID,
+    SET_SELECTED_OFFHAND_WEAPON_UPGRADE_ID,
+    WIPE_SELECTED_MAINHAND_WEAPON_UPGRADE_ID,
+    WIPE_SELECTED_OFFHAND_WEAPON_UPGRADE_ID,
 
     setActiveWeaponSet,
     setSelectedMainhandWeaponId,
@@ -66,7 +85,10 @@ export default {
     setSelectedOffhandWeaponItemstatId,
     wipeSelectedMainhandWeaponItemstatId,
     wipeSelectedOffhandWeaponItemstatId,
-
     setSelectedMainhandWeaponIsAscended,
-    setSelectedOffhandWeaponIsAscended
+    setSelectedOffhandWeaponIsAscended,
+    setSelectedMainhandWeaponUpgradeId,
+    setSelectedOffhandWeaponUpgradeId,
+    wipeSelectedMainhandWeaponUpgradeId,
+    wipeSelectedOffhandWeaponUpgradeId
 };

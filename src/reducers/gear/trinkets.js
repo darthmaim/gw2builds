@@ -26,7 +26,25 @@ export const selectedTrinketIsAscended = handleAction(actions.SET_SELECTED_TRINK
     return newState;
 }, []);
 
+/** Reducer for the selected trinket upgrade item ids. */
+export const selectedTrinketUpgradeIds = handleActions({
+    // Set a trinket upgrade item
+    [actions.SET_SELECTED_TRINKET_UPGRADE_ID]: (state, action) => {
+        const newState = state.slice();
+        newState[action.payload.slotId] = action.payload.itemId;
+        return newState;
+    },
+
+    // Reset a trinket upgrade item
+    [actions.WIPE_SELECTED_TRINKET_UPGRADE_ID]: (state, action) => {
+        const newState = state.slice();
+        newState[action.payload.slotId] = undefined;
+        return newState;
+    }
+}, []);
+
 export default {
     selectedTrinketItemstatIds,
-    selectedTrinketIsAscended
+    selectedTrinketIsAscended,
+    selectedTrinketUpgradeIds
 };

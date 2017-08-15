@@ -95,12 +95,17 @@ This category contains the following local types:
     <tr>
         <td><code>selectedArmorIsAscended</code></td>
         <td>armorArray (bool)</td>
-        <td>Selected armor ascended flag.</td>
+        <td>Selected armor ascended flags.</td>
     </tr>
     <tr>
         <td><code>selectedArmorItemstatIds</code></td>
         <td>armorArray (<code>/v2/itemstats.id</code>)</td>
         <td>Selected armor itemstat ids.</td>
+    </tr>
+    <tr>
+        <td><code>selectedArmorUpgradeIds</code></td>
+        <td>armorArray (<code>/v2/items.id</code>)</td>
+        <td>Selected armor upgrade ids.</td>
     </tr>
 </table>
 
@@ -133,14 +138,19 @@ This category contains the following local types:
         <th>Description</th>
     </tr>
     <tr>
-        <td><code>selectedTrinketsIsAscended</code></td>
+        <td><code>selectedTrinketIsAscended</code></td>
         <td>trinketsArray (bool)</td>
-        <td>Selected trinkets ascended flag.</td>
+        <td>Selected trinket ascended flags.</td>
     </tr>
     <tr>
-        <td><code>selectedTrinketsItemstatIds</code></td>
+        <td><code>selectedTrinketItemstatIds</code></td>
         <td>trinketsArray (<code>/v2/itemstats.id</code>)</td>
-        <td>Selected trinkets itemstat ids.</td>
+        <td>Selected trinket itemstat ids.</td>
+    </tr>
+    <tr>
+        <td><code>selectedTrinketUpgradeIds</code></td>
+        <td>trinketsArray (<code>/v2/items.id</code>)</td>
+        <td>Selected trinket upgrade ids.</td>
     </tr>
 </table>
 
@@ -202,12 +212,17 @@ This category contains the following local types:
     <tr>
         <td><code>selectedMainhandWeaponIsAscended</code></td>
         <td>mainhandWeaponArray (bool)</td>
-        <td>Selected main-hand weapon ascended flag.</td>
+        <td>Selected main-hand weapon ascended flags.</td>
     </tr>
     <tr>
         <td><code>selectedMainhandWeaponItemstatIds</code></td>
         <td>mainhandWeaponArray (<code>/v2/itemstats.id</code>)</td>
         <td>Selected main-hand weapon itemstat ids.</td>
+    </tr>
+    <tr>
+        <td><code>selectedMainhandWeaponUpgradeIds</code></td>
+        <td>mainhandWeaponArray (<code>/v2/items.id</code>)</td>
+        <td>Selected main-hand weapon upgrade ids.</td>
     </tr>
     <tr>
         <td><code>selectedOffhandWeaponIds</code>
@@ -217,12 +232,17 @@ This category contains the following local types:
     <tr>
         <td><code>selectedOffhandWeaponIsAscended</code></td>
         <td>offhandWeaponArray (bool)</td>
-        <td>Selected off-hand weapon ascended flag.</td>
+        <td>Selected off-hand weapon ascended flags.</td>
     </tr>
     <tr>
         <td><code>selectedOffhandWeaponItemstatIds</code></td>
         <td>offhandWeaponArray (<code>/v2/itemstats.id</code>)</td>
-        <td>Selected main-hand weapon itemstat ids.</td>
+        <td>Selected off-hand weapon itemstat ids.</td>
+    </tr>
+    <tr>
+        <td><code>selectedOffhandWeaponUpgradeIds</code></td>
+        <td>offhandWeaponArray (<code>/v2/items.id</code>)</td>
+        <td>Selected off-hand weapon upgrade ids.</td>
     </tr>
 </table>
 

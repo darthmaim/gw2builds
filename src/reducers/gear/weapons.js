@@ -93,6 +93,40 @@ export const selectedOffhandWeaponIsAscended = handleAction(actions.SET_SELECTED
     return newState;
 }, []);
 
+/** Reducer for the selected main-hand weapon upgrade item ids. */
+export const selectedMainhandWeaponUpgradeIds = handleActions({
+    // Set a main-hand weapon upgrade item
+    [actions.SET_SELECTED_MAINHAND_WEAPON_UPGRADE_ID]: (state, action) => {
+        const newState = state.slice();
+        newState[action.payload.slotId] = action.payload.itemId;
+        return newState;
+    },
+
+    // Reset a main-hand weapon upgrade item
+    [actions.WIPE_SELECTED_MAINHAND_WEAPON_UPGRADE_ID]: (state, action) => {
+        const newState = state.slice();
+        newState[action.payload.slotId] = undefined;
+        return newState;
+    }
+}, []);
+
+/** Reducer for the selected off-hand weapon upgrade item ids. */
+export const selectedOffhandWeaponUpgradeIds = handleActions({
+    // Set a off-hand weapon upgrade item
+    [actions.SET_SELECTED_OFFHAND_WEAPON_UPGRADE_ID]: (state, action) => {
+        const newState = state.slice();
+        newState[action.payload.slotId] = action.payload.itemId;
+        return newState;
+    },
+
+    // Reset a off-hand weapon upgrade item
+    [actions.WIPE_SELECTED_OFFHAND_WEAPON_UPGRADE_ID]: (state, action) => {
+        const newState = state.slice();
+        newState[action.payload.slotId] = undefined;
+        return newState;
+    }
+}, []);
+
 export default {
     activeWeaponSet,
     availableWeaponObjects,
@@ -102,5 +136,7 @@ export default {
     selectedMainhandWeaponItemstatIds,
     selectedOffhandWeaponItemstatIds,
     selectedMainhandWeaponIsAscended,
-    selectedOffhandWeaponIsAscended
+    selectedOffhandWeaponIsAscended,
+    selectedMainhandWeaponUpgradeIds,
+    selectedOffhandWeaponUpgradeIds
 };
