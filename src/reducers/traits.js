@@ -1,5 +1,5 @@
 import flatMapDeep from 'lodash/fp/flatMapDeep';
-import { handleAction, handleActions } from 'redux-actions';
+import { combineActions, handleAction, handleActions } from 'redux-actions';
 import * as actions from '../actions';
 import { handleSimpleAction, swapElements } from './utils';
 
@@ -40,18 +40,16 @@ export const selectedMinorTraitIds = handleActions({
         }
         return newState;
     },
-    // Reset the minor traits from a specialization
+    // Reset the minor traits of a specialization line
     [actions.WIPE_SELECTED_SPECIALIZATION_ID]: (state, action) => {
         const newState = state.slice();
-        const pos = action.payload.specializationLine * 3;
         for (let i = 0; i < 3; i++) {
-            delete newState[pos + i];
+            newState[(action.payload.specializationLine * 3) + i] = undefined;
         }
         return newState;
     },
 
     // Reset all
-    [actions.WIPE_ALL_SELECTED_SPECIALIZATION_IDS]: () => [],
     [actions.FETCH_PROFESSION]: () => []
 }, []);
 
@@ -72,13 +70,10 @@ export const selectedMajorTraitIds = handleActions({
         return newState;
     },
     // Reset the major traits of a specialization line
-    [actions.WIPE_SELECTED_TRAIT_IDS]: (state, action) => {
+    [combineActions(actions.SET_SELECTED_SPECIALIZATION_ID, actions.WIPE_SELECTED_SPECIALIZATION_ID, actions.WIPE_SELECTED_TRAIT_IDS)](state, action) {
         const newState = state.slice();
-        const specializationLines = action.payload.specializationLine !== undefined && action.payload.specializationLine !== null ? [action.payload.specializationLine] : [0, 1, 2];
-        for (let line of specializationLines) {
-            for (let i = 0; i < 3; i++) {
-                delete newState[(line * 3) + i];
-            }
+        for (let i = 0; i < 3; i++) {
+            newState[(action.payload.specializationLine * 3) + i] = undefined;
         }
         return newState;
     },
