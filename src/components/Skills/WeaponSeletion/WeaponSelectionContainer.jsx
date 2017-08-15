@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { getAvailableMainhandWeaponObjects, getAvailableOffhandWeaponObjects, getActiveMainhandWeaponId, getActiveOffhandWeaponId, getIsTwoHandedActive } from '../../../selectors/skills';
+import { getAvailableMainhandWeaponObjects, getAvailableOffhandWeaponObjects, getActiveMainhandWeaponId, getActiveOffhandWeaponId, getIsTwoHandedActive } from '../../../selectors/gear';
 import { setSelectedMainhandWeaponId, setSelectedOffhandWeaponId } from '../../../actions';
 import WeaponSelection from './WeaponSelection';
 

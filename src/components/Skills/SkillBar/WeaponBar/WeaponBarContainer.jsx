@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { getActiveMainhandWeaponId, getActiveOffhandWeaponId, getIsTwoHandedActive } from '../../../../selectors/skills';
+import { getActiveMainhandWeaponId, getActiveOffhandWeaponId, getIsTwoHandedActive } from '../../../../selectors/gear';
 import WeaponBar from './WeaponBar';
 
 const mapStateToProps = (state, ownProps) => ({
