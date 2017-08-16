@@ -681,6 +681,17 @@ This allows supporting new revenant legends in future expansions without being l
         <td><code>armorUpgrade</code></td>
         <td>Armor upgrade item id</td>
     </tr>
+    <tr>
+        <td rowspan="2"><code>food</code></td>
+        <td><code>food</code></td>
+        <td>uint32</td>
+        <td>Food item id</td>
+    </tr>
+    <tr>
+        <td><code>utility</code></td>
+        <td>uint32</td>
+        <td>Utility item id</td>
+    </tr>
 </table>
 
 <sup>1</sup> In order to save space, the serializer converts the build id to a 17-bit unsigned integer by subtracting the build id with the lower boundary.
@@ -1403,6 +1414,17 @@ Every block is encoded as follows:
     <tr>
         <td>5</td>
         <td><code>armorUpgrade</code></td>
+        <td>item</td>
+    </tr>
+    <tr>
+        <td rowspan="2"><code>food</code></td> (45)
+        <td>0</td>
+        <td><code>food</code></td>
+        <td>item</td>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td><code>utility</code></td>
         <td>item</td>
     </tr>
 </table>

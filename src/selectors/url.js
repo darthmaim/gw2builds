@@ -31,6 +31,7 @@ const getSelectedOffhandWeaponItemstatIds = state => state.selectedOffhandWeapon
 const getSelectedOffhandWeaponIsAscended = state => state.selectedOffhandWeaponIsAscended;
 const getSelectedOffhandWeaponUpgradeIds = state => state.selectedOffhandWeaponUpgradeIds;
 const getSelectedOffhandWeaponInfusionIds = state => state.selectedOffhandWeaponInfusionIds;
+const getSelectedFoodIds = state => state.selectedFoodIds;
 
 export const getUrl = createSelector(
     [
@@ -63,7 +64,8 @@ export const getUrl = createSelector(
         getSelectedOffhandWeaponItemstatIds,
         getSelectedOffhandWeaponIsAscended,
         getSelectedOffhandWeaponUpgradeIds,
-        getSelectedOffhandWeaponInfusionIds
+        getSelectedOffhandWeaponInfusionIds,
+        getSelectedFoodIds
     ],
     (
         selectedGameMode,
@@ -95,7 +97,8 @@ export const getUrl = createSelector(
         selectedOffhandWeaponItemstatIds,
         selectedOffhandWeaponIsAscended,
         selectedOffhandWeaponUpgradeIds,
-        selectedOffhandWeaponInfusionIds
+        selectedOffhandWeaponInfusionIds,
+        selectedFoodIds
     ) => {
         return exportBuildToString({
             selectedGameMode,
@@ -127,7 +130,8 @@ export const getUrl = createSelector(
             selectedOffhandWeaponItemstatIds,
             selectedOffhandWeaponIsAscended,
             selectedOffhandWeaponUpgradeIds,
-            selectedOffhandWeaponInfusionIds
+            selectedOffhandWeaponInfusionIds,
+            selectedFoodIds
         });
     }
 );

@@ -288,6 +288,25 @@ This category contains the following local types:
     </tr>
 </table>
 
+## Food
+<table>
+    <tr>
+        <th>Property</th>
+        <th>Type</th>
+        <th>Description</th>
+    </tr>
+    <tr>
+        <td><code>selectedFoodIds</code></td>
+        <td>array (<code>/v2/items.id</code>)</td>
+        <td>
+            Selected food ids.<br>
+            [0] = food<br>
+            [1] = utility
+        </td>
+    </tr>
+</table>
+    
+
 ## Mechanics
 <table>
     <tr>
@@ -340,7 +359,6 @@ This category contains the following local types:
 </table>
 
 ## Skills
-### Skills
 <table>
     <tr>
         <th>Property</th>

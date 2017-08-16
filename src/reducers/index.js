@@ -8,6 +8,7 @@ import {
     selectedMainhandWeaponIds, selectedMainhandWeaponItemstatIds, selectedMainhandWeaponIsAscended, selectedMainhandWeaponUpgradeIds, selectedMainhandWeaponInfusionIds,
     selectedOffhandWeaponIds, selectedOffhandWeaponItemstatIds, selectedOffhandWeaponIsAscended, selectedOffhandWeaponUpgradeIds, selectedOffhandWeaponInfusionIds
 } from './gear';
+import { selectedFoodIds } from './food';
 import { availableSpecializationIds, availableSpecializationObjects, selectedSpecializationIds } from './specializations';
 import { availableTraitIds, availableTraitObjects, selectedMinorTraitIds, selectedMajorTraitIds } from './traits';
 import { availableSkillIds, selectedSkillIds, availableSkillObjects, availableProfessionSkillObjects } from './skills';
@@ -51,6 +52,9 @@ export default combineReducers({
     selectedOffhandWeaponUpgradeIds,
     selectedMainhandWeaponInfusionIds,
     selectedOffhandWeaponInfusionIds,
+
+    // Food
+    selectedFoodIds,
 
     // Specializations: specializations
     availableSpecializationIds,

@@ -182,6 +182,12 @@ export function initializeBuildFromString(store, buildString) {
             disp('utility3', build.skills, actions.setSelectedSkillId, id => ({ slotId: 3, skillId: id })),
             disp('elite', build.skills, actions.setSelectedSkillId, id => ({ slotId: 4, skillId: id }))
         ]);
+    }).then(() => {
+        return Promise.all([
+            // Food
+            disp('food', build.skills, actions.setSelectedFoodItemId, id => ({ slotId: 0, itemId: id })),
+            disp('utility', build.skills, actions.setSelectedFoodItemId, id => ({ slotId: 1, itemId: id }))
+        ]);
     }).then(() => build);
 }
 
@@ -337,6 +343,10 @@ export function exportBuildToString(state) {
             weaponB1Upgrade: state.selectedMainhandWeaponUpgradeIds[1],
             weaponB2Upgrade: state.selectedOffhandWeaponUpgradeIds[1],
             armorUpgrade: state.selectedPvpArmorUpgradeId
+        },
+        food: {
+            food: state.selectedFoodIds[0],
+            utility: state.selectedFoodIds[1]
         }
     };
 
