@@ -5869,7 +5869,7 @@ modular-css-webpack@^6.0.2:
     modular-css-core "^6.0.2"
     webpack-sources "^1.0.1"
 
-modular-css@^6.0.0:
+modular-css@^6.0.2:
   version "6.0.2"
   resolved "https://registry.yarnpkg.com/modular-css/-/modular-css-6.0.2.tgz#c943307c16ee5e2dce57047fc126f2f2b8398aa6"
   dependencies:

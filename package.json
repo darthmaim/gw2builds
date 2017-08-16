@@ -59,7 +59,7 @@
     "gw2be-build-string": "file:./lib/gw2be-build-string",
     "lodash": "^4.17.4",
     "mocha": "^3.2.0",
-    "modular-css": "^6.0.0",
+    "modular-css": "^6.0.2",
     "nyc": "^11.1.0",
     "postcss-import": "^10.0.0",
     "postcss-urlrewrite": "^0.2.1",
