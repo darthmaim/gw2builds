@@ -5860,6 +5860,12 @@ modular-css-rollup@^6.0.2:
     modular-css-core "^6.0.2"
     rollup-pluginutils "^2.0.1"
 
+modular-css-short-namer@^0.0.1:
+  version "0.0.1"
+  resolved "https://registry.yarnpkg.com/modular-css-short-namer/-/modular-css-short-namer-0.0.1.tgz#bd2565242adaa3ea79d092c55ba3421a3e1748e7"
+  dependencies:
+    short-string "^0.0.2"
+
 modular-css-webpack@^6.0.2:
   version "6.0.2"
   resolved "https://registry.yarnpkg.com/modular-css-webpack/-/modular-css-webpack-6.0.2.tgz#7b38c317df7e4dd16f5cbb321472075b6f2365ad"
@@ -7948,6 +7954,10 @@ shelljs@^0.7.5:
     glob "^7.0.0"
     interpret "^1.0.0"
     rechoir "^0.6.2"
+
+short-string@^0.0.2:
+  version "0.0.2"
+  resolved "https://registry.yarnpkg.com/short-string/-/short-string-0.0.2.tgz#473bd18d7769de1733539394334a3866aa5fa84b"
 
 sigmund@~1.0.0:
   version "1.0.1"

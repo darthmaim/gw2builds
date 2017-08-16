@@ -11,6 +11,7 @@ import source from 'vinyl-source-stream';
 import cssImport from 'postcss-import';
 import urlrewrite from 'postcss-urlrewrite';
 import through from 'through2';
+import shortNamer from 'modular-css-short-namer';
 
 export function bundle(cb) {
     return browserify({
@@ -24,6 +25,7 @@ export function bundle(cb) {
         .plugin('modular-css/browserify', {
             css: './temp/css/app.css',
             sourcemaps: true,
+            namer: !isDev() ? shortNamer() : undefined,
             before: [
             ],
             after: [
