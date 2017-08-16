@@ -85,9 +85,19 @@ Editor = connect(state => {
     return { locale: state.selectedLanguage, selectedProfession: state.selectedProfession, url: getUrl(state) };
 })(Editor);
 
-render(
-    <Provider store={store}>
-        <Editor/>
-    </Provider>,
-    document.getElementById('container')
-);
+function renderApp() {
+    render(
+        <Provider store={store}>
+            <Editor/>
+        </Provider>,
+        document.getElementById('container')
+    );
+}
+
+const styles = document.getElementById('style');
+
+if(styles.sheet && styles.sheet.cssRules) {
+    renderApp();
+} else {
+    styles.onload = renderApp;
+}
