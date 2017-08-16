@@ -17,10 +17,11 @@ html
         link(rel="apple-touch-icon-precomposed", href=img("logo/192.png"), sizes="192x192")
 
         //- styles
-        link(rel="preload", as="style", href=css("app.css"), onload="this.rel='stylesheet'", integrity=integrity(css("app.css")))
+        link(rel="stylesheet", href=css("app.css"), integrity=integrity(css("app.css")), media="async", id="style")
 
         script.
             addEventListener('error', window.__e=function f(e){f.q=f.q||[];f.q.push(e)});
+            (function(){document.getElementById('style').media='all'})()
     body
         block content
 
