@@ -17,6 +17,8 @@ const getSelectedArmorItemstatIds = state => state.selectedArmorItemstatIds;
 const getSelectedArmorIsAscended = state => state.selectedArmorIsAscended;
 const getSelectedArmorUpgradeIds = state => state.selectedArmorUpgradeIds;
 const getSelectedArmorInfusionIds = state => state.selectedArmorInfusionIds;
+const getSelectedPvpAmuletId = state => state.selectedPvpAmuletId;
+const getSelectedPvpArmorUpgradeId = state => state.selectedPvpArmorUpgradeId;
 const getSelectedTrinketItemstatIds = state => state.selectedTrinketItemstatIds;
 const getSelectedTrinketIsAscended = state => state.selectedTrinketIsAscended;
 const getSelectedTrinketUpgradeIds = state => state.selectedTrinketUpgradeIds;
@@ -48,6 +50,8 @@ export const getUrl = createSelector(
         getSelectedArmorIsAscended,
         getSelectedArmorUpgradeIds,
         getSelectedArmorInfusionIds,
+        getSelectedPvpAmuletId,
+        getSelectedPvpArmorUpgradeId,
         getSelectedTrinketItemstatIds,
         getSelectedTrinketIsAscended,
         getSelectedTrinketUpgradeIds,
@@ -78,6 +82,8 @@ export const getUrl = createSelector(
         selectedArmorIsAscended,
         selectedArmorUpgradeIds,
         selectedArmorInfusionIds,
+        selectedPvpAmuletId,
+        selectedPvpArmorUpgradeId,
         selectedTrinketItemstatIds,
         selectedTrinketIsAscended,
         selectedTrinketUpgradeIds,
@@ -108,6 +114,8 @@ export const getUrl = createSelector(
             selectedArmorIsAscended,
             selectedArmorUpgradeIds,
             selectedArmorInfusionIds,
+            selectedPvpAmuletId,
+            selectedPvpArmorUpgradeId,
             selectedTrinketItemstatIds,
             selectedTrinketIsAscended,
             selectedTrinketUpgradeIds,

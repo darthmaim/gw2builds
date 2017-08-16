@@ -112,6 +112,16 @@ This category contains the following local types:
         <td>armorArray (<code>/v2/items.id</code>)</td>
         <td>Selected armor infusion ids.</td>
     </tr>
+    <tr>
+        <td><code>selectedPvpAmuletId</code></td>
+        <td><code>/v2/pvp/amulets.id</code></td>
+        <td>Selected PvP amulet id.</td>
+    </tr>
+    <tr>
+        <td><code>selectedPvpArmorUpgradeId</code></td>
+        <td><code>/v2/items.id</code></td>
+        <td>Selected PvP armor upgrade id.</td>
+    </tr>
 </table>
 
 ### Trinkets

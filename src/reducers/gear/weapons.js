@@ -1,4 +1,4 @@
-import { handleAction, handleActions } from 'redux-actions';
+import { combineActions, handleAction, handleActions } from 'redux-actions';
 import * as actions from '../../actions';
 import { handleSimpleAction } from '../../reducers/utils';
 
@@ -53,7 +53,7 @@ export const selectedMainhandWeaponItemstatIds = handleActions({
     },
 
     // Reset a main-hand weapon itemstat
-    [actions.WIPE_SELECTED_MAINHAND_WEAPON_ITEMSTAT_ID]: (state, action) => {
+    [combineActions(actions.WIPE_SELECTED_MAINHAND_WEAPON_ITEMSTAT_ID, actions.SET_SELECTED_GAMEMODE)](state, action) {
         const newState = state.slice();
         newState[action.payload.slotId] = undefined;
         return newState;
@@ -70,7 +70,7 @@ export const selectedOffhandWeaponItemstatIds = handleActions({
     },
 
     // Reset an off-hand weapon itemstat
-    [actions.WIPE_SELECTED_OFFHAND_WEAPON_ITEMSTAT_ID]: (state, action) => {
+    [combineActions(actions.WIPE_SELECTED_OFFHAND_WEAPON_ITEMSTAT_ID, actions.SET_SELECTED_GAMEMODE)](state, action) {
         const newState = state.slice();
         newState[action.payload.slotId] = undefined;
         return newState;
@@ -78,7 +78,7 @@ export const selectedOffhandWeaponItemstatIds = handleActions({
 }, []);
 
 /** Reducer for the main-hand weapon ascended flag. */
-export const selectedMainhandWeaponIsAscended = handleAction(actions.SET_SELECTED_MAINHAND_WEAPON_ISASCENDED, (state, action) => {
+export const selectedMainhandWeaponIsAscended = handleAction(combineActions(actions.SET_SELECTED_MAINHAND_WEAPON_ISASCENDED, actions.SET_SELECTED_GAMEMODE), (state, action) => {
     // Set the ascended flag on a main-hand weapon
     const newState = state.slice();
     newState[action.payload.slotId] = action.payload.isAscended;
@@ -86,7 +86,7 @@ export const selectedMainhandWeaponIsAscended = handleAction(actions.SET_SELECTE
 }, []);
 
 /** Reducer for the off-hand weapon ascended flag. */
-export const selectedOffhandWeaponIsAscended = handleAction(actions.SET_SELECTED_OFFHAND_WEAPON_ISASCENDED, (state, action) => {
+export const selectedOffhandWeaponIsAscended = handleAction(combineActions(actions.SET_SELECTED_OFFHAND_WEAPON_ISASCENDED, actions.SET_SELECTED_GAMEMODE), (state, action) => {
     // Set the ascended flag on an off-hand weapon
     const newState = state.slice();
     newState[action.payload.slotId] = action.payload.isAscended;
@@ -103,7 +103,7 @@ export const selectedMainhandWeaponUpgradeIds = handleActions({
     },
 
     // Reset a main-hand weapon upgrade item
-    [actions.WIPE_SELECTED_MAINHAND_WEAPON_UPGRADE_ID]: (state, action) => {
+    [combineActions(actions.WIPE_SELECTED_MAINHAND_WEAPON_UPGRADE_ID, actions.SET_SELECTED_GAMEMODE)](state, action) {
         const newState = state.slice();
         newState[action.payload.slotId] = undefined;
         return newState;
@@ -120,7 +120,7 @@ export const selectedOffhandWeaponUpgradeIds = handleActions({
     },
 
     // Reset a off-hand weapon upgrade item
-    [actions.WIPE_SELECTED_OFFHAND_WEAPON_UPGRADE_ID]: (state, action) => {
+    [combineActions(actions.WIPE_SELECTED_OFFHAND_WEAPON_UPGRADE_ID, actions.SET_SELECTED_GAMEMODE)](state, action) {
         const newState = state.slice();
         newState[action.payload.slotId] = undefined;
         return newState;
@@ -137,7 +137,7 @@ export const selectedMainhandWeaponInfusionIds = handleActions({
     },
 
     // Reset a main-hand weapon infusion item
-    [actions.WIPE_SELECTED_MAINHAND_WEAPON_INFUSION_ID]: (state, action) => {
+    [combineActions(actions.WIPE_SELECTED_MAINHAND_WEAPON_INFUSION_ID, actions.SET_SELECTED_GAMEMODE)](state, action) {
         const newState = state.slice();
         newState[action.payload.slotId] = undefined;
         return newState;
@@ -163,7 +163,7 @@ export const selectedOffhandWeaponInfusionIds = handleActions({
     },
 
     // Reset a off-hand weapon infusion item
-    [actions.WIPE_SELECTED_OFFHAND_WEAPON_INFUSION_ID]: (state, action) => {
+    [combineActions(actions.WIPE_SELECTED_OFFHAND_WEAPON_INFUSION_ID, actions.SET_SELECTED_GAMEMODE)](state, action) {
         const newState = state.slice();
         newState[action.payload.slotId] = undefined;
         return newState;

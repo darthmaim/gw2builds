@@ -654,6 +654,33 @@ This allows supporting new revenant legends in future expansions without being l
         <td><code>ring2Attuned</code></td>
         <td>Third infusion item id of second ring</td>
     </tr>
+    <tr>
+        <td rowspan="6"><code>gearPvp</code></td>
+        <td><code>amulet</code></td>
+        <td>uint32</td>
+        <td>Amulet id</td>
+    </tr>
+    <tr>
+        <td><code>weaponA1Upgrade</code></td>
+        <td rowspan="5">uint32</td>
+        <td>Upgrade item id of main-hand weapon of first weapon set</td>
+    </tr>
+    <tr>
+        <td><code>weaponA2Upgrade</code></td>
+        <td>Upgrade item id of off-hand weapon of first weapon set</td>
+    </tr>
+    <tr>
+        <td><code>weaponB1Upgrade</code></td>
+        <td>Upgrade item id of main-hand weapon of second weapon set</td>
+    </tr>
+    <tr>
+        <td><code>weaponB2Upgrade</code></td>
+        <td>Upgrade item id of off-hand weapon of second weapon set</td>
+    </tr>
+    <tr>
+        <td><code>armorUpgrade</code></td>
+        <td>Armor upgrade item id</td>
+    </tr>
 </table>
 
 <sup>1</sup> In order to save space, the serializer converts the build id to a 17-bit unsigned integer by subtracting the build id with the lower boundary.
@@ -683,7 +710,7 @@ The following table shows how the list of bits used for storage types are stored
         <th>Type</th>
         <td>empty</td>
         <td>item</td>
-        <td>itemstat<sup>1</sup></td>
+        <td>itemstat / pvpAmulet<sup>1</sup></td>
         <td>pet</td>
         <td>skill</td>
         <td>trait</td>
@@ -691,7 +718,8 @@ The following table shows how the list of bits used for storage types are stored
     </tr>
 </table>
 
-<sup>1</sup> The itemstat is used for both PvE/WvW itemstat and PvP amulet stat ids, because these types can't appear both at once.
+<sup>1</sup> This entry is used for both PvE/WvW itemstat and PvP amulets.
+Because these types are mutually exclusive, they do not conflict with each other.
 
 ##### Blocks
 Every block is encoded as follows:
@@ -1347,9 +1375,34 @@ Every block is encoded as follows:
         <td>duplicateValue(item)</td>
     </tr>
     <tr>
-        <td><code>gearPvp</code> (44)</td>
+        <td rowspan="6"><code>gearPvp</code> (44)</td>
         <td>0</td>
         <td><code>amulet</code></td>
-        <td>itemstat</td>
+        <td>pvpAmulet</td>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td><code>weaponA1Upgrade</code></td>
+        <td>item</td>
+    </tr>
+    <tr>
+        <td>2</td>
+        <td><code>weaponA2Upgrade</code></td>
+        <td>item</td>
+    </tr>
+    <tr>
+        <td>3</td>
+        <td><code>weaponB1Upgrade</code></td>
+        <td>item</td>
+    </tr>
+    <tr>
+        <td>4</td>
+        <td><code>weaponB2Upgrade</code></td>
+        <td>item</td>
+    </tr>
+    <tr>
+        <td>5</td>
+        <td><code>armorUpgrade</code></td>
+        <td>item</td>
     </tr>
 </table>

@@ -3,7 +3,7 @@ import { selectedLanguage, selectedGameMode, selectedProfession, selectedRace } 
 import {
     activeWeaponSet,
     availableWeaponObjects,
-    selectedArmorItemstatIds, selectedArmorIsAscended, selectedArmorUpgradeIds, selectedArmorInfusionIds,
+    selectedArmorItemstatIds, selectedArmorIsAscended, selectedArmorUpgradeIds, selectedArmorInfusionIds, selectedPvpAmuletId, selectedPvpArmorUpgradeId,
     selectedTrinketItemstatIds, selectedTrinketIsAscended, selectedTrinketUpgradeIds, selectedTrinketInfusionIds,
     selectedMainhandWeaponIds, selectedMainhandWeaponItemstatIds, selectedMainhandWeaponIsAscended, selectedMainhandWeaponUpgradeIds, selectedMainhandWeaponInfusionIds,
     selectedOffhandWeaponIds, selectedOffhandWeaponItemstatIds, selectedOffhandWeaponIsAscended, selectedOffhandWeaponUpgradeIds, selectedOffhandWeaponInfusionIds
@@ -29,6 +29,8 @@ export default combineReducers({
     selectedArmorIsAscended,
     selectedArmorUpgradeIds,
     selectedArmorInfusionIds,
+    selectedPvpAmuletId,
+    selectedPvpArmorUpgradeId,
 
     // Gear: trinkets
     selectedTrinketItemstatIds,
