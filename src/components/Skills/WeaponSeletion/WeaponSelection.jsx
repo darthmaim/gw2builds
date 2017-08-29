@@ -2,6 +2,7 @@ import map from 'lodash/map';
 import PropTypes from 'prop-types';
 import React from 'react';
 import { Select } from '../../../components/Inputs';
+import style from './WeaponSelection.css';
 
 // a weapon is available if it doesn't require a specialization
 // or if the specialization is active.
@@ -11,7 +12,10 @@ const isWeaponAvailable = (weapon, selectedSpecializationIds) =>
 const renderSelect = (weapons, value, onChange, selectedSpecializationIds) => (
     <Select value={value} onChange={onChange} placeholder="None">
         {map(weapons, (weapon, name) => (
-            <option key={name} value={name} disabled={!isWeaponAvailable(weapon, selectedSpecializationIds)}>{name}</option>
+            <Select.Option key={name} value={name} disabled={!isWeaponAvailable(weapon, selectedSpecializationIds)}>
+                {name}
+                {weapon.specialization && (<span className={style.specializationRequirement}>Requires specialization {weapon.specialization}</span>)}
+            </Select.Option>
         ))}
     </Select>
 );

@@ -12,6 +12,7 @@ import extendApiData from 'gw2be-api-extension-data';
 import editor from './reducers';
 import { TooltipContext } from './components/Tooltips';
 import Layout from './components/App';
+import { Select } from './components/Inputs';
 import { getUrl } from './selectors/url';
 import { initializeBuildFromString } from './utils/build-string';
 import { init as initAnalytics } from './utils/analytics';
@@ -74,7 +75,9 @@ class Editor extends React.Component {
         return (
             <IntlProvider locale={this.props.locale}>
                 <TooltipContext>
-                    <Layout loading={this.state.loading}/>
+                    <Select.Context>
+                        <Layout loading={this.state.loading}/>
+                    </Select.Context>
                 </TooltipContext>
             </IntlProvider>
         );
