@@ -17,7 +17,7 @@ html
         link(rel="apple-touch-icon-precomposed", href=img("logo/192.png"), sizes="192x192")
 
         //- styles
-        link(rel="stylesheet", href=css("app.css"), integrity=integrity(css("app.css")), media="async", id="style")
+        link(rel="stylesheet", href=css("app.css"), integrity=integrity(css("app.css")), media="async", id="style", crossorigin="anonymous")
 
         script.
             addEventListener('error', window.__e=function f(e){f.q=f.q||[];f.q.push(e)});
@@ -26,7 +26,7 @@ html
         block content
 
         //- Load the main app
-        script(src=js("app.js"), async, integrity=integrity(js("app.js")))
+        script(src=js("app.js"), async, integrity=integrity(js("app.js")), crossorigin="anonymous")
 
         //- Add google analytics if GOOGLE_ANALYTICS_TRACKING_ID environment variable is set
         if google.analytics !== false
