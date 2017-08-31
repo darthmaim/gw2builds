@@ -9,6 +9,8 @@
     border-bottom: 1px solid #eee;
     padding: 4px 16px 4px 0;
     margin: 0 8px 8px 0;
+
+    cursor: pointer;
 }
 
 .select:after {
@@ -21,6 +23,17 @@
     border-color: #ccc transparent transparent;
     border-width: 6px 4px 0;
     pointer-events: none;
+}
+
+.disabled {
+    composes: select;
+
+    cursor: default;
+    color: #444;
+}
+
+.disabled:after {
+    border-top-color: #e4e4e4;
 }
 
 .dropdown {

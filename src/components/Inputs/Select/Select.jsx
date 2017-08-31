@@ -46,9 +46,12 @@ class Select extends React.Component {
 
     handleClick() {
         const {open} = this.state;
+        const {children, disabled} = this.props;
 
         if(open) {
             this.context.selectContext.hideDropdown()
+        } else if(disabled || children.length === 0) {
+            return;
         }
 
         this.setState({
@@ -86,13 +89,13 @@ class Select extends React.Component {
     }
 
     render() {
-        const {className, children, placeholder, value} = this.props;
+        const {className, children, disabled, placeholder, value} = this.props;
 
         const current = children.filter(child => child.props.value === value)[0] || placeholder;
 
         return (
             <div
-                className={cx(style.select, className)}
+                className={cx(disabled ? style.disabled : style.select, className)}
                 tabIndex={0}
                 ref={(ref) => this.ref = ref}
                 onBlur={this.handleBlur}
@@ -107,12 +110,14 @@ class Select extends React.Component {
 
 Select.propTypes = {
     children: PropTypes.node.isRequired,
+    disabled: PropTypes.bool.isRequired,
     onChange: PropTypes.func.isRequired,
     value: PropTypes.any,
     placeholder: PropTypes.string
 };
 
 Select.defaultProps = {
+    disabled: false,
     onChange: () => {}
 };
 
