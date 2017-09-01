@@ -125,11 +125,11 @@ class Dropdown extends React.Component {
                 : `calc(100% - calc(20px + ${window.innerHeight - dropdown.position.top}px))`
         };
 
+        const onSelect = this.onSelect;
+
         return (
             <div className={style.dropdown} style={position} ref={this.updateRef}>
-                {dropdown.children.map((opt) => React.cloneElement(opt, {
-                    onSelect: this.onSelect
-                }))}
+                {React.Children.map(dropdown.children, (opt) => React.cloneElement(opt, {onSelect}))}
             </div>
         );
     }

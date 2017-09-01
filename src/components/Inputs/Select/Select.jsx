@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import cx from 'classnames';
 import Option from './Option';
+import Group from './Group';
 import Dropdown from './Dropdown';
 import Context from './Context';
 import ContextShape from './ContextShape';
@@ -88,10 +89,25 @@ class Select extends React.Component {
         this.ref.focus();
     }
 
+    options(children) {
+        const options = [];
+
+        React.Children.forEach(children, (option) => {
+            if(option && option.type === Option) {
+                options.push(option);
+            } else if(option && option.props) {
+                this.options(option.props.children).forEach(opt => options.push(opt))
+            }
+        });
+
+        return options;
+    }
+
     render() {
         const {className, children, disabled, placeholder, value} = this.props;
 
-        const current = children.filter(child => child.props.value === value)[0] || placeholder;
+        const options = this.options(children);
+        const current = options.filter(child => child.props.value === value)[0] || placeholder;
 
         return (
             <div
@@ -130,6 +146,7 @@ Select.childContextTypes = {
 };
 
 Select.Option = Option;
+Select.Group = Group;
 Select.Context = Context;
 Select.Dropdown = Dropdown;
 

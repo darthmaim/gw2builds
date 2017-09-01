@@ -80,5 +80,17 @@
 }
 
 .dropdown .disabledOption:hover {
-    background: #fafafa;
+    background: #f9f9f9;
+}
+
+.group {
+    position: relative;
+}
+
+.groupLabel {
+    padding: 16px;
+    background: #f9f9f9;
+    font-weight: bold;
+    position: sticky;
+    top: 0;
 }
