@@ -59,15 +59,16 @@ class Editor extends React.Component {
     }
 
     componentDidUpdate() {
+        const {url, locale, selectedProfession} = this.props;
+        window.document.documentElement.lang = locale;
+
         // prevent updating the url/title while a build is loaded
         if (this.state.loading) {
             return;
         }
 
-        window.history.replaceState(undefined, '', this.props.url);
-        window.document.title = this.props.selectedProfession ?
-            `${this.props.selectedProfession} | Build Editor - gw2efficiency` :
-            'Build Editor - gw2efficiency';
+        window.history.replaceState(undefined, '', url);
+        window.document.title = (selectedProfession ? `${selectedProfession} | ` : '') + 'Build Editor - gw2efficiency';
     }
 
     render() {
