@@ -13,6 +13,8 @@ export function install() {
             // we don't precache fonts (fonts are added later on first fetch)
             // because we don't know yet what format this client supports (woff2, woff, eot, ...)
             .filter(path => path.indexOf('/fonts/') === -1)
+            // only safari needs the pinned tab icon, cached on first fetch
+            .filter(path => path.indexOf('/img/pinned-tab') === -1)
         )
 
         // add all entries of the manifest to the cache
