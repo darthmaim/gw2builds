@@ -19,12 +19,13 @@ class Option extends React.Component {
     };
 
     render() {
-        const {disabled, children} = this.props;
+        const {disabled, children, value, active} = this.props;
 
         const className = disabled ? style.disabledOption : style.option;
+        const activeClass = value === active ? style.activeOption : undefined;
 
         return (
-            <div className={className} onClick={this.handleClick}>
+            <div className={cx(className, activeClass)} onClick={this.handleClick}>
                 {children}
             </div>
         )

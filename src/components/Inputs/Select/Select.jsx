@@ -25,6 +25,7 @@ class Select extends React.Component {
     componentDidUpdate() {
         if(this.state.open && this.ref) {
             this.context.selectContext.showDropdown({
+                active: this.props.value,
                 children: this.props.children,
                 onSelect: this.onSelect,
                 position: this.ref.getBoundingClientRect()

@@ -59,6 +59,7 @@
     transition: background .1s ease;
     overflow: hidden;
     cursor: pointer;
+    position: relative;
 }
 
 .dropdown .option:hover {
@@ -81,6 +82,22 @@
 
 .dropdown .disabledOption:hover {
     background: #f9f9f9;
+}
+
+.dropdown .activeOption {
+    color: #3023AE;
+}
+
+.dropdown .activeOption:before {
+    content: '';
+    display: block;
+    position: absolute;
+    left: 7px;
+    top: calc(50% - 2px);
+    width: 4px;
+    height: 4px;
+    border-radius: 2px;
+    background: #3023AE
 }
 
 .group {

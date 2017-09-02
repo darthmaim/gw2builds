@@ -126,10 +126,11 @@ class Dropdown extends React.Component {
         };
 
         const onSelect = this.onSelect;
+        const active = dropdown.active;
 
         return (
             <div className={style.dropdown} style={position} ref={this.updateRef}>
-                {React.Children.map(dropdown.children, (opt) => React.cloneElement(opt, {onSelect}))}
+                {React.Children.map(dropdown.children, (opt) => React.cloneElement(opt, {onSelect, active}))}
             </div>
         );
     }
