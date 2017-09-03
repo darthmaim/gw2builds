@@ -4,8 +4,6 @@ import eventPath from '../../../utils/eventPath';
 import ContextShape from './ContextShape';
 import style from './Select.css';
 
-const wheelEvents = ['mousewheel', 'DOMMouseScroll'];
-
 class Dropdown extends React.Component {
     constructor(props, context) {
         super(props, context);
@@ -16,9 +14,7 @@ class Dropdown extends React.Component {
 
         this.handleDropdown = this.handleDropdown.bind(this);
         this.handleClickOutside = this.handleClickOutside.bind(this);
-        this.handleScroll = this.handleScroll.bind(this);
         this.onSelect = this.onSelect.bind(this);
-        this.preventDefault = this.preventDefault.bind(this);
         this.updateRef = this.updateRef.bind(this);
 
         this.scrollPrevented = false;
@@ -46,33 +42,20 @@ class Dropdown extends React.Component {
 
     startPreventScroll() {
         if(!this.scrollPrevented) {
-            wheelEvents.forEach((event) => window.document.addEventListener(event, this.preventDefault));
+            window.document.documentElement.className += ' js-select-disable-scroll';
             this.scrollPrevented = true;
         }
     }
 
     stopPreventScroll() {
         if(this.scrollPrevented) {
-            wheelEvents.forEach((event) => window.document.removeEventListener(event, this.preventDefault));
+            window.document.documentElement.className = window.document.documentElement.className.replace(' js-select-disable-scroll', '');
             this.scrollPrevented = false;
         }
     }
 
-    preventDefault(e) {
-        if(this.ref && eventPath(e).indexOf(this.ref) !== -1) {
-            return;
-        }
-
-        e.preventDefault();
-        return false;
-    }
-
     updateRef(ref) {
         this.ref = ref;
-
-        if(ref) {
-            wheelEvents.forEach((event) => ref.addEventListener(event, this.handleScroll));
-        }
     }
 
     handleDropdown(dropdown) {
@@ -81,22 +64,6 @@ class Dropdown extends React.Component {
 
     handleClickOutside() {
         this.state.dropdown && this.state.dropdown.onSelect();
-    }
-
-    handleScroll(e) {
-        const scrollHeight = this.ref.scrollHeight;
-        const scrollTop = this.ref.scrollTop;
-        const height = this.ref.offsetHeight;
-        const delta = e.type === 'DOMMouseScroll' ? e.detail * -40 : e.wheelDelta;
-        const up = delta > 0;
-
-        if(!up && -delta > scrollHeight - height - scrollTop) {
-            this.ref.scrollTop = scrollHeight;
-            e.preventDefault();
-        } else if(up && delta > scrollTop) {
-            this.ref.scrollTop = 0;
-            e.preventDefault();
-        }
     }
 
     onSelect(value) {
