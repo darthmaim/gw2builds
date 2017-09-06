@@ -64,8 +64,8 @@ class Select extends React.Component {
     handleKeyDown(e) {
         const {open} = this.state;
 
-        // space, enter, arrow down, esc
-        if(e.which === 32 || e.which === 13 || e.which === 40 || (e.which === 27 && open)) {
+        // arrows, space, enter, esc
+        if((!open && ((e.which >= 37 && e.which <= 40) || e.which === 32 || e.which === 13)) || (e.which === 27 && open)) {
             this.handleClick();
 
             e.preventDefault();

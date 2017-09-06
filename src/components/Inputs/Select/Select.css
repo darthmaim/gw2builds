@@ -100,6 +100,10 @@
     background: #3023AE
 }
 
+.dropdown .highlightOption {
+    background: #F3F2FF;
+}
+
 .group {
     position: relative;
 }

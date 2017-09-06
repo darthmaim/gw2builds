@@ -18,14 +18,26 @@ class Option extends React.Component {
         }
     };
 
-    render() {
-        const {disabled, children, value, active} = this.props;
+    componentDidUpdate() {
+        if(this.ref && this.props.highlight === this.props.value) {
+            if(this.ref.scrollIntoViewIfNeeded) {
+                this.ref.scrollIntoViewIfNeeded();
+            } else {
+                this.ref.scrollIntoView();
+            }
+        }
+    }
 
-        const className = disabled ? style.disabledOption : style.option;
+    render() {
+        const {disabled, children, value, active, highlight} = this.props;
+
+        const optionClass = disabled ? style.disabledOption : style.option;
         const activeClass = value === active ? style.activeOption : undefined;
+        const highlightClass = value === highlight ? style.highlightOption : undefined;
+        const className = cx(optionClass, activeClass, highlightClass);
 
         return (
-            <div className={cx(className, activeClass)} onClick={this.handleClick}>
+            <div className={className} onClick={this.handleClick} ref={(ref) => this.ref = ref}>
                 {children}
             </div>
         )

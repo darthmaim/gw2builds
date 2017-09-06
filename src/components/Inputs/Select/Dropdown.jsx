@@ -2,6 +2,7 @@ import React from 'react';
 import onClickOutside from 'react-onclickoutside';
 import eventPath from '../../../utils/eventPath';
 import ContextShape from './ContextShape';
+import Option from './Option';
 import style from './Select.css';
 
 class Dropdown extends React.Component {
@@ -9,11 +10,14 @@ class Dropdown extends React.Component {
         super(props, context);
 
         this.state = {
-            dropdown: null
+            dropdown: null,
+            values: [],
+            highlightedValue: undefined
         };
 
         this.handleDropdown = this.handleDropdown.bind(this);
         this.handleClickOutside = this.handleClickOutside.bind(this);
+        this.handleKeyDown = this.handleKeyDown.bind(this);
         this.onSelect = this.onSelect.bind(this);
         this.updateRef = this.updateRef.bind(this);
 
@@ -40,9 +44,23 @@ class Dropdown extends React.Component {
         this.stopPreventScroll();
     }
 
+    values(children) {
+        return React.Children.toArray(children).reduce((values, child) => {
+            if(child && child.type === Option) {
+                if(!child.props.disabled) {
+                    return [...values, child.props.value];
+                }
+            } else if(child && child.props) {
+                return [...values, ...this.values(child.props.children)];
+            }
+            return values;
+        }, []);
+    }
+
     startPreventScroll() {
         if(!this.scrollPrevented) {
             window.document.documentElement.className += ' js-select-disable-scroll';
+            window.document.addEventListener('keydown', this.handleKeyDown);
             this.scrollPrevented = true;
         }
     }
@@ -50,6 +68,7 @@ class Dropdown extends React.Component {
     stopPreventScroll() {
         if(this.scrollPrevented) {
             window.document.documentElement.className = window.document.documentElement.className.replace(' js-select-disable-scroll', '');
+            window.document.removeEventListener('keydown', this.handleKeyDown);
             this.scrollPrevented = false;
         }
     }
@@ -59,11 +78,42 @@ class Dropdown extends React.Component {
     }
 
     handleDropdown(dropdown) {
-        this.setState({dropdown});
+        this.setState({
+            dropdown,
+            values: dropdown ? this.values(dropdown.children) : [],
+            highlightedValue: undefined
+        });
     }
 
     handleClickOutside() {
         this.state.dropdown && this.state.dropdown.onSelect();
+    }
+
+    handleKeyDown(e) {
+        const {values, highlightedValue, dropdown} = this.state;
+
+        const currentHighlightIndex = values.indexOf(highlightedValue || dropdown.active);
+
+        switch(e.which) {
+            case 37:
+            case 38:
+                e.preventDefault();
+                return this.setState({
+                    highlightedValue: currentHighlightIndex !== -1
+                        ? values[(values.length + currentHighlightIndex - 1) % values.length]
+                        : values[values.length - 1]
+                });
+            case 39:
+            case 40:
+                e.preventDefault();
+                return this.setState({
+                    highlightedValue: values[(currentHighlightIndex + 1) % values.length]
+                });
+            case 32:
+            case 13:
+                e.preventDefault();
+                dropdown.onSelect(highlightedValue);
+        }
     }
 
     onSelect(value) {
@@ -71,7 +121,7 @@ class Dropdown extends React.Component {
     }
 
     render() {
-        const {dropdown} = this.state;
+        const {dropdown, values, highlightedValue} = this.state;
 
         if(!dropdown) {
             // we need to always return a DOM node for react-onclickoutside
@@ -94,10 +144,11 @@ class Dropdown extends React.Component {
 
         const onSelect = this.onSelect;
         const active = dropdown.active;
+        const highlight = highlightedValue;
 
         return (
             <div className={style.dropdown} style={position} ref={this.updateRef}>
-                {React.Children.map(dropdown.children, (opt) => React.cloneElement(opt, {onSelect, active}))}
+                {React.Children.map(dropdown.children, (opt) => React.cloneElement(opt, {onSelect, active, highlight}))}
             </div>
         );
     }
