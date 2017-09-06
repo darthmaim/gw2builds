@@ -105,12 +105,12 @@ This version uses the following enums for serialization:
     <tr>
         <td><code>legend</code><sup>1</sup></td>
         <td>
-            1 = Assassin<br>
-            2 = Demon<br>
-            3 = Dwarf<br>
-            4 = Centaur<br>
-            5 = Dragon<br>
-            6 = Renegade
+            1 = Legend1<br>
+            2 = Legend2<br>
+            3 = Legend3<br>
+            4 = Legend4<br>
+            5 = Legend5<br>
+            6 = Legend6
         </td>
     </tr>
     <tr>
