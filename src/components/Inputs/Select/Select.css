@@ -1,0 +1,124 @@
+.select {
+    composes: input from '../Inputs.css';
+
+    position: relative;
+    display: inline-block;
+
+    min-width: 125px;
+
+    border-bottom: 1px solid #eee;
+    padding: 4px 16px 4px 0;
+    margin: 0 8px 8px 0;
+
+    cursor: pointer;
+}
+
+.select:after {
+    content: '';
+    position: absolute;
+    right: 4px;
+    top: 50%;
+    margin-top: -2px;
+    border-style: solid;
+    border-color: #ccc transparent transparent;
+    border-width: 6px 4px 0;
+    pointer-events: none;
+}
+
+.disabled {
+    composes: select;
+
+    cursor: default;
+    color: #444;
+}
+
+.disabled:after {
+    border-top-color: #e4e4e4;
+}
+
+.dropdown {
+    position: fixed;
+    top: 20px;
+    left: 20px; right: 20px;
+    max-height: calc(100% - 40px);
+    box-shadow: 0 0 0 100vmax rgba(0,0,0,.1), 0 1px 40px rgba(0,0,0,.2);
+    z-index: 44;
+    background: #fff;
+
+    overflow: auto;
+
+    animation: dropdown .1s ease-out;
+}
+
+@keyframes dropdown {
+    from { opacity: 0; }
+}
+
+.dropdown .option {
+    padding: 16px;
+    transition: background .1s ease;
+    overflow: hidden;
+    cursor: pointer;
+    position: relative;
+}
+
+.dropdown .option:hover {
+    background: #f4f4f4;
+}
+
+.option + .option {
+    border-top: 1px solid #eee;
+}
+
+.disabledOption {
+    composes: option;
+}
+
+.dropdown .disabledOption {
+    cursor: not-allowed;
+    background: #fafafa;
+    color: #555;
+}
+
+.dropdown .disabledOption:hover {
+    background: #f9f9f9;
+}
+
+.dropdown .activeOption {
+    color: #3023AE;
+}
+
+.dropdown .activeOption:before {
+    content: '';
+    display: block;
+    position: absolute;
+    left: 7px;
+    top: calc(50% - 2px);
+    width: 4px;
+    height: 4px;
+    border-radius: 2px;
+    background: #3023AE
+}
+
+.dropdown .highlightOption {
+    background: #F3F2FF;
+}
+
+.group {
+    position: relative;
+}
+
+.groupLabel {
+    padding: 16px;
+    background: #f9f9f9;
+    font-weight: bold;
+    position: sticky;
+    top: 0;
+}
+
+:global(.js-select-disable-scroll),
+:global(.js-select-disable-scroll) body,
+:global(.js-select-disable-scroll) :external(panel from '../../App/MainContent/mainContent.css'),
+:global(.js-select-disable-scroll) :external(stats from '../../App/content.css') {
+    overflow: hidden;
+}
