@@ -8,6 +8,8 @@ import Context from './Context';
 import ContextShape from './ContextShape';
 import style from './Select.css';
 
+let nextInstanceId = 0;
+
 class Select extends React.Component {
     constructor(props, context) {
         super(props, context);
@@ -15,6 +17,8 @@ class Select extends React.Component {
         this.state = {
             open: false
         };
+
+        this.instanceId = nextInstanceId++;
 
         this.handleClick = this.handleClick.bind(this);
         this.handleKeyDown = this.handleKeyDown.bind(this);
@@ -98,13 +102,22 @@ class Select extends React.Component {
 
         return (
             <div
+                role={'combobox'}
+                aria-expanded={this.state.open}
+                aria-haspopup={this.state.open}
+                aria-owns={this.state.open ? 'select-dropdown' : undefined}
+                aria-activedescendant={this.state.open ? 'select-dropdown' : 'select-value-' + this.instanceId}
+                aria-readonly={this.state.disabled}
+                aria-label={this.props['aria-label']}
+                aria-labelledby={this.props['aria-labelledby']}
+                aria-describedby={this.props['aria-describedby']}
                 className={cx(disabled ? style.disabled : style.select, className)}
                 tabIndex={0}
                 ref={(ref) => this.ref = ref}
                 onClick={this.handleClick}
                 onKeyDown={this.handleKeyDown}
             >
-                <div className={style.currentValue}>{current}</div>
+                <div className={style.currentValue} id={'select-value-' + this.instanceId}>{current}</div>
             </div>
         );
     }

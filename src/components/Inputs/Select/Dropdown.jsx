@@ -146,7 +146,7 @@ class Dropdown extends React.Component {
         const highlight = highlightedValue;
 
         return (
-            <div className={style.dropdown} style={position} ref={this.updateRef}>
+            <div className={style.dropdown} style={position} ref={this.updateRef} id={'select-dropdown'}>
                 {React.Children.map(dropdown.children, (opt) => React.cloneElement(opt, {onSelect, active, highlight}))}
             </div>
         );
