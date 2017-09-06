@@ -1,6 +1,5 @@
 import React from 'react';
 import onClickOutside from 'react-onclickoutside';
-import eventPath from '../../../utils/eventPath';
 import ContextShape from './ContextShape';
 import Option from './Option';
 import style from './Select.css';
@@ -153,7 +152,6 @@ class Dropdown extends React.Component {
         );
     }
 }
-
 
 Dropdown.contextTypes = {
     selectContext: ContextShape

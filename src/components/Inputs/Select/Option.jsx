@@ -1,6 +1,6 @@
 import React from 'react';
 import cx from 'classnames';
-import ContextShape from './ContextShape';
+import PropTypes from 'prop-types';
 import style from './Select.css';
 
 class Option extends React.Component {
@@ -16,7 +16,7 @@ class Option extends React.Component {
         if(!disabled && onSelect) {
             onSelect(value);
         }
-    };
+    }
 
     componentDidUpdate() {
         if(this.ref && this.props.highlight === this.props.value) {
@@ -40,12 +40,20 @@ class Option extends React.Component {
             <div className={className} onClick={this.handleClick} ref={(ref) => this.ref = ref}>
                 {children}
             </div>
-        )
+        );
     }
 }
 
-Option.contextTypes = {
-    selectContext: ContextShape
+Option.propTypes = {
+    disabled: PropTypes.bool.isRequired,
+    value: PropTypes.any.isRequired,
+    children: PropTypes.any,
+    active: PropTypes.any,
+    highlight:  PropTypes.any
+};
+
+Option.defaultProps = {
+    disabled: false
 };
 
 export default Option;

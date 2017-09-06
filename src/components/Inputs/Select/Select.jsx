@@ -16,7 +16,6 @@ class Select extends React.Component {
             open: false
         };
 
-        this.handleBlur = this.handleBlur.bind(this);
         this.handleClick = this.handleClick.bind(this);
         this.handleKeyDown = this.handleKeyDown.bind(this);
         this.onSelect = this.onSelect.bind(this);
@@ -33,25 +32,12 @@ class Select extends React.Component {
         }
     }
 
-    handleBlur() {
-        return;
-
-        const {open} = this.state;
-
-        if(!open) {
-            return;
-        }
-
-        this.context.selectContext.hideDropdown();
-        this.setState({ open: false });
-    }
-
     handleClick() {
         const {open} = this.state;
         const {children, disabled} = this.props;
 
         if(open) {
-            this.context.selectContext.hideDropdown()
+            this.context.selectContext.hideDropdown();
         } else if(disabled || children.length === 0) {
             return;
         }
@@ -115,7 +101,6 @@ class Select extends React.Component {
                 className={cx(disabled ? style.disabled : style.select, className)}
                 tabIndex={0}
                 ref={(ref) => this.ref = ref}
-                onBlur={this.handleBlur}
                 onClick={this.handleClick}
                 onKeyDown={this.handleKeyDown}
             >
@@ -130,7 +115,8 @@ Select.propTypes = {
     disabled: PropTypes.bool.isRequired,
     onChange: PropTypes.func.isRequired,
     value: PropTypes.any,
-    placeholder: PropTypes.string
+    placeholder: PropTypes.string,
+    className: PropTypes.string
 };
 
 Select.defaultProps = {
