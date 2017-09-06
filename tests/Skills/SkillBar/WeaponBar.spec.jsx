@@ -82,9 +82,9 @@ describe('WeaponBar', () => {
             activeMainhandWeaponId: WEAPON_ATTUNEMENT, isTwoHanded: true
         };
 
-        expect(shallow(<WeaponBar {...props} activeAttunement={ATTUNEMENT1}/>)
+        expect(shallow(<WeaponBar {...props} selectedAttunementId={ATTUNEMENT1}/>)
             .find(SkillIcon).first().prop('skill')).to.equal(SKILL_ATTUNEMENT_1);
-        expect(shallow(<WeaponBar {...props} activeAttunement={ATTUNEMENT2}/>)
+        expect(shallow(<WeaponBar {...props} selectedAttunementId={ATTUNEMENT2}/>)
             .find(SkillIcon).first().prop('skill')).to.equal(SKILL_ATTUNEMENT_2);
     });
 });

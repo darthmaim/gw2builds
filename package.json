@@ -75,6 +75,7 @@
     "react-redux": "^5.0.2",
     "redux": "^3.7.1",
     "redux-actions": "^2.0.1",
+    "redux-devtools-extension": "^2.13.2",
     "redux-promise": "^0.5.3",
     "redux-sync-reducer": "^0.0.4",
     "redux-thunk": "^2.1.0",

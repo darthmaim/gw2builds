@@ -26,7 +26,8 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
                 specializationLine1: ownProps.specializationLine,
                 specializationLine2: existingSpecializationLine
             }));
-            if (specializations[selectedSpecializationIds[ownProps.specializationLine]].elite) {
+            const specialization = specializations[selectedSpecializationIds[ownProps.specializationLine]];
+            if (specialization && specialization.elite) {
                 // Elite specializations can't be swapped, so make sure to wipe it
                 // (this means that it's hardcoded to support only one active elite specialization at a time,
                 // update this when it changes in the future)

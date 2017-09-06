@@ -1,8 +1,22 @@
 import { combineReducers } from 'redux';
 import { selectedLanguage, selectedGameMode, selectedProfession, selectedRace } from './general';
+import {
+    activeWeaponSet,
+    availableWeaponObjects,
+    selectedArmorItemstatIds, selectedArmorIsAscended, selectedArmorUpgradeIds, selectedArmorInfusionIds, selectedPvpAmuletId, selectedPvpArmorUpgradeId,
+    selectedTrinketItemstatIds, selectedTrinketIsAscended, selectedTrinketUpgradeIds, selectedTrinketInfusionIds,
+    selectedMainhandWeaponIds, selectedMainhandWeaponItemstatIds, selectedMainhandWeaponIsAscended, selectedMainhandWeaponUpgradeIds, selectedMainhandWeaponInfusionIds,
+    selectedOffhandWeaponIds, selectedOffhandWeaponItemstatIds, selectedOffhandWeaponIsAscended, selectedOffhandWeaponUpgradeIds, selectedOffhandWeaponInfusionIds
+} from './gear';
+import { selectedFoodIds } from './food';
 import { availableSpecializationIds, availableSpecializationObjects, selectedSpecializationIds } from './specializations';
 import { availableTraitIds, availableTraitObjects, selectedMinorTraitIds, selectedMajorTraitIds } from './traits';
-import { availableWeaponObjects, activeWeaponSet, selectedMainhandWeaponIds, selectedOffhandWeaponIds, activeAttunements, availableAttunementObjects, availableSkillIds, availableSkillObjects, availableProfessionSkillObjects } from './skills';
+import { availableSkillIds, selectedSkillIds, availableSkillObjects, availableProfessionSkillObjects } from './skills';
+import {
+    availableElementalistAttunementObjects, selectedElementalistAttunementId, selectedWeaverPreviousAttunementId,
+    selectedRangerPetIds,
+    selectedRevenantLegendIds
+} from './mechanics';
 
 export default combineReducers({
     // General
@@ -10,6 +24,37 @@ export default combineReducers({
     selectedGameMode,
     selectedProfession,
     selectedRace,
+
+    // Gear: armor
+    selectedArmorItemstatIds,
+    selectedArmorIsAscended,
+    selectedArmorUpgradeIds,
+    selectedArmorInfusionIds,
+    selectedPvpAmuletId,
+    selectedPvpArmorUpgradeId,
+
+    // Gear: trinkets
+    selectedTrinketItemstatIds,
+    selectedTrinketIsAscended,
+    selectedTrinketUpgradeIds,
+    selectedTrinketInfusionIds,
+
+    // Gear: weapons
+    activeWeaponSet,
+    availableWeaponObjects,
+    selectedMainhandWeaponIds,
+    selectedOffhandWeaponIds,
+    selectedMainhandWeaponItemstatIds,
+    selectedOffhandWeaponItemstatIds,
+    selectedMainhandWeaponIsAscended,
+    selectedOffhandWeaponIsAscended,
+    selectedMainhandWeaponUpgradeIds,
+    selectedOffhandWeaponUpgradeIds,
+    selectedMainhandWeaponInfusionIds,
+    selectedOffhandWeaponInfusionIds,
+
+    // Food
+    selectedFoodIds,
 
     // Specializations: specializations
     availableSpecializationIds,
@@ -26,14 +71,12 @@ export default combineReducers({
     availableSkillIds,
     availableSkillObjects,
     availableProfessionSkillObjects,
-
-    // Weapons
-    activeWeaponSet,
-    availableWeaponObjects,
-    selectedMainhandWeaponIds,
-    selectedOffhandWeaponIds,
+    selectedSkillIds,
 
     // Mechanics
-    activeAttunements,
-    availableAttunementObjects
+    availableElementalistAttunementObjects,
+    selectedElementalistAttunementId,
+    selectedWeaverPreviousAttunementId,
+    selectedRangerPetIds,
+    selectedRevenantLegendIds
 });

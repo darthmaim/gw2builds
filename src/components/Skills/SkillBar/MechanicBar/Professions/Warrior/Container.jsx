@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { getActiveMainhandWeaponId } from '../../../../../../selectors/skills/weapons';
+import { getActiveMainhandWeaponId } from '../../../../../../selectors/gear/weapons';
 import Warrior from './Component';
 
 const mapStateToProps = (state, ownProps) => ({

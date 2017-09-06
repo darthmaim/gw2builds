@@ -45,8 +45,8 @@ class Editor extends React.Component {
 
         if (path) {
             initializeBuildFromString(store, path)
-                .then(() => {
-                    console.log('Loaded build from url.');
+                .then(build => {
+                    console.log('Loaded build from url:', build);
                     this.setState({ loading: false });
                 })
                 .catch(e => {
