@@ -62,6 +62,22 @@ Sometimes the type is represented as a GW2 API endpoint.
     </tr>
 </table>
 
+## Import Dialog
+<table>
+    <tr>
+        <th>Property</th>
+        <th>Type</th>
+        <th>Description</th>
+    </tr>
+    <tr>
+        <td><code>importDialogVisible</code></td>
+        <td>bool</td>
+        <td>
+            Import dialog visibility.<br>
+        </td>
+    </tr>
+</table>
+
 ## Gear
 ### Armor
 This category contains the following local types:

@@ -1,5 +1,7 @@
 import { combineReducers } from 'redux';
+
 import { selectedLanguage, selectedGameMode, selectedProfession, selectedRace } from './general';
+import { importDialogVisible } from './import';
 import {
     activeWeaponSet,
     availableWeaponObjects,
@@ -24,6 +26,9 @@ export default combineReducers({
     selectedGameMode,
     selectedProfession,
     selectedRace,
+
+    // Import dialog
+    importDialogVisible,
 
     // Gear: armor
     selectedArmorItemstatIds,

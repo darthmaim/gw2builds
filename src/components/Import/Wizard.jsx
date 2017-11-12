@@ -16,6 +16,7 @@ export default class extends React.Component {
         };
 
         this.handleStateChange = this.handleStateChange.bind(this);
+        this.handleClose = this.handleClose.bind(this);
     }
 
     handleStateChange(state, props = {}) {
@@ -24,14 +25,22 @@ export default class extends React.Component {
         });
     }
 
+    handleClose() {
+        this.props.setImportDialogVisible(false);
+    }
+
     render() {
+        if(!this.props.visible) {
+            return null;
+        }
+
         const { content } = this.state;
         const Component = this.stateToComponent(content.state);
 
         return (
             <div className={style.wrapper}>
                 <div className={style.container}>
-                    <Component onStateChange={this.handleStateChange} onClose={this.props.onClose} {...content.props}/>
+                    <Component onStateChange={this.handleStateChange} onClose={this.handleClose} {...content.props}/>
                 </div>
             </div>
         );
