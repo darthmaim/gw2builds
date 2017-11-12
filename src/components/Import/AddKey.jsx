@@ -36,7 +36,8 @@ class AddKey extends React.Component {
 
         api.authenticate(apiKey).tokeninfo().get().then((tokeninfo) => {
             if(REQUIRED_PERMISSIONS.every(s => tokeninfo.permissions.indexOf(s) !== -1)) {
-                this.props.onStateChange(STATE_OVERVIEW, { apiKey });
+                this.props.addImportApiKey(apiKey);
+                this.props.onStateChange(STATE_OVERVIEW);
             } else {
                 this.setState({
                     loading: false,
@@ -44,6 +45,7 @@ class AddKey extends React.Component {
                 });
             }
         }).catch((error) => {
+            console.error(error);
             this.setState({
                 loading: false,
                 error: error.content && error.content.text || 'Unknown error'

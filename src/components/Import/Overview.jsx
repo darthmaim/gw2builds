@@ -1,4 +1,5 @@
 import React from 'react';
+import isEqual from 'lodash/isEqual'
 import { STATE_ADDKEY } from './States';
 import { api } from '../../utils/api';
 import style from './Overview.css';
@@ -15,11 +16,8 @@ class Overview extends React.Component {
         this.handleFocus = this.handleFocus.bind(this);
 
         this.state = {
-            accounts: [],
-            loading: {
-                [SOURCE_API]: true,
-                [SOURCE_GW2EFFICIENCY]: true
-            }
+            [SOURCE_API]: { loading: true, accounts: [] },
+            [SOURCE_GW2EFFICIENCY]: { loading: true, accounts: [] }
         }
     }
 
@@ -28,47 +26,45 @@ class Overview extends React.Component {
     }
 
     componentDidMount() {
-        const keys = JSON.parse(localStorage.getItem('gw2builds:apikeys') || '[]')
-            .concat(this.props.apiKey || []);
-
-        this.loadApiKeys(SOURCE_API, keys);
-
+        this.loadApiKeys(SOURCE_API, this.props.apiKeys);
         this.loadGw2EfficiencyKeys();
 
         window.addEventListener('focus', this.handleFocus);
     }
 
     loadGw2EfficiencyKeys() {
+        this.setState({ [SOURCE_GW2EFFICIENCY]: { loading: true, accounts: [] }});
+
         fetch('https://api.gw2efficiency.com/user/status', { credentials: 'include' })
             .then(r => r.json())
             .then(user => this.loadApiKeys(SOURCE_GW2EFFICIENCY, user.apiKeys))
-            .catch(() => this.setState(({loading}) => ({
-                loading: Object.assign({}, loading, { [SOURCE_GW2EFFICIENCY]: false })
-            })));
+            .catch(() => this.setState({
+                [SOURCE_GW2EFFICIENCY]: { loading: false, accounts: [] }
+            }));
     }
 
     componentWillUnmount() {
         window.removeEventListener('focus', this.handleFocus);
     }
 
+    componentDidUpdate(prevProps) {
+        if(!isEqual(prevProps.apiKeys, this.props.apiKeys)) {
+            this.setState({ [SOURCE_API]: { loading: true, accounts: this.state[SOURCE_API].accounts }});
+            this.loadApiKeys(SOURCE_API, this.props.apiKeys);
+        }
+    }
+
     handleFocus() {
-        if(!this.state.loading[SOURCE_GW2EFFICIENCY] && this.state.accounts.length === 0) {
-            this.setState(({loading}) => ({
-                loading: Object.assign({}, loading, { [SOURCE_GW2EFFICIENCY]: true })
-            }));
+        if(!this.state[SOURCE_GW2EFFICIENCY].loading && this.state.accounts.length === 0) {
             this.loadGw2EfficiencyKeys();
         }
     }
 
     loadApiKeys(source, keys) {
-        Promise.all(
-            keys.map((k) => this.loadAccountDetails(source, k))
-        ).then(
-            (accs) => this.setState(({accounts, loading}) => ({
-                accounts: accounts.concat(accs),
-                loading: Object.assign({}, loading, { [source]: false })
-            }))
-        );
+        Promise.all(keys.map((k) => this.loadAccountDetails(source, k)))
+            .then((accounts) => this.setState({
+                [source]: { loading: false, accounts }
+            }));
     }
 
     loadAccountDetails(source, key) {
@@ -81,8 +77,9 @@ class Overview extends React.Component {
     }
 
     render() {
-        const { accounts, loading } = this.state;
-        const isLoading = (loading[SOURCE_API] || loading[SOURCE_GW2EFFICIENCY]);
+        const state = this.state;
+        const isLoading = state[SOURCE_API].loading || state[SOURCE_GW2EFFICIENCY].loading;
+        const accounts = state[SOURCE_API].accounts.concat(state[SOURCE_GW2EFFICIENCY].accounts);
 
         return (
             <div>
@@ -101,10 +98,15 @@ class Overview extends React.Component {
         );
     }
 
-    renderAccount({ account, characters }) {
+    renderAccount({ account, characters, source, key }) {
         return (
-            <div key={account.id} className={style.account}>
-                <div className={style.accountHeader}>{account.name}</div>
+            <div key={key} className={style.account}>
+                <div className={style.accountHeader}>
+                    {account.name}
+                    {source === SOURCE_API && (
+                        <button type="button" onClick={() => this.props.removeImportApiKey(key)}>Remove</button>
+                    )}
+                </div>
                 {characters.map(this.renderCharacter, this)}
             </div>
         );

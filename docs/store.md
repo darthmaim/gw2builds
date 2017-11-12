@@ -76,6 +76,13 @@ Sometimes the type is represented as a GW2 API endpoint.
             Import dialog visibility.<br>
         </td>
     </tr>
+    <tr>
+        <td><code>importApiKeys</code></td>
+        <td>array (string)</td>
+        <td>
+            API keys in the import dialog.<br>
+        </td>
+    </tr>
 </table>
 
 ## Gear

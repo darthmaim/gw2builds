@@ -1,8 +1,8 @@
 import React from 'react';
 import { STATE_ADDKEY, STATE_OVERVIEW } from './States';
 import style from './Wizard.css';
-import Overview from './Overview';
-import AddKey from './AddKey';
+import Overview from './OverviewContainer';
+import AddKey from './AddKeyContainer';
 
 export default class extends React.Component {
     constructor(props, context) {
