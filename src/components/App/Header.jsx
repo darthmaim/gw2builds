@@ -1,7 +1,7 @@
 import React from 'react';
 import style from './header.css';
 
-export default () => (
+export default ({onShowImport}) => (
     <div className={style.header}>
         <div className={style.logo}>
             <img src="/img/header/logo.svg" role="presentation"/>
@@ -9,5 +9,8 @@ export default () => (
         <div className={style.title}>
             <img src="/img/header/title.svg" alt="gw2efficiency | Build Editor"/>
         </div>
+        <button type="button" className={style.import} onClick={onShowImport}>
+            Import
+        </button>
     </div>
 );

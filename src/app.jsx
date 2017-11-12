@@ -5,10 +5,7 @@ import { Provider, connect } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import promiseMiddleware from 'redux-promise';
 import thunk from 'redux-thunk';
-import apiClient from 'gw2api-client';
-import cacheMemory from 'gw2api-client/build/cache/memory';
-import extendApiClient from 'gw2api-extension';
-import extendApiData from 'gw2be-api-extension-data';
+import { api } from './utils/api';
 import editor from './reducers';
 import { TooltipContext } from './components/Tooltips';
 import Layout from './components/App';
@@ -21,13 +18,12 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 
 initAnalytics();
 
-const Gw2Api = extendApiClient(apiClient(), extendApiData).cacheStorage(cacheMemory());
 const initialState = {
     selectedLanguage: 'en'
 };
 
 const store = createStore(editor, initialState, composeWithDevTools(
-    applyMiddleware(thunk.withExtraArgument(Gw2Api), promiseMiddleware, syncMiddleware)
+    applyMiddleware(thunk.withExtraArgument(api), promiseMiddleware, syncMiddleware)
 ));
 
 class Editor extends React.Component {

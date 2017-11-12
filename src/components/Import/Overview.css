@@ -1,0 +1,72 @@
+.account {}
+
+.accountHeader {
+    background: #fafafa;
+    font-weight: bold;
+    padding: 4px 8px;
+    margin-bottom: 4px;
+}
+
+.character {
+    display: flex;
+    align-items: center;
+    padding: 2px 8px;
+}
+
+.characterInfo {
+    flex: 1;
+}
+
+.characterName {}
+
+.characterStats {
+    color: #999;
+    font-size: 12px;
+}
+
+.characterLevel {
+    font-weight: bold;
+}
+
+.characterActions {
+
+}
+
+.loading {
+    padding: 4px 8px;
+    line-height: 1.5;
+}
+
+.characterAction {
+    width: 32px;
+    filter: grayscale(1) contrast(0.7) brightness(1.3);
+    transition: filter .3s ease;
+    cursor: pointer;
+}
+
+.characterAction:hover {
+    filter: none;
+}
+
+.addButton {
+    composes: input from '../Inputs/Inputs.css';
+
+    background: #f9f9f9;
+    text-align: left;
+    width: 100%;
+    padding: 4px 8px;
+    margin-top: 8px;
+    cursor: pointer;
+}
+
+.addButton:hover {
+    background: #eee;
+}
+
+.addButtonIcon {
+    font-weight: bold;
+    color: #999;
+    width: 12px;
+    height: 12px;
+    font-size: 16px;
+}
