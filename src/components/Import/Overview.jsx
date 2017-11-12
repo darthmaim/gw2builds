@@ -104,7 +104,9 @@ class Overview extends React.Component {
                 <div className={style.accountHeader}>
                     {account.name}
                     {source === SOURCE_API && (
-                        <button type="button" onClick={() => this.props.removeImportApiKey(key)}>Remove</button>
+                        <button type="button" onClick={() => this.props.removeImportApiKey(key)} className={style.removeButton}>
+                            Remove
+                        </button>
                     )}
                 </div>
                 {characters.map(this.renderCharacter, this)}
