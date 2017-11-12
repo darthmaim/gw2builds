@@ -55,7 +55,10 @@ class Overview extends React.Component {
     }
 
     handleFocus() {
-        if(!this.state[SOURCE_GW2EFFICIENCY].loading && this.state.accounts.length === 0) {
+        // try to load gw2efficiency keys when the tab gets focused and we haven't loaded any yet
+        const state = this.state[SOURCE_GW2EFFICIENCY];
+        
+        if(!state.loading && state.accounts.length === 0) {
             this.loadGw2EfficiencyKeys();
         }
     }
