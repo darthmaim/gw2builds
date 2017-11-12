@@ -4,6 +4,7 @@ import { STATE_ADDKEY } from './States';
 import { api } from '../../utils/api';
 import style from './Overview.css';
 import Header from './Header';
+import { TYPE_PVE, TYPE_PVP, TYPE_WVW } from './loadBuild';
 
 const SOURCE_API = 'api';
 const SOURCE_GW2EFFICIENCY = 'gw2efficiency';
@@ -128,9 +129,9 @@ class Overview extends React.Component {
                     </div>
                 </div>
                 <div className={style.characterActions}>
-                    <img className={style.characterAction} src="/img/pve.png" />
-                    <img className={style.characterAction} src="/img/pvp.png" />
-                    <img className={style.characterAction} src="/img/wvw.png" />
+                    <img onClick={() => this.props.loadBuild(TYPE_PVE, { character })} className={style.characterAction} src="/img/pve.png" />
+                    <img onClick={() => this.props.loadBuild(TYPE_PVP, { character })} className={style.characterAction} src="/img/pvp.png" />
+                    <img onClick={() => this.props.loadBuild(TYPE_WVW, { character })} className={style.characterAction} src="/img/wvw.png" />
                 </div>
             </div>
         );
