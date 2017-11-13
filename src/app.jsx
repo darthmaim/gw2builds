@@ -40,7 +40,7 @@ class Editor extends React.Component {
         const path = window.location.pathname.substr(1);
 
         if (path) {
-            initializeBuildFromString(store, path)
+            initializeBuildFromString(store.dispatch, path)
                 .then(build => {
                     console.log('Loaded build from url:', build);
                     this.setState({ loading: false });

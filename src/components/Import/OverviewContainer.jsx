@@ -7,9 +7,9 @@ const mapStateToProps = (state, ownProps) => ({
     apiKeys: state.importApiKeys
 });
 
-const mapDispatchToProps = (dispatch) => ({
+const mapDispatchToProps = (dispatch, state) => ({
     removeImportApiKey: (key) => dispatch(removeImportApiKey(key)),
-    loadBuild: loadBuild(dispatch)
+    loadBuild: loadBuild(dispatch, state)
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Overview);

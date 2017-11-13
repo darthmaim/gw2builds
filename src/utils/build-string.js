@@ -3,11 +3,11 @@ import * as actions from '../actions';
 
 /**
  * Initializes a build.
+ * @param {function} dispatch
  * @param {String} buildString - The build string.
  * @return {Promise|undefined} Promise or undefined.
  */
-export function initializeBuildFromString(store, buildString) {
-    const dispatch = store.dispatch;
+export function initializeBuildFromString(dispatch, buildString) {
     let build;
 
     try {
@@ -20,6 +20,12 @@ export function initializeBuildFromString(store, buildString) {
         return Promise.reject(new Error('Invalid build string'));
     }
 
+    console.log('Trying to load', build);
+
+    return loadBuild(dispatch, build);
+}
+
+export function loadBuild(dispatch, build) {
     const disp = (propName, prop, action, creator = (v, p, n) => ({ [n]: v })) => {
         if (prop && prop[propName]) {
             return dispatch(action(creator(prop[propName], prop, propName)));
