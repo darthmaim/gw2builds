@@ -488,11 +488,6 @@ This category contains the following local types:
         <td>Available trait objects for the selected profession.</td>
     </tr>
     <tr>
-        <td><code>selectedMinorTraitIds</code>
-        <td>traitArray (<code>/v2/traits.id</code>)</td>
-        <td>Selected <strong>minor</strong> trait ids.</td>
-    </tr>
-    <tr>
         <td><code>selectedMajorTraitIds</code>
         <td>traitArray (<code>/v2/traits.id</code>)</td>
         <td>Selected <strong>major</strong> trait ids.</td>

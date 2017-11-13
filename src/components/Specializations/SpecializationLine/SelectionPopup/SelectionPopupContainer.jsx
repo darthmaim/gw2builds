@@ -40,8 +40,7 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
             // The chosen specialization is unique
             dispatch(setSelectedSpecializationId({
                 specializationLine: ownProps.specializationLine,
-                specializationId,
-                specializations
+                specializationId
             }));
         }
     }

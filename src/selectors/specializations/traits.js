@@ -2,11 +2,18 @@ import values from 'lodash/values';
 import keyBy from 'lodash/fp/keyBy';
 import { createSelector } from 'reselect';
 
+const getAvailableSpecializationObjects = state => state.availableSpecializationObjects;
 const getSelectedSpecializationIds = state => state.selectedSpecializationIds;
 const getSelectedMajorTraitIds = state => state.selectedMajorTraitIds;
 const getCurrentSpecializationLine = (_, props) => props.specializationLine;
 const getCurrentTraitTier = (_, props) => props.traitTier;
 const getAvailableTraits = state => state.availableTraitObjects;
+
+export const getSelectedMinorTraitIds = createSelector(
+    [getSelectedSpecializationIds, getAvailableSpecializationObjects],
+    (selectedSpecializationIds, availableSpecializationObjects) =>
+        [].concat.apply([], selectedSpecializationIds.map(id => availableSpecializationObjects[id].minor_traits))
+);
 
 export const getSelectedMajorTraitId = createSelector(
     [getSelectedMajorTraitIds, getCurrentSpecializationLine, getCurrentTraitTier],

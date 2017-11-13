@@ -1,9 +1,10 @@
 import { connect } from 'react-redux';
 import TraitTooltip from './Tooltip';
+import { getSelectedMinorTraitIds } from '../../../selectors/specializations';
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state, ownProps) => ({
     selectedMajorTraitIds: state.selectedMajorTraitIds,
-    selectedMinorTraitIds: state.selectedMinorTraitIds
+    selectedMinorTraitIds: getSelectedMinorTraitIds(state, ownProps)
 });
 
 export default connect(mapStateToProps)(TraitTooltip);

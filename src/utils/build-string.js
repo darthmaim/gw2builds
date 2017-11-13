@@ -32,12 +32,11 @@ export function initializeBuildFromString(store, buildString) {
         disp('profession', build.general, actions.setSelectedProfession),
         disp('race', build.general, actions.setSelectedRace)
     ]).then(() => {
-        const specializations = store.getState().availableSpecializationObjects;
         return Promise.all([
             // Specializations
-            disp('specialization', build.specialization1, actions.setSelectedSpecializationId, id => ({ specializationLine: 0, specializationId: id, specializations })),
-            disp('specialization', build.specialization2, actions.setSelectedSpecializationId, id => ({ specializationLine: 1, specializationId: id, specializations })),
-            disp('specialization', build.specialization3, actions.setSelectedSpecializationId, id => ({ specializationLine: 2, specializationId: id, specializations }))
+            disp('specialization', build.specialization1, actions.setSelectedSpecializationId, id => ({ specializationLine: 0, specializationId: id })),
+            disp('specialization', build.specialization2, actions.setSelectedSpecializationId, id => ({ specializationLine: 1, specializationId: id })),
+            disp('specialization', build.specialization3, actions.setSelectedSpecializationId, id => ({ specializationLine: 2, specializationId: id }))
         ]);
     }).then(() => {
         if (build.general.gameMode === 'pvp') {
