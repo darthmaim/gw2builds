@@ -78,9 +78,7 @@ class AddKey extends React.Component {
                         {loading ? (
                             <div className={style.loader}/>
                         ) : (
-                            <button type="submit" aria-label="Add API key" className={style.button}>
-                                ►
-                            </button>
+                            <button type="submit" aria-label="Add API key" className={style.button}/>
                         )}
                     </div>
                     {this.renderErrorMessage(error, loading)}
