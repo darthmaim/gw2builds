@@ -24,30 +24,26 @@ export default (dispatch, state) => (type, { character }) => {
             }
         };
 
+        const specialization = (index) => {
+            const spec = character.specializations[type][index];
+
+            return spec ? {
+                specialization: spec.id,
+                majorTrait1: spec.traits[0],
+                majorTrait2: spec.traits[1],
+                majorTrait3: spec.traits[2],
+            } : undefined;
+        };
+
         const build = {
             general: {
                 gameMode: type,
                 profession: character.profession,
                 race: character.race
             },
-            specialization1: {
-                specialization: character.specializations[type][0].id,
-                majorTrait1: character.specializations[type][0].traits[0],
-                majorTrait2: character.specializations[type][0].traits[1],
-                majorTrait3: character.specializations[type][0].traits[2],
-            },
-            specialization2: {
-                specialization: character.specializations[type][1].id,
-                majorTrait1: character.specializations[type][1].traits[0],
-                majorTrait2: character.specializations[type][1].traits[1],
-                majorTrait3: character.specializations[type][1].traits[2],
-            },
-            specialization3: {
-                specialization: character.specializations[type][2].id,
-                majorTrait1: character.specializations[type][2].traits[0],
-                majorTrait2: character.specializations[type][2].traits[1],
-                majorTrait3: character.specializations[type][2].traits[2],
-            },
+            specialization1: specialization(0),
+            specialization2: specialization(1),
+            specialization3: specialization(2),
             weapons: {
                 weaponA1: weaponType('WeaponA1'),
                 weaponA2: weaponType('WeaponA2'),
