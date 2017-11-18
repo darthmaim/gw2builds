@@ -20,6 +20,7 @@ export default (dispatch, state) => (type, { character }) => {
             const weapon = equipmentSlots[slot] ? equipmentSlots[slot].item.details.type : undefined;
             switch(weapon) {
                 case 'Harpoon': return 'Spear';
+                case 'LongBow': return 'Longbow';
                 default: return weapon;
             }
         };
