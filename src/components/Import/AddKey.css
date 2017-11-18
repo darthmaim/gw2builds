@@ -67,4 +67,9 @@
     width: 48px;
     margin: -16px 0 -16px -16px;
     cursor: pointer;
+    transition: all .3s ease;
+}
+
+.backButton:hover {
+    opacity: .25;
 }

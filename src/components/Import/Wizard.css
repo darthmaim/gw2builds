@@ -44,4 +44,9 @@
     height: 48px;
     margin: -16px -16px -16px 0;
     cursor: pointer;
+    transition: all .3s ease;
+}
+
+.closeButton:hover {
+    background: #eee;
 }

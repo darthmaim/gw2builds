@@ -139,9 +139,15 @@ class Overview extends React.Component {
                     </div>
                 </div>
                 <div className={style.characterActions}>
-                    <img onClick={() => this.props.loadBuild(TYPE_PVE, { character })} className={style.characterAction} src="/img/pve.png" />
-                    <img onClick={() => this.props.loadBuild(TYPE_PVP, { character })} className={style.characterAction} src="/img/pvp.png" />
-                    <img onClick={() => this.props.loadBuild(TYPE_WVW, { character })} className={style.characterAction} src="/img/wvw.png" />
+                    <button type="button"
+                            onClick={() => this.props.loadBuild(TYPE_PVE, { character })}
+                            className={style.characterActionPve}>PvE</button>
+                    <button type="button"
+                            onClick={() => this.props.loadBuild(TYPE_PVP, { character })}
+                            className={style.characterActionPvp}>PvP</button>
+                    <button type="button"
+                            onClick={() => this.props.loadBuild(TYPE_WVW, { character })}
+                            className={style.characterActionWvw}>WvW</button>
                 </div>
             </div>
         );
