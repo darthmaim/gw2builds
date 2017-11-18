@@ -32,7 +32,12 @@ class MainContent extends React.Component {
         }
     }
 
+    componentDidMount() {
+        this.props.instanceRef(this);
+    }
+
     componentWillUnmount() {
+        this.props.instanceRef(undefined);
         this.handleScroll.cancel();
         this.panelNode.removeEventListener('scroll', this.handleScroll);
         this.responsiveMediaQuery.removeListener(this.handleResponsiveChange);
@@ -160,6 +165,7 @@ class MainContent extends React.Component {
 }
 
 MainContent.propTypes = {
+    instanceRef: PropTypes.func.isRequired,
     onSectionChange: PropTypes.func.isRequired,
     setImportDialogVisible: PropTypes.func.isRequired
 };

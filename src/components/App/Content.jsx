@@ -38,7 +38,7 @@ class Content extends Component {
         return (
             <div className={style.container}>
                 <Sidebar currentIndex={this.state.currentIndex} onSectionChange={this.handleIndexChange}/>
-                <MainContent ref={this.setContentRef} onSectionChange={this.handleSectionScroll}/>
+                <MainContent instanceRef={this.setContentRef} onSectionChange={this.handleSectionScroll}/>
                 <div className={style.stats}>
                     <Section name="Stats">
                         <StatsOverview/>
