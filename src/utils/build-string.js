@@ -33,11 +33,13 @@ export function loadBuild(dispatch, build) {
     };
 
     return Promise.all([
+        disp('loading', { loading: true }, actions.setIsLoading)
+    ]).then(() => Promise.all([
         // General
         disp('gameMode', build.general, actions.setSelectedGameMode),
         disp('profession', build.general, actions.setSelectedProfession),
         disp('race', build.general, actions.setSelectedRace)
-    ]).then(() => {
+    ])).then(() => {
         return Promise.all([
             // Specializations
             disp('specialization', build.specialization1, actions.setSelectedSpecializationId, id => ({ specializationLine: 0, specializationId: id })),
@@ -193,7 +195,8 @@ export function loadBuild(dispatch, build) {
             disp('food', build.skills, actions.setSelectedFoodItemId, id => ({ slotId: 0, itemId: id })),
             disp('utility', build.skills, actions.setSelectedFoodItemId, id => ({ slotId: 1, itemId: id }))
         ]);
-    }).then(() => build);
+    }).then(() => dispatch(actions.setIsLoading({ loading: false }))
+    ).then(() => build);
 }
 
 /**

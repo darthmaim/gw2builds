@@ -14,9 +14,13 @@ export const selectedProfession = handleSimpleAction(actions.SET_SELECTED_PROFES
 /** The race reducer. */
 export const selectedRace = handleSimpleAction(actions.SET_SELECTED_RACE, null, 'race');
 
+/** The race reducer. */
+export const isLoading = handleSimpleAction(actions.SET_IS_LOADING, null, 'loading');
+
 export default {
     selectedLanguage,
     selectedGameMode,
     selectedProfession,
-    selectedRace
+    selectedRace,
+    isLoading
 };

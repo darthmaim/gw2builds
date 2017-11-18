@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
 
-import { selectedLanguage, selectedGameMode, selectedProfession, selectedRace } from './general';
+import { selectedLanguage, selectedGameMode, selectedProfession, selectedRace, isLoading } from './general';
 import { importDialogVisible, importApiKeys } from './import';
 import {
     activeWeaponSet,
@@ -26,6 +26,7 @@ export default combineReducers({
     selectedGameMode,
     selectedProfession,
     selectedRace,
+    isLoading,
 
     // Import dialog
     importDialogVisible,

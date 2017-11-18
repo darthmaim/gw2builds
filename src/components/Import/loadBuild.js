@@ -1,5 +1,6 @@
 import { setImportDialogVisible } from '../../actions';
 import { loadBuild as load } from '../../utils/build-string'
+import { setIsLoading } from '../../actions';
 import { api } from '../../utils/api';
 import keyBy from 'lodash/fp/keyBy';
 
@@ -9,6 +10,7 @@ export const TYPE_WVW = 'wvw';
 
 export default (dispatch, state) => (type, { character }) => {
     console.log(`Loading ${type} build of ${character.name}`);
+    dispatch(setIsLoading({ loading: true }));
 
     const itemIds = character.equipment.map(({id}) => id);
 

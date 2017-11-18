@@ -29,10 +29,6 @@ const store = createStore(editor, initialState, composeWithDevTools(
 class Editor extends React.Component {
     constructor(props, context) {
         super(props, context);
-
-        this.state = {
-            loading: true
-        };
     }
 
     componentWillMount() {
@@ -43,15 +39,11 @@ class Editor extends React.Component {
             initializeBuildFromString(store.dispatch, path)
                 .then(build => {
                     console.log('Loaded build from url:', build);
-                    this.setState({ loading: false });
                 })
                 .catch(e => {
                     console.log('Couldn\'t load build from url:', e);
                     window.history.replaceState(undefined, '', '/');
-                    this.setState({ loading: false });
                 });
-        } else {
-            this.setState({ loading: false });
         }
     }
 
@@ -60,7 +52,7 @@ class Editor extends React.Component {
         window.document.documentElement.lang = locale;
 
         // prevent updating the url/title while a build is loaded
-        if (this.state.loading) {
+        if (this.props.loading) {
             return;
         }
 
@@ -73,7 +65,7 @@ class Editor extends React.Component {
             <IntlProvider locale={this.props.locale}>
                 <TooltipContext>
                     <Select.Context>
-                        <Layout loading={this.state.loading}/>
+                        <Layout loading={this.props.loading}/>
                     </Select.Context>
                 </TooltipContext>
             </IntlProvider>
@@ -82,7 +74,12 @@ class Editor extends React.Component {
 }
 
 Editor = connect(state => {
-    return { locale: state.selectedLanguage, selectedProfession: state.selectedProfession, url: getUrl(state) };
+    return {
+        locale: state.selectedLanguage,
+        selectedProfession: state.selectedProfession,
+        url: getUrl(state),
+        loading: state.isLoading
+    };
 })(Editor);
 
 function renderApp() {
