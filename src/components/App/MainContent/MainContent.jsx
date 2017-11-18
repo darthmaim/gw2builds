@@ -139,7 +139,10 @@ class MainContent extends React.Component {
     render() {
         return (
             <div ref={this.setPanelRef} className={style.panel}>
-                <Section domRef={this.setSectionRef(0)} anchorRef={this.setAnchorRef(0)} name="General">
+                <Section domRef={this.setSectionRef(0)}
+                         anchorRef={this.setAnchorRef(0)}
+                         name="General"
+                         actions={[{ text: 'Load build', onClick: () => this.props.setImportDialogVisible(true)}]}>
                     <Settings/>
                 </Section>
                 <Section domRef={this.setSectionRef(1)} anchorRef={this.setAnchorRef(1)} name="Skills">
@@ -157,7 +160,8 @@ class MainContent extends React.Component {
 }
 
 MainContent.propTypes = {
-    onSectionChange: PropTypes.func.isRequired
+    onSectionChange: PropTypes.func.isRequired,
+    setImportDialogVisible: PropTypes.func.isRequired
 };
 
 export default MainContent;

@@ -1,7 +1,7 @@
 import React from 'react';
 import style from './header.css';
 
-export default ({ setImportDialogVisible }) => (
+export default () => (
     <div className={style.header}>
         <div className={style.logo}>
             <img src="/img/header/logo.svg" role="presentation"/>
@@ -9,8 +9,5 @@ export default ({ setImportDialogVisible }) => (
         <div className={style.title}>
             <img src="/img/header/title.svg" alt="gw2efficiency | Build Editor"/>
         </div>
-        <button type="button" className={style.import} onClick={() => setImportDialogVisible(true)}>
-            Import
-        </button>
     </div>
 );
