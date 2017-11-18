@@ -77,6 +77,8 @@ class Overview extends React.Component {
             api.authenticate(key).characters().all()
         ]).then(([account, characters]) => ({
             source, key, account, characters
+        })).catch((details) => ({
+            source, key, error: { text: 'Could not load account details.', details }
         }));
     }
 
@@ -102,18 +104,26 @@ class Overview extends React.Component {
         );
     }
 
-    renderAccount({ account, characters, source, key }) {
+    renderAccount({ account, characters, source, key, error }) {
         return (
             <div key={key} className={style.account}>
                 <div className={style.accountHeader}>
-                    {account.name}
+                    {account && account.name || 'Unknown account'}
                     {source === SOURCE_API && (
                         <button type="button" onClick={() => this.props.removeImportApiKey(key)} className={style.removeButton}>
                             Remove
                         </button>
                     )}
                 </div>
-                {characters.map(this.renderCharacter, this)}
+                {!error && characters.map(this.renderCharacter, this)}
+                {error && (
+                    <div className={style.accountError}>
+                        {error.text}
+                        <div className={style.accountErrorKey}>
+                            {key}
+                        </div>
+                    </div>
+                )}
             </div>
         );
     }
