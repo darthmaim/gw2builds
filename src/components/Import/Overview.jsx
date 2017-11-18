@@ -90,6 +90,13 @@ class Overview extends React.Component {
         return (
             <div>
                 <Header onClose={this.props.onClose}>Load build</Header>
+                {accounts.length > 0 && (
+                    <input type="search"
+                           className={style.search}
+                           placeholder="Search characters"
+                           autoFocus
+                           onInput={(e) => this.setState({ search: e.target.value })}/>
+                )}
                 {isLoading && <div className={style.loading}>Loading...</div>}
                 {!isLoading && accounts.length === 0 && (
                     <div className={style.loading}>
@@ -129,6 +136,10 @@ class Overview extends React.Component {
     }
 
     renderCharacter(character) {
+        if(this.state.search && character.name.toLowerCase().indexOf(this.state.search.toLowerCase()) === -1) {
+            return null;
+        }
+
         return (
             <div key={character.name} className={style.character}>
                 <div className={style.characterInfo}>

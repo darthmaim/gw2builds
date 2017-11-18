@@ -11,6 +11,7 @@
     display: flex;
     align-items: center;
     padding: 2px 8px;
+    clear: both;
 }
 
 .characterInfo {
@@ -103,4 +104,15 @@
     font-size: 8px;
     color: #999;
     margin-top: 4px;
+}
+
+.search {
+    composes: input from '../Inputs/Inputs.css';
+
+    padding: 8px 8px;
+    margin-bottom: 8px;
+    border: 1px solid #eee;
+    width: 100%;
+    box-sizing: border-box;
+    -webkit-appearance: textfield;
 }
