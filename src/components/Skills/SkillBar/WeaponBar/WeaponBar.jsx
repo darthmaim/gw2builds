@@ -31,6 +31,12 @@ class WeaponBar extends Component {
                 // filter attunement (elementalist)
                 .filter(skill => !skill.attunement || skill.attunement === selectedAttunementId);
 
+            if(skillsForSlot.length > 0) {
+                console.warn(`Multiple possible skills for ${weapon} in slot ${slotName} found.`, skillsForSlot);
+            } else if(skillsForSlot.length === 0) {
+                console.warn(`No skills for ${weapon} in slot ${slotName} found.`);
+            }
+
             // return the skill object
             return skillsForSlot[0] && availableSkillObjects[skillsForSlot[0].id];
         };
