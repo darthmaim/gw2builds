@@ -60,6 +60,13 @@ Sometimes the type is represented as a GW2 API endpoint.
             <em>Sylvari</em>
         </td>
     </tr>
+    <tr>
+        <td><code>isLoading</code></td>
+        <td>bool</td>
+        <td>
+            Shows/Hides the loading indicator at the top of the page.
+        </td>
+    </tr>
 </table>
 
 ## Import Dialog
