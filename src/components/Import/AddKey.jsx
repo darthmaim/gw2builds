@@ -70,7 +70,7 @@ class AddKey extends React.Component {
                 </Header>
                 <form onSubmit={this.handleSubmit} disabled={loading}>
                     <p className={style.description}>
-                        You can add your API key by going to <a href="https://account.arena.net/applications" target="_blank" rel="noopener">Guild Wars 2 Account Page</a>, generating a new key with <code>characters</code> and <code>builds</code> permissions and copy/pasting it into this form.
+                        You can add your API key by going to your <a href="https://account.arena.net/applications" target="_blank" rel="noopener">Guild Wars 2 Account Page</a>, generating a new key with <code>characters</code> and <code>builds</code> permissions and copy/pasting it into this form.
                     </p>
                     <label htmlFor="apikey">Enter your API key:</label>
                     <div className={style.inputGroup}>

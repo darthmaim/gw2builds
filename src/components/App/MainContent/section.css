@@ -36,9 +36,13 @@
 }
 
 .action:hover, .action:focus {
-    box-shadow: 0 0 4px 2px rgba(197, 108, 214, 0.5);
+    box-shadow: 0 0 4px 2px #ddd;
     background: #fff;
     outline: none;
+}
+
+.action:focus {
+    box-shadow: 0 0 4px 2px rgba(197, 108, 214, 0.5)
 }
 
 @media(max-width: 768px) {
