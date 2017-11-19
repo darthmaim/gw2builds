@@ -22,6 +22,9 @@ class WeaponBar extends Component {
             const weapon = getFromMainhand ? activeMainhandWeaponId : activeOffhandWeaponId;
             const slotName = `Weapon_${index + 1}`;
 
+            // hardcode this until elite specialization mechanics are supported
+            const selectedWeaverPreviousAttunementId = undefined;
+
             // find all matching skills for the requested slot
             const skillsForSlot = availableWeaponObjects[weapon].skills
                 // filter slot
@@ -29,7 +32,9 @@ class WeaponBar extends Component {
                 // filter offhand (thief)
                 .filter(skill => !skill.offhand || skill.offhand === activeOffhandWeaponId || (skill.offhand === 'Nothing' && !activeOffhandWeaponId))
                 // filter attunement (elementalist)
-                .filter(skill => !skill.attunement || skill.attunement === selectedAttunementId);
+                .filter(skill => !skill.attunement || skill.attunement === selectedAttunementId)
+                // filter weaver attunement (elementalist)
+                .filter(skill => !availableSkillObjects[skill.id].dual_attunement || availableSkillObjects[skill.id].dual_attunement === selectedWeaverPreviousAttunementId);
 
             if(skillsForSlot.length > 0) {
                 console.warn(`Multiple possible skills for ${weapon} in slot ${slotName} found.`, skillsForSlot);
