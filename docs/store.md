@@ -60,6 +60,36 @@ Sometimes the type is represented as a GW2 API endpoint.
             <em>Sylvari</em>
         </td>
     </tr>
+    <tr>
+        <td><code>isLoading</code></td>
+        <td>bool</td>
+        <td>
+            Shows/Hides the loading indicator at the top of the page.
+        </td>
+    </tr>
+</table>
+
+## Import Dialog
+<table>
+    <tr>
+        <th>Property</th>
+        <th>Type</th>
+        <th>Description</th>
+    </tr>
+    <tr>
+        <td><code>importDialogVisible</code></td>
+        <td>bool</td>
+        <td>
+            Import dialog visibility.<br>
+        </td>
+    </tr>
+    <tr>
+        <td><code>importApiKeys</code></td>
+        <td>array (string)</td>
+        <td>
+            API keys in the import dialog.<br>
+        </td>
+    </tr>
 </table>
 
 ## Gear
@@ -463,11 +493,6 @@ This category contains the following local types:
         <td><code>availableTraitsObjects</code>
         <td>object (<code>/v2/traits</code>, <code>id</code>)</td>
         <td>Available trait objects for the selected profession.</td>
-    </tr>
-    <tr>
-        <td><code>selectedMinorTraitIds</code>
-        <td>traitArray (<code>/v2/traits.id</code>)</td>
-        <td>Selected <strong>minor</strong> trait ids.</td>
     </tr>
     <tr>
         <td><code>selectedMajorTraitIds</code>

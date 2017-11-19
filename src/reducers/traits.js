@@ -20,39 +20,6 @@ export const availableTraitIds = handleAction(
 /** Reducer for the available trait objects for the selected profession. */
 export const availableTraitObjects = handleSimpleAction(actions.FETCH_AVAILABLE_TRAITS, {});
 
-/** Reducer for minor trait ids. */
-export const selectedMinorTraitIds = handleActions({
-    // Set the minor traits from a specialization
-    [actions.SET_SELECTED_SPECIALIZATION_ID]: (state, action) => {
-        const newState = state.slice();
-        const specializations = action.payload.specializations;
-        const pos = action.payload.specializationLine * 3;
-        for (let i = 0; i < 3; i++) {
-            newState[pos + i] = specializations[action.payload.specializationId].minor_traits[i];
-        }
-        return newState;
-    },
-    // Set the minor traits by swapping two specializations
-    [actions.SWAP_SELECTED_SPECIALIZATION_IDS]: (state, action) => {
-        const newState = state.slice();
-        for (let i = 0; i < 3; i++) {
-            swapElements(newState, (action.payload.specializationLine1 * 3) + i, (action.payload.specializationLine2 * 3) + i);
-        }
-        return newState;
-    },
-    // Reset the minor traits of a specialization line
-    [actions.WIPE_SELECTED_SPECIALIZATION_ID]: (state, action) => {
-        const newState = state.slice();
-        for (let i = 0; i < 3; i++) {
-            newState[(action.payload.specializationLine * 3) + i] = undefined;
-        }
-        return newState;
-    },
-
-    // Reset all
-    [actions.FETCH_PROFESSION]: () => []
-}, []);
-
 /** Reducer for selected major trait ids. */
 export const selectedMajorTraitIds = handleActions({
     // Set a major trait
@@ -86,6 +53,5 @@ export const selectedMajorTraitIds = handleActions({
 export default {
     availableTraitIds,
     availableTraitObjects,
-    selectedMinorTraitIds,
     selectedMajorTraitIds
 };

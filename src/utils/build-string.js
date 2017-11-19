@@ -3,11 +3,11 @@ import * as actions from '../actions';
 
 /**
  * Initializes a build.
+ * @param {function} dispatch
  * @param {String} buildString - The build string.
  * @return {Promise|undefined} Promise or undefined.
  */
-export function initializeBuildFromString(store, buildString) {
-    const dispatch = store.dispatch;
+export function initializeBuildFromString(dispatch, buildString) {
     let build;
 
     try {
@@ -20,6 +20,12 @@ export function initializeBuildFromString(store, buildString) {
         return Promise.reject(new Error('Invalid build string'));
     }
 
+    console.log('Trying to load', build);
+
+    return loadBuild(dispatch, build);
+}
+
+export function loadBuild(dispatch, build) {
     const disp = (propName, prop, action, creator = (v, p, n) => ({ [n]: v })) => {
         if (prop && prop[propName]) {
             return dispatch(action(creator(prop[propName], prop, propName)));
@@ -27,17 +33,18 @@ export function initializeBuildFromString(store, buildString) {
     };
 
     return Promise.all([
+        disp('loading', { loading: true }, actions.setIsLoading)
+    ]).then(() => Promise.all([
         // General
         disp('gameMode', build.general, actions.setSelectedGameMode),
         disp('profession', build.general, actions.setSelectedProfession),
         disp('race', build.general, actions.setSelectedRace)
-    ]).then(() => {
-        const specializations = store.getState().availableSpecializationObjects;
+    ])).then(() => {
         return Promise.all([
             // Specializations
-            disp('specialization', build.specialization1, actions.setSelectedSpecializationId, id => ({ specializationLine: 0, specializationId: id, specializations })),
-            disp('specialization', build.specialization2, actions.setSelectedSpecializationId, id => ({ specializationLine: 1, specializationId: id, specializations })),
-            disp('specialization', build.specialization3, actions.setSelectedSpecializationId, id => ({ specializationLine: 2, specializationId: id, specializations }))
+            disp('specialization', build.specialization1, actions.setSelectedSpecializationId, id => ({ specializationLine: 0, specializationId: id })),
+            disp('specialization', build.specialization2, actions.setSelectedSpecializationId, id => ({ specializationLine: 1, specializationId: id })),
+            disp('specialization', build.specialization3, actions.setSelectedSpecializationId, id => ({ specializationLine: 2, specializationId: id }))
         ]);
     }).then(() => {
         if (build.general.gameMode === 'pvp') {
@@ -188,7 +195,8 @@ export function initializeBuildFromString(store, buildString) {
             disp('food', build.skills, actions.setSelectedFoodItemId, id => ({ slotId: 0, itemId: id })),
             disp('utility', build.skills, actions.setSelectedFoodItemId, id => ({ slotId: 1, itemId: id }))
         ]);
-    }).then(() => build);
+    }).then(() => dispatch(actions.setIsLoading({ loading: false }))
+    ).then(() => build);
 }
 
 /**

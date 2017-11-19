@@ -8,6 +8,7 @@ export const SET_SELECTED_LANGUAGE = 'SET_SELECTED_LANGUAGE';
 export const SET_SELECTED_GAMEMODE = 'SET_SELECTED_GAMEMODE';
 export const SET_SELECTED_PROFESSION = 'SET_SELECTED_PROFESSION';
 export const SET_SELECTED_RACE = 'SET_SELECTED_RACE';
+export const SET_IS_LOADING = 'SET_IS_LOADING';
 
 /** Action to fetch the selected profession from the GW2 API. */
 export const fetchProfession = createChainedAction(
@@ -36,16 +37,21 @@ export const setSelectedProfession = createChainedAction(
 /** Action to set the selected race. Params: { race } */
 export const setSelectedRace = createAction(SET_SELECTED_RACE);
 
+/** Action to set the selected race. Params: { race } */
+export const setIsLoading = createAction(SET_IS_LOADING);
+
 export default {
     FETCH_PROFESSION,
     SET_SELECTED_LANGUAGE,
     SET_SELECTED_GAMEMODE,
     SET_SELECTED_PROFESSION,
     SET_SELECTED_RACE,
+    SET_IS_LOADING,
 
     fetchProfession,
     setSelectedLanguage,
     setSelectedGameMode,
     setSelectedProfession,
-    setSelectedRace
+    setSelectedRace,
+    setIsLoading
 };
