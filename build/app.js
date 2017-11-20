@@ -1,11 +1,14 @@
 import browserify from 'browserify';
 import autoprefixer from 'autoprefixer';
+import commonShake from 'common-shakeify';
 import cssnano from 'cssnano';
+import envify from 'envify/custom';
 import { isDev, logError } from './utils';
 import buffer from 'vinyl-buffer';
 import gulp from 'gulp';
 import gutil from 'gulp-util';
 import uglify from 'gulp-uglify';
+import packFlat from 'browser-pack-flat/plugin';
 import sourcemaps from 'gulp-sourcemaps';
 import source from 'vinyl-source-stream';
 import cssImport from 'postcss-import';
@@ -14,7 +17,7 @@ import through from 'through2';
 import shortNamer from 'modular-css-short-namer';
 
 export function bundle(cb) {
-    return browserify({
+    const b = browserify({
         entries: './src/app',
         extensions: ['.js', '.jsx'],
         debug: true,
@@ -47,6 +50,23 @@ export function bundle(cb) {
             ]
         })
         .transform('babelify');
+
+    if(isDev()) {
+        return b;
+    }
+
+    return b
+        .transform(envify(process.env), { global: true })
+        .transform('uglifyify', {
+            global: true,
+            toplevel: true,
+            mangle: false,
+            output: {
+                ascii_only: true
+            }
+        })
+        .plugin(commonShake)
+        .plugin(packFlat, {});
 }
 
 export function buildSource(bundle, wait) {
