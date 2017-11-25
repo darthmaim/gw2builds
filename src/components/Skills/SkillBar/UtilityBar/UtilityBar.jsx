@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import SkillTooltip from '../../../Tooltips/Skills/TooltipContainer';
 import SkillIcon from '../../Icon';
 import Select from '../../../Inputs/Select/Select';
+import SkillSelect from '../../SkillSelect';
 
 const slots = [
     'Heal',
@@ -33,16 +34,13 @@ class UtilityBar extends Component {
         const selectedId = selectedSkillIds[slot];
         const selectedSkill = availableSkillObjects[slot];
 
+        const availableSkills = availableProfessionSkillObjects
+            .filter((skill) => skill.slot === slots[slot])
+            .filter((skill) => availableSkillObjects[skill.id] !== undefined)
+            .map((skill) => availableSkillObjects[skill.id]);
+
         return (
-            <Select value={selectedId} key={slot} onChange={onSelectedSkillChange.bind(this, slot)}>
-                {availableProfessionSkillObjects
-                    .filter((skill) => skill.slot === slots[slot])
-                    .filter((skill) => availableSkillObjects[skill.id] !== undefined)
-                    .map((skill) => (
-                        <Select.Option key={skill.id} value={skill.id}>{availableSkillObjects[skill.id].name}</Select.Option>
-                    ))
-                }
-            </Select>
+            <SkillSelect value={selectedId} key={slot} onChange={onSelectedSkillChange.bind(this, slot)} skills={availableSkills}/>
         );
     }
 

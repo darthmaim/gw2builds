@@ -23,22 +23,28 @@ class Select extends React.Component {
         this.handleClick = this.handleClick.bind(this);
         this.handleKeyDown = this.handleKeyDown.bind(this);
         this.onSelect = this.onSelect.bind(this);
+        this.renderCurrentValue = this.renderCurrentValue.bind(this);
     }
 
     componentDidUpdate() {
         if(this.state.open && this.ref) {
             this.context.selectContext.showDropdown({
                 active: this.props.value,
-                children: this.props.children,
+                children: this.children,
                 onSelect: this.onSelect,
                 position: this.ref.getBoundingClientRect()
             });
         }
     }
 
+    get children() {
+        return this.props.children;
+    }
+
     handleClick() {
         const {open} = this.state;
-        const {children, disabled} = this.props;
+        const {disabled} = this.props;
+        const children = this.children;
 
         if(open) {
             this.context.selectContext.hideDropdown();
@@ -95,10 +101,7 @@ class Select extends React.Component {
     }
 
     render() {
-        const {className, children, disabled, placeholder, value} = this.props;
-
-        const options = this.options(children);
-        const current = options.filter(child => child.props.value === value)[0] || placeholder;
+        const { className, disabled } = this.props;
 
         return (
             <div
@@ -117,9 +120,20 @@ class Select extends React.Component {
                 onClick={this.handleClick}
                 onKeyDown={this.handleKeyDown}
             >
-                <div className={style.currentValue} id={'select-value-' + this.instanceId}>{current}</div>
+                {this.renderCurrentValue()}
             </div>
         );
+    }
+
+    renderCurrentValue() {
+        const { placeholder, value } = this.props;
+
+        const options = this.options(this.children);
+        const current = options.filter(child => child.props.value === value)[0] || placeholder;
+
+        return (
+            <div className={style.currentValue} id={'select-value-' + this.instanceId}>{current}</div>
+        )
     }
 }
 
