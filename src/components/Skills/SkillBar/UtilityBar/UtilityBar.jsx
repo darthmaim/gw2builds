@@ -2,8 +2,8 @@ import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import SkillTooltip from '../../../Tooltips/Skills/TooltipContainer';
 import SkillIcon from '../../Icon';
-import Select from '../../../Inputs/Select/Select';
 import SkillSelect from '../../SkillSelect';
+import style from './UtilityBar.css';
 
 const slots = [
     'Heal',
@@ -23,7 +23,7 @@ class UtilityBar extends Component {
 
     render() {
         return (
-            <div>
+            <div className={style.bar}>
                 {[0,1,2,3,4].map(this.renderSlot)}
             </div>
         )

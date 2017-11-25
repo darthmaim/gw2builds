@@ -100,8 +100,14 @@ class Select extends React.Component {
         return options;
     }
 
+    getClassName() {
+        const { disabled } = this.props;
+
+        return disabled ? style.disabled : style.select
+    }
+
     render() {
-        const { className, disabled } = this.props;
+        const { className } = this.props;
 
         return (
             <div
@@ -114,7 +120,7 @@ class Select extends React.Component {
                 aria-label={this.props['aria-label']}
                 aria-labelledby={this.props['aria-labelledby']}
                 aria-describedby={this.props['aria-describedby']}
-                className={cx(disabled ? style.disabled : style.select, className)}
+                className={cx(this.getClassName(), className)}
                 tabIndex={0}
                 ref={(ref) => this.ref = ref}
                 onClick={this.handleClick}
