@@ -5,4 +5,5 @@
 .attunements {
     display: inline-block;
     line-height: 0;
+    margin-bottom: 4px;
 }
