@@ -55,6 +55,13 @@ export default (dispatch, state) => (type, { character }) => {
                 aquaticA: weaponType('WeaponAquaticA'),
                 aquaticB: weaponType('WeaponAquaticB')
             },
+            skills: {
+                healing: character.skills[type].heal,
+                utility1: character.skills[type].utilities[0],
+                utility2: character.skills[type].utilities[1],
+                utility3: character.skills[type].utilities[2],
+                elite:  character.skills[type].elite
+            }
         };
 
         console.log(build);
