@@ -9,7 +9,7 @@
     border-top: 1px solid #eee;
 }
 
-.row :external(select from "../Inputs/Select.css") {
+.row :external(select from "../Inputs/Select/Select.css") {
     min-width: 100px;
     max-width: 100px;
 }

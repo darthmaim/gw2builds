@@ -1,6 +1,6 @@
 import React from 'react';
 import map from 'lodash/map';
-import { weaponIs2Handed } from '~/utils/gw2';
+import { weaponIs2Handed } from '../../utils/gw2';
 import Row from './Row';
 import style from './Gear.css';
 

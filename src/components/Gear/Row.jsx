@@ -1,7 +1,7 @@
 import React from 'react';
 import style from './Row.css';
-import Select from '~/components/Inputs/Select';
-import attributeSets from '~/../assets/gear.json';
+import Select from '../Inputs/Select/Select';
+import attributeSets from '../../../assets/gear.json';
 import map from 'lodash/map';
 
 const RARITIES = ['Exotic', 'Ascended'];
@@ -41,7 +41,7 @@ export default class Row extends React.Component {
                 value={this.state.rarity}
                 placeholder="Rarity">
                 {RARITIES.map(rarity => (
-                    <option value={rarity} key={rarity}>{rarity}</option>
+                    <Select.Option value={rarity} key={rarity}>{rarity}</Select.Option>
                 ))}
             </Select>
         );
@@ -54,7 +54,7 @@ export default class Row extends React.Component {
                 value={this.state.stats}
                 placeholder="Stats">
                 {availableAttributeSets.map(set => (
-                    <option value={set.id} key={set.id}>{set.names[selectedLanguage]}</option>
+                    <Select.Option value={set.id} key={set.id}>{set.names[selectedLanguage]}</Select.Option>
                 ))}
             </Select>
         );
