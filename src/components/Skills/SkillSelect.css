@@ -14,3 +14,12 @@
     border-width: 0 4px 6px;
     border-color: transparent transparent #ccc transparent;
 }
+
+.option {
+    margin: -16px;
+    padding: 8px 16px;
+}
+
+.icon {
+    margin-right: 8px;
+}

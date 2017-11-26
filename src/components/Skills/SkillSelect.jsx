@@ -11,8 +11,8 @@ class SkillSelect extends Select {
             (skill) => (
                 <Select.Option key={skill.id} value={skill.id}>
                     <SkillTooltip skill={skill}>
-                        <div>
-                            <SkillIcon skill={skill} size={32}/> {skill.name}
+                        <div className={style.option}>
+                            <SkillIcon className={style.icon} skill={skill} size={32}/>{skill.name}
                         </div>
                     </SkillTooltip>
                 </Select.Option>
