@@ -32,8 +32,14 @@ export const availableProfessionSkillObjects = handleAction(actions.FETCH_PROFES
 export const selectedSkillIds = handleActions({
     // Set the skill id
     [actions.SET_SELECTED_SKILL_ID]: (state, action) => {
-        const newState = state.slice();
-        newState[action.payload.slotId] = action.payload.skillId;
+        const { slotId, skillId } = action.payload;
+
+        // swap skills if the new skill is already equipped in another slot
+        const newState = state.map((id) => id === skillId ? state[slotId] : id);
+
+        // set skill
+        newState[slotId] = skillId;
+
         return newState;
     },
 
