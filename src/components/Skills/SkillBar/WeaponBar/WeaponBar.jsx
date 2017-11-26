@@ -37,11 +37,8 @@ class WeaponBar extends Component {
                 // filter weaver attunement (elementalist)
                 .filter(skill => !availableSkillObjects[skill.id].dual_attunement || availableSkillObjects[skill.id].dual_attunement === selectedWeaverPreviousAttunementId);
 
-            if(skillsForSlot.length > 0) {
-                console.warn(`Multiple possible skills for ${weapon} in slot ${slotName} found.`, skillsForSlot);
-            } else if(skillsForSlot.length === 0) {
-                console.warn(`No skills for ${weapon} in slot ${slotName} found.`);
-            }
+            console.assert(skillsForSlot.length <= 1, `Multiple possible skills for ${weapon} in slot ${slotName} found.`, skillsForSlot);
+            console.assert(skillsForSlot.length !== 0, `No skills for ${weapon} in slot ${slotName} found.`);
 
             // return the skill object
             return skillsForSlot[0] && availableSkillObjects[skillsForSlot[0].id];
