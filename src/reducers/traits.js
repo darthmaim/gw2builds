@@ -47,7 +47,7 @@ export const selectedMajorTraitIds = handleActions({
 
     // Reset all
     [actions.WIPE_ALL_SELECTED_TRAIT_IDS]: () => [],
-    [actions.FETCH_PROFESSION]: () => []
+    [actions.SET_SELECTED_PROFESSION]: () => []
 }, []);
 
 export default {
