@@ -31,4 +31,11 @@
     z-index: 100;
     will-change: transform;
     transform: translateY(100%) translateY(-100px);
+
+    animation: touch .2s ease-out;
+}
+
+@keyframes touch {
+      0% { transform: translateY(100%) translateY(-0px); }
+    100% { transform: translateY(100%) translateY(-100px); }
 }
