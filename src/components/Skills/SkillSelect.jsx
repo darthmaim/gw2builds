@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Select from '../Inputs/Select/Select';
 import SkillIcon from './Icon';
-import SkillTooltip from '../Tooltips/Skills/Tooltip';
+import SkillTooltip from '../Tooltips/Skills/TooltipContainer';
 import style from './SkillSelect.css';
 
 class SkillSelect extends Select {
@@ -10,7 +10,7 @@ class SkillSelect extends Select {
         return this.props.skills.map(
             (skill) => (
                 <Select.Option key={skill.id} value={skill.id}>
-                    <SkillTooltip selectedMajorTraitIds={[]} selectedMinorTraitIds={[]} skill={skill}>
+                    <SkillTooltip skill={skill}>
                         <div>
                             <SkillIcon skill={skill} size={32}/> {skill.name}
                         </div>
