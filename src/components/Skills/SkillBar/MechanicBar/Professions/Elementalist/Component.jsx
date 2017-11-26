@@ -15,10 +15,10 @@ const renderSkillIcon = (skill, index, active, onAttunementChange) => {
     );
 };
 
-const Elementalist = ({ availableAttunementObjects, onAttunementChange, activeAttunement, availableSkillObjects }) => (
+const Elementalist = ({ availableElementalistAttunementObjects, availableSkillObjects, selectedAttunementId, onAttunementChange }) => (
     <div className={style.attunements}>
-        {map(availableAttunementObjects, ({ id, swap }) =>
-            renderSkillIcon(availableSkillObjects[swap], id, activeAttunement, onAttunementChange)
+        {map(availableElementalistAttunementObjects, ({ attunement, id }) =>
+            renderSkillIcon(availableSkillObjects[id], attunement, selectedAttunementId, onAttunementChange)
         )}
     </div>
 );

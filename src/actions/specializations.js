@@ -1,6 +1,6 @@
 import { createAction } from 'redux-actions';
 import { createChainedAction, createApiAction, convertToIndexed } from './utils';
-import { fetchAvailableTraits, wipeSelectedTraitIds, wipeAllSelectedTraitIds } from './traits';
+import { fetchAvailableTraits } from './traits';
 
 export const FETCH_AVAILABLE_SPECIALIZATIONS = 'FETCH_AVAILABLE_SPECIALIZATIONS';
 export const SET_SELECTED_SPECIALIZATION_ID = 'SET_SELECTED_SPECIALIZATION_ID';
@@ -8,7 +8,7 @@ export const SWAP_SELECTED_SPECIALIZATION_IDS = 'SWAP_SELECTED_SPECIALIZATION_ID
 export const WIPE_SELECTED_SPECIALIZATION_ID = 'WIPE_SELECTED_SPECIALIZATION_ID';
 export const WIPE_ALL_SELECTED_SPECIALIZATION_IDS = 'WIPE_ALL_SELECTED_SPECIALIZATION_IDS';
 
-/** Action to fetch the current specializations from the GW2 API. */
+/** Action to fetch the available specializations from the GW2 API. */
 export const fetchAvailableSpecializations = createChainedAction(
     createApiAction(
         FETCH_AVAILABLE_SPECIALIZATIONS,
@@ -17,26 +17,17 @@ export const fetchAvailableSpecializations = createChainedAction(
     fetchAvailableTraits
 );
 
-/** Action to set a specific specialization line. Params: { specializationLine, specializationId, specializations } */
-export const setSelectedSpecializationId = createChainedAction(
-    createAction(SET_SELECTED_SPECIALIZATION_ID),
-    wipeSelectedTraitIds
-);
+/** Action to set a selected specialization line. Params: { specializationLine, specializationId, specializations } */
+export const setSelectedSpecializationId = createAction(SET_SELECTED_SPECIALIZATION_ID);
 
-/** Action to swap two set specializations with each other. Params: { specializationLine1, specializationLine2 } */
+/** Action to swap two selected specializations with each other. Params: { specializationLine1, specializationLine2 } */
 export const swapSelectedSpecializationIds = createAction(SWAP_SELECTED_SPECIALIZATION_IDS);
 
 /** Action to wipe a selected specialization. Params: { specializationLine } */
-export const wipeSelectedSpecializationId = createChainedAction(
-    createAction(WIPE_SELECTED_SPECIALIZATION_ID),
-    wipeSelectedTraitIds
-);
+export const wipeSelectedSpecializationId = createAction(WIPE_SELECTED_SPECIALIZATION_ID);
 
 /** Action to wipe the selected specializations. Params: { } */
-export const wipeAllSelectedSpecializationIds = createChainedAction(
-    createAction(WIPE_ALL_SELECTED_SPECIALIZATION_IDS),
-    wipeAllSelectedTraitIds
-);
+export const wipeAllSelectedSpecializationIds = createAction(WIPE_ALL_SELECTED_SPECIALIZATION_IDS);
 
 export default {
     FETCH_AVAILABLE_SPECIALIZATIONS,

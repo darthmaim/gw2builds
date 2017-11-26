@@ -5,13 +5,14 @@ It works in conjuntion with the module [gw2api-client](https://www.npmjs.com/pac
 Do note that this module alone isn't going to do much, you need a data provider like
 [gw2be-api-extension-data](https:/www.npmjs.com/package/gw2be-api-extension-data) to provide the data.
 
-## Installation
-**TODO:** This module is currently part of the main GW2BE repository and not yet available on npmjs.com. 
-```
-npm install gw2api-extension
-```
 
-## Usage
+## Installation
+**TODO:** This module is currently part of the main GW2BE repository and not yet available on npmjs.com.
+
+Install this module with your favorite package manager, e.g. `npm install gw2api-extension`.
+
+
+### Usage
 ```javascript
 import client from 'gw2api-client'; // This is what we are going to extend
 import extendApi from 'gw2api-extension';
@@ -29,12 +30,21 @@ api.professions().all().then(professions => {
 });
 ```
 
-## Tests
+
+## Development
+Note: This repository uses [Yarn](https://yarnpkg.com/) instead of NPM.
+Make sure it's installed before continuing.
+
+1. Clone this repository.
+2. Install all dependencies (`yarn`).
+
+### Tests
 ```
-npm test
-npm run lint
-npm run cover
+yarn test
+yarn lint
+yarn cover
 ```
+
 
 ## License
 The **Guild Wars 2 API Extension** is licensed under the [MIT License](LICENSE).

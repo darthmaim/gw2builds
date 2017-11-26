@@ -1,7 +1,8 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
-import SkillTooltip from '~/components/Tooltips/Skills/TooltipContainer';
+import SkillTooltip from '../../../Tooltips/Skills/TooltipContainer';
 import SkillIcon from '../../Icon';
+import style from './WeaponBar.css';
 
 class WeaponBar extends Component {
     constructor(props, context) {
@@ -10,7 +11,7 @@ class WeaponBar extends Component {
         this.renderSkill = this.renderSkill.bind(this);
     }
 
-    getSkillInSlot({ activeMainhandWeaponId, activeOffhandWeaponId, isTwoHanded, availableWeaponObjects, availableSkillObjects, activeAttunement }) {
+    getSkillInSlot({ activeMainhandWeaponId, activeOffhandWeaponId, isTwoHanded, availableWeaponObjects, availableSkillObjects, selectedAttunementId }) {
         return index => {
             const getFromMainhand = index < 3 || isTwoHanded;
 
@@ -22,6 +23,9 @@ class WeaponBar extends Component {
             const weapon = getFromMainhand ? activeMainhandWeaponId : activeOffhandWeaponId;
             const slotName = `Weapon_${index + 1}`;
 
+            // hardcode this until elite specialization mechanics are supported
+            const selectedWeaverPreviousAttunementId = undefined;
+
             // find all matching skills for the requested slot
             const skillsForSlot = availableWeaponObjects[weapon].skills
                 // filter slot
@@ -29,7 +33,12 @@ class WeaponBar extends Component {
                 // filter offhand (thief)
                 .filter(skill => !skill.offhand || skill.offhand === activeOffhandWeaponId || (skill.offhand === 'Nothing' && !activeOffhandWeaponId))
                 // filter attunement (elementalist)
-                .filter(skill => !skill.attunement || skill.attunement === activeAttunement);
+                .filter(skill => !skill.attunement || skill.attunement === selectedAttunementId)
+                // filter weaver attunement (elementalist)
+                .filter(skill => !availableSkillObjects[skill.id].dual_attunement || availableSkillObjects[skill.id].dual_attunement === selectedWeaverPreviousAttunementId);
+
+            console.assert(skillsForSlot.length <= 1, `Multiple possible skills for ${weapon} in slot ${slotName} found.`, skillsForSlot);
+            console.assert(skillsForSlot.length !== 0, `No skills for ${weapon} in slot ${slotName} found.`);
 
             // return the skill object
             return skillsForSlot[0] && availableSkillObjects[skillsForSlot[0].id];
@@ -40,7 +49,7 @@ class WeaponBar extends Component {
         const getSkillInSlot = this.getSkillInSlot(this.props);
         const slots = [0, 1, 2, 3, 4].map(getSkillInSlot);
         return (
-            <div>
+            <div className={style.bar}>
                 {slots.map(this.renderSkill)}
             </div>
         );
@@ -67,7 +76,6 @@ WeaponBar.propTypes = {
     // Redux states
     activeMainhandWeaponId: PropTypes.string,
     activeOffhandWeaponId: PropTypes.string,
-    activeAttunement: PropTypes.string,
     availableSkillObjects: PropTypes.object.isRequired,
     availableWeaponObjects: PropTypes.objectOf(PropTypes.shape({
         skills: PropTypes.arrayOf(PropTypes.shape({
@@ -78,6 +86,7 @@ WeaponBar.propTypes = {
         })).isRequired,
         specialization: PropTypes.number
     })).isRequired,
+    selectedAttunementId: PropTypes.string
 };
 
 export default WeaponBar;

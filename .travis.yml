@@ -4,8 +4,8 @@ node_js:
  - "node"
 
 install:
- - npm install
- - npm install -g codecov
+ - yarn
 
-after_success:
- - codecov -f coverage/lcov.info
+script:
+ - yarn test
+ - yarn run production

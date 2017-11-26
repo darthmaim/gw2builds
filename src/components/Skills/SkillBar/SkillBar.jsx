@@ -1,10 +1,15 @@
 import React from 'react';
 import MechanicBar from './MechanicBar';
+import UtilityBar from './UtilityBar';
 import WeaponBar from './WeaponBar';
+import style from './SkillBar.css';
 
 export default () => (
-    <div>
-        <MechanicBar/>
-        <WeaponBar/>
+    <div className={style.container}>
+        <div>
+            <MechanicBar/>
+            <WeaponBar/>
+        </div>
+        <UtilityBar/>
     </div>
 );

@@ -10,8 +10,8 @@ import {
     SKILL_SIMPLE, SKILL_OFFHAND_NOTHING, SKILL_OFFHAND_SOMETHING, SKILL_ATTUNEMENT_1, SKILL_ATTUNEMENT_2
 } from './WeaponBar.stub';
 
-import WeaponBar from '~/components/Skills/SkillBar/WeaponBar/WeaponBar';
-import SkillIcon from '~/components/Skills/Icon';
+import WeaponBar from '../../../src/components/Skills/SkillBar/WeaponBar/WeaponBar';
+import SkillIcon from '../../../src/components/Skills/Icon';
 
 describe('WeaponBar', () => {
     it('renders 5 empty skill icons', () => {
@@ -82,9 +82,9 @@ describe('WeaponBar', () => {
             activeMainhandWeaponId: WEAPON_ATTUNEMENT, isTwoHanded: true
         };
 
-        expect(shallow(<WeaponBar {...props} activeAttunement={ATTUNEMENT1}/>)
+        expect(shallow(<WeaponBar {...props} selectedAttunementId={ATTUNEMENT1}/>)
             .find(SkillIcon).first().prop('skill')).to.equal(SKILL_ATTUNEMENT_1);
-        expect(shallow(<WeaponBar {...props} activeAttunement={ATTUNEMENT2}/>)
+        expect(shallow(<WeaponBar {...props} selectedAttunementId={ATTUNEMENT2}/>)
             .find(SkillIcon).first().prop('skill')).to.equal(SKILL_ATTUNEMENT_2);
     });
 });

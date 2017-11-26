@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import StatsOverview from '~/components/StatsOverview';
-import MainContent from './MainContent';
+import StatsOverview from '../StatsOverview';
+import MainContent from './MainContent/MainContentContainer';
+import Section from './MainContent/Section';
 import Sidebar from './Sidebar';
 import style from './content.css';
-import Section from './MainContent/Section';
 
 class Content extends Component {
     constructor(props, context) {
@@ -38,7 +38,7 @@ class Content extends Component {
         return (
             <div className={style.container}>
                 <Sidebar currentIndex={this.state.currentIndex} onSectionChange={this.handleIndexChange}/>
-                <MainContent ref={this.setContentRef} onSectionChange={this.handleSectionScroll}/>
+                <MainContent instanceRef={this.setContentRef} onSectionChange={this.handleSectionScroll}/>
                 <div className={style.stats}>
                     <Section name="Stats">
                         <StatsOverview/>

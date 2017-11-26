@@ -1,19 +1,23 @@
 import browserify from 'browserify';
 import autoprefixer from 'autoprefixer';
+import commonShake from 'common-shakeify';
 import cssnano from 'cssnano';
+import envify from 'envify/custom';
 import { isDev, logError } from './utils';
 import buffer from 'vinyl-buffer';
 import gulp from 'gulp';
 import gutil from 'gulp-util';
 import uglify from 'gulp-uglify';
+import packFlat from 'browser-pack-flat/plugin';
 import sourcemaps from 'gulp-sourcemaps';
 import source from 'vinyl-source-stream';
 import cssImport from 'postcss-import';
 import urlrewrite from 'postcss-urlrewrite';
 import through from 'through2';
+import shortNamer from 'modular-css-short-namer';
 
 export function bundle(cb) {
-    return browserify({
+    const b = browserify({
         entries: './src/app',
         extensions: ['.js', '.jsx'],
         debug: true,
@@ -24,6 +28,7 @@ export function bundle(cb) {
         .plugin('modular-css/browserify', {
             css: './temp/css/app.css',
             sourcemaps: true,
+            namer: !isDev() ? shortNamer() : undefined,
             before: [
             ],
             after: [
@@ -37,11 +42,6 @@ export function bundle(cb) {
                 autoprefixer(),
             ],
             done: [
-                // flatten the Root-nodes modular-css creates for cssnano (see tivac/modular-css#346)
-                (css) => css.each(node => {
-                    node.type === 'root' && node.replaceWith(node.nodes);
-                }),
-
                 // minify the generated css
                 cssnano({ preset: 'default' }),
 
@@ -50,6 +50,23 @@ export function bundle(cb) {
             ]
         })
         .transform('babelify');
+
+    if(isDev()) {
+        return b;
+    }
+
+    return b
+        .transform(envify(process.env), { global: true })
+        .transform('uglifyify', {
+            global: true,
+            toplevel: true,
+            mangle: false,
+            output: {
+                ascii_only: true
+            }
+        })
+        .plugin(commonShake)
+        .plugin(packFlat, {});
 }
 
 export function buildSource(bundle, wait) {
