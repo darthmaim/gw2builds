@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import SkillTooltip from '../../../Tooltips/Skills/TooltipContainer';
 import SkillIcon from '../../Icon';
+import style from './WeaponBar.css';
 
 class WeaponBar extends Component {
     constructor(props, context) {
@@ -51,7 +52,7 @@ class WeaponBar extends Component {
         const getSkillInSlot = this.getSkillInSlot(this.props);
         const slots = [0, 1, 2, 3, 4].map(getSkillInSlot);
         return (
-            <div>
+            <div className={style.bar}>
                 {slots.map(this.renderSkill)}
             </div>
         );
