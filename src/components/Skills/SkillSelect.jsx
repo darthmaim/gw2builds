@@ -31,7 +31,7 @@ class SkillSelect extends Select {
         return (
             <SkillTooltip selectedMajorTraitIds={[]} selectedMinorTraitIds={[]} skill={skill}>
                 <div>
-                    <SkillIcon skill={skill} size={64}/>
+                    {skill && (<SkillIcon skill={skill} size={64}/>) || (<SkillIcon.Empty size={64}/>)}
                 </div>
             </SkillTooltip>
         );
