@@ -1,12 +1,12 @@
 import { handleAction, handleActions } from 'redux-actions';
-import keyBy from 'lodash/keyBy'
+import sortBy from 'lodash/sortBy';
 import * as actions from '../../actions';
 
 /** Reducer for the available elementalist attunement objects. */
 export const availableElementalistAttunementObjects = handleAction(actions.FETCH_PROFESSION,
-    (state, action) => keyBy(action.payload.skills.filter(
+    (state, action) => sortBy(action.payload.skills.filter(
         (skill) => skill.type === 'Profession'
-    ), 'attunement') || {}, {});
+    ), 'slot') || {}, {});
 
 /** Reducer for the selected elementalist attunement id. */
 export const selectedElementalistAttunementId = handleActions({
