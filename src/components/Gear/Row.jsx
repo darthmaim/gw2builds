@@ -9,16 +9,13 @@ export default class Row extends React.Component {
     constructor(props, context) {
         super(props, context);
 
-        this.state = { stats: undefined, rarity: undefined };
+        this.state = { stats: undefined };
     }
 
     render() {
-        const { type, slot, text, availableItemstats } = this.props;
+        const { text, availableItemstats } = this.props;
 
-        const itemstats = availableItemstats.filter(
-            (stat) => stat.type === type && stat.subtype === slot && stat.rarity === this.state.rarity
-        );
-        const selected = itemstats.filter(
+        const selected = availableItemstats.filter(
             (stat) => stat.id === this.state.stats
         )[0];
 
@@ -26,7 +23,7 @@ export default class Row extends React.Component {
             <div className={style.row}>
                 <div className={style.header}>
                     {this.renderRaritySelect()}
-                    {this.renderAttributeSelect(itemstats)}
+                    {this.renderAttributeSelect(availableItemstats)}
                     <span className={style.text}>{text}</span>
                 </div>
                 {this.renderAttributes(selected)}
@@ -37,10 +34,10 @@ export default class Row extends React.Component {
     renderRaritySelect() {
         return (
             <Select
-                onChange={rarity => this.setState({rarity})}
-                value={this.state.rarity}
+                onChange={this.props.onRarityChange}
+                value={this.props.rarity}
                 placeholder="Rarity">
-                {RARITIES.map(rarity => (
+                {this.props.rarities.map(rarity => (
                     <Select.Option value={rarity} key={rarity}>{rarity}</Select.Option>
                 ))}
             </Select>

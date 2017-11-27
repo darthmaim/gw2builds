@@ -1,9 +1,8 @@
 import React from 'react';
 import map from 'lodash/map';
 import { weaponIs2Handed } from '../../utils/gw2';
-import Row from './Row';
+import Row from './RowContainer';
 import style from './Gear.css';
-import { availableItemstats } from '../../reducers/gear/itemstats';
 
 const SET = {
     NORMAL_1: 0,
@@ -12,7 +11,7 @@ const SET = {
     UNDERWATER_2: 3
 };
 
-function slots({ selectedMainhandWeaponIds, selectedOffhandWeaponIds, hasMultipleWeaponsets }) {
+function slots({ selectedMainhandWeaponIds, hasMultipleWeaponsets }) {
     return {
         Armor: [
             { type: 'Armor', slot: 'Helm' },
@@ -32,12 +31,12 @@ function slots({ selectedMainhandWeaponIds, selectedOffhandWeaponIds, hasMultipl
             { type: 'Weapon', slot: '1Handed', visible: hasMultipleWeaponsets && !weaponIs2Handed(selectedMainhandWeaponIds[SET.NORMAL_2]) },
         ],
         Trinkets: [
-            { type: 'Back', slot: 'undefined' },
-            { type: 'Trinket', slot: 'Accessory' },
-            { type: 'Trinket', slot: 'Accessory' },
+            { type: 'Back' },
+            { type: 'Trinket', slot: 'Accessory1' },
+            { type: 'Trinket', slot: 'Accessory2' },
             { type: 'Trinket', slot: 'Amulet' },
-            { type: 'Trinket', slot: 'Ring' },
-            { type: 'Trinket', slot: 'Ring' },
+            { type: 'Trinket', slot: 'Ring1' },
+            { type: 'Trinket', slot: 'Ring2' },
         ],
         Underwater: [
             { type: 'Armor', slot: 'HelmAquatic' },
@@ -47,14 +46,14 @@ function slots({ selectedMainhandWeaponIds, selectedOffhandWeaponIds, hasMultipl
     };
 }
 
-export default ({selectedMainhandWeaponIds, selectedOffhandWeaponIds, hasMultipleWeaponsets, availableItemstats}) => (
+export default ({selectedMainhandWeaponIds, selectedOffhandWeaponIds, hasMultipleWeaponsets }) => (
     <div className={style.panel}>
         {map(slots({ selectedMainhandWeaponIds, selectedOffhandWeaponIds, hasMultipleWeaponsets }), (slots, type) => (
             <section key={type} className={style.section}>
                 <header className={style.header}>{type}</header>
                 {map(slots, (slot, index) =>
                     (slot.visible === undefined || slot.visible) &&
-                    <Row key={index} availableItemstats={availableItemstats} type={slot.type} slot={slot.slot} text={slot.type + '.' + slot.slot}/>
+                    <Row key={index} type={slot.type} slot={slot.slot} text={slot.type + '.' + slot.slot}/>
                 )}
             </section>
         ))}
