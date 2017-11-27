@@ -15,6 +15,7 @@ import { initializeBuildFromString } from './utils/build-string';
 import { init as initAnalytics } from './utils/analytics';
 import { syncMiddleware } from 'redux-sync-reducer';
 import { composeWithDevTools } from 'redux-devtools-extension';
+import { fetchAvailableItemstats } from './actions';
 
 initAnalytics();
 
@@ -34,6 +35,8 @@ class Editor extends React.Component {
     componentWillMount() {
         // Get an existing build string for initialization
         const path = window.location.pathname.substr(1);
+
+        this.props.fetchAvailableItemstats();
 
         if (path) {
             initializeBuildFromString(store.dispatch, path)
@@ -80,7 +83,7 @@ Editor = connect(state => {
         url: getUrl(state),
         loading: state.isLoading
     };
-})(Editor);
+}, { fetchAvailableItemstats })(Editor);
 
 function renderApp() {
     render(

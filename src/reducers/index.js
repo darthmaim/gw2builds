@@ -5,6 +5,7 @@ import { importDialogVisible, importApiKeys } from './import';
 import {
     activeWeaponSet,
     availableWeaponObjects,
+    availableItemstats,
     selectedArmorItemstatIds, selectedArmorIsAscended, selectedArmorUpgradeIds, selectedArmorInfusionIds, selectedPvpAmuletId, selectedPvpArmorUpgradeId,
     selectedTrinketItemstatIds, selectedTrinketIsAscended, selectedTrinketUpgradeIds, selectedTrinketInfusionIds,
     selectedMainhandWeaponIds, selectedMainhandWeaponItemstatIds, selectedMainhandWeaponIsAscended, selectedMainhandWeaponUpgradeIds, selectedMainhandWeaponInfusionIds,
@@ -39,6 +40,9 @@ export default combineReducers({
     selectedArmorInfusionIds,
     selectedPvpAmuletId,
     selectedPvpArmorUpgradeId,
+
+    // Gear: itemstats
+    availableItemstats,
 
     // Gear: trinkets
     selectedTrinketItemstatIds,

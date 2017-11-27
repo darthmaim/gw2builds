@@ -2,6 +2,7 @@ import { createAction } from 'redux-actions';
 import { createChainedAction, createApiAction } from './utils';
 import { fetchAvailableSpecializations } from './specializations';
 import { fetchAvailableSkills } from './skills';
+import { fetchAvailableItemstats } from './gear/itemstats';
 
 export const FETCH_PROFESSION = 'FETCH_PROFESSION';
 export const SET_SELECTED_LANGUAGE = 'SET_SELECTED_LANGUAGE';
@@ -22,7 +23,7 @@ export const fetchProfession = createChainedAction(
 /** Action to set the selected language. Params: { language } */
 export const setSelectedLanguage = createChainedAction(
     createAction(SET_SELECTED_LANGUAGE),
-    fetchProfession
+    [fetchProfession, fetchAvailableItemstats]
 );
 
 /** Action to set the selected game mode. Params: { gameMode } */

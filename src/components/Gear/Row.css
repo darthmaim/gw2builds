@@ -10,8 +10,8 @@
 }
 
 .row :external(select from "../Inputs/Select/Select.css") {
-    min-width: 100px;
-    max-width: 100px;
+    min-width: 80px;
+    max-width: 120px;
 }
 
 .icon {

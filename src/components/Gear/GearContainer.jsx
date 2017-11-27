@@ -6,7 +6,7 @@ const mapStateToProps = (state, ownProps) => ({
     selectedMainhandWeaponIds: state.selectedMainhandWeaponIds,
     selectedOffhandWeaponIds: state.selectedOffhandWeaponIds,
     hasMultipleWeaponsets: getHasMultipleWeaponsets(state, ownProps),
-    selectedLanguage: state.selectedLanguage
+    availableItemstats: state.availableItemstats
 });
 
 export default connect(mapStateToProps)(Gear);

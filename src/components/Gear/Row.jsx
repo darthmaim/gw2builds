@@ -1,7 +1,6 @@
 import React from 'react';
 import style from './Row.css';
 import Select from '../Inputs/Select/Select';
-import attributeSets from '../../../assets/gear.json';
 import map from 'lodash/map';
 
 const RARITIES = ['Exotic', 'Ascended'];
@@ -14,19 +13,20 @@ export default class Row extends React.Component {
     }
 
     render() {
-        const { type, slot, selectedLanguage, text } = this.props;
+        const { type, slot, text, availableItemstats } = this.props;
 
-        const availableAttributeSets = attributeSets[type] && attributeSets[type][slot] && attributeSets[type][slot][this.state.rarity]
-            ? (attributeSets[type][slot][this.state.rarity].itemstats || [])
-            : [];
-
-        const selected = availableAttributeSets.filter(set => set.id === this.state.stats)[0];
+        const itemstats = availableItemstats.filter(
+            (stat) => stat.type === type && stat.subtype === slot && stat.rarity === this.state.rarity
+        );
+        const selected = itemstats.filter(
+            (stat) => stat.id === this.state.stats
+        )[0];
 
         return (
             <div className={style.row}>
                 <div className={style.header}>
                     {this.renderRaritySelect()}
-                    {this.renderAttributeSelect(availableAttributeSets, selectedLanguage)}
+                    {this.renderAttributeSelect(itemstats)}
                     <span className={style.text}>{text}</span>
                 </div>
                 {this.renderAttributes(selected)}
@@ -47,14 +47,14 @@ export default class Row extends React.Component {
         );
     }
 
-    renderAttributeSelect(availableAttributeSets, selectedLanguage) {
+    renderAttributeSelect(availableAttributeSets) {
         return (
             <Select
                 onChange={stats => this.setState({stats: parseInt(stats)})}
                 value={this.state.stats}
                 placeholder="Stats">
-                {availableAttributeSets.map(set => (
-                    <Select.Option value={set.id} key={set.id}>{set.names[selectedLanguage]}</Select.Option>
+                {availableAttributeSets.map((stat) => (
+                    <Select.Option value={stat.id} key={stat.id}>{stat.name}</Select.Option>
                 ))}
             </Select>
         );

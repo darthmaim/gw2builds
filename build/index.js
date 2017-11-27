@@ -1,7 +1,6 @@
 import './app';
 import './common';
 import './favicon';
-import './gear';
 import './image';
 import './revision';
 import './serviceworker';

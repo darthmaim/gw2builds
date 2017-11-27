@@ -3,6 +3,7 @@ import map from 'lodash/map';
 import { weaponIs2Handed } from '../../utils/gw2';
 import Row from './Row';
 import style from './Gear.css';
+import { availableItemstats } from '../../reducers/gear/itemstats';
 
 const SET = {
     NORMAL_1: 0,
@@ -46,14 +47,14 @@ function slots({ selectedMainhandWeaponIds, selectedOffhandWeaponIds, hasMultipl
     };
 }
 
-export default ({selectedMainhandWeaponIds, selectedOffhandWeaponIds, hasMultipleWeaponsets, selectedLanguage}) => (
+export default ({selectedMainhandWeaponIds, selectedOffhandWeaponIds, hasMultipleWeaponsets, availableItemstats}) => (
     <div className={style.panel}>
         {map(slots({ selectedMainhandWeaponIds, selectedOffhandWeaponIds, hasMultipleWeaponsets }), (slots, type) => (
             <section key={type} className={style.section}>
                 <header className={style.header}>{type}</header>
                 {map(slots, (slot, index) =>
                     (slot.visible === undefined || slot.visible) &&
-                    <Row key={index} selectedLanguage={selectedLanguage} type={slot.type} slot={slot.slot} text={slot.type + '.' + slot.slot}/>
+                    <Row key={index} availableItemstats={availableItemstats} type={slot.type} slot={slot.slot} text={slot.type + '.' + slot.slot}/>
                 )}
             </section>
         ))}
