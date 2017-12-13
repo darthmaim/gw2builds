@@ -27,10 +27,9 @@ export function bundle(cb) {
     })
         .plugin('modular-css/browserify', {
             css: './temp/css/app.css',
-            sourcemaps: true,
+            map : true,
             namer: !isDev() ? shortNamer() : undefined,
-            before: [
-            ],
+            before: [],
             after: [
                 // inline @import styles
                 cssImport(),
