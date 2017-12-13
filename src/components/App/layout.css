@@ -1,4 +1,4 @@
-@import url(typeface-open-sans/index.css);
+@import url('./fonts.css');
 
 html, body {
     margin: 0;
