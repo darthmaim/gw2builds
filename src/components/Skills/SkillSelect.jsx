@@ -10,7 +10,7 @@ class SkillSelect extends Select {
         return this.props.skills.map(
             (skill) => (
                 <Select.Option key={skill.id} value={skill.id}>
-                    <SkillTooltip skill={skill}>
+                    <SkillTooltip skill={skill} action={this.props.optionAction}>
                         <div className={style.option}>
                             <SkillIcon className={style.icon} skill={skill} size={32}/>{skill.name}
                         </div>
@@ -30,7 +30,7 @@ class SkillSelect extends Select {
         const skill = this.props.skills.filter((skill) => skill.id === id)[0];
 
         return (
-            <SkillTooltip selectedMajorTraitIds={[]} selectedMinorTraitIds={[]} skill={skill}>
+            <SkillTooltip skill={skill} action={this.props.valueAction}>
                 <div>
                     {skill && (<SkillIcon skill={skill} size={size}/>) || (<SkillIcon.Empty size={size}/>)}
                 </div>
@@ -42,12 +42,16 @@ class SkillSelect extends Select {
 SkillSelect.PropTypes = {
     ...Select.PropTypes,
     skills: PropTypes.array.isRequired,
-    size: PropTypes.number.isRequired
+    size: PropTypes.number.isRequired,
+    valueAction: PropTypes.string.isRequired,
+    optionAction: PropTypes.string.isRequired
 };
 
 SkillSelect.defaultProps = {
     ...Select.defaultProps,
-    size: 64
+    size: 64,
+    valueAction: 'select different skill',
+    optionAction: 'select this skill'
 };
 
 delete SkillSelect.propTypes['children'];

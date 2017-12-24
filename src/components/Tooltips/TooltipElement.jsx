@@ -71,8 +71,6 @@ class TooltipElement extends Component {
             return;
         }
 
-        e.preventDefault();
-
         this.touch.identifier = e.changedTouches[0].identifier;
         this.touch.position = e.changedTouches[0].screenY;
     }
@@ -101,8 +99,6 @@ class TooltipElement extends Component {
         if (this.touch.identifier === undefined) {
             return;
         }
-
-        e.preventDefault();
 
         this.touch.identifier = undefined;
 
@@ -134,7 +130,7 @@ class TooltipElement extends Component {
     }
 
     render() {
-        const tooltip = isFunction(this.state.tooltip) ? this.state.tooltip() : this.state.tooltip;
+        const tooltip = isFunction(this.state.tooltip) ? this.state.tooltip(this.state.touch) : this.state.tooltip;
 
         if (!tooltip) {
             return <div className={style.tooltip}/>;

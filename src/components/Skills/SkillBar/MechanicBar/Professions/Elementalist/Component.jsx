@@ -9,7 +9,7 @@ const renderSkillIcon = (skill, index, active, onAttunementChange) => {
     const className = isActive ? '' : style.inactive;
 
     return (
-        <SkillTooltip key={index} skill={skill}>
+        <SkillTooltip key={index} skill={skill} action={'change attunement'}>
             <SkillIcon className={className} onClick={onAttunementChange.bind(this, index)} skill={skill} size={32}/>
         </SkillTooltip>
     );

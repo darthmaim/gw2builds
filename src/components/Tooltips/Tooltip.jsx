@@ -76,6 +76,10 @@ class Tooltip extends PureComponent {
         this.dettachEvents();
     }
 
+    hide() {
+        this.context.tooltipContext.hideTooltip();
+    }
+
     render() {
         return React.Children.only(this.props.children);
     }

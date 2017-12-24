@@ -40,7 +40,9 @@ class UtilityBar extends Component {
             .map((skill) => availableSkillObjects[skill.id]);
 
         return (
-            <SkillSelect value={selectedId} key={slot} onChange={onSelectedSkillChange.bind(this, slot)} skills={availableSkills}/>
+            <SkillSelect value={selectedId} key={slot} onChange={onSelectedSkillChange.bind(this, slot)}
+                skills={availableSkills} valueAction={`change ${slots[slot]} skill`}
+            />
         );
     }
 
