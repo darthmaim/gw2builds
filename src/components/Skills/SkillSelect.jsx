@@ -26,12 +26,13 @@ class SkillSelect extends Select {
 
     renderCurrentValue() {
         const id = this.props.value;
+        const size = this.props.size;
         const skill = this.props.skills.filter((skill) => skill.id === id)[0];
 
         return (
             <SkillTooltip selectedMajorTraitIds={[]} selectedMinorTraitIds={[]} skill={skill}>
                 <div>
-                    {skill && (<SkillIcon skill={skill} size={64}/>) || (<SkillIcon.Empty size={64}/>)}
+                    {skill && (<SkillIcon skill={skill} size={size}/>) || (<SkillIcon.Empty size={size}/>)}
                 </div>
             </SkillTooltip>
         );
@@ -40,10 +41,15 @@ class SkillSelect extends Select {
 
 SkillSelect.PropTypes = {
     ...Select.PropTypes,
-    skills: PropTypes.array.isRequired
+    skills: PropTypes.array.isRequired,
+    size: PropTypes.number.isRequired
+};
+
+SkillSelect.defaultProps = {
+    ...Select.defaultProps,
+    size: 64
 };
 
 delete SkillSelect.propTypes['children'];
-//SkillSelect.propTypes.skills = PropTypes.array.isRequired;
 
 export default SkillSelect;
