@@ -351,12 +351,11 @@ This category contains the following local types:
     </tr>
     <tr>
         <td><code>selectedRevenantLegendIds</code></td>
-        <td>array (string)</td>
+        <td>array (<code>/v2/legends.id</code>)</td>
         <td>
             Selected revenant legend ids.<br>
             [0] = first legend<br>
             [1] = second legend<br>
-            Options: <em>Assassin</em>, <em>Demon</em>, <em>Dwarf</em>, <em>Centaur</em>, <em>Dragon</em>, <em>Renegade</em>
        </td>
     </tr>
     <tr>

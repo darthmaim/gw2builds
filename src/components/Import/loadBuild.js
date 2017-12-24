@@ -64,6 +64,13 @@ export default (dispatch, state) => (type, { character }) => {
             }
         };
 
+        if(character.profession === 'Revenant') {
+            build.professionRevenant = {
+                legendA: character.skills[type].legends[0],
+                legendB: character.skills[type].legends[1]
+            }
+        }
+
         console.log(build);
 
         load(dispatch, build);

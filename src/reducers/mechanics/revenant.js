@@ -1,6 +1,6 @@
 import { handleActions } from 'redux-actions';
 import * as actions from '../../actions';
-import { swapElements } from '../utils';
+import { swapElements, handleSimpleAction } from '../utils';
 
 /** Reducer for the selected revenant legends ids. */
 export const selectedRevenantLegendIds = handleActions({
@@ -8,6 +8,12 @@ export const selectedRevenantLegendIds = handleActions({
     [actions.SET_SELECTED_REVENANT_LEGEND_ID]: (state, action) => {
         const newState = state.slice();
         newState[action.payload.slotId] = action.payload.legendId;
+
+        const otherSlotId = (action.payload.slotId + 1) % 2;
+        if(state[otherSlotId] === action.payload.legendId) {
+            newState[otherSlotId] = state[action.payload.slotId];
+        }
+
         return newState;
     },
     // Swap two legends with each other
@@ -27,6 +33,17 @@ export const selectedRevenantLegendIds = handleActions({
     [actions.SET_SELECTED_PROFESSION]: () => []
 }, []);
 
+export const availableRevenantLegends = handleSimpleAction(actions.FETCH_AVAILABLE_LEGENDS, {});
+
+export const availableRevenantSkillIds = handleActions({
+    [actions.FETCH_AVAILABLE_LEGENDS]: (state, action) =>
+        [].concat.apply([], Object.values(action.payload).map(
+            (legend) => [legend.swap, legend.heal, legend.elite, ...legend.utilities]
+        ))
+}, []);
+
 export default {
-    selectedRevenantLegendIds
+    selectedRevenantLegendIds,
+    availableRevenantLegends,
+    availableRevenantSkillIds
 };
