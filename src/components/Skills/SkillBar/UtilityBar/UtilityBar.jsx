@@ -18,7 +18,6 @@ class UtilityBar extends Component {
         super(props, context);
 
         this.renderSlot = this.renderSlot.bind(this);
-        this.renderSkill = this.renderSkill.bind(this);
     }
 
     render() {
@@ -31,8 +30,6 @@ class UtilityBar extends Component {
 
     renderSlot(slot) {
         const { selectedSkillIds, availableSkillObjects, availableProfessionSkillObjects, onSelectedSkillChange } = this.props;
-        const selectedId = selectedSkillIds[slot];
-        const selectedSkill = availableSkillObjects[slot];
 
         const availableSkills = availableProfessionSkillObjects
             .filter((skill) => skill.slot === slots[slot])
@@ -40,23 +37,9 @@ class UtilityBar extends Component {
             .map((skill) => availableSkillObjects[skill.id]);
 
         return (
-            <SkillSelect value={selectedId} key={slot} onChange={onSelectedSkillChange.bind(this, slot)}
+            <SkillSelect value={selectedSkillIds[slot]} key={slot} onChange={onSelectedSkillChange.bind(this, slot)}
                 skills={availableSkills} valueAction={`change ${slots[slot]} skill`}
             />
-        );
-    }
-
-    renderSkill(skill, index) {
-        if (skill === null) {
-            return (
-                <SkillIcon.Empty key={index}/>
-            );
-        }
-
-        return (
-            <SkillTooltip key={index} skill={skill}>
-                <SkillIcon skill={skill}/>
-            </SkillTooltip>
         );
     }
 }
