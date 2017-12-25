@@ -13,6 +13,7 @@
     max-width: 400px;
     border-left: 1px solid #eee;
     overflow: auto;
+    -webkit-overflow-scrolling: touch;
     display: flex;
     flex-direction: column;
 }
