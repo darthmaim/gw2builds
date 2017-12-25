@@ -92,7 +92,6 @@ class SkillTooltip extends Component {
 
         const action = this.props.action;
         const actionClick = () => {
-            console.log('Tooltip action clicked');
             this.tooltip.node.click();
             this.tooltip.hide();
         };
