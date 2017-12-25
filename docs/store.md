@@ -350,6 +350,11 @@ This category contains the following local types:
         <td>Available elementalist attunement objects.</td>
     </tr>
     <tr>
+        <td><code>availableEngineerToolbeltSkillIds</code></td>
+        <td>array (<code>/v2/skills.id</code>)</td>
+        <td>Available skill ids for engineer toolbelt skills.</td>
+    </tr>
+    <tr>
         <td><code>selectedRevenantLegendIds</code></td>
         <td>array (string)</td>
         <td>

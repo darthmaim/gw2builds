@@ -16,6 +16,7 @@ import { availableTraitIds, availableTraitObjects, selectedMajorTraitIds } from 
 import { availableSkillIds, selectedSkillIds, availableSkillObjects, availableProfessionSkillObjects } from './skills';
 import {
     availableElementalistAttunementObjects, selectedElementalistAttunementId, selectedWeaverPreviousAttunementId,
+    availableEngineerToolbeltSkillIds,
     selectedRangerPetIds,
     selectedRevenantLegendIds
 } from './mechanics';
@@ -83,6 +84,7 @@ export default combineReducers({
     availableElementalistAttunementObjects,
     selectedElementalistAttunementId,
     selectedWeaverPreviousAttunementId,
+    availableEngineerToolbeltSkillIds,
     selectedRangerPetIds,
     selectedRevenantLegendIds
 });

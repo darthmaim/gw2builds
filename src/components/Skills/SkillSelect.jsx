@@ -29,10 +29,16 @@ class SkillSelect extends Select {
         const size = this.props.size;
         const skill = this.props.skills.filter((skill) => skill.id === id)[0];
 
+        if(!skill) {
+            return (
+                <SkillIcon.Empty size={size}/>
+            );
+        }
+
         return (
             <SkillTooltip skill={skill} action={this.props.valueAction}>
                 <div>
-                    {skill && (<SkillIcon skill={skill} size={size}/>) || (<SkillIcon.Empty size={size}/>)}
+                    <SkillIcon skill={skill} size={size}/>
                 </div>
             </SkillTooltip>
         );

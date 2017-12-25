@@ -1,4 +1,5 @@
 import Elementalist from './Elementalist';
+import Engineer from './Engineer';
 import Thief from './Thief';
 import Necromancer from './Necromancer';
 import Mesmer from './Mesmer';
@@ -13,7 +14,6 @@ const emptyProfession = {
 };
 
 const Revenant = emptyProfession;
-const Engineer = emptyProfession;
 const Ranger = emptyProfession;
 
 export default {
