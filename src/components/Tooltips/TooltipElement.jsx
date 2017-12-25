@@ -5,6 +5,8 @@ import React, { Component } from 'react';
 import isFunction from 'lodash/isFunction';
 import style from './tooltip.css';
 
+const INITAL_TOUCH_OFFSET = -148;
+
 class TooltipElement extends Component {
     constructor(props, context) {
         super(props, context);
@@ -13,7 +15,7 @@ class TooltipElement extends Component {
         this.touch = {
             identifier: undefined,
             position: 0,
-            offset: -100
+            offset: INITAL_TOUCH_OFFSET
         };
 
         this.state = {
@@ -34,6 +36,10 @@ class TooltipElement extends Component {
             (tooltip, event) => {
                 const touch = event !== undefined && event.constructor.name === 'TouchEvent';
                 this.setState({ tooltip, touch }, () => {
+                    if(!tooltip) {
+                        this.touch.offset = INITAL_TOUCH_OFFSET;
+                    }
+
                     if (touch && this.element) {
                         this.touch.offset = Math.max(Math.min(-100, this.touch.offset), -this.element.offsetHeight);
                         this.element.style.transform = `translateY(100%) translateY(${this.touch.offset}px)`;

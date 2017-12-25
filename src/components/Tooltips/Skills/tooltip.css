@@ -22,6 +22,7 @@
     padding: 8px;
     text-transform: capitalize;
     margin-top: 16px;
+    border-radius: 2px;
 }
 
 .actionHint {

@@ -53,21 +53,21 @@ class TraitTier extends React.Component {
                 </TraitTooltip>
                 <TraitConnection from="mid" to={line}/>
                 <div className={style.majorIcons}>
-                    <TraitTooltip trait={majorTraits[0]}>
+                    <TraitTooltip trait={majorTraits[0]} action={'select this trait'}>
                         <TraitMajorIcon
                             imageUrl={this.getMajorIcon(0)}
                             traitId={this.props.majorTraitIds ? this.props.majorTraitIds[0] : null}
                             isSelected={this.props.majorTraitIds && this.props.majorTraitIds[0] === this.props.selectedMajorTraitId}
                             onSelected={this.props.onTraitChange}/>
                     </TraitTooltip>
-                    <TraitTooltip trait={majorTraits[1]}>
+                    <TraitTooltip trait={majorTraits[1]} action={'select this trait'}>
                         <TraitMajorIcon
                             imageUrl={this.getMajorIcon(1)}
                             traitId={this.props.majorTraitIds ? this.props.majorTraitIds[1] : null}
                             isSelected={this.props.majorTraitIds && this.props.majorTraitIds[1] === this.props.selectedMajorTraitId}
                             onSelected={this.props.onTraitChange}/>
                     </TraitTooltip>
-                    <TraitTooltip trait={majorTraits[2]}>
+                    <TraitTooltip trait={majorTraits[2]} action={'select this trait'}>
                         <TraitMajorIcon
                             imageUrl={this.getMajorIcon(2)}
                             traitId={this.props.majorTraitIds ? this.props.majorTraitIds[2] : null}
