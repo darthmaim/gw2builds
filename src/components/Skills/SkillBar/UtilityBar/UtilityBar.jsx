@@ -18,6 +18,7 @@ class UtilityBar extends Component {
         super(props, context);
 
         this.renderSlot = this.renderSlot.bind(this);
+        this.getCurrentSkill = this.getCurrentSkill.bind(this);
     }
 
     render() {
@@ -38,9 +39,25 @@ class UtilityBar extends Component {
 
         return (
             <SkillSelect value={selectedSkillIds[slot]} key={slot} onChange={onSelectedSkillChange.bind(this, slot)}
-                skills={availableSkills} valueAction={`change ${slots[slot]} skill`}
+                skills={availableSkills} valueAction={`change ${slots[slot]} skill`} getCurrentSkill={this.getCurrentSkill}
             />
         );
+    }
+
+    getCurrentSkill(id) {
+        const skill = this.props.availableSkillObjects[id];
+
+        if(skill && skill.subskills) {
+            const availabeSubskills = skill.subskills.filter(
+                (subskill) => subskill.attunement === this.props.selectedElementalistAttunementId
+            );
+
+            if(availabeSubskills.length > 0) {
+                return this.props.availableSkillObjects[availabeSubskills[0].id];
+            }
+        }
+
+        return skill;
     }
 }
 
@@ -48,7 +65,8 @@ UtilityBar.propTypes = {
     // Redux states
     selectedSkillIds: PropTypes.array.isRequired,
     availableSkillObjects: PropTypes.object.isRequired,
-    availableProfessionSkillObjects: PropTypes.array.isRequired
+    availableProfessionSkillObjects: PropTypes.array.isRequired,
+    selectedElementalistAttunementId: PropTypes.string
 };
 
 export default UtilityBar;

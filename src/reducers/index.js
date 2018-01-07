@@ -13,7 +13,10 @@ import {
 import { selectedFoodIds } from './food';
 import { availableSpecializationIds, availableSpecializationObjects, selectedSpecializationIds } from './specializations';
 import { availableTraitIds, availableTraitObjects, selectedMajorTraitIds } from './traits';
-import { availableSkillIds, selectedSkillIds, availableSkillObjects, availableProfessionSkillObjects } from './skills';
+import {
+    availableSkillIds, availableSubSkillIds,
+    selectedSkillIds,
+    availableSkillObjects, availableProfessionSkillObjects } from './skills';
 import {
     availableElementalistAttunementObjects, selectedElementalistAttunementId, selectedWeaverPreviousAttunementId,
     availableEngineerToolbeltSkillIds,
@@ -76,6 +79,7 @@ export default combineReducers({
 
     // Skills
     availableSkillIds,
+    availableSubSkillIds,
     availableSkillObjects,
     availableProfessionSkillObjects,
     selectedSkillIds,

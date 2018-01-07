@@ -27,7 +27,7 @@ class SkillSelect extends Select {
     renderCurrentValue() {
         const id = this.props.value;
         const size = this.props.size;
-        const skill = this.props.skills.filter((skill) => skill.id === id)[0];
+        const skill = this.props.getCurrentSkill(id);
 
         if(!skill) {
             return (
@@ -50,14 +50,16 @@ SkillSelect.PropTypes = {
     skills: PropTypes.array.isRequired,
     size: PropTypes.number.isRequired,
     valueAction: PropTypes.string.isRequired,
-    optionAction: PropTypes.string.isRequired
+    optionAction: PropTypes.string.isRequired,
+    getCurrentSkill: PropTypes.func.isRequired
 };
 
 SkillSelect.defaultProps = {
     ...Select.defaultProps,
     size: 64,
     valueAction: 'select different skill',
-    optionAction: 'select this skill'
+    optionAction: 'select this skill',
+    getCurrentSkill: (value) => this.props.skills.filter((skill) => skill.id === value)[0]
 };
 
 delete SkillSelect.propTypes['children'];

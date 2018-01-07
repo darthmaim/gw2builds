@@ -5,7 +5,8 @@ import { setSelectedSkillId } from '../../../../actions';
 const mapStateToProps = (state, ownProps) => ({
     selectedSkillIds: state.selectedSkillIds,
     availableSkillObjects: state.availableSkillObjects,
-    availableProfessionSkillObjects: state.availableProfessionSkillObjects
+    availableProfessionSkillObjects: state.availableProfessionSkillObjects,
+    selectedElementalistAttunementId: state.selectedElementalistAttunementId
 });
 
 const mapDispatchToProps = dispatch => ({
