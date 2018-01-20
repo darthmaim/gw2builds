@@ -4,9 +4,9 @@ import * as actions from '../../actions';
 
 /** Reducer for the available elementalist attunement objects. */
 export const availableElementalistAttunementObjects = handleAction(actions.FETCH_PROFESSION,
-    (state, action) => sortBy(action.payload.skills.filter(
+    (state, action) => action.payload.id === 'Elementalist' ? sortBy(action.payload.skills.filter(
         (skill) => skill.type === 'Profession'
-    ), 'slot') || {}, {});
+    ), 'slot') : [] || [], []);
 
 /** Reducer for the selected elementalist attunement id. */
 export const selectedElementalistAttunementId = handleActions({
