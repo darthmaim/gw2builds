@@ -53,6 +53,7 @@ class UtilityBar extends Component {
             );
 
             if(availabeSubskills.length > 0) {
+                console.assert(availabeSubskills.length === 1, `${availabeSubskills.length} available subskills for skill ${id} (https://api.guildwars2.com/v2/skills/${id}.`);
                 return this.props.availableSkillObjects[availabeSubskills[0].id];
             }
         }
