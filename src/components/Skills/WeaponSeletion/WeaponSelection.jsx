@@ -9,25 +9,35 @@ import style from './WeaponSelection.css';
 const isWeaponAvailable = (weapon, selectedSpecializationIds) =>
     !weapon.specialization || selectedSpecializationIds.some(id => id === weapon.specialization);
 
-const renderSelect = (weapons, value, onChange, selectedSpecializationIds) => (
+const renderSelect = (weapons, value, onChange, selectedSpecializationIds, availableSpecializationObjects) => (
     <Select value={value} onChange={onChange} placeholder="None">
         {map(weapons, (weapon, name) => (
             <Select.Option key={name} value={name} disabled={!isWeaponAvailable(weapon, selectedSpecializationIds)}>
                 {name}
-                {weapon.specialization && (<span className={style.specializationRequirement}>Requires specialization {weapon.specialization}</span>)}
+                {weapon.specialization && renderSpecializationRequirement(weapon, availableSpecializationObjects)}
             </Select.Option>
         ))}
     </Select>
 );
 
+const renderSpecializationRequirement = (weapon, availableSpecializationObjects) => {
+    const specializations = availableSpecializationObjects[weapon.specialization];
+
+    return specializations && (
+        <span className={style.specializationRequirement}>
+            Requires {specializations.elite ? 'elite' : ''} specialization {specializations.name}
+        </span>
+    );
+};
+
 const WeaponSelection = ({
     availableMainhandWeaponObjects, onMainhandChange, activeMainhandWeaponId,
     availableOffhandWeaponObjects, onOffhandChange, activeOffhandWeaponId,
-    twoHanded, selectedSpecializationIds
+    twoHanded, selectedSpecializationIds, availableSpecializationObjects
 }) => (
     <div>
-        {renderSelect(availableMainhandWeaponObjects, activeMainhandWeaponId, onMainhandChange, selectedSpecializationIds)}
-        {!twoHanded && renderSelect(availableOffhandWeaponObjects, activeOffhandWeaponId, onOffhandChange, selectedSpecializationIds)}
+        {renderSelect(availableMainhandWeaponObjects, activeMainhandWeaponId, onMainhandChange, selectedSpecializationIds, availableSpecializationObjects)}
+        {!twoHanded && renderSelect(availableOffhandWeaponObjects, activeOffhandWeaponId, onOffhandChange, selectedSpecializationIds, availableSpecializationObjects)}
     </div>
 );
 
@@ -43,7 +53,8 @@ WeaponSelection.propTypes = {
     activeOffhandWeaponId: PropTypes.string,
     availableMainhandWeaponObjects: PropTypes.object,
     availableOffhandWeaponObjects: PropTypes.object,
-    selectedSpecializationIds: PropTypes.arrayOf(PropTypes.number)
+    selectedSpecializationIds: PropTypes.arrayOf(PropTypes.number),
+    availableSpecializationObjects: PropTypes.array
 };
 
 export default WeaponSelection;
