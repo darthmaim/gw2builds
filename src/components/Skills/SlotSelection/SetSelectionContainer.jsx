@@ -5,7 +5,7 @@ import { getHasMultipleWeaponsets } from '../../../selectors/gear';
 
 const mapStateToProps = state => ({
     activeWeaponSet: state.activeWeaponSet,
-    hasMultipleWeaponsets: getHasMultipleWeaponsets(state)
+    hasMultipleWeaponsets: state.hasMultipleWeaponSets
 });
 
 const mapDispatchToProps = dispatch => ({

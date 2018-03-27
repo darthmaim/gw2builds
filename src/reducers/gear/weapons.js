@@ -43,6 +43,11 @@ export const selectedOffhandWeaponIds = handleActions({
     [actions.SET_SELECTED_PROFESSION]: () => []
 }, []);
 
+/** Reducer for checking if the current profession has multiple weaponsets */
+export const hasMultipleWeaponSets = handleActions({
+    [actions.FETCH_PROFESSION]: (state, action) => action.payload.flags.indexOf('NoWeaponSwap') === -1
+}, true);
+
 /** Reducer for the selected main-hand weapon itemstat ids. */
 export const selectedMainhandWeaponItemstatIds = handleActions({
     // Set a main-hand weapon itemstat
@@ -184,6 +189,7 @@ export default {
     availableWeaponObjects,
     selectedMainhandWeaponIds,
     selectedOffhandWeaponIds,
+    hasMultipleWeaponSets,
 
     selectedMainhandWeaponItemstatIds,
     selectedOffhandWeaponItemstatIds,
