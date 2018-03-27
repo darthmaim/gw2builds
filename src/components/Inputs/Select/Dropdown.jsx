@@ -128,14 +128,17 @@ class Dropdown extends React.Component {
         }
 
         const directionBottom = window.innerHeight - dropdown.position.bottom > 200;
+        const directionRight = window.innerWidth - dropdown.position.right > 120;
 
         const position = {
             top: directionBottom ? dropdown.position.bottom : 'auto',
             bottom: directionBottom ? 'auto' : window.innerHeight - dropdown.position.top,
-            left: dropdown.position.left,
-            right: 'auto',
+            left: directionRight ? dropdown.position.left : 'auto',
+            right: directionRight ? 'auto' : window.innerWidth - dropdown.position.right,
             minWidth: dropdown.position.width,
-            maxWidth: `calc(100% - calc(20px + ${dropdown.position.left}px))`,
+            maxWidth: directionRight
+                ? `calc(100% - calc(20px + ${dropdown.position.left}px))`
+                : `calc(100% - calc(20px + ${window.innerWidth - dropdown.position.right}px)`,
             maxHeight: directionBottom
                 ? `calc(100% - calc(20px + ${dropdown.position.bottom}px))`
                 : `calc(100% - calc(20px + ${window.innerHeight - dropdown.position.top}px))`
