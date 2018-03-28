@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
+import { format } from 'gw2-tooltip-html';
 import Fact, { FactShape } from '../Facts/Fact';
 import Tooltip from '../Tooltip';
 import style from './tooltip.css';
@@ -55,7 +56,7 @@ class SkillTooltip extends Component {
                 <div className={style.title}>
                     {name}
                 </div>
-                <div className={style.description} dangerouslySetInnerHTML={this.renderDescription(description)}/>
+                {this.renderDescription(description)}
                 {this.renderFacts(activeFacts)}
                 {this.renderAction(touch)}
             </div>
@@ -63,8 +64,9 @@ class SkillTooltip extends Component {
     }
 
     renderDescription(description) {
-        // TODO: parse <c=@reminder>, ... tags
-        return { __html: description };
+        return (
+            <div className={style.description} dangerouslySetInnerHTML={{__html: format(description)}}/>
+        );
     }
 
     renderFacts(facts) {

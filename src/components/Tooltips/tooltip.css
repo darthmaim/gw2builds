@@ -39,3 +39,11 @@
       0% { transform: translateY(100%) translateY(-0px); }
       100% { transform: translateY(100%) translateY(-148px); }
 }
+
+:global(.color-format--abilitytype) {
+    color: #f57f17;
+}
+
+:global(.color-format--reminder) {
+    color: #888;
+}
