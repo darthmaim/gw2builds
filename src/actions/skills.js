@@ -8,7 +8,8 @@ export const WIPE_ALL_SELECTED_SKILL_IDS = 'WIPE_ALL_SELECTED_SKILL_IDS';
 const skillIdProviders = [
     (state) => state.availableSkillIds,
     (state) => state.availableSubSkillIds,
-    (state) => state.availableEngineerToolbeltSkillIds
+    (state) => state.availableEngineerToolbeltSkillIds,
+    (state) => state.availableRangerPetSkillIds
 ];
 
 /** Action to fetch the available skills from the GW2 API. */

@@ -2,6 +2,7 @@ import { createAction } from 'redux-actions';
 import { createChainedAction, createApiAction } from './utils';
 import { fetchAvailableSpecializations } from './specializations';
 import { fetchAvailableSkillsWithRelated } from './skills';
+import { fetchAvailableRangerPets } from './mechanics';
 
 export const FETCH_PROFESSION = 'FETCH_PROFESSION';
 export const SET_SELECTED_LANGUAGE = 'SET_SELECTED_LANGUAGE';
@@ -15,8 +16,11 @@ export const fetchProfession = createChainedAction(
     createApiAction(
         FETCH_PROFESSION,
         (state, api) => api.professions().get(state.selectedProfession)
-    ),
-    [fetchAvailableSpecializations, fetchAvailableSkillsWithRelated]
+    ), [
+        fetchAvailableSpecializations,
+        fetchAvailableRangerPets,
+        fetchAvailableSkillsWithRelated,
+    ]
 );
 
 /** Action to set the selected language. Params: { language } */

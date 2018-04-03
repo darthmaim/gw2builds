@@ -1,6 +1,25 @@
 import { handleActions } from 'redux-actions';
 import * as actions from '../../actions';
-import { swapElements } from '../utils';
+import flatten from 'lodash/fp/flatten';
+import { handleSimpleAction, swapElements } from '../utils';
+
+/** Reducer for the available skill objects for the selected profession. */
+export const availableRangerPets = handleSimpleAction(actions.FETCH_AVAILABLE_RANGER_PETS, {});
+
+
+/** Reducer for available toolbelt skill ids. */
+export const availableRangerPetSkillIds = handleActions({
+    [actions.FETCH_AVAILABLE_RANGER_PETS]: (state, action) => {
+        return flatten(Object.values(action.payload).map(
+            (pet) => (pet.skills || []).map(
+                (sub) => sub.id
+            )
+        ));
+    },
+
+    [actions.SET_SELECTED_PROFESSION]: () => []
+}, []);
+
 
 /** Reducer for the selected ranger pet ids. */
 export const selectedRangerPetIds = handleActions({
@@ -28,5 +47,7 @@ export const selectedRangerPetIds = handleActions({
 }, []);
 
 export default {
+    availableRangerPets,
+    availableRangerPetSkillIds,
     selectedRangerPetIds
 };

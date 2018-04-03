@@ -19,7 +19,7 @@ import {
 import {
     availableElementalistAttunementObjects, selectedElementalistAttunementId, selectedWeaverPreviousAttunementId,
     availableEngineerToolbeltSkillIds,
-    selectedRangerPetIds,
+    availableRangerPets, availableRangerPetSkillIds, selectedRangerPetIds,
     selectedRevenantLegendIds
 } from './mechanics';
 
@@ -89,6 +89,8 @@ export default combineReducers({
     selectedElementalistAttunementId,
     selectedWeaverPreviousAttunementId,
     availableEngineerToolbeltSkillIds,
+    availableRangerPets,
+    availableRangerPetSkillIds,
     selectedRangerPetIds,
     selectedRevenantLegendIds
 });

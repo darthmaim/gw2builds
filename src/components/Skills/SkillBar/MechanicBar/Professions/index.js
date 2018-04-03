@@ -3,6 +3,7 @@ import Engineer from './Engineer';
 import Guardian from './Guardian';
 import Mesmer from './Mesmer';
 import Necromancer from './Necromancer';
+import Ranger from './Ranger';
 import Thief from './Thief';
 import Warrior from './Warrior';
 
@@ -14,7 +15,6 @@ const emptyProfession = {
 };
 
 const Revenant = emptyProfession;
-const Ranger = emptyProfession;
 
 export default {
     Guardian,
