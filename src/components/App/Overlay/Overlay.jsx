@@ -9,9 +9,18 @@ class Overlay extends Component {
     constructor(props) {
         super(props);
 
+        this.handleOnClick = this.handleOnClick.bind(this);
+
         // create overlay element
         this.element = document.createElement('div');
         this.element.className = style.overlay;
+        this.element.addEventListener('click', this.handleOnClick);
+    }
+
+    handleOnClick(e) {
+        if(e.target === this.element && this.props.onClick) {
+            this.props.onClick(e);
+        }
     }
 
     componentDidMount() {
@@ -28,7 +37,8 @@ class Overlay extends Component {
 }
 
 Overlay.propTypes = {
-    children: PropTypes.node.isRequired
+    children: PropTypes.node.isRequired,
+    onClick: PropTypes.func
 };
 
 export default Overlay;

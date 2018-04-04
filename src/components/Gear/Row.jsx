@@ -3,6 +3,8 @@ import style from './Row.css';
 import Select from '../Inputs/Select/Select';
 import map from 'lodash/map';
 import cx from 'classnames';
+import Overlay from '../App/Overlay/Overlay';
+import Tooltip from '../Tooltips/Tooltip';
 
 const RARITIES = ['Exotic', 'Ascended'];
 
@@ -29,22 +31,45 @@ export default class Row extends React.Component {
             <div className={style.row}>
                 <div className={style.header}>
                     <span className={cx(style.text, style[this.props.rarity.toLowerCase()])}>{selected && selected.name} {text}</span>
-                    <button onClick={() => this.setState({ editing: !editing })} className={style.editButton}>
+                    <button onClick={() => this.toggleEditing()} className={style.editButton} ref={(button) => this.button = button}>
                         <img src="/img/general/edit.svg"/>
                     </button>
                 </div>
-                {!editing && this.renderAttributes(selected)}
+                {this.renderAttributes(selected)}
                 {editing && this.renderEditingView(availableItemstats)}
             </div>
         );
     }
 
+    toggleEditing() {
+        const { top, left } = this.button.getBoundingClientRect();
+        this.setState(({editing}) => ({ editing: !editing, buttonPosition: { top, left } }));
+    }
+
     renderEditingView(availableItemstats) {
+        const { top, left } = this.state.buttonPosition;
+
         return (
-            <div>
-                Rarity: {this.renderRaritySelect()}
-                Itemstats: {this.renderAttributeSelect(availableItemstats)}
-            </div>
+            <Overlay onClick={() => this.setState({ editing: false })}>
+                <div className={style.dropdown} style={{ top, left }}>
+                    <table><tbody>
+                        <tr>
+                            <td>Rarity:</td>
+                            <td>{this.renderRaritySelect()}</td>
+                            <td>
+                                <button className={style.copyButton}><img src="/img/general/copy.svg"/>Copy to all</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Itemstats:</td>
+                            <td>{this.renderAttributeSelect(availableItemstats)}</td>
+                            <td>
+                                <button className={style.copyButton}><img src="/img/general/copy.svg"/>Copy to all</button>
+                            </td>
+                        </tr>
+                    </tbody></table>
+                </div>
+            </Overlay>
         )
     }
 

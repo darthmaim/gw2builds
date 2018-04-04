@@ -75,3 +75,57 @@
     width: 14px;
     vertical-align: -2px;
 }
+
+.dropdown {
+    background: #fff;
+    padding: 16px;
+    position: absolute;
+    top: 235px;
+    left: 154px;
+    box-shadow: 0 1px 40px rgba(0,0,0,.2);
+    margin-top: 28px;
+    margin-left: -8px;
+}
+
+.dropdown::after {
+    content: '';
+    display: block;
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background: #fff;
+    top: -5px;
+    left: 16px;
+    transform: rotate(-45deg);
+}
+
+.dropdown td + td {
+    padding-left: 8px;
+}
+
+.dropdown tr + tr td {
+    padding-top: 8px;
+}
+
+.dropdown :external(select from '../Inputs/Select/Select.css') {
+    margin: 0;
+}
+
+.copyButton {
+    composes: input from '../Inputs/Inputs.css';
+
+    padding: 6px 8px;
+    cursor: pointer;
+    border-radius: 3px;
+    transition: background .3s ease;
+}
+
+.copyButton:hover, .copyButton:focus {
+    background: #eee;
+}
+
+.copyButton img {
+    width: 16px;
+    vertical-align: -2px;
+    margin-right: 6px;
+}
