@@ -161,10 +161,6 @@ Select.contextTypes = {
     selectContext: ContextShape
 };
 
-Select.childContextTypes = {
-    onSelect: PropTypes.func
-};
-
 Select.Option = Option;
 Select.Group = Group;
 Select.Context = Context;

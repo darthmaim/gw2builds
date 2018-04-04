@@ -27,6 +27,8 @@ class MainContent extends React.Component {
         this.responsiveMediaQuery.addListener(this.handleResponsiveChange);
         window.addEventListener('scroll', this.handleWindowScroll);
 
+        this.currentSection = null;
+
         this.state = {
             isResponsive: this.responsiveMediaQuery.matches
         }
@@ -71,7 +73,7 @@ class MainContent extends React.Component {
         let { scrollTop, scrollHeight, offsetHeight } = this.panelNode;
 
         if (scrollTop + offsetHeight >= scrollHeight) {
-            this.props.onSectionChange(this.sectionNodes.length - 1);
+            this.onSectionChange(this.sectionNodes.length - 1);
             return;
         }
 
@@ -86,7 +88,7 @@ class MainContent extends React.Component {
         let { scrollTop, scrollHeight } = window.document.scrollingElement;
 
         if (scrollTop + window.innerHeight >= scrollHeight) {
-            this.props.onSectionChange(this.sectionNodes.length - 1);
+            this.onSectionChange(this.sectionNodes.length - 1);
             return;
         }
 
@@ -100,7 +102,7 @@ class MainContent extends React.Component {
             scrollTop -= section.offsetHeight;
 
             if (scrollTop < 0) {
-                this.props.onSectionChange(sectionIndex);
+                this.onSectionChange(sectionIndex);
 
                 return true;
             }
@@ -116,6 +118,13 @@ class MainContent extends React.Component {
 
         if (this.anchorNodes[section]) {
             this.anchorNodes[section].scrollIntoView();
+        }
+    }
+
+    onSectionChange(section) {
+        if(this.currentSection !== section) {
+            this.currentSection = section;
+            this.props.onSectionChange(section);
         }
     }
 

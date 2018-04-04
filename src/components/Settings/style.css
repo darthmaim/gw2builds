@@ -72,73 +72,73 @@
  * ************************************/
 
 .gamemode-pve {
-    background-image: url(../img/pve.png);
+    background-image: url(/img/pve.png);
 }
 
 .gamemode-pvp {
-    background-image: url(../img/pvp.png);
+    background-image: url(/img/pvp.png);
 }
 
 .gamemode-wvw {
-    background-image: url(../img/wvw.png);
+    background-image: url(/img/wvw.png);
 }
 
 .profession-Guardian {
-    background-image: url(../img/guardian.png);
+    background-image: url(/img/guardian.png);
 }
 
 .profession-Revenant {
-    background-image: url(../img/revenant.png);
+    background-image: url(/img/revenant.png);
 }
 
 .profession-Warrior {
-    background-image: url(../img/warrior.png);
+    background-image: url(/img/warrior.png);
 }
 
 .profession-Engineer {
-    background-image: url(../img/engineer.png);
+    background-image: url(/img/engineer.png);
 }
 
 .profession-Ranger {
-    background-image: url(../img/ranger.png);
+    background-image: url(/img/ranger.png);
 }
 
 .profession-Thief {
-    background-image: url(../img/thief.png);
+    background-image: url(/img/thief.png);
 }
 
 .profession-Elementalist {
-    background-image: url(../img/elementalist.png);
+    background-image: url(/img/elementalist.png);
 }
 
 .profession-Mesmer {
-    background-image: url(../img/mesmer.png);
+    background-image: url(/img/mesmer.png);
 }
 
 .profession-Necromancer {
-    background-image: url(../img/necromancer.png);
+    background-image: url(/img/necromancer.png);
 }
 
 .race-none {
-    background-image: url(../img/no-race.png);
+    background-image: url(/img/no-race.png);
 }
 
 .race-Asura {
-    background-image: url(../img/asura.png);
+    background-image: url(/img/asura.png);
 }
 
 .race-Charr {
-    background-image: url(../img/charr.png);
+    background-image: url(/img/charr.png);
 }
 
 .race-Human {
-    background-image: url(../img/human.png);
+    background-image: url(/img/human.png);
 }
 
 .race-Norn {
-    background-image: url(../img/norn.png);
+    background-image: url(/img/norn.png);
 }
 
 .race-Sylvari {
-    background-image: url(../img/sylvari.png);
+    background-image: url(/img/sylvari.png);
 }

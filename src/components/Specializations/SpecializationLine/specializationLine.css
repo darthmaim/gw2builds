@@ -17,7 +17,7 @@
 
 .backgroundEmpty {
     composes: background;
-    background: url(../img/specializations/specialization-empty.png);
+    background: url(/img/specializations/specialization-empty.png);
 }
 
 .backgroundImage {
@@ -38,12 +38,12 @@
 
 .backgroundOverlay {
     composes: background;
-    background: url(../img/specializations/specialization-overlay.png);
+    background: url(/img/specializations/specialization-overlay.png);
 }
 
 .backgroundEliteOverlay {
     composes: background;
-    background: url(../img/specializations/specialization-elite-overlay.png);
+    background: url(/img/specializations/specialization-elite-overlay.png);
 }
 
 .backgroundIcon {

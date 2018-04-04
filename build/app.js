@@ -25,9 +25,10 @@ export function bundle(cb) {
         packageCache: {},
         paths: ['./node_modules']
     })
-        .plugin('modular-css/browserify', {
+        .plugin('modular-cssify', {
             css: './temp/css/app.css',
             map : true,
+            rewrite: true,
             namer: !isDev() ? shortNamer() : undefined,
             before: [],
             after: [

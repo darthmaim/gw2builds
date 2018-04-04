@@ -3,7 +3,7 @@ import Header from './Header';
 import Content from './Content';
 import { TooltipElement } from '../Tooltips';
 import { Select } from '../Inputs';
-import Wizard from '../Import/WizardContainer'
+import Wizard from '../Import/WizardContainer';
 import style from './layout.css';
 import tooltipStyle from '../Tooltips/tooltip.css';
 
