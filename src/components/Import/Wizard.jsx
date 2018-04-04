@@ -3,6 +3,7 @@ import { STATE_ADDKEY, STATE_OVERVIEW } from './States';
 import style from './Wizard.css';
 import Overview from './OverviewContainer';
 import AddKey from './AddKeyContainer';
+import Overlay from '../App/Overlay/Overlay';
 
 export default class extends React.Component {
     constructor(props, context) {
@@ -38,11 +39,11 @@ export default class extends React.Component {
         const Component = this.stateToComponent(content.state);
 
         return (
-            <div className={style.wrapper}>
+            <Overlay>
                 <div className={style.container}>
                     <Component onStateChange={this.handleStateChange} onClose={this.handleClose} {...content.props}/>
                 </div>
-            </div>
+            </Overlay>
         );
     }
 
