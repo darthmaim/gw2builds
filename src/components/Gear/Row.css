@@ -3,15 +3,12 @@
     display: flex;
     flex-wrap: wrap;
     align-items: center;
+    min-height: 45px;
+    box-sizing: border-box;
 }
 
 .row + .row {
     border-top: 1px solid #eee;
-}
-
-.row :external(select from "../Inputs/Select/Select.css") {
-    min-width: 80px;
-    max-width: 120px;
 }
 
 .icon {
@@ -25,7 +22,7 @@
 }
 
 .header {
-    min-width: 400px;
+    min-width: 250px;
     max-width: 100%;
 }
 
@@ -60,4 +57,21 @@
     display: block;
     font-size: 12px;
     color: #777777;
+}
+
+.exotic {
+    color: #ffa405;
+}
+
+.ascended {
+    color: #fb3e8d;
+}
+
+.editButton {
+    composes: input from '../Inputs/Inputs.css';
+}
+
+.editButton > img {
+    width: 14px;
+    vertical-align: -2px;
 }

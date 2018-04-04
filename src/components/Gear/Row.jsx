@@ -2,6 +2,7 @@ import React from 'react';
 import style from './Row.css';
 import Select from '../Inputs/Select/Select';
 import map from 'lodash/map';
+import cx from 'classnames';
 
 const RARITIES = ['Exotic', 'Ascended'];
 
@@ -9,7 +10,10 @@ export default class Row extends React.Component {
     constructor(props, context) {
         super(props, context);
 
-        this.state = { stats: undefined };
+        this.state = {
+            stats: undefined,
+            editing: false
+        };
     }
 
     render() {
@@ -19,16 +23,29 @@ export default class Row extends React.Component {
             (stat) => stat.id === this.state.stats
         )[0];
 
+        const { editing } = this.state;
+
         return (
             <div className={style.row}>
                 <div className={style.header}>
-                    {this.renderRaritySelect()}
-                    {this.renderAttributeSelect(availableItemstats)}
-                    <span className={style.text}>{text}</span>
+                    <span className={cx(style.text, style[this.props.rarity.toLowerCase()])}>{selected && selected.name} {text}</span>
+                    <button onClick={() => this.setState({ editing: !editing })} className={style.editButton}>
+                        <img src="/img/general/edit.svg"/>
+                    </button>
                 </div>
-                {this.renderAttributes(selected)}
+                {!editing && this.renderAttributes(selected)}
+                {editing && this.renderEditingView(availableItemstats)}
             </div>
         );
+    }
+
+    renderEditingView(availableItemstats) {
+        return (
+            <div>
+                Rarity: {this.renderRaritySelect()}
+                Itemstats: {this.renderAttributeSelect(availableItemstats)}
+            </div>
+        )
     }
 
     renderRaritySelect() {
