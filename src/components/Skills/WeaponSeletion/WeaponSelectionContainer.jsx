@@ -9,6 +9,7 @@ const mapStateToProps = (state, ownProps) => ({
     activeWeaponSet: state.activeWeaponSet,
     availableMainhandWeaponObjects: getAvailableMainhandWeaponObjects(state, ownProps),
     availableOffhandWeaponObjects: getAvailableOffhandWeaponObjects(state, ownProps),
+    availableSpecializationObjects: state.availableSpecializationObjects,
     twoHanded: getIsTwoHandedActive(state, ownProps),
     selectedSpecializationIds: state.selectedSpecializationIds
 });

@@ -5,7 +5,7 @@ import Gear from './Gear';
 const mapStateToProps = (state, ownProps) => ({
     selectedMainhandWeaponIds: state.selectedMainhandWeaponIds,
     selectedOffhandWeaponIds: state.selectedOffhandWeaponIds,
-    hasMultipleWeaponsets: getHasMultipleWeaponsets(state, ownProps),
+    hasMultipleWeaponsets: state.hasMultipleWeaponSets,
     availableItemstats: state.availableItemstats
 });
 

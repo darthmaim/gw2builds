@@ -1,4 +1,4 @@
-@import url(typeface-open-sans/index.css);
+@import url('./fonts.css');
 
 html, body {
     margin: 0;
@@ -6,6 +6,9 @@ html, body {
     font-size: 14px;
     height: 100%;
     overflow: hidden;
+    position: fixed;
+    left: 0; right: 0;
+    top: 0; bottom: 0;
 }
 
 :global(#container) {
@@ -48,6 +51,7 @@ html, body {
     html, body, :global(#container) {
         height: auto;
         overflow: initial;
+        position: static;
     }
 
     .loading {

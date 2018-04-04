@@ -46,6 +46,7 @@
     background: #fff;
 
     overflow: auto;
+    -webkit-overflow-scrolling: touch;
 
     animation: dropdown .1s ease-out;
 }

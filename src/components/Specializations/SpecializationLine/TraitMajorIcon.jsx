@@ -16,21 +16,21 @@ class TraitMajorIcon extends React.Component {
 
     render() {
         return (
-            <svg
-                className={this.props.isSelected ? style.majorIconSelected : style.majorIcon}
-                onClick={this.handleSelected}>
-                <defs>
-                    <mask id="majorTraitMask">
-                        <image xlinkHref="../img/specializations/trait-major-mask.png" width="64" height="64"/>
-                    </mask>
-                </defs>
-                <image
-                    xlinkHref={this.props.imageUrl}
-                    mask="url(#majorTraitMask)"
-                    width="64"
-                    height="64"
-                    transform="scale(0.65)"/>
-            </svg>
+            <div onClick={this.handleSelected}>
+                <svg className={this.props.isSelected ? style.majorIconSelected : style.majorIcon}>
+                    <defs>
+                        <mask id="majorTraitMask">
+                            <image xlinkHref="../img/specializations/trait-major-mask.png" width="64" height="64"/>
+                        </mask>
+                    </defs>
+                    <image
+                        xlinkHref={this.props.imageUrl}
+                        mask="url(#majorTraitMask)"
+                        width="64"
+                        height="64"
+                        transform="scale(0.65)"/>
+                </svg>
+            </div>
         );
     }
 }

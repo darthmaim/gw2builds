@@ -27,16 +27,12 @@ export function bundle(cb) {
     })
         .plugin('modular-css/browserify', {
             css: './temp/css/app.css',
-            sourcemaps: true,
+            map : true,
             namer: !isDev() ? shortNamer() : undefined,
-            before: [
-            ],
+            before: [],
             after: [
                 // inline @import styles
                 cssImport(),
-
-                // rewrite font (node_modules/typeface-open-sans) src urls (see gulp task build:fonts)
-                urlrewrite({ rules: [{ from: /\.\/files\/(open-sans.*)/, to: '../fonts/$1' }] }),
 
                 // prefix css
                 autoprefixer(),
@@ -122,6 +118,6 @@ gulp.task('build:source', () => {
 });
 
 gulp.task('build:fonts', () => {
-    return gulp.src('./node_modules/typeface-open-sans/files/*')
+    return gulp.src('./node_modules/typeface-open-sans/files/*.{woff,woff2}')
         .pipe(gulp.dest('./temp/fonts/'));
 });

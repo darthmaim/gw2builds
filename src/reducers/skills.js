@@ -1,5 +1,6 @@
 import forEach from 'lodash/forEach';
 import { handleAction, handleActions } from 'redux-actions';
+import flatten from 'lodash/fp/flatten';
 import * as actions from '../actions';
 import { handleSimpleAction } from './utils';
 
@@ -20,6 +21,14 @@ export const availableSkillIds = handleAction(actions.FETCH_PROFESSION, (state, 
     });
 
     return skills;
+}, []);
+
+export const availableSubSkillIds = handleAction(actions.FETCH_AVAILABLE_SKILLS, (state, actions) => {
+    return flatten(Object.values(actions.payload).map(
+        (skill) => (skill.subskills || []).map(
+            (sub) => sub.id
+        )
+    ));
 }, []);
 
 /** Reducer for the available skill objects for the selected profession. */
@@ -50,6 +59,7 @@ export const selectedSkillIds = handleActions({
 
 export default {
     availableSkillIds,
+    availableSubSkillIds,
     availableSkillObjects,
     availableProfessionSkillObjects,
     selectedSkillIds

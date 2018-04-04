@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import { format } from 'gw2-tooltip-html';
 import style from './fact.css';
 
 const getIcon = function (fact) {
@@ -16,17 +17,23 @@ const getIcon = function (fact) {
     }
 };
 
+const renderMarkup = function (text) {
+    return text && (<span dangerouslySetInnerHTML={{ __html: format(text) }}/>);
+};
+
 const getText = function (fact) {
+    const text = renderMarkup(fact.text);
+
     switch (fact.type) {
         case 'AttributeAdjust':
-            if (fact.text) {
-                return (<span>{fact.text}: +{fact.value} {fact.target !== 'None' && fact.target}</span>);
+            if (text) {
+                return (<span>{text}: +{fact.value} {fact.target !== 'None' && fact.target}</span>);
             }
             return (<span>{fact.target}: +{fact.value}</span>);
         case 'Buff':
         case 'PrefixedBuff':
             const status = fact.status || fact.prefix.status;
-            const description = fact.description || (fact.prefix && fact.prefix.description);
+            const description = renderMarkup(fact.description || (fact.prefix && fact.prefix.description));
             return (
                 <span>
                     {fact.apply_count ? fact.apply_count + '× ' : ''}
@@ -37,23 +44,23 @@ const getText = function (fact) {
         case 'BuffConversion':
             return (<span>Gain {fact.target} based on a percentage of {fact.source}: {fact.percent}%</span>);
         case 'ComboField':
-            return (<span>{fact.text}: {fact.field_type}</span>);
+            return (<span>{text}: {fact.field_type}</span>);
         case 'ComboFinisher':
-            return (<span>{fact.text}: {fact.finisher_type} ({fact.percent}%)</span>);
+            return (<span>{text}: {fact.finisher_type} ({fact.percent}%)</span>);
         case 'Distance':
         case 'Radius':
-            return (<span>{fact.text}: {fact.distance}</span>);
+            return (<span>{text}: {fact.distance}</span>);
         case 'Number':
         case 'Range':
-            return (<span>{fact.text}: {fact.value}</span>);
+            return (<span>{text}: {fact.value}</span>);
         case 'Percent':
-            return (<span>{fact.text}: {fact.percent}%</span>);
+            return (<span>{text}: {fact.percent}%</span>);
         case 'Recharge':
-            return (<span>{fact.text}: {fact.value}s</span>);
+            return (<span>{text}: {fact.value}s</span>);
         case 'Time':
-            return (<span>{fact.text}: {fact.duration}s</span>);
+            return (<span>{text}: {fact.duration}s</span>);
 
-        default: return fact.text;
+        default: return text;
     }
 };
 

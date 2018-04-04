@@ -13,7 +13,8 @@ class Tooltip extends PureComponent {
 
         this.handleMouseEnter = this.handleMouseEnter.bind(this);
         this.handleMouseOut = this.handleMouseOut.bind(this);
-        this.handleTouch = this.handleTouch.bind(this);
+        this.handleTouchStart = this.handleTouchStart.bind(this);
+        this.handleTouchEnd = this.handleTouchEnd.bind(this);
     }
 
     handleMouseEnter(e) {
@@ -24,8 +25,18 @@ class Tooltip extends PureComponent {
         this.context.tooltipContext.setTooltip(this.props.tooltip, e);
     }
 
-    handleTouch(e) {
-        if (!this.state.visible) {
+    handleTouchStart(e) {
+        this.touchStart = e.changedTouches[0];
+    }
+
+    handleTouchEnd(e) {
+        const start = this.touchStart;
+        const touch = e.changedTouches[0];
+        const handle = touch.identifier === start.identifier &&
+            Math.abs(touch.clientX - start.clientX) < 16 && Math.abs(touch.clientY - start.clientY) < 16 &&
+            touch.target === start.target;
+
+        if (!this.state.visible && handle) {
             this.context.tooltipContext.setTooltip(this.props.tooltip, e);
             e.preventDefault();
         }
@@ -50,7 +61,8 @@ class Tooltip extends PureComponent {
     attachEvents() {
         this.node.addEventListener('pointerenter', this.handleMouseEnter);
         this.node.addEventListener('pointerout', this.handleMouseOut);
-        this.node.addEventListener('touchstart', this.handleTouch);
+        this.node.addEventListener('touchstart', this.handleTouchStart);
+        this.node.addEventListener('touchend', this.handleTouchEnd);
         this.unregisterTooltipChangeEvent = this.context.tooltipContext.onTooltipChange(tooltip => {
             this.setState({ visible: tooltip === this.props.tooltip });
         });
@@ -59,7 +71,8 @@ class Tooltip extends PureComponent {
     dettachEvents() {
         this.node.removeEventListener('pointerenter', this.handleMouseEnter);
         this.node.removeEventListener('pointerout', this.handleMouseOut);
-        this.node.removeEventListener('touchstart', this.handleTouch);
+        this.node.removeEventListener('touchstart', this.handleTouchStart);
+        this.node.removeEventListener('touchend', this.handleTouchEnd);
         this.unregisterTooltipChangeEvent();
     }
 
@@ -74,6 +87,10 @@ class Tooltip extends PureComponent {
         }
 
         this.dettachEvents();
+    }
+
+    hide() {
+        this.context.tooltipContext.hideTooltip();
     }
 
     render() {

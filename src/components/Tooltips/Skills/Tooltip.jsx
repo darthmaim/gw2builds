@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
+import { format } from 'gw2-tooltip-html';
 import Fact, { FactShape } from '../Facts/Fact';
 import Tooltip from '../Tooltip';
 import style from './tooltip.css';
@@ -8,6 +9,7 @@ class SkillTooltip extends Component {
     constructor(props, context) {
         super(props, context);
 
+        this.tooltip = null;
         this.renderTooltip = this.renderTooltip.bind(this);
     }
 
@@ -20,13 +22,13 @@ class SkillTooltip extends Component {
 
     render() {
         return (
-            <Tooltip tooltip={this.renderTooltip}>
+            <Tooltip tooltip={this.renderTooltip} ref={(tooltip) => this.tooltip = tooltip}>
                 {this.props.children}
             </Tooltip>
         );
     }
 
-    renderTooltip() {
+    renderTooltip(touch) {
         if (!this.props.skill) {
             return null;
         }
@@ -54,15 +56,17 @@ class SkillTooltip extends Component {
                 <div className={style.title}>
                     {name}
                 </div>
-                <div className={style.description} dangerouslySetInnerHTML={this.renderDescription(description)}/>
+                {this.renderDescription(description)}
                 {this.renderFacts(activeFacts)}
+                {this.renderAction(touch)}
             </div>
         );
     }
 
     renderDescription(description) {
-        // TODO: parse <c=@reminder>, ... tags
-        return { __html: description };
+        return (
+            <div className={style.description} dangerouslySetInnerHTML={{__html: format(description)}}/>
+        );
     }
 
     renderFacts(facts) {
@@ -82,6 +86,30 @@ class SkillTooltip extends Component {
             <Fact key={i} fact={fact}/>
         );
     }
+
+    renderAction(touch) {
+        if(!this.props.action) {
+            return null;
+        }
+
+        const action = this.props.action;
+        const actionClick = () => {
+            this.tooltip.node.click();
+            this.tooltip.hide();
+        };
+
+        if(touch) {
+            return (
+                <button className={style.actionButton} onClick={actionClick}>
+                    {action}
+                </button>
+            );
+        } else {
+            return (
+                <div className={style.actionHint}>Click to {action}.</div>
+            );
+        }
+    }
 }
 
 SkillTooltip.propTypes = {
@@ -92,6 +120,7 @@ SkillTooltip.propTypes = {
         facts: PropTypes.arrayOf(FactShape),
         traited_facts: PropTypes.arrayOf(FactShape)
     }),
+    action: PropTypes.string,
     // bound from redux state
     selectedMajorTraitIds: PropTypes.arrayOf(PropTypes.number).isRequired,
     selectedMinorTraitIds: PropTypes.arrayOf(PropTypes.number).isRequired

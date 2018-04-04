@@ -7,6 +7,7 @@ const
     logger = require('morgan'),
     cookieParser = require('cookie-parser'),
     bodyParser = require('body-parser'),
+    compression = require('compression'),
 
     crypto = require('crypto'),
     fs = require('fs');
@@ -56,6 +57,7 @@ app.locals.integrity = function (file) {
 };
 
 debug('Setting up middleware');
+app.use(compression());
 app.use(favicon(publicPath('favicon.ico')));
 app.use(logger('dev'));
 app.use(bodyParser.json());

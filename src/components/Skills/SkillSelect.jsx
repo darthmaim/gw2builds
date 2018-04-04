@@ -10,7 +10,7 @@ class SkillSelect extends Select {
         return this.props.skills.map(
             (skill) => (
                 <Select.Option key={skill.id} value={skill.id}>
-                    <SkillTooltip skill={skill}>
+                    <SkillTooltip skill={skill} action={this.props.optionAction}>
                         <div className={style.option}>
                             <SkillIcon className={style.icon} skill={skill} size={32}/>{skill.name}
                         </div>
@@ -26,12 +26,19 @@ class SkillSelect extends Select {
 
     renderCurrentValue() {
         const id = this.props.value;
-        const skill = this.props.skills.filter((skill) => skill.id === id)[0];
+        const size = this.props.size;
+        const skill = this.props.getCurrentSkill(id);
+
+        if(!skill) {
+            return (
+                <SkillIcon.Empty size={size}/>
+            );
+        }
 
         return (
-            <SkillTooltip selectedMajorTraitIds={[]} selectedMinorTraitIds={[]} skill={skill}>
+            <SkillTooltip skill={skill} action={this.props.valueAction}>
                 <div>
-                    {skill && (<SkillIcon skill={skill} size={64}/>) || (<SkillIcon.Empty size={64}/>)}
+                    <SkillIcon skill={skill} size={size}/>
                 </div>
             </SkillTooltip>
         );
@@ -40,10 +47,21 @@ class SkillSelect extends Select {
 
 SkillSelect.PropTypes = {
     ...Select.PropTypes,
-    skills: PropTypes.array.isRequired
+    skills: PropTypes.array.isRequired,
+    size: PropTypes.number.isRequired,
+    valueAction: PropTypes.string.isRequired,
+    optionAction: PropTypes.string.isRequired,
+    getCurrentSkill: PropTypes.func.isRequired
+};
+
+SkillSelect.defaultProps = {
+    ...Select.defaultProps,
+    size: 64,
+    valueAction: 'select different skill',
+    optionAction: 'select this skill',
+    getCurrentSkill: (value) => this.props.skills.filter((skill) => skill.id === value)[0]
 };
 
 delete SkillSelect.propTypes['children'];
-//SkillSelect.propTypes.skills = PropTypes.array.isRequired;
 
 export default SkillSelect;

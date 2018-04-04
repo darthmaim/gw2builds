@@ -7,6 +7,10 @@ html
         meta(name="theme-color", content=manifest.theme_color)
         meta(name="description", content=manifest.description)
 
+        //- preload
+        link(rel="preload", href=asset("fonts/open-sans-latin-400.woff2"), as="font", type="font/woff2", crossorigin)
+        link(rel="preload", href=asset("fonts/open-sans-latin-700.woff2"), as="font", type="font/woff2", crossorigin)
+
         //- Icons
         link(rel="icon", href=img("favicon/16.png"), type="image/png", sizes="16x16")
         link(rel="icon", href=img("logo/192.png"), type="image/png", sizes="192x192")
