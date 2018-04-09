@@ -1,28 +1,41 @@
 import { connect } from 'react-redux';
-import { getAvailableItemstatsForSlot, getRarityForSlot, getRarities, armorSlots, trinketSlots } from '../../selectors/gear';
+import { getRarityForSlot, getItemstatIdForSlot } from '../../selectors/gear';
 import { setSelectedArmorIsAscended, setSelectedTrinketIsAscended } from '../../actions';
 import Row from './Row';
+import { GEAR_CATEGORY_ARMOR, GEAR_CATEGORY_TRINKET, GEAR_CATEGORY_WEAPON, RARITY_ASCENDED } from './Constants';
+import { setSelectedArmorItemstatId } from '../../actions/gear/armor';
+import { setSelectedTrinketItemstatId } from '../../actions/gear/trinkets';
 
 const mapStateToProps = (state, ownProps) => ({
-    availableItemstats: getAvailableItemstatsForSlot(state, ownProps),
     rarity: getRarityForSlot(state, ownProps),
-    rarities: getRarities(state, ownProps)
+    itemstatId: getItemstatIdForSlot(state, ownProps)
 });
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
     onRarityChange: (rarity) => {
-        const isAscended = rarity === 'Ascended';
-        if(ownProps.type === 'Armor') {
-            const slotId = armorSlots.indexOf(ownProps.slot);
-            dispatch(setSelectedArmorIsAscended({ slotId, isAscended }));
-        } else if(ownProps.type === 'Back') {
-            dispatch(setSelectedTrinketIsAscended({ slotId: 0, isAscended }));
-        } else if(ownProps.type === 'Trinket') {
-                const slotId = trinketSlots.indexOf(ownProps.slot);
-                dispatch(setSelectedTrinketIsAscended({ slotId, isAscended }));
-        } else {
-            console.error(`RowContainer.onRarityChange not implemented for type ${ownProps.type}`);
+        const isAscended = rarity === RARITY_ASCENDED;
+        const { id: slotId, type } = ownProps.slot;
+
+        switch(type.category) {
+            case GEAR_CATEGORY_ARMOR:
+                return dispatch(setSelectedArmorIsAscended({ slotId, isAscended }));
+            case GEAR_CATEGORY_TRINKET:
+                return dispatch(setSelectedTrinketIsAscended({ slotId, isAscended }));
         }
+
+        console.error(`RowContainer.onRarityChange not implemented for type ${type}`);
+    },
+    onItemstatIdChange: (itemstatId) => {
+        const { id: slotId, type } = ownProps.slot;
+
+        switch(type.category) {
+            case GEAR_CATEGORY_ARMOR:
+                return dispatch(setSelectedArmorItemstatId({ slotId, itemstatId }));
+            case GEAR_CATEGORY_TRINKET:
+                return dispatch(setSelectedTrinketItemstatId({ slotId, itemstatId }));
+        }
+
+        console.error(`RowContainer.onItemstatIdChange not implemented for type ${type}`);
     }
 });
 

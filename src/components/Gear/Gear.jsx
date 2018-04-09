@@ -3,6 +3,7 @@ import map from 'lodash/map';
 import { weaponIs2Handed } from '../../utils/gw2';
 import Row from './RowContainer';
 import style from './Gear.css';
+import * as GearConstants from './Constants';
 
 const SET = {
     NORMAL_1: 0,
@@ -14,46 +15,46 @@ const SET = {
 function slots({ selectedMainhandWeaponIds, hasMultipleWeaponsets }) {
     return {
         Armor: [
-            { type: 'Armor', slot: 'Helm' },
-            { type: 'Armor', slot: 'Shoulders' },
-            { type: 'Armor', slot: 'Coat' },
-            { type: 'Armor', slot: 'Gloves' },
-            { type: 'Armor', slot: 'Leggings' },
-            { type: 'Armor', slot: 'Boots' },
+            { slot: GearConstants.GEAR_SLOT_ARMOR_HELM },
+            { slot: GearConstants.GEAR_SLOT_ARMOR_SHOULDERS },
+            { slot: GearConstants.GEAR_SLOT_ARMOR_COAT },
+            { slot: GearConstants.GEAR_SLOT_ARMOR_GLOVES },
+            { slot: GearConstants.GEAR_SLOT_ARMOR_LEGGINGS },
+            { slot: GearConstants.GEAR_SLOT_ARMOR_BOOTS },
         ],
-        Weapons: [
-            { type: 'Weapon', slot: '2Handed', visible: weaponIs2Handed(selectedMainhandWeaponIds[SET.NORMAL_1]) },
-            { type: 'Weapon', slot: '1Handed', visible: !weaponIs2Handed(selectedMainhandWeaponIds[SET.NORMAL_1]) },
-            { type: 'Weapon', slot: '1Handed', visible: !weaponIs2Handed(selectedMainhandWeaponIds[SET.NORMAL_1]) },
+        /*Weapons: [
+            { type: 'Weapon', slot: GEAR_TYPE_WEAPON_2HANDED, visible: weaponIs2Handed(selectedMainhandWeaponIds[SET.NORMAL_1]) },
+            { type: 'Weapon', slot: GEAR_TYPE_WEAPON_1HANDED, visible: !weaponIs2Handed(selectedMainhandWeaponIds[SET.NORMAL_1]) },
+            { type: 'Weapon', slot: GEAR_TYPE_WEAPON_1HANDED, visible: !weaponIs2Handed(selectedMainhandWeaponIds[SET.NORMAL_1]) },
 
-            { type: 'Weapon', slot: '2Handed', visible: hasMultipleWeaponsets && weaponIs2Handed(selectedMainhandWeaponIds[SET.NORMAL_2]) },
-            { type: 'Weapon', slot: '1Handed', visible: hasMultipleWeaponsets && !weaponIs2Handed(selectedMainhandWeaponIds[SET.NORMAL_2]) },
-            { type: 'Weapon', slot: '1Handed', visible: hasMultipleWeaponsets && !weaponIs2Handed(selectedMainhandWeaponIds[SET.NORMAL_2]) },
-        ],
+            { type: 'Weapon', slot: GEAR_TYPE_WEAPON_2HANDED, visible: hasMultipleWeaponsets && weaponIs2Handed(selectedMainhandWeaponIds[SET.NORMAL_2]) },
+            { type: 'Weapon', slot: GEAR_TYPE_WEAPON_1HANDED, visible: hasMultipleWeaponsets && !weaponIs2Handed(selectedMainhandWeaponIds[SET.NORMAL_2]) },
+            { type: 'Weapon', slot: GEAR_TYPE_WEAPON_1HANDED, visible: hasMultipleWeaponsets && !weaponIs2Handed(selectedMainhandWeaponIds[SET.NORMAL_2]) },
+        ],*/
         Trinkets: [
-            { type: 'Back' },
-            { type: 'Trinket', slot: 'Accessory1' },
-            { type: 'Trinket', slot: 'Accessory2' },
-            { type: 'Trinket', slot: 'Amulet' },
-            { type: 'Trinket', slot: 'Ring1' },
-            { type: 'Trinket', slot: 'Ring2' },
+            { slot: GearConstants.GEAR_SLOT_TRINKET_BACK },
+            { slot: GearConstants.GEAR_SLOT_TRINKET_ACCESSORY1 },
+            { slot: GearConstants.GEAR_SLOT_TRINKET_ACCESSORY2 },
+            { slot: GearConstants.GEAR_SLOT_TRINKET_AMULET },
+            { slot: GearConstants.GEAR_SLOT_TRINKET_RING1 },
+            { slot: GearConstants.GEAR_SLOT_TRINKET_RING2 },
         ],
         Underwater: [
-            { type: 'Armor', slot: 'HelmAquatic' },
-            { type: 'Weapon', slot: '2Handed' },
-            { type: 'Weapon', slot: '2Handed', visible: hasMultipleWeaponsets },
+            { slot: GearConstants.GEAR_SLOT_ARMOR_AQUATIC },
+            //{ type: 'Weapon', slot: GEAR_TYPE_WEAPON_2HANDED },
+            //{ type: 'Weapon', slot: GEAR_TYPE_WEAPON_2HANDED, visible: hasMultipleWeaponsets },
         ]
     };
 }
 
 export default ({selectedMainhandWeaponIds, selectedOffhandWeaponIds, hasMultipleWeaponsets }) => (
     <div className={style.panel}>
-        {map(slots({ selectedMainhandWeaponIds, selectedOffhandWeaponIds, hasMultipleWeaponsets }), (slots, type) => (
+        {map(slots({ selectedMainhandWeaponIds, selectedOffhandWeaponIds, hasMultipleWeaponsets }), (rows, type) => (
             <section key={type} className={style.section}>
                 <header className={style.header}>{type}</header>
-                {map(slots, (slot, index) =>
-                    (slot.visible === undefined || slot.visible) &&
-                    <Row key={index} type={slot.type} slot={slot.slot} text={slot.type + '.' + slot.slot}/>
+                {map(rows, (row, index) =>
+                    (row.visible === undefined || row.visible) &&
+                    <Row key={index} slot={row.slot}/>
                 )}
             </section>
         ))}

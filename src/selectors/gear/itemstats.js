@@ -1,55 +1,33 @@
 import { createSelector } from 'reselect';
 import sortBy from 'lodash/sortBy';
+import {
+    GEAR_CATEGORY_ARMOR, GEAR_CATEGORY_TRINKET, RARITY_ASCENDED,
+    RARITY_EXOTIC
+} from '../../components/Gear/Constants';
 
-export const armorSlots = [
-    'Helm',
-    'Shoulders',
-    'Coat',
-    'Gloves',
-    'Leggings',
-    'Boots',
-    'HelmAquatic'
-];
-
-export const trinketSlots = [
-    'Back',
-    'Accessory1',
-    'Accessory2',
-    'Amulet',
-    'Ring1',
-    'Ring2',
-];
-
-const getAvailableItemstats = (state) => state.availableItemstats;
 const getSelectedArmorIsAscended = (state) => state.selectedArmorIsAscended;
 const getSelectedTrinketIsAscended = (state) => state.selectedTrinketIsAscended;
-const getType = (state, props) => props.type;
+const getSelectedArmorItemstatIds = (state) => state.selectedArmorItemstatIds;
+const getSelectedTrinketItemstatIds = (state) => state.selectedTrinketItemstatIds;
 const getSlot = (state, props) => props.slot;
 
-export const getRarities = () => ['Exotic', 'Ascended'];
-
 export const getRarityForSlot = createSelector(
-    [getType, getSlot, getSelectedArmorIsAscended, getSelectedTrinketIsAscended],
-    (type, slot, armor, trinket) => ({
-        Armor: armor[armorSlots.indexOf(slot)],
+    [getSlot, getSelectedArmorIsAscended, getSelectedTrinketIsAscended],
+    (slot, armor, trinket) => ({
+        [GEAR_CATEGORY_ARMOR]: armor[slot.id],
         Weapon: true,
-        Trinket: trinket[trinketSlots.indexOf(slot)],
-        Back: trinket[0]
-    }[type] ? 'Ascended' : 'Exotic')
+        [GEAR_CATEGORY_TRINKET]: trinket[slot.id]
+    }[slot.type.category] ? RARITY_ASCENDED : RARITY_EXOTIC)
 );
 
-export const getAvailableItemstatsForSlot = createSelector(
-    [getAvailableItemstats, getRarityForSlot, getType, getSlot],
-    (availableItemstats, rarity, type, slot) => sortBy(availableItemstats.filter(
-        (stat) => stat.rarity === rarity && stat.type === type && (!slot || stat.subtype === slot.replace(/[12]/, ''))
-    ), 'name')
+export const getItemstatIdForSlot = createSelector(
+    [getSlot, getSelectedArmorItemstatIds, getSelectedTrinketItemstatIds],
+    (slot, armor, trinket) => ({
+        [GEAR_CATEGORY_ARMOR]: armor[slot.id],
+        [GEAR_CATEGORY_TRINKET]: trinket[slot.id]
+    })[slot.type.category]
 );
 
 export default {
-    armorSlots,
-    trinketSlots,
-
-    getRarityForSlot,
-    getAvailableItemstatsForSlot,
-    getRarities
+    getRarityForSlot
 };

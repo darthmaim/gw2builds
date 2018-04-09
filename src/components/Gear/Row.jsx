@@ -1,41 +1,53 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import style from './Row.css';
 import Select from '../Inputs/Select/Select';
 import map from 'lodash/map';
 import cx from 'classnames';
 import Overlay from '../App/Overlay/Overlay';
-import Tooltip from '../Tooltips/Tooltip';
+import { getAttributeValues, getAvailableCombinations } from './Attributes/index';
+import { AVAILABILITY_ARMOR, AVAILABILITY_BACK, AVAILABILITY_TRINKET, AVAILABILITY_WEAPON } from './Attributes/Static';
+import {
+    GEAR_CATEGORY_ARMOR, GEAR_CATEGORY_TRINKET, GEAR_CATEGORY_WEAPON, GEAR_TYPE_TRINKET_BACK,
+    RARITIES
+} from './Constants';
 
-const RARITIES = ['Exotic', 'Ascended'];
+function slotToAvailability(slot) {
+    return slot.type === GEAR_TYPE_TRINKET_BACK ? AVAILABILITY_BACK : {
+        [GEAR_CATEGORY_ARMOR]: AVAILABILITY_ARMOR,
+        [GEAR_CATEGORY_WEAPON]: AVAILABILITY_WEAPON,
+        [GEAR_CATEGORY_TRINKET]: AVAILABILITY_TRINKET
+    }[slot.type.category];
+}
 
-export default class Row extends React.Component {
+class Row extends React.Component {
     constructor(props, context) {
         super(props, context);
 
         this.state = {
-            stats: undefined,
             editing: false
         };
     }
 
     render() {
-        const { text, availableItemstats } = this.props;
+        const { rarity, itemstatId, slot } = this.props;
 
-        const selected = availableItemstats.filter(
-            (stat) => stat.id === this.state.stats
-        )[0];
+        const availableItemstats = getAvailableCombinations(slotToAvailability(slot));
+
+        const selected = availableItemstats[itemstatId];
+        const values = selected && getAttributeValues(selected, rarity, slot.type);
 
         const { editing } = this.state;
 
         return (
             <div className={style.row}>
                 <div className={style.header}>
-                    <span className={cx(style.text, style[this.props.rarity.toLowerCase()])}>{selected && selected.name} {text}</span>
+                    <span className={cx(style.text, style[rarity.toLowerCase()])}>{selected && selected.name} {slot.type.id}</span>
                     <button onClick={() => this.toggleEditing()} className={style.editButton} ref={(button) => this.button = button}>
                         <img src="/img/general/edit.svg"/>
                     </button>
                 </div>
-                {this.renderAttributes(selected)}
+                {values && this.renderAttributes(values)}
                 {editing && this.renderEditingView(availableItemstats)}
             </div>
         );
@@ -61,7 +73,7 @@ export default class Row extends React.Component {
                             </td>
                         </tr>
                         <tr>
-                            <td>Itemstats:</td>
+                            <td>Prefix:</td>
                             <td>{this.renderAttributeSelect(availableItemstats)}</td>
                             <td>
                                 <button className={style.copyButton}><img src="/img/general/copy.svg"/>Copy to all</button>
@@ -79,7 +91,7 @@ export default class Row extends React.Component {
                 onChange={this.props.onRarityChange}
                 value={this.props.rarity}
                 placeholder="Rarity">
-                {this.props.rarities.map(rarity => (
+                {RARITIES.map(rarity => (
                     <Select.Option value={rarity} key={rarity}>{rarity}</Select.Option>
                 ))}
             </Select>
@@ -89,24 +101,35 @@ export default class Row extends React.Component {
     renderAttributeSelect(availableAttributeSets) {
         return (
             <Select
-                onChange={stats => this.setState({stats: parseInt(stats)})}
-                value={this.state.stats}
+                onChange={this.props.onItemstatIdChange}
+                value={this.props.itemstatId}
                 placeholder="Stats">
-                {availableAttributeSets.map((stat) => (
-                    <Select.Option value={stat.id} key={stat.id}>{stat.name}</Select.Option>
+                {map(availableAttributeSets, (stat, id) => (
+                    <Select.Option value={id} key={id}>{stat.name}</Select.Option>
                 ))}
             </Select>
         );
     }
 
-    renderAttributes(selected) {
+    renderAttributes(values) {
         return (
             <span className={style.attributes}>
-                {selected && map(selected.attributes, (value, key) => (
+                {values && map(values, (value, key) => (
                     <span className={style.attribute} key={key}><span>{value}</span><span>{key}</span></span>
                 ))}
             </span>
         );
     }
+}
+
+Row.propTypes = {
+    slot: PropTypes.shape({
+        type: PropTypes.shape({
+            id: PropTypes.string.isRequired,
+            category: PropTypes.string.isRequired
+        }).isRequired,
+        id: PropTypes.number.isRequired
+    }).isRequired
 };
 
+export default Row;
