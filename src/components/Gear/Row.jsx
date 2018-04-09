@@ -35,7 +35,7 @@ class Row extends React.Component {
         const availableItemstats = getAvailableCombinations(slotToAvailability(slot));
 
         const selected = availableItemstats[itemstatId];
-        const values = selected && getAttributeValues(selected, rarity, slot.type);
+        const values = selected && getAttributeValues(itemstatId, rarity, slot.type);
 
         const { editing } = this.state;
 

@@ -2,7 +2,8 @@ import { attributeCombinations, attributeValues } from './Static';
 import { RARITY_ASCENDED } from '../Constants';
 import pickBy from 'lodash/pickBy';
 
-export function getAttributeValues(combination, rarity, type) {
+export function getAttributeValues(combinationId, rarity, type) {
+    const combination = attributeCombinations[combinationId];
     const values = attributeValues[type.id];
 
     const offset = rarity === RARITY_ASCENDED ? 0 : 5;

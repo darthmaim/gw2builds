@@ -40,14 +40,29 @@ class Attribute extends Component {
                     </span>
                     <span className={style.value}><FormattedNumber value={this.props.value} {...numberFormat}/></span>
                 </div>
-                {open && this.renderDetails()}
+                {open && this.renderDetails(numberFormat)}
             </li>
         );
     }
 
-    renderDetails() {
+    renderDetails(numberFormat) {
+        if(!this.props.details) {
+            return (
+                <div className={style.details}>Details</div>
+            );
+        }
+
         return (
-            <div className={style.details}>Details</div>
+            <div className={style.details}>{this.props.details.map(
+                (detail, key) => (
+                    <div key={detail.label} className={style.detailsRow}>
+                        <span className={style.detailsLabel}>{detail.label}</span>
+                        <span>
+                            {key > 0 ? (detail.value >= 0 ? '+ ' : '- ') : ''}
+                            <FormattedNumber value={Math.abs(detail.value)} {...numberFormat}/></span>
+                    </div>
+                )
+            )}</div>
         );
     }
 }

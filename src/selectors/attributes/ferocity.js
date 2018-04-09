@@ -1,8 +1,13 @@
 import { createSelector } from 'reselect';
+import { createAttributeDetailSelector, createAttributeReducer } from './utils';
 
-export const getAttributeFerocity = createSelector(
-    [],
-    () => {
-        return 0;
-    }
+const BASE_FEROCITY = 0;
+
+const getGearFerocity = createAttributeDetailSelector('CritDamage');
+
+export const getAttributeFerocityDetails = createSelector(
+    [getGearFerocity],
+    (ferocity) => [{ label: 'Base', value: BASE_FEROCITY }].concat(ferocity)
 );
+
+export const getAttributeFerocity = createAttributeReducer(getAttributeFerocityDetails);

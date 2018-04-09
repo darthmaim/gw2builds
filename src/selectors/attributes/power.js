@@ -1,8 +1,13 @@
 import { createSelector } from 'reselect';
+import { createAttributeDetailSelector, createAttributeReducer } from './utils';
 
-export const getAttributePower = createSelector(
-    [],
-    () => {
-        return 1000;
-    }
+const BASE_POWER = 1000;
+
+const getGearPower = createAttributeDetailSelector('Power');
+
+export const getAttributePowerDetails = createSelector(
+    [getGearPower],
+    (power) => [{ label: 'Base', value: BASE_POWER }].concat(power)
 );
+
+export const getAttributePower = createAttributeReducer(getAttributePowerDetails);
