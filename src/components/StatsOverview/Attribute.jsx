@@ -55,7 +55,7 @@ class Attribute extends Component {
         return (
             <div className={style.details}>{this.props.details.map(
                 (detail, key) => (
-                    <div key={detail.label} className={style.detailsRow}>
+                    <div key={key} className={style.detailsRow}>
                         <span className={style.detailsLabel}>{detail.label}</span>
                         <span>
                             {key > 0 ? (detail.value >= 0 ? '+ ' : '- ') : ''}
