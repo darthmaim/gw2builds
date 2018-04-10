@@ -80,11 +80,8 @@
     background: #fff;
     padding: 16px;
     position: absolute;
-    top: 235px;
-    left: 154px;
     box-shadow: 0 1px 40px rgba(0,0,0,.2);
-    margin-top: 28px;
-    margin-left: -8px;
+    margin: 28px 0 8px -8px
 }
 
 .dropdown::after {
@@ -97,6 +94,15 @@
     top: -5px;
     left: 16px;
     transform: rotate(-45deg);
+}
+
+.dropup {
+    composes: dropdown;
+}
+
+.dropup::after {
+    top: auto;
+    bottom: -5px;
 }
 
 .dropdown td + td {

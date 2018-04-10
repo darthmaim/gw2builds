@@ -55,15 +55,23 @@ class Row extends React.Component {
 
     toggleEditing() {
         const { top, left } = this.button.getBoundingClientRect();
-        this.setState(({editing}) => ({ editing: !editing, buttonPosition: { top, left } }));
+        const buttonPosition = { left };
+
+        if(window.innerHeight - top < 200) {
+            buttonPosition.bottom = window.innerHeight - top;
+        } else {
+            buttonPosition.top = top;
+        }
+
+        this.setState(({editing}) => ({ editing: !editing, buttonPosition }));
     }
 
     renderEditingView(availableItemstats) {
-        const { top, left } = this.state.buttonPosition;
+        const buttonPosition = this.state.buttonPosition;
 
         return (
             <Overlay onClick={() => this.setState({ editing: false })}>
-                <div className={style.dropdown} style={{ top, left }}>
+                <div className={buttonPosition.bottom ? style.dropup : style.dropdown} style={buttonPosition}>
                     <table><tbody>
                         <tr>
                             <td>Rarity:</td>
