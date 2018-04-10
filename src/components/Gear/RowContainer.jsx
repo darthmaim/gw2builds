@@ -1,10 +1,16 @@
 import { connect } from 'react-redux';
 import { getRarityForSlot, getItemstatIdForSlot } from '../../selectors/gear';
-import { setSelectedArmorIsAscended, setSelectedTrinketIsAscended } from '../../actions';
+import {
+    setSelectedArmorIsAscended, setSelectedArmorItemstatId,
+    setSelectedTrinketIsAscended, setSelectedTrinketItemstatId,
+    setSelectedMainhandWeaponIsAscended, setSelectedMainhandWeaponItemstatId,
+    setSelectedOffhandWeaponIsAscended, setSelectedOffhandWeaponItemstatId
+} from '../../actions';
+import {
+    GEAR_CATEGORY_ARMOR, GEAR_CATEGORY_TRINKET, GEAR_CATEGORY_WEAPON, GEAR_TYPE_WEAPON_OFFHAND,
+    RARITY_ASCENDED
+} from './Constants';
 import Row from './Row';
-import { GEAR_CATEGORY_ARMOR, GEAR_CATEGORY_TRINKET, GEAR_CATEGORY_WEAPON, RARITY_ASCENDED } from './Constants';
-import { setSelectedArmorItemstatId } from '../../actions/gear/armor';
-import { setSelectedTrinketItemstatId } from '../../actions/gear/trinkets';
 
 const mapStateToProps = (state, ownProps) => ({
     rarity: getRarityForSlot(state, ownProps),
@@ -21,6 +27,10 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
                 return dispatch(setSelectedArmorIsAscended({ slotId, isAscended }));
             case GEAR_CATEGORY_TRINKET:
                 return dispatch(setSelectedTrinketIsAscended({ slotId, isAscended }));
+            case GEAR_CATEGORY_WEAPON:
+                return type === GEAR_TYPE_WEAPON_OFFHAND
+                    ? dispatch(setSelectedOffhandWeaponIsAscended({ slotId, isAscended }))
+                    : dispatch(setSelectedMainhandWeaponIsAscended({ slotId, isAscended }));
         }
 
         console.error(`RowContainer.onRarityChange not implemented for type ${type}`);
@@ -33,6 +43,10 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
                 return dispatch(setSelectedArmorItemstatId({ slotId, itemstatId }));
             case GEAR_CATEGORY_TRINKET:
                 return dispatch(setSelectedTrinketItemstatId({ slotId, itemstatId }));
+            case GEAR_CATEGORY_WEAPON:
+                return type === GEAR_TYPE_WEAPON_OFFHAND
+                    ? dispatch(setSelectedOffhandWeaponItemstatId({ slotId, itemstatId }))
+                    : dispatch(setSelectedMainhandWeaponItemstatId({ slotId, itemstatId }));
         }
 
         console.error(`RowContainer.onItemstatIdChange not implemented for type ${type}`);

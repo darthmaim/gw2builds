@@ -30,7 +30,7 @@ class Row extends React.Component {
     }
 
     render() {
-        const { rarity, itemstatId, slot } = this.props;
+        const { rarity, itemstatId, slot, text } = this.props;
 
         const availableItemstats = getAvailableCombinations(slotToAvailability(slot));
 
@@ -42,7 +42,7 @@ class Row extends React.Component {
         return (
             <div className={style.row}>
                 <div className={style.header}>
-                    <span className={cx(style.text, style[rarity.toLowerCase()])}>{selected && selected.name} {slot.type.id}</span>
+                    <span className={cx(style.text, style[rarity.toLowerCase()])}>{selected && selected.name} {text || slot.type.id}</span>
                     <button onClick={() => this.toggleEditing()} className={style.editButton} ref={(button) => this.button = button}>
                         <img src="/img/general/edit.svg"/>
                     </button>

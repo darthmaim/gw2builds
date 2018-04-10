@@ -12,7 +12,7 @@ const SET = {
     UNDERWATER_2: 3
 };
 
-function slots({ selectedMainhandWeaponIds, hasMultipleWeaponsets }) {
+function slots({ selectedMainhandWeaponIds, selectedOffhandWeaponIds, hasMultipleWeaponsets }) {
     return {
         Armor: [
             { slot: GearConstants.GEAR_SLOT_ARMOR_HELM },
@@ -22,15 +22,15 @@ function slots({ selectedMainhandWeaponIds, hasMultipleWeaponsets }) {
             { slot: GearConstants.GEAR_SLOT_ARMOR_LEGGINGS },
             { slot: GearConstants.GEAR_SLOT_ARMOR_BOOTS },
         ],
-        /*Weapons: [
-            { type: 'Weapon', slot: GEAR_TYPE_WEAPON_2HANDED, visible: weaponIs2Handed(selectedMainhandWeaponIds[SET.NORMAL_1]) },
-            { type: 'Weapon', slot: GEAR_TYPE_WEAPON_1HANDED, visible: !weaponIs2Handed(selectedMainhandWeaponIds[SET.NORMAL_1]) },
-            { type: 'Weapon', slot: GEAR_TYPE_WEAPON_1HANDED, visible: !weaponIs2Handed(selectedMainhandWeaponIds[SET.NORMAL_1]) },
+        Weapons: [
+            { slot: GearConstants.GEAR_SLOT_WEAPON_TWOHAND1, visible: weaponIs2Handed(selectedMainhandWeaponIds[SET.NORMAL_1]), text: selectedMainhandWeaponIds[SET.NORMAL_1] },
+            { slot: GearConstants.GEAR_SLOT_WEAPON_MAINHAND1, visible: !weaponIs2Handed(selectedMainhandWeaponIds[SET.NORMAL_1]), text: selectedMainhandWeaponIds[SET.NORMAL_1] },
+            { slot: GearConstants.GEAR_SLOT_WEAPON_OFFHAND1, visible: !weaponIs2Handed(selectedMainhandWeaponIds[SET.NORMAL_1]), text: selectedOffhandWeaponIds[SET.NORMAL_1] },
 
-            { type: 'Weapon', slot: GEAR_TYPE_WEAPON_2HANDED, visible: hasMultipleWeaponsets && weaponIs2Handed(selectedMainhandWeaponIds[SET.NORMAL_2]) },
-            { type: 'Weapon', slot: GEAR_TYPE_WEAPON_1HANDED, visible: hasMultipleWeaponsets && !weaponIs2Handed(selectedMainhandWeaponIds[SET.NORMAL_2]) },
-            { type: 'Weapon', slot: GEAR_TYPE_WEAPON_1HANDED, visible: hasMultipleWeaponsets && !weaponIs2Handed(selectedMainhandWeaponIds[SET.NORMAL_2]) },
-        ],*/
+            { slot: GearConstants.GEAR_SLOT_WEAPON_TWOHAND2, visible: hasMultipleWeaponsets && weaponIs2Handed(selectedMainhandWeaponIds[SET.NORMAL_2]), text: selectedMainhandWeaponIds[SET.NORMAL_2] },
+            { slot: GearConstants.GEAR_SLOT_WEAPON_MAINHAND2, visible: hasMultipleWeaponsets && !weaponIs2Handed(selectedMainhandWeaponIds[SET.NORMAL_2]), text: selectedMainhandWeaponIds[SET.NORMAL_2] },
+            { slot: GearConstants.GEAR_SLOT_WEAPON_OFFHAND2, visible: hasMultipleWeaponsets && !weaponIs2Handed(selectedMainhandWeaponIds[SET.NORMAL_2]), text: selectedOffhandWeaponIds[SET.NORMAL_2] },
+        ],
         Trinkets: [
             { slot: GearConstants.GEAR_SLOT_TRINKET_BACK },
             { slot: GearConstants.GEAR_SLOT_TRINKET_ACCESSORY1 },
@@ -41,8 +41,8 @@ function slots({ selectedMainhandWeaponIds, hasMultipleWeaponsets }) {
         ],
         Underwater: [
             { slot: GearConstants.GEAR_SLOT_ARMOR_AQUATIC },
-            //{ type: 'Weapon', slot: GEAR_TYPE_WEAPON_2HANDED },
-            //{ type: 'Weapon', slot: GEAR_TYPE_WEAPON_2HANDED, visible: hasMultipleWeaponsets },
+            { slot: GearConstants.GEAR_SLOT_WEAPON_AQUATIC1, text: selectedMainhandWeaponIds[SET.UNDERWATER_1] },
+            { slot: GearConstants.GEAR_SLOT_WEAPON_AQUATIC2, visible: hasMultipleWeaponsets, text: selectedMainhandWeaponIds[SET.UNDERWATER_2] },
         ]
     };
 }
@@ -54,7 +54,7 @@ export default ({selectedMainhandWeaponIds, selectedOffhandWeaponIds, hasMultipl
                 <header className={style.header}>{type}</header>
                 {map(rows, (row, index) =>
                     (row.visible === undefined || row.visible) &&
-                    <Row key={index} slot={row.slot}/>
+                    <Row key={index} slot={row.slot} text={row.text}/>
                 )}
             </section>
         ))}
