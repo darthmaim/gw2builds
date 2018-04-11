@@ -105,6 +105,20 @@
     bottom: -5px;
 }
 
+@media (max-width: 512px) {
+    .dropdown table ,
+    .dropdown td:nth-child(2) {
+        width: 100%;
+    }
+
+    .dropdown {
+        left: 16px !important;
+        margin-left: 0;
+        right: 16px;
+    }
+}
+
+
 .dropdown td + td {
     padding-left: 8px;
 }
@@ -115,6 +129,8 @@
 
 .dropdown :external(select from '../Inputs/Select/Select.css') {
     margin: 2px 0 0 0;
+    box-sizing: border-box;
+    width: 100%;
 }
 
 .copyButton {
@@ -123,6 +139,7 @@
     padding: 6px 8px;
     cursor: pointer;
     border-radius: 3px;
+    white-space: nowrap;
     transition: background .3s ease;
 }
 
