@@ -3,7 +3,7 @@ import { combineReducers } from 'redux';
 import { selectedLanguage, selectedGameMode, selectedProfession, selectedRace, isLoading } from './general';
 import { importDialogVisible, importApiKeys } from './import';
 import {
-    activeWeaponSet, availableWeaponObjects, hasMultipleWeaponSets, availableItemstats,
+    activeWeaponSet, availableWeaponObjects, hasMultipleWeaponSets,
     selectedArmorItemstatIds, selectedArmorIsAscended, selectedArmorUpgradeIds, selectedArmorInfusionIds, selectedPvpAmuletId, selectedPvpArmorUpgradeId,
     selectedTrinketItemstatIds, selectedTrinketIsAscended, selectedTrinketUpgradeIds, selectedTrinketInfusionIds,
     selectedMainhandWeaponIds, selectedMainhandWeaponItemstatIds, selectedMainhandWeaponIsAscended, selectedMainhandWeaponUpgradeIds, selectedMainhandWeaponInfusionIds,
@@ -42,9 +42,6 @@ export default combineReducers({
     selectedArmorInfusionIds,
     selectedPvpAmuletId,
     selectedPvpArmorUpgradeId,
-
-    // Gear: itemstats
-    availableItemstats,
 
     // Gear: trinkets
     selectedTrinketItemstatIds,

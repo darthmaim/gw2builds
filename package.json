@@ -22,7 +22,6 @@
     "cookie-parser": "^1.4.3",
     "debug": "^2.6.0",
     "express": "^4.14.0",
-    "gw2-itemstats": "0.0.4",
     "modular-css-short-namer": "^0.0.1",
     "morgan": "^1.7.0",
     "pug": "^2.0.0-rc.2",
