@@ -5,9 +5,13 @@ import * as actions from '../../actions';
 export const selectedArmorItemstatIds = handleActions({
     // Set the itemstat of a piece of armor
     [actions.SET_SELECTED_ARMOR_ITEMSTAT_ID]: (state, action) => {
-        const newState = state.slice();
-        newState[action.payload.slotId] = action.payload.itemstatId;
-        return newState;
+        if(action.payload.slotId !== undefined) {
+            const newState = state.slice();
+            newState[action.payload.slotId] = action.payload.itemstatId;
+            return newState;
+        } else {
+            return state.map(_ => action.payload.itemstatId);
+        }
     },
 
     // Reset the itemstat of a piece of armor
@@ -16,16 +20,20 @@ export const selectedArmorItemstatIds = handleActions({
         newState[action.payload.slotId] = undefined;
         return newState;
     }
-}, []);
+}, [undefined, undefined, undefined, undefined, undefined, undefined, undefined]);
 
 /** Reducer for the armor ascended flag. */
 export const selectedArmorIsAscended = handleAction(
     combineActions(actions.SET_SELECTED_ARMOR_ISASCENDED, actions.SET_SELECTED_GAMEMODE), (state, action) => {
         // Set the ascended flag on a piece of armor
-        const newState = state.slice();
-        newState[action.payload.slotId] = action.payload.isAscended;
-        return newState;
-    }, []);
+        if(action.payload.slotId !== undefined) {
+            const newState = state.slice();
+            newState[action.payload.slotId] = action.payload.isAscended;
+            return newState;
+        } else {
+            return state.map(_ => action.payload.isAscended);
+        }
+    }, [false, false, false, false, false, false, false]);
 
 /** Reducer for the selected armor upgrade item ids. */
 export const selectedArmorUpgradeIds = handleActions({

@@ -17,39 +17,54 @@ const mapStateToProps = (state, ownProps) => ({
     itemstatId: getItemstatIdForSlot(state, ownProps)
 });
 
+function dispatchRarityChange(dispatch, type, rarity, slotId) {
+    const isAscended = rarity === RARITY_ASCENDED;
+
+    switch(type.category) {
+        case GEAR_CATEGORY_ARMOR:
+            return dispatch(setSelectedArmorIsAscended({ slotId, isAscended }));
+        case GEAR_CATEGORY_TRINKET:
+            return dispatch(setSelectedTrinketIsAscended({ slotId, isAscended }));
+        case GEAR_CATEGORY_WEAPON:
+            return type === GEAR_TYPE_WEAPON_OFFHAND
+                ? dispatch(setSelectedOffhandWeaponIsAscended({ slotId, isAscended }))
+                : dispatch(setSelectedMainhandWeaponIsAscended({ slotId, isAscended }));
+    }
+
+    console.error(`RowContainer.onRarityChange not implemented for type ${type}`);
+}
+
+function dispatchItemstatIdChange(dispatch, type, itemstatId, slotId) {
+    switch(type.category) {
+        case GEAR_CATEGORY_ARMOR:
+            return dispatch(setSelectedArmorItemstatId({ slotId, itemstatId }));
+        case GEAR_CATEGORY_TRINKET:
+            return dispatch(setSelectedTrinketItemstatId({ slotId, itemstatId }));
+        case GEAR_CATEGORY_WEAPON:
+            return type === GEAR_TYPE_WEAPON_OFFHAND
+                ? dispatch(setSelectedOffhandWeaponItemstatId({ slotId, itemstatId }))
+                : dispatch(setSelectedMainhandWeaponItemstatId({ slotId, itemstatId }));
+    }
+
+    console.error(`RowContainer.onItemstatIdChange not implemented for type ${type}`);
+}
+
 const mapDispatchToProps = (dispatch, ownProps) => ({
     onRarityChange: (rarity) => {
-        const isAscended = rarity === RARITY_ASCENDED;
         const { id: slotId, type } = ownProps.slot;
 
-        switch(type.category) {
-            case GEAR_CATEGORY_ARMOR:
-                return dispatch(setSelectedArmorIsAscended({ slotId, isAscended }));
-            case GEAR_CATEGORY_TRINKET:
-                return dispatch(setSelectedTrinketIsAscended({ slotId, isAscended }));
-            case GEAR_CATEGORY_WEAPON:
-                return type === GEAR_TYPE_WEAPON_OFFHAND
-                    ? dispatch(setSelectedOffhandWeaponIsAscended({ slotId, isAscended }))
-                    : dispatch(setSelectedMainhandWeaponIsAscended({ slotId, isAscended }));
-        }
-
-        console.error(`RowContainer.onRarityChange not implemented for type ${type}`);
+        dispatchRarityChange(dispatch, type, rarity, slotId);
     },
     onItemstatIdChange: (itemstatId) => {
         const { id: slotId, type } = ownProps.slot;
 
-        switch(type.category) {
-            case GEAR_CATEGORY_ARMOR:
-                return dispatch(setSelectedArmorItemstatId({ slotId, itemstatId }));
-            case GEAR_CATEGORY_TRINKET:
-                return dispatch(setSelectedTrinketItemstatId({ slotId, itemstatId }));
-            case GEAR_CATEGORY_WEAPON:
-                return type === GEAR_TYPE_WEAPON_OFFHAND
-                    ? dispatch(setSelectedOffhandWeaponItemstatId({ slotId, itemstatId }))
-                    : dispatch(setSelectedMainhandWeaponItemstatId({ slotId, itemstatId }));
-        }
-
-        console.error(`RowContainer.onItemstatIdChange not implemented for type ${type}`);
+        dispatchItemstatIdChange(dispatch, type, itemstatId, slotId);
+    },
+    onCopyRarity: (rarity) => {
+        dispatchRarityChange(dispatch, ownProps.slot.type, rarity, undefined)
+    },
+    onCopyItemstatId: (itemstatId) => {
+        dispatchItemstatIdChange(dispatch, ownProps.slot.type, itemstatId, undefined)
     }
 });
 

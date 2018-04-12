@@ -77,14 +77,18 @@ class Row extends React.Component {
                             <td>Rarity:</td>
                             <td>{this.renderRaritySelect()}</td>
                             <td>
-                                <button className={style.copyButton}><img src="/img/general/copy.svg"/>Copy to all</button>
+                                <button className={style.copyButton} onClick={() => this.props.onCopyRarity(this.props.rarity)}>
+                                    <img src="/img/general/copy.svg"/>Copy to all
+                                </button>
                             </td>
                         </tr>
                         <tr>
                             <td>Prefix:</td>
                             <td>{this.renderAttributeSelect(availableItemstats)}</td>
                             <td>
-                                <button className={style.copyButton}><img src="/img/general/copy.svg"/>Copy to all</button>
+                                <button className={style.copyButton} onClick={() => this.props.onCopyItemstatId(this.props.itemstatId)}>
+                                    <img src="/img/general/copy.svg"/>Copy to all
+                                </button>
                             </td>
                         </tr>
                     </tbody></table>
@@ -113,7 +117,7 @@ class Row extends React.Component {
                 value={this.props.itemstatId}
                 placeholder="Stats">
                 {map(availableAttributeSets, (stat, id) => (
-                    <Select.Option value={id} key={id}>{stat.name}</Select.Option>
+                    <Select.Option value={parseInt(id)} key={id}>{stat.name}</Select.Option>
                 ))}
             </Select>
         );

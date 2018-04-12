@@ -5,9 +5,13 @@ import * as actions from '../../actions';
 export const selectedTrinketItemstatIds = handleActions({
     // Set a trinket itemstat
     [actions.SET_SELECTED_TRINKET_ITEMSTAT_ID]: (state, action) => {
-        const newState = state.slice();
-        newState[action.payload.slotId] = action.payload.itemstatId;
-        return newState;
+        if(action.payload.slotId !== undefined) {
+            const newState = state.slice();
+            newState[action.payload.slotId] = action.payload.itemstatId;
+            return newState;
+        } else {
+            return state.map(_ => action.payload.itemstatId);
+        }
     },
 
     // Reset a trinket itemstat
@@ -16,15 +20,19 @@ export const selectedTrinketItemstatIds = handleActions({
         newState[action.payload.slotId] = undefined;
         return newState;
     }
-}, []);
+}, [undefined, undefined, undefined, undefined, undefined, undefined]);
 
 /** Reducer for the trinket ascended flag. */
 export const selectedTrinketIsAscended = handleAction(combineActions(actions.SET_SELECTED_TRINKET_ISASCENDED, actions.SET_SELECTED_GAMEMODE), (state, action) => {
     // Set the ascended flag on a trinket
-    const newState = state.slice();
-    newState[action.payload.slotId] = action.payload.isAscended;
-    return newState;
-}, []);
+    if(action.payload.slotId !== undefined) {
+        const newState = state.slice();
+        newState[action.payload.slotId] = action.payload.isAscended;
+        return newState;
+    } else {
+        return state.map(_ => action.payload.isAscended);
+    }
+}, [false, false, false, false, false, false]);
 
 /** Reducer for the selected trinket upgrade item ids. */
 export const selectedTrinketUpgradeIds = handleActions({
