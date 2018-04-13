@@ -3,7 +3,7 @@ import { createAttributeDetailSelector, createAttributeReducer } from './utils';
 
 const BASE_CONCENTRATION = 0;
 
-const getGearConcentration = createAttributeDetailSelector('Concentration');
+const getGearConcentration = createAttributeDetailSelector('BoonDuration');
 
 export const getAttributeConcentrationDetails = createSelector(
     [getGearConcentration],
