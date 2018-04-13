@@ -12,24 +12,24 @@ export function getAttributeValues(combinationId, rarity, type) {
 
     switch(combination.attributes.length) {
         case 3: return {
-            [combination.attributes[0]]: values[offset + major],
-            [combination.attributes[1]]: values[offset + minor],
-            [combination.attributes[2]]: values[offset + minor]
+            [combination.attributes[0]]: values[0 + offset + major],
+            [combination.attributes[1]]: values[0 + offset + minor],
+            [combination.attributes[2]]: values[0 + offset + minor]
         };
         case 4: return {
-            [combination.attributes[0]]: values[offset + major],
-            [combination.attributes[1]]: values[offset + major],
-            [combination.attributes[2]]: values[offset + minor],
-            [combination.attributes[3]]: values[offset + minor],
+            [combination.attributes[0]]: values[2 + offset + major],
+            [combination.attributes[1]]: values[2 + offset + major],
+            [combination.attributes[2]]: values[2 + offset + minor],
+            [combination.attributes[3]]: values[2 + offset + minor],
         };
         case 7: return {
-            [combination.attributes[0]]: values[offset + major],
-            [combination.attributes[1]]: values[offset + major],
-            [combination.attributes[2]]: values[offset + major],
-            [combination.attributes[3]]: values[offset + major],
-            [combination.attributes[4]]: values[offset + major],
-            [combination.attributes[5]]: values[offset + major],
-            [combination.attributes[6]]: values[offset + major],
+            [combination.attributes[0]]: values[4 + offset + major],
+            [combination.attributes[1]]: values[4 + offset + major],
+            [combination.attributes[2]]: values[4 + offset + major],
+            [combination.attributes[3]]: values[4 + offset + major],
+            [combination.attributes[4]]: values[4 + offset + major],
+            [combination.attributes[5]]: values[4 + offset + major],
+            [combination.attributes[6]]: values[4 + offset + major],
         };
     }
 }
