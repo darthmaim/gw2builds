@@ -57,13 +57,20 @@ app.locals.integrity = function (file) {
 };
 
 debug('Setting up middleware');
+app.disable('x-powered-by');
 app.use(compression());
 app.use(favicon(publicPath('favicon.ico')));
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(publicPath()));
+
+app.use(express.static(publicPath(), { maxAge: '2y', immutable: true, setHeaders: (res, path) => {
+    const filename = path.split('/').splice(-1)[0];
+    if(['sw.js', 'rev-manifest.json'].indexOf(filename) !== -1) {
+        res.setHeader('Cache-Control', 'public, max-age=3600');
+    }
+}}));
 
 debug('Setting up routes');
 app.use('/', routes);

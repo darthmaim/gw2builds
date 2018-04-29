@@ -45,10 +45,18 @@
     z-index: 44;
     background: #fff;
 
-    overflow: auto;
-    -webkit-overflow-scrolling: touch;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
 
     animation: dropdown .1s ease-out;
+}
+
+.options {
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    flex: 1;
+    flex-basis: auto;
 }
 
 @keyframes dropdown {
@@ -122,4 +130,22 @@
 :global(.js-select-disable-scroll) :external(panel from '../../App/MainContent/mainContent.css'),
 :global(.js-select-disable-scroll) :external(stats from '../../App/content.css') {
     overflow: hidden;
+}
+
+.filter {
+    background: #fff;
+    position: sticky;
+    top: 0;
+    z-index: 3;
+    padding: 8px;
+    box-shadow: 0 0 3px rgba(0,0,0,.2);
+}
+
+.filterInput {
+    composes: input from '../Inputs.css';
+
+    padding: 8px;
+    border: 1px solid #eee;
+    width: 100%;
+    box-sizing: border-box;
 }

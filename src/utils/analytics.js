@@ -75,6 +75,7 @@ export const init = () => {
     trackCustomDimensions();
     sendInitialPageview();
     sendNavigationTimingMetrics();
+    trackInstallBanner();
 };
 
 
@@ -244,3 +245,12 @@ function getServiceWorkerStatus() {
         return 'unsupported';
     }
 }
+
+/**
+ * Tracks install banner status.
+ */
+const trackInstallBanner = () => {
+    window.addEventListener('beforeinstallprompt', () => ga('send', 'event', 'install', 'available'));
+
+    window.addEventListener('appinstalled', () => ga('send', 'event', 'install', 'installed'));
+};
