@@ -117,7 +117,9 @@ class Row extends React.Component {
                 value={this.props.itemstatId}
                 placeholder="Stats">
                 {map(availableAttributeSets, (stat, id) => (
-                    <Select.Option value={parseInt(id)} key={id}>{stat.name}</Select.Option>
+                    <Select.Option value={parseInt(id)} key={id} keywords={[stat.name , ...stat.attributes]}>
+                        {stat.name}
+                    </Select.Option>
                 ))}
             </Select>
         );
