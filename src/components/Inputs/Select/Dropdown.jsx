@@ -11,7 +11,9 @@ class Dropdown extends React.Component {
         this.state = {
             dropdown: null,
             values: [],
-            highlightedValue: undefined
+            highlightedValue: undefined,
+            showFilter: false,
+            filter: ''
         };
 
         this.handleDropdown = this.handleDropdown.bind(this);
@@ -43,10 +45,10 @@ class Dropdown extends React.Component {
         this.stopPreventScroll();
     }
 
-    values(children) {
+    getValues(children) {
         return React.Children.toArray(children).reduce((values, child) => {
             if(child && child.type === Option) {
-                if(!child.props.disabled) {
+                if(!child.props.disabled && this.matchesFilter(child)) {
                     return [...values, child.props.value];
                 }
             } else if(child && child.props) {
@@ -79,8 +81,9 @@ class Dropdown extends React.Component {
     handleDropdown(dropdown) {
         this.setState({
             dropdown,
-            values: dropdown ? this.values(dropdown.children) : [],
-            highlightedValue: undefined
+            highlightedValue: undefined,
+            showFilter: false,
+            filter: ''
         });
     }
 
@@ -89,29 +92,39 @@ class Dropdown extends React.Component {
     }
 
     handleKeyDown(e) {
-        const {values, highlightedValue, dropdown} = this.state;
+        const {highlightedValue, dropdown, showFilter} = this.state;
 
+        const values = this.getValues(dropdown.children);
         const currentHighlightIndex = values.indexOf(highlightedValue || dropdown.active);
 
         switch(e.which) {
-            case 37:
-            case 38:
+            case 37: // ARROW_LEFT
+            case 38: // ARROW_UP
                 e.preventDefault();
                 return this.setState({
                     highlightedValue: currentHighlightIndex !== -1
                         ? values[(values.length + currentHighlightIndex - 1) % values.length]
                         : values[values.length - 1]
                 });
-            case 39:
-            case 40:
+            case 39: // ARROW_RIGHT
+            case 40: // ARROW_DOWN
                 e.preventDefault();
                 return this.setState({
                     highlightedValue: values[(currentHighlightIndex + 1) % values.length]
                 });
-            case 32:
-            case 13:
+            //case 32: // SPACE
+            case 13: // ENTER
                 e.preventDefault();
                 dropdown.onSelect(highlightedValue);
+        }
+
+        // check if the key was an alphanumeric character
+        const filter = String.fromCharCode(e.charCode || e.which);
+
+        // show the filter input
+        if(!showFilter && filter.match(/^[\w ]+$/)) {
+            this.setState({ showFilter: true, filter });
+            e.preventDefault();
         }
     }
 
@@ -119,8 +132,24 @@ class Dropdown extends React.Component {
         this.state.dropdown.onSelect(value);
     }
 
+    matchesFilter(opt) {
+        // ignore case of the filter
+        const filter = this.state.filter.toLowerCase();
+
+        // show all options if no filter is set
+        if(!filter) {
+            return true;
+        }
+
+        // if the option has keywords set, check if any of them match the filter,
+        // otherwise check the option value
+        return opt.props.keywords
+            ? opt.props.keywords.some((keyword) => keyword.toLowerCase().indexOf(filter) !== -1)
+            : opt.props.value.toString().toLowerCase().indexOf(filter) !== -1;
+    }
+
     render() {
-        const {dropdown, values, highlightedValue} = this.state;
+        const {dropdown, highlightedValue, showFilter, filter} = this.state;
 
         if(!dropdown) {
             // we need to always return a DOM node for react-onclickoutside
@@ -150,7 +179,14 @@ class Dropdown extends React.Component {
 
         return (
             <div className={style.dropdown} style={position} ref={this.updateRef} id={'select-dropdown'}>
-                {React.Children.map(dropdown.children, (opt) => React.cloneElement(opt, {onSelect, active, highlight}))}
+                {showFilter && (<div className={style.filter}>
+                    <input autoFocus className={style.filterInput} type="text" value={filter} onChange={e => this.setState({ filter: e.target.value })}/>
+                </div>)}
+                <div className={style.options}>
+                    {React.Children.map(dropdown.children,
+                        (opt) => this.matchesFilter(opt) && React.cloneElement(opt, {onSelect, active, highlight})
+                    )}
+                </div>
             </div>
         );
     }

@@ -9,7 +9,7 @@ class SkillSelect extends Select {
     get children() {
         return this.props.skills.map(
             (skill) => (
-                <Select.Option key={skill.id} value={skill.id}>
+                <Select.Option key={skill.id} value={skill.id} keywords={[skill.name]}>
                     <SkillTooltip skill={skill} action={this.props.optionAction}>
                         <div className={style.option}>
                             <SkillIcon className={style.icon} skill={skill} size={32}/>{skill.name}
