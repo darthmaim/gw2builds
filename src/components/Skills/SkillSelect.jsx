@@ -7,17 +7,27 @@ import style from './SkillSelect.css';
 
 class SkillSelect extends Select {
     get children() {
-        return this.props.skills.map(
-            (skill) => (
-                <Select.Option key={skill.id} value={skill.id} keywords={[skill.name]}>
-                    <SkillTooltip skill={skill} action={this.props.optionAction}>
-                        <div className={style.option}>
-                            <SkillIcon className={style.icon} skill={skill} size={32}/>{skill.name}
-                        </div>
-                    </SkillTooltip>
-                </Select.Option>
-            )
+        const { skills } = this.props;
+
+        return skills.map(
+            (skill) => this.renderOption(skill)
         );
+    }
+
+    renderOption(skill) {
+        const { optionAction, selectedSpecializationIds } = this.props;
+
+        const isDisabled = skill.specialization && selectedSpecializationIds.indexOf(skill.specialization) === -1;
+
+        return (
+            <Select.Option key={skill.id} value={skill.id} keywords={[skill.name]} disabled={isDisabled}>
+                <SkillTooltip skill={skill} action={!isDisabled ? optionAction : undefined}>
+                    <div className={style.option}>
+                        <SkillIcon className={style.icon} skill={skill} size={32}/>{skill.name}
+                    </div>
+                </SkillTooltip>
+            </Select.Option>
+        )
     }
 
     getClassName() {

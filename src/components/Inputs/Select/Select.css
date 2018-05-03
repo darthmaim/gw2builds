@@ -84,7 +84,7 @@
 }
 
 .dropdown .disabledOption {
-    cursor: not-allowed;
+    cursor: default;
     background: #fafafa;
     color: #555;
 }
