@@ -25,6 +25,12 @@
     height: 32px;
     text-align: center;
     position: relative;
+    cursor: pointer;
+    transition: background-color .3s ease;
+}
+
+.button:hover {
+    background: #c86dd7;
 }
 
 .button:after {

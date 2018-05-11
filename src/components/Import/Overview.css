@@ -69,6 +69,7 @@
     padding: 4px 8px;
     margin-top: 8px;
     cursor: pointer;
+    transition: background-color .3s ease;
 }
 
 .addButton:hover {
