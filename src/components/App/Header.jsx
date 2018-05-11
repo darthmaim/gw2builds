@@ -8,6 +8,8 @@ export default class Header extends Component {
         super(props, context);
 
         this.onToggleDropdown = this.onToggleDropdown.bind(this);
+        this.onLoadBuild = this.onLoadBuild.bind(this);
+        this.onResetBuild = this.onResetBuild.bind(this);
         this.onShareBuild = this.onShareBuild.bind(this);
         this.onHideShareDialog = this.onHideShareDialog.bind(this);
 
@@ -21,6 +23,16 @@ export default class Header extends Component {
         this.setState(
             ({dropdown}) => ({dropdown: !dropdown})
         );
+    }
+
+    onLoadBuild() {
+        this.onToggleDropdown();
+        this.props.setImportDialogVisible(true);
+    }
+
+    onResetBuild() {
+        this.onToggleDropdown();
+        this.props.resetBuild();
     }
 
     onShareBuild() {
@@ -57,8 +69,8 @@ export default class Header extends Component {
                 </div>
                 {dropdown && (<Overlay onClick={this.onToggleDropdown}>
                     <div className={style.options}>
-                        <button type="button" className={style.option}>Load Build</button>
-                        <button type="button" className={style.option}>Clear Build</button>
+                        <button type="button" className={style.option} onClick={this.onLoadBuild}>Load Build</button>
+                        <button type="button" className={style.option} onClick={this.onResetBuild}>Clear Build</button>
                         <button type="button" className={style.option} onClick={this.onShareBuild}>Share Build</button>
                         <button type="button" className={style.option}>Settings</button>
                         <button type="button" className={style.option}>About</button>
