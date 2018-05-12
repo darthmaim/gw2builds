@@ -1,0 +1,7 @@
+.dialog p {
+    margin: 0;
+}
+
+.dialog p + p {
+    margin-top: 16px;
+}

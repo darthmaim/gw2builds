@@ -1,5 +1,5 @@
 import React from 'react';
-import Header from './Header';
+import Header from './HeaderContainer';
 import Content from './Content';
 import { TooltipElement } from '../Tooltips';
 import { Select } from '../Inputs';

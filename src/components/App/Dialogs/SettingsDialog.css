@@ -1,0 +1,16 @@
+.setting {
+    display: flex;
+    align-items: center;
+}
+
+.setting + .setting {
+    margin-top: 16px;
+}
+
+.setting label {
+    flex: 1;
+}
+
+.setting :external(select from '../../Inputs/Select/Select.css') {
+    margin: 0;
+}

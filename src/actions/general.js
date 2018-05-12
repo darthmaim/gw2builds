@@ -1,5 +1,5 @@
 import { createAction } from 'redux-actions';
-import { createChainedAction, createApiAction } from './utils';
+import { createChainedAction, createConditionalAction, createApiAction } from './utils';
 import { fetchAvailableSpecializations } from './specializations';
 import { fetchAvailableSkillsWithRelated } from './skills';
 
@@ -11,12 +11,15 @@ export const SET_SELECTED_RACE = 'SET_SELECTED_RACE';
 export const SET_IS_LOADING = 'SET_IS_LOADING';
 
 /** Action to fetch the selected profession from the GW2 API. */
-export const fetchProfession = createChainedAction(
-    createApiAction(
-        FETCH_PROFESSION,
-        (state, api) => api.professions().get(state.selectedProfession)
-    ),
-    [fetchAvailableSpecializations, fetchAvailableSkillsWithRelated]
+export const fetchProfession = createConditionalAction(
+    (state) => state.selectedProfession !== null,
+    createChainedAction(
+        createApiAction(
+            FETCH_PROFESSION,
+            (state, api) => api.professions().get(state.selectedProfession)
+        ),
+        [fetchAvailableSpecializations, fetchAvailableSkillsWithRelated]
+    )
 );
 
 /** Action to set the selected language. Params: { language } */
