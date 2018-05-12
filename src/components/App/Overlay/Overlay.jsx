@@ -3,7 +3,15 @@ import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 import style from './Overlay.css';
 
-const overlayRoot = document.getElementById('overlay');
+let overlayRoot;
+function getOverlayRoot() {
+    if(!overlayRoot) {
+        overlayRoot = document.createElement('div');
+        document.body.appendChild(overlayRoot);
+    }
+
+    return overlayRoot;
+}
 
 class Overlay extends Component {
     constructor(props) {
@@ -24,11 +32,11 @@ class Overlay extends Component {
     }
 
     componentDidMount() {
-        overlayRoot.appendChild(this.element);
+        getOverlayRoot().appendChild(this.element);
     }
 
     componentWillUnmount() {
-        overlayRoot.removeChild(this.element);
+        getOverlayRoot().removeChild(this.element);
     }
 
     render() {
