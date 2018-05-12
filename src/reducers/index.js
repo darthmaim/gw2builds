@@ -91,7 +91,6 @@ export default combineReducers({
     selectedWeaverPreviousAttunementId,
     availableEngineerToolbeltSkillIds,
     selectedRangerPetIds,
-    selectedRevenantLegendIds
     selectedRevenantLegendIds,
 
     // Settings
