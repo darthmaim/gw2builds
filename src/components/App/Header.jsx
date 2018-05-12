@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import style from './header.css';
 import Overlay from './Overlay/Overlay';
 import ShareDialog from './Dialogs/ShareDialog';
+import SettingsDialog from './Dialogs/SettingsDialogContainer';
 
 export default class Header extends Component {
     constructor(props, context) {
@@ -13,9 +14,13 @@ export default class Header extends Component {
         this.onShareBuild = this.onShareBuild.bind(this);
         this.onHideShareDialog = this.onHideShareDialog.bind(this);
 
+        this.onSettingsDialog = this.onSettingsDialog.bind(this);
+        this.onHideSettingsDialog = this.onHideSettingsDialog.bind(this);
+
         this.state = {
             dropdown: false,
             shareDialog: false,
+            settingsDialog: false
         };
     }
 
@@ -54,8 +59,16 @@ export default class Header extends Component {
         this.setState({ shareDialog: false, dropdown: false });
     }
 
+    onSettingsDialog() {
+        this.setState({ settingsDialog: true });
+    }
+
+    onHideSettingsDialog() {
+        this.setState({ settingsDialog: false });
+    }
+
     render() {
-        const { dropdown, shareDialog } = this.state;
+        const { dropdown, shareDialog, settingsDialog } = this.state;
 
         return (
             <div className={style.header}>
@@ -72,11 +85,12 @@ export default class Header extends Component {
                         <button type="button" className={style.option} onClick={this.onLoadBuild}>Load Build</button>
                         <button type="button" className={style.option} onClick={this.onResetBuild}>Clear Build</button>
                         <button type="button" className={style.option} onClick={this.onShareBuild}>Share Build</button>
-                        <button type="button" className={style.option}>Settings</button>
+                        <button type="button" className={style.option} onClick={this.onSettingsDialog}>Settings</button>
                         <button type="button" className={style.option}>About</button>
                     </div>
                 </Overlay>)}
                 {shareDialog && <ShareDialog onClose={this.onHideShareDialog}/>}
+                {settingsDialog && <SettingsDialog onClose={this.onHideSettingsDialog}/>}
             </div>
         );
     }
