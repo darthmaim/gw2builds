@@ -4,7 +4,8 @@ import { getSelectedMinorTraitIds } from '../../../selectors/specializations';
 
 const mapStateToProps = (state, ownProps) => ({
     selectedMajorTraitIds: state.selectedMajorTraitIds,
-    selectedMinorTraitIds: getSelectedMinorTraitIds(state, ownProps)
+    selectedMinorTraitIds: getSelectedMinorTraitIds(state, ownProps),
+    showIds: state.settings.showIds
 });
 
 export default connect(mapStateToProps)(TraitTooltip);

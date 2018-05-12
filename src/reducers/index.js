@@ -22,6 +22,7 @@ import {
     selectedRangerPetIds,
     selectedRevenantLegendIds
 } from './mechanics';
+import { settings } from './settings';
 
 export default combineReducers({
     // General
@@ -91,4 +92,8 @@ export default combineReducers({
     availableEngineerToolbeltSkillIds,
     selectedRangerPetIds,
     selectedRevenantLegendIds
+    selectedRevenantLegendIds,
+
+    // Settings
+    settings
 });
