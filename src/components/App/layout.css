@@ -11,6 +11,10 @@ html, body {
     top: 0; bottom: 0;
 }
 
+:focus:not(:focus-visible) {
+    outline: none;
+}
+
 :global(#container) {
     height: 100%;
 }

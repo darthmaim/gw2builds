@@ -29,6 +29,20 @@ export function createChainedAction(action, dispatchChain) {
 }
 
 /**
+ * Creates an action that only dispatches if `shouldDispatch(state)` returns true.
+ * @param {function} shouldDispatch
+ * @param {function} action
+ * @return {function(...[*]): function(*, *): *}
+ */
+export function createConditionalAction(shouldDispatch, action) {
+    return (...args) => {
+        return (dispatch, getState) => {
+            return shouldDispatch(getState()) && dispatch(action(...args))
+        };
+    };
+}
+
+/**
  * Creates a state aware action. A state aware action has the function `getState()` available in the payload.
  * @param {string} actionType - The action type id.
  * @param {function} [payloadCreator] - The payload creator function from redux-actions.
@@ -79,6 +93,7 @@ export function convertToIndexed(array) {
 
 export default {
     createChainedAction,
+    createConditionalAction,
     createStateAwareAction,
     createApiAction,
     convertToIndexed

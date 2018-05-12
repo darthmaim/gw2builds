@@ -25,11 +25,75 @@
 .title {
     display: inline-block;
     margin: 10px 16px;
+    flex: 1;
+}
+
+.more {
+    position: relative;
+    width: 40px;
+    height: 40px;
+    align-self: center;
+    margin-right: 16px;
+    cursor: pointer;
+    transition: all .3s ease;
+}
+
+.more:hover {
+    background: rgba(255,255,255,.3);
+}
+
+.more:before {
+    content: '';
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    background: #fff;
+    border-radius: 5px;
+    left: 50%;
+    top: 50%;
+    margin-top: -2.5px;
+    margin-left: -2.5px;
+    box-shadow: 0 -9px 0 0 #fff, 0 9px 0 0 #fff;
+}
+
+.options {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background: #fff;
+    min-width: 170px;
+    box-shadow: 0 1px 40px rgba(0,0,0,.2);
+    transform-origin: top right;
+    animation: options ease-out .1s;
+}
+
+@keyframes options {
+    from { opacity: 0; transform: scale(.8); }
+}
+
+.option {
+    composes: input from '../Inputs/Inputs.css';
+
+    padding: 16px 22px;
+    text-align: left;
+    cursor: pointer;
+    transition: background-color .3s ease;
+}
+
+.option + .option {
+    border-top: 1px solid #eee;
+}
+
+.option:hover {
+    background: #f4f4f4;
 }
 
 @media(max-width: 768px) {
     .header {
         height: 56px;
+        line-height: 56px;
     }
 
     .logo {
@@ -48,5 +112,9 @@
     .title img {
         height: 44px;
         max-width: 100%;
+    }
+
+    .more {
+        margin-right: 12px;
     }
 }

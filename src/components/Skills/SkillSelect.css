@@ -23,3 +23,8 @@
 .icon {
     margin-right: 8px;
 }
+
+:external(dropdown from '../Inputs/Select/Select.css')
+:external(disabledOption from '../Inputs/Select/Select.css') .option img {
+    filter: grayscale(1);
+}

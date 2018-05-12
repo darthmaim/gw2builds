@@ -27,7 +27,7 @@ class SetSelection extends Component {
             <div>
                 {sets.map((set, index) => set.enabled && (
                     <SetButton key={index} isActive={activeWeaponSet === index} onClick={this.handleClick(index)}>
-                        <img src={set.icon}/>
+                        <img src={set.icon} alt=""/>
                         {set.name}
                     </SetButton>
                 ))}

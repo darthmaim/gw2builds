@@ -57,20 +57,20 @@ class Sidebar extends Component {
             <div className={style.sidebar}>
                 <div className={style.sections}>
                     <div className={style.marker} style={markerStyle}/>
-                    {this.renderSection(0, '/img/sidebar/Character.svg')}
-                    {this.renderSection(1, '/img/sidebar/Skills.svg')}
-                    {this.renderSection(2, '/img/sidebar/Traits.svg')}
-                    {this.renderSection(3, '/img/sidebar/Gear.svg')}
+                    {this.renderSection(0, '/img/sidebar/Character.svg', 'General')}
+                    {this.renderSection(1, '/img/sidebar/Skills.svg', 'Skills')}
+                    {this.renderSection(2, '/img/sidebar/Traits.svg', 'Traits')}
+                    {this.renderSection(3, '/img/sidebar/Gear.svg', 'Gear')}
                 </div>
                 <LanguageSelector/>
             </div>
         );
     }
 
-    renderSection(section, icon) {
+    renderSection(section, icon, title) {
         return (
             <button key={section} type="button" className={style.button} onFocus={this.onClick(section)} onClick={this.onClick(section)}>
-                <img src={icon}/>
+                <img src={icon} alt={title}/>
             </button>
         );
     }

@@ -18,3 +18,8 @@
     border: 2px solid #a252f4;
     margin-right: 8px;
 }
+
+.skills > :external(skill from '../../../../Icon.css'):nth-child(5) {
+    margin-left: 4px;
+    border-left: 1px solid #000;
+}

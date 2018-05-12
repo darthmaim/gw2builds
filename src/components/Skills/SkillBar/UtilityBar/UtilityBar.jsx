@@ -30,7 +30,13 @@ class UtilityBar extends Component {
     }
 
     renderSlot(slot) {
-        const { selectedSkillIds, availableSkillObjects, availableProfessionSkillObjects, onSelectedSkillChange } = this.props;
+        const {
+            selectedSkillIds,
+            availableSkillObjects,
+            availableProfessionSkillObjects,
+            onSelectedSkillChange,
+            selectedSpecializationIds
+        } = this.props;
 
         const availableSkills = availableProfessionSkillObjects
             .filter((skill) => skill.slot === slots[slot])
@@ -39,7 +45,8 @@ class UtilityBar extends Component {
 
         return (
             <SkillSelect value={selectedSkillIds[slot]} key={slot} onChange={onSelectedSkillChange.bind(this, slot)}
-                skills={availableSkills} valueAction={`change ${slots[slot]} skill`} getCurrentSkill={this.getCurrentSkill}
+                skills={availableSkills} valueAction={`change ${slots[slot]} skill`}
+                getCurrentSkill={this.getCurrentSkill} selectedSpecializationIds={selectedSpecializationIds}
             />
         );
     }

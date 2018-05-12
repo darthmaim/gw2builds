@@ -152,7 +152,7 @@ class MainContent extends React.Component {
 
     render() {
         return (
-            <div ref={this.setPanelRef} className={style.panel}>
+            <main ref={this.setPanelRef} className={style.panel}>
                 <Section domRef={this.setSectionRef(0)}
                          anchorRef={this.setAnchorRef(0)}
                          name="General"
@@ -168,7 +168,7 @@ class MainContent extends React.Component {
                 <Section domRef={this.setSectionRef(3)} anchorRef={this.setAnchorRef(3)} name="Gear">
                     <Gear/>
                 </Section>
-            </div>
+            </main>
         );
     }
 }

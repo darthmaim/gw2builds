@@ -16,7 +16,7 @@ const SkillIcon = ({ skill, size, className, ...props }) => {
 
     return (
         <div className={classnames(style.skill, className)} style={inline} {...props}>
-            <img src={skill.icon}/>
+            <img src={skill.icon} alt={skill.name}/>
         </div>
     );
 };
