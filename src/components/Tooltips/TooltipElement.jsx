@@ -124,7 +124,7 @@ class TooltipElement extends Component {
     handleInertiaUpdate(value) {
         this.element.style.transform = `translateY(100%) translateY(${value}px)`;
 
-        if (this.inertia.value >= 0) {
+        if (this.inertia.value === 0) {
             this.inertia.stop();
             this.context.tooltipContext.hideTooltip();
         }

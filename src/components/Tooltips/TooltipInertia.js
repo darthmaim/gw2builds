@@ -71,6 +71,11 @@ export default class TooltipInertia {
             this.velocity *= 1.2;
         }
 
+        if(this.value > 0) {
+            this.value = 0;
+            this.velocity = 0;
+        }
+
         if(Math.abs(this.velocity) > 1) {
             this.animationFrame = requestAnimationFrame(this.decelerate);
         }
