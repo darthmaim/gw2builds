@@ -13,7 +13,7 @@ import { selectedFoodIds } from './food';
 import { availableSpecializationIds, availableSpecializationObjects, selectedSpecializationIds } from './specializations';
 import { availableTraitIds, availableTraitObjects, selectedMajorTraitIds } from './traits';
 import {
-    availableSkillIds, availableSubSkillIds,
+    availableSkillIds, availableSubSkillIds, availableFlipSkillIds,
     selectedSkillIds,
     availableSkillObjects, availableProfessionSkillObjects } from './skills';
 import {
@@ -22,6 +22,7 @@ import {
     selectedRangerPetIds,
     selectedRevenantLegendIds
 } from './mechanics';
+import { settings } from './settings';
 
 export default combineReducers({
     // General
@@ -80,6 +81,7 @@ export default combineReducers({
     // Skills
     availableSkillIds,
     availableSubSkillIds,
+    availableFlipSkillIds,
     availableSkillObjects,
     availableProfessionSkillObjects,
     selectedSkillIds,
@@ -90,5 +92,8 @@ export default combineReducers({
     selectedWeaverPreviousAttunementId,
     availableEngineerToolbeltSkillIds,
     selectedRangerPetIds,
-    selectedRevenantLegendIds
+    selectedRevenantLegendIds,
+
+    // Settings
+    settings
 });

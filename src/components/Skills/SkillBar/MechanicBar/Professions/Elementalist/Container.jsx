@@ -6,7 +6,8 @@ const mapStateToProps = (state, ownProps) => ({
     // Redux states
     availableElementalistAttunementObjects: state.availableElementalistAttunementObjects,
     availableSkillObjects: state.availableSkillObjects,
-    selectedAttunementId: state.selectedElementalistAttunementId
+    selectedAttunementId: state.selectedElementalistAttunementId,
+    selectedSpecializationIds: state.selectedSpecializationIds
 });
 
 const mergeProps = (mappedProps, { dispatch }, ownProps) => Object.assign({}, mappedProps, ownProps, {

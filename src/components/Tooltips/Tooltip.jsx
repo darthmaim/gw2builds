@@ -89,6 +89,10 @@ class Tooltip extends PureComponent {
         this.dettachEvents();
     }
 
+    componentDidUpdate() {
+        this.context.tooltipContext.update();
+    }
+
     hide() {
         this.context.tooltipContext.hideTooltip();
     }

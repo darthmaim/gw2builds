@@ -1,19 +1,24 @@
 import PropTypes from 'prop-types';
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
+import TooltipElement from './TooltipElement';
 
 const ContextShape = PropTypes.shape({
     setTooltip: PropTypes.func,
     hideTooltip: PropTypes.func,
-    onTooltipChange: PropTypes.func
+    onTooltipChange: PropTypes.func,
+    update: PropTypes.func
 });
 
 class TooltipContext extends Component {
     constructor(props, context) {
         super(props, context);
 
+        this.setRef = this.setRef.bind(this);
+
         this.tooltips = [];
         this.listeners = [];
         this.lastWasTouch = false;
+        this.ref = null;
     }
 
     getChildContext() {
@@ -48,13 +53,25 @@ class TooltipContext extends Component {
                     const i = this.listeners.length;
                     this.listeners.push(listener);
                     return () => delete this.listeners[i];
+                },
+                update: () => {
+                    this.ref && this.ref.forceUpdate();
                 }
             }
         };
     }
 
+    setRef(ref) {
+        this.ref = ref;
+    }
+
     render() {
-        return React.Children.only(this.props.children);
+        return (
+            <Fragment>
+                <TooltipElement ref={this.setRef}/>
+                {React.Children.only(this.props.children)}
+            </Fragment>
+        );
     }
 }
 

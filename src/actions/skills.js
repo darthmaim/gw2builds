@@ -8,6 +8,7 @@ export const WIPE_ALL_SELECTED_SKILL_IDS = 'WIPE_ALL_SELECTED_SKILL_IDS';
 const skillIdProviders = [
     (state) => state.availableSkillIds,
     (state) => state.availableSubSkillIds,
+    (state) => state.availableFlipSkillIds,
     (state) => state.availableEngineerToolbeltSkillIds
 ];
 

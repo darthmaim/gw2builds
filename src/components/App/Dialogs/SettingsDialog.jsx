@@ -18,7 +18,7 @@ export default class SettingsDialog extends Component {
     }
 
     render() {
-        const { onClose, selectedLanguage, onLanguageChange } = this.props;
+        const { onClose, selectedLanguage, onLanguageChange, settings, setSettingsShowIds } = this.props;
 
         return (
             <Overlay>
@@ -29,6 +29,13 @@ export default class SettingsDialog extends Component {
                             {LANGUAGES.map(
                                 (language) => <Select.Option key={language} value={language}>{languages[language]}</Select.Option>
                             )}
+                        </Select>
+                    </div>
+                    <div className={style.setting}>
+                        <label htmlFor={"showIds"}>Show IDs in tooltips</label>
+                        <Select id="language" value={settings.showIds} onChange={setSettingsShowIds}>
+                            <Select.Option value={true}>Yes</Select.Option>
+                            <Select.Option value={false}>No</Select.Option>
                         </Select>
                     </div>
                 </Dialog>

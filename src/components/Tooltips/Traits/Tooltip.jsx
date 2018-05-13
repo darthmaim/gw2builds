@@ -22,7 +22,7 @@ class TraitTooltip extends Component {
 
     render() {
         return (
-            <Tooltip tooltip={this.renderTooltip} ref={(tooltip) => this.tooltip = tooltip}>
+            <Tooltip showIds={this.props.showIds} tooltip={this.renderTooltip} ref={(tooltip) => this.tooltip = tooltip}>
                 {this.props.children}
             </Tooltip>
         );
@@ -55,6 +55,7 @@ class TraitTooltip extends Component {
             <div className={style.tooltip}>
                 <div className={style.title}>
                     {name}
+                    {this.props.showIds ? ` (${this.props.trait.id})` : ''}
                 </div>
                 {this.renderDescription(description)}
                 {this.renderFacts(activeFacts)}
