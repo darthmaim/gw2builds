@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
+import TooltipElement from './TooltipElement';
 
 const ContextShape = PropTypes.shape({
     setTooltip: PropTypes.func,
@@ -54,7 +55,12 @@ class TooltipContext extends Component {
     }
 
     render() {
-        return React.Children.only(this.props.children);
+        return (
+            <Fragment>
+                <TooltipElement/>
+                {React.Children.only(this.props.children)}
+            </Fragment>
+        );
     }
 }
 
