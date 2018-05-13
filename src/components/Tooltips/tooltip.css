@@ -16,8 +16,9 @@
 }
 
 .touch .inner {
-    margin: 0 auto;
+    margin: 0 auto -100vh;
     box-shadow: none;
+    padding-bottom: calc(100vh + 12px);
 }
 
 .touch {

@@ -64,8 +64,17 @@ export default class TooltipInertia {
 
         // TODO: add bounce
         if(this.value < this.bound) {
-            this.value = this.bound;
-            this.velocity = 0;
+            if(this.velocity > -1) {
+                this.value = this.bound - (this.bound - this.value) * 0.9;
+                if(this.bound - this.value < 1) {
+                    this.value = this.bound;
+                }
+
+                this.velocity = 0;
+            } else {
+                // decelerate faster
+                this.velocity *= 0.5;
+            }
         }
 
         if(this.value > -THRESHOLD) {
@@ -78,7 +87,7 @@ export default class TooltipInertia {
             this.velocity = 0;
         }
 
-        if(Math.abs(this.velocity) > 1) {
+        if(Math.abs(this.velocity) > 1 || this.value < this.bound) {
             this.animationFrame = requestAnimationFrame(this.decelerate);
         }
 
