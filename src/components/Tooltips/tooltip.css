@@ -30,7 +30,7 @@
 
     z-index: 100;
     will-change: transform;
-    transform: translateY(100%) translateY(-100px);
+    transform: translateY(100%) translateY(-148px);
 
     animation: touch .2s ease-out;
 }
