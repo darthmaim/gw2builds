@@ -31,6 +31,12 @@ export const availableSubSkillIds = handleAction(actions.FETCH_AVAILABLE_SKILLS,
     ));
 }, []);
 
+export const availableFlipSkillIds = handleAction(actions.FETCH_AVAILABLE_SKILLS, (state, actions) => {
+    return Object.values(actions.payload).map(
+        (skill) => skill.flip_skill
+    ).filter(Boolean);
+}, []);
+
 /** Reducer for the available skill objects for the selected profession. */
 export const availableSkillObjects = handleSimpleAction(actions.FETCH_AVAILABLE_SKILLS, {});
 
@@ -60,6 +66,7 @@ export const selectedSkillIds = handleActions({
 export default {
     availableSkillIds,
     availableSubSkillIds,
+    availableFlipSkillIds,
     availableSkillObjects,
     availableProfessionSkillObjects,
     selectedSkillIds
