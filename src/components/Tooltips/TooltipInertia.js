@@ -1,10 +1,13 @@
+// The value und which the tooltip accelerates to hide itself
+const THRESHOLD = 100;
+
 export default class TooltipInertia {
     constructor({
        update
     }) {
         this.updateCallback = update;
         this.bound = 100;
-        this.running = false;
+        this.animationFrame = undefined;
         this.track = [];
         this.friction = 0.89;
         this.value = 0;
@@ -53,13 +56,9 @@ export default class TooltipInertia {
         this.velocity  = delta / (timeDelta / 15);
 
         requestAnimationFrame(this.decelerate);
-
-        console.log('start');
     }
 
     decelerate() {
-        console.log('decelerate');
-
         this.velocity *= this.friction;
         this.value += this.velocity;
 
@@ -69,25 +68,20 @@ export default class TooltipInertia {
             this.velocity = 0;
         }
 
-        // TODO: make this nicer
-        if(this.value > -50) {
-            this.velocity++;
-        } else {
-            if(Math.abs(this.velocity) > 1) {
-                requestAnimationFrame(this.decelerate);
-            }
+        if(this.value > -THRESHOLD) {
+            // speed up if we are below the threshold
+            this.velocity *= 1.2;
+        }
+
+        if(Math.abs(this.velocity) > 1) {
+            this.animationFrame = requestAnimationFrame(this.decelerate);
         }
 
         this.updateCallback(this.value);
     }
 
     stop() {
-        if(this.value < -50) {
-            console.log('stop+');
-
-            this.velocity = 0;
-        } else {
-            console.log('stop-');
-        }
+        cancelAnimationFrame(this.animationFrame);
+        this.velocity = 0;
     }
 }
