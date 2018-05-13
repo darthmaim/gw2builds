@@ -4,9 +4,13 @@ import SkillIcon from '../../../../Icon';
 import SkillTooltip from '../../../../../Tooltips/Skills/TooltipContainer';
 import style from './style.css';
 
-const renderSkillIcon = (skill, index, active, onAttunementChange) => {
+const renderSkillIcon = (id, skills, index, active, onAttunementChange, specializations) => {
     const isActive = index === active;
     const className = isActive ? '' : style.inactive;
+
+    const skill = skills[id] && isActive && specializations.indexOf(48) !== -1
+        ? skills[skills[id].flip_skill]
+        : skills[id];
 
     return (
         <SkillTooltip key={index} skill={skill} action={!isActive ? 'change attunement' : undefined}>
@@ -15,10 +19,13 @@ const renderSkillIcon = (skill, index, active, onAttunementChange) => {
     );
 };
 
-const Elementalist = ({ availableElementalistAttunementObjects, availableSkillObjects, selectedAttunementId, onAttunementChange }) => (
+const Elementalist = ({
+    availableElementalistAttunementObjects, availableSkillObjects, selectedAttunementId, onAttunementChange,
+    selectedSpecializationIds
+}) => (
     <div className={style.attunements}>
         {map(availableElementalistAttunementObjects, ({ attunement, id }) =>
-            renderSkillIcon(availableSkillObjects[id], attunement, selectedAttunementId, onAttunementChange)
+            renderSkillIcon(id, availableSkillObjects, attunement, selectedAttunementId, onAttunementChange, selectedSpecializationIds)
         )}
     </div>
 );
