@@ -44,6 +44,10 @@ class TooltipElement extends Component {
                 this.setState({ tooltip, touch }, () => {
                     if(!tooltip) {
                         this.touch.offset = INITAL_TOUCH_OFFSET;
+                        this.inertia.value = 0;
+                        this.inertia.stop();
+
+                        return;
                     }
 
                     if (touch && this.element) {
@@ -88,8 +92,8 @@ class TooltipElement extends Component {
             return;
         }
 
-        e.preventDefault();
         this.inertia.setBound(-this.element.offsetHeight);
+        this.inertia.stop();
 
         this.touch.identifier = e.changedTouches[0].identifier;
         this.touch.position = e.changedTouches[0].screenY;

@@ -43,17 +43,19 @@ export default class TooltipInertia {
     }
 
     start() {
-        const first = this.track[0];
-        const last = this.track[this.track.length - 1];
+        if(this.track.length >= 2) {
+            const first = this.track[0];
+            const last = this.track[this.track.length - 1];
 
-        const delta = last.value - first.value;
-        const timeDelta = last.time - first.time;
+            const delta = last.value - first.value;
+            const timeDelta = last.time - first.time;
 
-        if(timeDelta > 0) {
-            this.velocity  = delta / (timeDelta / 15);
-
-            requestAnimationFrame(this.decelerate);
+            if(timeDelta > 0) {
+                this.velocity  = delta / (timeDelta / 15);
+            }
         }
+
+        requestAnimationFrame(this.decelerate);
     }
 
     decelerate() {
@@ -86,5 +88,6 @@ export default class TooltipInertia {
     stop() {
         cancelAnimationFrame(this.animationFrame);
         this.velocity = 0;
+        this.track = [];
     }
 }
