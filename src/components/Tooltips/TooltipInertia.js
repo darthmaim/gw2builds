@@ -20,10 +20,6 @@ export default class TooltipInertia {
     }
 
     update(value, time) {
-        if(isNaN(value)) {
-            debugger;
-        }
-
         this.value = value;
 
         if(this.value < this.bound) {
@@ -53,9 +49,11 @@ export default class TooltipInertia {
         const delta = last.value - first.value;
         const timeDelta = last.time - first.time;
 
-        this.velocity  = delta / (timeDelta / 15);
+        if(timeDelta > 0) {
+            this.velocity  = delta / (timeDelta / 15);
 
-        requestAnimationFrame(this.decelerate);
+            requestAnimationFrame(this.decelerate);
+        }
     }
 
     decelerate() {
