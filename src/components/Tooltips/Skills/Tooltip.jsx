@@ -22,7 +22,7 @@ class SkillTooltip extends Component {
 
     render() {
         return (
-            <Tooltip tooltip={this.renderTooltip} ref={(tooltip) => this.tooltip = tooltip}>
+            <Tooltip showIds={this.props.showIds} tooltip={this.renderTooltip} ref={(tooltip) => this.tooltip = tooltip}>
                 {this.props.children}
             </Tooltip>
         );
