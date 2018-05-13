@@ -3,6 +3,7 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import isFunction from 'lodash/isFunction';
+import Inertia from './TooltipInertia';
 import style from './tooltip.css';
 
 const INITAL_TOUCH_OFFSET = -148;
@@ -24,6 +25,9 @@ class TooltipElement extends Component {
         };
 
         this.wasFlipped = false;
+        this.inertia = new Inertia({
+            update: this.handleInertiaUpdate.bind(this)
+        });
 
         this.handleMouseMove = this.handleMouseMove.bind(this);
         this.setElementRef = this.setElementRef.bind(this);
@@ -40,11 +44,20 @@ class TooltipElement extends Component {
                 this.setState({ tooltip, touch }, () => {
                     if(!tooltip) {
                         this.touch.offset = INITAL_TOUCH_OFFSET;
+                        this.inertia.value = 0;
+                        this.inertia.stop();
+
+                        return;
                     }
 
                     if (touch && this.element) {
-                        this.touch.offset = Math.max(Math.min(-100, this.touch.offset), -this.element.offsetHeight);
-                        this.element.style.transform = `translateY(100%) translateY(${this.touch.offset}px)`;
+                        this.inertia.setBound(-this.element.offsetHeight);
+                        if(this.inertia.value < 0) {
+                            this.inertia.stop();
+                            this.inertia.start();
+                        } else {
+                            this.inertia.update(Math.min(INITAL_TOUCH_OFFSET, this.inertia.value), Date.now());
+                        }
                     }
                 });
             }
@@ -84,6 +97,9 @@ class TooltipElement extends Component {
             return;
         }
 
+        this.inertia.setBound(-this.element.offsetHeight);
+        this.inertia.stop();
+
         this.touch.identifier = e.changedTouches[0].identifier;
         this.touch.position = e.changedTouches[0].screenY;
     }
@@ -99,11 +115,7 @@ class TooltipElement extends Component {
             if (touch.identifier === this.touch.identifier) {
                 const delta = touch.screenY - this.touch.position;
                 this.touch.position = touch.screenY;
-                this.touch.offset += delta;
-
-                this.touch.offset = Math.max(this.touch.offset, -this.element.offsetHeight);
-
-                this.element.style.transform = `translateY(100%) translateY(${this.touch.offset}px)`;
+                this.inertia.update(this.inertia.value + delta, Date.now());
             }
         });
     }
@@ -115,8 +127,15 @@ class TooltipElement extends Component {
 
         this.touch.identifier = undefined;
 
-        if (this.touch.offset >= -30) {
-            this.context.tooltipContext.hideTooltip(e);
+        this.inertia.start();
+    }
+
+    handleInertiaUpdate(value) {
+        this.element.style.transform = `translateY(100%) translateY(${value}px)`;
+
+        if (this.inertia.value === 0) {
+            this.inertia.stop();
+            this.context.tooltipContext.hideTooltip();
         }
     }
 

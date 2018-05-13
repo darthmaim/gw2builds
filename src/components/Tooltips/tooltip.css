@@ -16,8 +16,9 @@
 }
 
 .touch .inner {
-    margin: 0 auto;
+    margin: 0 auto -100vh;
     box-shadow: none;
+    padding-bottom: calc(100vh + 12px);
 }
 
 .touch {
@@ -30,14 +31,13 @@
 
     z-index: 100;
     will-change: transform;
-    transform: translateY(100%) translateY(-100px);
+    transform: translateY(100%) translateY(-148px);
 
     animation: touch .2s ease-out;
 }
 
 @keyframes touch {
       0% { transform: translateY(100%) translateY(-0px); }
-      100% { transform: translateY(100%) translateY(-148px); }
 }
 
 :global(.color-format--abilitytype) {
