@@ -23,6 +23,8 @@ class TooltipElement extends Component {
             touch: false
         };
 
+        this.wasFlipped = false;
+
         this.handleMouseMove = this.handleMouseMove.bind(this);
         this.setElementRef = this.setElementRef.bind(this);
 
@@ -66,7 +68,12 @@ class TooltipElement extends Component {
             const { width, height } = this.element.getBoundingClientRect();
 
             x = Math.min(x, window.innerWidth - width);
-            y = y + height > window.innerHeight ? Math.max(y - height, 0) : y;
+
+            const fitsBottom = y + height < window.innerHeight;
+            const flipped = !fitsBottom && (this.wasFlipped || (y - height > 0));
+            this.wasFlipped = flipped;
+
+            y = flipped ? Math.max(y - height, 0) : Math.min(y, window.innerHeight - height);
 
             this.element.style.transform = `translate(${x}px, ${y}px)`;
         }
