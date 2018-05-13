@@ -52,7 +52,12 @@ class TooltipElement extends Component {
 
                     if (touch && this.element) {
                         this.inertia.setBound(-this.element.offsetHeight);
-                        this.inertia.update(Math.min(INITAL_TOUCH_OFFSET, this.inertia.value), Date.now());
+                        if(this.inertia.value < 0) {
+                            this.inertia.stop();
+                            this.inertia.start();
+                        } else {
+                            this.inertia.update(Math.min(INITAL_TOUCH_OFFSET, this.inertia.value), Date.now());
+                        }
                     }
                 });
             }
