@@ -1,0 +1,16 @@
+.group {
+    display: flex;
+    flex-direction: column;
+    margin: 0 16px 8px 0;
+}
+
+.inline {
+    composes: group;
+
+    display: inline-flex;
+}
+
+.group > label {
+    font-weight: bold;
+    margin-bottom: 8px;
+}

@@ -2,6 +2,10 @@
     display: none;
 }
 
+.container {
+    margin: 16px 0;
+}
+
 :external(dropdown from '../../Inputs/Select/Select.css') .specializationRequirement {
     display: initial;
     color: #aaa;

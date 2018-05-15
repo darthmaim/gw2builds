@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import SetButton from './SetButton';
+import InputGroup from '../../Inputs/Group/InputGroup';
 
 class SetSelection extends Component {
     constructor(props, context) {
@@ -24,14 +25,14 @@ class SetSelection extends Component {
         ];
 
         return (
-            <div>
+            <InputGroup title={'Weapon Set'}>
                 {sets.map((set, index) => set.enabled && (
                     <SetButton key={index} isActive={activeWeaponSet === index} onClick={this.handleClick(index)}>
                         <img src={set.icon} alt=""/>
                         {set.name}
                     </SetButton>
                 ))}
-            </div>
+            </InputGroup>
         );
     }
 }
