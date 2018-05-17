@@ -1,8 +1,15 @@
 import { createAction } from 'redux-actions';
-import { createChainedAction, createConditionalAction, createApiAction } from './utils';
+import {
+    createChainedAction,
+    createConditionalAction,
+    createApiAction,
+    createStateAwareAction,
+    convertToIndexed
+} from './utils';
 import { fetchAvailableSpecializations } from './specializations';
 import { fetchAvailableSkillsWithRelated } from './skills';
 
+export const LOAD_BASE_DATA = 'LOAD_BASE_DATA';
 export const FETCH_PROFESSION = 'FETCH_PROFESSION';
 export const SET_SELECTED_LANGUAGE = 'SET_SELECTED_LANGUAGE';
 export const SET_SELECTED_GAMEMODE = 'SET_SELECTED_GAMEMODE';
@@ -10,13 +17,26 @@ export const SET_SELECTED_PROFESSION = 'SET_SELECTED_PROFESSION';
 export const SET_SELECTED_RACE = 'SET_SELECTED_RACE';
 export const SET_IS_LOADING = 'SET_IS_LOADING';
 
+export const loadBaseData = createApiAction(
+    LOAD_BASE_DATA,
+    (state, api) => Promise.all([
+        Promise.resolve([{id: 'pve'}, {id: 'pvp'}, {id: 'wvw'}]).then(convertToIndexed),
+        api.professions().all().then(convertToIndexed),
+        api.races().all().then(convertToIndexed)
+    ]).then(
+        ([availableGameModes, availableProfessions, availableRaces]) => ({
+            availableGameModes, availableProfessions, availableRaces
+        })
+    )
+);
+
 /** Action to fetch the selected profession from the GW2 API. */
 export const fetchProfession = createConditionalAction(
     (state) => state.selectedProfession !== null,
     createChainedAction(
         createApiAction(
             FETCH_PROFESSION,
-            (state, api) => api.professions().get(state.selectedProfession)
+            (state, api) => state.availableProfessions[state.selectedProfession]
         ),
         [fetchAvailableSpecializations, fetchAvailableSkillsWithRelated]
     )
@@ -25,7 +45,7 @@ export const fetchProfession = createConditionalAction(
 /** Action to set the selected language. Params: { language } */
 export const setSelectedLanguage = createChainedAction(
     createAction(SET_SELECTED_LANGUAGE),
-    fetchProfession
+    [loadBaseData, fetchProfession]
 );
 
 /** Action to set the selected game mode. Params: { gameMode } */

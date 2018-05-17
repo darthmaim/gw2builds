@@ -15,6 +15,8 @@ import { initializeBuildFromString } from './utils/build-string';
 import { init as initAnalytics } from './utils/analytics';
 import { syncMiddleware } from 'redux-sync-reducer';
 import { composeWithDevTools } from 'redux-devtools-extension';
+import { loadBaseData, setAvailableGameModes, setAvailableProfessions, setAvailableRaces } from './actions';
+import { convertToIndexed } from './actions/utils';
 
 initAnalytics();
 
@@ -35,8 +37,10 @@ class Editor extends React.Component {
         // Get an existing build string for initialization
         const path = window.location.pathname.substr(1);
 
+        const init = store.dispatch(loadBaseData());
+
         if (path) {
-            initializeBuildFromString(store.dispatch, path)
+            init.then(() => initializeBuildFromString(store.dispatch, path))
                 .then(build => {
                     console.log('Loaded build from url:', build);
                 })
