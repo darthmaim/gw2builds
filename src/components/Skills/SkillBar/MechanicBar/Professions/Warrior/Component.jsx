@@ -44,12 +44,29 @@ const renderSkill = ({ availableProfessionSkillObjects, availableSkillObjects, w
     }
 };
 
+const renderBerserkerSkill = ({ availableProfessionSkillObjects, availableSkillObjects, selectedEliteSpecializationId }) => {
+    if(selectedEliteSpecializationId !== 18) {
+        return null;
+    }
+
+    // hardcoded, because there is no way to distinguish between skills 30435 and 30185.
+    // 30185 is the one documented in the wiki and equipped ingame. I'm not sure when 30185 is used.
+    const skill = availableSkillObjects[30435];
+
+    return (
+        <SkillTooltip skill={skill}>
+            <SkillIcon skill={skill} size={32}/>
+        </SkillTooltip>
+    );
+};
+
 const Warrior = (props) => (
     <div className={style.component}>
         <div className={style.bar}>
             <span/><span/><span/>
         </div>
         {renderSkill(props)}
+        {renderBerserkerSkill(props)}
     </div>
 );
 

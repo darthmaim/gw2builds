@@ -8,12 +8,13 @@
     flex: 1;
     line-height: 16px;
     align-self: center;
+    display: flex;
 }
 
 .bar > span {
     border: 1px solid #6c3c06;
     display: inline-block;
-    width: 90px;
+    flex: 1;
     margin-right: 4px;
     height: 16px;
     background: linear-gradient(to right, #fdef00, #fac600);
