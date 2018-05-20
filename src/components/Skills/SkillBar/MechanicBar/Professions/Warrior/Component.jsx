@@ -5,13 +5,38 @@ import SkillIcon from '../../../../Icon';
 import SkillTooltip from '../../../../../Tooltips/Skills/TooltipContainer';
 import style from './style.css';
 
-const renderSkill = (availableSkillObjects, availableProfessionSkillObjects, weapon) => {
-    const possibleSkill = filter(availableProfessionSkillObjects, s => s.slot == 'Profession_2' && availableSkillObjects[s.id] && includes(availableSkillObjects[s.id].categories, 'Burst') && availableSkillObjects[s.id].weapon_type === weapon);
+const renderSkill = ({ availableProfessionSkillObjects, availableSkillObjects, weapon, selectedEliteSpecializationId }) => {
+    const allPossibleSkills = filter(
+        availableProfessionSkillObjects,
+        (skill) => skill.slot === 'Profession_1' &&
+            availableSkillObjects[skill.id] &&
+            includes(availableSkillObjects[skill.id].categories, 'Burst') &&
+            availableSkillObjects[skill.id].weapon_type === weapon
+    );
 
-    if (possibleSkill.length) {
+    const possibleSkillsWithCorrectEliteSpec = allPossibleSkills.filter(
+        (skill) => availableSkillObjects[skill.id].specialization === selectedEliteSpecializationId
+    );
+
+    const possibleSkillsWithNoSpecialization = allPossibleSkills.filter(
+        (skill) => availableSkillObjects[skill.id].specialization === undefined
+    );
+
+    // use skills with correct elite spec, fallback to skills without specialization requirement
+    const possibleSkills = possibleSkillsWithCorrectEliteSpec.length
+        ? possibleSkillsWithCorrectEliteSpec
+        : possibleSkillsWithNoSpecialization;
+
+    console.assert(
+        weapon === undefined || possibleSkills.length === 1,
+        `Expected to find a single burst skill for ${weapon}, but found ${possibleSkills.length}:`,
+        possibleSkills
+    );
+
+    if (possibleSkills.length) {
         return (
-            <SkillTooltip skill={availableSkillObjects[possibleSkill[0].id]}>
-                <SkillIcon skill={availableSkillObjects[possibleSkill[0].id]} size={32}/>
+            <SkillTooltip skill={availableSkillObjects[possibleSkills[0].id]}>
+                <SkillIcon skill={availableSkillObjects[possibleSkills[0].id]} size={32}/>
             </SkillTooltip>
         );
     } else {
@@ -19,12 +44,12 @@ const renderSkill = (availableSkillObjects, availableProfessionSkillObjects, wea
     }
 };
 
-const Warrior = ({ availableProfessionSkillObjects, availableSkillObjects, weapon }) => (
+const Warrior = (props) => (
     <div className={style.component}>
         <div className={style.bar}>
             <span/><span/><span/>
         </div>
-        {renderSkill(availableSkillObjects, availableProfessionSkillObjects, weapon)}
+        {renderSkill(props)}
     </div>
 );
 
