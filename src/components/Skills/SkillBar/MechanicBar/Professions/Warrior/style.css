@@ -26,3 +26,9 @@
 .bar > span:last-child {
     background: linear-gradient(to right, #fab400, #f48800);
 }
+.bar > span:first-child:nth-last-child(2) {
+    background: linear-gradient(to right, #fef800, #fbdb00);
+}
+.bar > span:last-child:nth-child(2) {
+    background: linear-gradient(to right, #fbd300, #f48800);
+}

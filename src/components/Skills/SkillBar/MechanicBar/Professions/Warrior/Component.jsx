@@ -5,6 +5,9 @@ import SkillIcon from '../../../../Icon';
 import SkillTooltip from '../../../../../Tooltips/Skills/TooltipContainer';
 import style from './style.css';
 
+const SPEC_BERSERKER = 18;
+const SPEC_SPELLBREAKER = 61;
+
 const renderSkill = ({ availableProfessionSkillObjects, availableSkillObjects, weapon, selectedEliteSpecializationId }) => {
     const allPossibleSkills = filter(
         availableProfessionSkillObjects,
@@ -44,14 +47,19 @@ const renderSkill = ({ availableProfessionSkillObjects, availableSkillObjects, w
     }
 };
 
-const renderBerserkerSkill = ({ availableProfessionSkillObjects, availableSkillObjects, selectedEliteSpecializationId }) => {
-    if(selectedEliteSpecializationId !== 18) {
-        return null;
-    }
-
+const renderEliteSkill = ({ availableProfessionSkillObjects, availableSkillObjects, selectedEliteSpecializationId }) => {
     // hardcoded, because there is no way to distinguish between skills 30435 and 30185.
     // 30185 is the one documented in the wiki and equipped ingame. I'm not sure when 30185 is used.
-    const skill = availableSkillObjects[30435];
+    const eliteSkills = {
+        [SPEC_BERSERKER]: 30435,
+        [SPEC_SPELLBREAKER]: 44165
+    };
+
+    const skill = availableSkillObjects[eliteSkills[selectedEliteSpecializationId]];
+
+    if(!skill) {
+        return null;
+    }
 
     return (
         <SkillTooltip skill={skill}>
@@ -63,10 +71,11 @@ const renderBerserkerSkill = ({ availableProfessionSkillObjects, availableSkillO
 const Warrior = (props) => (
     <div className={style.component}>
         <div className={style.bar}>
-            <span/><span/><span/>
+            <span/><span/>
+            {props.selectedEliteSpecializationId !== SPEC_SPELLBREAKER && (<span/>)}
         </div>
         {renderSkill(props)}
-        {renderBerserkerSkill(props)}
+        {renderEliteSkill(props)}
     </div>
 );
 
