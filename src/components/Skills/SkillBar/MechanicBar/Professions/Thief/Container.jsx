@@ -5,7 +5,8 @@ import { getSelectedMinorTraitIds } from '../../../../../../selectors/specializa
 const mapStateToProps = (state, ownProps) => ({
     availableSkillObjects: state.availableSkillObjects,
     availableProfessionSkillObjects: state.availableProfessionSkillObjects,
-    selectedMinorTraitIds: getSelectedMinorTraitIds(state, ownProps)
+    selectedMinorTraitIds: getSelectedMinorTraitIds(state, ownProps),
+    selectedSpecializationIds: state.selectedSpecializationIds
 });
 
 export default connect(mapStateToProps)(Thief);
