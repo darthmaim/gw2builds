@@ -20,7 +20,15 @@ export const selectedElementalistAttunementId = handleActions({
 /** Reducer for the selected weaver previous attunement id. */
 export const selectedWeaverPreviousAttunementId = handleActions({
     // Set the attunement
-    [actions.SET_SELECTED_WEAVER_PREVIOUS_ATTUNEMENT_ID]: (state, action) => action.payload.attunementId,
+    [actions.SET_SELECTED_ELEMENTALIST_ATTUNEMENT_ID]: (state, action) => {
+        const {attunementId, previousAttunementId, isWeaver} = action.payload;
+
+        if(!isWeaver) {
+            return attunementId;
+        }
+
+        return previousAttunementId;
+    },
 
     // Reset the attunement
     [actions.SET_SELECTED_PROFESSION]: () => 'Fire'
