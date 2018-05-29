@@ -18,10 +18,18 @@
 .option {
     margin: -16px;
     padding: 8px 16px;
+    display: flex;
+    align-items: center;
 }
 
 .icon {
     margin-right: 8px;
+    align-self: flex-start;
+    flex-shrink: 0;
+}
+
+.name {
+    margin-top: -2px;
 }
 
 :external(dropdown from '../Inputs/Select/Select.css')
