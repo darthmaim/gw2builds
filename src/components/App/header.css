@@ -36,9 +36,10 @@
     margin-right: 16px;
     cursor: pointer;
     transition: all .3s ease;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
 }
 
-.more:hover {
+.more:hover, .more:active {
     background: rgba(255,255,255,.3);
 }
 
