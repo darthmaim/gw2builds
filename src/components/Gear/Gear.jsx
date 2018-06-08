@@ -1,7 +1,8 @@
 import React from 'react';
 import map from 'lodash/map';
 import { weaponIs2Handed } from '../../utils/gw2';
-import Row from './RowContainer';
+import GearRow from './GearRowContainer';
+import UpgradeRow from './UpgradeRow';
 import style from './Gear.css';
 import * as GearConstants from './Constants';
 
@@ -54,7 +55,12 @@ export default ({selectedMainhandWeaponIds, selectedOffhandWeaponIds, hasMultipl
                 <header className={style.header}>{type}</header>
                 {map(rows, (row, index) =>
                     (row.visible === undefined || row.visible) &&
-                    <Row key={index} slot={row.slot} text={row.text}/>
+                    (<div className={style.slot}>
+                        <GearRow key={index} slot={row.slot} text={row.text}/>
+                        {map(row.slot.upgrades, (upgrade, index) => (
+                            <UpgradeRow key={index} slot={upgrade}/>
+                        ))}
+                    </div>)
                 )}
             </section>
         ))}

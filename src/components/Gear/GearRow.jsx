@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import style from './Row.css';
+import style from './GearRow.css';
 import Select from '../Inputs/Select/Select';
 import map from 'lodash/map';
 import cx from 'classnames';
@@ -20,7 +20,7 @@ function slotToAvailability(slot) {
     }[slot.type.category];
 }
 
-class Row extends React.Component {
+class GearRow extends React.Component {
     constructor(props, context) {
         super(props, context);
 
@@ -91,6 +91,17 @@ class Row extends React.Component {
                                 </button>
                             </td>
                         </tr>
+                        {this.props.slot.upgrades.map((upgrade, index) => (
+                            <tr>
+                                <td>Upgrade:</td>
+                                <td>{this.renderAttributeSelect(availableItemstats)}</td>
+                                <td>
+                                    <button className={style.copyButton} onClick={() => this.props.onCopyItemstatId(this.props.itemstatId)}>
+                                        <img src="/img/general/copy.svg"/>Copy to all
+                                    </button>
+                                </td>
+                            </tr>
+                        ))}
                     </tbody></table>
                 </div>
             </Overlay>
@@ -136,7 +147,7 @@ class Row extends React.Component {
     }
 }
 
-Row.propTypes = {
+GearRow.propTypes = {
     slot: PropTypes.shape({
         type: PropTypes.shape({
             id: PropTypes.string.isRequired,
@@ -146,4 +157,4 @@ Row.propTypes = {
     }).isRequired
 };
 
-export default Row;
+export default GearRow;

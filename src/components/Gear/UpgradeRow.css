@@ -1,0 +1,10 @@
+.row {
+    border-top: 1px dashed #eee;
+
+    align-items: center;
+    box-sizing: border-box;
+    display: flex;
+    flex-wrap: wrap;
+    min-height: 45px;
+    padding: 4px 0;
+}
