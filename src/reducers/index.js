@@ -1,6 +1,15 @@
 import { combineReducers } from 'redux';
 
-import { selectedLanguage, selectedGameMode, selectedProfession, selectedRace, isLoading } from './general';
+import {
+    selectedLanguage,
+    availableGameModes,
+    selectedGameMode,
+    availableProfessions,
+    selectedProfession,
+    availableRaces,
+    selectedRace,
+    isLoading
+} from './general';
 import { importDialogVisible, importApiKeys } from './import';
 import {
     activeWeaponSet, availableWeaponObjects, hasMultipleWeaponSets,
@@ -27,8 +36,11 @@ import { settings } from './settings';
 export default combineReducers({
     // General
     selectedLanguage,
+    availableGameModes,
     selectedGameMode,
+    availableProfessions,
     selectedProfession,
+    availableRaces,
     selectedRace,
     isLoading,
 
