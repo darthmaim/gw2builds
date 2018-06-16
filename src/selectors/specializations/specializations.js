@@ -28,6 +28,16 @@ export const getSelectedSpecializationId = createSelector(
     (selectedSpecializationIds, specializationLine) => selectedSpecializationIds[specializationLine]
 );
 
+/**
+ * Returns the currently selected elite specialization id or undefined.
+ */
+export const getSelectedEliteSpecializationId = createSelector(
+    [getSelectedSpecializationIds, getAvailableSpecializationObjects],
+    (selected, available) => selected.filter(
+        (id) => available[id] && available[id].elite === true
+    )[0]
+);
+
 export default {
     getCoreSpecializationIds,
     getEliteSpecializationIds,

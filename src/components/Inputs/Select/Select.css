@@ -55,6 +55,7 @@
 .options {
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain;
     flex: 1;
     flex-basis: auto;
 }
@@ -125,7 +126,6 @@
     top: 0;
 }
 
-:global(.js-select-disable-scroll),
 :global(.js-select-disable-scroll) body,
 :global(.js-select-disable-scroll) :external(panel from '../../App/MainContent/mainContent.css'),
 :global(.js-select-disable-scroll) :external(stats from '../../App/content.css') {

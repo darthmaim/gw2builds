@@ -9,6 +9,9 @@ export default class Header extends Component {
     constructor(props, context) {
         super(props, context);
 
+        this.handleBeforeInstallPrompt = this.handleBeforeInstallPrompt.bind(this);
+        this.handleInstallPrompt = this.handleInstallPrompt.bind(this);
+
         this.onToggleDropdown = this.onToggleDropdown.bind(this);
 
         this.onLoadBuild = this.onLoadBuild.bind(this);
@@ -26,8 +29,31 @@ export default class Header extends Component {
             dropdown: false,
             shareDialog: false,
             settingsDialog: false,
-            aboutDialog: false
+            aboutDialog: false,
+            beforeinstallprompt: undefined
         };
+    }
+
+    componentDidMount() {
+        window.addEventListener('beforeinstallprompt', this.handleBeforeInstallPrompt);
+    }
+
+    componentWillUnmount() {
+        window.removeEventListener('beforeinstallprompt', this.handleBeforeInstallPrompt);
+    }
+
+    handleBeforeInstallPrompt(e) {
+        e.preventDefault();
+
+        this.setState({ beforeinstallprompt: e });
+    }
+
+    handleInstallPrompt() {
+        const installPrompt = this.state.beforeinstallprompt;
+        installPrompt.prompt();
+        installPrompt.userChoice.then(
+            () => this.setState({ beforeinstallprompt: undefined })
+        );
     }
 
     onToggleDropdown() {
@@ -96,6 +122,11 @@ export default class Header extends Component {
                 </div>
                 {dropdown && (<Overlay onClick={this.onToggleDropdown}>
                     <div className={style.options}>
+                        {this.state.beforeinstallprompt && (
+                            <button type="button" className={style.option} onClick={this.handleInstallPrompt}>
+                                Add to homescreen
+                            </button>
+                        )}
                         <button type="button" className={style.option} onClick={this.onLoadBuild}>Load Build</button>
                         <button type="button" className={style.option} onClick={this.onResetBuild}>Clear Build</button>
                         <button type="button" className={style.option} onClick={this.onShareBuild}>Share Build</button>
