@@ -47,6 +47,23 @@ html, body {
     opacity: 1;
 }
 
+.dialogButton {
+    composes: input from '../Inputs/Inputs.css';
+
+    background: #3023ae;
+    color: white;
+    padding: 8px 16px;
+    display: block;
+    margin-top: 8px;
+    width: 100%;
+    cursor: pointer;
+    transition: background-color .3s ease;
+}
+
+.dialogButton:hover {
+    background-color: #c86dd7;
+}
+
 @media(max-width: 768px) {
     .frame {
         height: auto;

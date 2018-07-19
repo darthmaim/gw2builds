@@ -60,7 +60,10 @@ export const setSelectedProfession = createChainedAction(
 /** Action to set the selected race. Params: { race } */
 export const setSelectedRace = createAction(SET_SELECTED_RACE);
 
-/** Action to set the selected race. Params: { race } */
+/**
+ * Action to set the selected race. Params: { loading }
+ * @type {function({loading: boolean}): Promise}
+ */
 export const setIsLoading = createAction(SET_IS_LOADING);
 
 export default {

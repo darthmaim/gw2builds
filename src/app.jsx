@@ -15,8 +15,7 @@ import { initializeBuildFromString } from './utils/build-string';
 import { init as initAnalytics } from './utils/analytics';
 import { syncMiddleware } from 'redux-sync-reducer';
 import { composeWithDevTools } from 'redux-devtools-extension';
-import { loadBaseData, setAvailableGameModes, setAvailableProfessions, setAvailableRaces } from './actions';
-import { convertToIndexed } from './actions/utils';
+import { loadBaseData, setIsLoading } from './actions';
 
 initAnalytics();
 
@@ -31,14 +30,37 @@ const store = createStore(editor, initialState, composeWithDevTools(
 class Editor extends React.Component {
     constructor(props, context) {
         super(props, context);
+
+        this.state = {
+            error: undefined
+        };
     }
 
     componentWillMount() {
         // Get an existing build string for initialization
         const path = window.location.pathname.substr(1);
 
+        store.dispatch(setIsLoading({ loading: true }));
         const init = store.dispatch(loadBaseData());
 
+        // handle errors while loading initial data
+        init.catch((error) => {
+            store.dispatch(setIsLoading({ loading: false }));
+            console.error(error);
+            this.setState({
+                error: {
+                    title: 'API Error',
+                    text: (
+                        <div>
+                            Couldn't load required data from the official{' '}
+                            <span style={{whiteSpace: 'nowrap'}}>Guild Wars 2 API</span>.
+                        </div>
+                    )
+                }
+            });
+        });
+
+        // load buildstring if path is set
         if (path) {
             init.then(() => initializeBuildFromString(store.dispatch, path))
                 .then(build => {
@@ -48,6 +70,8 @@ class Editor extends React.Component {
                     console.log('Couldn\'t load build from url:', e);
                     window.history.replaceState(undefined, '', '/');
                 });
+        } else {
+            init.then(() => store.dispatch(setIsLoading({ loading: false })));
         }
     }
 
@@ -69,7 +93,7 @@ class Editor extends React.Component {
             <IntlProvider locale={this.props.locale}>
                 <TooltipContext>
                     <Select.Context>
-                        <Layout loading={this.props.loading}/>
+                        <Layout loading={this.props.loading} error={this.state.error}/>
                     </Select.Context>
                 </TooltipContext>
             </IntlProvider>
