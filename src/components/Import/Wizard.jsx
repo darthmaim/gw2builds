@@ -1,33 +1,36 @@
 import React from 'react';
-import { STATE_ADDKEY, STATE_OVERVIEW } from './States';
-import style from './Wizard.css';
+import Dialog from '../Inputs/Dialog/Dialog';
 import Overview from './OverviewContainer';
 import AddKey from './AddKeyContainer';
 import Overlay from '../App/Overlay/Overlay';
+import style from './Wizard.css';
+
+const VIEW_OVERVIEW = 'overview';
+const VIEW_ADDKEY = 'addkey';
 
 export default class extends React.Component {
-    constructor(props, context) {
-        super(props, context);
+    constructor(props) {
+        super(props);
 
         this.state = {
-            content: {
-                state: STATE_OVERVIEW,
-                props: {}
-            }
+            view: VIEW_OVERVIEW,
         };
 
-        this.handleStateChange = this.handleStateChange.bind(this);
         this.handleClose = this.handleClose.bind(this);
-    }
-
-    handleStateChange(state, props = {}) {
-        this.setState({
-            content: { state, props }
-        });
+        this.handleShowAddKey = this.handleShowAddKey.bind(this);
+        this.handleShowOverview = this.handleShowOverview.bind(this);
     }
 
     handleClose() {
         this.props.setImportDialogVisible(false);
+    }
+
+    handleShowAddKey() {
+        this.setState({ view: VIEW_ADDKEY });
+    }
+
+    handleShowOverview() {
+        this.setState({ view: VIEW_OVERVIEW });
     }
 
     render() {
@@ -35,22 +38,29 @@ export default class extends React.Component {
             return null;
         }
 
-        const { content } = this.state;
-        const Component = this.stateToComponent(content.state);
+        const { view } = this.state;
 
         return (
             <Overlay>
-                <div className={style.container}>
-                    <Component onStateChange={this.handleStateChange} onClose={this.handleClose} {...content.props}/>
-                </div>
+                <Dialog onClose={this.handleClose} title={this.renderTitle(view)}>
+                    {view === VIEW_OVERVIEW && <Overview onShowAddKey={this.handleShowAddKey}/>}
+                    {view === VIEW_ADDKEY && <AddKey onBack={this.handleShowOverview}/>}
+                </Dialog>
             </Overlay>
         );
     }
 
-    stateToComponent(state) {
-        switch(state) {
-            case STATE_OVERVIEW: return Overview;
-            case STATE_ADDKEY: return AddKey;
+    renderTitle(view) {
+        switch (view) {
+            case VIEW_OVERVIEW: return 'Load build';
+            case VIEW_ADDKEY: return (
+                <span>
+                    <button type="button" className={style.backButton} onClick={this.handleShowOverview}>
+                        <img src="/img/general/back.svg" alt="Back"/>
+                    </button>
+                    Add API key
+                </span>
+            )
         }
     }
 }

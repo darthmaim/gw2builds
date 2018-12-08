@@ -1,9 +1,7 @@
 import React from 'react';
 import isEqual from 'lodash/isEqual'
-import { STATE_ADDKEY } from './States';
 import { api } from '../../utils/api';
 import style from './Overview.css';
-import Header from './Header';
 import { TYPE_PVE, TYPE_PVP, TYPE_WVW } from './loadBuild';
 
 const SOURCE_API = 'api';
@@ -13,17 +11,12 @@ class Overview extends React.Component {
     constructor(props, context) {
         super(props, context);
 
-        this.handleAddApiKey = this.handleAddApiKey.bind(this);
         this.handleFocus = this.handleFocus.bind(this);
 
         this.state = {
             [SOURCE_API]: { loading: true, accounts: [] },
             [SOURCE_GW2EFFICIENCY]: { loading: true, accounts: [] }
         }
-    }
-
-    handleAddApiKey() {
-        this.props.onStateChange(STATE_ADDKEY);
     }
 
     componentDidMount() {
@@ -89,7 +82,6 @@ class Overview extends React.Component {
 
         return (
             <div>
-                <Header onClose={this.props.onClose}>Load build</Header>
                 {accounts.length > 0 && (
                     <input type="search"
                            className={style.search}
@@ -104,7 +96,7 @@ class Overview extends React.Component {
                     </div>
                 )}
                 {accounts.map(this.renderAccount, this)}
-                <button type="button" onClick={this.handleAddApiKey} className={style.addButton}>
+                <button type="button" onClick={this.props.onShowAddKey} className={style.addButton}>
                     <span className={style.addButtonIcon}>+</span> Add API key
                 </button>
             </div>
