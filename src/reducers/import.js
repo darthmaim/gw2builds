@@ -9,7 +9,8 @@ export const importDialogVisible = handleSimpleAction(actions.SET_IMPORT_DIALOG_
 /** The api keys reducer. */
 export const importApiKeys = syncedReducer(handleActions({
     // Add a new API key
-    [actions.ADD_IMPORT_API_KEY]: (state, action) => [...state, action.payload],
+    [actions.ADD_IMPORT_API_KEY]:
+        (apiKeys, { payload: apiKey }) => apiKeys.indexOf(apiKey) === -1 ? [...apiKeys, apiKey] : apiKeys,
 
     // Remove a API key
     [actions.REMOVE_IMPORT_API_KEY]: (state, action) => state.filter(apiKey => apiKey !== action.payload)
