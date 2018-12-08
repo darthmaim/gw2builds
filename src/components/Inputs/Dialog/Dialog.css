@@ -10,6 +10,11 @@
     padding: 16px;
     width: 400px;
     box-sizing: border-box;
+    animation: dialog .2s ease;
+}
+
+@keyframes dialog {
+    from { opacity: 0; transform: scale(1.05); }
 }
 
 .header {
