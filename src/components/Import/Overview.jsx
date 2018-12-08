@@ -14,6 +14,8 @@ class Overview extends React.Component {
         this.handleFocus = this.handleFocus.bind(this);
 
         this.state = {
+            search: '',
+
             [SOURCE_API]: { loading: true, accounts: [] },
             [SOURCE_GW2EFFICIENCY]: { loading: true, accounts: [] }
         }
@@ -128,7 +130,13 @@ class Overview extends React.Component {
     }
 
     renderCharacter(character) {
-        if(this.state.search && character.name.toLowerCase().indexOf(this.state.search.toLowerCase()) === -1) {
+        const searchString = this.state.search.toLowerCase();
+
+        const matchesSearch = searchString === '' ||
+            character.name.toLowerCase().indexOf(searchString) !== -1 ||
+            character.profession.toLowerCase().indexOf(searchString) !== -1
+
+        if(!matchesSearch) {
             return null;
         }
 
