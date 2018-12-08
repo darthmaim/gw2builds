@@ -135,7 +135,10 @@ class MainContent extends React.Component {
         }
 
         this.panelNode = ref;
-        this.panelNode.addEventListener('scroll', this.handleScroll);
+
+        if(this.panelNode) {
+            this.panelNode.addEventListener('scroll', this.handleScroll);
+        }
     }
 
     setSectionRef(section) {
