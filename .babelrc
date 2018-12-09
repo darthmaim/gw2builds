@@ -1,6 +1,7 @@
 {
   "plugins": [
     "lodash",
+    "transform-class-properties",
     [
       "react-intl",
       {
