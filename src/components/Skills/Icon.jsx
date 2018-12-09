@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import classnames from 'classnames';
-import style from './Icon.css';
+import style from './Icon.module.css';
 
 const inlineSize = size => size && size !== 64
     ? { width: size, height: size }

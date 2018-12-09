@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Overlay from '../Overlay/Overlay';
 import Dialog from './../../Inputs/Dialog/Dialog';
-import style from './ShareDialog.css';
+import style from './ShareDialog.module.css';
 
 const onFocus = ({target}) => target.select();
 

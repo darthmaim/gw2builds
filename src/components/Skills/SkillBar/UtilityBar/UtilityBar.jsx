@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import SkillTooltip from '../../../Tooltips/Skills/TooltipContainer';
 import SkillIcon from '../../Icon';
 import SkillSelect from '../../SkillSelect';
-import style from './UtilityBar.css';
+import style from './UtilityBar.module.css';
 
 const slots = [
     'Heal',

@@ -1,0 +1,15 @@
+{
+  "name": "gw2efficiency Build Editor",
+  "short_name": "Build Editor",
+  "description": "The gw2efficiency Build Editor is a new online build editor for Guild Wars 2 using the official API to always have up-to-date skill, trait and gear data.",
+  "lang": "en-US",
+  "start_url": "/",
+  "display": "standalone",
+  "theme_color": "#3023ae",
+  "background_color": "#ffffff",
+  "icons": [{
+    "src": "favicon.ico",
+    "sizes": "64x64 32x32 24x24 16x16",
+    "type": "image/x-icon"
+  }]
+}

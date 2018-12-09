@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Overlay from '../Overlay/Overlay';
 import Dialog from './../../Inputs/Dialog/Dialog';
-import style from './SettingsDialog.css';
+import style from './SettingsDialog.module.css';
 import { LANGUAGES } from '../Sidebar/LanguageSelector/LanguageSelector';
 import Select from '../../Inputs/Select/Select';
 

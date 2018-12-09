@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
 import InputGroup from '../Inputs/Group/InputGroup';
 import Select from '../Inputs/Select/Select';
-import style from './General.css';
+import style from './General.module.css';
 
 export default (props) => (
     <Fragment>

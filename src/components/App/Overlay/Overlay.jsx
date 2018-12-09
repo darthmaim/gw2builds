@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
-import style from './Overlay.css';
+import style from './Overlay.module.css';
 
 let overlayRoot;
 function getOverlayRoot() {

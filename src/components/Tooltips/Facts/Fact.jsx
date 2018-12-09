@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import { format } from 'gw2-tooltip-html';
-import style from './fact.css';
+import style from './fact.module.css';
 
 const getIcon = function (fact) {
     switch (fact.type) {

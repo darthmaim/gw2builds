@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Select from '../Inputs/Select/Select';
 import SkillIcon from './Icon';
 import SkillTooltip from '../Tooltips/Skills/TooltipContainer';
-import style from './SkillSelect.css';
+import style from './SkillSelect.module.css';
 
 class SkillSelect extends Select {
     get children() {

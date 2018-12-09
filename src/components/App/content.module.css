@@ -1,0 +1,52 @@
+.container {
+    flex: 1;
+
+    display: flex;
+    flex-direction: row;
+
+    overflow: hidden;
+}
+
+.stats {
+    width: 25%;
+    min-width: 300px;
+    max-width: 400px;
+    border-left: 1px solid #eee;
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+    display: flex;
+    flex-direction: column;
+}
+
+.stats :external(section from './MainContent/section.module.css') {
+    flex: 1;
+}
+
+.footer {
+    color: #888;
+    font-size: 11px;
+    margin: 24px 16px;
+    text-align: center;
+}
+
+.footer a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.footer a:hover, .footer a:focus {
+    text-decoration: underline;
+}
+
+@media(max-width: 768px) {
+    .container {
+        display: initial;
+    }
+
+    .stats {
+        width: 100%;
+        max-width: none;
+        min-width: 0;
+        border-left: 0;
+    }
+}

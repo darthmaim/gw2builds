@@ -1,0 +1,8 @@
+.bar {
+    white-space: nowrap;
+    margin-top: 16px;
+}
+
+.bar :external(select from '../../SkillSelect.module.css'):nth-child(n + 2) :external(skill from '../../Icon.module.css') {
+    border-left: none;
+}

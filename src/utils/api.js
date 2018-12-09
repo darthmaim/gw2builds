@@ -1,6 +1,4 @@
 import apiClient from 'gw2api-client';
-import cacheMemory from 'gw2api-client/build/cache/memory';
-import extendApiClient from 'gw2api-extension';
-import extendApiData from 'gw2be-api-extension-data';
+import cacheMemory from 'gw2api-client/src/cache/memory';
 
-export const api = extendApiClient(apiClient(), extendApiData).cacheStorage(cacheMemory());
+export const api = apiClient().cacheStorage(cacheMemory());

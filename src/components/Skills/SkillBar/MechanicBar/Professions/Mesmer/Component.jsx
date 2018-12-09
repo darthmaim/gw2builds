@@ -3,7 +3,7 @@ import range from 'lodash/range';
 import groupBy from 'lodash/groupBy';
 import SkillIcon from '../../../../Icon';
 import SkillTooltip from '../../../../../Tooltips/Skills/TooltipContainer';
-import style from './style.css';
+import style from './style.module.css';
 
 const renderSkills = ({ availableProfessionSkillObjects, availableSkillObjects, selectedSpecializationIds }) => {
     const skills = groupBy(availableProfessionSkillObjects.filter(skill => skill.type === 'Profession'), 'slot');

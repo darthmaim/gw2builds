@@ -1,7 +1,7 @@
 import React from 'react';
 import Overlay from '../Overlay/Overlay';
 import Dialog from './../../Inputs/Dialog/Dialog';
-import style from './AboutDialog.css';
+import style from './AboutDialog.module.css';
 
 export default ({ onClose }) => (
     <Overlay>

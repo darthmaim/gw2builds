@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import style from './traitMinorIcon.css';
+import style from './traitMinorIcon.module.css';
 
 const TraitMinorIcon = props => (
     <svg className={props.classes ? props.classes : style.minorIcon}>

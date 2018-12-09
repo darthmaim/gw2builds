@@ -1,0 +1,14 @@
+.specializationRequirement {
+    display: none;
+}
+
+.container {
+    margin: 16px 0;
+}
+
+:external(dropdown from '../../Inputs/Select/Select.module.css') .specializationRequirement {
+    display: initial;
+    color: #aaa;
+    float: right;
+    margin-left: 5px;
+}

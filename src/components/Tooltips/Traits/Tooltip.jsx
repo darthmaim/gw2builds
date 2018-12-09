@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import { format } from 'gw2-tooltip-html';
 import Fact, { FactShape } from '../Facts/Fact';
 import Tooltip from '../Tooltip';
-import style from './tooltip.css';
+import style from './tooltip.module.css';
 
 class TraitTooltip extends Component {
     constructor(props, context) {

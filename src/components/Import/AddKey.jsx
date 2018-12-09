@@ -1,5 +1,5 @@
 import React from 'react';
-import style from './AddKey.css';
+import style from './AddKey.module.css';
 import { api } from '../../utils/api';
 
 const REQUIRED_PERMISSIONS = ['account', 'characters', 'builds'];

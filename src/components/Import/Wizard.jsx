@@ -3,7 +3,8 @@ import Dialog from '../Inputs/Dialog/Dialog';
 import Overview from './OverviewContainer';
 import AddKey from './AddKeyContainer';
 import Overlay from '../App/Overlay/Overlay';
-import style from './Wizard.css';
+import style from './Wizard.module.css';
+import { ReactComponent as BackIcon } from './back.svg';
 
 const VIEW_OVERVIEW = 'overview';
 const VIEW_ADDKEY = 'addkey';
@@ -56,7 +57,7 @@ export default class extends React.Component {
             case VIEW_ADDKEY: return (
                 <span>
                     <button type="button" className={style.backButton} onClick={this.handleShowOverview}>
-                        <img src="/img/general/back.svg" alt="Back"/>
+                        <BackIcon/>
                     </button>
                     Add API key
                 </span>

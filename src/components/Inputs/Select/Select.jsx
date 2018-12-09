@@ -6,7 +6,7 @@ import Group from './Group';
 import Dropdown from './Dropdown';
 import Context from './Context';
 import ContextShape from './ContextShape';
-import style from './Select.css';
+import style from './Select.module.css';
 
 let nextInstanceId = 0;
 

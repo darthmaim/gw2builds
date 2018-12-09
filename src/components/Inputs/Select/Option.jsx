@@ -1,7 +1,7 @@
 import React from 'react';
 import cx from 'classnames';
 import PropTypes from 'prop-types';
-import style from './Select.css';
+import style from './Select.module.css';
 
 class Option extends React.Component {
     constructor(props, context) {

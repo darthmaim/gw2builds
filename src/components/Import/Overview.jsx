@@ -1,7 +1,7 @@
 import React from 'react';
 import isEqual from 'lodash/isEqual'
 import { api } from '../../utils/api';
-import style from './Overview.css';
+import style from './Overview.module.css';
 import { TYPE_PVE, TYPE_PVP, TYPE_WVW } from './loadBuild';
 
 const SOURCE_API = 'api';

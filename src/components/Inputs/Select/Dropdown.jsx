@@ -2,7 +2,7 @@ import React from 'react';
 import onClickOutside from 'react-onclickoutside';
 import ContextShape from './ContextShape';
 import Option from './Option';
-import style from './Select.css';
+import style from './Select.module.css';
 
 class Dropdown extends React.Component {
     constructor(props, context) {

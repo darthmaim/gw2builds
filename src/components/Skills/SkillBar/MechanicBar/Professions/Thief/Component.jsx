@@ -2,7 +2,7 @@ import React from 'react';
 import range from 'lodash/range';
 import SkillIcon from '../../../../Icon';
 import SkillTooltip from '../../../../../Tooltips/Skills/TooltipContainer';
-import style from './style.css';
+import style from './style.module.css';
 
 const renderSkill = ({ availableProfessionSkillObjects, availableSkillObjects, selectedSpecializationIds }) => {
     const allPossibleSkills = availableProfessionSkillObjects.filter(

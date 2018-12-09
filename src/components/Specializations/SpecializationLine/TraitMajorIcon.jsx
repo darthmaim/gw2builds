@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import style from './traitMajorIcon.css';
+import style from './traitMajorIcon.module.css';
 
 class TraitMajorIcon extends React.Component {
     constructor() {
