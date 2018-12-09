@@ -42,7 +42,7 @@ export default class ShareDialog extends Component {
                     <div className={style.inputWrapper}>
                         <input className={style.input} onFocus={onFocus} readOnly={true} ref={this.setInputRef} value={window.location.href}/>
                         <button className={style.copyButton} onClick={this.onCopy}>
-                            <img src="/img/general/copy.svg"/>
+                            <img src="/img/general/copy.svg" alt="Copy"/>
                         </button>
                     </div>
                 </Dialog>

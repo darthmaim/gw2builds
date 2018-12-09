@@ -5,7 +5,7 @@ const getAvailableWeaponObjects = state => state.availableWeaponObjects;
 const getActiveWeaponSet = state => state.activeWeaponSet;
 const getSelectedMainhandWeaponIds = state => state.selectedMainhandWeaponIds;
 const getSelectedOffhandWeaponIds = state => state.selectedOffhandWeaponIds;
-const getSelectedProfession = state => state.selectedProfession;
+// const getSelectedProfession = state => state.selectedProfession;
 
 const hasFlag = (weapon, flag) => weapon
     ? weapon.flags.indexOf(flag) !== -1

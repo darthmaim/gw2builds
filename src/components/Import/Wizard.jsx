@@ -53,7 +53,6 @@ export default class extends React.Component {
 
     renderTitle(view) {
         switch (view) {
-            case VIEW_OVERVIEW: return 'Load build';
             case VIEW_ADDKEY: return (
                 <span>
                     <button type="button" className={style.backButton} onClick={this.handleShowOverview}>
@@ -61,7 +60,9 @@ export default class extends React.Component {
                     </button>
                     Add API key
                 </span>
-            )
+            );
+            case VIEW_OVERVIEW:
+            default: return 'Load build';
         }
     }
 }

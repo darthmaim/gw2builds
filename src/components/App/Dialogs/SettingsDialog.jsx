@@ -13,10 +13,6 @@ const languages = {
 };
 
 export default class SettingsDialog extends Component {
-    constructor(props, context) {
-        super(props, context);
-    }
-
     render() {
         const { onClose, selectedLanguage, onLanguageChange, settings, setSettingsShowIds } = this.props;
 

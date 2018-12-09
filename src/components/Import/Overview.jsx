@@ -94,7 +94,7 @@ class Overview extends React.Component {
                 {isLoading && <div className={style.loading}>Loading...</div>}
                 {!isLoading && accounts.length === 0 && (
                     <div className={style.loading}>
-                        Add your API key or log into <a href="https://gw2efficiency.com/" target="_blank" rel="noopener">gw2efficiency</a> to load your characters builds.
+                        Add your API key or log into <a href="https://gw2efficiency.com/" target="_blank" rel="noopener noreferrer">gw2efficiency</a> to load your characters builds.
                     </div>
                 )}
                 {accounts.map(this.renderAccount, this)}
@@ -109,7 +109,7 @@ class Overview extends React.Component {
         return (
             <div key={key} className={style.account}>
                 <div className={style.accountHeader}>
-                    {account && account.name || 'Unknown account'}
+                    {(account && account.name) || 'Unknown account'}
                     {source === SOURCE_API && (
                         <button type="button" onClick={() => this.props.removeImportApiKey(key)} className={style.removeButton}>
                             Remove

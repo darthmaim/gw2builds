@@ -27,7 +27,7 @@ const renderProfession = ({availableProfessions, selectedProfession, onProfessio
             {availableProfessions && Object.values(availableProfessions).map(
                 (profession) => (
                     <Select.Option value={profession.id} key={profession.id} keywords={[profession.name]}>
-                        <img className={style.icon} src={profession.icon_big}/>
+                        <img className={style.icon} src={profession.icon_big} alt=""/>
                         {profession.name}
                     </Select.Option>
                 )

@@ -116,6 +116,8 @@ class Dropdown extends React.Component {
             case 13: // ENTER
                 e.preventDefault();
                 dropdown.onSelect(highlightedValue);
+                break;
+            default: break;
         }
 
         // check if the key was an alphanumeric character

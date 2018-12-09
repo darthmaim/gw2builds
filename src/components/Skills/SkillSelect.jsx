@@ -73,6 +73,5 @@ SkillSelect.defaultProps = {
     getCurrentSkill: (value) => this.props.skills.filter((skill) => skill.id === value)[0]
 };
 
-delete SkillSelect.propTypes['children'];
 
 export default SkillSelect;

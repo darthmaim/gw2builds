@@ -1,9 +1,8 @@
 import { connect } from 'react-redux';
 import { setImportDialogVisible, setSelectedGameMode, setSelectedProfession, setSelectedRace } from '../../actions';
 import Header from './Header';
-import { loadBuild } from '../../utils/build-string'
 
-const mapDispatchToProps = (dispatch, state) => ({
+const mapDispatchToProps = (dispatch) => ({
     setImportDialogVisible: (visible) => dispatch(setImportDialogVisible(visible)),
     resetBuild: () => {
         dispatch(setSelectedGameMode({ gameMode: null }));

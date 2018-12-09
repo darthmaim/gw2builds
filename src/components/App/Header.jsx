@@ -116,7 +116,7 @@ export default class Header extends Component {
         return (
             <div className={style.header}>
                 <div className={style.logo}>
-                    <img src={LogoIcon} role="presentation"/>
+                    <img src={LogoIcon} alt=""/>
                 </div>
                 <div className={style.title}>
                     <img src={TitleIcon} alt="gw2efficiency | Build Editor"/>

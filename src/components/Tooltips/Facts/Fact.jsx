@@ -8,12 +8,12 @@ const getIcon = function (fact) {
         case 'PrefixedBuff':
             return (
                 <span>
-                    <img src={fact.prefix.icon} width={16} height={16}/>
-                    <img src={fact.icon} width={16} height={16}/>
+                    <img src={fact.prefix.icon} width={16} height={16} alt=""/>
+                    <img src={fact.icon} width={16} height={16} alt=""/>
                 </span>
             );
         default:
-            return (<img src={fact.icon} width={16} height={16}/>);
+            return (<img src={fact.icon} width={16} height={16} alt=""/>);
     }
 };
 
