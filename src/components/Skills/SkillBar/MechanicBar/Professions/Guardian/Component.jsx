@@ -15,7 +15,7 @@ const renderSkills = (availableProfessionSkillObjects, availableSkillObjects) =>
                 </SkillTooltip>
             );
         } else {
-            return (<SkillIcon/>);
+            return (<SkillIcon key={slot}/>);
         }
     });
 };

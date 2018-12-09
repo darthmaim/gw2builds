@@ -56,8 +56,15 @@ class SkillSelect extends Select {
     }
 }
 
-SkillSelect.PropTypes = {
-    ...Select.PropTypes,
+SkillSelect.propTypes = {
+    // propTypes passed to Select
+    disabled: PropTypes.bool.isRequired,
+    onChange: PropTypes.func.isRequired,
+    value: PropTypes.number,
+    placeholder: PropTypes.string,
+    className: PropTypes.string,
+
+    // custom props
     skills: PropTypes.array.isRequired,
     size: PropTypes.number.isRequired,
     valueAction: PropTypes.string.isRequired,
@@ -66,12 +73,12 @@ SkillSelect.PropTypes = {
 };
 
 SkillSelect.defaultProps = {
-    ...Select.defaultProps,
+    disabled: false,
+    onChange: () => {},
     size: 64,
     valueAction: 'select different skill',
     optionAction: 'select this skill',
     getCurrentSkill: (value) => this.props.skills.filter((skill) => skill.id === value)[0]
 };
-
 
 export default SkillSelect;

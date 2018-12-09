@@ -61,7 +61,7 @@ class AddKey extends React.Component {
                     </p>
                     <label htmlFor="apikey">Enter your API key:</label>
                     <div className={style.inputGroup}>
-                        <input name="apikey" id="apikey" className={style.input} disabled={loading} value={apiKey} onInput={this.handleInput} placeholder="API key"/>
+                        <input name="apikey" id="apikey" className={style.input} disabled={loading} value={apiKey} onChange={this.handleInput} placeholder="API key"/>
                         {loading ? (
                             <div className={style.loader}/>
                         ) : (

@@ -89,7 +89,8 @@ class Overview extends React.Component {
                            className={style.search}
                            placeholder="Search characters"
                            autoFocus
-                           onInput={(e) => this.setState({ search: e.target.value })}/>
+                           value={state.search}
+                           onChange={(e) => this.setState({ search: e.target.value })}/>
                 )}
                 {isLoading && <div className={style.loading}>Loading...</div>}
                 {!isLoading && accounts.length === 0 && (
