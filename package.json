@@ -18,7 +18,7 @@
     "redux-actions": "^2.6.4",
     "redux-devtools-extension": "^2.13.7",
     "redux-promise": "^0.6.0",
-    "redux-sync-reducer": "^1.0.0",
+    "redux-sync-reducer": "^1.0.1",
     "redux-thunk": "^2.3.0",
     "reselect": "^4.0.0",
     "typeface-open-sans": "^0.0.54"

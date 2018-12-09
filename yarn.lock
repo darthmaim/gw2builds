@@ -8157,10 +8157,10 @@ redux-promise@^0.6.0:
     flux-standard-action "^2.0.3"
     is-promise "^2.1.0"
 
-redux-sync-reducer@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/redux-sync-reducer/-/redux-sync-reducer-1.0.0.tgz#d5ba36ab63faba787ed0d34f3d4c848b06514deb"
-  integrity sha512-BE1CFPo5UR1f0gqRhKxERFKv7izBy6+g0l6GrMKi3hFv+arLyhuCoTAEBLYb7hqQhdaMn3plWL6U0PA86eXQCg==
+redux-sync-reducer@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/redux-sync-reducer/-/redux-sync-reducer-1.0.1.tgz#a693033c193519c80d31bd7957250370c2cf2ea6"
+  integrity sha512-rGisKvAld4ajy5wdFzw2RpHEPms4ukCH9aysLT0bC6BC/CuzSX15lfsUVlNoZ4coB39cRyTj9SzcnHw4DGByQg==
 
 redux-thunk@^2.3.0:
   version "2.3.0"

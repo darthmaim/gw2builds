@@ -20,11 +20,7 @@ import 'typeface-open-sans';
 
 initAnalytics();
 
-const initialState = {
-    selectedLanguage: 'en'
-};
-
-const store = createStore(editor, initialState, composeWithDevTools(
+const store = createStore(editor, {}, composeWithDevTools(
     applyMiddleware(thunk.withExtraArgument(api), promiseMiddleware, syncMiddleware)
 ));
 
