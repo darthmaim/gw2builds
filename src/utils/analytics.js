@@ -64,9 +64,9 @@ export const init = () => {
     // Initialize the command queue in case analytics.js hasn't loaded yet.
     window.ga = window.ga || ((...args) => (ga.q = ga.q || []).push(args));
 
-    if(!TRACKING_ID) {
+    if(!TRACKING_ID || TRACKING_ID === '%REACT_APP_ANALYTICS%') {
         console.log('Disabled google analytics because the tracking id is not set ' +
-            '(GOOGLE_ANALYTICS_TRACKING_ID environment variable)');
+            '(REACT_APP_ANALYTICS environment variable)');
         return;
     }
 
