@@ -5,6 +5,8 @@
   "dependencies": {
     "change-case": "^3.0.2",
     "classnames": "^2.2.6",
+    "enzyme": "^3.8.0",
+    "enzyme-adapter-react-16": "^1.8.0",
     "gw2-tooltip-html": "^0.0.3",
     "gw2api-client": "^7.1.0",
     "gw2be-build-string": "file:./lib/gw2be-build-string",
@@ -14,6 +16,7 @@
     "react-onclickoutside": "^6.7.1",
     "react-redux": "^6.0.0",
     "react-scripts": "2.1.1",
+    "react-test-renderer": "^16.7.0",
     "redux": "^4.0.1",
     "redux-actions": "^2.6.4",
     "redux-devtools-extension": "^2.13.7",
