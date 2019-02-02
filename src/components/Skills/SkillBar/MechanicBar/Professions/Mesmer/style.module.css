@@ -19,7 +19,7 @@
     margin-right: 8px;
 }
 
-.skills > :external(skill from '../../../../Icon.module.css'):nth-child(5) {
+.eliteSlot {
+    display: inline;
     margin-left: 4px;
-    border-left: 1px solid #000;
 }

@@ -18,8 +18,8 @@
     flex-direction: column;
 }
 
-.stats :external(section from './MainContent/section.module.css') {
-    flex: 1;
+:global(.js-select-disable-scroll) .stats {
+    overflow: hidden;
 }
 
 .footer {

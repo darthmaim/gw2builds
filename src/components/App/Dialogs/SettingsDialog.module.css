@@ -10,7 +10,3 @@
 .setting label {
     flex: 1;
 }
-
-.setting :external(select from '../../Inputs/Select/Select.module.css') {
-    margin: 0;
-}

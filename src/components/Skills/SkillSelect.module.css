@@ -2,6 +2,11 @@
     display: inline-block;
     position: relative;
     cursor: pointer;
+    border: 1px solid #000;
+}
+
+.select + .select {
+    border-left: 0;
 }
 
 .select:after {
@@ -28,11 +33,12 @@
     flex-shrink: 0;
 }
 
-.name {
-    margin-top: -2px;
+.disabledIcon {
+    composes: icon;
+
+    filter: grayscale(1);
 }
 
-:external(dropdown from '../Inputs/Select/Select.module.css')
-:external(disabledOption from '../Inputs/Select/Select.module.css') .option img {
-    filter: grayscale(1);
+.name {
+    margin-top: -2px;
 }

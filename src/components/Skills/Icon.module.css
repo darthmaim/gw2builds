@@ -11,6 +11,12 @@
     vertical-align: middle;
 }
 
+.skillBorderless {
+    composes: skill;
+
+    border: none;
+}
+
 .skill + .skill {
     border-left: 0;
 }
@@ -24,6 +30,12 @@
 
 .empty {
     composes: skill;
+}
+
+.emptyBorderless {
+    composes: empty;
+
+    border: none;
 }
 
 .loading {

@@ -16,7 +16,7 @@ const renderSelect = (title, weapons, value, onChange, selectedSpecializationIds
             {map(weapons, (weapon, name) => (
                 <Select.Option key={name} value={name} disabled={!isWeaponAvailable(weapon, selectedSpecializationIds)}>
                     {name}
-                    {weapon.specialization && renderSpecializationRequirement(weapon, availableSpecializationObjects)}
+                    {!isWeaponAvailable(weapon, selectedSpecializationIds) && renderSpecializationRequirement(weapon, availableSpecializationObjects)}
                 </Select.Option>
             ))}
         </Select>
