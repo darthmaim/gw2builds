@@ -16,6 +16,7 @@ import { init as initAnalytics } from './utils/analytics';
 import { syncMiddleware } from 'redux-sync-reducer';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import { loadBaseData, setIsLoading } from './actions';
+import * as serviceWorker from './serviceWorker';
 import 'typeface-open-sans';
 
 initAnalytics();
@@ -125,3 +126,5 @@ renderApp();
 // } else {
 //     styles.onload = renderApp;
 // }
+
+serviceWorker.register();
