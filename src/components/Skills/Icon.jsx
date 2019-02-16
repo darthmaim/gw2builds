@@ -11,7 +11,7 @@ const SkillIcon = ({ skill, size, className, borderless = false, ...props }) => 
     const inline = inlineSize(size);
 
     if (!skill) {
-        return (<div className={style.loading} style={inline} {...props}/>);
+        return (<div className={classnames(borderless ? style.loadingBorderless : style.loading, className)} style={inline} {...props}/>);
     }
 
     return (

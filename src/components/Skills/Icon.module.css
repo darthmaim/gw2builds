@@ -55,7 +55,14 @@
     border: 3px solid transparent;
     border-top-color: #888;
     border-radius: 50%;
-    animation: 1s loading linear infinite;
+    animation: 1s linear infinite;
+    animation-name: loading;
+}
+
+.loadingBorderless {
+    composes: loading;
+
+    border: none;
 }
 
 @keyframes loading {
