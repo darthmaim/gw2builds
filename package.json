@@ -10,6 +10,7 @@
     "gw2-tooltip-html": "^0.0.3",
     "gw2api-client": "^7.1.0",
     "gw2be-build-string": "file:./lib/gw2be-build-string",
+    "prop-types": "^15.7.1",
     "react": "^16.6.3",
     "react-dom": "^16.6.3",
     "react-intl": "^2.7.2",
