@@ -5,6 +5,7 @@ import SkillTooltip from '../../../../../Tooltips/Skills/TooltipContainer';
 import style from './style.module.css';
 
 const SPEC_TEMPEST = 48;
+// eslint-disable-next-line no-unused-vars
 const SPEC_WEAVER = 56;
 
 const renderSkillIcon = (id, index, {

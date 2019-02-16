@@ -20,7 +20,7 @@ function skillMatchesAttunement(availableSkillObjects, selectedAttunementId, sel
         const matchesAttunement = attunement === selectedAttunementId;
         const matchesWeaverAttunement = attunement === selectedWeaverPreviousAttunementId;
 
-        switch(skill.slot) {
+        switch(professionSkill.slot) {
             case 'Weapon_1':
             case 'Weapon_2':
                 return matchesAttunement;
@@ -31,9 +31,9 @@ function skillMatchesAttunement(availableSkillObjects, selectedAttunementId, sel
             case 'Weapon_4':
             case 'Weapon_5':
                 return matchesWeaverAttunement;
+            default:
+                return false;
         }
-
-        return false;
     }
 }
 
