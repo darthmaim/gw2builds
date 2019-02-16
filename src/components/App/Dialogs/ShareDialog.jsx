@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import Overlay from '../Overlay/Overlay';
 import Dialog from './../../Inputs/Dialog/Dialog';
-import style from './ShareDialog.css';
+import style from './ShareDialog.module.css';
+import CopyIcon from './copy.svg';
 
 const onFocus = ({target}) => target.select();
 
@@ -42,7 +43,7 @@ export default class ShareDialog extends Component {
                     <div className={style.inputWrapper}>
                         <input className={style.input} onFocus={onFocus} readOnly={true} ref={this.setInputRef} value={window.location.href}/>
                         <button className={style.copyButton} onClick={this.onCopy}>
-                            <img src="/img/general/copy.svg"/>
+                            <img src={CopyIcon} alt="Copy"/>
                         </button>
                     </div>
                 </Dialog>

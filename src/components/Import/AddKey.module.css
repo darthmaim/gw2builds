@@ -1,0 +1,77 @@
+.description {
+    margin: 0 0 8px;
+}
+
+.inputGroup {
+    margin-top: 8px;
+    display: flex;
+}
+
+.input {
+    composes: input from '../Inputs/Inputs.module.css';
+
+    flex: 1;
+    border: 1px solid #eee;
+    padding: 4px 8px;
+    margin-right: 8px;
+}
+
+.button {
+    composes: input from '../Inputs/Inputs.module.css';
+
+    background: #3023ae;
+    color: #fff;
+    width: 32px;
+    height: 32px;
+    text-align: center;
+    position: relative;
+    cursor: pointer;
+    transition: background-color .3s ease;
+}
+
+.button:hover {
+    background: #c86dd7;
+}
+
+.button:after {
+    content: '';
+    display: block;
+    border-style: solid;
+    border-color: transparent #fff;
+    border-width: 8px 0 8px 12px;
+    position: absolute;
+    top: 8px;
+    left: 10px;
+}
+
+.loader {
+    width: 32px;
+    height: 32px;
+    background: #3023ae;
+
+    position: relative;
+}
+
+.loader:after {
+    content: '';
+
+    position: absolute;
+    top: 8px; bottom: 8px;
+    left: 8px; right: 8px;
+
+    border: 3px solid;
+    border-color: #fff transparent;
+    border-radius: 100px;
+
+    animation: loader 1.5s infinite linear;
+}
+
+@keyframes loader {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.error {
+    color: #ef5350;
+    margin-top: 8px;
+}

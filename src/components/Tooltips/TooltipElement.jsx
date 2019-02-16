@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import isFunction from 'lodash/isFunction';
 import Inertia from './TooltipInertia';
-import style from './tooltip.css';
+import style from './tooltip.module.css';
 
 const INITAL_TOUCH_OFFSET = -148;
 

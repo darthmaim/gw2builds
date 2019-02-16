@@ -1,5 +1,5 @@
 import React from 'react';
-import style from './Wizard.css';
+import style from './Wizard.module.css';
 
 export default ({children, onClose}) => (
     <div className={style.header}>

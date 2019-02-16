@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
 import InputGroup from '../Inputs/Group/InputGroup';
 import Select from '../Inputs/Select/Select';
-import style from './General.css';
+import style from './General.module.css';
 
 export default (props) => (
     <Fragment>
@@ -27,7 +27,7 @@ const renderProfession = ({availableProfessions, selectedProfession, onProfessio
             {availableProfessions && Object.values(availableProfessions).map(
                 (profession) => (
                     <Select.Option value={profession.id} key={profession.id} keywords={[profession.name]}>
-                        <img className={style.icon} src={profession.icon_big}/>
+                        <img className={style.icon} src={profession.icon_big} alt=""/>
                         {profession.name}
                     </Select.Option>
                 )

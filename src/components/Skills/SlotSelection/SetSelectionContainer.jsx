@@ -1,7 +1,6 @@
 import { connect } from 'react-redux';
 import { setActiveWeaponSet } from '../../../actions';
 import SetSelection from './SetSelection';
-import { getHasMultipleWeaponsets } from '../../../selectors/gear';
 
 const mapStateToProps = state => ({
     activeWeaponSet: state.activeWeaponSet,

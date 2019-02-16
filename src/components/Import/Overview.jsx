@@ -1,7 +1,7 @@
 import React from 'react';
 import isEqual from 'lodash/isEqual'
 import { api } from '../../utils/api';
-import style from './Overview.css';
+import style from './Overview.module.css';
 import { TYPE_PVE, TYPE_PVP, TYPE_WVW } from './loadBuild';
 
 const SOURCE_API = 'api';
@@ -89,12 +89,13 @@ class Overview extends React.Component {
                            className={style.search}
                            placeholder="Search characters"
                            autoFocus
-                           onInput={(e) => this.setState({ search: e.target.value })}/>
+                           value={state.search}
+                           onChange={(e) => this.setState({ search: e.target.value })}/>
                 )}
                 {isLoading && <div className={style.loading}>Loading...</div>}
                 {!isLoading && accounts.length === 0 && (
                     <div className={style.loading}>
-                        Add your API key or log into <a href="https://gw2efficiency.com/" target="_blank" rel="noopener">gw2efficiency</a> to load your characters builds.
+                        Add your API key or log into <a href="https://gw2efficiency.com/" target="_blank" rel="noopener noreferrer">gw2efficiency</a> to load your characters builds.
                     </div>
                 )}
                 {accounts.map(this.renderAccount, this)}
@@ -109,7 +110,7 @@ class Overview extends React.Component {
         return (
             <div key={key} className={style.account}>
                 <div className={style.accountHeader}>
-                    {account && account.name || 'Unknown account'}
+                    {(account && account.name) || 'Unknown account'}
                     {source === SOURCE_API && (
                         <button type="button" onClick={() => this.props.removeImportApiKey(key)} className={style.removeButton}>
                             Remove

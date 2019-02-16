@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Select from '../Inputs/Select/Select';
 import SkillIcon from './Icon';
 import SkillTooltip from '../Tooltips/Skills/TooltipContainer';
-import style from './SkillSelect.css';
+import style from './SkillSelect.module.css';
 
 class SkillSelect extends Select {
     get children() {
@@ -23,7 +23,7 @@ class SkillSelect extends Select {
             <Select.Option key={skill.id} value={skill.id} keywords={[skill.name]} disabled={isDisabled}>
                 <SkillTooltip skill={skill} action={!isDisabled ? optionAction : undefined}>
                     <div className={style.option}>
-                        <SkillIcon className={style.icon} skill={skill} size={32}/>
+                        <SkillIcon className={isDisabled ? style.disabledIcon : style.icon} skill={skill} size={32}/>
                         <div className={style.name}>{skill.name}</div>
                     </div>
                 </SkillTooltip>
@@ -42,22 +42,29 @@ class SkillSelect extends Select {
 
         if(!skill) {
             return (
-                <SkillIcon.Empty size={size}/>
+                <SkillIcon.Empty size={size} borderless/>
             );
         }
 
         return (
             <SkillTooltip skill={skill} action={this.props.valueAction}>
                 <div>
-                    <SkillIcon skill={skill} size={size}/>
+                    <SkillIcon skill={skill} size={size} borderless/>
                 </div>
             </SkillTooltip>
         );
     }
 }
 
-SkillSelect.PropTypes = {
-    ...Select.PropTypes,
+SkillSelect.propTypes = {
+    // propTypes passed to Select
+    disabled: PropTypes.bool.isRequired,
+    onChange: PropTypes.func.isRequired,
+    value: PropTypes.number,
+    placeholder: PropTypes.string,
+    className: PropTypes.string,
+
+    // custom props
     skills: PropTypes.array.isRequired,
     size: PropTypes.number.isRequired,
     valueAction: PropTypes.string.isRequired,
@@ -66,13 +73,12 @@ SkillSelect.PropTypes = {
 };
 
 SkillSelect.defaultProps = {
-    ...Select.defaultProps,
+    disabled: false,
+    onChange: () => {},
     size: 64,
     valueAction: 'select different skill',
     optionAction: 'select this skill',
     getCurrentSkill: (value) => this.props.skills.filter((skill) => skill.id === value)[0]
 };
-
-delete SkillSelect.propTypes['children'];
 
 export default SkillSelect;

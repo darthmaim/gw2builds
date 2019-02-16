@@ -2,7 +2,7 @@ import React from 'react';
 import onClickOutside from 'react-onclickoutside';
 import ContextShape from './ContextShape';
 import Option from './Option';
-import style from './Select.css';
+import style from './Select.module.css';
 
 class Dropdown extends React.Component {
     constructor(props, context) {
@@ -116,6 +116,8 @@ class Dropdown extends React.Component {
             case 13: // ENTER
                 e.preventDefault();
                 dropdown.onSelect(highlightedValue);
+                break;
+            default: break;
         }
 
         // check if the key was an alphanumeric character

@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import SpecializationIcon from './SpecializationIcon';
-import style from './selectionPopup.css';
+import style from './selectionPopup.module.css';
 
 class SelectionPopup extends React.Component {
     constructor() {

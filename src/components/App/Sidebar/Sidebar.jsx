@@ -1,7 +1,12 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import LanguageSelector from './LanguageSelector';
-import style from './sidebar.css';
+import style from './sidebar.module.css';
+
+import CharacterIcon from './Character.svg';
+import SkillsIcon from './Skills.svg';
+import TraitsIcon from './Traits.svg';
+import GearIcon from './Gear.svg';
 
 class Sidebar extends Component {
     constructor(props, context) {
@@ -57,10 +62,10 @@ class Sidebar extends Component {
             <div className={style.sidebar}>
                 <div className={style.sections}>
                     <div className={style.marker} style={markerStyle}/>
-                    {this.renderSection(0, '/img/sidebar/Character.svg', 'General')}
-                    {this.renderSection(1, '/img/sidebar/Skills.svg', 'Skills')}
-                    {this.renderSection(2, '/img/sidebar/Traits.svg', 'Traits')}
-                    {this.renderSection(3, '/img/sidebar/Gear.svg', 'Gear')}
+                    {this.renderSection(0, CharacterIcon, 'General')}
+                    {this.renderSection(1, SkillsIcon, 'Skills')}
+                    {this.renderSection(2, TraitsIcon, 'Traits')}
+                    {this.renderSection(3, GearIcon, 'Gear')}
                 </div>
                 <LanguageSelector/>
             </div>

@@ -3,7 +3,7 @@ import filter from 'lodash/filter';
 import includes from 'lodash/includes';
 import SkillIcon from '../../../../Icon';
 import SkillTooltip from '../../../../../Tooltips/Skills/TooltipContainer';
-import style from './style.css';
+import style from './style.module.css';
 
 const SPEC_BERSERKER = 18;
 const SPEC_SPELLBREAKER = 61;

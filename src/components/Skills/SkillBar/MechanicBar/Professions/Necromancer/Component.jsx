@@ -2,7 +2,7 @@ import React from 'react';
 import SkillIcon from '../../../../Icon';
 import SkillTooltip from '../../../../../Tooltips/Skills/TooltipContainer';
 import { FormattedNumber } from 'react-intl';
-import style from './style.css';
+import style from './style.module.css';
 
 const renderSkill = (availableProfessionSkillObjects, availableSkillObjects) => {
     const possibleSkill = availableProfessionSkillObjects.filter(skill => skill.slot === 'Profession_1')[0];

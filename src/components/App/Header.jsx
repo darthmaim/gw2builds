@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
-import style from './header.css';
+import style from './header.module.css';
 import Overlay from './Overlay/Overlay';
 import ShareDialog from './Dialogs/ShareDialog';
 import SettingsDialog from './Dialogs/SettingsDialogContainer';
 import AboutDialog from './Dialogs/AboutDialog';
+
+import LogoIcon from './logo.svg';
+import TitleIcon from './title.svg';
 
 export default class Header extends Component {
     constructor(props, context) {
@@ -113,10 +116,10 @@ export default class Header extends Component {
         return (
             <div className={style.header}>
                 <div className={style.logo}>
-                    <img src="/img/header/logo.svg" role="presentation"/>
+                    <img src={LogoIcon} alt=""/>
                 </div>
                 <div className={style.title}>
-                    <img src="/img/header/title.svg" alt="gw2efficiency | Build Editor"/>
+                    <img src={TitleIcon} alt="gw2efficiency | Build Editor"/>
                 </div>
                 <div className={style.more} onClick={this.onToggleDropdown}>
                 </div>

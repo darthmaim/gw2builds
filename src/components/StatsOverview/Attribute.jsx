@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { FormattedNumber } from 'react-intl';
-import style from './style.css';
+import style from './style.module.css';
 
 class Attribute extends Component {
     constructor(props, context) {

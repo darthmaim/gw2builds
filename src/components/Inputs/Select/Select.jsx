@@ -6,7 +6,7 @@ import Group from './Group';
 import Dropdown from './Dropdown';
 import Context from './Context';
 import ContextShape from './ContextShape';
-import style from './Select.css';
+import style from './Select.module.css';
 
 let nextInstanceId = 0;
 
@@ -115,6 +115,7 @@ class Select extends React.Component {
                 aria-expanded={this.state.open}
                 aria-haspopup={this.state.open}
                 aria-owns={this.state.open ? 'select-dropdown' : undefined}
+                aria-controls={'select-value-' + this.instanceId}
                 aria-activedescendant={this.state.open ? 'select-dropdown' : 'select-value-' + this.instanceId}
                 aria-readonly={this.state.disabled}
                 aria-label={this.props['aria-label']}

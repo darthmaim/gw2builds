@@ -1,0 +1,64 @@
+.skill {
+    width: 64px;
+    height: 64px;
+
+    border: 1px solid #000;
+    background: #666;
+
+    display: inline-block;
+    overflow: hidden;
+
+    vertical-align: middle;
+}
+
+.skillBorderless {
+    composes: skill;
+
+    border: none;
+}
+
+.skill + .skill {
+    border-left: 0;
+}
+
+.skill > img {
+    width: 133.333333%;
+    height: 133.333333%;
+
+    transform: translate(-12.5%, -12.5%);
+}
+
+.empty {
+    composes: skill;
+}
+
+.emptyBorderless {
+    composes: empty;
+
+    border: none;
+}
+
+.loading {
+    composes: skill;
+
+    position: relative;
+}
+
+.loading:after {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 50%;
+    height: 50%;
+    border: 3px solid transparent;
+    border-top-color: #888;
+    border-radius: 50%;
+    animation: 1s loading linear infinite;
+}
+
+@keyframes loading {
+    0% { transform: translate(-50%, -50%) rotate(0deg); }
+    100% { transform: translate(-50%, -50%) rotate(360deg); }
+}

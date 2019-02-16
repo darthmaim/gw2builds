@@ -3,8 +3,8 @@ import Header from './HeaderContainer';
 import Content from './Content';
 import { Select } from '../Inputs';
 import Wizard from '../Import/WizardContainer';
-import style from './layout.css';
-import tooltipStyle from '../Tooltips/tooltip.css';
+import style from './layout.module.css';
+import tooltipStyle from '../Tooltips/tooltip.module.css';
 import Overlay from './Overlay/Overlay';
 import Dialog from '../Inputs/Dialog/Dialog';
 

@@ -3,6 +3,11 @@ import React, { Component } from 'react';
 import SetButton from './SetButton';
 import InputGroup from '../../Inputs/Group/InputGroup';
 
+import { ReactComponent as Set1Icon } from './set1.svg';
+import { ReactComponent as Set2Icon } from './set2.svg';
+import { ReactComponent as Water1Icon } from './water1.svg';
+import { ReactComponent as Water2Icon } from './water2.svg';
+
 class SetSelection extends Component {
     constructor(props, context) {
         super(props, context);
@@ -18,18 +23,17 @@ class SetSelection extends Component {
         const { activeWeaponSet, hasMultipleWeaponsets } = this.props;
 
         const sets = [
-            { name: 'Weaponset 1', icon: '/img/weaponset/set1.svg', enabled: true },
-            { name: 'Weaponset 2', icon: '/img/weaponset/set2.svg', enabled: hasMultipleWeaponsets },
-            { name: 'Underwater 1', icon: '/img/weaponset/water1.svg', enabled: true },
-            { name: 'Underwater 2', icon: '/img/weaponset/water2.svg', enabled: hasMultipleWeaponsets }
+            { name: 'Weaponset 1', icon: Set1Icon, enabled: true },
+            { name: 'Weaponset 2', icon: Set2Icon, enabled: hasMultipleWeaponsets },
+            { name: 'Underwater 1', icon: Water1Icon, enabled: true },
+            { name: 'Underwater 2', icon: Water2Icon, enabled: hasMultipleWeaponsets }
         ];
 
         return (
             <InputGroup title={'Weapon Set'}>
-                {sets.map((set, index) => set.enabled && (
-                    <SetButton key={index} isActive={activeWeaponSet === index} onClick={this.handleClick(index)}>
-                        <img src={set.icon} alt=""/>
-                        {set.name}
+                {sets.map(({ name, icon, enabled }, index) => enabled && (
+                    <SetButton key={index} isActive={activeWeaponSet === index} onClick={this.handleClick(index)} icon={icon}>
+                        {name}
                     </SetButton>
                 ))}
             </InputGroup>

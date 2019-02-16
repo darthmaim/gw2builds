@@ -3,7 +3,6 @@ import {
     createChainedAction,
     createConditionalAction,
     createApiAction,
-    createStateAwareAction,
     convertToIndexed
 } from './utils';
 import { fetchAvailableSpecializations } from './specializations';

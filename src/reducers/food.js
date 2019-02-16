@@ -1,6 +1,5 @@
 import { handleActions } from 'redux-actions';
 import * as actions from '../actions/index';
-import { swapElements } from './utils';
 
 /** Reducer for the selected food item ids. */
 export const selectedFoodIds = handleActions({

@@ -1,13 +1,13 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import classnames from 'classnames';
-import style from './Icon.css';
+import style from './Icon.module.css';
 
 const inlineSize = size => size && size !== 64
     ? { width: size, height: size }
     : {};
 
-const SkillIcon = ({ skill, size, className, ...props }) => {
+const SkillIcon = ({ skill, size, className, borderless = false, ...props }) => {
     const inline = inlineSize(size);
 
     if (!skill) {
@@ -15,7 +15,7 @@ const SkillIcon = ({ skill, size, className, ...props }) => {
     }
 
     return (
-        <div className={classnames(style.skill, className)} style={inline} {...props}>
+        <div className={classnames(borderless ? style.skillBorderless : style.skill, className)} style={inline} {...props}>
             <img src={skill.icon} alt={skill.name}/>
         </div>
     );
@@ -26,8 +26,8 @@ SkillIcon.propTypes = {
     size: PropTypes.number
 };
 
-SkillIcon.Empty = ({ size, ...props }) => (
-    <div className={style.empty} style={inlineSize(size)} {...props}/>
+SkillIcon.Empty = ({ size, borderless = false, ...props }) => (
+    <div className={borderless ? style.emptyBorderless : style.empty} style={inlineSize(size)} {...props}/>
 );
 
 export default SkillIcon;
