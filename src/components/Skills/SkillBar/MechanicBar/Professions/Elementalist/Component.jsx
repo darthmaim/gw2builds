@@ -5,7 +5,6 @@ import SkillTooltip from '../../../../../Tooltips/Skills/TooltipContainer';
 import style from './style.module.css';
 
 const SPEC_TEMPEST = 48;
-// eslint-disable-next-line no-unused-vars
 const SPEC_WEAVER = 56;
 
 const renderSkillIcon = (id, index, {
@@ -13,6 +12,7 @@ const renderSkillIcon = (id, index, {
     selectedEliteSpecializationId, selectedWeaverPreviousAttunementId
 }) => {
     const isActive = index === selectedAttunementId || index === selectedWeaverPreviousAttunementId;
+    const hasAction = index !== selectedAttunementId || (selectedEliteSpecializationId === SPEC_WEAVER && index !== selectedWeaverPreviousAttunementId);
     const className = isActive ? '' : style.inactive;
 
     const skill = availableSkillObjects[id] && isActive && selectedEliteSpecializationId === SPEC_TEMPEST
@@ -20,7 +20,7 @@ const renderSkillIcon = (id, index, {
         : availableSkillObjects[id];
 
     return (
-        <SkillTooltip key={index} skill={skill} action={!isActive ? 'change attunement' : undefined}>
+        <SkillTooltip key={index} skill={skill} action={hasAction ? 'change attunement' : undefined}>
             <SkillIcon className={className} onClick={onAttunementChange.bind(this, index)} skill={skill} size={32}/>
         </SkillTooltip>
     );
