@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTyes from 'prop-types';
-import style from './Select.css';
+import style from './Select.module.css';
 
 const Group = ({children, label, onSelect, active, highlight}) => (
     <div className={style.group}>

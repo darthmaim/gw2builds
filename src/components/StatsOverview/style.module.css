@@ -1,0 +1,63 @@
+.list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.listitem {
+    background-size: 24px;
+    background-repeat: no-repeat;
+    padding-left: 28px;
+    margin: 2px 0;
+    height: 24px;
+    line-height: 24px;
+}
+
+.attribute {
+
+}
+
+.attributeOpen {
+    composes: attribute;
+}
+
+.attributeOpen .expander {
+    transform: rotate(90deg);
+}
+
+.attribute + .attribute {
+    margin-top: 8px;
+}
+
+.header {
+    display: flex;
+    cursor: pointer;
+}
+
+.label {
+    flex: 1;
+}
+
+.value { }
+
+.details {
+    margin-left: 16px;
+    color: #999;
+}
+
+.detailsRow {
+    margin-top: 4px;
+    display: flex;
+}
+
+.detailsLabel {
+    flex: 1;
+}
+
+.expander {
+    width: 8px;
+    height: 8px;
+    margin-right: 8px;
+    vertical-align: -1px;
+    transition: transform .3s ease;
+}

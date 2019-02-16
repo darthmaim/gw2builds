@@ -1,0 +1,146 @@
+.row {
+    padding: 4px 0;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    min-height: 45px;
+    box-sizing: border-box;
+}
+
+.icon {
+    width: 48px;
+    height: 48px;
+    display: inline-block;
+    border: 2px solid #f4f4f4;
+    background: #f9f9f9;
+    vertical-align: middle;
+    margin-right: 8px;
+}
+
+.header {
+    min-width: 250px;
+    max-width: 100%;
+}
+
+.attributes {
+    flex: 1;
+    justify-content: flex-end;
+    display: flex;
+}
+
+.attribute {
+    padding: 0 16px;
+    text-align: center;
+    max-width: 160px;
+    flex: 1;
+    flex-basis: 100px;
+}
+
+.attribute:first-child {
+    padding-left: 0;
+}
+.attribute:last-child {
+    padding-right: 0;
+}
+
+.attribute + .attribute {
+    border-left: 1px solid #eee;
+}
+.attribute > span:first-child {
+    display: block;
+}
+.attribute > span:last-child {
+    display: block;
+    font-size: 12px;
+    color: #777777;
+}
+
+.exotic {
+    color: #ffa405;
+}
+
+.ascended {
+    color: #fb3e8d;
+}
+
+.editButton {
+    composes: input from '../Inputs/Inputs.module.css';
+}
+
+.editIcon {
+    width: 16px;
+    height: 16px;
+    vertical-align: -2px;
+}
+
+.dropdown {
+    background: #fff;
+    padding: 16px;
+    position: absolute;
+    box-shadow: 0 1px 40px rgba(0,0,0,.2);
+    margin: 28px 0 8px -8px
+}
+
+.dropdown::after {
+    content: '';
+    display: block;
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background: #fff;
+    top: -5px;
+    left: 16px;
+    transform: rotate(-45deg);
+}
+
+.dropup {
+    composes: dropdown;
+}
+
+.dropup::after {
+    top: auto;
+    bottom: -5px;
+}
+
+@media (max-width: 512px) {
+    .dropdown table ,
+    .dropdown td:nth-child(2) {
+        width: 100%;
+    }
+
+    .dropdown {
+        left: 16px !important;
+        margin-left: 0;
+        right: 16px;
+    }
+}
+
+
+.dropdown td + td {
+    padding-left: 8px;
+}
+
+.dropdown tr + tr td {
+    padding-top: 8px;
+}
+
+.copyButton {
+    composes: input from '../Inputs/Inputs.module.css';
+
+    padding: 6px 8px;
+    cursor: pointer;
+    border-radius: 3px;
+    white-space: nowrap;
+    transition: background .3s ease;
+}
+
+.copyButton:hover, .copyButton:focus {
+    background: #eee;
+}
+
+.copyIcon {
+    width: 16px;
+    height: 16px;
+    vertical-align: -2px;
+    margin-right: 6px;
+}

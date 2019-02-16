@@ -3,7 +3,7 @@ import map from 'lodash/map';
 import { weaponIs2Handed } from '../../utils/gw2';
 import GearRow from './GearRowContainer';
 import UpgradeRow from './UpgradeRow';
-import style from './Gear.css';
+import style from './Gear.module.css';
 import * as GearConstants from './Constants';
 
 const SET = {

@@ -1,7 +1,7 @@
 import React from 'react';
 import SkillIcon from '../../../../Icon';
 import SkillTooltip from '../../../../../Tooltips/Skills/TooltipContainer';
-import style from './style.css';
+import style from './style.module.css';
 
 const renderSkillIcon = (skill, index) => skill ? (
     <SkillTooltip key={index} skill={skill}>

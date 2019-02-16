@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import style from './GearRow.css';
+import style from './GearRow.module.css';
 import Select from '../Inputs/Select/Select';
 import map from 'lodash/map';
 import cx from 'classnames';
@@ -11,6 +11,8 @@ import {
     GEAR_CATEGORY_ARMOR, GEAR_CATEGORY_TRINKET, GEAR_CATEGORY_WEAPON, GEAR_TYPE_TRINKET_BACK,
     RARITIES
 } from './Constants';
+import { ReactComponent as EditIcon } from './edit.svg';
+import { ReactComponent as CopyIcon } from './copy.svg';
 
 function slotToAvailability(slot) {
     return slot.type === GEAR_TYPE_TRINKET_BACK ? AVAILABILITY_BACK : {
@@ -44,7 +46,7 @@ class GearRow extends React.Component {
                 <div className={style.header}>
                     <span className={cx(style.text, style[rarity.toLowerCase()])}>{selected && selected.name} {text || slot.type.id}</span>
                     <button onClick={() => this.toggleEditing()} className={style.editButton} ref={(button) => this.button = button}>
-                        <img src="/img/general/edit.svg"/>
+                        <EditIcon className={style.editIcon}/>
                     </button>
                 </div>
                 {values && this.renderAttributes(values)}
@@ -78,7 +80,7 @@ class GearRow extends React.Component {
                             <td>{this.renderRaritySelect()}</td>
                             <td>
                                 <button className={style.copyButton} onClick={() => this.props.onCopyRarity(this.props.rarity)}>
-                                    <img src="/img/general/copy.svg"/>Copy to all
+                                    <CopyIcon className={style.copyIcon}/>Copy to all
                                 </button>
                             </td>
                         </tr>
@@ -87,7 +89,7 @@ class GearRow extends React.Component {
                             <td>{this.renderAttributeSelect(availableItemstats)}</td>
                             <td>
                                 <button className={style.copyButton} onClick={() => this.props.onCopyItemstatId(this.props.itemstatId)}>
-                                    <img src="/img/general/copy.svg"/>Copy to all
+                                    <CopyIcon className={style.copyIcon}/>Copy to all
                                 </button>
                             </td>
                         </tr>
@@ -97,7 +99,7 @@ class GearRow extends React.Component {
                                 <td>{this.renderAttributeSelect(availableItemstats)}</td>
                                 <td>
                                     <button className={style.copyButton} onClick={() => this.props.onCopyItemstatId(this.props.itemstatId)}>
-                                        <img src="/img/general/copy.svg"/>Copy to all
+                                        <CopyIcon className={style.copyIcon}/>Copy to all
                                     </button>
                                 </td>
                             </tr>

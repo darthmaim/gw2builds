@@ -1,9 +1,7 @@
 import React from 'react';
 import isEqual from 'lodash/isEqual'
-import { STATE_ADDKEY } from './States';
 import { api } from '../../utils/api';
-import style from './Overview.css';
-import Header from './Header';
+import style from './Overview.module.css';
 import { TYPE_PVE, TYPE_PVP, TYPE_WVW } from './loadBuild';
 
 const SOURCE_API = 'api';
@@ -13,17 +11,14 @@ class Overview extends React.Component {
     constructor(props, context) {
         super(props, context);
 
-        this.handleAddApiKey = this.handleAddApiKey.bind(this);
         this.handleFocus = this.handleFocus.bind(this);
 
         this.state = {
+            search: '',
+
             [SOURCE_API]: { loading: true, accounts: [] },
             [SOURCE_GW2EFFICIENCY]: { loading: true, accounts: [] }
         }
-    }
-
-    handleAddApiKey() {
-        this.props.onStateChange(STATE_ADDKEY);
     }
 
     componentDidMount() {
@@ -89,22 +84,22 @@ class Overview extends React.Component {
 
         return (
             <div>
-                <Header onClose={this.props.onClose}>Load build</Header>
                 {accounts.length > 0 && (
                     <input type="search"
                            className={style.search}
                            placeholder="Search characters"
                            autoFocus
-                           onInput={(e) => this.setState({ search: e.target.value })}/>
+                           value={state.search}
+                           onChange={(e) => this.setState({ search: e.target.value })}/>
                 )}
                 {isLoading && <div className={style.loading}>Loading...</div>}
                 {!isLoading && accounts.length === 0 && (
                     <div className={style.loading}>
-                        Add your API key or log into <a href="https://gw2efficiency.com/" target="_blank" rel="noopener">gw2efficiency</a> to load your characters builds.
+                        Add your API key or log into <a href="https://gw2efficiency.com/" target="_blank" rel="noopener noreferrer">gw2efficiency</a> to load your characters builds.
                     </div>
                 )}
                 {accounts.map(this.renderAccount, this)}
-                <button type="button" onClick={this.handleAddApiKey} className={style.addButton}>
+                <button type="button" onClick={this.props.onShowAddKey} className={style.addButton}>
                     <span className={style.addButtonIcon}>+</span> Add API key
                 </button>
             </div>
@@ -115,7 +110,7 @@ class Overview extends React.Component {
         return (
             <div key={key} className={style.account}>
                 <div className={style.accountHeader}>
-                    {account && account.name || 'Unknown account'}
+                    {(account && account.name) || 'Unknown account'}
                     {source === SOURCE_API && (
                         <button type="button" onClick={() => this.props.removeImportApiKey(key)} className={style.removeButton}>
                             Remove
@@ -136,7 +131,13 @@ class Overview extends React.Component {
     }
 
     renderCharacter(character) {
-        if(this.state.search && character.name.toLowerCase().indexOf(this.state.search.toLowerCase()) === -1) {
+        const searchString = this.state.search.toLowerCase();
+
+        const matchesSearch = searchString === '' ||
+            character.name.toLowerCase().indexOf(searchString) !== -1 ||
+            character.profession.toLowerCase().indexOf(searchString) !== -1
+
+        if(!matchesSearch) {
             return null;
         }
 

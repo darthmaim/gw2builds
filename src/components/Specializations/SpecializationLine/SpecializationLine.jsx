@@ -6,7 +6,7 @@ import TraitTooltip from '../../Tooltips/Traits/TooltipContainer';
 import SelectionPopup from './SelectionPopup';
 import TraitTier from './TraitTier';
 import TraitMinorIcon from './TraitMinorIcon';
-import style from './specializationLine.css';
+import style from './specializationLine.module.css';
 
 class SpecializationLine extends React.Component {
     constructor() {

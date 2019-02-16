@@ -195,7 +195,7 @@ export function loadBuild(dispatch, build) {
             disp('food', build.skills, actions.setSelectedFoodItemId, id => ({ slotId: 0, itemId: id })),
             disp('utility', build.skills, actions.setSelectedFoodItemId, id => ({ slotId: 1, itemId: id }))
         ]);
-    }).then(() => dispatch(actions.setIsLoading({ loading: false }))
+    }).finally(() => dispatch(actions.setIsLoading({ loading: false }))
     ).then(() => build);
 }
 

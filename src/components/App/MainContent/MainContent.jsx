@@ -1,12 +1,12 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import throttle from 'lodash/throttle';
-import Settings from '../../../containers/settings';
 import Skills from '../../Skills';
 import Specializations from '../../Specializations';
 import Gear from '../../Gear';
 import Section from './Section';
-import style from './mainContent.css';
+import style from './mainContent.module.css';
+import General from '../../General/GeneralContainer';
 
 class MainContent extends React.Component {
     constructor(props, context) {
@@ -135,7 +135,10 @@ class MainContent extends React.Component {
         }
 
         this.panelNode = ref;
-        this.panelNode.addEventListener('scroll', this.handleScroll);
+
+        if(this.panelNode) {
+            this.panelNode.addEventListener('scroll', this.handleScroll);
+        }
     }
 
     setSectionRef(section) {
@@ -157,7 +160,7 @@ class MainContent extends React.Component {
                          anchorRef={this.setAnchorRef(0)}
                          name="General"
                          actions={[{ text: 'Load build', onClick: () => this.props.setImportDialogVisible(true)}]}>
-                    <Settings/>
+                    <General/>
                 </Section>
                 <Section domRef={this.setSectionRef(1)} anchorRef={this.setAnchorRef(1)} name="Skills">
                     <Skills/>

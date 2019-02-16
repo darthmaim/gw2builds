@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Attribute from './Attribute';
-import style from './style.css';
+import style from './style.module.css';
 
 class StatsOverview extends Component {
     render() {

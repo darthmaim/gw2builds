@@ -2,7 +2,7 @@ import React from 'react';
 import groupBy from 'lodash/groupBy';
 import SkillIcon from '../../../../Icon';
 import SkillTooltip from '../../../../../Tooltips/Skills/TooltipContainer';
-import style from './style.css';
+import style from './style.module.css';
 
 const renderSkills = (availableProfessionSkillObjects, availableSkillObjects) => {
     const slots = groupBy(availableProfessionSkillObjects.filter(skill => skill.type === 'Profession'), 'slot');
@@ -15,7 +15,7 @@ const renderSkills = (availableProfessionSkillObjects, availableSkillObjects) =>
                 </SkillTooltip>
             );
         } else {
-            <SkillIcon/>;
+            return (<SkillIcon key={slot}/>);
         }
     });
 };

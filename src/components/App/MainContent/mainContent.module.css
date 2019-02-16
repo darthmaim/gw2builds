@@ -1,0 +1,9 @@
+.panel {
+    flex: 1;
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+:global(.js-select-disable-scroll) .panel {
+    overflow: hidden;
+}

@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import SkillTooltip from '../../../Tooltips/Skills/TooltipContainer';
 import SkillIcon from '../../Icon';
-import style from './WeaponBar.css';
+import style from './WeaponBar.module.css';
 
 class WeaponBar extends Component {
     constructor(props, context) {

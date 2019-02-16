@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
-import style from './languageSelector.css';
+import style from './languageSelector.module.css';
 
 // TODO: can we configure the available languages somewhere else?
 export const LANGUAGES = [

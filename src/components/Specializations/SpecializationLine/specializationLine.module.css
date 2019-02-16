@@ -1,0 +1,90 @@
+.line {
+    display: flex;
+    align-items: center;
+    position: relative;
+    width: 647px;
+    height: 136px;
+}
+
+.background {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-repeat: no-repeat;
+}
+
+.backgroundEmpty {
+    composes: background;
+    background: url(./specialization-empty.png);
+}
+
+.backgroundImage {
+    composes: background;
+    background-position: bottom left;
+}
+
+.backgroundHover {
+    composes: background;
+    background: black;
+    opacity: 0.5;
+    transition: opacity 500ms;
+}
+
+.line:hover .backgroundHover {
+    opacity: 0;
+}
+
+.backgroundOverlay {
+    composes: background;
+    background: url(./specialization-overlay.png);
+}
+
+.backgroundEliteOverlay {
+    composes: background;
+    background: url(./specialization-elite-overlay.png);
+}
+
+.backgroundIcon {
+    composes: background;
+    height: 100%;
+}
+
+.specializationName {
+    position: absolute;
+    transform: translateX(-50%) rotate(-90deg);
+    left: 32px;
+    padding: 2px 5px;
+    max-width: 126px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.6);
+    color: white;
+}
+
+.weaponIcon {
+    composes: minorIcon from './traitMinorIcon.module.css';
+    position: relative;
+    margin-left: -44px;
+    margin-right: 2px;
+    margin-top: 72px;
+}
+
+.arrow {
+    display: flex;
+    align-items: center;
+    margin-right: 152px;
+    width: 16px;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.3);
+    z-index: 5;
+}
+
+.arrow > svg {
+    margin-left: 3px;
+    fill: #d8cf62;
+}
+

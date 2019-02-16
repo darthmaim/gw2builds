@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import classnames from 'classnames';
-import style from './section.css';
+import style from './section.module.css';
 
 const Section = ({ className, domRef, anchorRef, name, actions, children }) => (
     <div className={classnames(style.section, className)} ref={domRef}>

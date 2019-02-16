@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import style from './specializationIcon.css';
+import style from './specializationIcon.module.css';
 
 class SpecializationIcon extends React.Component {
     constructor() {

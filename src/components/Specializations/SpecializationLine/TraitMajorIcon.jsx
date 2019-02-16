@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import style from './traitMajorIcon.css';
+import style from './traitMajorIcon.module.css';
+import mask from './trait-major-mask.png';
 
 class TraitMajorIcon extends React.Component {
     constructor() {
@@ -20,7 +21,7 @@ class TraitMajorIcon extends React.Component {
                 <svg className={this.props.isSelected ? style.majorIconSelected : style.majorIcon}>
                     <defs>
                         <mask id="majorTraitMask">
-                            <image xlinkHref="../img/specializations/trait-major-mask.png" width="64" height="64"/>
+                            <image xlinkHref={mask} width="64" height="64"/>
                         </mask>
                     </defs>
                     <image

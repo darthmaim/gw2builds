@@ -4,7 +4,7 @@ import TraitTooltip from '../../../Tooltips/Traits/TooltipContainer';
 import TraitConnection from '../TraitConnection';
 import TraitMajorIcon from '../TraitMajorIcon';
 import TraitMinorIcon from '../TraitMinorIcon';
-import style from './traitTier.css';
+import style from './traitTier.module.css';
 
 const lineTranslate = ['up', 'mid', 'down'];
 

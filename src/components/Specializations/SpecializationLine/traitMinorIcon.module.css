@@ -1,0 +1,4 @@
+.minorIcon {
+    composes: icon from './traitIcon.module.css';
+    margin: 0 -4px;
+}

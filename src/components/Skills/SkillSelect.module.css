@@ -1,0 +1,44 @@
+.select {
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+    border: 1px solid #000;
+}
+
+.select + .select {
+    border-left: 0;
+}
+
+.select:after {
+    content: '';
+    position: absolute;
+    top: -9px;
+    left: 50%;
+    margin-left: -4px;
+    border-style: solid;
+    border-width: 0 4px 6px;
+    border-color: transparent transparent #ccc transparent;
+}
+
+.option {
+    margin: -16px;
+    padding: 8px 16px;
+    display: flex;
+    align-items: center;
+}
+
+.icon {
+    margin-right: 8px;
+    align-self: flex-start;
+    flex-shrink: 0;
+}
+
+.disabledIcon {
+    composes: icon;
+
+    filter: grayscale(1);
+}
+
+.name {
+    margin-top: -2px;
+}

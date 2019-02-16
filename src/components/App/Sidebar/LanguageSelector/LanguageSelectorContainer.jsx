@@ -1,6 +1,5 @@
 import { connect } from 'react-redux';
 import { setSelectedLanguage } from '../../../../actions';
-import { applyEditorMode } from '../../../../editor-modes';
 import LanguageSelector from './LanguageSelector';
 
 const mapStateToProps = state => ({
@@ -10,7 +9,6 @@ const mapStateToProps = state => ({
 const mapDispathToProps = dispatch => ({
     onLanguageChange: language => {
         dispatch(setSelectedLanguage({ language }));
-        applyEditorMode('language', language);
     }
 });
 
