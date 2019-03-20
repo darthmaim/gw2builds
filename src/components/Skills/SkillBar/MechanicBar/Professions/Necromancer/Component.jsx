@@ -1,7 +1,7 @@
 import React from 'react';
 import SkillIcon from '../../../../Icon';
 import SkillTooltip from '../../../../../Tooltips/Skills/TooltipContainer';
-import { FormattedNumber } from 'react-intl';
+import { NumberFormat } from '@lingui/macro';
 import style from './style.module.css';
 
 const renderSkill = (availableProfessionSkillObjects, availableSkillObjects) => {
@@ -17,7 +17,7 @@ const renderSkill = (availableProfessionSkillObjects, availableSkillObjects) => 
 
 const Necromancer = ({ availableProfessionSkillObjects, availableSkillObjects, health }) => (
     <div className={style.component}>
-        <div className={style.bar}><FormattedNumber value={0.69 * health} maximumFractionDigits={0}/></div>
+        <div className={style.bar}><NumberFormat value={0.69 * health} format={{maximumFractionDigits: 0}}/></div>
         {renderSkill(availableProfessionSkillObjects, availableSkillObjects)}
     </div>
 );

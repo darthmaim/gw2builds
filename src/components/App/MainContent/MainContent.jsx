@@ -7,6 +7,7 @@ import Gear from '../../Gear';
 import Section from './Section';
 import style from './mainContent.module.css';
 import General from '../../General/GeneralContainer';
+import { Trans } from "@lingui/macro"
 
 class MainContent extends React.Component {
     constructor(props, context) {
@@ -158,17 +159,17 @@ class MainContent extends React.Component {
             <main ref={this.setPanelRef} className={style.panel}>
                 <Section domRef={this.setSectionRef(0)}
                          anchorRef={this.setAnchorRef(0)}
-                         name="General"
+                         name={(<Trans>General</Trans>)}
                          actions={[{ text: 'Load build', onClick: () => this.props.setImportDialogVisible(true)}]}>
                     <General/>
                 </Section>
-                <Section domRef={this.setSectionRef(1)} anchorRef={this.setAnchorRef(1)} name="Skills">
+                <Section domRef={this.setSectionRef(1)} anchorRef={this.setAnchorRef(1)} name={(<Trans>Skills</Trans>)}>
                     <Skills/>
                 </Section>
-                <Section domRef={this.setSectionRef(2)} anchorRef={this.setAnchorRef(2)} name="Traits">
+                <Section domRef={this.setSectionRef(2)} anchorRef={this.setAnchorRef(2)} name={(<Trans>Traits</Trans>)}>
                     <Specializations/>
                 </Section>
-                <Section domRef={this.setSectionRef(3)} anchorRef={this.setAnchorRef(3)} name="Gear">
+                <Section domRef={this.setSectionRef(3)} anchorRef={this.setAnchorRef(3)} name={(<Trans>Gear</Trans>)}>
                     <Gear/>
                 </Section>
             </main>

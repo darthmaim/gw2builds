@@ -1,6 +1,6 @@
 import React from 'react';
 import { render } from 'react-dom';
-import { IntlProvider } from 'react-intl';
+import { I18nProvider } from '@lingui/react'
 import { Provider, connect } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import promiseMiddleware from 'redux-promise';
@@ -26,11 +26,15 @@ class Editor extends React.Component {
         super(props, context);
 
         this.state = {
-            error: undefined
+            error: undefined,
+            catalogs: { }
         };
     }
 
     componentWillMount() {
+        // load initial locale
+        this.loadLocale(this.props.locale);
+
         // Get an existing build string for initialization
         const path = window.location.pathname.substr(1);
 
@@ -69,9 +73,26 @@ class Editor extends React.Component {
         }
     }
 
-    componentDidUpdate() {
-        const {url, locale, selectedProfession} = this.props;
+    loadLocale(locale) {
         window.document.documentElement.lang = locale;
+
+        import(`@lingui/loader!./locales/${locale}/messages.po`).then(
+            (messages) => {
+                this.setState(
+                    ({ catalogs }) => ({
+                        catalogs: { ...catalogs, [locale]: messages }
+                    })
+                )
+            }
+        );
+    }
+
+    componentDidUpdate({ locale: prevLocale }) {
+        const {url, locale, selectedProfession} = this.props;
+
+        if(prevLocale !== locale && !this.state.catalogs[locale]) {
+            this.loadLocale(locale);
+        }
 
         // prevent updating the url/title while a build is loaded
         if (this.props.loading) {
@@ -84,13 +105,13 @@ class Editor extends React.Component {
 
     render() {
         return (
-            <IntlProvider locale={this.props.locale}>
+            <I18nProvider language={this.props.locale} catalogs={this.state.catalogs}>
                 <TooltipContext>
                     <Select.Context>
                         <Layout loading={this.props.loading} error={this.state.error}/>
                     </Select.Context>
                 </TooltipContext>
-            </IntlProvider>
+            </I18nProvider>
         );
     }
 }

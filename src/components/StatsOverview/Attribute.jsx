@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
-import { FormattedNumber } from 'react-intl';
+import { NumberFormat } from '@lingui/react';
 import style from './style.module.css';
 
 class Attribute extends Component {
@@ -38,7 +38,7 @@ class Attribute extends Component {
                         </svg>
                         {this.props.label}
                     </span>
-                    <span className={style.value}><FormattedNumber value={this.props.value} {...numberFormat}/></span>
+                    <span className={style.value}><NumberFormat value={this.props.value} format={numberFormat}/></span>
                 </div>
                 {open && this.renderDetails()}
             </li>
