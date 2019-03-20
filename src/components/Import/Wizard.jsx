@@ -5,6 +5,7 @@ import AddKey from './AddKeyContainer';
 import Overlay from '../App/Overlay/Overlay';
 import style from './Wizard.module.css';
 import { ReactComponent as BackIcon } from './back.svg';
+import { Trans } from '@lingui/macro';
 
 const VIEW_OVERVIEW = 'overview';
 const VIEW_ADDKEY = 'addkey';
@@ -58,11 +59,11 @@ export default class extends React.Component {
                     <button type="button" className={style.backButton} onClick={this.handleShowOverview}>
                         <BackIcon/>
                     </button>
-                    Add API key
+                    <Trans>Add API key</Trans>
                 </span>
             );
             case VIEW_OVERVIEW:
-            default: return 'Load build';
+            default: return <Trans>Load Build</Trans>;
         }
     }
 }

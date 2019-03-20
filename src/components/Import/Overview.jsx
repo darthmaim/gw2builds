@@ -3,6 +3,8 @@ import isEqual from 'lodash/isEqual'
 import { api } from '../../utils/api';
 import style from './Overview.module.css';
 import { TYPE_PVE, TYPE_PVP, TYPE_WVW } from './loadBuild';
+import { t, Trans } from '@lingui/macro';
+import { I18n } from '@lingui/react';
 
 const SOURCE_API = 'api';
 const SOURCE_GW2EFFICIENCY = 'gw2efficiency';
@@ -73,7 +75,7 @@ class Overview extends React.Component {
         ]).then(([account, characters]) => ({
             source, key, account, characters
         })).catch((details) => ({
-            source, key, error: { text: 'Could not load account details.', details }
+            source, key, error: { text: <Trans>Could not load account details.</Trans>, details }
         }));
     }
 
@@ -85,22 +87,26 @@ class Overview extends React.Component {
         return (
             <div>
                 {accounts.length > 0 && (
-                    <input type="search"
-                           className={style.search}
-                           placeholder="Search characters"
-                           autoFocus
-                           value={state.search}
-                           onChange={(e) => this.setState({ search: e.target.value })}/>
+                    <I18n>
+                        {({i18n}) => (
+                            <input type="search"
+                                className={style.search}
+                                placeholder={i18n._(t`Search characters`)}
+                                autoFocus
+                                value={state.search}
+                                onChange={(e) => this.setState({ search: e.target.value })}/>
+                        )}
+                    </I18n>
                 )}
-                {isLoading && <div className={style.loading}>Loading...</div>}
+               {isLoading && <div className={style.loading}><Trans>Loading...</Trans></div>}
                 {!isLoading && accounts.length === 0 && (
                     <div className={style.loading}>
-                        Add your API key or log into <a href="https://gw2efficiency.com/" target="_blank" rel="noopener noreferrer">gw2efficiency</a> to load your characters builds.
+                        <Trans>Add your API key or log into <a href="https://gw2efficiency.com/" target="_blank" rel="noopener noreferrer">gw2efficiency</a> to load your characters builds.</Trans>
                     </div>
                 )}
                 {accounts.map(this.renderAccount, this)}
                 <button type="button" onClick={this.props.onShowAddKey} className={style.addButton}>
-                    <span className={style.addButtonIcon}>+</span> Add API key
+                    <span className={style.addButtonIcon}>+</span> <Trans>Add API key</Trans>
                 </button>
             </div>
         );
@@ -110,10 +116,10 @@ class Overview extends React.Component {
         return (
             <div key={key} className={style.account}>
                 <div className={style.accountHeader}>
-                    {(account && account.name) || 'Unknown account'}
+                    {(account && account.name) || <Trans>Unknown account</Trans>}
                     {source === SOURCE_API && (
                         <button type="button" onClick={() => this.props.removeImportApiKey(key)} className={style.removeButton}>
-                            Remove
+                            <Trans>Remove</Trans>
                         </button>
                     )}
                 </div>
