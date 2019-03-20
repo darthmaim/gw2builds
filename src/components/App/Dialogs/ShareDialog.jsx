@@ -3,6 +3,8 @@ import Overlay from '../Overlay/Overlay';
 import Dialog from './../../Inputs/Dialog/Dialog';
 import style from './ShareDialog.module.css';
 import CopyIcon from './copy.svg';
+import { Trans, t } from '@lingui/macro';
+import { I18n } from '@lingui/react';
 
 const onFocus = ({target}) => target.select();
 
@@ -38,12 +40,16 @@ export default class ShareDialog extends Component {
 
         return (
             <Overlay>
-                <Dialog onClose={onClose} title="Share Build">
-                    <p className={style.text}>You can use this url to share your build.</p>
+                <Dialog onClose={onClose} title={<Trans>Share Build</Trans>}>
+                    <p className={style.text}><Trans>You can use this url to share your build.</Trans></p>
                     <div className={style.inputWrapper}>
                         <input className={style.input} onFocus={onFocus} readOnly={true} ref={this.setInputRef} value={window.location.href}/>
                         <button className={style.copyButton} onClick={this.onCopy}>
-                            <img src={CopyIcon} alt="Copy"/>
+                            <I18n>
+                                {({i18n}) => (
+                                    <img src={CopyIcon} alt={i18n._(t`Copy`)}/>
+                                )}
+                            </I18n>
                         </button>
                     </div>
                 </Dialog>

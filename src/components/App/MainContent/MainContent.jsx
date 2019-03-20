@@ -160,7 +160,7 @@ class MainContent extends React.Component {
                 <Section domRef={this.setSectionRef(0)}
                          anchorRef={this.setAnchorRef(0)}
                          name={(<Trans>General</Trans>)}
-                         actions={[{ text: 'Load build', onClick: () => this.props.setImportDialogVisible(true)}]}>
+                         actions={[{ text: <Trans>Load Build</Trans>, onClick: () => this.props.setImportDialogVisible(true)}]}>
                     <General/>
                 </Section>
                 <Section domRef={this.setSectionRef(1)} anchorRef={this.setAnchorRef(1)} name={(<Trans>Skills</Trans>)}>

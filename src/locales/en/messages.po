@@ -13,18 +13,268 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: src/components/App/MainContent/MainContent.jsx:173
+#: src/components/App/Dialogs/AboutDialog.jsx:10
+msgid "<0>This build editor was made by <1>Archomeda.6472</1> and <2>darthmaim.6017</2>. Thanks to queicherius.2563 and Eearslya.6309 for helping along the way.</0><3>Found any bugs or have Feedback? You can report them in our <4>Issue Tracker</4>.</3><5>Want to contribute? The code is open source at <6>github.com/darthmaim/gw2builds</6> and we appreciate every Pull Request.</5>"
+msgstr "<0>This build editor was made by <1>Archomeda.6472</1> and <2>darthmaim.6017</2>. Thanks to queicherius.2563 and Eearslya.6309 for helping along the way.</0><3>Found any bugs or have Feedback? You can report them in our <4>Issue Tracker</4>.</3><5>Want to contribute? The code is open source at <6>github.com/darthmaim/gw2builds</6> and we appreciate every Pull Request.</5>"
+
+#: src/components/Import/AddKey.jsx:68
+msgid "API key"
+msgstr "API key"
+
+#: src/components/App/Dialogs/AboutDialog.jsx:9
+#: src/components/App/Header.jsx:138
+msgid "About"
+msgstr "About"
+
+#: src/components/Import/AddKey.jsx:74
+#: src/components/Import/Overview.jsx:109
+#: src/components/Import/Wizard.jsx:62
+msgid "Add API key"
+msgstr "Add API key"
+
+#: src/components/App/Header.jsx:131
+msgid "Add to Homescreen"
+msgstr "Add to Homescreen"
+
+#: src/components/Import/Overview.jsx:104
+msgid "Add your API key or log into <0>gw2efficiency</0> to load your characters builds."
+msgstr "Add your API key or log into <0>gw2efficiency</0> to load your characters builds."
+
+#: src/components/StatsOverview/StatsOverview.jsx:19
+msgid "Armor"
+msgstr "Armor"
+
+#: src/components/StatsOverview/StatsOverview.jsx:25
+msgid "Boon Duration"
+msgstr "Boon Duration"
+
+#: src/components/StatsOverview/StatsOverview.jsx:17
+msgid "BoonDuration"
+msgstr "Concentration"
+
+#: src/components/App/Header.jsx:135
+msgid "Clear Build"
+msgstr "Clear Build"
+
+#: src/components/StatsOverview/StatsOverview.jsx:24
+msgid "Condition Duration"
+msgstr "Condition Duration"
+
+#: src/components/StatsOverview/StatsOverview.jsx:15
+msgid "ConditionDamage"
+msgstr "Condition Damage"
+
+#: src/components/StatsOverview/StatsOverview.jsx:16
+msgid "ConditionDuration"
+msgstr "Expertise"
+
+#: src/components/App/Dialogs/ShareDialog.jsx:50
+msgid "Copy"
+msgstr "Copy"
+
+#: src/components/Import/Overview.jsx:78
+msgid "Could not load account details."
+msgstr "Could not load account details."
+
+#: src/components/StatsOverview/StatsOverview.jsx:14
+msgid "CritDamage"
+msgstr "Ferocity"
+
+#: src/components/StatsOverview/StatsOverview.jsx:21
+msgid "Critical Chance"
+msgstr "Critical Chance"
+
+#: src/components/StatsOverview/StatsOverview.jsx:22
+msgid "Critical Damage"
+msgstr "Critical Damage"
+
+#: src/components/Import/AddKey.jsx:64
+msgid "Enter your API key:"
+msgstr "Enter your API key:"
+
+#: src/components/General/General.jsx:16
+msgid "Game Mode"
+msgstr "Game Mode"
+
+#: src/components/App/MainContent/MainContent.jsx:172
 msgid "Gear"
 msgstr "Gear"
 
-#: src/components/App/MainContent/MainContent.jsx:163
+#: src/components/App/MainContent/MainContent.jsx:162
 msgid "General"
 msgstr "General"
 
-#: src/components/App/MainContent/MainContent.jsx:167
+#: src/components/StatsOverview/StatsOverview.jsx:23
+msgid "Healing"
+msgstr "Healing Power"
+
+#: src/components/StatsOverview/StatsOverview.jsx:20
+msgid "Health"
+msgstr "Health"
+
+#: src/components/App/Dialogs/SettingsDialog.jsx:24
+msgid "Language"
+msgstr "Language"
+
+#: src/components/App/Header.jsx:134
+#: src/components/App/MainContent/MainContent.jsx:163
+#: src/components/Import/Wizard.jsx:66
+msgid "Load Build"
+msgstr "Load Build"
+
+#: src/components/Import/Overview.jsx:101
+msgid "Loading..."
+msgstr "Loading..."
+
+#: src/components/Skills/WeaponSeletion/WeaponSelection.jsx:46
+msgid "Mainhand"
+msgstr "Mainhand"
+
+#: src/components/App/Dialogs/SettingsDialog.jsx:35
+msgid "No"
+msgstr "No"
+
+#: src/components/General/General.jsx:17
+#: src/components/General/General.jsx:27
+#: src/components/General/General.jsx:42
+#: src/components/Skills/WeaponSeletion/WeaponSelection.jsx:16
+msgid "None"
+msgstr "None"
+
+#: src/components/Skills/WeaponSeletion/WeaponSelection.jsx:47
+msgid "Offhand"
+msgstr "Offhand"
+
+#: src/components/StatsOverview/StatsOverview.jsx:10
+msgid "Power"
+msgstr "Power"
+
+#: src/components/StatsOverview/StatsOverview.jsx:13
+msgid "Precision"
+msgstr "Precision"
+
+#: src/components/General/General.jsx:26
+msgid "Profession"
+msgstr "Profession"
+
+#: src/components/StatsOverview/StatsOverview.jsx:18
+msgid "Profession Bonus"
+msgstr "Profession Bonus"
+
+#: src/components/General/General.jsx:41
+msgid "Race"
+msgstr "Race"
+
+#: src/components/Import/Overview.jsx:122
+msgid "Remove"
+msgstr "Remove"
+
+#: src/components/Skills/WeaponSeletion/WeaponSelection.jsx:33
+msgid "Requires the elite specialization {0}"
+msgstr "Requires the elite specialization {0}"
+
+#: src/components/Skills/WeaponSeletion/WeaponSelection.jsx:34
+msgid "Requires the specialization {0}"
+msgstr "Requires the specialization {0}"
+
+#: src/components/Import/Overview.jsx:94
+msgid "Search characters"
+msgstr "Search characters"
+
+#: src/components/App/Dialogs/SettingsDialog.jsx:22
+#: src/components/App/Header.jsx:137
+msgid "Settings"
+msgstr "Settings"
+
+#: src/components/App/Dialogs/ShareDialog.jsx:43
+#: src/components/App/Header.jsx:136
+msgid "Share Build"
+msgstr "Share Build"
+
+#: src/components/App/Dialogs/SettingsDialog.jsx:32
+msgid "Show IDs in tooltips"
+msgstr "Show IDs in tooltips"
+
+#: src/components/App/MainContent/MainContent.jsx:166
 msgid "Skills"
 msgstr "Skills"
 
-#: src/components/App/MainContent/MainContent.jsx:170
+#: src/components/App/Content.jsx:44
+msgid "Stats"
+msgstr "Stats"
+
+#: src/components/Import/AddKey.jsx:93
+msgid "The key needs <0>characters</0> and <1>builds</1> permissions."
+msgstr "The key needs <0>characters</0> and <1>builds</1> permissions."
+
+#: src/components/Import/AddKey.jsx:89
+msgid "The key you provided is invalid."
+msgstr "The key you provided is invalid."
+
+#: src/components/StatsOverview/StatsOverview.jsx:11
+msgid "Toughness"
+msgstr "Toughness"
+
+#: src/components/App/MainContent/MainContent.jsx:169
 msgid "Traits"
 msgstr "Traits"
+
+#: src/components/Skills/SlotSelection/SetSelection.jsx:29
+msgid "Underwater 1"
+msgstr "Underwater 1"
+
+#: src/components/Skills/SlotSelection/SetSelection.jsx:30
+msgid "Underwater 2"
+msgstr "Underwater 2"
+
+#: src/components/Import/Overview.jsx:119
+msgid "Unknown account"
+msgstr "Unknown account"
+
+#: src/components/Import/AddKey.jsx:50
+msgid "Unknown error"
+msgstr "Unknown error"
+
+#: src/components/StatsOverview/StatsOverview.jsx:12
+msgid "Vitality"
+msgstr "Vitality"
+
+#: src/components/Skills/SlotSelection/SetSelection.jsx:34
+msgid "Weapon Set"
+msgstr "Weapon Set"
+
+#: src/components/Skills/SlotSelection/SetSelection.jsx:27
+msgid "Weaponset 1"
+msgstr "Weaponset 1"
+
+#: src/components/Skills/SlotSelection/SetSelection.jsx:28
+msgid "Weaponset 2"
+msgstr "Weaponset 2"
+
+#: src/components/App/Dialogs/SettingsDialog.jsx:34
+msgid "Yes"
+msgstr "Yes"
+
+#: src/components/Import/AddKey.jsx:62
+msgid "You can add your API key by going to your <0>Guild Wars 2 Account Page</0>, generating a new key with <1>characters</1> and <2>builds</2> permissions and copy/pasting it into this form."
+msgstr "You can add your API key by going to your <0>Guild Wars 2 Account Page</0>, generating a new key with <1>characters</1> and <2>builds</2> permissions and copy/pasting it into this form."
+
+#: src/components/App/Dialogs/ShareDialog.jsx:44
+msgid "You can use this url to share your build."
+msgstr "You can use this url to share your build."
+
+#: src/components/Import/AddKey.jsx:91
+msgid "You need to provide an API key."
+msgstr "You need to provide an API key."
+
+#: src/actions/general.js:23
+msgid "pve"
+msgstr "PvE"
+
+#: src/actions/general.js:23
+msgid "pvp"
+msgstr "PvP"
+
+#: src/actions/general.js:23
+msgid "wvw"
+msgstr "WvW"

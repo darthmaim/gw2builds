@@ -4,6 +4,7 @@ import Overlay from './Overlay/Overlay';
 import ShareDialog from './Dialogs/ShareDialog';
 import SettingsDialog from './Dialogs/SettingsDialogContainer';
 import AboutDialog from './Dialogs/AboutDialog';
+import { Trans } from '@lingui/macro';
 
 import LogoIcon from './logo.svg';
 import TitleIcon from './title.svg';
@@ -127,14 +128,14 @@ export default class Header extends Component {
                     <div className={style.options}>
                         {this.state.beforeinstallprompt && (
                             <button type="button" className={style.option} onClick={this.handleInstallPrompt}>
-                                Add to homescreen
+                                <Trans>Add to Homescreen</Trans>
                             </button>
                         )}
-                        <button type="button" className={style.option} onClick={this.onLoadBuild}>Load Build</button>
-                        <button type="button" className={style.option} onClick={this.onResetBuild}>Clear Build</button>
-                        <button type="button" className={style.option} onClick={this.onShareBuild}>Share Build</button>
-                        <button type="button" className={style.option} onClick={this.onSettingsDialog}>Settings</button>
-                        <button type="button" className={style.option} onClick={this.onAboutDialog}>About</button>
+                        <button type="button" className={style.option} onClick={this.onLoadBuild}><Trans>Load Build</Trans></button>
+                        <button type="button" className={style.option} onClick={this.onResetBuild}><Trans>Clear Build</Trans></button>
+                        <button type="button" className={style.option} onClick={this.onShareBuild}><Trans>Share Build</Trans></button>
+                        <button type="button" className={style.option} onClick={this.onSettingsDialog}><Trans>Settings</Trans></button>
+                        <button type="button" className={style.option} onClick={this.onAboutDialog}><Trans>About</Trans></button>
                     </div>
                 </Overlay>)}
                 {shareDialog && <ShareDialog onClose={this.onHideShareDialog}/>}
