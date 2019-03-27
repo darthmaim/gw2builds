@@ -6,17 +6,29 @@
 
     min-width: 125px;
 
-    border-bottom: 1px solid #eee;
-    padding: 4px 16px 4px 0;
+    border: 1px solid #eee;
+    border-radius: 3px;
+    padding: 10px 26px 10px 10px;
     margin: 0;
 
+    background: #f9f9f9;
+
     cursor: pointer;
+}
+
+.select:hover {
+    border-color: #ddd;
+}
+
+.select:focus {
+    outline: none;
+    border-color: #2196F3;
 }
 
 .select:after {
     content: '';
     position: absolute;
-    right: 4px;
+    right: 10px;
     top: 50%;
     margin-top: -2px;
     border-style: solid;
