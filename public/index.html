@@ -31,6 +31,9 @@
     <link rel="apple-touch-icon-precomposed" href="logo/192.png" sizes="192x192">
     <!-- safari pinned tab icon -->
     <link rel="mask-icon" href="logo/pinned-tab.svg" color="#3023AE">
+
+    <!-- track unhandled errors - tracked later by analytics -->
+    <script>addEventListener('error', window.__e=function f(e){f.q=f.q||[];f.q.push(e)});</script>
   </head>
   <body>
     <div id="root">
@@ -109,7 +112,6 @@
         }
       </style>
     </div>
-    <script id="analytics" src="https://www.google-analytics.com/analytics.js" async data-tracking-id="%REACT_APP_ANALYTICS%"></script>
     <!--
       This HTML file is a template.
       If you open it directly in the browser, you will see an empty page.
