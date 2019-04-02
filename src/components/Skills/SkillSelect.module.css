@@ -5,17 +5,17 @@
     border: 1px solid #000;
 }
 
-.select:focus {
-    outline: none;
-    border-color: var(--input-border-color-focus);
-}
-
 .select:not(:last-child) {
     border-right: none;
 }
 
+.select:focus {
+    outline: none;
+    border: 1px solid var(--input-border-color-focus);
+}
+
 .select:focus + .select {
-    border-left-color: var(--input-border-color-focus);
+    border-left: none;
 }
 
 .select:after {
@@ -41,6 +41,7 @@
     z-index: 1;
     background: var(--focus);
     opacity: 0.25;
+    pointer-events: none;
 }
 
 .option {
