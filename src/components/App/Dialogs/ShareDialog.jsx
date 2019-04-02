@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Overlay from '../Overlay/Overlay';
 import Dialog from './../../Inputs/Dialog/Dialog';
 import style from './ShareDialog.module.css';
-import CopyIcon from './copy.svg';
+import { ReactComponent as CopyIcon } from './copy.svg';
 import { Trans, t } from '@lingui/macro';
 import { I18n } from '@lingui/react';
 
@@ -47,7 +47,7 @@ export default class ShareDialog extends Component {
                         <button className={style.copyButton} onClick={this.onCopy}>
                             <I18n>
                                 {({i18n}) => (
-                                    <img src={CopyIcon} alt={i18n._(t`Copy`)}/>
+                                    <CopyIcon className={style.copyButtonIcon} alt={i18n._(t`Copy`)}/>
                                 )}
                             </I18n>
                         </button>

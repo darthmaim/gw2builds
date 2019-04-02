@@ -1,8 +1,1 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="44px" height="44px" viewBox="0 0 44 44" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="Icon/Gear" stroke="#CCCCCC" fill="#FFFFFF">
-            <path d="M8.5,12.5 C16.5,11.5 22,8.5 22,8.5 C22,8.5 27.5,11.5 35.5,12.5 C35.5,27.5 22,35.5 22,35.5 C22,35.5 8.5,27.5 8.5,12.5 Z" id="Path-3"></path>
-        </g>
-    </g>
-</svg>
+<svg width="44" height="44" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><path d="M22 9s5.296 2.889 13 3.852C35 32 22 35 22 35V9z" fill-opacity=".3" fill="#FFF"/><path d="M9 12.852C16.704 11.889 22 9 22 9s5.296 2.889 13 3.852C35 32 22 35 22 35S9 33 9 12.852z" stroke="#FFF" stroke-width="2"/></g></svg>

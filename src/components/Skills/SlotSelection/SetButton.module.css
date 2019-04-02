@@ -1,8 +1,5 @@
 .button {
-    /* reset default button styles */
-    font: inherit;
-    border: none;
-    background-color: #fafafa;
+    composes: clickable from '../../Inputs/Inputs.module.css';
 
     border-radius: 16px;
     height: 32px;
@@ -10,20 +7,16 @@
     padding: 0 15px;
     margin: 0 6px 6px 0;
     display: inline-block;
-    cursor: pointer;
-}
-
-.button:hover {
-    background-color: #f4f4f4;
 }
 
 .active {
     composes: button;
 
-    background-color: #eee;
+    background-color: var(--input-border-color);
 }
 
 .icon {
-    vertical-align: middle;
+    color: var(--icon);
+    vertical-align: -5px;
     margin: 0 4px 0 -8px;
 }

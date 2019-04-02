@@ -1,7 +1,7 @@
 .account {}
 
 .accountHeader {
-    background: #fafafa;
+    background: var(--background-light);
     font-weight: bold;
     padding: 4px 8px;
     margin-bottom: 4px;
@@ -61,24 +61,18 @@
 .characterActionWvw { composes: characterAction; background-image: url(./wvw.png); }
 
 .addButton {
-    composes: input from '../Inputs/Inputs.module.css';
+    composes: clickable from '../Inputs/Inputs.module.css';
 
-    background: #f9f9f9;
     text-align: left;
     width: 100%;
     padding: 4px 8px;
     margin-top: 8px;
-    cursor: pointer;
     transition: background-color .3s ease;
-}
-
-.addButton:hover {
-    background: #eee;
 }
 
 .addButtonIcon {
     font-weight: bold;
-    color: #999;
+    color: var(--icon);
     width: 12px;
     height: 12px;
     font-size: 16px;
@@ -108,11 +102,10 @@
 }
 
 .search {
-    composes: input from '../Inputs/Inputs.module.css';
+    composes: editable from '../Inputs/Inputs.module.css';
 
     padding: 8px 8px;
     margin-bottom: 8px;
-    border: 1px solid #eee;
     width: 100%;
     box-sizing: border-box;
     -webkit-appearance: textfield;

@@ -8,8 +8,15 @@
     margin: -16px 0 -16px -16px;
     cursor: pointer;
     transition: all .3s ease;
+
+    color: var(--icon);
 }
 
 .backButton:hover {
-    opacity: .25;
+    color: var(--color);
+}
+
+.backButton:focus {
+    color: var(--focus);
+    outline: none;
 }

@@ -1,5 +1,5 @@
 .dialog {
-    background: #fff;
+    background: var(--background);
     box-shadow: 0 1px 40px rgba(0,0,0,.2);
     max-width: calc(100vw - 32px);
     max-height: calc(100vh - 32px);
@@ -21,7 +21,8 @@
     margin: -16px -16px 16px;
     font-size: 16px;
     padding: 16px;
-    background: #f9f9f9;
+    background: var(--background-light);
+    border-bottom: 1px solid var(--border-color);
     height: 48px;
     box-sizing: border-box;
     line-height: 16px;
@@ -37,8 +38,15 @@
     margin: -16px -16px -16px 0;
     cursor: pointer;
     transition: all .3s ease;
+
+    color: var(--icon);
 }
 
 .closeButton:hover {
-    background: #eee;
+    color: var(--color);
+}
+
+.closeButton:focus {
+    outline: none;
+    color: var(--focus);
 }

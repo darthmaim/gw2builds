@@ -20,5 +20,6 @@
     margin: 0 4px;
     box-shadow: 0 0 3px red;
     transform: rotate(45deg);
+    background: #fff;
 }
 

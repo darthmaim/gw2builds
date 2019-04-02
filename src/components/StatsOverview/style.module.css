@@ -52,4 +52,5 @@
     margin-right: 8px;
     vertical-align: -1px;
     transition: transform .3s ease;
+    color: var(--icon);
 }
