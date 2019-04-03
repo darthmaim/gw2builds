@@ -15,6 +15,7 @@ import { initializeBuildFromString } from './utils/build-string';
 import { syncMiddleware } from 'redux-sync-reducer';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import { loadBaseData, setIsLoading } from './actions';
+import themes from './theme.module.css';
 import 'typeface-open-sans';
 
 const store = createStore(editor, {}, composeWithDevTools(
@@ -24,6 +25,8 @@ const store = createStore(editor, {}, composeWithDevTools(
 class Editor extends React.Component {
     constructor(props, context) {
         super(props, context);
+
+        document.documentElement.classList.add(props.theme === 'dark' ? themes.dark : themes.light);
 
         this.state = {
             error: undefined,
@@ -87,11 +90,16 @@ class Editor extends React.Component {
         );
     }
 
-    componentDidUpdate({ locale: prevLocale }) {
-        const {url, locale, selectedProfession} = this.props;
+    componentDidUpdate({ locale: prevLocale, theme: prevTheme }) {
+        const {url, locale, selectedProfession, theme} = this.props;
 
         if(prevLocale !== locale && !this.state.catalogs[locale]) {
             this.loadLocale(locale);
+        }
+
+        if(prevTheme !== theme) {
+            document.documentElement.classList.remove(prevTheme === 'dark' ? themes.dark : themes.light)
+            document.documentElement.classList.add(theme === 'dark' ? themes.dark : themes.light);
         }
 
         // prevent updating the url/title while a build is loaded
@@ -121,7 +129,8 @@ Editor = connect(state => {
         locale: state.selectedLanguage,
         selectedProfession: state.selectedProfession,
         url: getUrl(state),
-        loading: state.isLoading
+        loading: state.isLoading,
+        theme: state.selectedTheme
     };
 })(Editor);
 

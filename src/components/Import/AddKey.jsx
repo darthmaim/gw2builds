@@ -65,7 +65,7 @@ class AddKey extends React.Component {
                     <div className={style.inputGroup}>
                         <I18n>
                             {({i18n}) => (
-                                <input name="apikey" id="apikey" className={style.input} disabled={loading} value={apiKey} onChange={this.handleInput} placeholder={i18n._(t`API key`)}/>
+                                <input name="apikey" id="apikey" autoFocus className={style.input} disabled={loading} value={apiKey} onChange={this.handleInput} placeholder={i18n._(t`API key`)}/>
                             )}
                         </I18n>
                         {loading ? (

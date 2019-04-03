@@ -1,9 +1,1 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="44px" height="44px" viewBox="0 0 44 44" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="Icon/Skills" stroke="#CCCCCC" fill="#FFFFFF">
-            <rect id="Rectangle-3" x="6.5" y="6.5" width="25" height="25"></rect>
-            <rect id="Rectangle-3" x="12.5" y="12.5" width="25" height="25"></rect>
-        </g>
-    </g>
-</svg>
+<svg width="44" height="44" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd" stroke="#FFF" stroke-width="2"><path d="M12 31H9V9H31V12"/><path fill-opacity=".3" fill="#FFF" d="M13 13h22v22H13z"/></g></svg>

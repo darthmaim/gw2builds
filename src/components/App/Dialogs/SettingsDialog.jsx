@@ -15,7 +15,7 @@ const languages = {
 
 export default class SettingsDialog extends Component {
     render() {
-        const { onClose, selectedLanguage, onLanguageChange, settings, setSettingsShowIds } = this.props;
+        const { onClose, selectedLanguage, onLanguageChange, selectedTheme, onThemeChange, settings, setSettingsShowIds } = this.props;
 
         return (
             <Overlay>
@@ -26,6 +26,13 @@ export default class SettingsDialog extends Component {
                             {LANGUAGES.map(
                                 (language) => <Select.Option key={language} value={language}>{languages[language]}</Select.Option>
                             )}
+                        </Select>
+                    </div>
+                    <div className={style.setting}>
+                        <label htmlFor={"theme"}><Trans>Theme</Trans></label>
+                        <Select id="theme" value={selectedTheme} onChange={onThemeChange}>
+                            <Select.Option value="light"><Trans>Light theme</Trans></Select.Option>
+                            <Select.Option value="dark"><Trans>Dark theme</Trans></Select.Option>
                         </Select>
                     </div>
                     <div className={style.setting}>

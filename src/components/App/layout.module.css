@@ -1,8 +1,10 @@
 html, body {
     margin: 0;
     font-family: 'Open Sans', sans-serif;
+    /*font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol;*/
     font-size: 14px;
-    background: #fff;
+    background: var(--background);
+    color: var(--color);
     height: 100%;
     overflow: hidden;
     position: fixed;
@@ -14,8 +16,21 @@ html, body {
     outline: none;
 }
 
+::-moz-focus-inner {
+    border: 0;
+}
+
 :global(#root) {
     height: 100%;
+}
+
+::selection {
+    background: var(--focus);
+    color: var(--input-color-focus);
+}
+
+a {
+    color: var(--focus);
 }
 
 .frame {
@@ -30,7 +45,8 @@ html, body {
     left: 50%;
     transform: translate(-50%,-50%);
     z-index: 100;
-    background: #fff;
+    background: var(--background);
+    color: var(--color);
     padding: 8px 16px;
     box-shadow: 0 1px 2px rgba(0,0,0,.2);
     border-radius: 2px;

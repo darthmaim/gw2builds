@@ -34,7 +34,7 @@ class Attribute extends Component {
                 <div className={style.header} onClick={this.handleClick}>
                     <span className={style.label}>
                         <svg className={style.expander}>
-                            <polygon fill="#CCCCCC" points="0 0 0 8 7 4"/>
+                            <polygon fill="currentColor" points="0 0 0 8 7 4"/>
                         </svg>
                         {this.props.label}
                     </span>

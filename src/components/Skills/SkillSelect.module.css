@@ -5,8 +5,17 @@
     border: 1px solid #000;
 }
 
-.select + .select {
-    border-left: 0;
+.select:not(:last-child) {
+    border-right: none;
+}
+
+.select:focus {
+    outline: none;
+    border: 1px solid var(--input-border-color-focus);
+}
+
+.select:focus + .select {
+    border-left: none;
 }
 
 .select:after {
@@ -17,7 +26,22 @@
     margin-left: -4px;
     border-style: solid;
     border-width: 0 4px 6px;
-    border-color: transparent transparent #ccc transparent;
+    border-color: transparent transparent var(--icon-color) transparent;
+}
+
+.select:focus::after {
+    border-bottom-color: var(--input-border-color-focus);
+}
+
+.select:focus::before {
+    content: '';
+    position: absolute;
+    top: 0; bottom: 0;
+    left: 0; right: 0;
+    z-index: 1;
+    background: var(--focus);
+    opacity: 0.25;
+    pointer-events: none;
 }
 
 .option {

@@ -11,7 +11,7 @@
     width: 25%;
     min-width: 300px;
     max-width: 400px;
-    border-left: 1px solid #eee;
+    border-left: 1px solid var(--border-color);
     overflow: auto;
     -webkit-overflow-scrolling: touch;
     display: flex;
@@ -23,7 +23,7 @@
 }
 
 .footer {
-    color: #888;
+    color: var(--color-muted);
     font-size: 11px;
     margin: 24px 16px;
     text-align: center;
@@ -48,5 +48,6 @@
         max-width: none;
         min-width: 0;
         border-left: 0;
+        border-top: 1px solid var(--border-color);
     }
 }

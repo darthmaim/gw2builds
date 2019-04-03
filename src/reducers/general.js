@@ -5,6 +5,9 @@ import { syncedReducer } from 'redux-sync-reducer';
 /** The language reducer. */
 export const selectedLanguage = syncedReducer(handleSimpleAction(actions.SET_SELECTED_LANGUAGE, 'en', 'language'), { name: 'language' });
 
+/** The language reducer. */
+export const selectedTheme = syncedReducer(handleSimpleAction(actions.SET_SELECTED_THEME, 'light', 'theme'), { name: 'theme' });
+
 /** The game mode reducer. */
 export const availableGameModes = handleSimpleAction(actions.LOAD_BASE_DATA, {}, 'availableGameModes');
 

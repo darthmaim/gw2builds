@@ -1,29 +1,31 @@
 .select {
-    composes: input from '../Inputs.module.css';
+    composes: clickable from '../Inputs.module.css';
 
     position: relative;
     display: inline-block;
 
-    min-width: 125px;
+    min-width: 150px;
 
-    border-bottom: 1px solid #eee;
-    padding: 4px 16px 4px 0;
+    border-radius: 3px;
+    padding: 10px 26px 10px 10px;
     margin: 0;
-
-    cursor: pointer;
 }
 
-.select:after {
+.select::after {
     content: '';
     position: absolute;
-    right: 4px;
+    right: 10px;
     top: 50%;
     margin-top: -2px;
     border-style: solid;
-    border-color: #ccc transparent transparent;
+    border-color: var(--icon-color) transparent transparent;
     border-width: 6px 4px 0;
     pointer-events: none;
 }
+
+/*.select:focus::after {*/
+    /*border-top-color: var(--input-color-focus);*/
+/*}*/
 
 .disabled {
     composes: select;
@@ -41,15 +43,17 @@
     top: 20px;
     left: 20px; right: 20px;
     max-height: calc(100% - 40px);
-    box-shadow: 0 0 0 100vmax rgba(0,0,0,.1), 0 1px 40px rgba(0,0,0,.2);
+    box-shadow: 0 1px 20px rgba(0,0,0,.2), 0 1px 5px rgba(0,0,0,.2);
     z-index: 44;
-    background: #fff;
+    background: var(--background);
+    border-radius: 3px;
+    margin: 8px 0;
 
     overflow: hidden;
     display: flex;
     flex-direction: column;
 
-    animation: dropdown .1s ease-out;
+    animation: dropdown .2s ease-out;
 }
 
 .options {
@@ -73,11 +77,11 @@
 }
 
 .dropdown .option:hover {
-    background: #f4f4f4;
+    background: var(--background-light);
 }
 
 .option + .option {
-    border-top: 1px solid #eee;
+    border-top: 1px solid var(--border-color);
 }
 
 .disabledOption {
@@ -86,16 +90,15 @@
 
 .dropdown .disabledOption {
     cursor: default;
-    background: #fafafa;
-    color: #acb4b9;
+    color: var(--color-muted);
 }
 
 .dropdown .disabledOption:hover {
-    background: #f9f9f9;
+    background: var(--background);
 }
 
 .dropdown .activeOption {
-    color: #3023AE;
+    color: var(--focus);
 }
 
 .dropdown .activeOption:before {
@@ -107,11 +110,16 @@
     width: 4px;
     height: 4px;
     border-radius: 2px;
-    background: #3023AE
+    background: var(--focus);
+}
+
+.dropdown .activeOption.highlightOption::before {
+    background: var(--input-color-focus);
 }
 
 .dropdown .highlightOption {
-    background: #F3F2FF;
+    background: var(--input-background-clickable-focus);
+    color: var(--input-color-focus)
 }
 
 .group {
@@ -131,7 +139,7 @@
 }
 
 .filter {
-    background: #fff;
+    background: var(--background);
     position: sticky;
     top: 0;
     z-index: 3;
@@ -140,10 +148,9 @@
 }
 
 .filterInput {
-    composes: input from '../Inputs.module.css';
+    composes: editable from '../Inputs.module.css';
 
     padding: 8px;
-    border: 1px solid #eee;
     width: 100%;
     box-sizing: border-box;
 }

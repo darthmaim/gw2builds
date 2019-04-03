@@ -22,7 +22,7 @@ msgid "API key"
 msgstr "API Key"
 
 #: src/components/App/Dialogs/AboutDialog.jsx:9
-#: src/components/App/Header.jsx:138
+#: src/components/App/MenuButton/MenuButton.jsx:130
 msgid "About"
 msgstr "Über"
 
@@ -32,7 +32,7 @@ msgstr "Über"
 msgid "Add API key"
 msgstr "API Key hinzufügen"
 
-#: src/components/App/Header.jsx:131
+#: src/components/App/MenuButton/MenuButton.jsx:123
 msgid "Add to Homescreen"
 msgstr "Zum Startbildschirm hinzufügen"
 
@@ -52,7 +52,7 @@ msgstr "Segensdauer"
 msgid "BoonDuration"
 msgstr "Konzentration"
 
-#: src/components/App/Header.jsx:135
+#: src/components/App/MenuButton/MenuButton.jsx:127
 msgid "Clear Build"
 msgstr "Build leeren"
 
@@ -88,6 +88,10 @@ msgstr "Kritische Trefferchance"
 msgid "Critical Damage"
 msgstr "Kritischer Schaden"
 
+#: src/components/App/Dialogs/SettingsDialog.jsx:35
+msgid "Dark theme"
+msgstr "Dunkel"
+
 #: src/components/Import/AddKey.jsx:64
 msgid "Enter your API key:"
 msgstr "Gebe deinen API Key ein:"
@@ -116,8 +120,12 @@ msgstr "Lebenspunkte"
 msgid "Language"
 msgstr "Sprache"
 
-#: src/components/App/Header.jsx:134
+#: src/components/App/Dialogs/SettingsDialog.jsx:34
+msgid "Light theme"
+msgstr "Hell"
+
 #: src/components/App/MainContent/MainContent.jsx:163
+#: src/components/App/MenuButton/MenuButton.jsx:126
 #: src/components/Import/Wizard.jsx:66
 msgid "Load Build"
 msgstr "Build laden"
@@ -130,7 +138,7 @@ msgstr "Laden..."
 msgid "Mainhand"
 msgstr "Haupthand"
 
-#: src/components/App/Dialogs/SettingsDialog.jsx:35
+#: src/components/App/Dialogs/SettingsDialog.jsx:42
 msgid "No"
 msgstr "Nein"
 
@@ -182,16 +190,16 @@ msgid "Search characters"
 msgstr "Charaktere durchsuchen"
 
 #: src/components/App/Dialogs/SettingsDialog.jsx:22
-#: src/components/App/Header.jsx:137
+#: src/components/App/MenuButton/MenuButton.jsx:129
 msgid "Settings"
 msgstr "Einstellungen"
 
 #: src/components/App/Dialogs/ShareDialog.jsx:43
-#: src/components/App/Header.jsx:136
+#: src/components/App/MenuButton/MenuButton.jsx:128
 msgid "Share Build"
 msgstr "Build teilen"
 
-#: src/components/App/Dialogs/SettingsDialog.jsx:32
+#: src/components/App/Dialogs/SettingsDialog.jsx:39
 msgid "Show IDs in tooltips"
 msgstr "IDs in Tooltips anzeigen"
 
@@ -210,6 +218,10 @@ msgstr "Der API key braucht <0>characters</0> und <1>builds</1> Berechtigungen."
 #: src/components/Import/AddKey.jsx:89
 msgid "The key you provided is invalid."
 msgstr "Der API Key ist nicht gültig."
+
+#: src/components/App/Dialogs/SettingsDialog.jsx:32
+msgid "Theme"
+msgstr "Farbschema"
 
 #: src/components/StatsOverview/StatsOverview.jsx:11
 msgid "Toughness"
@@ -251,7 +263,7 @@ msgstr "Waffenset 1"
 msgid "Weaponset 2"
 msgstr "Waffenset 2"
 
-#: src/components/App/Dialogs/SettingsDialog.jsx:34
+#: src/components/App/Dialogs/SettingsDialog.jsx:41
 msgid "Yes"
 msgstr "Ja"
 
@@ -267,14 +279,14 @@ msgstr "Benutze diese URL, um dein Build mit anderen zu teilen."
 msgid "You need to provide an API key."
 msgstr "Du musst einen API Key eingeben."
 
-#: src/actions/general.js:23
+#: src/actions/general.js:24
 msgid "pve"
 msgstr "PvE"
 
-#: src/actions/general.js:23
+#: src/actions/general.js:24
 msgid "pvp"
 msgstr "PvP"
 
-#: src/actions/general.js:23
+#: src/actions/general.js:24
 msgid "wvw"
 msgstr "WvW"
