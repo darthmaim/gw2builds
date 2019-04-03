@@ -1,16 +1,29 @@
 .sidebar {
     width: 64px;
-    border-right: 1px solid #eee;
+    box-shadow: 0 0 3px rgba(0,0,0,.2);
     display: flex;
     flex-direction: column;
     overflow: hidden;
     position: relative;
     user-select: none;
-    background: #fff;
+    background: linear-gradient(var(--brand1), var(--brand2));
     z-index: 11;
 }
 
+.logo {
+    display: inline-block;
+    width: 64px;
+    height: 64px;
+    text-align: center;
+    border-bottom: 1px solid rgba(0,0,0,.1);
+}
+
+.logo img {
+    margin: 10px;
+}
+
 .sections {
+    position: relative;
     flex: 1;
 }
 
@@ -20,7 +33,7 @@
     top: 0;
     height: 64px;
     width: 4px;
-    background-color: #C56CD6;
+    background-color: #fff;
     z-index: 1;
 
     will-change: transform;
@@ -31,7 +44,7 @@
     font: inherit;
     width: 64px;
     height: 64px;
-    background: #ffffff;
+    background: transparent;
     border: none;
     border-radius: 0;
     outline: none;
@@ -43,7 +56,7 @@
 }
 
 .button:hover {
-    background: #f9f9f9;
+    background: rgba(255,255,255,.1);
 }
 
 .button img {
@@ -55,12 +68,10 @@
         flex-direction: row;
         width: 100%;
         height: 48px;
-        border-right: 0;
-        border-bottom: 1px solid #eee;
+        background: var(--brand1);
 
-        position: sticky;
+        position: fixed;
         top: 0;
-        overflow: visible;
     }
 
     .button {
@@ -78,5 +89,17 @@
         height: 4px;
         width: 48px;
         top: calc(48px - 3px);
+    }
+
+    .logo {
+        width: 48px;
+        height: 48px;
+        border-bottom: none;
+    }
+
+    .logo img {
+        margin: 8px;
+        width: 32px;
+        height: 32px;
     }
 }

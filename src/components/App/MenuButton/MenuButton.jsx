@@ -1,14 +1,12 @@
 import React, { Component } from 'react';
-import style from './header.module.css';
-import Overlay from './Overlay/Overlay';
-import ShareDialog from './Dialogs/ShareDialog';
-import SettingsDialog from './Dialogs/SettingsDialogContainer';
-import AboutDialog from './Dialogs/AboutDialog';
+import style from './MenuButton.module.css';
+import Overlay from '../Overlay/Overlay';
+import ShareDialog from '../Dialogs/ShareDialog';
+import SettingsDialog from '../Dialogs/SettingsDialogContainer';
+import AboutDialog from '../Dialogs/AboutDialog';
+import { Trans } from '@lingui/macro';
 
-import LogoIcon from './logo.svg';
-import TitleIcon from './title.svg';
-
-export default class Header extends Component {
+export default class MenuButton extends Component {
     constructor(props, context) {
         super(props, context);
 
@@ -114,33 +112,28 @@ export default class Header extends Component {
         const { dropdown, shareDialog, settingsDialog, aboutDialog } = this.state;
 
         return (
-            <div className={style.header}>
-                <div className={style.logo}>
-                    <img src={LogoIcon} alt=""/>
-                </div>
-                <div className={style.title}>
-                    <img src={TitleIcon} alt="gw2efficiency | Build Editor"/>
-                </div>
-                <div className={style.more} onClick={this.onToggleDropdown}>
-                </div>
+            <React.Fragment>
+                <button className={style.more} onClick={this.onToggleDropdown}>
+                    Menu Button
+                </button>
                 {dropdown && (<Overlay onClick={this.onToggleDropdown}>
                     <div className={style.options}>
                         {this.state.beforeinstallprompt && (
                             <button type="button" className={style.option} onClick={this.handleInstallPrompt}>
-                                Add to homescreen
+                                <Trans>Add to Homescreen</Trans>
                             </button>
                         )}
-                        <button type="button" className={style.option} onClick={this.onLoadBuild}>Load Build</button>
-                        <button type="button" className={style.option} onClick={this.onResetBuild}>Clear Build</button>
-                        <button type="button" className={style.option} onClick={this.onShareBuild}>Share Build</button>
-                        <button type="button" className={style.option} onClick={this.onSettingsDialog}>Settings</button>
-                        <button type="button" className={style.option} onClick={this.onAboutDialog}>About</button>
+                        <button type="button" className={style.option} onClick={this.onLoadBuild}><Trans>Load Build</Trans></button>
+                        <button type="button" className={style.option} onClick={this.onResetBuild}><Trans>Clear Build</Trans></button>
+                        <button type="button" className={style.option} onClick={this.onShareBuild}><Trans>Share Build</Trans></button>
+                        <button type="button" className={style.option} onClick={this.onSettingsDialog}><Trans>Settings</Trans></button>
+                        <button type="button" className={style.option} onClick={this.onAboutDialog}><Trans>About</Trans></button>
                     </div>
                 </Overlay>)}
                 {shareDialog && <ShareDialog onClose={this.onHideShareDialog}/>}
                 {settingsDialog && <SettingsDialog onClose={this.onHideSettingsDialog}/>}
                 {aboutDialog && <AboutDialog onClose={this.onHideAboutDialog}/>}
-            </div>
+            </React.Fragment>
         );
     }
 }

@@ -5,7 +5,7 @@
 .traitedFact {
     composes: fact;
 
-    color: #3023AE;
+    color: var(--focus);
 }
 
 .fact img {
@@ -15,5 +15,5 @@
 
 .description {
     margin-left: 20px;
-    color: #555;
+    color: var(--color-muted);
 }

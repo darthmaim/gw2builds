@@ -7,3 +7,11 @@
 :global(.js-select-disable-scroll) .panel {
     overflow: hidden;
 }
+
+
+
+@media(max-width: 768px) {
+    .panel {
+        margin-top: 48px;
+    }
+}

@@ -1,12 +1,14 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
-import LanguageSelector from './LanguageSelector';
 import style from './sidebar.module.css';
+import MenuButton from '../MenuButton/MenuButtonContainer';
 
 import CharacterIcon from './Character.svg';
 import SkillsIcon from './Skills.svg';
 import TraitsIcon from './Traits.svg';
 import GearIcon from './Gear.svg';
+import LogoIcon from './Logo.svg';
+
 
 class Sidebar extends Component {
     constructor(props, context) {
@@ -60,6 +62,9 @@ class Sidebar extends Component {
         };
         return (
             <div className={style.sidebar}>
+                <div className={style.logo}>
+                    <img src={LogoIcon} alt=""/>
+                </div>
                 <div className={style.sections}>
                     <div className={style.marker} style={markerStyle}/>
                     {this.renderSection(0, CharacterIcon, 'General')}
@@ -67,7 +72,7 @@ class Sidebar extends Component {
                     {this.renderSection(2, TraitsIcon, 'Traits')}
                     {this.renderSection(3, GearIcon, 'Gear')}
                 </div>
-                <LanguageSelector/>
+                <MenuButton/>
             </div>
         );
     }

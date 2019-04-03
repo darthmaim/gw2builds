@@ -1,6 +1,8 @@
 import React from 'react';
 import style from './AddKey.module.css';
 import { api } from '../../utils/api';
+import { t, Trans } from '@lingui/macro';
+import { I18n } from '@lingui/react';
 
 const REQUIRED_PERMISSIONS = ['account', 'characters', 'builds'];
 
@@ -45,7 +47,7 @@ class AddKey extends React.Component {
             console.error(error);
             this.setState({
                 loading: false,
-                error: (error.content && error.content.text) || 'Unknown error'
+                error: (error.content && error.content.text) || <Trans>Unknown error</Trans>
             });
         });
     }
@@ -57,15 +59,19 @@ class AddKey extends React.Component {
             <div>
                 <form onSubmit={this.handleSubmit} disabled={loading}>
                     <p className={style.description}>
-                        You can add your API key by going to your <a href="https://account.arena.net/applications" target="_blank" rel="noopener noreferrer">Guild Wars 2 Account Page</a>, generating a new key with <code>characters</code> and <code>builds</code> permissions and copy/pasting it into this form.
+                        <Trans>You can add your API key by going to your <a href="https://account.arena.net/applications" target="_blank" rel="noopener noreferrer">Guild Wars 2 Account Page</a>, generating a new key with <code>characters</code> and <code>builds</code> permissions and copy/pasting it into this form.</Trans>
                     </p>
-                    <label htmlFor="apikey">Enter your API key:</label>
+                    <label htmlFor="apikey"><Trans>Enter your API key:</Trans></label>
                     <div className={style.inputGroup}>
-                        <input name="apikey" id="apikey" className={style.input} disabled={loading} value={apiKey} onChange={this.handleInput} placeholder="API key"/>
+                        <I18n>
+                            {({i18n}) => (
+                                <input name="apikey" id="apikey" autoFocus className={style.input} disabled={loading} value={apiKey} onChange={this.handleInput} placeholder={i18n._(t`API key`)}/>
+                            )}
+                        </I18n>
                         {loading ? (
                             <div className={style.loader}/>
                         ) : (
-                            <button type="submit" aria-label="Add API key" className={style.button}/>
+                            <button type="submit" aria-label={<Trans>Add API key</Trans>} className={style.button}/>
                         )}
                     </div>
                     {this.renderErrorMessage(error, loading)}
@@ -80,11 +86,11 @@ class AddKey extends React.Component {
         }
 
         if(error === 'invalid key') {
-            return (<div className={style.error}>The key you provided is invalid.</div>);
+            return (<div className={style.error}><Trans>The key you provided is invalid.</Trans></div>);
         } else if(error === 'endpoint requires authentication') {
-            return (<div className={style.error}>You need to provide an API key.</div>);
+            return (<div className={style.error}><Trans>You need to provide an API key.</Trans></div>);
         } else if(error === 'wrong permissions') {
-            return (<div className={style.error}>The key needs <code>characters</code> and <code>builds</code> permissions.</div>);
+            return (<div className={style.error}><Trans>The key needs <code>characters</code> and <code>builds</code> permissions.</Trans></div>);
         }
 
         return (<div className={style.error}>{error}</div>);

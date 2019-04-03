@@ -1,0 +1,49 @@
+.light {
+    /* main colors */
+    --color: #222;
+    --color-muted: #888;
+    --background: #FFF;
+    --border-color: #EEE;
+    --background-light: #F9F9F9;
+    --focus: #007AFF;
+    --hover: #DDD;
+    --icon-color: #CCC;
+    --brand1: #3023ae;
+    --brand2: #c86dd7;
+
+    /* inputs */
+    --input-color: var(--color);
+    --input-background-clickable: var(--background-light);
+    --input-background-editable: var(--background);
+    --input-border-color: var(--border-color);
+    --input-border-color-hover: var(--hover);
+    --input-color-focus: #FFF;
+    --input-background-clickable-focus: var(--focus);
+    --input-background-editable-focus: var(--background);
+    --input-border-color-focus: var(--focus);
+}
+
+.dark {
+    /* main colors */
+    --color: #dcddde;
+    --color-muted: #999;
+    --background: #36393f;
+    --border-color: #222428;
+    --background-light: #303339;
+    --focus: #007AFF;
+    --hover: #040405;
+    --icon-color: #72767d;
+    --brand1: #3023ae;
+    --brand2: #c86dd7;
+
+    /* inputs */
+    --input-color: var(--color);
+    --input-background-clickable: var(--background-light);
+    --input-background-editable: var(--background);
+    --input-border-color: var(--border-color);
+    --input-border-color-hover: var(--hover);
+    --input-color-focus: #FFF;
+    --input-background-clickable-focus: var(--focus);
+    --input-background-editable-focus: var(--background);
+    --input-border-color-focus: var(--focus);
+}

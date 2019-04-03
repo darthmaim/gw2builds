@@ -7,10 +7,12 @@ import {
 } from './utils';
 import { fetchAvailableSpecializations } from './specializations';
 import { fetchAvailableSkillsWithRelated } from './skills';
+import { i18nMark } from '@lingui/react';
 
 export const LOAD_BASE_DATA = 'LOAD_BASE_DATA';
 export const FETCH_PROFESSION = 'FETCH_PROFESSION';
 export const SET_SELECTED_LANGUAGE = 'SET_SELECTED_LANGUAGE';
+export const SET_SELECTED_THEME = 'SET_SELECTED_THEME';
 export const SET_SELECTED_GAMEMODE = 'SET_SELECTED_GAMEMODE';
 export const SET_SELECTED_PROFESSION = 'SET_SELECTED_PROFESSION';
 export const SET_SELECTED_RACE = 'SET_SELECTED_RACE';
@@ -19,7 +21,7 @@ export const SET_IS_LOADING = 'SET_IS_LOADING';
 export const loadBaseData = createApiAction(
     LOAD_BASE_DATA,
     (state, api) => Promise.all([
-        Promise.resolve([{id: 'pve'}, {id: 'pvp'}, {id: 'wvw'}]).then(convertToIndexed),
+        Promise.resolve([{id: i18nMark('pve')}, {id: i18nMark('pvp')}, {id: i18nMark('wvw')}]).then(convertToIndexed),
         api.professions().all().then(convertToIndexed),
         api.races().all().then(convertToIndexed)
     ]).then(
@@ -46,6 +48,9 @@ export const setSelectedLanguage = createChainedAction(
     createAction(SET_SELECTED_LANGUAGE),
     [loadBaseData, fetchProfession]
 );
+
+/** Action to set the selected theme. Params: { theme } */
+export const setSelectedTheme = createAction(SET_SELECTED_THEME);
 
 /** Action to set the selected game mode. Params: { gameMode } */
 export const setSelectedGameMode = createAction(SET_SELECTED_GAMEMODE);

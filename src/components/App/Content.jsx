@@ -4,6 +4,7 @@ import MainContent from './MainContent/MainContentContainer';
 import Section from './MainContent/Section';
 import Sidebar from './Sidebar';
 import style from './content.module.css';
+import { Trans } from '@lingui/macro';
 
 class Content extends Component {
     constructor(props, context) {
@@ -40,7 +41,7 @@ class Content extends Component {
                 <Sidebar currentIndex={this.state.currentIndex} onSectionChange={this.handleIndexChange}/>
                 <MainContent instanceRef={this.setContentRef} onSectionChange={this.handleSectionScroll}/>
                 <div className={style.stats}>
-                    <Section name="Stats">
+                    <Section name={<Trans>Stats</Trans>}>
                         <StatsOverview/>
                     </Section>
                     <div className={style.footer}>

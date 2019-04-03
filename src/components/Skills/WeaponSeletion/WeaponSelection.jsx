@@ -4,6 +4,7 @@ import React from 'react';
 import { Select } from '../../../components/Inputs';
 import style from './WeaponSelection.module.css';
 import InputGroup from '../../Inputs/Group/InputGroup';
+import { Trans } from '@lingui/macro';
 
 // a weapon is available if it doesn't require a specialization
 // or if the specialization is active.
@@ -12,7 +13,7 @@ const isWeaponAvailable = (weapon, selectedSpecializationIds) =>
 
 const renderSelect = (title, weapons, value, onChange, selectedSpecializationIds, availableSpecializationObjects) => (
     <InputGroup title={title} inline={true}>
-        <Select value={value} onChange={onChange} placeholder="None">
+        <Select value={value} onChange={onChange} placeholder={<Trans>None</Trans>}>
             {map(weapons, (weapon, name) => (
                 <Select.Option key={name} value={name} disabled={!isWeaponAvailable(weapon, selectedSpecializationIds)}>
                     {name}
@@ -28,7 +29,10 @@ const renderSpecializationRequirement = (weapon, availableSpecializationObjects)
 
     return specializations && (
         <span className={style.specializationRequirement}>
-            Requires {specializations.elite ? 'elite' : ''} specialization {specializations.name}
+            {specializations.elite
+                ? <Trans>Requires the elite specialization {specializations.name}</Trans>
+                : <Trans>Requires the specialization {specializations.name}</Trans>
+            }
         </span>
     );
 };
@@ -39,8 +43,8 @@ const WeaponSelection = ({
     twoHanded, selectedSpecializationIds, availableSpecializationObjects
 }) => (
     <div className={style.container}>
-        {renderSelect('Mainhand', availableMainhandWeaponObjects, activeMainhandWeaponId, onMainhandChange, selectedSpecializationIds, availableSpecializationObjects)}
-        {!twoHanded && renderSelect('Offhand', availableOffhandWeaponObjects, activeOffhandWeaponId, onOffhandChange, selectedSpecializationIds, availableSpecializationObjects)}
+        {renderSelect((<Trans>Mainhand</Trans>), availableMainhandWeaponObjects, activeMainhandWeaponId, onMainhandChange, selectedSpecializationIds, availableSpecializationObjects)}
+        {!twoHanded && renderSelect((<Trans>Offhand</Trans>), availableOffhandWeaponObjects, activeOffhandWeaponId, onOffhandChange, selectedSpecializationIds, availableSpecializationObjects)}
     </div>
 );
 

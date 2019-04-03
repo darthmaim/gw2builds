@@ -22,6 +22,10 @@
     <title>Build Editor - gw2efficiency</title>
     <meta name="description" content="The gw2efficiency Build Editor is a new online build editor for Guild Wars 2 using the official API to always have up-to-date skill, trait and gear data.">
 
+    <!-- lets preconnect to domains we need later -->
+    <link rel="preconnect" href="https://api.guildwars2.com/">
+    <link rel="preconnect" href="https://www.google-analytics.com/">
+
     <link rel="icon" href="logo/16.png" type="image/png" sizes="16x16">
     <link rel="icon" href="logo/192.png" type="image/png" sizes="192x192">
     <!-- put the 32 icon last because FF doesn't understand sizes and always loads the last one -->
@@ -31,6 +35,9 @@
     <link rel="apple-touch-icon-precomposed" href="logo/192.png" sizes="192x192">
     <!-- safari pinned tab icon -->
     <link rel="mask-icon" href="logo/pinned-tab.svg" color="#3023AE">
+
+    <!-- track unhandled errors - tracked later by analytics -->
+    <script>addEventListener('error', window.__e=function f(e){f.q=f.q||[];f.q.push(e)});</script>
   </head>
   <body>
     <div id="root">
@@ -52,25 +59,17 @@
         #root {
           height: 100%;
           display: flex;
-          flex-direction: column
+          flex-direction: row
         }
         .header {
-          height: 64px;
-          background-image: linear-gradient(134deg, #3023ae, #c86dd7);
-        }
-        .logo {
-          padding: 10px;
-          border-right: 1px solid rgba(0, 0, 0, .1);
-        }
-        .title {
-          margin: 10px 16px;
+          width: 64px;
+          background-image: linear-gradient(#3023ae, #c86dd7);
         }
         .content {
-          border-left: 1px solid #eee;
-          margin-left: 64px;
           flex: 1;
-          padding: 20px;
-          text-align: center;
+          display: flex;
+          align-items: center;
+          justify-content: center;
         }
         .content .error {
           color: #EF3428;
@@ -101,15 +100,12 @@
           100% { border-top-color: #3023ae; }
         }
         @media(max-width: 768px) {
-          .header { height: 56px; }
-          .logo { padding: 6px; height: 44px; }
-          .title { margin: 6px 60px 6px 8px; height: 44px; max-width: calc(100% - 125px) }
-          #root { display: block; }
-          .content { margin-top: 48px; border-top: 1px solid #eee; border-right: none; margin-left: 0; }
+          .header { height: 48px; width: auto; background: #3023ae; }
+          #root { flex-direction: column; }
+          .content { }
         }
       </style>
     </div>
-    <script id="analytics" src="https://www.google-analytics.com/analytics.js" async data-tracking-id="%REACT_APP_ANALYTICS%"></script>
     <!--
       This HTML file is a template.
       If you open it directly in the browser, you will see an empty page.

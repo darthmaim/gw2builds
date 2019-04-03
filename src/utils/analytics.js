@@ -2,17 +2,11 @@
 /* global ga */
 
 /**
- * The google analytics script element (contains the tracking id as data attribute).
- * @type {Element}
- */
-const ANALYTICS_SCRIPT_ELEMENT = document.getElementById('analytics');
-
-/**
  * The tracking ID for your Google Analytics property.
  * https://support.google.com/analytics/answer/1032385
  * @type {string}
  */
-const TRACKING_ID = ANALYTICS_SCRIPT_ELEMENT && ANALYTICS_SCRIPT_ELEMENT.dataset.trackingId;
+const TRACKING_ID = process.env.REACT_APP_ANALYTICS;
 
 /**
  * Bump this when making backwards incompatible changes to the tracking
@@ -64,12 +58,13 @@ export const init = () => {
     // Initialize the command queue in case analytics.js hasn't loaded yet.
     window.ga = window.ga || ((...args) => (ga.q = ga.q || []).push(args));
 
-    if(!TRACKING_ID || TRACKING_ID === '%REACT_APP_ANALYTICS%') {
+    if(!TRACKING_ID) {
         console.log('Disabled google analytics because the tracking id is not set ' +
             '(REACT_APP_ANALYTICS environment variable)');
         return;
     }
 
+    loadAnalytics();
     createTracker();
     trackErrors();
     trackCustomDimensions();
@@ -98,6 +93,14 @@ export const trackError = (err, fieldsObj = {}) => {
     }, fieldsObj));
 };
 
+/**
+ * Loads the google analytics script
+ */
+const loadAnalytics = () => {
+    const script = document.createElement('script');
+    script.src = 'https://www.google-analytics.com/analytics.js';
+    document.getElementsByTagName("head")[0].appendChild(script);
+};
 
 /**
  * Creates the trackers and sets the default transport and tracking

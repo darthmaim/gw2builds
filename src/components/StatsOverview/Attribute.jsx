@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
-import { FormattedNumber } from 'react-intl';
+import { NumberFormat } from '@lingui/react';
 import style from './style.module.css';
 
 class Attribute extends Component {
@@ -34,11 +34,11 @@ class Attribute extends Component {
                 <div className={style.header} onClick={this.handleClick}>
                     <span className={style.label}>
                         <svg className={style.expander}>
-                            <polygon fill="#CCCCCC" points="0 0 0 8 7 4"/>
+                            <polygon fill="currentColor" points="0 0 0 8 7 4"/>
                         </svg>
                         {this.props.label}
                     </span>
-                    <span className={style.value}><FormattedNumber value={this.props.value} {...numberFormat}/></span>
+                    <span className={style.value}><NumberFormat value={this.props.value} format={numberFormat}/></span>
                 </div>
                 {open && this.renderDetails(numberFormat)}
             </li>
@@ -59,7 +59,8 @@ class Attribute extends Component {
                         <span className={style.detailsLabel}>{detail.label}</span>
                         <span>
                             {key > 0 ? (detail.value >= 0 ? '+ ' : '- ') : ''}
-                            <FormattedNumber value={Math.abs(detail.value)} {...numberFormat}/></span>
+                            <NumberFormat value={Math.abs(detail.value)} format={numberFormat}/>
+                        </span>
                     </div>
                 )
             )}</div>

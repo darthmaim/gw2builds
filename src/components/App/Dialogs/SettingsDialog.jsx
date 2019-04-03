@@ -4,6 +4,7 @@ import Dialog from './../../Inputs/Dialog/Dialog';
 import style from './SettingsDialog.module.css';
 import { LANGUAGES } from '../Sidebar/LanguageSelector/LanguageSelector';
 import Select from '../../Inputs/Select/Select';
+import { Trans } from '@lingui/macro';
 
 const languages = {
     de: 'German',
@@ -14,13 +15,13 @@ const languages = {
 
 export default class SettingsDialog extends Component {
     render() {
-        const { onClose, selectedLanguage, onLanguageChange, settings, setSettingsShowIds } = this.props;
+        const { onClose, selectedLanguage, onLanguageChange, selectedTheme, onThemeChange, settings, setSettingsShowIds } = this.props;
 
         return (
             <Overlay>
-                <Dialog onClose={onClose} title="Settings">
+                <Dialog onClose={onClose} title={<Trans>Settings</Trans>}>
                     <div className={style.setting}>
-                        <label htmlFor={"language"}>Language</label>
+                        <label htmlFor={"language"}><Trans>Language</Trans></label>
                         <Select id="language" value={selectedLanguage} onChange={onLanguageChange}>
                             {LANGUAGES.map(
                                 (language) => <Select.Option key={language} value={language}>{languages[language]}</Select.Option>
@@ -28,10 +29,17 @@ export default class SettingsDialog extends Component {
                         </Select>
                     </div>
                     <div className={style.setting}>
-                        <label htmlFor={"showIds"}>Show IDs in tooltips</label>
+                        <label htmlFor={"theme"}><Trans>Theme</Trans></label>
+                        <Select id="theme" value={selectedTheme} onChange={onThemeChange}>
+                            <Select.Option value="light"><Trans>Light theme</Trans></Select.Option>
+                            <Select.Option value="dark"><Trans>Dark theme</Trans></Select.Option>
+                        </Select>
+                    </div>
+                    <div className={style.setting}>
+                        <label htmlFor={"showIds"}><Trans>Show IDs in tooltips</Trans></label>
                         <Select id="language" value={settings.showIds} onChange={setSettingsShowIds}>
-                            <Select.Option value={true}>Yes</Select.Option>
-                            <Select.Option value={false}>No</Select.Option>
+                            <Select.Option value={true}><Trans>Yes</Trans></Select.Option>
+                            <Select.Option value={false}><Trans>No</Trans></Select.Option>
                         </Select>
                     </div>
                 </Dialog>

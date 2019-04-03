@@ -2,6 +2,7 @@ import { combineReducers } from 'redux';
 
 import {
     selectedLanguage,
+    selectedTheme,
     availableGameModes,
     selectedGameMode,
     availableProfessions,
@@ -36,6 +37,7 @@ import { settings } from './settings';
 export default combineReducers({
     // General
     selectedLanguage,
+    selectedTheme,
     availableGameModes,
     selectedGameMode,
     availableProfessions,

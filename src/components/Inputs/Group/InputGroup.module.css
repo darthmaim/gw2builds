@@ -1,7 +1,7 @@
 .group {
     display: flex;
     flex-direction: column;
-    margin: 0 16px 8px 0;
+    margin: 0 16px 16px 0;
 }
 
 .inline {

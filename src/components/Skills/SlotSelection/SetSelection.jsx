@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import SetButton from './SetButton';
 import InputGroup from '../../Inputs/Group/InputGroup';
+import { Trans } from '@lingui/macro';
 
 import { ReactComponent as Set1Icon } from './set1.svg';
 import { ReactComponent as Set2Icon } from './set2.svg';
@@ -23,14 +24,14 @@ class SetSelection extends Component {
         const { activeWeaponSet, hasMultipleWeaponsets } = this.props;
 
         const sets = [
-            { name: 'Weaponset 1', icon: Set1Icon, enabled: true },
-            { name: 'Weaponset 2', icon: Set2Icon, enabled: hasMultipleWeaponsets },
-            { name: 'Underwater 1', icon: Water1Icon, enabled: true },
-            { name: 'Underwater 2', icon: Water2Icon, enabled: hasMultipleWeaponsets }
+            { name: <Trans>Weaponset 1</Trans>, icon: Set1Icon, enabled: true },
+            { name: <Trans>Weaponset 2</Trans>, icon: Set2Icon, enabled: hasMultipleWeaponsets },
+            { name: <Trans>Underwater 1</Trans>, icon: Water1Icon, enabled: true },
+            { name: <Trans>Underwater 2</Trans>, icon: Water2Icon, enabled: hasMultipleWeaponsets }
         ];
 
         return (
-            <InputGroup title={'Weapon Set'}>
+            <InputGroup title={<Trans>Weapon Set</Trans>}>
                 {sets.map(({ name, icon, enabled }, index) => enabled && (
                     <SetButton key={index} isActive={activeWeaponSet === index} onClick={this.handleClick(index)} icon={icon}>
                         {name}

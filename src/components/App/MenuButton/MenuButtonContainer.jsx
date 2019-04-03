@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
-import { setImportDialogVisible, setSelectedGameMode, setSelectedProfession, setSelectedRace } from '../../actions';
-import Header from './Header';
+import { setImportDialogVisible, setSelectedGameMode, setSelectedProfession, setSelectedRace } from '../../../actions';
+import MenuButton from './MenuButton';
 
 const mapDispatchToProps = (dispatch) => ({
     setImportDialogVisible: (visible) => dispatch(setImportDialogVisible(visible)),
@@ -11,4 +11,4 @@ const mapDispatchToProps = (dispatch) => ({
     }
 });
 
-export default connect(null, mapDispatchToProps)(Header);
+export default connect(null, mapDispatchToProps)(MenuButton);

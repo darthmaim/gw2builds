@@ -1,5 +1,4 @@
 import React from 'react';
-import Header from './HeaderContainer';
 import Content from './Content';
 import { Select } from '../Inputs';
 import Wizard from '../Import/WizardContainer';
@@ -13,7 +12,6 @@ export default ({ loading, error }) => (
         <div className={loading ? style.loadingVisible : style.loading}>Loading…</div>
         <Select.Dropdown outsideClickIgnoreClass={tooltipStyle.touch}/>
         <Wizard/>
-        <Header/>
         <Content/>
         {error && (
             <Overlay>

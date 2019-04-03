@@ -28,7 +28,7 @@
 .actionHint {
     margin-top: 12px;
     padding-top: 8px;
-    color: #666;
+    color: var(--color-muted);
     font-style: italic;
-    border-top: 1px solid #f4f4f4;
+    border-top: 1px solid var(--border-color);
 }
