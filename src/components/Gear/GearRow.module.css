@@ -11,8 +11,8 @@
     width: 48px;
     height: 48px;
     display: inline-block;
-    border: 2px solid #f4f4f4;
-    background: #f9f9f9;
+    border: 2px solid var(--border-color);
+    background: var(--background-light);
     vertical-align: middle;
     margin-right: 8px;
 }
@@ -44,7 +44,7 @@
 }
 
 .attribute + .attribute {
-    border-left: 1px solid #eee;
+    border-left: 1px solid var(--border-color);
 }
 .attribute > span:first-child {
     display: block;
@@ -52,7 +52,7 @@
 .attribute > span:last-child {
     display: block;
     font-size: 12px;
-    color: #777777;
+    color: var(--color-muted);
 }
 
 .exotic {
@@ -74,7 +74,7 @@
 }
 
 .dropdown {
-    background: #fff;
+    background: var(--background);
     padding: 16px;
     position: absolute;
     box-shadow: 0 1px 40px rgba(0,0,0,.2);
@@ -87,7 +87,7 @@
     position: absolute;
     width: 10px;
     height: 10px;
-    background: #fff;
+    background: var(--background);
     top: -5px;
     left: 16px;
     transform: rotate(-45deg);
@@ -125,17 +125,11 @@
 }
 
 .copyButton {
-    composes: input from '../Inputs/Inputs.module.css';
+    composes: clickable from '../Inputs/Inputs.module.css';
 
-    padding: 6px 8px;
-    cursor: pointer;
+    height: 41px;
     border-radius: 3px;
-    white-space: nowrap;
-    transition: background .3s ease;
-}
-
-.copyButton:hover, .copyButton:focus {
-    background: #eee;
+    padding: 0 10px;
 }
 
 .copyIcon {

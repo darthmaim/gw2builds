@@ -29,6 +29,13 @@
     background-color: var(--input-background-clickable-focus);
 }
 
+.clickable:disabled {
+    border-color: var(--background-light);
+    color: var(--color-muted);
+    background: transparent;
+    cursor: default;
+}
+
 .editable {
     composes: input;
 
