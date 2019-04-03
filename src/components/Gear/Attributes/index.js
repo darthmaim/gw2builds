@@ -31,6 +31,7 @@ export function getAttributeValues(combinationId, rarity, type) {
             [combination.attributes[5]]: values[4 + offset + major],
             [combination.attributes[6]]: values[4 + offset + major],
         };
+        default: return 0;
     }
 }
 

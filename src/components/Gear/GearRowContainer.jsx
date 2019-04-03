@@ -29,9 +29,9 @@ function dispatchRarityChange(dispatch, type, rarity, slotId) {
             return type === GEAR_TYPE_WEAPON_OFFHAND
                 ? dispatch(setSelectedOffhandWeaponIsAscended({ slotId, isAscended }))
                 : dispatch(setSelectedMainhandWeaponIsAscended({ slotId, isAscended }));
+        default:
+            console.error(`RowContainer.onRarityChange not implemented for type ${type}`);
     }
-
-    console.error(`RowContainer.onRarityChange not implemented for type ${type}`);
 }
 
 function dispatchItemstatIdChange(dispatch, type, itemstatId, slotId) {
@@ -44,9 +44,9 @@ function dispatchItemstatIdChange(dispatch, type, itemstatId, slotId) {
             return type === GEAR_TYPE_WEAPON_OFFHAND
                 ? dispatch(setSelectedOffhandWeaponItemstatId({ slotId, itemstatId }))
                 : dispatch(setSelectedMainhandWeaponItemstatId({ slotId, itemstatId }));
+        default:
+            console.error(`RowContainer.onItemstatIdChange not implemented for type ${type}`);
     }
-
-    console.error(`RowContainer.onItemstatIdChange not implemented for type ${type}`);
 }
 
 const mapDispatchToProps = (dispatch, ownProps) => ({

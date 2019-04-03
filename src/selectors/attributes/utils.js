@@ -14,7 +14,7 @@ import {
 } from '../../components/Gear/Constants';
 import { getAttributeValues } from '../../components/Gear/Attributes/index';
 import { attributeCombinations } from '../../components/Gear/Attributes/Static';
-import { getActiveMainhandWeaponId, getActiveOffhandWeaponId, getIsTwoHandedActive } from '../gear/weapons';
+import { getIsTwoHandedActive } from '../gear/weapons';
 
 const getSelectedArmorItemstatIds = (state, props) => state.selectedArmorItemstatIds;
 const getSelectedArmorIsAscended = (state, props) => state.selectedArmorIsAscended;
@@ -47,9 +47,9 @@ const getWeaponSlots = createSelector(
             case 1: return twoHanded ? [GEAR_SLOT_WEAPON_TWOHAND2] : [GEAR_SLOT_WEAPON_MAINHAND2, GEAR_SLOT_WEAPON_OFFHAND2];
             case 2: return [GEAR_SLOT_WEAPON_AQUATIC1];
             case 3: return [GEAR_SLOT_WEAPON_AQUATIC2];
+            default: return [];
         }
 
-        return [];
     }
 );
 

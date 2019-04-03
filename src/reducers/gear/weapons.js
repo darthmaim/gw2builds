@@ -1,4 +1,4 @@
-import { combineActions, handleAction, handleActions } from 'redux-actions';
+import { combineActions, handleActions } from 'redux-actions';
 import * as actions from '../../actions';
 import { handleSimpleAction } from '../../reducers/utils';
 

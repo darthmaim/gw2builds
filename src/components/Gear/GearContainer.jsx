@@ -1,5 +1,4 @@
 import { connect } from 'react-redux';
-import { getHasMultipleWeaponsets } from '../../selectors/gear/weapons';
 import Gear from './Gear';
 
 const mapStateToProps = (state, ownProps) => ({

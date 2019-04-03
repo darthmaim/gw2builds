@@ -1,3 +1,6 @@
+/* eslint-disable no-use-before-define */
+// TODO: check how we can refactor this to remove the above linting exception
+
 export const RARITY_EXOTIC = 'Exotic';
 export const RARITY_ASCENDED = 'Ascended';
 

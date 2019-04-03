@@ -1,5 +1,4 @@
 import { createSelector } from 'reselect';
-import sortBy from 'lodash/sortBy';
 import {
     GEAR_CATEGORY_ARMOR, GEAR_CATEGORY_TRINKET, GEAR_CATEGORY_WEAPON, GEAR_TYPE_WEAPON_OFFHAND, RARITY_ASCENDED,
     RARITY_EXOTIC
