@@ -21,7 +21,7 @@
 }
 
 .clickable:focus {
-    --icon: var(--input-color-focus);
+    --icon-color: var(--input-color-focus);
 
     outline: none;
     border-color: var(--input-border-color-focus);

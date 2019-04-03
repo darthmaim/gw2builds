@@ -30,7 +30,7 @@
     content: '';
     display: block;
     border-style: solid;
-    border-color: transparent var(--icon);
+    border-color: transparent var(--icon-color);
     border-width: 8px 0 8px 12px;
     position: absolute;
     top: calc((42px / 2) - (16px / 2));

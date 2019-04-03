@@ -18,7 +18,7 @@
     top: 50%;
     margin-top: -2px;
     border-style: solid;
-    border-color: var(--icon) transparent transparent;
+    border-color: var(--icon-color) transparent transparent;
     border-width: 6px 4px 0;
     pointer-events: none;
 }

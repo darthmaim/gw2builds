@@ -9,7 +9,7 @@
     cursor: pointer;
     transition: all .3s ease;
 
-    color: var(--icon);
+    color: var(--icon-color);
 }
 
 .backButton:hover {
