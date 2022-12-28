@@ -1,8 +1,13 @@
 import { createSelector } from 'reselect';
+import { createAttributeDetailSelector, createAttributeReducer } from './utils';
 
-export const getAttributeConcentration = createSelector(
-    [],
-    () => {
-        return 0;
-    }
+const BASE_CONCENTRATION = 0;
+
+const getGearConcentration = createAttributeDetailSelector('BoonDuration');
+
+export const getAttributeConcentrationDetails = createSelector(
+    [getGearConcentration],
+    (concentration) => [{ label: 'Base', value: BASE_CONCENTRATION }].concat(concentration)
 );
+
+export const getAttributeConcentration = createAttributeReducer(getAttributeConcentrationDetails);

@@ -1,4 +1,4 @@
-import { combineActions, handleAction, handleActions } from 'redux-actions';
+import { combineActions, handleActions } from 'redux-actions';
 import * as actions from '../../actions';
 import { handleSimpleAction } from '../../reducers/utils';
 
@@ -52,9 +52,17 @@ export const hasMultipleWeaponSets = handleActions({
 export const selectedMainhandWeaponItemstatIds = handleActions({
     // Set a main-hand weapon itemstat
     [actions.SET_SELECTED_MAINHAND_WEAPON_ITEMSTAT_ID]: (state, action) => {
-        const newState = state.slice();
-        newState[action.payload.slotId] = action.payload.itemstatId;
-        return newState;
+        if(action.payload.slotId !== undefined) {
+            const newState = state.slice();
+            newState[action.payload.slotId] = action.payload.itemstatId;
+            return newState;
+        } else {
+            return state.map(_ => action.payload.itemstatId);
+        }
+    },
+
+    [actions.SET_SELECTED_OFFHAND_WEAPON_ITEMSTAT_ID]: (state, action) => {
+        return action.payload.slotId !== undefined ? state : state.map(_ => action.payload.itemstatId);
     },
 
     // Reset a main-hand weapon itemstat
@@ -63,15 +71,23 @@ export const selectedMainhandWeaponItemstatIds = handleActions({
         newState[action.payload.slotId] = undefined;
         return newState;
     }
-}, []);
+}, [undefined, undefined, undefined, undefined]);
 
 /** Reducer for the selected off-hand weapon itemstat ids. */
 export const selectedOffhandWeaponItemstatIds = handleActions({
     // Set an off-hand weapon itemstat
     [actions.SET_SELECTED_OFFHAND_WEAPON_ITEMSTAT_ID]: (state, action) => {
-        const newState = state.slice();
-        newState[action.payload.slotId] = action.payload.itemstatId;
-        return newState;
+        if(action.payload.slotId !== undefined) {
+            const newState = state.slice();
+            newState[action.payload.slotId] = action.payload.itemstatId;
+            return newState;
+        } else {
+            return state.map(_ => action.payload.itemstatId);
+        }
+    },
+
+    [actions.SET_SELECTED_MAINHAND_WEAPON_ITEMSTAT_ID]: (state, action) => {
+        return action.payload.slotId !== undefined ? state : state.map(_ => action.payload.itemstatId);
     },
 
     // Reset an off-hand weapon itemstat
@@ -80,23 +96,43 @@ export const selectedOffhandWeaponItemstatIds = handleActions({
         newState[action.payload.slotId] = undefined;
         return newState;
     }
-}, []);
+}, [undefined, undefined]);
 
 /** Reducer for the main-hand weapon ascended flag. */
-export const selectedMainhandWeaponIsAscended = handleAction(combineActions(actions.SET_SELECTED_MAINHAND_WEAPON_ISASCENDED, actions.SET_SELECTED_GAMEMODE), (state, action) => {
-    // Set the ascended flag on a main-hand weapon
-    const newState = state.slice();
-    newState[action.payload.slotId] = action.payload.isAscended;
-    return newState;
-}, []);
+export const selectedMainhandWeaponIsAscended = handleActions({
+    [combineActions(actions.SET_SELECTED_MAINHAND_WEAPON_ISASCENDED, actions.SET_SELECTED_GAMEMODE)]: (state, action) => {
+        // Set the ascended flag on a main-hand weapon
+        if (action.payload.slotId !== undefined) {
+            const newState = state.slice();
+            newState[action.payload.slotId] = action.payload.isAscended;
+            return newState;
+        } else {
+            return state.map(_ => action.payload.isAscended);
+        }
+    },
+
+    [actions.SET_SELECTED_OFFHAND_WEAPON_ISASCENDED]: (state, action) => {
+        return action.payload.slotId !== undefined ? state : state.map(_ => action.payload.isAscended);
+    }
+}, [false, false, false, false]);
 
 /** Reducer for the off-hand weapon ascended flag. */
-export const selectedOffhandWeaponIsAscended = handleAction(combineActions(actions.SET_SELECTED_OFFHAND_WEAPON_ISASCENDED, actions.SET_SELECTED_GAMEMODE), (state, action) => {
-    // Set the ascended flag on an off-hand weapon
-    const newState = state.slice();
-    newState[action.payload.slotId] = action.payload.isAscended;
-    return newState;
-}, []);
+export const selectedOffhandWeaponIsAscended = handleActions({
+    [combineActions(actions.SET_SELECTED_OFFHAND_WEAPON_ISASCENDED, actions.SET_SELECTED_GAMEMODE)]: (state, action) => {
+        // Set the ascended flag on an off-hand weapon
+        if (action.payload.slotId !== undefined) {
+            const newState = state.slice();
+            newState[action.payload.slotId] = action.payload.isAscended;
+            return newState;
+        } else {
+            return state.map(_ => action.payload.isAscended);
+        }
+    },
+
+    [actions.SET_SELECTED_MAINHAND_WEAPON_ISASCENDED]: (state, action) => {
+        return action.payload.slotId !== undefined ? state : state.map(_ => action.payload.isAscended);
+    }
+}, [false, false]);
 
 /** Reducer for the selected main-hand weapon upgrade item ids. */
 export const selectedMainhandWeaponUpgradeIds = handleActions({

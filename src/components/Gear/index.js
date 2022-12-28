@@ -1,3 +1,3 @@
-import Gear from './Gear';
+import Gear from './GearContainer';
 
 export default Gear;

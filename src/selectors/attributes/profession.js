@@ -1,8 +1,9 @@
 import { createSelector } from 'reselect';
+import { createAttributeReducer } from './utils';
 
-export const getAttributeProfession = createSelector(
+export const getAttributeProfessionDetails = createSelector(
     [],
-    () => {
-        return 0;
-    }
+    () => [{ label: 'Base', value: 0 }]
 );
+
+export const getAttributeProfession = createAttributeReducer(getAttributeProfessionDetails);

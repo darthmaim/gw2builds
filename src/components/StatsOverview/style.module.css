@@ -41,9 +41,17 @@
 .value { }
 
 .details {
-    margin-top: 4px;
     margin-left: 16px;
     color: #999;
+}
+
+.detailsRow {
+    margin-top: 4px;
+    display: flex;
+}
+
+.detailsLabel {
+    flex: 1;
 }
 
 .expander {

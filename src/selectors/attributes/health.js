@@ -1,5 +1,6 @@
 import { createSelector } from 'reselect';
 import { getAttributeVitality } from './vitality';
+import { createAttributeReducer } from './utils';
 
 const getSelectedProfession = state => state.selectedProfession;
 
@@ -25,9 +26,12 @@ export const getAttributeHealthBase = createSelector(
     }
 );
 
-export const getAttributeHealth = createSelector(
+export const getAttributeHealthDetails = createSelector(
     [getAttributeHealthBase, getAttributeVitality],
-    (base, vitality) => {
-        return base + (vitality * 10);
-    }
+    (base, vitality) => [
+        { label: 'Base', value: base },
+        { label: 'Vitality', value: vitality * 10 }
+    ]
 );
+
+export const getAttributeHealth = createAttributeReducer(getAttributeHealthDetails);
