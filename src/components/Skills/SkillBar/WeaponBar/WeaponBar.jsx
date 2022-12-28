@@ -4,6 +4,39 @@ import SkillTooltip from '../../../Tooltips/Skills/TooltipContainer';
 import SkillIcon from '../../Icon';
 import style from './WeaponBar.module.css';
 
+function skillMatchesAttunement(availableSkillObjects, selectedAttunementId, selectedWeaverPreviousAttunementId) {
+    return (professionSkill) => {
+        const skill  = availableSkillObjects[professionSkill.id];
+
+        // only check skills that we have actually loaded
+        if(!skill) { return false; }
+
+        // skills without attunement requirement are always ok
+        if(!professionSkill.attunement) { return true; }
+
+        const attunement = skill.attunement || professionSkill.attunement;
+        const dualAttunement = skill.dual_attunement;
+
+        const matchesAttunement = attunement === selectedAttunementId;
+        const matchesWeaverAttunement = attunement === selectedWeaverPreviousAttunementId;
+
+        switch(professionSkill.slot) {
+            case 'Weapon_1':
+            case 'Weapon_2':
+                return matchesAttunement;
+            case 'Weapon_3':
+                return (matchesAttunement && selectedAttunementId === selectedWeaverPreviousAttunementId && dualAttunement === undefined) ||
+                    (matchesAttunement && dualAttunement === selectedWeaverPreviousAttunementId) ||
+                    (matchesWeaverAttunement && dualAttunement === selectedAttunementId);
+            case 'Weapon_4':
+            case 'Weapon_5':
+                return matchesWeaverAttunement;
+            default:
+                return false;
+        }
+    }
+}
+
 class WeaponBar extends Component {
     constructor(props, context) {
         super(props, context);
@@ -11,7 +44,7 @@ class WeaponBar extends Component {
         this.renderSkill = this.renderSkill.bind(this);
     }
 
-    getSkillInSlot({ activeMainhandWeaponId, activeOffhandWeaponId, isTwoHanded, availableWeaponObjects, availableSkillObjects, selectedAttunementId }) {
+    getSkillInSlot({ activeMainhandWeaponId, activeOffhandWeaponId, isTwoHanded, availableWeaponObjects, availableSkillObjects, selectedAttunementId, selectedWeaverPreviousAttunementId }) {
         return index => {
             const getFromMainhand = index < 3 || isTwoHanded;
 
@@ -23,9 +56,6 @@ class WeaponBar extends Component {
             const weapon = getFromMainhand ? activeMainhandWeaponId : activeOffhandWeaponId;
             const slotName = `Weapon_${index + 1}`;
 
-            // hardcode this until elite specialization mechanics are supported
-            const selectedWeaverPreviousAttunementId = undefined;
-
             // find all matching skills for the requested slot
             const skillsForSlot = availableWeaponObjects[weapon].skills
                 // filter slot
@@ -33,9 +63,7 @@ class WeaponBar extends Component {
                 // filter offhand (thief)
                 .filter(skill => !skill.offhand || skill.offhand === activeOffhandWeaponId || (skill.offhand === 'Nothing' && !activeOffhandWeaponId))
                 // filter attunement (elementalist)
-                .filter(skill => !skill.attunement || skill.attunement === selectedAttunementId)
-                // filter weaver attunement (elementalist)
-                .filter(skill => !availableSkillObjects[skill.id].dual_attunement || availableSkillObjects[skill.id].dual_attunement === selectedWeaverPreviousAttunementId);
+                .filter(skillMatchesAttunement(availableSkillObjects, selectedAttunementId, selectedWeaverPreviousAttunementId));
 
             console.assert(skillsForSlot.length <= 1, `Multiple possible skills for ${weapon} in slot ${slotName} found.`, skillsForSlot);
             console.assert(skillsForSlot.length !== 0, `No skills for ${weapon} in slot ${slotName} found.`);

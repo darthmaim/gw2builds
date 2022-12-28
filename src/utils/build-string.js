@@ -167,8 +167,7 @@ export function loadBuild(dispatch, build) {
             disp('petB', build.professionRanger, actions.setSelectedRangerPetId, id => ({ slotId: 1, petId: id })),
             disp('petAquaticA', build.professionRanger, actions.setSelectedRangerPetId, id => ({ slotId: 2, petId: id })),
             disp('petAquaticB', build.professionRanger, actions.setSelectedRangerPetId, id => ({ slotId: 3, petId: id })),
-            disp('attunement', build.professionElementalist, actions.setSelectedElementalistAttunementId, id => ({ attunementId: id })),
-            disp('prevAttunementWeaver', build.professionElementalist, actions.setSelectedWeaverPreviousAttunementId, id => ({ attunementId: id }))
+            disp('attunement', build.professionElementalist, actions.setSelectedElementalistAttunementId, (id, { prevAttunementWeaver: previousAttunementId }) => ({ attunementId: id, previousAttunementId })),
         ]);
     }).then(() => {
         return Promise.all([

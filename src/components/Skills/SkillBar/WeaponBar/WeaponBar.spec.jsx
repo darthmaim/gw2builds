@@ -79,8 +79,8 @@ it('renders attunement dependant skills', () => {
         activeMainhandWeaponId: WEAPON_ATTUNEMENT, isTwoHanded: true
     };
 
-    expect(shallow(<WeaponBar {...props} selectedAttunementId={ATTUNEMENT1}/>)
+    expect(shallow(<WeaponBar {...props} selectedAttunementId={ATTUNEMENT1} selectedWeaverPreviousAttunementId={ATTUNEMENT1}/>)
         .find(SkillIcon).first().prop('skill')).toEqual(SKILL_ATTUNEMENT_1);
-    expect(shallow(<WeaponBar {...props} selectedAttunementId={ATTUNEMENT2}/>)
+    expect(shallow(<WeaponBar {...props} selectedAttunementId={ATTUNEMENT2} selectedWeaverPreviousAttunementId={ATTUNEMENT2}/>)
         .find(SkillIcon).first().prop('skill')).toEqual(SKILL_ATTUNEMENT_2);
 });

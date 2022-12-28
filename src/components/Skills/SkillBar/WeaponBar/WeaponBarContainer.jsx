@@ -8,7 +8,8 @@ const mapStateToProps = (state, ownProps) => ({
     availableSkillObjects: state.availableSkillObjects,
     availableWeaponObjects: state.availableWeaponObjects,
     isTwoHanded: getIsTwoHandedActive(state, ownProps),
-    selectedAttunementId: state.selectedElementalistAttunementId
+    selectedAttunementId: state.selectedElementalistAttunementId,
+    selectedWeaverPreviousAttunementId: state.selectedWeaverPreviousAttunementId
 });
 
 export default connect(mapStateToProps)(WeaponBar);
